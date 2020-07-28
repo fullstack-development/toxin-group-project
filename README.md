@@ -29,7 +29,7 @@
 Для инпута с маской react-text-mask
 
 # Про доп. требования
-не забывайте при разработке проекта следотвать стандартам fsd https://github.com/fullstack-development/front-end-best-practices
+не забывайте при разработке проекта следовать стандартам fsd https://github.com/fullstack-development/front-end-best-practices
 
 Также при отправке форм на сервер неободимо блокировать кнопку пока идет запрос
 
