@@ -53,6 +53,6 @@
 
 После настройки firebase для проекта посмотреть как настраивать авторизацию можно вот тут https://firebase.google.com/docs/auth/web/start?authuser=0
 
-как работать с бд можно почитать вот тут
+как работать с бд можно почитать вот тут https://firebase.google.com/docs/database/web/start?authuser=0
 
 а как использовать хостинг для демонстрации промежуточных результатов можно посмотреть вот тут https://firebase.google.com/docs/hosting/quickstart?authuser=0
