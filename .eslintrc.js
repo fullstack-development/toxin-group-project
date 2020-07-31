@@ -1,10 +1,24 @@
 module.exports = {
-  parser: "@typescript-eslint/parser",
-  parserOptions: {
-    ecmaVersion: 2020,
-    sourceType: "module"
+  env: {
+    browser: true,
+    es2020: true,
   },
   extends: [
-    "airbnb-typescript" 
-  ]
+    'plugin:react/recommended',
+    'airbnb',
+  ],
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: 11,
+    sourceType: 'module',
+  },
+  plugins: [
+    'react',
+    '@typescript-eslint',
+  ],
+  rules: {
+  },
 };
