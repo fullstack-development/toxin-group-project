@@ -1,0 +1,26 @@
+@mixin font-face($font-family, $font, $type) {
+  $weight: 400;
+  $style: normal;
+
+  @if $type == 'light' {
+    $weight: 300;
+  }
+  @else if $type == 'bold' {
+    $weight: 700;
+  }
+  @else if $type == 'black' {
+    $weight: 900;
+  }
+  @else if $type == 'italic' {
+    $style: italic;
+  }
+
+  @font-face {
+    font-family: $font-family;
+    src: url(../../public/fonts/#{$font}-#{$type}.woff2) format('woff2'),
+         url(../../public/fonts/#{$font}-#{$type}.woff) format('woff'),
+         url(../../public/fonts/#{$font}-#{$type}.ttf) format('ttf');
+    font-weight: $weight;
+    font-style: $style;
+  }
+}
