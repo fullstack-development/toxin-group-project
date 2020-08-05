@@ -14,6 +14,7 @@
     "@types/react": "^16.9.43",
     "@types/react-dom": "^16.9.8",
     "bem-cn": "^3.0.1",
+    "final-form": "^4.20.1",
     "next": "9.5.1",
     "next-redux-wrapper": "^6.0.2",
     "react": "16.13.1",
