@@ -1,6 +1,6 @@
-import MaskedInput from "react-text-mask";
-import { Field } from "react-final-form";
-import styles from "./Input.module.scss";
+import MaskedInput from 'react-text-mask';
+import { Field } from 'react-final-form';
+import styles from './Input.module.scss';
 
 interface IInputDescription {
   type: string;
@@ -17,7 +17,9 @@ interface IInputProps {
   description: IInputDescription;
 }
 
-const Input: React.FC<IInputProps> = ({name, placeholder, validate, type, withMask, mask, description}) => (
+const Input: React.FC<IInputProps> = ({
+  name, placeholder, validate, type, withMask, mask, description,
+}) => (
   <Field
     name={name}
     placeholder={placeholder}
@@ -31,10 +33,10 @@ const Input: React.FC<IInputProps> = ({name, placeholder, validate, type, withMa
       <div className={styles.input}>
         <div>
           <div className={styles.input__description}>
-            <p className={styles["input__description-type"]}>
+            <p className={styles['input__description-type']}>
               {rest.description.type}
             </p>
-            <p className={styles["input__description-state"]}>
+            <p className={styles['input__description-state']}>
               {rest.description.state}
             </p>
           </div>
