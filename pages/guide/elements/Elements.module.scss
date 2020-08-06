@@ -1,7 +1,13 @@
 .elements{
   padding: 3rem;
+
   &__input{
     width: 20rem;
     margin: 1rem 0;
+
+    &-error{
+      font-size: 0.8rem;
+      color: red;
+    }
   }
 }
