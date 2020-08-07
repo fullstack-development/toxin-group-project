@@ -1,16 +1,17 @@
 .input {
   width: 100%;
-  border-radius: 4px;
-  border: 1px solid rgba(31, 32, 65, 0.25);
-  padding: 13px;
+  border-radius: 0.25rem;
+  border: 0.0625rem solid rgba(31, 32, 65, 0.25);
+  padding: 0.8125rem;
   
   &::placeholder {
     font-family: Montserrat, Arial, sans-serif;
+    color: rgba(31, 32, 65, 0.25);
   }
   
   &:hover,
   &:focus {
-    border: 1px solid rgba(31, 32, 65, 0.5);
+    border: 0.0625rem solid rgba(31, 32, 65, 0.5);
     outline: none;
   }
 }
