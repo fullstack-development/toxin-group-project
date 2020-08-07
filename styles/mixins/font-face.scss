@@ -18,8 +18,7 @@
   @font-face {
     font-family: $font-family;
     src: url(../../public/fonts/#{$font}-#{$type}.woff2) format('woff2'),
-         url(../../public/fonts/#{$font}-#{$type}.woff) format('woff'),
-         url(../../public/fonts/#{$font}-#{$type}.ttf) format('ttf');
+         url(../../public/fonts/#{$font}-#{$type}.woff) format('woff');
     font-weight: $weight;
     font-style: $style;
   }
