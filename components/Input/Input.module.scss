@@ -1,17 +1,19 @@
+@import '../../styles/variables.scss';
+
 .input {
   width: 100%;
   border-radius: 0.25rem;
-  border: 0.0625rem solid rgba(31, 32, 65, 0.25);
+  border: 0.0625rem solid $light;
   padding: 0.8125rem;
   
   &::placeholder {
     font-family: Montserrat, Arial, sans-serif;
-    color: rgba(31, 32, 65, 0.25);
+    color: $light;
   }
   
   &:hover,
   &:focus {
-    border: 0.0625rem solid rgba(31, 32, 65, 0.5);
+    border: 0.0625rem solid $main;
     outline: none;
   }
 }
