@@ -4,10 +4,10 @@
   &__input{
     width: 20rem;
     margin: 1rem 0;
+  }
 
-    &-error{
-      font-size: 0.8rem;
-      color: red;
-    }
+  &__input-error{
+    font-size: 0.8rem;
+    color: red;
   }
 }
