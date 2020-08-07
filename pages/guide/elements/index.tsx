@@ -1,7 +1,7 @@
 import React from 'react';
-import Input from '../../../components/Input/Input';
-import styles from './Elements.module.scss';
-import { fieldValidator } from '../../../public/helpers/validators/validators';
+import Input from '@components/Input/Input';
+import { fieldValidator } from '@public/helpers/validators/validators';
+import styles from './elements.module.scss';
 
 class Elements extends React.Component {
   constructor(props) {
