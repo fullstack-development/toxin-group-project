@@ -1,6 +1,7 @@
 import React from 'react';
 import Input from '../../../components/Input/Input';
 import styles from './Elements.module.scss';
+import { fieldValidator } from '../../../public/helpers/validators/validators';
 
 class Elements extends React.Component {
   constructor(props) {
@@ -13,31 +14,14 @@ class Elements extends React.Component {
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
-  validateField(fieldName, value) {
-    const fieldValidationErrors = this.state.formErrors;
-
-    switch (fieldName) {
-      case 'email':
-        const emailValid = value && value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-        fieldValidationErrors.email = emailValid ? '' : 'Некорректный email';
-        break;
-      case 'name':
-        const nameValid = value.match(/^[a-zA-ZА-Яа-я]+$/);
-        fieldValidationErrors.name = nameValid ? '' : 'Имя может содеражть только буквенные символы';
-        break;
-      default:
-        break;
-    }
-
-    this.setState({ formErrors: fieldValidationErrors }, this.validateForm);
-  }
-
   handleInputChange(e) {
     const { target } = e;
+    const { name, value } = target;
 
     this.setState({
-      [target.name]: target.value,
-    }, () => { this.validateField(target.name, target.value) });
+      [name]: value,
+      formErrors: { [name]: fieldValidator(name, value) },
+    });
   }
 
   render() {
@@ -46,9 +30,9 @@ class Elements extends React.Component {
         <form>
           <div className={styles.elements__input}>
             <Input
-              name='name'
-              placeholder='Name'
-              type='text'
+              name="name"
+              placeholder="Name"
+              type="text"
               value={this.state.name}
               onChange={this.handleInputChange}
             />
@@ -56,9 +40,9 @@ class Elements extends React.Component {
           </div>
           <div className={styles.elements__input}>
             <Input
-              name='email'
-              placeholder='Email'
-              type='email'
+              name="email"
+              placeholder="Email"
+              type="email"
               value={this.state.email}
               onChange={this.handleInputChange}
             />
