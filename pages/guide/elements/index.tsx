@@ -14,10 +14,7 @@ class Elements extends React.Component {
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
-  handleInputChange(e) {
-    const { target } = e;
-    const { name, value } = target;
-
+  handleInputChange(name, value) {
     this.setState({
       [name]: value,
       formErrors: { [name]: fieldValidator(name, value) },
