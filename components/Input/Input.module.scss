@@ -2,9 +2,9 @@
 
 .input {
   width: 100%;
-  border-radius: 0.25rem;
-  border: 0.0625rem solid $light;
-  padding: 0.8125rem;
+  border-radius: 0.2857rem;
+  border: 0.0714rem solid $light;
+  padding: 0.9643rem;
   
   &::placeholder {
     font-family: Montserrat, Arial, sans-serif;
@@ -13,7 +13,7 @@
   
   &:hover,
   &:focus {
-    border: 0.0625rem solid $main;
+    border: 0.0714rem solid $main;
     outline: none;
   }
 }
