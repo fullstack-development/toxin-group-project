@@ -15,6 +15,10 @@
   &:focus {
     border: 0.0714rem solid $main;
     outline: none;
+
+    &::placeholder {
+      color: $main;
+    }
   }
 }
 
