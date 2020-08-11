@@ -3,22 +3,27 @@ import Input from '@components/Input/Input';
 import { fieldValidator } from '@public/helpers/validators/validators';
 import styles from './elements.module.scss';
 
-class Elements extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: '',
-      email: '',
-      formErrors: { email: '', name: '' },
-    };
-  }
+interface IElementsState {
+  name: string;
+  email: string;
+  formErrors: { name: string, email: string };
+}
 
-  handleInputChange = (name, value) => {
+class Elements extends React.Component {
+  state: IElementsState = {
+    name: '',
+    email: '',
+    formErrors: { name: '', email: '' },
+  };
+
+  handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+
     this.setState({
       [name]: value,
       formErrors: { [name]: fieldValidator(name, value) },
     });
-  }
+  };
 
   render() {
     return (
@@ -32,7 +37,9 @@ class Elements extends React.Component {
               value={this.state.name}
               onChange={this.handleInputChange}
             />
-            <div className={styles['elements__input-error']}>{this.state.formErrors.name}</div>
+            <div className={styles['elements__input-error']}>
+              {this.state.formErrors.name}
+            </div>
           </div>
           <div className={styles.elements__input}>
             <Input
@@ -42,7 +49,9 @@ class Elements extends React.Component {
               value={this.state.email}
               onChange={this.handleInputChange}
             />
-            <div className={styles['elements__input-error']}>{this.state.formErrors.email}</div>
+            <div className={styles['elements__input-error']}>
+              {this.state.formErrors.email}
+            </div>
           </div>
         </form>
       </div>
