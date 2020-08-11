@@ -5,10 +5,9 @@ const Input: React.FC = ({
 }) => {
   
   const handleInputChange = (e) => {
-    const inputName = e.target.name;
-    const inputValue = e.target.value;
+    const { name, value } = e.target;
 
-    onChange(inputName, inputValue);
+    onChange(name, value);
   };
   
   return(
