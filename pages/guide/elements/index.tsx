@@ -3,14 +3,14 @@ import Input from '@components/Input/Input';
 import { fieldValidator } from '@public/helpers/validators/validators';
 import styles from './elements.module.scss';
 
-interface IElementsState {
+type ElementsState = {
   name: string;
   email: string;
   formErrors: { name: string, email: string };
 }
 
 class Elements extends React.Component {
-  state: IElementsState = {
+  state: ElementsState = {
     name: '',
     email: '',
     formErrors: { name: '', email: '' },

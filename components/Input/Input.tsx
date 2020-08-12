@@ -1,6 +1,6 @@
 import styles from './Input.module.scss';
 
-interface IInputProps {
+type InputProps = {
   name: string;
   placeholder: string;
   type: string;
@@ -8,9 +8,9 @@ interface IInputProps {
   onChange: (e: React.ChangeEvent) => void;
 }
 
-const Input: React.FC = ({
+const Input: React.FC<InputProps> = ({
   name, placeholder, type, value, onChange, ...rest
-}: IInputProps) => (
+}: InputProps) => (
   <input
     {...rest}
     className={styles.input}
