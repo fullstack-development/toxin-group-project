@@ -10,16 +10,22 @@ type InputProps = {
 
 const Input: React.FC<InputProps> = ({
   name, placeholder, type, value, onChange, ...rest
-}: InputProps) => (
-  <input
-    {...rest}
-    className={styles.input}
-    placeholder={placeholder}
-    type={type}
-    name={name}
-    value={value}
-    onChange={(e) => onChange(e)}
-  />
-);
+}: InputProps) => {
+  const handleChange = (e: React.ChangeEvent) => {
+    onChange(e);
+  };
+
+  return (
+    <input
+      {...rest}
+      className={styles.input}
+      placeholder={placeholder}
+      type={type}
+      name={name}
+      value={value}
+      onChange={handleChange}
+    />
+  );
+};
 
 export default Input;
