@@ -1,6 +1,6 @@
 import React from 'react';
-import Input from '@components/Input/Input';
-import { fieldValidator } from '@public/helpers/validators/validators';
+import Input from 'components/Input/Input';
+import fieldValidator from 'shared/helpers/validators/validators';
 import styles from './elements.module.scss';
 
 type ElementsState = {
