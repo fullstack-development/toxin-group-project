@@ -10,7 +10,7 @@ const purpleThemePalette = {
     colorDark: `RGBA(${typographyColorValue}, 75%)`,
     colorDarkest: `RGB(${typographyColorValue})`,
     fontName: 'Montserrat',
-    typographyFontSize: '14px',
+    fontSize: '14px',
   },
   colors: {
     primary: `RGB(${primaryColorValue})`,
