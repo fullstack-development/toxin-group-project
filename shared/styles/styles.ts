@@ -12,9 +12,9 @@ const GlobalStyle = createGlobalStyle`
   }
 
   html {
-    font-size: ${(props) => props.theme.typographyFontSize};
-    background: ${(props) => props.theme.defaultBackground};
-    color: ${(props) => props.theme.colors.typographyColorDark};
+    font-size: ${(props) => props.theme.typography.fontSize};
+    background: ${(props) => props.theme.typography.ColorDark};
+    color: ${(props) => props.theme.typography.ColorDark};
     font-family: Montserrat, Arial, sans-serif;
   }
 `;
