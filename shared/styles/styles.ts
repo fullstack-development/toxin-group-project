@@ -13,9 +13,9 @@ const GlobalStyle = createGlobalStyle`
 
   html {
     font-size: ${(props) => props.theme.typography.fontSize};
-    background: ${(props) => props.theme.typography.ColorDark};
-    color: ${(props) => props.theme.typography.ColorDark};
-    font-family: Montserrat, Arial, sans-serif;
+    background: ${(props) => props.theme.defaultBackground};
+    color: ${(props) => props.theme.typography.colorDark};
+    font-family: ${(props) => props.theme.typography.fontName}, Arial, sans-serif;
   }
 `;
 
