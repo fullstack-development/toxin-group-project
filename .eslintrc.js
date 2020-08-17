@@ -1,4 +1,12 @@
 module.exports = {
+  settings: {
+    'import/resolver': {
+      node: {
+        paths: ['./'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
+  },
   env: {
     browser: true,
     es2020: true,
@@ -23,5 +31,7 @@ module.exports = {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx', '.tsx'] }],
     'react/react-in-jsx-scope': 'off',
     'react/state-in-constructor': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    'import/extensions': ['error', { ts: 'never' }],
   },
 };
