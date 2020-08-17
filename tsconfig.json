@@ -9,7 +9,7 @@
     "baseUrl": "./",
     "paths": {
       "@components/*": ["components/*"],
-      "@public/*": ["public/*"],
+      "@shared/*": ["shared/*"],
     },
     "allowJs": true,
     "skipLibCheck": true,
