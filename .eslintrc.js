@@ -1,3 +1,5 @@
+const { off } = require("process");
+
 module.exports = {
   env: {
     browser: true,
@@ -17,12 +19,12 @@ module.exports = {
   },
   plugins: [
     'react',
-    'typescript',
     '@typescript-eslint',
   ],
   rules: {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx', '.tsx'] }],
     'react/react-in-jsx-scope': 'off',
     'react/state-in-constructor': 'off',
+    'class-methods-use-this': 'off',
   },
 };
