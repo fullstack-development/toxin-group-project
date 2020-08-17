@@ -33,5 +33,6 @@ module.exports = {
     'react/state-in-constructor': 'off',
     'react/jsx-props-no-spreading': 'off',
     'import/extensions': ['error', { ts: 'never' }],
+    '@typescript-eslint/no-unused-vars': [2, { args: 'none' }],
   },
 };

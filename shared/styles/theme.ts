@@ -1,8 +1,10 @@
+import { Theme } from '../types/theme';
+
 const typographyColorValue = '31, 32, 65';
 const primaryColorValue = '188, 156, 255';
 const secondaryColorValue = '111, 207, 151';
 
-const purpleThemePalette = {
+const purpleThemePalette: Theme = {
   typography: {
     colorLightest: `RGBA(${typographyColorValue}, 5%)`,
     colorLight: `RGBA(${typographyColorValue}, 25%)`,

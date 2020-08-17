@@ -1,7 +1,12 @@
 import { createGlobalStyle } from 'styled-components';
 import fontFace from './mixins/font-face';
+import { Theme } from '../types/theme';
 
-const GlobalStyle = createGlobalStyle`
+type Props = {
+  theme: Theme
+}
+
+const GlobalStyle = createGlobalStyle<Props>`
   ${fontFace('Montserrat', 'montserrat-regular', 400, 'normal')}
   ${fontFace('Montserrat', 'montserrat-bold', 700, 'normal')}
 
