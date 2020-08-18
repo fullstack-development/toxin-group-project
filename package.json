@@ -4,7 +4,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:styles": "stylelint \"./**/*.tsx\""
   },
   "dependencies": {
     "next": "9.5.1",
@@ -36,6 +37,8 @@
     "sass": "^1.26.10",
     "stylelint": "^13.6.1",
     "stylelint-config-standard": "^20.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.10.0",
     "typescript": "^3.9.7"
   }
 }
