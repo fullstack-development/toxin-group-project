@@ -1,10 +1,22 @@
 import * as fb from 'firebase/app';
 import 'firebase/database';
-import { FirebaseOptions } from '@firebase/app-types';
-import { Database, DataSnapshot } from '@firebase/database-types';
+
+type App = fb.app.App;
+type Database = fb.database.Database;
+type DataSnapshot = fb.database.DataSnapshot;
+
+interface IConfig {
+  apiKey?: string;
+  authDomain?: string;
+  databaseURL?: string;
+  projectId?: string;
+  storageBucket?: string;
+  messagingSenderId?: string;
+  appId?: string;
+}
 
 class Firebase {
-  public firebase: fb.app.App;
+  public firebase: App;
 
   public database: Database;
 
@@ -18,7 +30,7 @@ class Firebase {
     callback: (a: DataSnapshot, b?: string) => any,
     watch = true,
   ): ((a: DataSnapshot, b?: string) => any) | Promise<DataSnapshot> {
-    const ref = this.firebase.database().ref(value);
+    const ref = this.database.ref(value);
     const method = watch ? 'on' : 'once';
 
     return ref[method]('value', callback);
@@ -29,10 +41,10 @@ class Firebase {
       ? fb.initializeApp(this.getConfig())
       : fb.app();
 
-    this.database = (this.firebase as any).database();
+    this.database = this.firebase.database();
   }
 
-  private getConfig(): FirebaseOptions {
+  private getConfig(): IConfig {
     return {
       apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
       authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
