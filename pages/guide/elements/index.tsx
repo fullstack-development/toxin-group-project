@@ -1,27 +1,13 @@
 import React from 'react';
-import styled from 'styled-components';
 import Input from 'components/Input/Input';
 import fieldValidator from 'shared/helpers/validators/validators';
+import { Container, InputWrapper, ErrorMessage } from './elements.styles';
 
 type ElementsState = {
   name: string;
   email: string;
   formErrors: { name: string, email: string };
 }
-
-const Container = styled.div`
-  padding: 3rem;
-`;
-
-const InputWrapper = styled.div`
-  width: 22.8571rem;
-  margin: 1rem 0;
-`;
-
-const ErrorMessage = styled.div`
-  font-size: 0.8571rem;
-  color: #f44336;
-`;
 
 class Elements extends React.Component {
   state: ElementsState = {

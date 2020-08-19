@@ -5,7 +5,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "lint:styles": "stylelint \"./**/*.tsx\""
+    "lint:styles": "stylelint \"./**/*.styles.ts\""
   },
   "dependencies": {
     "next": "9.5.1",
