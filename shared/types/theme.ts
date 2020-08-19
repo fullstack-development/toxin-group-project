@@ -13,4 +13,8 @@ export type Theme = {
     secondary: string,
   },
   defaultBackground: string,
+  error: {
+    color: string,
+    fontSize: string
+  }
 };

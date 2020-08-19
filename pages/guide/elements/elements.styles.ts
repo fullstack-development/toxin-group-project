@@ -10,6 +10,6 @@ export const InputWrapper = styled.div`
 `;
 
 export const ErrorMessage = styled.div`
-  font-size: 0.8571rem;
-  color: #f44336;
+  font-size: ${(props) => props.theme.error.fontSize};
+  color: ${(props) => props.theme.error.color};
 `;

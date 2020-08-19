@@ -19,6 +19,10 @@ const purpleThemePalette: Theme = {
     secondary: `RGB(${secondaryColorValue})`,
   },
   defaultBackground: '#fff',
+  error: {
+    color: '#f44336',
+    fontSize: '0.8571rem',
+  },
 };
 
 export default purpleThemePalette;
