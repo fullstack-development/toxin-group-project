@@ -1,12 +1,10 @@
+import { boundMethod } from 'autobind-decorator';
 import firebase from './firebase';
 
 type DataSnapshot = firebase.database.DataSnapshot;
 
 class Api {
-  constructor() {
-    this.getData = this.getData.bind(this);
-  }
-
+  @boundMethod
   public getData(
     value: string,
     callback: (a: DataSnapshot, b?: string) => any,

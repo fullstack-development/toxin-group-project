@@ -1,3 +1,4 @@
+import { boundMethod } from 'autobind-decorator';
 import * as firebase from 'firebase/app';
 import 'firebase/database';
 
@@ -18,10 +19,10 @@ class Firebase {
   private app: FirebaseApplication;
 
   constructor() {
-    this.getData = this.getData.bind(this);
     this.init();
   }
 
+  @boundMethod
   public getData(
     value: string,
     callback: (a: DataSnapshot, b?: string) => any,
