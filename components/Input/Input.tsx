@@ -1,4 +1,4 @@
-import styles from './Input.module.scss';
+import StyledInput from './Input.styles';
 
 type InputProps = {
   name: string;
@@ -16,9 +16,8 @@ const Input: React.FC<InputProps> = ({
   };
 
   return (
-    <input
+    <StyledInput
       {...rest}
-      className={styles.input}
       placeholder={placeholder}
       type={type}
       name={name}
