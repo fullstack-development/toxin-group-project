@@ -1,7 +1,7 @@
 import React from 'react';
-import Input from '@components/Input/Input';
-import { fieldValidator } from '@public/helpers/validators/validators';
-import styles from './elements.module.scss';
+import Input from 'components/Input/Input';
+import fieldValidator from 'shared/helpers/validators/validators';
+import { Container, InputWrapper, ErrorMessage } from './elements.styles';
 
 type ElementsState = {
   name: string;
@@ -26,35 +26,32 @@ class Elements extends React.Component {
   };
 
   render() {
+    const { name, formErrors, email } = this.state;
     return (
-      <div className={styles.elements}>
+      <Container>
         <form>
-          <div className={styles.elements__input}>
+          <InputWrapper>
             <Input
               name="name"
               placeholder="Name"
               type="text"
-              value={this.state.name}
+              value={name}
               onChange={this.handleInputChange}
             />
-            <div className={styles['elements__input-error']}>
-              {this.state.formErrors.name}
-            </div>
-          </div>
-          <div className={styles.elements__input}>
+            <ErrorMessage>{formErrors.name}</ErrorMessage>
+          </InputWrapper>
+          <InputWrapper>
             <Input
               name="email"
               placeholder="Email"
               type="email"
-              value={this.state.email}
+              value={email}
               onChange={this.handleInputChange}
             />
-            <div className={styles['elements__input-error']}>
-              {this.state.formErrors.email}
-            </div>
-          </div>
+            <ErrorMessage>{formErrors.email}</ErrorMessage>
+          </InputWrapper>
         </form>
-      </div>
+      </Container>
     );
   }
 }

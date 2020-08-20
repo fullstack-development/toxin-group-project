@@ -1,6 +1,12 @@
-const { off } = require("process");
-
 module.exports = {
+  settings: {
+    'import/resolver': {
+      node: {
+        paths: ['./'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
+  },
   env: {
     browser: true,
     es2020: true,
@@ -26,5 +32,8 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'react/state-in-constructor': 'off',
     'class-methods-use-this': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    'import/extensions': ['error', { ts: 'never' }],
+    '@typescript-eslint/no-unused-vars': [2, { args: 'none' }],
   },
 };
