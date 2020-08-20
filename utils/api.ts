@@ -5,12 +5,12 @@ type DataSnapshot = firebase.database.DataSnapshot;
 
 class Api {
   @boundMethod
-  public getData(
+  public request(
     value: string,
     callback: (a: DataSnapshot, b?: string) => any,
     watch = true,
   ): ((a: DataSnapshot, b?: string) => any) | Promise<DataSnapshot> {
-    return firebase.getData(value, callback, watch);
+    return firebase.request(value, callback, watch);
   }
 
   @boundMethod

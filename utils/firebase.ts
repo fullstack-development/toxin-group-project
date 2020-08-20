@@ -24,7 +24,7 @@ class Firebase {
   }
 
   @boundMethod
-  public getData(
+  public request(
     value: string,
     callback: (a: DataSnapshot, b?: string) => any,
     watch = true,
