@@ -3,6 +3,7 @@ import * as firebase from 'firebase/app';
 import 'firebase/database';
 
 type FirebaseApplication = firebase.app.App;
+type DatabaseReference = firebase.database.Reference;
 type DataSnapshot = firebase.database.DataSnapshot;
 
 interface IConfig {
@@ -28,16 +29,28 @@ class Firebase {
     callback: (a: DataSnapshot, b?: string) => any,
     watch = true,
   ): ((a: DataSnapshot, b?: string) => any) | Promise<DataSnapshot> {
-    const ref = this.app.database().ref(value);
     const method = watch ? 'on' : 'once';
+    return this.getRef(value)[method]('value', callback);
+  }
 
-    return ref[method]('value', callback);
+  @boundMethod
+  public post(field: string, data: any): void {
+    this.getRef(field).set(data);
+  }
+
+  @boundMethod
+  public remove(field: string): void {
+    this.getRef(field).remove();
   }
 
   private init(): void {
     this.app = !firebase.apps.length
       ? firebase.initializeApp(this.getConfig())
       : firebase.app();
+  }
+
+  private getRef(value?: string): DatabaseReference {
+    return this.app.database().ref(value);
   }
 
   private getConfig(): IConfig {

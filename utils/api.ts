@@ -12,6 +12,16 @@ class Api {
   ): ((a: DataSnapshot, b?: string) => any) | Promise<DataSnapshot> {
     return firebase.getData(value, callback, watch);
   }
+
+  @boundMethod
+  public post(field: string, data: any): void {
+    firebase.post(field, data);
+  }
+
+  @boundMethod
+  public remove(field: string): void {
+    firebase.remove(field);
+  }
 }
 
 export default new Api();
