@@ -1,4 +1,5 @@
 import { boundMethod } from 'autobind-decorator';
+
 import firebase from './firebase';
 
 type DataSnapshot = firebase.database.DataSnapshot;
