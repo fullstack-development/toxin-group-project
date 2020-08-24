@@ -30,6 +30,7 @@ class Firebase {
 
   @boundMethod
   public remove(field: string): void {
+    if (field === '/') throw new Error('Trying to clean up the database');
     this.getRef(field).remove();
   }
 
