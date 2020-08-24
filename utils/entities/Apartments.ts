@@ -20,6 +20,11 @@ class Apartments {
   }
 
   @boundMethod
+  public add(id: number, apartment: Apartment): void {
+    firebase.post(`${this.path}/${id}`, apartment);
+  }
+
+  @boundMethod
   public filter(apartmentsList: ApartmentsList, params: DeepPartial<Apartment>): ApartmentsList {
     const result: ApartmentsList = { ...apartmentsList };
 
