@@ -1,10 +1,17 @@
 import { boundMethod } from 'autobind-decorator';
 
+import Apartments from './entities/Apartments';
 import firebase from './firebase';
 
 type DataSnapshot = firebase.database.DataSnapshot;
 
 class Api {
+  public apartments: Apartments;
+
+  constructor() {
+    this.apartments = new Apartments();
+  }
+
   @boundMethod
   public request(
     value: string,
