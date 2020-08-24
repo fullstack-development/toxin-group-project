@@ -1,20 +1,14 @@
 import { boundMethod } from 'autobind-decorator';
+
 import * as firebase from 'firebase/app';
 import 'firebase/database';
 
-type FirebaseApplication = firebase.app.App;
-type DatabaseReference = firebase.database.Reference;
-type DataSnapshot = firebase.database.DataSnapshot;
-
-interface IConfig {
-  apiKey?: string;
-  authDomain?: string;
-  databaseURL?: string;
-  projectId?: string;
-  storageBucket?: string;
-  messagingSenderId?: string;
-  appId?: string;
-}
+import {
+  FirebaseApplication,
+  DatabaseReference,
+  DataSnapshot,
+  IConfig,
+} from './types';
 
 class Firebase {
   private app: FirebaseApplication;
@@ -24,17 +18,13 @@ class Firebase {
   }
 
   @boundMethod
-  public request(
-    value: string,
-    callback: (a: DataSnapshot, b?: string) => any,
-    watch = true,
-  ): ((a: DataSnapshot, b?: string) => any) | Promise<DataSnapshot> {
-    const method = watch ? 'on' : 'once';
-    return this.getRef(value)[method]('value', callback);
+  public async request(value: string): Promise<DataSnapshot> {
+    const response = await this.getRef(value).once('value');
+    return response;
   }
 
   @boundMethod
-  public post(field: string, data: any): void {
+  public post(field: string, data: unknown): void {
     this.getRef(field).set(data);
   }
 
