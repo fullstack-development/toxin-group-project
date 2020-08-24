@@ -43,6 +43,11 @@ class Firebase {
     this.getRef(field).remove();
   }
 
+  @boundMethod
+  public update(data: {}): void {
+    this.getRef().update(data);
+  }
+
   private init(): void {
     this.app = !firebase.apps.length
       ? firebase.initializeApp(this.getConfig())
