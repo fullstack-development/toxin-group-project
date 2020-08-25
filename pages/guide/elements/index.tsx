@@ -1,19 +1,19 @@
 import React from 'react';
 import Input from 'components/Input/Input';
-import fieldValidator from 'shared/helpers/validators/validators';
-import { Container, InputWrapper, ErrorMessage } from './elements.styles';
+import { emailValidator, dateValidator } from 'shared/helpers/validators/';
+import { Container, InputWrapper } from './elements.styles';
 
 type ElementsState = {
   name: string;
   email: string;
-  formErrors: { name: string, email: string };
+  date: string;
 }
 
 class Elements extends React.Component {
   state: ElementsState = {
     name: '',
     email: '',
-    formErrors: { name: '', email: '' },
+    date: '',
   };
 
   handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -21,34 +21,47 @@ class Elements extends React.Component {
 
     this.setState({
       [name]: value,
-      formErrors: { [name]: fieldValidator(name, value) },
     });
   };
 
   render() {
-    const { name, formErrors, email } = this.state;
+    const { name, email, date } = this.state;
     return (
       <Container>
         <form>
           <InputWrapper>
             <Input
-              name="name"
-              placeholder="Name"
+              name="email"
+              placeholder="Email"
               type="text"
-              value={name}
+              value={email}
+              validators={[emailValidator]}
               onChange={this.handleInputChange}
+              label="text field"
             />
-            <ErrorMessage>{formErrors.name}</ErrorMessage>
           </InputWrapper>
           <InputWrapper>
             <Input
-              name="email"
-              placeholder="Email"
-              type="email"
-              value={email}
+              name="name"
+              placeholder="This is pretty awesome"
+              type="text"
+              value={name}
               onChange={this.handleInputChange}
+              label="text field"
+              isRequired
             />
-            <ErrorMessage>{formErrors.email}</ErrorMessage>
+          </InputWrapper>
+          <InputWrapper>
+            <Input
+              name="date"
+              placeholder="ДД.ММ.ГГГГ"
+              type="text"
+              value={date}
+              validators={[dateValidator]}
+              mask={[/\d/, /\d/, '.', /\d/, /\d/, '.', /\d/, /\d/, /\d/, /\d/]}
+              onChange={this.handleInputChange}
+              label="Masked text field"
+            />
           </InputWrapper>
         </form>
       </Container>
