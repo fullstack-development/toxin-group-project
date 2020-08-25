@@ -1,10 +1,12 @@
 import Apartments from './entities/Apartments';
+import Firebase from './firebase';
 
 class Api {
-  public apartments: Apartments;
+  public readonly apartments: Apartments;
 
   constructor() {
-    this.apartments = new Apartments();
+    const actions = new Firebase();
+    this.apartments = new Apartments(actions);
   }
 }
 

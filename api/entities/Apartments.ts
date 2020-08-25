@@ -3,25 +3,27 @@ import { boundMethod } from 'autobind-decorator';
 import { DeepPartial } from 'shared/types/custom';
 import { matchObjects } from 'shared/helpers';
 
-import firebase from '../firebase';
+import Firebase from '../firebase';
 import { ApartmentsList, Apartment } from './types';
 
 class Apartments {
   private readonly path: string;
+  private readonly actions: Firebase;
 
-  constructor() {
+  constructor(actions) {
     this.path = 'apartments';
+    this.actions = actions;
   }
 
   @boundMethod
   public async load(key = ''): Promise<ApartmentsList> {
-    const response = await firebase.request(`${this.path}/${key}`).then((s) => s.val());
+    const response = await this.actions.request(`${this.path}/${key}`).then((s) => s.val());
     return response;
   }
 
   @boundMethod
   public add(id: number, apartment: Apartment): void {
-    firebase.post(`${this.path}/${id}`, apartment);
+    this.actions.post(`${this.path}/${id}`, apartment);
   }
 
   @boundMethod

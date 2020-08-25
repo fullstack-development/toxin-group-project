@@ -36,5 +36,6 @@ module.exports = {
     'import/extensions': ['error', { ts: 'never' }],
     '@typescript-eslint/no-unused-vars': [2, { args: 'none' }],
     'no-unused-expressions': 'off',
+    'lines-between-class-members': 'off',
   },
 };
