@@ -1,6 +1,8 @@
 import React from 'react';
+
 import Input from 'components/Input/Input';
 import { emailValidator, dateValidator } from 'shared/helpers/validators/';
+
 import { Container, InputWrapper } from './elements.styles';
 
 type ElementsState = {

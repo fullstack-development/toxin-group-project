@@ -1,4 +1,5 @@
 import { ThemeProvider } from 'styled-components';
+
 import GlobalStyle from 'shared/styles/styles';
 import purpleThemePalette from 'shared/styles/theme';
 
