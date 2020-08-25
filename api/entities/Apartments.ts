@@ -10,7 +10,7 @@ class Apartments {
   private readonly path: string;
   private readonly actions: Firebase;
 
-  constructor(actions) {
+  constructor(actions: Firebase) {
     this.path = 'apartments';
     this.actions = actions;
   }
