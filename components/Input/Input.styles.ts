@@ -7,10 +7,10 @@ export const StyledInput = styled.div`
 
 export const LabelText = styled.p`
   font-weight: bold;
-  font-size: 12px;
+  font-size: 0.8571rem;
   color: ${(props) => props.theme.typography.colorDarkest};
   text-transform: uppercase;
-  margin-bottom: 5px;
+  margin-bottom: 0.3571rem;
 `;
 
 export const MaskedField = styled(MaskedInput)`
