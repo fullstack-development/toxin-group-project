@@ -1,5 +1,5 @@
 import Apartments from './entities/Apartments';
-import Firebase from './firebase';
+import Firebase from './Firebase';
 
 class Api {
   public readonly apartments: Apartments;

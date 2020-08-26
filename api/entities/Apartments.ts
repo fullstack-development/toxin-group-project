@@ -3,7 +3,7 @@ import { boundMethod } from 'autobind-decorator';
 import { DeepPartial } from 'shared/types/custom';
 import { matchObjects } from 'shared/helpers';
 
-import Firebase from '../firebase';
+import Firebase from '../Firebase';
 import { ApartmentsList, Apartment } from './types';
 
 class Apartments {
