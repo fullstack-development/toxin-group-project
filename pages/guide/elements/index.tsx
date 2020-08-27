@@ -1,7 +1,13 @@
 import React from 'react';
+
 import Input from 'components/Input/Input';
+import CheckboxesList from 'components/Checkboxes-List/Checkboxes-List';
+import roomOptions from 'components/Checkboxes-List/Checkboxes-List-data.json';
 import fieldValidator from 'shared/helpers/validators/validators';
-import { Container, InputWrapper, ErrorMessage } from './elements.styles';
+
+import {
+  Container, InputWrapper, ErrorMessage, CheckboxWrapper,
+} from './elements.styles';
 
 type ElementsState = {
   name: string;
@@ -17,7 +23,8 @@ class Elements extends React.Component {
   };
 
   handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
+    const { target } = e;
+    const { name, value } = target;
 
     this.setState({
       [name]: value,
@@ -50,6 +57,9 @@ class Elements extends React.Component {
             />
             <ErrorMessage>{formErrors.email}</ErrorMessage>
           </InputWrapper>
+          <CheckboxWrapper>
+            <CheckboxesList roomOptions={roomOptions} />
+          </CheckboxWrapper>
         </form>
       </Container>
     );

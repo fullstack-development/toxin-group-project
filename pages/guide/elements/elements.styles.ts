@@ -13,3 +13,7 @@ export const ErrorMessage = styled.div`
   font-size: ${(props) => props.theme.error.fontSize};
   color: ${(props) => props.theme.error.color};
 `;
+
+export const CheckboxWrapper = styled.div`
+  margin: 1rem 0;
+`;
