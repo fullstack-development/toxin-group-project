@@ -17,6 +17,8 @@ const purpleThemePalette: Theme = {
   colors: {
     primary: `RGB(${primaryColorValue})`,
     secondary: `RGB(${secondaryColorValue})`,
+    primaryGradient: 'linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%)',
+    secondaryGradient: 'linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%)',
   },
   defaultBackground: '#fff',
   error: {
