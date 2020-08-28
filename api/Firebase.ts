@@ -2,16 +2,21 @@ import { boundMethod } from 'autobind-decorator';
 
 import * as firebase from 'firebase/app';
 import 'firebase/database';
+import 'firebase/auth';
 
 import {
   FirebaseApplication,
   DatabaseReference,
   DataSnapshot,
+  Auth,
+  Unsubscribe,
   IConfig,
+  User,
 } from './types';
 
 class Firebase {
   private app: FirebaseApplication;
+  private auth: Auth;
 
   constructor() {
     this.init();
@@ -38,10 +43,17 @@ class Firebase {
     this.getRef().update(data);
   }
 
+  @boundMethod
+  public onAuthStateChanged(fn: (user: User) => unknown): Unsubscribe {
+    return this.auth.onAuthStateChanged(fn);
+  }
+
   private init(): void {
     this.app = !firebase.apps.length
       ? firebase.initializeApp(this.getConfig())
       : firebase.app();
+
+    this.auth = this.app.auth();
   }
 
   private getRef(value?: string): DatabaseReference {
