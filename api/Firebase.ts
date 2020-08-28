@@ -55,6 +55,11 @@ class Firebase {
   }
 
   @boundMethod
+  public async signOut(): Promise<void> {
+    return this.auth.signOut();
+  }
+
+  @boundMethod
   public getCurrentUser(): User {
     return this.auth.currentUser;
   }

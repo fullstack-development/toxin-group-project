@@ -26,6 +26,11 @@ class Auth {
   }
 
   @boundMethod
+  public async signOut(): Promise<void> {
+    return this.actions.signOut();
+  }
+
+  @boundMethod
   public onStateChanged(fn: (user: User) => unknown): Unsubscribe {
     return this.actions.onAuthStateChanged(fn);
   }
