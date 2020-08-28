@@ -31,6 +31,11 @@ class Auth {
   }
 
   @boundMethod
+  public async resetPassword(email: string): Promise<void> {
+    return this.actions.resetPassword(email);
+  }
+
+  @boundMethod
   public onStateChanged(fn: (user: User) => unknown): Unsubscribe {
     return this.actions.onAuthStateChanged(fn);
   }

@@ -60,6 +60,11 @@ class Firebase {
   }
 
   @boundMethod
+  public async resetPassword(email: string): Promise<void> {
+    return this.auth.sendPasswordResetEmail(email);
+  }
+
+  @boundMethod
   public getCurrentUser(): User {
     return this.auth.currentUser;
   }
