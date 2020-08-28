@@ -17,8 +17,7 @@ class Apartments {
 
   @boundMethod
   public async load(key = ''): Promise<ApartmentsList> {
-    const response = await this.actions.request(`${this.path}/${key}`).then((s) => s.val());
-    return response;
+    return this.actions.request(`${this.path}/${key}`).then((s) => s.val());
   }
 
   @boundMethod

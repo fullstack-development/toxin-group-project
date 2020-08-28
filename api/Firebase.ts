@@ -19,8 +19,7 @@ class Firebase {
 
   @boundMethod
   public async request(value: string): Promise<DataSnapshot> {
-    const response = await this.getRef(value).once('value');
-    return response;
+    return this.getRef(value).once('value');
   }
 
   @boundMethod
