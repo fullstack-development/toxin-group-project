@@ -9,6 +9,7 @@ import {
   DatabaseReference,
   DataSnapshot,
   Auth,
+  UserCredential,
   Unsubscribe,
   IConfig,
   User,
@@ -41,6 +42,16 @@ class Firebase {
   @boundMethod
   public update(data: {}): void {
     this.getRef().update(data);
+  }
+
+  @boundMethod
+  public async createUser(email: string, password: string): Promise<UserCredential> {
+    return this.auth.createUserWithEmailAndPassword(email, password);
+  }
+
+  @boundMethod
+  public getCurrentUser(): User {
+    return this.auth.currentUser;
   }
 
   @boundMethod

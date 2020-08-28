@@ -21,3 +21,13 @@ export type Apartment = {
 }
 
 export type ApartmentsList = {[k: number]: Apartment};
+
+export type ProfileData = {
+  email: string;
+  password: string;
+  name: string;
+  surname: string;
+  birthDate: string;
+  gender: 'male' | 'female';
+  receiveOffers: boolean;
+}
