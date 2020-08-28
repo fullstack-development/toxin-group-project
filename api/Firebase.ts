@@ -50,6 +50,11 @@ class Firebase {
   }
 
   @boundMethod
+  public async signIn(email: string, password: string): Promise<UserCredential> {
+    return this.auth.signInWithEmailAndPassword(email, password);
+  }
+
+  @boundMethod
   public getCurrentUser(): User {
     return this.auth.currentUser;
   }

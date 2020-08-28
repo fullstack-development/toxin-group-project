@@ -21,6 +21,11 @@ class Auth {
   }
 
   @boundMethod
+  public async signIn(email: string, password: string): Promise<UserCredential> {
+    return this.actions.signIn(email, password);
+  }
+
+  @boundMethod
   public onStateChanged(fn: (user: User) => unknown): Unsubscribe {
     return this.actions.onAuthStateChanged(fn);
   }
