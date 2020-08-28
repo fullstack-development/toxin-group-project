@@ -1,12 +1,14 @@
 import React from 'react';
 
+import fieldValidator from 'shared/helpers/validators/validators';
 import Input from 'components/Input/Input';
 import CheckboxesList from 'components/Checkboxes-List/Checkboxes-List';
-import roomOptions from 'components/Checkboxes-List/Checkboxes-List-data.json';
-import fieldValidator from 'shared/helpers/validators/validators';
+import Expander from 'components/Expander/Expander';
+import expandableCheckboxData from 'components/Expander/Expandable-List-data.json';
+import checkboxData from 'components/Checkboxes-List/Checkboxes-List-data.json';
 
 import {
-  Container, InputWrapper, ErrorMessage, CheckboxWrapper,
+  Container, InputWrapper, ErrorMessage, CheckboxWrapper, ExpandableCheckboxWrapper,
 } from './elements.styles';
 
 type ElementsState = {
@@ -58,8 +60,18 @@ class Elements extends React.Component {
             <ErrorMessage>{formErrors.email}</ErrorMessage>
           </InputWrapper>
           <CheckboxWrapper>
-            <CheckboxesList roomOptions={roomOptions} />
+            <CheckboxesList roomOptions={checkboxData} />
           </CheckboxWrapper>
+          <ExpandableCheckboxWrapper>
+            <Expander title="expandable checkbox list" isOpen={false}>
+              <CheckboxesList roomOptions={expandableCheckboxData} />
+            </Expander>
+          </ExpandableCheckboxWrapper>
+          <ExpandableCheckboxWrapper>
+            <Expander title="expandable checkbox list" isOpen>
+              <CheckboxesList roomOptions={expandableCheckboxData} />
+            </Expander>
+          </ExpandableCheckboxWrapper>
         </form>
       </Container>
     );

@@ -15,5 +15,10 @@ export const ErrorMessage = styled.div`
 `;
 
 export const CheckboxWrapper = styled.div`
+  width: 15.8571rem;
+  margin: 1rem 0;
+`;
+
+export const ExpandableCheckboxWrapper = styled.div`
   margin: 1rem 0;
 `;
