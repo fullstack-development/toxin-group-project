@@ -10,7 +10,7 @@ import {
 type InputProps = {
   name: string;
   placeholder: string;
-  type: string;
+  type?: string;
   value: string;
   validators?: Array<Validator>;
   label?: string;
