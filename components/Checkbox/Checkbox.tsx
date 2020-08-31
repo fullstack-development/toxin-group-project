@@ -4,7 +4,7 @@ import {
 
 type CheckboxProps = {
   name: string;
-  isChecked: boolean;
+  isChecked?: boolean;
   label: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;

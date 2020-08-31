@@ -1,4 +1,5 @@
 import React from 'react';
+import { Field } from 'react-final-form';
 
 import Checkbox from 'components/Checkbox/Checkbox';
 
@@ -31,13 +32,17 @@ class CheckboxesList extends React.Component<Props> {
       <List>
         {roomOptions.map((option) => (
           <ListItem key={option.value}>
-            <Checkbox
+            <Field
+              type="checkbox"
               name={option.name}
-              label={option.label}
               value={option.value}
-              // eslint-disable-next-line react/destructuring-assignment
-              isChecked={this.state[option.value] || false}
-              onChange={this.handleChange}
+              render={(props) => (
+                <Checkbox
+                  label={option.label}
+                  {...props.input}
+                  {...props.meta}
+                />
+              )}
             />
           </ListItem>
         ))}

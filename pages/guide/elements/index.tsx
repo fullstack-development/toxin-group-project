@@ -1,4 +1,5 @@
 import React from 'react';
+import { Form } from 'react-final-form';
 
 import Input from 'components/Input/Input';
 import CheckboxesList from 'components/Checkboxes-List/Checkboxes-List';
@@ -32,35 +33,42 @@ class Elements extends React.Component {
     });
   };
 
+  handleFormSubmit = () => {};
+
   render() {
     const { name, formErrors, email } = this.state;
     return (
       <Container>
-        <form>
-          <InputWrapper>
-            <Input
-              name="name"
-              placeholder="Name"
-              type="text"
-              value={name}
-              onChange={this.handleInputChange}
-            />
-            <ErrorMessage>{formErrors.name}</ErrorMessage>
-          </InputWrapper>
-          <InputWrapper>
-            <Input
-              name="email"
-              placeholder="Email"
-              type="email"
-              value={email}
-              onChange={this.handleInputChange}
-            />
-            <ErrorMessage>{formErrors.email}</ErrorMessage>
-          </InputWrapper>
-          <CheckboxWrapper>
-            <CheckboxesList roomOptions={roomOptions} />
-          </CheckboxWrapper>
-        </form>
+        <Form
+          onSubmit={this.handleFormSubmit}
+          render={() => (
+            <form>
+              <InputWrapper>
+                <Input
+                  name="name"
+                  placeholder="Name"
+                  type="text"
+                  value={name}
+                  onChange={this.handleInputChange}
+                />
+                <ErrorMessage>{formErrors.name}</ErrorMessage>
+              </InputWrapper>
+              <InputWrapper>
+                <Input
+                  name="email"
+                  placeholder="Email"
+                  type="email"
+                  value={email}
+                  onChange={this.handleInputChange}
+                />
+                <ErrorMessage>{formErrors.email}</ErrorMessage>
+              </InputWrapper>
+              <CheckboxWrapper>
+                <CheckboxesList roomOptions={roomOptions} />
+              </CheckboxWrapper>
+            </form>
+          )}
+        />
       </Container>
     );
   }
