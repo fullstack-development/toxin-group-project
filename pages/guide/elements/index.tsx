@@ -1,7 +1,10 @@
 import React from 'react';
 import Input from 'components/Input/Input';
 import fieldValidator from 'shared/helpers/validators/validators';
-import { Container, InputWrapper, ErrorMessage } from './elements.styles';
+import Dropdown from '@components/Dropdown/Dropdown';
+import {
+  Container, InputWrapper, ErrorMessage, DropdownWrapper,
+} from './elements.styles';
 
 type ElementsState = {
   name: string;
@@ -50,6 +53,9 @@ class Elements extends React.Component {
             />
             <ErrorMessage>{formErrors.email}</ErrorMessage>
           </InputWrapper>
+          <DropdownWrapper>
+            <Dropdown placeholder="Сколько гостей" items={[{ title: 'Спальни' }, { title: 'Кровати' }, { title: 'Ванные комнаты' }]} />
+          </DropdownWrapper>
         </form>
       </Container>
     );
