@@ -35,5 +35,6 @@ module.exports = {
     'import/extensions': ['error', { ts: 'never' }],
     '@typescript-eslint/no-unused-vars': [2, { args: 'none' }],
     'import/prefer-default-export': 'off',
+    'jsx-a11y/label-has-associated-control': ['error', { assert: 'either' }],
   },
 };
