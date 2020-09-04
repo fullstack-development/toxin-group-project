@@ -1,22 +1,22 @@
 import styled, { css } from 'styled-components';
 
-export const Expander = styled.div`
+const Expander = styled.div`
   width: 18.1071rem;
 `;
 
-export const Header = styled.div`
+const Header = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
 `;
 
-export const Title = styled.h3`
+const Title = styled.h3`
   font-size: 0.8571rem;
   text-transform: uppercase;
 `;
 
-export const Content = styled.div`
+const Content = styled.div`
   ${(props: { isOpen: boolean }) => {
     const { isOpen } = props;
     return css`
@@ -29,3 +29,7 @@ export const Content = styled.div`
     `;
   }}
 `;
+
+export {
+  Expander, Header, Title, Content,
+};
