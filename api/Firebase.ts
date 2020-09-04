@@ -4,7 +4,6 @@ import 'firebase/database';
 import 'firebase/auth';
 
 import apiErrors from './entities/errors/apiErrors';
-import DatabaseError from './entities/errors/DatabaseError';
 import {
   FirebaseApplication,
   DatabaseReference,
@@ -26,17 +25,7 @@ class Firebase {
 
   @boundMethod
   public async request(value: string): Promise<DataSnapshot> {
-    let request: DataSnapshot;
-
-    try {
-      request = await this.getRef(value).once('value');
-    } catch (err) {
-      switch (err.code) {
-        default: throw new DatabaseError();
-      }
-    }
-
-    return request;
+    return this.getRef(value).once('value');
   }
 
   @boundMethod
