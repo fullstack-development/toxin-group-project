@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const StyledExpander = styled.div`
+export const Expander = styled.div`
   width: 18.1071rem;
 `;
 
