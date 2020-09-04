@@ -13,3 +13,7 @@ export const ErrorMessage = styled.div`
   font-size: ${(props) => props.theme.error.fontSize};
   color: ${(props) => props.theme.error.color};
 `;
+
+export const BulletListWrapper = styled.div`
+  max-width: 18.5714rem;
+`;

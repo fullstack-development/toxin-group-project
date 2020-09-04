@@ -1,7 +1,10 @@
 import React from 'react';
 import Input from 'components/Input/Input';
+import BulletList from 'components/BulletList/BulletList';
 import fieldValidator from 'shared/helpers/validators/validators';
-import { Container, InputWrapper, ErrorMessage } from './elements.styles';
+import {
+  Container, InputWrapper, ErrorMessage, BulletListWrapper,
+} from './elements.styles';
 
 type ElementsState = {
   name: string;
@@ -50,6 +53,9 @@ class Elements extends React.Component {
             />
             <ErrorMessage>{formErrors.email}</ErrorMessage>
           </InputWrapper>
+          <BulletListWrapper>
+            <BulletList items={['Нельзя с питомцами', 'Без вечеринок и мероприятий', 'Время прибытия — после 13:00, а выезд до 12:00']} />
+          </BulletListWrapper>
         </form>
       </Container>
     );
