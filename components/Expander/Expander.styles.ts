@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const StyledExpander = styled.div`
   width: 18.1071rem;
@@ -17,8 +17,15 @@ export const Title = styled.h3`
 `;
 
 export const Content = styled.div`
-  height: ${(props: {isOpen: boolean}) => ((props.isOpen) ? 'auto' : '0')};
-  transition: height 1s;
-  overflow: hidden;
-  padding: 0.2143rem 0;
+  ${(props: { isOpen: boolean }) => {
+    const { isOpen } = props;
+    return css`
+      height: ${(isOpen ? 'auto' : '0')};
+      visibility: ${(isOpen ? 'visible' : 'hidden')};
+      opacity: ${(isOpen ? '1' : '0')};
+      transition: opacity .4s;
+      overflow: hidden;
+      padding: 0.2143rem 0;
+    `;
+  }}
 `;
