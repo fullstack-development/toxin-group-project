@@ -7,9 +7,7 @@ import Expander from 'components/Expander/Expander';
 import expandableCheckboxData from 'components/Expander/Expandable-List-data.json';
 import checkboxData from 'components/Checkboxes-List/Checkboxes-List-data.json';
 
-import {
-  Container, InputWrapper, ErrorMessage, CheckboxWrapper, ExpandableCheckboxWrapper,
-} from './elements.styles';
+import * as S from './elements.styles';
 
 type ElementsState = {
   name: string;
@@ -37,9 +35,9 @@ class Elements extends React.Component {
   render() {
     const { name, formErrors, email } = this.state;
     return (
-      <Container>
+      <S.Container>
         <form>
-          <InputWrapper>
+          <S.InputWrapper>
             <Input
               name="name"
               placeholder="Name"
@@ -47,9 +45,9 @@ class Elements extends React.Component {
               value={name}
               onChange={this.handleInputChange}
             />
-            <ErrorMessage>{formErrors.name}</ErrorMessage>
-          </InputWrapper>
-          <InputWrapper>
+            <S.ErrorMessage>{formErrors.name}</S.ErrorMessage>
+          </S.InputWrapper>
+          <S.InputWrapper>
             <Input
               name="email"
               placeholder="Email"
@@ -57,23 +55,23 @@ class Elements extends React.Component {
               value={email}
               onChange={this.handleInputChange}
             />
-            <ErrorMessage>{formErrors.email}</ErrorMessage>
-          </InputWrapper>
-          <CheckboxWrapper>
+            <S.ErrorMessage>{formErrors.email}</S.ErrorMessage>
+          </S.InputWrapper>
+          <S.CheckboxWrapper>
             <CheckboxesList roomOptions={checkboxData} />
-          </CheckboxWrapper>
-          <ExpandableCheckboxWrapper>
+          </S.CheckboxWrapper>
+          <S.ExpandableCheckboxWrapper>
             <Expander title="expandable checkbox list" isOpen={false}>
               <CheckboxesList roomOptions={expandableCheckboxData} />
             </Expander>
-          </ExpandableCheckboxWrapper>
-          <ExpandableCheckboxWrapper>
+          </S.ExpandableCheckboxWrapper>
+          <S.ExpandableCheckboxWrapper>
             <Expander title="expandable checkbox list" isOpen>
               <CheckboxesList roomOptions={expandableCheckboxData} />
             </Expander>
-          </ExpandableCheckboxWrapper>
+          </S.ExpandableCheckboxWrapper>
         </form>
-      </Container>
+      </S.Container>
     );
   }
 }
