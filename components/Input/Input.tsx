@@ -1,10 +1,9 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState } from 'react';
 
 import { composeValidators, makeRequired, Validator } from 'shared/helpers/validators';
 
 import {
-  StyledInput, Field, LabelText, MaskedField, ErrorMessage,
+  InputContainer, Field, LabelText, MaskedField, ErrorMessage,
 } from './Input.styles';
 
 type InputProps = {
@@ -50,7 +49,7 @@ const Input: React.FC<InputProps> = ({
   };
 
   return (
-    <StyledInput>
+    <InputContainer>
       <label>
         <LabelText>{label}</LabelText>
         {mask ? (
@@ -78,7 +77,7 @@ const Input: React.FC<InputProps> = ({
         )}
         <ErrorMessage>{error}</ErrorMessage>
       </label>
-    </StyledInput>
+    </InputContainer>
   );
 };
 
