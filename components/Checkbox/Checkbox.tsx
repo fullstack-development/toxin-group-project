@@ -1,6 +1,4 @@
-import {
-  CheckboxContainer, HiddenCheckbox, Checkmark, Label,
-} from './Checkbox.styles';
+import * as S from './Checkbox.styles';
 
 type CheckboxProps = {
   name: string;
@@ -18,11 +16,11 @@ const Checkbox: React.FC<CheckboxProps> = ({
   };
 
   return (
-    <CheckboxContainer>
-      <HiddenCheckbox name={name} type="checkbox" value={value} checked={isChecked} onChange={handleChange} />
-      <Checkmark />
-      <Label>{label}</Label>
-    </CheckboxContainer>
+    <S.Checkbox>
+      <S.HiddenCheckbox name={name} type="checkbox" value={value} checked={isChecked} onChange={handleChange} />
+      <S.Checkmark />
+      <S.Label>{label}</S.Label>
+    </S.Checkbox>
   );
 };
 

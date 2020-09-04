@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 import visuallyHidden from 'shared/styles/mixins/visually-hidden';
 
-export const CheckboxContainer = styled.label`
+export const Checkbox = styled.label`
   display: flex;
   cursor: pointer;
   user-select: none;
@@ -39,7 +39,7 @@ export const Checkmark = styled.span`
       }
 
       ${HiddenCheckbox}:checked ~ &,
-      ${CheckboxContainer}:hover ${HiddenCheckbox} ~ & {
+      ${Checkbox}:hover ${HiddenCheckbox} ~ & {
         border: 0.0714rem solid ${colors.primary};
       }
 

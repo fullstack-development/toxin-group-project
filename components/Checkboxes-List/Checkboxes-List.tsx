@@ -3,7 +3,7 @@ import { Field } from 'react-final-form';
 
 import Checkbox from 'components/Checkbox/Checkbox';
 
-import { List, ListItem } from './Checkboxes-List.styles';
+import * as S from './Checkboxes-List.styles';
 
 type Option = {
   name: string;
@@ -16,9 +16,9 @@ type Props = {
 };
 
 const CheckboxesList: React.FC<Props> = ({ roomOptions }: Props) => (
-  <List>
+  <S.List>
     {roomOptions.map((option) => (
-      <ListItem key={option.value}>
+      <S.ListItem key={option.value}>
         <Field
           type="checkbox"
           name={option.name}
@@ -31,9 +31,9 @@ const CheckboxesList: React.FC<Props> = ({ roomOptions }: Props) => (
             />
           )}
         />
-      </ListItem>
+      </S.ListItem>
     ))}
-  </List>
+  </S.List>
 );
 
 export default CheckboxesList;
