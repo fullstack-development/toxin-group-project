@@ -1,4 +1,4 @@
-export * from './composeVaidators';
+export * from './composeValidators';
 export * from './emailValidator';
 export * from './makeRequired';
 export * from './passwordValidator';

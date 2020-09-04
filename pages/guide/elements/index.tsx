@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Field } from 'react-final-form';
 
 import Input from 'components/Input/Input';
-import { emailValidator, dateValidator } from 'shared/helpers/validators/';
+import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators/';
 
 import { Container, InputWrapper } from './elements.styles';
 
@@ -56,7 +56,7 @@ class Elements extends React.Component {
                       {...props.input}
                       placeholder="ДД.ММ.ГГГГ"
                       validators={[dateValidator]}
-                      mask={[/\d/, /\d/, '.', /\d/, /\d/, '.', /\d/, /\d/, /\d/, /\d/]}
+                      mask={dateFormatMask}
                       label="Masked text field"
                     />
                   )}
