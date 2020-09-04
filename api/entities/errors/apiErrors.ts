@@ -2,8 +2,9 @@ import { boundMethod } from 'autobind-decorator';
 
 import AuthError from './AuthError';
 import ApartmentsError from './ApartmentsError';
+import DatabaseError from './DatabaseError';
 
-type ErrorConstructor = ApartmentsError | AuthError;
+type ErrorConstructor = ApartmentsError | AuthError | DatabaseError;
 
 class ApiErrors {
   constructor() {
@@ -22,6 +23,8 @@ class ApiErrors {
     this.add(AuthError, 'user-not-found', () => 'There is no user record corresponding to this identifier');
 
     this.add(ApartmentsError, 'nothing-found', (path) => `Unfortunately nothing found at the path: '${path}'`);
+
+    this.add(DatabaseError, 'complete-clean-up', () => 'Trying to clean up the database');
   }
 
   private add(

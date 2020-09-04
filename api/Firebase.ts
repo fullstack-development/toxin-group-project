@@ -4,6 +4,8 @@ import * as firebase from 'firebase/app';
 import 'firebase/database';
 import 'firebase/auth';
 
+import apiErrors from './entities/errors/apiErrors';
+import DatabaseError from './entities/errors/DatabaseError';
 import {
   FirebaseApplication,
   DatabaseReference,
@@ -25,7 +27,17 @@ class Firebase {
 
   @boundMethod
   public async request(value: string): Promise<DataSnapshot> {
-    return this.getRef(value).once('value');
+    let request: DataSnapshot;
+
+    try {
+      request = await this.getRef(value).once('value');
+    } catch (err) {
+      switch (err.code) {
+        default: throw new DatabaseError();
+      }
+    }
+
+    return request;
   }
 
   @boundMethod
@@ -35,7 +47,7 @@ class Firebase {
 
   @boundMethod
   public remove(field: string): void {
-    if (field === '/') throw new Error('Trying to clean up the database');
+    if (field === '/') throw apiErrors.create('complete-clean-up');
     this.getRef(field).remove();
   }
 
