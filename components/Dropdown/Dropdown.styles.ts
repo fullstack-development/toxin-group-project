@@ -108,6 +108,11 @@ const Button = styled.button`
       background-color: transparent;
       font: inherit;
       color: ${color};
+      cursor: pointer;
+
+      &:disabled {
+        opacity: 0.38
+      }
     `;
   }}
 `;
