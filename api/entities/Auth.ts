@@ -2,10 +2,9 @@ import { boundMethod } from 'autobind-decorator';
 
 import Firebase from '../Firebase';
 import { UserCredential, Unsubscribe, User } from '../types';
-import { ProfileData } from './types';
-
 import apiErrors from './errors/apiErrors';
 import AuthError from './errors/AuthError';
+import { ProfileData } from './types';
 
 class Auth {
   private readonly actions: Firebase;

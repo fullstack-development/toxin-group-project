@@ -17,7 +17,7 @@ class Apartments {
   }
 
   @boundMethod
-  public async load(key = ''): Promise<ApartmentsList> {
+  public async load(key = ''): Promise<unknown> {
     const request = await this.actions.request(`${this.path}/${key}`).then((s) => s.val());
     if (request === null) throw apiErrors.create('nothing-found', key);
     return request;
