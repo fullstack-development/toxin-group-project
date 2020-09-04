@@ -4,19 +4,19 @@ import { Form, Field } from 'react-final-form';
 import Input from 'components/Input/Input';
 import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators/';
 
-import { Container, InputWrapper } from './elements.styles';
+import * as S from './elements.styles';
 
 class Elements extends React.Component {
   handleFormSubmit = () => {};
 
   render() {
     return (
-      <Container>
+      <S.Container>
         <Form
           onSubmit={this.handleFormSubmit}
           render={() => (
             <form>
-              <InputWrapper>
+              <S.InputWrapper>
                 <Field
                   name="email"
                   type="text"
@@ -30,8 +30,8 @@ class Elements extends React.Component {
                     />
                   )}
                 />
-              </InputWrapper>
-              <InputWrapper>
+              </S.InputWrapper>
+              <S.InputWrapper>
                 <Field
                   name="name"
                   type="text"
@@ -45,8 +45,8 @@ class Elements extends React.Component {
                     />
                   )}
                 />
-              </InputWrapper>
-              <InputWrapper>
+              </S.InputWrapper>
+              <S.InputWrapper>
                 <Field
                   name="date"
                   type="text"
@@ -61,11 +61,11 @@ class Elements extends React.Component {
                     />
                   )}
                 />
-              </InputWrapper>
+              </S.InputWrapper>
             </form>
           )}
         />
-      </Container>
+      </S.Container>
     );
   }
 }

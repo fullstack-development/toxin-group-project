@@ -2,9 +2,7 @@ import { useState } from 'react';
 
 import { composeValidators, makeRequired, Validator } from 'shared/helpers/validators';
 
-import {
-  InputContainer, Field, LabelText, MaskedField, ErrorMessage,
-} from './Input.styles';
+import * as S from './Input.styles';
 
 type InputProps = {
   name: string;
@@ -49,11 +47,11 @@ const Input: React.FC<InputProps> = ({
   };
 
   return (
-    <InputContainer>
+    <S.Input>
       <label>
-        <LabelText>{label}</LabelText>
+        <S.LabelText>{label}</S.LabelText>
         {mask ? (
-          <MaskedField
+          <S.MaskedField
             placeholder={placeholder}
             mask={mask}
             type={type}
@@ -64,7 +62,7 @@ const Input: React.FC<InputProps> = ({
             onBlur={handleBlur}
           />
         ) : (
-          <Field
+          <S.Field
             {...rest}
             placeholder={placeholder}
             type={type}
@@ -75,9 +73,9 @@ const Input: React.FC<InputProps> = ({
             onBlur={handleBlur}
           />
         )}
-        <ErrorMessage>{error}</ErrorMessage>
+        <S.ErrorMessage>{error}</S.ErrorMessage>
       </label>
-    </InputContainer>
+    </S.Input>
   );
 };
 
