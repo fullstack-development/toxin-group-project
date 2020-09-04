@@ -1,5 +1,5 @@
 import {
-  useState, useRef, useCallback,
+  useState, useRef,
 } from 'react';
 import * as S from './Dropdown.styles';
 
@@ -23,6 +23,8 @@ const Dropdown : React.FC<DropdownProps> = ({ placeholder = 'No placeholder pass
   const initialState = items.map((item) => ({
     ...item,
     currentValue: item.initialValue || DEFAULT_SETTINGS.initialValue,
+    min: item.min || DEFAULT_SETTINGS.min,
+    max: item.max || DEFAULT_SETTINGS.max,
   }));
   const [dropdownState, setDropdownState] = useState(initialState);
 
@@ -46,17 +48,17 @@ const Dropdown : React.FC<DropdownProps> = ({ placeholder = 'No placeholder pass
               return copiedState;
             });
           };
-          const handleIncrementClick = useCallback(makeButtonHandler(1), []);
-          const handleDecrementClick = useCallback(makeButtonHandler(-1), []);
+          const handleIncrementClick = makeButtonHandler(1);
+          const handleDecrementClick = makeButtonHandler(-1);
           return (
             <S.Item key={title}>
               <S.ItemTitle ref={titleElement}>
                 {title}
               </S.ItemTitle>
               <S.InputContainer>
-                <S.Button onClick={handleDecrementClick} type="button">-</S.Button>
-                <S.Input readOnly type="number" min={min || DEFAULT_SETTINGS.min} max={max || DEFAULT_SETTINGS.max} value={currentValue} />
-                <S.Button onClick={handleIncrementClick} type="button">+</S.Button>
+                <S.Button disabled={currentValue === min} onClick={handleDecrementClick} type="button">-</S.Button>
+                <S.Input readOnly type="number" value={currentValue} />
+                <S.Button disabled={currentValue === max} onClick={handleIncrementClick} type="button">+</S.Button>
               </S.InputContainer>
             </S.Item>
           );
