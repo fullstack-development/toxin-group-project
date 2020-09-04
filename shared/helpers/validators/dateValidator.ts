@@ -11,5 +11,7 @@ const isCorrectDate = (value: string): boolean => {
   );
 };
 
-export const dateValidator = (date: string): string | null => (date && isCorrectDate(date) ? null : 'Некорректная дата');
-export const dateFormatMask = [/\d/, /\d/, '.', /\d/, /\d/, '.', /\d/, /\d/, /\d/, /\d/];
+const dateValidator = (date: string): string | null => (date && isCorrectDate(date) ? null : 'Некорректная дата');
+const dateFormatMask = [/\d/, /\d/, '.', /\d/, /\d/, '.', /\d/, /\d/, /\d/, /\d/];
+
+export { dateValidator, dateFormatMask };

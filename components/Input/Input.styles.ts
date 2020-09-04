@@ -1,11 +1,11 @@
 import styled, { css } from 'styled-components';
 import MaskedInput from 'react-text-mask';
 
-export const Input = styled.div`
+const Input = styled.div`
   width: 100%;
 `;
 
-export const LabelText = styled.p`
+const LabelText = styled.p`
   ${(props) => {
     const { theme: { typography } } = props;
     return css`
@@ -18,7 +18,7 @@ export const LabelText = styled.p`
   }}
 `;
 
-export const MaskedField = styled(MaskedInput)`
+const MaskedField = styled(MaskedInput)`
   ${(props) => {
     const { theme: { typography } } = props;
     return css`
@@ -45,7 +45,7 @@ export const MaskedField = styled(MaskedInput)`
   }}
 `;
 
-export const Field = styled.input`
+const Field = styled.input`
   ${(props) => {
     const { theme: { typography } } = props;
     return css`
@@ -72,7 +72,7 @@ export const Field = styled.input`
   }}
 `;
 
-export const ErrorMessage = styled.div`
+const ErrorMessage = styled.div`
   ${(props) => {
     const { theme: { error } } = props;
     return css`
@@ -82,3 +82,7 @@ export const ErrorMessage = styled.div`
     `;
   }}
 `;
+
+export {
+  Input, LabelText, MaskedField, Field, ErrorMessage,
+};
