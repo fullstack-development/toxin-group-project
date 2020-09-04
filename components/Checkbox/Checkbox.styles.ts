@@ -2,18 +2,18 @@ import styled, { css } from 'styled-components';
 
 import visuallyHidden from 'shared/styles/mixins/visually-hidden';
 
-export const Checkbox = styled.label`
+const Checkbox = styled.label`
   display: flex;
   cursor: pointer;
   user-select: none;
   align-items: center;
 `;
 
-export const HiddenCheckbox = styled.input`
+const HiddenCheckbox = styled.input`
   ${visuallyHidden};
 `;
 
-export const Checkmark = styled.span`
+const Checkmark = styled.span`
   ${(props) => {
     const { theme: { typography, colors } } = props;
     return css`
@@ -50,6 +50,10 @@ export const Checkmark = styled.span`
   }}
 `;
 
-export const Label = styled.span`
+const Label = styled.span`
   margin-left: 0.7143rem;
 `;
+
+export {
+  Checkbox, HiddenCheckbox, Checkmark, Label,
+};
