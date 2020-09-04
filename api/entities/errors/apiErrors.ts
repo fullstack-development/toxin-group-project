@@ -1,8 +1,9 @@
 import { boundMethod } from 'autobind-decorator';
 
 import AuthError from './AuthError';
+import ApartmentsError from './ApartmentsError';
 
-type ErrorConstructor = AuthError;
+type ErrorConstructor = ApartmentsError | AuthError;
 
 class ApiErrors {
   constructor() {
@@ -19,6 +20,8 @@ class ApiErrors {
     this.add(AuthError, 'weak-password', () => 'The password should be 6 characters long or more');
     this.add(AuthError, 'wrong-password', () => 'The password is invalid');
     this.add(AuthError, 'user-not-found', () => 'There is no user record corresponding to this identifier');
+
+    this.add(ApartmentsError, 'nothing-found', (path) => `Unfortunately nothing found at the path: '${path}'`);
   }
 
   private add(

@@ -4,6 +4,7 @@ import { DeepPartial } from 'shared/types/custom';
 import { matchObjects } from 'shared/helpers';
 
 import Firebase from '../Firebase';
+import apiErrors from './errors/apiErrors';
 import { ApartmentsList, Apartment } from './types';
 
 class Apartments {
@@ -17,7 +18,9 @@ class Apartments {
 
   @boundMethod
   public async load(key = ''): Promise<ApartmentsList> {
-    return this.actions.request(`${this.path}/${key}`).then((s) => s.val());
+    const request = await this.actions.request(`${this.path}/${key}`).then((s) => s.val());
+    if (request === null) throw apiErrors.create('nothing-found', key);
+    return request;
   }
 
   @boundMethod
