@@ -7,6 +7,7 @@ import * as S from './Dropdown.styles';
 type DropdownProps = {
   items: {
     title: string;
+    group?: { name: string; wordForms: TextForms };
     wordForms?: TextForms;
     min?: number;
     max?: number;
@@ -14,7 +15,7 @@ type DropdownProps = {
   }[];
   placeholder: string;
   enableControls?: boolean;
-}
+};
 
 const DEFAULT_SETTINGS = {
   min: 0,
@@ -35,10 +36,25 @@ const Dropdown : React.FC<DropdownProps> = ({ placeholder = 'No placeholder pass
   const dropdown = useRef(null);
 
   const applyChanges = (): void => {
-    const result = dropdownState.filter((item) => item.currentValue).map((item) => {
+    const groupNames = Array.from(new Set(
+      dropdownState.filter((item) => item.group).map((item) => item.group.name),
+    ));
+    const groupResults = groupNames.map((groupName) => {
+      const groupCount = dropdownState
+        .filter((el) => el.group && el.group.name === groupName && el.currentValue)
+        .reduce((acc, el) => acc + el.currentValue, 0);
+      const {
+        title,
+        group: { wordForms },
+      } = dropdownState.find((item) => item.group.name === groupName);
+      return groupCount ? `${groupCount} ${wordForms ? getCorrectWordForm(groupCount, wordForms) : title}` : null;
+    }).filter((result) => result);
+
+    const restResults = dropdownState.filter((item) => !item.group && item.currentValue).map((item) => {
       const { currentValue, title, wordForms } = item;
       return `${currentValue} ${wordForms ? getCorrectWordForm(currentValue, wordForms) : title}`;
     });
+    const result = [...groupResults, ...restResults];
     resultContainer.current.textContent = result.join(', ') || placeholder;
   };
 
