@@ -1,6 +1,7 @@
 import React from 'react';
 import Input from 'components/Input/Input';
 import fieldValidator from 'shared/helpers/validators/validators';
+import { TextButton } from '@components/TextButton/TextButton.styles';
 import { Container, InputWrapper, ErrorMessage } from './elements.styles';
 
 type ElementsState = {
@@ -51,6 +52,10 @@ class Elements extends React.Component {
             <ErrorMessage>{formErrors.email}</ErrorMessage>
           </InputWrapper>
         </form>
+        <div>
+          <TextButton>Click me</TextButton>
+        </div>
+        <TextButton as="a" href="https://www.google.com/">Click me</TextButton>
       </Container>
     );
   }
