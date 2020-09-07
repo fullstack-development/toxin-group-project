@@ -72,12 +72,15 @@ const ListContainer = styled.div`
         typography: {
           color,
         },
+        defaultBackground,
       },
     } = props;
     return css`
       display: none;
       width: 100%;
+      background-color: ${defaultBackground};
       position: absolute;
+      z-index: 5;
       bottom: 0;
       left: 0;
       padding: 0 0.5rem 0 0.9286rem;

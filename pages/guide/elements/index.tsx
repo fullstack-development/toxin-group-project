@@ -76,7 +76,7 @@ class Elements extends React.Component {
           <DropdownWrapper>
             <Dropdown
               placeholder="Сколько гостей"
-              enableControls={false}
+              enableControls
               groups={[
                 {
                   name: 'guests',
