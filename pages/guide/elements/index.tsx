@@ -77,20 +77,20 @@ class Elements extends React.Component {
             <Dropdown
               placeholder="Сколько гостей"
               enableControls={false}
+              groups={[
+                {
+                  name: 'guests',
+                  wordForms: ['гость', 'гостя', 'гостей'],
+                },
+              ]}
               items={[
                 {
                   title: 'взрослые',
-                  group: {
-                    name: 'guests',
-                    wordForms: ['гость', 'гостя', 'гостей'],
-                  },
+                  groupName: 'guests',
                 },
                 {
                   title: 'дети',
-                  group: {
-                    name: 'guests',
-                    wordForms: ['гость', 'гостя', 'гостей'],
-                  },
+                  groupName: 'guests',
                 },
                 {
                   title: 'младенцы',
