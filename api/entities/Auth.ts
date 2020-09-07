@@ -21,8 +21,8 @@ class Auth {
       credential = await this.actions.createUser(data.email, data.password);
     } catch (err) {
       switch (err.code) {
-        case 'auth/email-already-in-use': throw apiErrors.create('email-is-taken', data.email);
-        case 'auth/weak-password': throw apiErrors.create('weak-password');
+        case 'auth/email-already-in-use': throw apiErrors.create('auth/email-is-taken', data.email);
+        case 'auth/weak-password': throw apiErrors.create('auth/weak-password');
         default: throw new AuthError();
       }
     }
@@ -41,7 +41,7 @@ class Auth {
       credential = await this.actions.signIn(email, password);
     } catch (err) {
       switch (err.code) {
-        case 'auth/wrong-password': throw apiErrors.create('wrong-password');
+        case 'auth/wrong-password': throw apiErrors.create('auth/wrong-password');
         default: throw new AuthError();
       }
     }
@@ -62,7 +62,7 @@ class Auth {
       resetPassword = await this.actions.resetPassword(email);
     } catch (err) {
       switch (err.code) {
-        case 'auth/user-not-found': throw apiErrors.create('user-not-found');
+        case 'auth/user-not-found': throw apiErrors.create('auth/user-not-found');
         default: throw new AuthError();
       }
     }
