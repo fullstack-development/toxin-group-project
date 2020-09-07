@@ -16,6 +16,7 @@ const ErrorMessage = styled.div`
 
 const DropdownWrapper = styled.div`
   max-width: 19rem;
+  margin-bottom: 1.4286rem;
 `;
 
 export {
