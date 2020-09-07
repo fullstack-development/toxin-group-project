@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+
 import { getCorrectWordForm, WordForms } from './utils/getCorrectWord';
 import * as S from './Dropdown.styles';
 
@@ -103,6 +104,7 @@ const Dropdown: React.FC<DropdownProps> = ({
         type="button"
       >
         {resultString}
+        <S.ExpandIcon />
       </S.Result>
       <S.ListContainer modifiers={isOpen && 'open'}>
         <S.List>

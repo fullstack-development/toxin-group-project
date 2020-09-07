@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { applyStyleModifiers } from 'styled-components-modifiers';
+import ExpandMore from '@material-ui/icons/ExpandMore';
 
 const Dropdown = styled.div`
   ${(props) => {
@@ -33,8 +34,10 @@ const Result = styled.button`
     } = props;
 
     return css`
+      position: relative;
       width: 100%;
       padding: 0.9643rem;
+      padding-right: 2.5rem;
       border-radius: 0.2857rem 0.2857rem 0 0;
       border: 0.0714rem solid ${colorLight};
       text-align: left;
@@ -57,6 +60,13 @@ const Result = styled.button`
       }
     `;
   }}
+`;
+
+const ExpandIcon = styled(ExpandMore)`
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translate(0, -50%);
 `;
 
 const modifiers = {
@@ -200,5 +210,6 @@ export {
   Controls,
   ResetButton,
   ApplyButton,
+  ExpandIcon,
   modifiers,
 };
