@@ -116,7 +116,7 @@ const Dropdown: React.FC<DropdownProps> = ({
             const makeButtonHandler = (
               increment: number,
             ): (() => void
-) => (): void => {
+              ) => (): void => {
               const currentTitle = titleElement.current.textContent;
 
               setDropdownState((prevState) => {
