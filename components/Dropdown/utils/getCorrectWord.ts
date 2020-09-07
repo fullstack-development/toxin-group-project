@@ -1,4 +1,4 @@
-type WordForms = [string, string, string];
+export type WordForms = [string, string, string];
 
 function getCorrectWordForm(count: number, wordForms: WordForms) {
   const num = Math.abs(count) % 100;
@@ -15,4 +15,4 @@ function getCorrectWordForm(count: number, wordForms: WordForms) {
   return wordForms[2];
 }
 
-export { getCorrectWordForm, WordForms };
+export { getCorrectWordForm };

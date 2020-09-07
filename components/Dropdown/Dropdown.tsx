@@ -39,7 +39,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   }));
   const [dropdownState, setDropdownState] = useState([...initialState]);
   const [isOpen, setIsOpen] = useState(false);
-  const resultContainer = useRef(null);
+  const [resultString, setResultString] = useState(placeholder);
   const dropdown = useRef(null);
 
   const applyChanges = (): void => {
@@ -65,7 +65,7 @@ const Dropdown: React.FC<DropdownProps> = ({
         }`;
       });
     const result = [...(groupResults || []), ...restResults];
-    resultContainer.current.textContent = result.join(', ') || placeholder;
+    setResultString(result.join(', ') || placeholder);
   };
 
   const handleResetClick = (): void => {
@@ -100,10 +100,9 @@ const Dropdown: React.FC<DropdownProps> = ({
     <S.Dropdown ref={dropdown}>
       <S.Result
         onClick={handleResultBarClick}
-        ref={resultContainer}
         type="button"
       >
-        {placeholder}
+        {resultString}
       </S.Result>
       <S.ListContainer modifiers={isOpen && 'open'}>
         <S.List>
