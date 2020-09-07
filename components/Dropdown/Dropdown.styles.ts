@@ -63,6 +63,9 @@ const modifiers = {
   open: () => `
     display: block;
   `,
+  hidden: () => `
+    visibility: hidden;
+  `,
 };
 
 const ListContainer = styled.div`
@@ -179,7 +182,9 @@ const Controls = styled.div`
   margin-bottom: 0.9286rem;
 `;
 
-const ResetButton = styled.button``;
+const ResetButton = styled.button`
+  ${applyStyleModifiers(modifiers)}
+`;
 const ApplyButton = styled.button``;
 
 export {

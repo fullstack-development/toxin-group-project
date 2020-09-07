@@ -155,7 +155,7 @@ const Dropdown: React.FC<DropdownProps> = ({
         </S.List>
         {enableControls && (
           <S.Controls>
-            <S.ResetButton type="button" onClick={handleResetClick}>
+            <S.ResetButton type="button" modifiers={dropdownState.every((item) => !item.currentValue) && 'hidden'} onClick={handleResetClick}>
               Очистить
             </S.ResetButton>
             <S.ApplyButton type="button" onClick={handleApplyClick}>
