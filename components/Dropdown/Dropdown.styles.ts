@@ -38,6 +38,9 @@ const Result = styled.button`
       border: 0.0714rem solid ${colorLight};
       text-align: left;
       font: inherit;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
       background-color: transparent;
       cursor: pointer;
 
@@ -55,7 +58,7 @@ const Result = styled.button`
   }}
 `;
 
-const List = styled.div`
+const ListContainer = styled.div`
   ${(props) => {
     const {
       theme: {
@@ -69,24 +72,28 @@ const List = styled.div`
       position: absolute;
       bottom: 0;
       left: 0;
-      padding-bottom: 0.3571rem;
+      padding: 0 0.5rem 0 0.9286rem;
       transform: translate(0, 100%);
       border: 0.0714rem solid ${color};
       border-radius: 0 0 0.2857rem 0.2857rem;
-      font-size: 0.8571rem;
-      line-height: 1.0714rem;
-      text-transform: uppercase;
-      font-weight: 700;
     `;
   }}
 `;
 
-const Item = styled.div`
+const List = styled.ul`
+  padding-bottom: 0.3571rem;
+  font-size: 0.8571rem;
+  line-height: 1.0714rem;
+  text-transform: uppercase;
+  font-weight: 700;
+`;
+
+const Item = styled.li`
   ${() => css`
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0.3571rem 0.5rem 0.1429rem 0.9286rem;
+      padding: 0.3571rem 0 0.1429rem 0;
     `}
 `;
 
@@ -153,6 +160,26 @@ const InputContainer = styled.div`
   flex-wrap: no-wrap;
 `;
 
+const Controls = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.9286rem;
+`;
+
+const ResetButton = styled.button``;
+const ApplyButton = styled.button``;
+
 export {
-  Dropdown, Result, List, Item, Button, Input, ItemTitle, InputContainer,
+  Dropdown,
+  Result,
+  List,
+  Item,
+  Button,
+  Input,
+  ItemTitle,
+  InputContainer,
+  ListContainer,
+  Controls,
+  ResetButton,
+  ApplyButton,
 };
