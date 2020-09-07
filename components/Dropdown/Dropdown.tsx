@@ -34,6 +34,14 @@ const Dropdown : React.FC<DropdownProps> = ({ placeholder = 'No placeholder pass
   const resultContainer = useRef(null);
   const dropdown = useRef(null);
 
+  const applyChanges = (): void => {
+    const result = dropdownState.filter((item) => item.currentValue).map((item) => {
+      const { currentValue, title, wordForms } = item;
+      return `${currentValue} ${wordForms ? getCorrectWordForm(currentValue, wordForms) : title}`;
+    });
+    resultContainer.current.textContent = result.join(', ') || placeholder;
+  };
+
   const handleResetClick = (): void => {
     setDropdownState([...initialState]);
   };
@@ -43,11 +51,7 @@ const Dropdown : React.FC<DropdownProps> = ({ placeholder = 'No placeholder pass
   };
 
   const handleApplyClick = (): void => {
-    const result = dropdownState.filter((item) => item.currentValue).map((item) => {
-      const { currentValue, title, wordForms } = item;
-      return `${currentValue} ${wordForms ? getCorrectWordForm(currentValue, wordForms) : title}`;
-    });
-    resultContainer.current.textContent = result.join(', ') || placeholder;
+    applyChanges();
     handleResultBarClick();
   };
 
@@ -58,6 +62,10 @@ const Dropdown : React.FC<DropdownProps> = ({ placeholder = 'No placeholder pass
   };
 
   useEffect(() => {
+    if (!enableControls) {
+      applyChanges();
+    }
+
     document.addEventListener('click', handleDocumentClick);
     return () => document.removeEventListener('click', handleDocumentClick);
   });
@@ -82,10 +90,6 @@ const Dropdown : React.FC<DropdownProps> = ({ placeholder = 'No placeholder pass
                 elementToUpdate.currentValue += increment;
                 return copiedState;
               });
-
-              if (!enableControls) {
-                handleApplyClick();
-              }
             };
             const handleIncrementClick = makeButtonHandler(1);
             const handleDecrementClick = makeButtonHandler(-1);

@@ -54,7 +54,7 @@ class Elements extends React.Component {
             <ErrorMessage>{formErrors.email}</ErrorMessage>
           </InputWrapper>
           <DropdownWrapper>
-            <Dropdown placeholder="Сколько гостей" items={[{ title: 'Спальни', wordForms: ['спальня', 'спальни', 'спален'] }, { title: 'Кровати', wordForms: ['кровать', 'кровати', 'кроватей'] }, { title: 'Ванные комнаты', wordForms: ['ванная', 'ванные', 'ванных'] }]} />
+            <Dropdown placeholder="Сколько гостей" enableControls={false} items={[{ title: 'Спальни', wordForms: ['спальня', 'спальни', 'спален'] }, { title: 'Кровати', wordForms: ['кровать', 'кровати', 'кроватей'] }, { title: 'Ванные комнаты', wordForms: ['ванная', 'ванные', 'ванных'] }]} />
           </DropdownWrapper>
         </form>
       </Container>
