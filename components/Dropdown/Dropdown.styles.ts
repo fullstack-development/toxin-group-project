@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { applyStyleModifiers } from 'styled-components-modifiers';
 
 const Dropdown = styled.div`
   ${(props) => {
@@ -58,6 +59,12 @@ const Result = styled.button`
   }}
 `;
 
+const modifiers = {
+  open: () => `
+    display: block;
+  `,
+};
+
 const ListContainer = styled.div`
   ${(props) => {
     const {
@@ -68,6 +75,7 @@ const ListContainer = styled.div`
       },
     } = props;
     return css`
+      display: none;
       width: 100%;
       position: absolute;
       bottom: 0;
@@ -76,6 +84,8 @@ const ListContainer = styled.div`
       transform: translate(0, 100%);
       border: 0.0714rem solid ${color};
       border-radius: 0 0 0.2857rem 0.2857rem;
+
+      ${applyStyleModifiers(modifiers)}
     `;
   }}
 `;
@@ -182,4 +192,5 @@ export {
   Controls,
   ResetButton,
   ApplyButton,
+  modifiers,
 };

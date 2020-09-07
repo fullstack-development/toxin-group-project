@@ -1,17 +1,19 @@
 import {
-  useState, useRef,
+  useState, useRef, useEffect,
 } from 'react';
+import { getCorrectWordForm, TextForms } from './utils/getCorrectWord';
 import * as S from './Dropdown.styles';
 
 type DropdownProps = {
   items: {
     title: string;
+    wordForms?: TextForms;
     min?: number;
     max?: number;
     initialValue?: number;
   }[];
   placeholder: string;
-  enableControls: boolean;
+  enableControls?: boolean;
 }
 
 const DEFAULT_SETTINGS = {
@@ -28,21 +30,42 @@ const Dropdown : React.FC<DropdownProps> = ({ placeholder = 'No placeholder pass
     max: item.max || DEFAULT_SETTINGS.max,
   }));
   const [dropdownState, setDropdownState] = useState([...initialState]);
+  const [isOpen, setIsOpen] = useState(false);
   const resultContainer = useRef(null);
+  const dropdown = useRef(null);
 
-  const handleResetClick = () => {
+  const handleResetClick = (): void => {
     setDropdownState([...initialState]);
   };
 
-  const handleApplyClick = () => {
-    const result = dropdownState.filter((item) => item.currentValue).map((item) => `${item.currentValue} ${item.title}`);
-    resultContainer.current.textContent = result.join(', ');
+  const handleResultBarClick = () : void => {
+    setIsOpen(!isOpen);
   };
 
+  const handleApplyClick = (): void => {
+    const result = dropdownState.filter((item) => item.currentValue).map((item) => {
+      const { currentValue, title, wordForms } = item;
+      return `${currentValue} ${wordForms ? getCorrectWordForm(currentValue, wordForms) : title}`;
+    });
+    resultContainer.current.textContent = result.join(', ') || placeholder;
+    handleResultBarClick();
+  };
+
+  const handleDocumentClick = (event: globalThis.MouseEvent) => {
+    if (isOpen && !dropdown.current.contains(event.target)) {
+      handleApplyClick();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('click', handleDocumentClick);
+    return () => document.removeEventListener('click', handleDocumentClick);
+  });
+
   return (
-    <S.Dropdown>
-      <S.Result ref={resultContainer} type="button">{placeholder}</S.Result>
-      <S.ListContainer>
+    <S.Dropdown ref={dropdown}>
+      <S.Result onClick={handleResultBarClick} ref={resultContainer} type="button">{placeholder}</S.Result>
+      <S.ListContainer modifiers={isOpen && 'open'}>
         <S.List>
           {dropdownState.map((el) => {
             const {
@@ -59,6 +82,10 @@ const Dropdown : React.FC<DropdownProps> = ({ placeholder = 'No placeholder pass
                 elementToUpdate.currentValue += increment;
                 return copiedState;
               });
+
+              if (!enableControls) {
+                handleApplyClick();
+              }
             };
             const handleIncrementClick = makeButtonHandler(1);
             const handleDecrementClick = makeButtonHandler(-1);
@@ -76,10 +103,12 @@ const Dropdown : React.FC<DropdownProps> = ({ placeholder = 'No placeholder pass
             );
           })}
         </S.List>
+        {enableControls && (
         <S.Controls>
           <S.ResetButton type="button" onClick={handleResetClick}>Очистить</S.ResetButton>
           <S.ApplyButton type="button" onClick={handleApplyClick}>Применить</S.ApplyButton>
         </S.Controls>
+        )}
       </S.ListContainer>
     </S.Dropdown>
   );
