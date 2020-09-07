@@ -82,7 +82,7 @@ const Dropdown: React.FC<DropdownProps> = ({
     handleResultBarClick();
   };
 
-  const handleDocumentClick = (event: globalThis.MouseEvent) => {
+  const handleDocumentClick: void = (event: globalThis.MouseEvent) => {
     if (isOpen && !dropdown.current.contains(event.target)) {
       handleApplyClick();
     }

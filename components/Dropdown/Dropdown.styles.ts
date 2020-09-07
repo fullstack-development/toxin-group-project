@@ -64,7 +64,7 @@ const Result = styled.button`
 
 const ExpandIcon = styled(ExpandMore)`
   position: absolute;
-  right: 12px;
+  right: 0.8571rem;
   top: 50%;
   transform: translate(0, -50%);
 `;
