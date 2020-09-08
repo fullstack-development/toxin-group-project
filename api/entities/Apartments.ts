@@ -18,9 +18,9 @@ class Apartments {
 
   @boundMethod
   public async load(key = ''): Promise<unknown> {
-    const request = await this.actions.request(`${this.path}/${key}`).then((s) => s.val());
-    if (request === null) throw apiErrors.trigger('apartments/nothing-found', key);
-    return request;
+    const response = await this.actions.request(`${this.path}/${key}`).then((s) => s.val());
+    if (!response) throw apiErrors.trigger('apartments/nothing-found', key);
+    return response;
   }
 
   @boundMethod

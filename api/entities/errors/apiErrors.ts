@@ -34,9 +34,7 @@ class ApiErrors {
     key: string,
     handler: (...rest: unknown[]) => string,
   ): void {
-    this.list[key] = (...rest: unknown[]) => (
-      new constructor({ key, message: handler(...rest) })
-    );
+    this.list[key] = (...rest: unknown[]) => new constructor({ key, message: handler(...rest) });
   }
 }
 
