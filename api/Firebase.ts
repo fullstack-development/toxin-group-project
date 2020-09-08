@@ -35,7 +35,7 @@ class Firebase {
 
   @boundMethod
   public remove(field: string): void {
-    if (field === '/') throw apiErrors.create('database/complete-clean-up');
+    if (field === '/') throw apiErrors.trigger('database/complete-clean-up');
     this.getRef(field).remove();
   }
 

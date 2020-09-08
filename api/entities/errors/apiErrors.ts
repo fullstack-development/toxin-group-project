@@ -15,7 +15,7 @@ class ApiErrors {
   }
 
   @boundMethod
-  public create(key: string, ...rest: unknown[]): ErrorConstructor {
+  public trigger(key: string, ...rest: unknown[]): ErrorConstructor {
     return this.list[key](...rest);
   }
 
