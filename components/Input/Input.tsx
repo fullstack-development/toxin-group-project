@@ -49,9 +49,10 @@ const Input: React.FC<InputProps> = ({
   return (
     <S.Input>
       <label>
-        <S.LabelText>{label}</S.LabelText>
+        { label && <S.LabelText>{label}</S.LabelText>}
         {mask ? (
           <S.MaskedField
+            {...rest}
             placeholder={placeholder}
             mask={mask}
             type={type}
@@ -73,8 +74,8 @@ const Input: React.FC<InputProps> = ({
             onBlur={handleBlur}
           />
         )}
-        <S.ErrorMessage>{error}</S.ErrorMessage>
       </label>
+      <S.ErrorMessage>{error}</S.ErrorMessage>
     </S.Input>
   );
 };

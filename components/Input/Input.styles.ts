@@ -5,10 +5,11 @@ const Input = styled.div`
   width: 100%;
 `;
 
-const LabelText = styled.p`
+const LabelText = styled.span`
   ${(props) => {
     const { theme: { typography } } = props;
     return css`
+      display: block;
       font-weight: bold;
       font-size: 0.8571rem;
       color: ${typography.colorDarkest};
@@ -76,7 +77,7 @@ const ErrorMessage = styled.div`
   ${(props) => {
     const { theme: { error } } = props;
     return css`
-      height: 0.4286rem;
+      height: ${error.fontSize};
       font-size: ${error.fontSize};
       color: ${error.color};
     `;
