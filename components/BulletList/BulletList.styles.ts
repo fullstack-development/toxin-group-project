@@ -11,7 +11,7 @@ const Item = styled.li`
     const { theme: { typography: { colorLight, colorDark } } } = props;
     return css`
       position: relative;
-      margin: 0 0 0.7143rem;
+      margin-bottom: 0.7143rem;
       padding-left: 1.4286rem;
       line-height: 1.7143rem;
       color: ${colorDark}
