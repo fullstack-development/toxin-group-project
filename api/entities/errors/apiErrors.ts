@@ -10,6 +10,7 @@ class ApiErrors {
   private list: {[k: string]: (...rest: unknown[]) => ErrorConstructor};
 
   constructor() {
+    this.list = {};
     this.init();
   }
 
