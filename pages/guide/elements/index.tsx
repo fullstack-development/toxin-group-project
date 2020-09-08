@@ -1,7 +1,7 @@
 import React from 'react';
 import Input from 'components/Input/Input';
 import fieldValidator from 'shared/helpers/validators/validators';
-import { TextButton } from '@components/TextButton/TextButton.styles';
+import TextButton from 'components/TextButton/TextButton';
 import { Container, InputWrapper, ErrorMessage } from './elements.styles';
 
 type ElementsState = {
@@ -53,9 +53,9 @@ class Elements extends React.Component {
           </InputWrapper>
         </form>
         <div>
-          <TextButton>Click me</TextButton>
+          <TextButton secondary>Click me</TextButton>
         </div>
-        <TextButton as="a" href="https://www.google.com/">Click me</TextButton>
+        <TextButton link="https://www.google.com/">Click me</TextButton>
       </Container>
     );
   }
