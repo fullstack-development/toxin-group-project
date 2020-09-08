@@ -1,6 +1,8 @@
 import React from 'react';
+
 import Input from 'components/Input/Input';
 import fieldValidator from 'shared/helpers/validators/validators';
+
 import { Container, InputWrapper, ErrorMessage } from './elements.styles';
 
 type ElementsState = {

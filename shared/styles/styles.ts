@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
-import fontFace from './mixins/font-face';
+
 import { Theme } from '../types/theme';
+import fontFace from './mixins/font-face';
 
 type Props = {
   theme: Theme

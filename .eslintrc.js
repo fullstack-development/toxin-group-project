@@ -34,5 +34,12 @@ module.exports = {
     'react/jsx-props-no-spreading': 'off',
     'import/extensions': ['error', { ts: 'never' }],
     '@typescript-eslint/no-unused-vars': [2, { args: 'none' }],
+    'import/order': ['warn',
+      {
+        groups: [['builtin', 'external'], ['internal'], ['parent', 'sibling', 'index']],
+        'newlines-between': 'always',
+        alphabetize: { order: 'asc', caseInsensitive: true },
+      },
+    ],
   },
 };
