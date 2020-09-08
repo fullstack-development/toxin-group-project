@@ -1,7 +1,10 @@
 import React from 'react';
 import Input from 'components/Input/Input';
 import fieldValidator from 'shared/helpers/validators/validators';
-import { Container, InputWrapper, ErrorMessage } from './elements.styles';
+import Button from 'components/Button/Button';
+import {
+  Container, InputWrapper, ErrorMessage, ButtonWrapper,
+} from './elements.styles';
 
 type ElementsState = {
   name: string;
@@ -51,6 +54,12 @@ class Elements extends React.Component {
             <ErrorMessage>{formErrors.email}</ErrorMessage>
           </InputWrapper>
         </form>
+        <ButtonWrapper>
+          <Button>click me</Button>
+        </ButtonWrapper>
+        <ButtonWrapper>
+          <Button filled>click me</Button>
+        </ButtonWrapper>
       </Container>
     );
   }

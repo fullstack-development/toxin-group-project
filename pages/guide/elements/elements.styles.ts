@@ -13,3 +13,8 @@ export const ErrorMessage = styled.div`
   font-size: ${(props) => props.theme.error.fontSize};
   color: ${(props) => props.theme.error.color};
 `;
+
+export const ButtonWrapper = styled.div`
+  max-width: 7.0714rem;
+  margin-bottom: 1.4286rem;
+`;
