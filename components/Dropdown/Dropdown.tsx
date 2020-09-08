@@ -3,19 +3,23 @@ import { useState, useRef, useEffect } from 'react';
 import { getCorrectWordForm, WordForms } from './utils/getCorrectWord';
 import * as S from './Dropdown.styles';
 
+type Item = {
+  title: string;
+  groupName?: string;
+  wordForms?: WordForms;
+  min?: number;
+  max?: number;
+  initialValue?: number;
+}
+
+type Group = {
+  name: string;
+  wordForms: WordForms;
+};
+
 type DropdownProps = {
-  groups?: {
-    name: string;
-    wordForms: WordForms;
-  }[];
-  items: {
-    title: string;
-    groupName?: string;
-    wordForms?: WordForms;
-    min?: number;
-    max?: number;
-    initialValue?: number;
-  }[];
+  groups?: Group[];
+  items: Item[];
   placeholder: string;
   enableControls?: boolean;
 };
@@ -82,9 +86,9 @@ const Dropdown: React.FC<DropdownProps> = ({
     handleResultBarClick();
   };
 
-  const handleDocumentClick: void = (event: globalThis.MouseEvent) => {
+  const handleDocumentClick = (event: globalThis.MouseEvent) => {
     if (isOpen && !dropdown.current.contains(event.target)) {
-      handleApplyClick();
+      handleResultBarClick();
     }
   };
 

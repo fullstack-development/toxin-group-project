@@ -1,7 +1,7 @@
 import React from 'react';
 import Input from 'components/Input/Input';
 import fieldValidator from 'shared/helpers/validators/validators';
-import Dropdown from '@components/Dropdown/Dropdown';
+import Dropdown from 'components/Dropdown/Dropdown';
 import {
   Container, InputWrapper, ErrorMessage, DropdownWrapper,
 } from './elements.styles';
