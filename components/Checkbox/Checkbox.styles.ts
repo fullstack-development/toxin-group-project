@@ -15,12 +15,12 @@ const HiddenCheckbox = styled.input`
 
 const Checkmark = styled.span`
   ${(props) => {
-    const { theme: { typography, colors } } = props;
+    const { colors, gradients } = props.theme;
     return css`
       position: relative;
       height: 1.4286rem;
       width: 1.4286rem;
-      border: 0.0714rem solid ${typography.colorLight};
+      border: 0.0714rem solid ${colors.basicLight};
       border-radius: 0.2857rem;
 
       &:after {
@@ -31,7 +31,7 @@ const Checkmark = styled.span`
         height: 0.4286rem;
         border-right: 0.1429rem solid;
         border-bottom: 0.1429rem solid;
-        border-image: ${colors.primaryGradient};
+        border-image: ${gradients.primary};
         border-image-slice: 1;
         left: 0.4429rem;
         top: 0.2857rem;
