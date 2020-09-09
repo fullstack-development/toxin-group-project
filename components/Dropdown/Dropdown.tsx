@@ -101,6 +101,8 @@ const Dropdown: React.FC<DropdownProps> = ({
     return () => document.removeEventListener('click', handleDocumentClick);
   });
 
+  const isResetHidden = dropdownState.every((item) => !item.currentValue);
+
   return (
     <S.Dropdown ref={dropdown}>
       <S.Result
@@ -161,7 +163,7 @@ const Dropdown: React.FC<DropdownProps> = ({
         </S.List>
         {enableControls && (
           <S.Controls>
-            <S.ResetButton type="button" modifiers={dropdownState.every((item) => !item.currentValue) && 'hidden'} onClick={handleResetClick}>
+            <S.ResetButton type="button" modifiers={isResetHidden && 'hidden'} onClick={handleResetClick}>
               Очистить
             </S.ResetButton>
             <S.ApplyButton type="button" onClick={handleApplyClick}>
