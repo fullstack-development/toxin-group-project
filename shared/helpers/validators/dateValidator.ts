@@ -1,5 +1,5 @@
 const isCorrectDate = (value: string): boolean => {
-  const params = value.split(/[\.\-\/]/);
+  const params = value.split(/[.\-/]/);
   const year = parseInt(params[2], 10);
   const month = parseInt(params[1], 10);
   const day = parseInt(params[0], 10);

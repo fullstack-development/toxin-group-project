@@ -8,7 +8,7 @@ type Props = {
 
 const GlobalStyle = createGlobalStyle<Props>`
   ${(props) => {
-    const { theme, theme: { typography } } = props;
+    const { colors, typography } = props.theme;
     return css`
       ${fontFace('Montserrat', 'montserrat-regular', 400, 'normal')}
       ${fontFace('Montserrat', 'montserrat-bold', 700, 'normal')}
@@ -21,8 +21,8 @@ const GlobalStyle = createGlobalStyle<Props>`
 
       html {
         font-size: ${typography.fontSize};
-        background: ${theme.defaultBackground};
-        color: ${typography.colorDark};
+        background: ${colors.defaultBackground};
+        color: ${colors.basicDark};
         font-family: ${typography.fontName}, Arial, sans-serif;
       }
     `;

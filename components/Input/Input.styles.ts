@@ -7,12 +7,12 @@ const Input = styled.div`
 
 const LabelText = styled.span`
   ${(props) => {
-    const { theme: { typography } } = props;
+    const { colors } = props.theme;
     return css`
       display: block;
       font-weight: bold;
       font-size: 0.8571rem;
-      color: ${typography.colorDarkest};
+      color: ${colors.basicDarkest};
       text-transform: uppercase;
       margin-bottom: 0.3571rem;
     `;
@@ -21,25 +21,25 @@ const LabelText = styled.span`
 
 const MaskedField = styled(MaskedInput)`
   ${(props) => {
-    const { theme: { typography } } = props;
+    const { typography, colors } = props.theme;
     return css`
       width: 100%;
       border-radius: 0.2857rem;
-      border: 0.0714rem solid ${typography.colorLight};
+      border: 0.0714rem solid ${colors.basicLight};
       padding: 0.9643rem;
 
       &::placeholder {
         font-family: ${typography.fontName}, Arial, sans-serif;
-        color: ${typography.colorLight};
+        color: ${colors.basicLight};
       }
 
       &:hover,
       &:focus {
-        border: 0.0714rem solid ${typography.color};
+        border: 0.0714rem solid ${colors.basic};
         outline: none;
 
         ::placeholder {
-          color: ${typography.colorDark};
+          color: ${colors.basicDark};
         }
       }
     `;
@@ -48,25 +48,25 @@ const MaskedField = styled(MaskedInput)`
 
 const Field = styled.input`
   ${(props) => {
-    const { theme: { typography } } = props;
+    const { colors, typography } = props.theme;
     return css`
       width: 100%;
       border-radius: 0.2857rem;
-      border: 0.0714rem solid ${typography.colorLight};
+      border: 0.0714rem solid ${colors.basicLight};
       padding: 0.9643rem;
 
       &::placeholder {
         font-family: ${typography.fontName}, Arial, sans-serif;
-        color: ${typography.colorLight};
+        color: ${colors.basicLight};
       }
 
       &:hover,
       &:focus {
-        border: 0.0714rem solid ${typography.color};
+        border: 0.0714rem solid ${colors.basic};
         outline: none;
 
         ::placeholder {
-          color: ${typography.colorDark};
+          color: ${colors.basicDark};
         }
       }
     `;
@@ -75,11 +75,11 @@ const Field = styled.input`
 
 const ErrorMessage = styled.div`
   ${(props) => {
-    const { theme: { error } } = props;
+    const { colors } = props.theme;
     return css`
-      height: ${error.fontSize};
-      font-size: ${error.fontSize};
-      color: ${error.color};
+      height: 0.8571rem;
+      font-size: 0.8571rem;
+      color: ${colors.error};
     `;
   }}
 `;
