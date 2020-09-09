@@ -14,7 +14,7 @@ const Item = styled.li`
       margin-bottom: 0.7143rem;
       padding-left: 1.4286rem;
       line-height: 1.7143rem;
-      color: ${colorDark}
+      color: ${colorDark};
 
       &:last-child {
         margin-bottom: 0;
