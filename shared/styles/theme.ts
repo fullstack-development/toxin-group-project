@@ -2,28 +2,31 @@ import { Theme } from '../types/theme';
 
 const typographyColorValue = '31, 32, 65';
 const primaryColorValue = '188, 156, 255';
+const primaryVariantColorValue = '139, 164, 249';
 const secondaryColorValue = '111, 207, 151';
+const secondaryVariantColorValue = '102, 210, 234';
 
 const purpleThemePalette: Theme = {
   typography: {
-    colorLightest: `RGBA(${typographyColorValue}, 5%)`,
-    colorLight: `RGBA(${typographyColorValue}, 25%)`,
-    color: `RGBA(${typographyColorValue}, 50%)`,
-    colorDark: `RGBA(${typographyColorValue}, 75%)`,
-    colorDarkest: `RGB(${typographyColorValue})`,
     fontName: 'Montserrat',
     fontSize: '14px',
   },
   colors: {
-    primary: `RGB(${primaryColorValue})`,
-    secondary: `RGB(${secondaryColorValue})`,
-    primaryGradient: 'linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%)',
-    secondaryGradient: 'linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%)',
+    primary: `rgb(${primaryColorValue})`,
+    primaryVariant: `rgb(${primaryVariantColorValue})`,
+    secondary: `rgb(${secondaryColorValue})`,
+    secondaryVariant: `rgb(${secondaryVariantColorValue})`,
+    basicLightest: `rgba(${typographyColorValue}, 5%)`,
+    basicLight: `rgba(${typographyColorValue}, 25%)`,
+    basic: `rgba(${typographyColorValue}, 50%)`,
+    basicDark: `rgba(${typographyColorValue}, 75%)`,
+    basicDarkest: `rgb(${typographyColorValue})`,
+    error: 'rgb(244, 67, 54)',
+    defaultBackground: 'rgb(255, 255, 255)',
   },
-  defaultBackground: '#fff',
-  error: {
-    color: '#f44336',
-    fontSize: '0.8571rem',
+  gradients: {
+    primary: `linear-gradient(180deg, ${primaryColorValue} 0%, ${primaryVariantColorValue} 100%)`,
+    secondary: `linear-gradient(180deg, ${secondaryColorValue} 0%, ${secondaryVariantColorValue} 100%)`,
   },
 };
 
