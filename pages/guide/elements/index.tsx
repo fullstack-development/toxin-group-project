@@ -1,12 +1,17 @@
 import React from 'react';
 import Input from 'components/Input/Input';
+import LikeButton from '@components/LikeButton/LikeButton';
 import fieldValidator from 'shared/helpers/validators/validators';
-import { Container, InputWrapper, ErrorMessage } from './elements.styles';
+import {
+  Container, InputWrapper, ErrorMessage, LikeButtonWrapper,
+} from './elements.styles';
 
 type ElementsState = {
   name: string;
   email: string;
   formErrors: { name: string, email: string };
+  isLikeButtonPressed: boolean;
+  likesCount: number;
 }
 
 class Elements extends React.Component {
@@ -14,6 +19,8 @@ class Elements extends React.Component {
     name: '',
     email: '',
     formErrors: { name: '', email: '' },
+    isLikeButtonPressed: false,
+    likesCount: 0,
   };
 
   handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,8 +32,25 @@ class Elements extends React.Component {
     });
   };
 
+  handleLikeButtonClick = () => {
+    const { isLikeButtonPressed } = this.state;
+    let { likesCount } = this.state;
+
+    if (isLikeButtonPressed) {
+      this.setState({
+        likesCount: likesCount -= 1,
+        isLikeButtonPressed: false,
+      });
+    } else {
+      this.setState({
+        likesCount: likesCount += 1,
+        isLikeButtonPressed: true,
+      });
+    }
+  }
+
   render() {
-    const { name, formErrors, email } = this.state;
+    const { name, formErrors, email, isLikeButtonPressed, likesCount } = this.state;
     return (
       <Container>
         <form>
@@ -50,6 +74,13 @@ class Elements extends React.Component {
             />
             <ErrorMessage>{formErrors.email}</ErrorMessage>
           </InputWrapper>
+          <LikeButtonWrapper>
+            <LikeButton
+              count={likesCount}
+              isActive={isLikeButtonPressed}
+              onCheckboxChange={this.handleLikeButtonClick}
+            />
+          </LikeButtonWrapper>
         </form>
       </Container>
     );
