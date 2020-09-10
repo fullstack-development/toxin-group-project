@@ -12,7 +12,6 @@ const TextButton = styled.button<TextButtonProps>`
 
     return css`
       text-transform: uppercase;
-      font: inherit;
       font: 700 0.8571rem ${typography.fontName};
       background-color: transparent;
       border: 0;
