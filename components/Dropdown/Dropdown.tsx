@@ -10,6 +10,7 @@ type Item = {
   min?: number;
   max?: number;
   initialValue?: number;
+  inputName?: string;
 }
 
 type Group = {
@@ -39,6 +40,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   const initialState = items.map((item) => ({
     ...item,
     currentValue: item.initialValue || DEFAULT_SETTINGS.initialValue,
+    inputName: item.inputName || item.title,
     min: item.min || DEFAULT_SETTINGS.min,
     max: item.max || DEFAULT_SETTINGS.max,
   }));
@@ -116,7 +118,7 @@ const Dropdown: React.FC<DropdownProps> = ({
         <S.List>
           {dropdownState.map((el) => {
             const {
-              title, min, max, currentValue,
+              title, min, max, currentValue, inputName,
             } = el;
 
             const titleElement = useRef(null);
@@ -148,7 +150,7 @@ const Dropdown: React.FC<DropdownProps> = ({
                   >
                     -
                   </S.Button>
-                  <S.Input readOnly value={currentValue} />
+                  <S.Input readOnly value={currentValue} name={inputName} />
                   <S.Button
                     disabled={currentValue === max}
                     onClick={handleIncrementClick}
