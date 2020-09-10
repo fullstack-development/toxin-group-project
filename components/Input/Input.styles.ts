@@ -29,7 +29,7 @@ const MaskedField = styled(MaskedInput)`
       padding: 0.9643rem;
 
       &::placeholder {
-        font-family: ${typography.fontName}, Arial, sans-serif;
+        font-family: ${typography.fontName};
         color: ${colors.basicLight};
       }
 
@@ -56,7 +56,7 @@ const Field = styled.input`
       padding: 0.9643rem;
 
       &::placeholder {
-        font-family: ${typography.fontName}, Arial, sans-serif;
+        font-family: ${typography.fontName};
         color: ${colors.basicLight};
       }
 
