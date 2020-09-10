@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
 import ExpandMore from '@material-ui/icons/ExpandMore';
+import styled, { css } from 'styled-components';
 
 interface ListContainerProps {
   isOpen: boolean;
@@ -20,6 +20,20 @@ const Dropdown = styled.div`
       &:focus > button {
         border: 0.0714rem solid ${colors.basic};
       }
+    `;
+  }}
+`;
+
+const LabelText = styled.span`
+  ${(props) => {
+    const { colors } = props.theme;
+    return css`
+      display: inline-block;
+      font-weight: bold;
+      font-size: 0.8571rem;
+      color: ${colors.basicDarkest};
+      text-transform: uppercase;
+      margin-bottom: 0.3571rem;
     `;
   }}
 `;
@@ -45,7 +59,7 @@ const Result = styled.button`
       cursor: pointer;
 
       &::placeholder {
-        font-family: ${typography.fontName}, Arial, sans-serif;
+        font-family: ${typography.fontName};
         color: ${colors.basicDark};
       }
 
@@ -190,4 +204,5 @@ export {
   ResetButton,
   ApplyButton,
   ExpandIcon,
+  LabelText,
 };

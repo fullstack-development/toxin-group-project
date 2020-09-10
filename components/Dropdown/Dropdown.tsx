@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 
-import { getCorrectWordForm, WordForms } from './utils/getCorrectWord';
 import * as S from './Dropdown.styles';
+import { getCorrectWordForm, WordForms } from './utils/getCorrectWord';
 
 type Item = {
   title: string;
@@ -19,6 +19,7 @@ type Group = {
 };
 
 type DropdownProps = {
+  label?: string;
   groups?: Group[];
   items: Item[];
   placeholder: string;
@@ -32,6 +33,7 @@ const DEFAULT_SETTINGS = {
 };
 
 const Dropdown: React.FC<DropdownProps> = ({
+  label = 'Dropdown',
   placeholder = 'No placeholder passed',
   groups,
   items = [{ title: 'No items passed' }],
@@ -44,6 +46,7 @@ const Dropdown: React.FC<DropdownProps> = ({
     min: item.min || DEFAULT_SETTINGS.min,
     max: item.max || DEFAULT_SETTINGS.max,
   }));
+
   const [dropdownState, setDropdownState] = useState([...initialState]);
   const [isOpen, setIsOpen] = useState(false);
   const [resultString, setResultString] = useState(placeholder);
@@ -107,6 +110,7 @@ const Dropdown: React.FC<DropdownProps> = ({
 
   return (
     <S.Dropdown ref={dropdown}>
+      {label && <S.LabelText>{label}</S.LabelText>}
       <S.Result
         onClick={handleResultBarClick}
         type="button"

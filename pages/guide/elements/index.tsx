@@ -63,48 +63,52 @@ class Elements extends React.Component {
                   )}
                 />
               </S.InputWrapper>
-              <Dropdown
-                placeholder="Сколько гостей"
-                enableControls={false}
-                items={[
-                  {
-                    title: 'Спальни',
-                    wordForms: ['спальня', 'спальни', 'спален'],
-                  },
-                  {
-                    title: 'Кровати',
-                    wordForms: ['кровать', 'кровати', 'кроватей'],
-                  },
-                  {
-                    title: 'Ванные комнаты',
-                    wordForms: ['ванная', 'ванные', 'ванных'],
-                  },
-                ]}
-              />
-              <Dropdown
-                placeholder="Сколько гостей"
-                enableControls
-                groups={[
-                  {
-                    name: 'guests',
-                    wordForms: ['гость', 'гостя', 'гостей'],
-                  },
-                ]}
-                items={[
-                  {
-                    title: 'взрослые',
-                    groupName: 'guests',
-                  },
-                  {
-                    title: 'дети',
-                    groupName: 'guests',
-                  },
-                  {
-                    title: 'младенцы',
-                    wordForms: ['младенец', 'младенца', 'младенцев'],
-                  },
-                ]}
-              />
+              <S.DropdownWrapper>
+                <Dropdown
+                  placeholder="Сколько гостей"
+                  enableControls={false}
+                  items={[
+                    {
+                      title: 'Спальни',
+                      wordForms: ['спальня', 'спальни', 'спален'],
+                    },
+                    {
+                      title: 'Кровати',
+                      wordForms: ['кровать', 'кровати', 'кроватей'],
+                    },
+                    {
+                      title: 'Ванные комнаты',
+                      wordForms: ['ванная', 'ванные', 'ванных'],
+                    },
+                  ]}
+                />
+              </S.DropdownWrapper>
+              <S.DropdownWrapper>
+                <Dropdown
+                  placeholder="Сколько гостей"
+                  enableControls
+                  groups={[
+                    {
+                      name: 'guests',
+                      wordForms: ['гость', 'гостя', 'гостей'],
+                    },
+                  ]}
+                  items={[
+                    {
+                      title: 'взрослые',
+                      groupName: 'guests',
+                    },
+                    {
+                      title: 'дети',
+                      groupName: 'guests',
+                    },
+                    {
+                      title: 'младенцы',
+                      wordForms: ['младенец', 'младенца', 'младенцев'],
+                    },
+                  ]}
+                />
+              </S.DropdownWrapper>
             </form>
           )}
         />

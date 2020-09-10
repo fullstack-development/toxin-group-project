@@ -10,8 +10,8 @@ const InputWrapper = styled.div`
 `;
 
 const DropdownWrapper = styled.div`
-  width: 22.8571rem;
-  margin-bottom: 0.45rem;
+  width: 18.9286rem;
+  margin-bottom: 1.4286rem;
 `;
 
 export { Container, InputWrapper, DropdownWrapper };
