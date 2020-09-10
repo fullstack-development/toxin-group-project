@@ -1,6 +1,7 @@
 import { createGlobalStyle, css } from 'styled-components';
-import fontFace from './mixins/font-face';
+
 import { Theme } from '../types/theme';
+import fontFace from './mixins/font-face';
 
 type Props = {
   theme: Theme
@@ -23,10 +24,10 @@ const GlobalStyle = createGlobalStyle<Props>`
         font-size: ${typography.fontSize};
         background: ${colors.defaultBackground};
         color: ${colors.basicDark};
-        font-family: ${typography.fontName}, Arial, sans-serif;
+        font-family: ${typography.fontName};
       }
     `;
-  }};
+  }}
 `;
 
 export default GlobalStyle;
