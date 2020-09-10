@@ -41,5 +41,7 @@ module.exports = {
         alphabetize: { order: 'asc', caseInsensitive: true },
       },
     ],
+    'import/prefer-default-export': 'off',
+    'jsx-a11y/label-has-associated-control': ['error', { assert: 'either' }],
   },
 };
