@@ -1,6 +1,13 @@
 import styled, { css } from 'styled-components';
-import { applyStyleModifiers } from 'styled-components-modifiers';
 import ExpandMore from '@material-ui/icons/ExpandMore';
+
+interface ListContainerProps {
+  isOpen: boolean;
+}
+
+interface ResetButtonProps {
+  isHidden: boolean;
+}
 
 const Dropdown = styled.div`
   ${(props) => {
@@ -58,21 +65,12 @@ const ExpandIcon = styled(ExpandMore)`
   transform: translate(0, -50%);
 `;
 
-const modifiers = {
-  open: () => `
-    display: block;
-    border-top: 0;
-  `,
-  hidden: () => `
-    visibility: hidden;
-  `,
-};
-
-const ListContainer = styled.div`
+const ListContainer = styled.div<ListContainerProps>`
   ${(props) => {
     const { colors } = props.theme;
+    const { isOpen } = props;
     return css`
-      display: none;
+      display: ${isOpen ? 'block' : 'none'};
       width: 100%;
       background-color: ${colors.defaultBackground};
       position: absolute;
@@ -82,9 +80,11 @@ const ListContainer = styled.div`
       padding: 0 0.5rem 0 0.9286rem;
       transform: translate(0, 100%);
       border: 0.0714rem solid ${colors.basic};
+      ${isOpen
+      && css`
+        border-top: 0;
+      `}
       border-radius: 0 0 0.2857rem 0.2857rem;
-
-      ${applyStyleModifiers(modifiers)}
     `;
   }}
 `;
@@ -125,7 +125,7 @@ const Button = styled.button`
       cursor: pointer;
 
       &:disabled {
-        opacity: 0.38
+        opacity: 0.38;
       }
     `;
   }}
@@ -162,8 +162,17 @@ const Controls = styled.div`
   margin-bottom: 0.9286rem;
 `;
 
-const ResetButton = styled.button`
-  ${applyStyleModifiers(modifiers)}
+const ResetButton = styled.button<ResetButtonProps>`
+  ${(props) => {
+    const { isHidden } = props;
+
+    return css`
+      ${isHidden
+      && css`
+        visibility: hidden;
+      `}
+    `;
+  }}
 `;
 const ApplyButton = styled.button``;
 
@@ -181,5 +190,4 @@ export {
   ResetButton,
   ApplyButton,
   ExpandIcon,
-  modifiers,
 };

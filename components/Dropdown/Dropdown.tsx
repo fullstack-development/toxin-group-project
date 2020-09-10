@@ -114,7 +114,7 @@ const Dropdown: React.FC<DropdownProps> = ({
         {resultString}
         <S.ExpandIcon />
       </S.Result>
-      <S.ListContainer modifiers={isOpen && 'open'}>
+      <S.ListContainer isOpen={isOpen}>
         <S.List>
           {dropdownState.map((el) => {
             const {
@@ -165,7 +165,7 @@ const Dropdown: React.FC<DropdownProps> = ({
         </S.List>
         {enableControls && (
           <S.Controls>
-            <S.ResetButton type="button" modifiers={isResetHidden && 'hidden'} onClick={handleResetClick}>
+            <S.ResetButton type="button" isHidden={isResetHidden} onClick={handleResetClick}>
               Очистить
             </S.ResetButton>
             <S.ApplyButton type="button" onClick={handleApplyClick}>
