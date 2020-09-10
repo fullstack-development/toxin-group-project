@@ -13,15 +13,11 @@ const TextButton: React.FC<TextButtonProps> = ({
   secondary = false,
 }: TextButtonProps) => {
   const tag = link ? 'a' : 'button';
-  return (secondary ? (
-    <S.TextButton as={tag} href={link}>
+  return (
+    <S.TextButton isSecondary={secondary} as={tag} href={link}>
       {children}
     </S.TextButton>
-  ) : (
-    <S.SecondaryTextButton as={tag} href={link}>
-      {children}
-    </S.SecondaryTextButton>
-  ));
+  );
 };
 
 export default TextButton;

@@ -1,34 +1,30 @@
 import styled, { css } from 'styled-components';
 import { darken } from 'polished';
 
-const TextButton = styled.button`
+interface TextButtonProps {
+  isSecondary: boolean;
+}
+
+const TextButton = styled.button<TextButtonProps>`
   ${(props) => {
-    const { colors: { primary }, typography: { fontName } } = props.theme;
+    const { colors, typography } = props.theme;
+    const { isSecondary } = props;
+
     return css`
       text-transform: uppercase;
       font: inherit;
-      font: 700 0.8571rem  ${fontName};
-      font-weight: 700;
+      font: 700 0.8571rem ${typography.fontName};
       background-color: transparent;
       border: 0;
       cursor: pointer;
       text-decoration: none;
-      color: ${primary};
+      color: ${isSecondary ? colors.basic : colors.primary};
 
       &:hover {
-        color: ${darken(0.1, primary)};
+        color: ${darken(0.1, colors.primary)};
       }
     `;
   }}
 `;
 
-const SecondaryTextButton = styled(TextButton)`
-  ${(props) => {
-    const { typography: { color } } = props.theme;
-    return css`
-      color: ${color};
-    `;
-  }}
-`;
-
-export { TextButton, SecondaryTextButton };
+export { TextButton };
