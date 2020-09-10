@@ -9,7 +9,7 @@ const LabelText = styled.span`
   ${(props) => {
     const { colors } = props.theme;
     return css`
-      display: block;
+      display: inline-block;
       font-weight: bold;
       font-size: 0.8571rem;
       color: ${colors.basicDarkest};
@@ -73,7 +73,7 @@ const Field = styled.input`
   }}
 `;
 
-const ErrorMessage = styled.div`
+const ErrorMessage = styled.p`
   ${(props) => {
     const { colors } = props.theme;
     return css`
@@ -85,5 +85,9 @@ const ErrorMessage = styled.div`
 `;
 
 export {
-  Input, LabelText, MaskedField, Field, ErrorMessage,
+  Input,
+  LabelText,
+  MaskedField,
+  Field,
+  ErrorMessage,
 };

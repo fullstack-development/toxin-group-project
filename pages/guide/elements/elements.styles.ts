@@ -6,7 +6,7 @@ const Container = styled.div`
 
 const InputWrapper = styled.div`
   width: 22.8571rem;
-  margin: 1rem 0;
+  margin-bottom: 0.45rem;
 `;
 
 export { Container, InputWrapper };
