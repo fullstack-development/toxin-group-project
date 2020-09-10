@@ -1,106 +1,114 @@
 import React from 'react';
-import Input from 'components/Input/Input';
-import fieldValidator from 'shared/helpers/validators/validators';
-import Dropdown from 'components/Dropdown/Dropdown';
-import {
-  Container, InputWrapper, ErrorMessage, DropdownWrapper,
-} from './elements.styles';
+import { Form, Field } from 'react-final-form';
 
-type ElementsState = {
-  name: string;
-  email: string;
-  formErrors: { name: string, email: string };
-}
+import Dropdown from 'components/Dropdown/Dropdown';
+import Input from 'components/Input/Input';
+import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators/';
+
+import * as S from './elements.styles';
 
 class Elements extends React.Component {
-  state: ElementsState = {
-    name: '',
-    email: '',
-    formErrors: { name: '', email: '' },
-  };
-
-  handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-
-    this.setState({
-      [name]: value,
-      formErrors: { [name]: fieldValidator(name, value) },
-    });
-  };
+  handleFormSubmit = () => {};
 
   render() {
-    const { name, formErrors, email } = this.state;
     return (
-      <Container>
-        <form>
-          {/* <InputWrapper>
-            <Input
-              name="name"
-              placeholder="Name"
-              type="text"
-              value={name}
-              onChange={this.handleInputChange}
-            />
-            <ErrorMessage>{formErrors.name}</ErrorMessage>
-          </InputWrapper>
-          <InputWrapper>
-            <Input
-              name="email"
-              placeholder="Email"
-              type="email"
-              value={email}
-              onChange={this.handleInputChange}
-            />
-            <ErrorMessage>{formErrors.email}</ErrorMessage>
-          </InputWrapper> */}
-          <DropdownWrapper>
-            <Dropdown
-              placeholder="Сколько гостей"
-              enableControls={false}
-              items={[
-                {
-                  title: 'Спальни',
-                  wordForms: ['спальня', 'спальни', 'спален'],
-                },
-                {
-                  title: 'Кровати',
-                  wordForms: ['кровать', 'кровати', 'кроватей'],
-                },
-                {
-                  title: 'Ванные комнаты',
-                  wordForms: ['ванная', 'ванные', 'ванных'],
-                },
-              ]}
-            />
-          </DropdownWrapper>
-          <DropdownWrapper>
-            <Dropdown
-              placeholder="Сколько гостей"
-              enableControls
-              groups={[
-                {
-                  name: 'guests',
-                  wordForms: ['гость', 'гостя', 'гостей'],
-                },
-              ]}
-              items={[
-                {
-                  title: 'взрослые',
-                  groupName: 'guests',
-                },
-                {
-                  title: 'дети',
-                  groupName: 'guests',
-                },
-                {
-                  title: 'младенцы',
-                  wordForms: ['младенец', 'младенца', 'младенцев'],
-                },
-              ]}
-            />
-          </DropdownWrapper>
-        </form>
-      </Container>
+      <S.Container>
+        <Form
+          onSubmit={this.handleFormSubmit}
+          render={() => (
+            <form>
+              <S.InputWrapper>
+                <Field
+                  name="email"
+                  type="text"
+                  render={(props) => (
+                    <Input
+                      {...props.input}
+                      {...props.meta}
+                      placeholder="Email"
+                      label="text field"
+                      validators={[emailValidator]}
+                    />
+                  )}
+                />
+              </S.InputWrapper>
+              <S.InputWrapper>
+                <Field
+                  name="name"
+                  type="text"
+                  render={(props) => (
+                    <Input
+                      {...props.rest}
+                      {...props.input}
+                      placeholder="This is pretty awesome"
+                      label="text field"
+                      isRequired
+                    />
+                  )}
+                />
+              </S.InputWrapper>
+              <S.InputWrapper>
+                <Field
+                  name="date"
+                  type="text"
+                  render={(props) => (
+                    <Input
+                      {...props.rest}
+                      {...props.input}
+                      placeholder="ДД.ММ.ГГГГ"
+                      validators={[dateValidator]}
+                      mask={dateFormatMask}
+                      label="Masked text field"
+                    />
+                  )}
+                />
+              </S.InputWrapper>
+              <Dropdown
+                placeholder="Сколько гостей"
+                enableControls={false}
+                items={[
+                  {
+                    title: 'Спальни',
+                    wordForms: ['спальня', 'спальни', 'спален'],
+                  },
+                  {
+                    title: 'Кровати',
+                    wordForms: ['кровать', 'кровати', 'кроватей'],
+                  },
+                  {
+                    title: 'Ванные комнаты',
+                    wordForms: ['ванная', 'ванные', 'ванных'],
+                  },
+                ]}
+              />
+              <Dropdown
+                placeholder="Сколько гостей"
+                enableControls
+                groups={[
+                  {
+                    name: 'guests',
+                    wordForms: ['гость', 'гостя', 'гостей'],
+                  },
+                ]}
+                items={[
+                  {
+                    title: 'взрослые',
+                    groupName: 'guests',
+                  },
+                  {
+                    title: 'дети',
+                    groupName: 'guests',
+                  },
+                  {
+                    title: 'младенцы',
+                    wordForms: ['младенец', 'младенца', 'младенцев'],
+                  },
+                ]}
+              />
+            </form>
+          )}
+        />
+      </S.Container>
     );
   }
 }
