@@ -1,20 +1,23 @@
 export type Theme = {
   typography: {
-    colorLightest: string,
-    colorLight: string,
-    color: string,
-    colorDark: string,
-    colorDarkest: string,
     fontName: string,
     fontSize: string,
   },
   colors: {
     primary: string,
+    primaryVariant: string,
     secondary: string,
+    secondaryVariant: string,
+    basicLightest: string,
+    basicLight: string,
+    basic: string,
+    basicDark: string,
+    basicDarkest: string,
+    defaultBackground: string,
+    error: string
   },
-  defaultBackground: string,
-  error: {
-    color: string,
-    fontSize: string
+  gradients: {
+    primary: string,
+    secondary: string
   }
 };
