@@ -8,13 +8,13 @@ const List = styled.ul`
 
 const Item = styled.li`
   ${(props) => {
-    const { theme: { typography: { colorLight, colorDark } } } = props;
+    const { colors } = props.theme;
     return css`
       position: relative;
       margin-bottom: 0.7143rem;
       padding-left: 1.4286rem;
       line-height: 1.7143rem;
-      color: ${colorDark};
+      color: ${colors.basicDark};
 
       &:last-child {
         margin-bottom: 0;
@@ -27,7 +27,7 @@ const Item = styled.li`
         top: 0.5rem;
         width: 0.7143rem;
         height: 0.7143rem;
-        background-color: ${colorLight};
+        background-color: ${colors.basicLight};
         border-radius: 50%;
       }
     `;
