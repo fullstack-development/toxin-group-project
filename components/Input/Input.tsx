@@ -58,7 +58,6 @@ const Input: React.FC<InputProps> = ({
             type={type}
             name={name}
             value={value}
-            tabIndex={0}
             onChange={(e) => onChange(e)}
             onBlur={handleBlur}
           />
@@ -69,7 +68,6 @@ const Input: React.FC<InputProps> = ({
             type={type}
             name={name}
             value={value}
-            tabIndex={0}
             onChange={handleChange}
             onBlur={handleBlur}
           />
