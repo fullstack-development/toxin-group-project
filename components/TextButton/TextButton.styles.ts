@@ -1,8 +1,9 @@
 import { darken } from 'polished';
 import styled, { css } from 'styled-components';
 
-interface TextButtonProps {
-  isSecondary: boolean;
+type TextButtonProps = {
+  isSecondary?: boolean;
+  href?: string
 }
 
 const TextButton = styled.button<TextButtonProps>`
