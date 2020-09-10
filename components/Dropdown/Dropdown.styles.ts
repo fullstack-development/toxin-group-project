@@ -154,6 +154,10 @@ const Input = styled.input`
       font: inherit;
       text-align: center;
       color: ${colors.basic};
+
+      &:focus {
+        outline: 0;
+      }
     `;
   }}
 `;
