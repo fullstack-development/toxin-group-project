@@ -162,9 +162,7 @@ const Input = styled.input`
   }}
 `;
 
-const ItemTitle = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+const ItemTitle = styled.span`
   word-break: break-word;
 `;
 
