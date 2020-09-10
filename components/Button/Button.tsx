@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+
 import * as S from './Button.styles';
 
 type ButtonProps = {
@@ -9,10 +10,6 @@ type ButtonProps = {
 const Button: React.FC<ButtonProps> = ({
   children,
   filled = false,
-}: ButtonProps) => (filled ? (
-  <S.Button>{children}</S.Button>
-) : (
-  <S.SecondaryButton>{children}</S.SecondaryButton>
-));
+}: ButtonProps) => <S.Button isFilled={filled}>{children}</S.Button>;
 
 export default Button;

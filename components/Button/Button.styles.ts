@@ -1,8 +1,13 @@
 import styled, { css } from 'styled-components';
 
-const Button = styled.button`
+type ButtonProps = {
+  isFilled: boolean;
+};
+
+const Button = styled.button<ButtonProps>`
   ${(props) => {
-    const { theme } = props;
+    const { gradients, colors } = props.theme;
+    const { isFilled } = props;
     return css`
       position: relative;
       width: 100%;
@@ -15,17 +20,37 @@ const Button = styled.button`
       text-align: center;
       background-color: transparent;
       border: 0;
+      z-index: 1;
       border-radius: 1.5714rem;
-      font-family: 'Montserrat';
-      /* TO DO */
-      background-image: linear-gradient(180deg, violet 0%, darkviolet 100%);
-      /* TO DO */
-      color: white;
+      font-family: "Montserrat";
+      background-image: ${gradients.primary};
+      ${isFilled
+    ? css`
+          color: ${colors.defaultBackground};
+        `
+    : css`
+          color: ${colors.primary};
+      `}
       font-weight: 700;
       text-transform: uppercase;
       text-decoration: none;
       outline: 0;
       cursor: pointer;
+
+      ${!isFilled && css`
+        &::before {
+          content: "";
+          position: absolute;
+          z-index: -1;
+          background-color: ${colors.defaultBackground};
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          height: calc(100% - 0.2857rem);
+          width: calc(100% - 0.2857rem);
+          border-radius: 1.5714rem;
+        }
+      `}
 
       &:hover,
       &:focus {
@@ -35,23 +60,4 @@ const Button = styled.button`
   }}
 `;
 
-const SecondaryButton = styled(Button)`
-  z-index: 1;
-  color: purple;
-
-  &::before {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    /* TO DO */
-    background-color: white;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: calc(100% - 0.2857rem);
-    width: calc(100% - 0.2857rem);
-    border-radius: 1.5714rem;
-  }
-`;
-
-export { Button, SecondaryButton };
+export { Button };

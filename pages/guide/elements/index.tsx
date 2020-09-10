@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
 
+import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';
 import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators/';
 
@@ -62,6 +63,8 @@ class Elements extends React.Component {
                   )}
                 />
               </S.InputWrapper>
+              <Button>1234</Button>
+              <Button filled>1234</Button>
             </form>
           )}
         />
