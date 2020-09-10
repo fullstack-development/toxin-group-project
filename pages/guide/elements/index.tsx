@@ -2,8 +2,8 @@ import React from 'react';
 import { Form, Field } from 'react-final-form';
 
 import Input from 'components/Input/Input';
-import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators/';
 import TextButton from 'components/TextButton/TextButton';
+import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators/';
 
 import * as S from './elements.styles';
 
