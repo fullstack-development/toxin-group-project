@@ -1,11 +1,11 @@
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import styled, { css } from 'styled-components';
 
-interface ListContainerProps {
+type ListContainerProps = {
   isOpen: boolean;
 }
 
-interface ResetButtonProps {
+type ResetButtonProps = {
   isHidden: boolean;
 }
 
@@ -26,11 +26,10 @@ const Dropdown = styled.div`
 
 const LabelText = styled.span`
   ${(props) => {
-    const { colors } = props.theme;
+    const { colors, typography } = props.theme;
     return css`
       display: inline-block;
-      font-weight: bold;
-      font-size: 0.8571rem;
+      font: 700 0.8571rem ${typography.fontName};
       color: ${colors.basicDarkest};
       text-transform: uppercase;
       margin-bottom: 0.3571rem;
