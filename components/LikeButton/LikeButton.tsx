@@ -7,13 +7,17 @@ type LikeButtonProps = {
   onCheckboxChange: (e: React.ChangeEvent) => void;
 }
 
-const LikeButton: React.FC<LikeButtonProps> = ({ count, isActive, onCheckboxChange }: LikeButtonProps) => (
+const LikeButton: React.FC<LikeButtonProps> = ({
+  count,
+  isActive,
+  onCheckboxChange,
+}: LikeButtonProps) => (
   <S.LikeLabel isActive={isActive}>
     <FavoriteIcon />
     <S.LikeSpan>
       {count}
     </S.LikeSpan>
-    <S.LikeInput type="checkbox" onChange={onCheckboxChange}/>
+    <S.LikeInput type="checkbox" onChange={onCheckboxChange} />
   </S.LikeLabel>
 );
 
