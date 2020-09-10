@@ -24,7 +24,7 @@ const GlobalStyle = createGlobalStyle<Props>`
         font-size: ${typography.fontSize};
         background: ${colors.defaultBackground};
         color: ${colors.basicDark};
-        font-family: ${typography.fontName}, Arial, sans-serif;
+        font-family: ${typography.fontName};
       }
     `;
   }}
