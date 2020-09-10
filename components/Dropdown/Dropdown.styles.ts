@@ -4,20 +4,14 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 
 const Dropdown = styled.div`
   ${(props) => {
-    const {
-      theme: {
-        typography: {
-          color,
-        },
-      },
-    } = props;
+    const { colors } = props.theme;
 
     return css`
       position: relative;
 
       &:hover > button,
       &:focus > button {
-        border: 0.0714rem solid ${color};
+        border: 0.0714rem solid ${colors.basic};
       }
     `;
   }}
@@ -25,13 +19,7 @@ const Dropdown = styled.div`
 
 const Result = styled.button`
   ${(props) => {
-    const {
-      theme: {
-        typography: {
-          colorLight, fontName, color, colorDark,
-        },
-      },
-    } = props;
+    const { colors, typography } = props.theme;
 
     return css`
       position: relative;
@@ -39,9 +27,10 @@ const Result = styled.button`
       padding: 0.9643rem;
       padding-right: 2.5rem;
       border-radius: 0.2857rem 0.2857rem 0 0;
-      border: 0.0714rem solid ${colorLight};
+      border: 0.0714rem solid ${colors.basicLight};
       text-align: left;
-      font: inherit;
+      font: 1rem ${typography.fontName};
+      line-height: 1.2857rem;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -49,13 +38,13 @@ const Result = styled.button`
       cursor: pointer;
 
       &::placeholder {
-        font-family: ${fontName}, Arial, sans-serif;
-        color: ${colorDark};
+        font-family: ${typography.fontName}, Arial, sans-serif;
+        color: ${colors.basicDark};
       }
 
       &:hover,
       &:focus {
-        border: 0.0714rem solid ${color};
+        border: 0.0714rem solid ${colors.basic};
         outline: none;
       }
     `;
@@ -80,25 +69,18 @@ const modifiers = {
 
 const ListContainer = styled.div`
   ${(props) => {
-    const {
-      theme: {
-        typography: {
-          color,
-        },
-        defaultBackground,
-      },
-    } = props;
+    const { colors } = props.theme;
     return css`
       display: none;
       width: 100%;
-      background-color: ${defaultBackground};
+      background-color: ${colors.defaultBackground};
       position: absolute;
       z-index: 5;
       bottom: 0;
       left: 0;
       padding: 0 0.5rem 0 0.9286rem;
       transform: translate(0, 100%);
-      border: 0.0714rem solid ${color};
+      border: 0.0714rem solid ${colors.basic};
       border-radius: 0 0 0.2857rem 0.2857rem;
 
       ${applyStyleModifiers(modifiers)}
@@ -107,40 +89,38 @@ const ListContainer = styled.div`
 `;
 
 const List = styled.ul`
-  padding-bottom: 0.3571rem;
-  font-size: 0.8571rem;
-  line-height: 1.0714rem;
-  text-transform: uppercase;
-  font-weight: 700;
+  ${(props) => {
+    const { typography } = props.theme;
+    return css`
+      padding-bottom: 0.3571rem;
+      font: 700 0.8571rem ${typography.fontName};
+      line-height: 1.0714rem;
+      text-transform: uppercase;
+    `;
+  }}
 `;
 
 const Item = styled.li`
   ${() => css`
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.3571rem 0 0.1429rem 0;
-    `}
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.3571rem 0 0.1429rem 0;
+  `}
 `;
 
 const Button = styled.button`
   ${(props) => {
-    const {
-      theme: {
-        typography: {
-          colorLight, color,
-        },
-      },
-    } = props;
+    const { colors } = props.theme;
 
     return css`
       width: 2.1429rem;
       height: 2.1429rem;
-      border: 0.0714rem solid ${colorLight};
+      border: 0.0714rem solid ${colors.basicLight};
       border-radius: 50%;
       background-color: transparent;
       font: inherit;
-      color: ${color};
+      color: ${colors.basic};
       cursor: pointer;
 
       &:disabled {
@@ -152,25 +132,14 @@ const Button = styled.button`
 
 const Input = styled.input`
   ${(props) => {
-    const {
-      theme: {
-        typography: {
-          color,
-        },
-      },
-    } = props;
+    const { colors } = props.theme;
 
     return css`
       max-width: 2.5rem;
       border: 0;
       font: inherit;
       text-align: center;
-      color: ${color};
-
-      ::-webkit-inner-spin-button,
-      ::-webkit-outer-spin-button {
-        display: none;
-      }
+      color: ${colors.basic};
     `;
   }}
 `;

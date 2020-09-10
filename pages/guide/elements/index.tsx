@@ -33,7 +33,7 @@ class Elements extends React.Component {
     return (
       <Container>
         <form>
-          <InputWrapper>
+          {/* <InputWrapper>
             <Input
               name="name"
               placeholder="Name"
@@ -52,7 +52,7 @@ class Elements extends React.Component {
               onChange={this.handleInputChange}
             />
             <ErrorMessage>{formErrors.email}</ErrorMessage>
-          </InputWrapper>
+          </InputWrapper> */}
           <DropdownWrapper>
             <Dropdown
               placeholder="Сколько гостей"

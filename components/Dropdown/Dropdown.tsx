@@ -148,7 +148,7 @@ const Dropdown: React.FC<DropdownProps> = ({
                   >
                     -
                   </S.Button>
-                  <S.Input readOnly type="number" value={currentValue} />
+                  <S.Input readOnly value={currentValue} />
                   <S.Button
                     disabled={currentValue === max}
                     onClick={handleIncrementClick}
