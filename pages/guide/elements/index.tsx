@@ -63,8 +63,12 @@ class Elements extends React.Component {
                   )}
                 />
               </S.InputWrapper>
-              <Button>1234</Button>
-              <Button filled>1234</Button>
+              <S.ButtonWrapper>
+                <Button>click me</Button>
+              </S.ButtonWrapper>
+              <S.ButtonWrapper>
+                <Button filled>click me</Button>
+              </S.ButtonWrapper>
             </form>
           )}
         />

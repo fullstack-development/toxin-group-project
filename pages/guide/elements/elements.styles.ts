@@ -9,4 +9,9 @@ const InputWrapper = styled.div`
   margin-bottom: 0.45rem;
 `;
 
-export { Container, InputWrapper };
+const ButtonWrapper = styled.div`
+  max-width: 7.0714rem;
+  margin-bottom: 1.4286rem;
+`;
+
+export { Container, InputWrapper, ButtonWrapper };

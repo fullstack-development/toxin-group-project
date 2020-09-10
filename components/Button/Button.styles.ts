@@ -52,10 +52,12 @@ const Button = styled.button<ButtonProps>`
         }
       `}
 
-      &:hover,
+      /* TO DO */
+
+      /* &:hover,
       &:focus {
         opacity: 0.5;
-      }
+      } */
     `;
   }}
 `;
