@@ -61,6 +61,7 @@ const ExpandIcon = styled(ExpandMore)`
 const modifiers = {
   open: () => `
     display: block;
+    border-top: 0;
   `,
   hidden: () => `
     visibility: hidden;
