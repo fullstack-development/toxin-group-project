@@ -66,8 +66,12 @@ class Elements extends React.Component {
             </form>
           )}
         />
-        <TextButton>Click me</TextButton>
-        <TextButton secondary>Click me</TextButton>
+        <S.TextButtonWrapper>
+          <TextButton>Click me</TextButton>
+        </S.TextButtonWrapper>
+        <S.TextButtonWrapper>
+          <TextButton secondary>Click me</TextButton>
+        </S.TextButtonWrapper>
       </S.Container>
     );
   }

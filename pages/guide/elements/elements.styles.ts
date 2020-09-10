@@ -9,4 +9,8 @@ const InputWrapper = styled.div`
   margin-bottom: 0.45rem;
 `;
 
-export { Container, InputWrapper };
+const TextButtonWrapper = styled.span`
+  margin-right: 1.4286rem;
+`;
+
+export { Container, InputWrapper, TextButtonWrapper };
