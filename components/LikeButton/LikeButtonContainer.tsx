@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import LikeButton from './LikeButton';
 
 type LikeButtonContainer = {
-  isPressedButton: boolean;
-  likes: number;
+  isPressedButton?: boolean;
+  likes?: number;
 }
 
 const LikeButtonContainer: React.FC<LikeButtonContainer> = (props: LikeButtonContainer) => {

@@ -13,6 +13,6 @@ export const LikeButtonWrapper = styled.div`
 `;
 
 export const ErrorMessage = styled.div`
-  // font-size: ${(props) => props.theme.error.fontSize};
-  // color: ${(props) => props.theme.error.color};
+  font-size: ${(props) => props.theme.error.fontSize};
+  color: ${(props) => props.theme.error.color};
 `;
