@@ -37,5 +37,14 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': [2, { args: 'none' }],
     'no-unused-expressions': 'off',
     'lines-between-class-members': 'off',
+    'import/order': ['warn',
+      {
+        groups: [['builtin', 'external'], ['internal'], ['parent', 'sibling', 'index']],
+        'newlines-between': 'always',
+        alphabetize: { order: 'asc', caseInsensitive: true },
+      },
+    ],
+    'import/prefer-default-export': 'off',
+    'jsx-a11y/label-has-associated-control': ['error', { assert: 'either' }],
   },
 };
