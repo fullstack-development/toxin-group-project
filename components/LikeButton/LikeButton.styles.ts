@@ -18,10 +18,11 @@ const LikeLabel = styled.label<LikeSpan>`
       display: flex;
       align-items: center;
       justify-content: space-around;
-      width: 2.7rem;
+      min-width: 2.7rem;
+      width: fit-content;
       height: 1.3rem;
-      border-radius: 10px;
-      background: #fff;
+      border-radius: 1rem;
+      background: ${colors.defaultBackground};
       position: relative;
       color: ${isActive ? colors.primary : colors.basicLight};
       padding: 0 0.2rem;
@@ -29,19 +30,19 @@ const LikeLabel = styled.label<LikeSpan>`
       &:before {
         content: '';
         position: absolute;
-        top: -1px;
-        bottom: -1px;
-        left: -1px;
-        right: -1px;
+        top: -0.06rem;
+        bottom: -0.06rem;
+        left: -0.06rem;
+        right: -0.06rem;
         background: ${isActive ? gradients.primary : colors.basicLight};
-        border-radius: 34px;
+        border-radius: 2rem;
         z-index: -1;
       }
 
       & svg {
         width: 0.7rem;
         height: 0.7rem;
-        fill: ${isActive ? colors.primary : '#fff'};
+        fill: ${isActive ? colors.primary : colors.defaultBackground};
         stroke: ${isActive ? 'none' : colors.basicLight};
         stroke-width: 0.14rem;
       }
@@ -49,7 +50,7 @@ const LikeLabel = styled.label<LikeSpan>`
   }}
 `;
 
-const LikeSpan = styled.div`
+const LikeSpan = styled.span`
   ${
   (props) => {
     const { typography } = props.theme;

@@ -1,18 +1,22 @@
 import React, { useState } from 'react';
+
 import LikeButton from './LikeButton';
 
-const LikeButtonContainer = () => {
-  const [likesCount, setLikesCount] = useState(0);
-  const [isLikeButtonPressed, setLikeButtonStatus] = useState(false);
+type LikeButtonContainer = {
+  isPressedButton: boolean;
+  likes: number;
+}
+
+const LikeButtonContainer: React.FC<LikeButtonContainer> = (props: LikeButtonContainer) => {
+  const { likes, isPressedButton } = props;
+  const [likesCount, setLikesCount] = useState(likes || 0);
+  const [isLikeButtonPressed, setLikeButtonStatus] = useState(isPressedButton || false);
 
   const handleLikeButtonClick = () => {
     setLikeButtonStatus(!isLikeButtonPressed);
 
-    if (isLikeButtonPressed) {
-      setLikesCount(likesCount - 1);
-    } else {
-      setLikesCount(likesCount + 1);
-    }
+    const newLikesCount = isLikeButtonPressed ? likesCount - 1 : likesCount + 1;
+    setLikesCount(newLikesCount);
   };
 
   return (

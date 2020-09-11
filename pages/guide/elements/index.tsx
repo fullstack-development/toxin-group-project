@@ -54,7 +54,7 @@ class Elements extends React.Component {
             <ErrorMessage>{formErrors.email}</ErrorMessage>
           </InputWrapper>
           <LikeButtonWrapper>
-            <LikeButtonContainer />
+            <LikeButtonContainer likes={2} />
           </LikeButtonWrapper>
         </form>
       </Container>
