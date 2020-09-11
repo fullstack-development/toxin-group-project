@@ -11,7 +11,7 @@ type Item = {
   max?: number;
   initialValue?: number;
   inputName?: string;
-}
+};
 
 type Group = {
   name: string;
@@ -51,29 +51,31 @@ const Dropdown: React.FC<DropdownProps> = ({
   const dropdown = useRef(null);
 
   const applyChanges = (): void => {
-    let groupResults;
-    if (groups) {
-      const groupNames = groups.map((group) => group.name);
-      groupResults = groupNames.map((name) => {
-        const groupCount = dropdownState
-          .filter((el) => el.groupName === name && el.currentValue)
-          .reduce((acc, el) => acc + el.currentValue, 0);
-
-        const { wordForms } = groups.find((group) => group.name === name);
-        return groupCount && `${groupCount} ${getCorrectWordForm(groupCount, wordForms)}`;
-      }).filter((group) => group);
+    function getResultStringPart(count: number, wordForms: WordForms): string {
+      return count && `${count} ${getCorrectWordForm(count, wordForms)}`;
     }
 
-    const restResults = dropdownState
-      .filter((item) => !item.groupName && item.currentValue)
-      .map((item) => {
-        const { currentValue, title, wordForms } = item;
-        return `${currentValue} ${
-          wordForms ? getCorrectWordForm(currentValue, wordForms) : title
-        }`;
-      });
-    const result = [...(groupResults || []), ...restResults];
-    setResultString(result.join(', ') || placeholder);
+    const resultStrings: string[] = Array.from(
+      new Set(
+        dropdownState.map((item, _, state) => {
+          const { groupName } = item;
+          if (groupName) {
+            const { wordForms } = groups.find(
+              (group) => group.name === groupName,
+            );
+            const groupCount = state
+              .filter((stateItem) => stateItem.groupName === groupName)
+              .reduce((sum, element) => sum + element.currentValue, 0);
+            return getResultStringPart(groupCount, wordForms);
+          }
+
+          const { currentValue, wordForms } = item;
+          return getResultStringPart(currentValue, wordForms);
+        }),
+      ),
+    ).filter((el) => el);
+
+    setResultString(resultStrings.join(', ') || placeholder);
   };
 
   const handleResetClick = (): void => {
@@ -108,10 +110,7 @@ const Dropdown: React.FC<DropdownProps> = ({
 
   return (
     <S.Dropdown ref={dropdown}>
-      <S.Result
-        onClick={handleResultBarClick}
-        type="button"
-      >
+      <S.Result onClick={handleResultBarClick} type="button">
         {resultString}
         <S.ExpandIcon />
       </S.Result>
@@ -166,7 +165,11 @@ const Dropdown: React.FC<DropdownProps> = ({
         </S.List>
         {enableControls && (
           <S.Controls>
-            <S.ResetButton type="button" isHidden={isResetHidden} onClick={handleResetClick}>
+            <S.ResetButton
+              type="button"
+              isHidden={isResetHidden}
+              onClick={handleResetClick}
+            >
               Очистить
             </S.ResetButton>
             <S.ApplyButton type="button" onClick={handleApplyClick}>
