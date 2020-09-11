@@ -9,4 +9,9 @@ const InputWrapper = styled.div`
   margin-bottom: 0.45rem;
 `;
 
-export { Container, InputWrapper };
+const DatePickerWrapper = styled.div`
+  width: 22.8571rem;
+  margin-bottom: 0.45rem;
+`;
+
+export { Container, InputWrapper, DatePickerWrapper };

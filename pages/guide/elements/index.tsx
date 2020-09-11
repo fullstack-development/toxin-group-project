@@ -2,6 +2,8 @@ import React from 'react';
 import { Form, Field } from 'react-final-form';
 
 import Input from 'components/Input/Input';
+import DatePickerContainer from 'components/Datepicker/DatePickerContainer';
+
 import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators/';
 
 import * as S from './elements.styles';
@@ -65,6 +67,9 @@ class Elements extends React.Component {
             </form>
           )}
         />
+        <S.DatePickerWrapper>
+          <DatePickerContainer />
+        </S.DatePickerWrapper>
       </S.Container>
     );
   }
