@@ -5,7 +5,10 @@ const List = styled.ul`
 `;
 
 const ListItem = styled.li`
-  margin: 0.7143rem 0;
+  margin-bottom: 0.7143rem;
 `;
 
-export { List, ListItem };
+export {
+  List,
+  ListItem,
+};

@@ -6,14 +6,14 @@ const Checkbox = styled.label`
   display: flex;
   cursor: pointer;
   user-select: none;
-  align-items: center;
+  align-items: flex-start;
 `;
 
 const HiddenCheckbox = styled.input`
   ${visuallyHidden};
 `;
 
-const Checkmark = styled.span`
+const Checkmark = styled.div`
   ${(props) => {
     const { colors, gradients } = props.theme;
     return css`
@@ -22,6 +22,7 @@ const Checkmark = styled.span`
       width: 1.4286rem;
       border: 0.0714rem solid ${colors.basicLight};
       border-radius: 0.2857rem;
+      flex-shrink: 0;
 
       &:after {
         content: '';
@@ -34,7 +35,7 @@ const Checkmark = styled.span`
         border-image: ${gradients.primary};
         border-image-slice: 1;
         left: 0.4429rem;
-        top: 0.2857rem;
+        top: 0.3rem;
         transform: rotate(45deg);
       }
 
@@ -50,7 +51,8 @@ const Checkmark = styled.span`
   }}
 `;
 
-const Label = styled.span`
+const Label = styled.div`
+  max-width: 15.3571rem;
   margin-left: 0.7143rem;
 `;
 

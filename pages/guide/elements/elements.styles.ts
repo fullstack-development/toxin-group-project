@@ -10,7 +10,7 @@ const InputWrapper = styled.div`
 `;
 
 const CheckboxWrapper = styled.div`
-  margin: 1rem 0;
+  margin-bottom: 0.45rem;
 `;
 
 export {
