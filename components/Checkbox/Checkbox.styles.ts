@@ -13,10 +13,11 @@ const HiddenCheckbox = styled.input`
   ${visuallyHidden};
 `;
 
-const Checkmark = styled.div`
+const Checkmark = styled.span`
   ${(props) => {
     const { colors, gradients } = props.theme;
     return css`
+      display: block;
       position: relative;
       height: 1.4286rem;
       width: 1.4286rem;
@@ -51,7 +52,8 @@ const Checkmark = styled.div`
   }}
 `;
 
-const Label = styled.div`
+const Label = styled.span`
+  display: inline-block;
   max-width: 15.3571rem;
   margin-left: 0.7143rem;
 `;
