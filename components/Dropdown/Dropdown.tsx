@@ -19,10 +19,9 @@ type Group = {
 };
 
 type DropdownProps = {
-  label?: string;
-  groups?: Group[];
   items: Item[];
   placeholder: string;
+  groups?: Group[];
   enableControls?: boolean;
 };
 
@@ -33,9 +32,8 @@ const DEFAULT_SETTINGS = {
 };
 
 const Dropdown: React.FC<DropdownProps> = ({
-  label = 'Dropdown',
-  placeholder = 'No placeholder passed',
   groups,
+  placeholder = 'No placeholder passed',
   items = [{ title: 'No items passed' }],
   enableControls = true,
 }: DropdownProps) => {
@@ -110,7 +108,6 @@ const Dropdown: React.FC<DropdownProps> = ({
 
   return (
     <S.Dropdown ref={dropdown}>
-      {label && <S.LabelText>{label}</S.LabelText>}
       <S.Result
         onClick={handleResultBarClick}
         type="button"

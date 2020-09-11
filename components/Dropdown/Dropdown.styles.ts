@@ -24,19 +24,6 @@ const Dropdown = styled.div`
   }}
 `;
 
-const LabelText = styled.span`
-  ${(props) => {
-    const { colors, typography } = props.theme;
-    return css`
-      display: inline-block;
-      font: 700 0.8571rem ${typography.fontName};
-      color: ${colors.basicDarkest};
-      text-transform: uppercase;
-      margin-bottom: 0.3571rem;
-    `;
-  }}
-`;
-
 const Result = styled.button`
   ${(props) => {
     const { colors, typography } = props.theme;
@@ -115,12 +102,16 @@ const List = styled.ul`
 `;
 
 const Item = styled.li`
-  ${() => css`
+  ${(props) => {
+    const { colors } = props.theme;
+    return css`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: ${colors.basicDarkest};
     padding: 0.3571rem 0 0.1429rem 0;
-  `}
+  `;
+  }}
 `;
 
 const Button = styled.button`
@@ -145,21 +136,15 @@ const Button = styled.button`
 `;
 
 const Input = styled.input`
-  ${(props) => {
-    const { colors } = props.theme;
+  max-width: 2.5rem;
+  border: 0;
+  font: inherit;
+  text-align: center;
+  color: inherit;
 
-    return css`
-      max-width: 2.5rem;
-      border: 0;
-      font: inherit;
-      text-align: center;
-      color: ${colors.basic};
-
-      &:focus {
-        outline: 0;
-      }
-    `;
-  }}
+  &:focus {
+    outline: 0;
+  }
 `;
 
 const ItemTitle = styled.span`
@@ -205,5 +190,4 @@ export {
   ResetButton,
   ApplyButton,
   ExpandIcon,
-  LabelText,
 };
