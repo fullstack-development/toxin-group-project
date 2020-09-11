@@ -1,29 +1,80 @@
-import StyledInput from './Input.styles';
+import { useState } from 'react';
+
+import { composeValidators, makeRequired, Validator } from 'shared/helpers/validators';
+
+import * as S from './Input.styles';
 
 type InputProps = {
   name: string;
   placeholder: string;
-  type: string;
+  type?: string;
   value: string;
+  validators?: Array<Validator>;
+  label?: string;
+  isRequired?: boolean;
+  mask?: Array<RegExp | string>;
   onChange: (e: React.ChangeEvent) => void;
-}
+};
 
 const Input: React.FC<InputProps> = ({
-  name, placeholder, type, value, onChange, ...rest
+  name,
+  placeholder,
+  type,
+  value,
+  label,
+  mask,
+  isRequired,
+  validators,
+  onChange,
+  ...rest
 }: InputProps) => {
-  const handleChange = (e: React.ChangeEvent) => {
+  const [error, setError] = useState('');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange(e);
   };
 
+  const validate = (inputValue: string) => {
+    const allValidators = isRequired ? validators.concat([makeRequired]) : validators;
+    const validator = composeValidators(allValidators);
+    setError(validator(inputValue));
+  };
+
+  const handleBlur = () => {
+    if (validators) {
+      validate(value);
+    }
+  };
+
   return (
-    <StyledInput
-      {...rest}
-      placeholder={placeholder}
-      type={type}
-      name={name}
-      value={value}
-      onChange={handleChange}
-    />
+    <S.Input>
+      <label>
+        { label && <S.LabelText>{label}</S.LabelText>}
+        {mask ? (
+          <S.MaskedField
+            {...rest}
+            placeholder={placeholder}
+            mask={mask}
+            type={type}
+            name={name}
+            value={value}
+            onChange={(e) => onChange(e)}
+            onBlur={handleBlur}
+          />
+        ) : (
+          <S.Field
+            {...rest}
+            placeholder={placeholder}
+            type={type}
+            name={name}
+            value={value}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
+        )}
+      </label>
+      <S.ErrorMessage>{error}</S.ErrorMessage>
+    </S.Input>
   );
 };
 
