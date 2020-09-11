@@ -5,9 +5,6 @@ import BulletList from 'components/BulletList/BulletList';
 import Input from 'components/Input/Input';
 import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators/';
 
-import {
-  Container, InputWrapper, ErrorMessage, BulletListWrapper,
-} from './elements.styles';
 import * as S from './elements.styles';
 
 class Elements extends React.Component {
@@ -66,18 +63,18 @@ class Elements extends React.Component {
                   )}
                 />
               </S.InputWrapper>
-              <BulletListWrapper>
-                <BulletList
-                  items={[
-                    'Нельзя с питомцами',
-                    'Без вечеринок и мероприятий',
-                    'Время прибытия — после 13:00, а выезд до 12:00',
-                  ]}
-                />
-              </BulletListWrapper>
             </form>
           )}
         />
+        <S.BulletListWrapper>
+          <BulletList
+            items={[
+              'Нельзя с питомцами',
+              'Без вечеринок и мероприятий',
+              'Время прибытия — после 13:00, а выезд до 12:00',
+            ]}
+          />
+        </S.BulletListWrapper>
       </S.Container>
     );
   }
