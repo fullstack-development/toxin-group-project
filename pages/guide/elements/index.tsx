@@ -1,8 +1,8 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
 
-import CheckboxesList from 'components/Checkboxes-List/Checkboxes-List';
-import roomOptions from 'components/Checkboxes-List/Checkboxes-List-data.json';
+import CheckboxesList from 'components/CheckboxesList/CheckboxesList';
+import roomOptions from 'components/CheckboxesList/CheckboxesListData.json';
 import Input from 'components/Input/Input';
 import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators/';
 
