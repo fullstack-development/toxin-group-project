@@ -10,6 +10,7 @@
     "paths": {
       "@components/*": ["components/*"],
       "@shared/*": ["shared/*"],
+      "@api/*": ["api/*"],
     },
     "allowJs": true,
     "skipLibCheck": true,
