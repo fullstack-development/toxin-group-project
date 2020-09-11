@@ -1,6 +1,7 @@
 import { createGlobalStyle, css } from 'styled-components';
-import fontFace from './mixins/font-face';
+
 import { Theme } from '../types/theme';
+import fontFace from './mixins/font-face';
 
 type Props = {
   theme: Theme
@@ -10,8 +11,8 @@ const GlobalStyle = createGlobalStyle<Props>`
   ${(props) => {
     const { colors, typography } = props.theme;
     return css`
-      ${fontFace('Montserrat', 'montserrat-regular', 400, 'normal')}
-      ${fontFace('Montserrat', 'montserrat-bold', 700, 'normal')}
+      ${fontFace('Montserrat', 'montserrat-regular')}
+      ${fontFace('Montserrat', 'montserrat-bold', 700)}
 
       * {
         padding: 0;
@@ -23,7 +24,7 @@ const GlobalStyle = createGlobalStyle<Props>`
         font-size: ${typography.fontSize};
         background: ${colors.defaultBackground};
         color: ${colors.basicDark};
-        font-family: ${typography.fontName}, Arial, sans-serif;
+        font-family: ${typography.fontName};
       }
     `;
   }}

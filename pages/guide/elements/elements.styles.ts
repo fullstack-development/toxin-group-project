@@ -6,12 +6,7 @@ const Container = styled.div`
 
 const InputWrapper = styled.div`
   width: 22.8571rem;
-  margin: 1rem 0;
-`;
-
-const ErrorMessage = styled.div`
-  font-size: ${(props) => props.theme.error.fontSize};
-  color: ${(props) => props.theme.error.color};
+  margin-bottom: 0.45rem;
 `;
 
 const CheckboxWrapper = styled.div`
@@ -19,5 +14,7 @@ const CheckboxWrapper = styled.div`
 `;
 
 export {
-  Container, InputWrapper, ErrorMessage, CheckboxWrapper,
+  Container,
+  InputWrapper,
+  CheckboxWrapper,
 };

@@ -1,75 +1,76 @@
 import React from 'react';
-import { Form } from 'react-final-form';
+import { Form, Field } from 'react-final-form';
 
-import Input from 'components/Input/Input';
 import CheckboxesList from 'components/Checkboxes-List/Checkboxes-List';
 import roomOptions from 'components/Checkboxes-List/Checkboxes-List-data.json';
-import fieldValidator from 'shared/helpers/validators/validators';
+import Input from 'components/Input/Input';
+import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators/';
 
-import {
-  Container, InputWrapper, ErrorMessage, CheckboxWrapper,
-} from './elements.styles';
-
-type ElementsState = {
-  name: string;
-  email: string;
-  formErrors: { name: string, email: string };
-}
+import * as S from './elements.styles';
 
 class Elements extends React.Component {
-  state: ElementsState = {
-    name: '',
-    email: '',
-    formErrors: { name: '', email: '' },
-  };
-
-  handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { target } = e;
-    const { name, value } = target;
-
-    this.setState({
-      [name]: value,
-      formErrors: { [name]: fieldValidator(name, value) },
-    });
-  };
-
   handleFormSubmit = () => {};
 
   render() {
-    const { name, formErrors, email } = this.state;
     return (
-      <Container>
+      <S.Container>
         <Form
           onSubmit={this.handleFormSubmit}
           render={() => (
             <form>
-              <InputWrapper>
-                <Input
-                  name="name"
-                  placeholder="Name"
-                  type="text"
-                  value={name}
-                  onChange={this.handleInputChange}
-                />
-                <ErrorMessage>{formErrors.name}</ErrorMessage>
-              </InputWrapper>
-              <InputWrapper>
-                <Input
+              <S.InputWrapper>
+                <Field
                   name="email"
-                  placeholder="Email"
-                  type="email"
-                  value={email}
-                  onChange={this.handleInputChange}
+                  type="text"
+                  render={(props) => (
+                    <Input
+                      {...props.input}
+                      {...props.meta}
+                      placeholder="Email"
+                      label="text field"
+                      validators={[emailValidator]}
+                    />
+                  )}
                 />
-                <ErrorMessage>{formErrors.email}</ErrorMessage>
-              </InputWrapper>
-              <CheckboxWrapper>
+              </S.InputWrapper>
+              <S.InputWrapper>
+                <Field
+                  name="name"
+                  type="text"
+                  render={(props) => (
+                    <Input
+                      {...props.rest}
+                      {...props.input}
+                      placeholder="This is pretty awesome"
+                      label="text field"
+                      isRequired
+                    />
+                  )}
+                />
+              </S.InputWrapper>
+              <S.InputWrapper>
+                <Field
+                  name="date"
+                  type="text"
+                  render={(props) => (
+                    <Input
+                      {...props.rest}
+                      {...props.input}
+                      placeholder="ДД.ММ.ГГГГ"
+                      validators={[dateValidator]}
+                      mask={dateFormatMask}
+                      label="Masked text field"
+                    />
+                  )}
+                />
+              </S.InputWrapper>
+              <S.CheckboxWrapper>
                 <CheckboxesList roomOptions={roomOptions} />
-              </CheckboxWrapper>
+              </S.CheckboxWrapper>
             </form>
           )}
         />
-      </Container>
+      </S.Container>
     );
   }
 }
