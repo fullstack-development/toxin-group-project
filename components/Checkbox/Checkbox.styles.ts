@@ -1,50 +1,61 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import visuallyHidden from 'shared/styles/mixins/visually-hidden';
 
-export const StyledCheckbox = styled.label`
+const Checkbox = styled.label`
   display: flex;
   cursor: pointer;
   user-select: none;
-  align-items: center;
+  align-items: flex-start;
 `;
 
-export const HiddenCheckbox = styled.input`
+const HiddenCheckbox = styled.input`
   ${visuallyHidden};
 `;
 
-export const Checkmark = styled.span`
-  position: relative;
-  height: 1.4286rem;
-  width: 1.4286rem;
-  border: 0.0714rem solid ${(props) => props.theme.typography.colorLight};
-  border-radius: 0.2857rem;
+const Checkmark = styled.div`
+  ${(props) => {
+    const { colors, gradients } = props.theme;
+    return css`
+      position: relative;
+      height: 1.4286rem;
+      width: 1.4286rem;
+      border: 0.0714rem solid ${colors.basicLight};
+      border-radius: 0.2857rem;
+      flex-shrink: 0;
 
-  &:after {
-    content: '';
-    display: none;
-    position: absolute;
-    width: 0.2857rem;
-    height: 0.4286rem;
-    border-right: 0.1429rem solid;
-    border-bottom: 0.1429rem solid;
-    border-image: ${(props) => props.theme.colors.primaryGradient};
-    border-image-slice: 1;
-    left: 0.4429rem;
-    top: 0.2857rem;
-    transform: rotate(45deg);
-  }
+      &:after {
+        content: '';
+        display: none;
+        position: absolute;
+        width: 0.2857rem;
+        height: 0.4286rem;
+        border-right: 0.1429rem solid;
+        border-bottom: 0.1429rem solid;
+        border-image: ${gradients.primary};
+        border-image-slice: 1;
+        left: 0.4429rem;
+        top: 0.3rem;
+        transform: rotate(45deg);
+      }
 
-  ${HiddenCheckbox}:checked ~ &,
-  ${StyledCheckbox}:hover ${HiddenCheckbox} ~ & {
-    border: 0.0714rem solid ${(props) => props.theme.colors.primary};
-  }
+      ${HiddenCheckbox}:checked ~ &,
+      ${Checkbox}:hover ${HiddenCheckbox} ~ & {
+        border: 0.0714rem solid ${colors.primary};
+      }
 
-  ${HiddenCheckbox}:checked ~ &:after {
-    display: block;
-  }
+      ${HiddenCheckbox}:checked ~ &:after {
+        display: block;
+      }
+    `;
+  }}
 `;
 
-export const Label = styled.span`
+const Label = styled.div`
+  max-width: 15.3571rem;
   margin-left: 0.7143rem;
 `;
+
+export {
+  Checkbox, HiddenCheckbox, Checkmark, Label,
+};

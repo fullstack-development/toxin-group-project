@@ -1,8 +1,9 @@
 import React from 'react';
+import { Field } from 'react-final-form';
 
 import Checkbox from 'components/Checkbox/Checkbox';
 
-import { List, ListItem } from './Checkboxes-List.styles';
+import * as S from './Checkboxes-List.styles';
 
 type Option = {
   name: string;
@@ -14,36 +15,25 @@ type Props = {
   roomOptions: Array<Option>;
 };
 
-class CheckboxesList extends React.Component<Props> {
-  state = {};
-
-  handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value, checked } = e.target;
-
-    this.setState({
-      [value]: checked,
-    });
-  };
-
-  render() {
-    const { roomOptions } = this.props;
-    return (
-      <List>
-        {roomOptions.map((option) => (
-          <ListItem key={option.value}>
+const CheckboxesList: React.FC<Props> = ({ roomOptions }: Props) => (
+  <S.List>
+    {roomOptions.map((option) => (
+      <S.ListItem key={option.value}>
+        <Field
+          type="checkbox"
+          name={option.name}
+          value={option.value}
+          render={(props) => (
             <Checkbox
-              name={option.name}
               label={option.label}
-              value={option.value}
-              // eslint-disable-next-line react/destructuring-assignment
-              isChecked={this.state[option.value] || false}
-              onChange={this.handleChange}
+              {...props.input}
+              {...props.meta}
             />
-          </ListItem>
-        ))}
-      </List>
-    );
-  }
-}
+          )}
+        />
+      </S.ListItem>
+    ))}
+  </S.List>
+);
 
 export default CheckboxesList;

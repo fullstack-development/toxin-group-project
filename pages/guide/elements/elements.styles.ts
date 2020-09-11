@@ -6,17 +6,11 @@ const Container = styled.div`
 
 const InputWrapper = styled.div`
   width: 22.8571rem;
-  margin: 1rem 0;
-`;
-
-const ErrorMessage = styled.div`
-  font-size: ${(props) => props.theme.error.fontSize};
-  color: ${(props) => props.theme.error.color};
+  margin-bottom: 0.45rem;
 `;
 
 const CheckboxWrapper = styled.div`
-  width: 15.8571rem;
-  margin: 1rem 0;
+  margin-bottom: 0.45rem;
 `;
 
 const ExpandableCheckboxWrapper = styled.div`
@@ -24,5 +18,8 @@ const ExpandableCheckboxWrapper = styled.div`
 `;
 
 export {
-  Container, InputWrapper, ErrorMessage, CheckboxWrapper, ExpandableCheckboxWrapper,
+  Container,
+  InputWrapper,
+  CheckboxWrapper,
+  ExpandableCheckboxWrapper,
 };
