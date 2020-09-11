@@ -3,7 +3,7 @@ import { Field } from 'react-final-form';
 
 import Checkbox from 'components/Checkbox/Checkbox';
 
-import * as S from './Checkboxes-List.styles';
+import * as S from './CheckboxesList.styles';
 
 type Option = {
   name: string;

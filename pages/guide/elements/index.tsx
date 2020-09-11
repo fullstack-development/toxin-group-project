@@ -1,9 +1,9 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
 
-import CheckboxesList from 'components/Checkboxes-List/Checkboxes-List';
-import checkboxData from 'components/Checkboxes-List/Checkboxes-List-data.json';
-import expandableCheckboxData from 'components/Expander/Expandable-List-data.json';
+import CheckboxesList from 'components/CheckboxesList/CheckboxesList';
+import checkboxData from 'components/CheckboxesList/CheckboxesListData.json';
+import expandableCheckboxData from 'components/Expander/ExpandableListData.json';
 import Expander from 'components/Expander/Expander';
 import Input from 'components/Input/Input';
 import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators/';
