@@ -1,7 +1,8 @@
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
 import React from 'react';
 import onClickOutside from 'react-onclickoutside';
 
-import ExpandIcon from '../Expand-Icon/Expend-Icon';
 import * as S from './Expander.styles';
 
 type Props = {
@@ -41,7 +42,7 @@ class Expander extends React.Component<Props> {
       <S.Expander>
         <S.Header onClick={this.handleHeaderClick}>
           <S.Title>{title}</S.Title>
-          <ExpandIcon direction={isOpen ? 'less' : 'more'} />
+          { isOpen ? <ExpandLess /> : <ExpandMore /> }
         </S.Header>
         <S.Content isOpen={isOpen}>
           {children}
