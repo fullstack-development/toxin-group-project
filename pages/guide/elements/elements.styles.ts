@@ -9,10 +9,12 @@ export const InputWrapper = styled.div`
   margin: 1rem 0;
 `;
 
-export const LikeButtonWrapper = styled.div`
+const LikeButtonWrapper = styled.div`
 `;
 
 export const ErrorMessage = styled.div`
   font-size: ${(props) => props.theme.error.fontSize};
   color: ${(props) => props.theme.error.color};
 `;
+
+export { LikeButtonWrapper }
