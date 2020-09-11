@@ -13,4 +13,10 @@ const TextButtonWrapper = styled.span`
   margin-right: 1.4286rem;
 `;
 
-export { Container, InputWrapper, TextButtonWrapper };
+const BulletListWrapper = styled.div`
+  max-width: 18.5714rem;
+`;
+
+export {
+  Container, InputWrapper, BulletListWrapper, TextButtonWrapper,
+};

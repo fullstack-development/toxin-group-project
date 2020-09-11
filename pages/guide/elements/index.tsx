@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
 
+import BulletList from 'components/BulletList/BulletList';
 import Input from 'components/Input/Input';
 import TextButton from 'components/TextButton/TextButton';
 import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators/';
@@ -72,6 +73,15 @@ class Elements extends React.Component {
         <S.TextButtonWrapper>
           <TextButton secondary>Click me</TextButton>
         </S.TextButtonWrapper>
+        <S.BulletListWrapper>
+          <BulletList
+            items={[
+              'Нельзя с питомцами',
+              'Без вечеринок и мероприятий',
+              'Время прибытия — после 13:00, а выезд до 12:00',
+            ]}
+          />
+        </S.BulletListWrapper>
       </S.Container>
     );
   }
