@@ -46,13 +46,12 @@ const LikeLabel = styled.label<LikeSpan>`
         stroke: ${isActive ? 'none' : colors.basicLight};
         stroke-width: 0.14rem;
       }
-        `;
+    `;
   }}
 `;
 
 const LikeSpan = styled.span`
-  ${
-  (props) => {
+  ${(props) => {
     const { typography } = props.theme;
 
     return css`
