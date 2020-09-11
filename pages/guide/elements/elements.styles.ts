@@ -14,7 +14,8 @@ const CheckboxWrapper = styled.div`
 `;
 
 const ExpandableCheckboxWrapper = styled.div`
-  margin: 1rem 0;
+  width: 18.1071rem;
+  margin-bottom: 0.45rem;
 `;
 
 export {

@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 const Expander = styled.div`
-  width: 18.1071rem;
+  width: 100%;
 `;
 
 const Header = styled.div`
@@ -25,11 +25,14 @@ const Content = styled.div`
       opacity: ${(isOpen ? '1' : '0')};
       transition: opacity .4s;
       overflow: hidden;
-      padding: 0.2143rem 0;
+      padding: 1.1rem 0 0.2143rem;
     `;
   }}
 `;
 
 export {
-  Expander, Header, Title, Content,
+  Expander,
+  Header,
+  Title,
+  Content,
 };
