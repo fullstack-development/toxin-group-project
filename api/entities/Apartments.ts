@@ -1,7 +1,7 @@
 import { boundMethod } from 'autobind-decorator';
 
-import { DeepPartial } from 'shared/types/custom';
 import { matchObjects } from 'shared/helpers';
+import { DeepPartial } from 'shared/types/custom';
 
 import Firebase from '../Firebase';
 import apiErrors from './errors/apiErrors';

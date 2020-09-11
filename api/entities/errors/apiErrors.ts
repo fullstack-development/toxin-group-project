@@ -1,7 +1,7 @@
 import { boundMethod } from 'autobind-decorator';
 
-import AuthError from './AuthError';
 import ApartmentsError from './ApartmentsError';
+import AuthError from './AuthError';
 import DatabaseError from './DatabaseError';
 
 type ErrorConstructor = ApartmentsError | AuthError | DatabaseError;
