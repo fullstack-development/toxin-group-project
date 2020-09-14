@@ -3,10 +3,9 @@ import styled, { css } from 'styled-components';
 import visuallyHidden from 'shared/styles/mixins/visually-hidden';
 
 const Checkbox = styled.label`
-  display: flex;
+  display: inline-flex;
   cursor: pointer;
   user-select: none;
-  align-items: flex-start;
 `;
 
 const HiddenCheckbox = styled.input`
@@ -17,7 +16,6 @@ const Checkmark = styled.span`
   ${(props) => {
     const { colors, gradients } = props.theme;
     return css`
-      display: block;
       position: relative;
       height: 1.4286rem;
       width: 1.4286rem;
@@ -53,9 +51,8 @@ const Checkmark = styled.span`
 `;
 
 const Label = styled.span`
-  display: inline-block;
-  max-width: 15.3571rem;
-  margin-left: 0.7143rem;
+  margin: auto 0 auto 0.7143rem;
+  line-height: 1.38;
 `;
 
 export {

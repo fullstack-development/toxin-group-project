@@ -10,6 +10,7 @@ const InputWrapper = styled.div`
 `;
 
 const CheckboxWrapper = styled.div`
+  width: 15.8571rem;
   margin-bottom: 0.45rem;
 `;
 

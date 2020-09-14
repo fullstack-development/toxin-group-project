@@ -5,7 +5,7 @@ const List = styled.ul`
 `;
 
 const ListItem = styled.li`
-  margin-bottom: 0.7143rem;
+  margin-bottom: 0.44rem;
 `;
 
 export {
