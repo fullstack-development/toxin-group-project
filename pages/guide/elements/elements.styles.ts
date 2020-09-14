@@ -9,9 +9,20 @@ const InputWrapper = styled.div`
   margin-bottom: 0.45rem;
 `;
 
-const DatePickerWrapper = styled.div`
+const CalendarWrapper = styled.div`
   width: 22.8571rem;
   margin-bottom: 0.45rem;
 `;
 
-export { Container, InputWrapper, DatePickerWrapper };
+const ErrorMessage = styled.div`
+  font-size: ${(props) => props.theme.error.fontSize};
+  color: ${(props) => props.theme.error.color};
+`;
+
+const BulletListWrapper = styled.div`
+  max-width: 18.5714rem;
+`;
+
+export {
+  Container, InputWrapper, ErrorMessage, BulletListWrapper, CalendarWrapper
+};
