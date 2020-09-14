@@ -1,12 +1,13 @@
 import styled, { css } from 'styled-components';
 
-import { ButtonProps } from './Button';
+import { CustomProps } from './Button.types';
 
-const Button = styled.button<ButtonProps>`
+const Button = styled.button<CustomProps>`
   ${(props) => {
     const { gradients, colors } = props.theme;
     const { isFilled } = props;
     return css`
+      width: min-content;
       position: relative;
       box-sizing: border-box;
       display: flex;

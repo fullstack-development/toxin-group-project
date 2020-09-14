@@ -1,13 +1,7 @@
-import { ComponentPropsWithoutRef } from 'react';
-
 import * as S from './Button.styles';
+import { ButtonProps, LinkProps } from './Button.types';
 
-export type ButtonProps = {
-  isFilled?: boolean;
-} & ComponentPropsWithoutRef<'button'>
-& ComponentPropsWithoutRef<'a'>
-
-const Button: React.FC<ButtonProps> = ({
+const Button: React.FC<ButtonProps | LinkProps> = ({
   isFilled = false,
   ...rest
 }: ButtonProps) => <S.Button isFilled={isFilled} {...rest} />;
