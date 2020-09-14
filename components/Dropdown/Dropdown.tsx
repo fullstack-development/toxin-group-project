@@ -109,12 +109,9 @@ const Dropdown: React.FC<DropdownProps> = ({
   const isResetHidden = dropdownState.every((item) => !item.currentValue);
 
   return (
-    <Field name={name}>
-      {(fieldState) => (
+    <Field name={name} parse={() => dropdownState}>
+      {({ input }) => (
         <S.Dropdown ref={dropdown}>
-          {/* <pre>
-            {JSON.stringify(fieldState, undefined, 2)}
-          </pre> */}
           <S.Result onClick={handleResultBarClick} type="button">
             {resultString}
             <S.ExpandIcon />
@@ -128,8 +125,8 @@ const Dropdown: React.FC<DropdownProps> = ({
 
                 const makeButtonHandler = (
                   increment: number,
-                ): (() => void
-              ) => (): void => {
+                ): ((e: MouseEvent) => void
+              ) => (e: MouseEvent): void => {
                   setDropdownState((prevState) => {
                     const state = [...prevState];
                     const elementToUpdate = state.find(
@@ -138,6 +135,7 @@ const Dropdown: React.FC<DropdownProps> = ({
                     elementToUpdate.currentValue += increment;
                     return state;
                   });
+                  input.onChange(e);
                 };
                 const handleIncrementClick = makeButtonHandler(1);
                 const handleDecrementClick = makeButtonHandler(-1);
