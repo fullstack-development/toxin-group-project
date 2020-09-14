@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 
+import NumberInput from '../NumberInput/NumberInput';
 import * as S from './Dropdown.styles';
 import { getCorrectWordForm, WordForms } from './utils/getCorrectWord';
 
@@ -142,23 +143,14 @@ const Dropdown: React.FC<DropdownProps> = ({
             return (
               <S.Item key={title}>
                 <S.ItemTitle ref={titleElement}>{title}</S.ItemTitle>
-                <S.InputContainer>
-                  <S.Button
-                    disabled={currentValue === min}
-                    onClick={handleDecrementClick}
-                    type="button"
-                  >
-                    -
-                  </S.Button>
-                  <S.Input readOnly value={currentValue} name={inputName} />
-                  <S.Button
-                    disabled={currentValue === max}
-                    onClick={handleIncrementClick}
-                    type="button"
-                  >
-                    +
-                  </S.Button>
-                </S.InputContainer>
+                <NumberInput
+                  currentValue={currentValue}
+                  min={min}
+                  max={max}
+                  onIncrement={handleIncrementClick}
+                  onDecrement={handleDecrementClick}
+                  name={inputName}
+                />
               </S.Item>
             );
           })}
