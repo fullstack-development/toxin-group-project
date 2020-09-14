@@ -10,12 +10,12 @@ const Button = styled.button<ButtonProps>`
     const { isFilled } = props;
     return css`
       position: relative;
-      width: 100%;
+      /* width: 100%; */
       box-sizing: border-box;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 1.0714rem 0.5714rem 1rem 0.5714rem;
+      padding: 1.0714rem 1.1428rem 1rem 1.2143rem;
       white-space: nowrap;
       text-align: center;
       background-color: transparent;
@@ -35,6 +35,7 @@ const Button = styled.button<ButtonProps>`
       text-transform: uppercase;
       text-decoration: none;
       outline: 0;
+      overflow: hidden;
       cursor: pointer;
 
       ${!isFilled && css`
