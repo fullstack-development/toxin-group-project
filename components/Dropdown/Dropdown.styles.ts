@@ -128,12 +128,10 @@ const ResetButton = styled.button<ResetButtonProps>`
   ${(props) => {
     const { isHidden } = props;
 
-    return css`
-      ${isHidden
+    return isHidden
       && css`
         visibility: hidden;
-      `}
-    `;
+      `;
   }}
 `;
 const ApplyButton = styled.button``;

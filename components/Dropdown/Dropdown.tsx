@@ -122,27 +122,24 @@ const Dropdown: React.FC<DropdownProps> = ({
               title, min, max, currentValue, inputName,
             } = el;
 
-            const titleElement = useRef(null);
             const makeButtonHandler = (
               increment: number,
             ): (() => void
               ) => (): void => {
-              const currentTitle = titleElement.current.textContent;
-
               setDropdownState((prevState) => {
-                const copiedState = [...prevState];
-                const elementToUpdate = copiedState.find(
-                  (item) => item.title === currentTitle,
+                const state = [...prevState];
+                const elementToUpdate = state.find(
+                  (item) => item.title === title,
                 );
                 elementToUpdate.currentValue += increment;
-                return copiedState;
+                return state;
               });
             };
             const handleIncrementClick = makeButtonHandler(1);
             const handleDecrementClick = makeButtonHandler(-1);
             return (
               <S.Item key={title}>
-                <S.ItemTitle ref={titleElement}>{title}</S.ItemTitle>
+                <S.ItemTitle>{title}</S.ItemTitle>
                 <NumberInput
                   currentValue={currentValue}
                   min={min}
