@@ -1,23 +1,19 @@
-import { ReactNode } from 'react';
+import { HTMLProps } from 'react';
 
 import * as S from './TextButton.styles';
 
 type TextButtonProps = {
   secondary?: boolean;
-  children?: ReactNode;
-  link?: string;
-};
+} & HTMLProps<HTMLButtonElement>;
 
 const TextButton: React.FC<TextButtonProps> = ({
-  link,
-  children,
   secondary = false,
+  ...rest
 }: TextButtonProps) => {
-  const tag = link ? 'a' : 'button';
+  const tag = rest.href ? 'a' : 'button';
+
   return (
-    <S.TextButton isSecondary={secondary} as={tag} href={link}>
-      {children}
-    </S.TextButton>
+    <S.TextButton isSecondary={secondary} as={tag} {...rest} />
   );
 };
 

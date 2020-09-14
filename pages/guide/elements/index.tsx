@@ -68,10 +68,12 @@ class Elements extends React.Component {
           )}
         />
         <S.TextButtonWrapper>
-          <TextButton>Click me</TextButton>
+          <TextButton href="https://google.com">Click me</TextButton>
         </S.TextButtonWrapper>
         <S.TextButtonWrapper>
-          <TextButton secondary>Click me</TextButton>
+          <TextButton secondary>
+            Click me
+          </TextButton>
         </S.TextButtonWrapper>
         <S.BulletListWrapper>
           <BulletList
