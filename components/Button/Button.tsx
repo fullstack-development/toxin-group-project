@@ -1,15 +1,15 @@
-import { ReactNode } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 
 import * as S from './Button.styles';
 
-type ButtonProps = {
-  filled?: boolean;
-  children: ReactNode;
-};
+export type ButtonProps = {
+  isFilled?: boolean;
+} & ComponentPropsWithoutRef<'button'>
+& ComponentPropsWithoutRef<'a'>
 
 const Button: React.FC<ButtonProps> = ({
-  children,
-  filled = false,
-}: ButtonProps) => <S.Button isFilled={filled}>{children}</S.Button>;
+  isFilled = false,
+  ...rest
+}: ButtonProps) => <S.Button isFilled={isFilled} {...rest} />;
 
 export default Button;

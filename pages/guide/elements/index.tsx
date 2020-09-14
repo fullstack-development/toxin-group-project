@@ -68,7 +68,7 @@ class Elements extends React.Component {
                 <Button>click me</Button>
               </S.ButtonWrapper>
               <S.ButtonWrapper>
-                <Button filled>click me</Button>
+                <Button type="button" isFilled>click me</Button>
               </S.ButtonWrapper>
             </form>
           )}

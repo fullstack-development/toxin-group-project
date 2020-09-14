@@ -1,8 +1,6 @@
 import styled, { css } from 'styled-components';
 
-type ButtonProps = {
-  isFilled: boolean;
-};
+import { ButtonProps } from './Button';
 
 const Button = styled.button<ButtonProps>`
   ${(props) => {
