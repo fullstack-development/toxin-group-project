@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { Field } from 'react-final-form';
 
 import NumberInput from '../NumberInput/NumberInput';
 import * as S from './Dropdown.styles';
@@ -22,6 +23,7 @@ type Group = {
 type DropdownProps = {
   items: Item[];
   placeholder: string;
+  name: string;
   groups?: Group[];
   enableControls?: boolean;
 };
@@ -34,6 +36,7 @@ const DEFAULT_SETTINGS = {
 
 const Dropdown: React.FC<DropdownProps> = ({
   groups,
+  name = '',
   placeholder = 'No placeholder passed',
   items = [{ title: 'No items passed' }],
   enableControls = true,
@@ -60,18 +63,17 @@ const Dropdown: React.FC<DropdownProps> = ({
       new Set(
         dropdownState.map((item, _, state) => {
           const { groupName } = item;
-          if (groupName) {
-            const { wordForms } = groups.find(
-              (group) => group.name === groupName,
-            );
-            const groupCount = state
-              .filter((stateItem) => stateItem.groupName === groupName)
-              .reduce((sum, element) => sum + element.currentValue, 0);
-            return getResultStringPart(groupCount, wordForms);
-          }
-
           const { currentValue, wordForms } = item;
-          return getResultStringPart(currentValue, wordForms);
+
+          if (!groupName) return getResultStringPart(currentValue, wordForms);
+
+          const { wordForms: groupWordForms } = groups.find(
+            (group) => group.name === groupName,
+          );
+          const groupCount = state
+            .filter((stateItem) => stateItem.groupName === groupName)
+            .reduce((sum, element) => sum + element.currentValue, 0);
+          return getResultStringPart(groupCount, groupWordForms);
         }),
       ),
     ).filter((el) => el);
@@ -110,64 +112,71 @@ const Dropdown: React.FC<DropdownProps> = ({
   const isResetHidden = dropdownState.every((item) => !item.currentValue);
 
   return (
-    <S.Dropdown ref={dropdown}>
-      <S.Result onClick={handleResultBarClick} type="button">
-        {resultString}
-        <S.ExpandIcon />
-      </S.Result>
-      <S.ListContainer isOpen={isOpen}>
-        <S.List>
-          {dropdownState.map((el) => {
-            const {
-              title, min, max, currentValue, inputName,
-            } = el;
+    <Field name={name}>
+      {(fieldState) => (
+        <S.Dropdown ref={dropdown}>
+          {/* <pre>
+            {JSON.stringify(fieldState, undefined, 2)}
+          </pre> */}
+          <S.Result onClick={handleResultBarClick} type="button">
+            {resultString}
+            <S.ExpandIcon />
+          </S.Result>
+          <S.ListContainer isOpen={isOpen}>
+            <S.List>
+              {dropdownState.map((el) => {
+                const {
+                  title, min, max, currentValue, inputName,
+                } = el;
 
-            const makeButtonHandler = (
-              increment: number,
-            ): (() => void
+                const makeButtonHandler = (
+                  increment: number,
+                ): (() => void
               ) => (): void => {
-              setDropdownState((prevState) => {
-                const state = [...prevState];
-                const elementToUpdate = state.find(
-                  (item) => item.title === title,
+                  setDropdownState((prevState) => {
+                    const state = [...prevState];
+                    const elementToUpdate = state.find(
+                      (item) => item.title === title,
+                    );
+                    elementToUpdate.currentValue += increment;
+                    return state;
+                  });
+                };
+                const handleIncrementClick = makeButtonHandler(1);
+                const handleDecrementClick = makeButtonHandler(-1);
+                return (
+                  <S.Item key={title}>
+                    <S.ItemTitle>{title}</S.ItemTitle>
+                    <NumberInput
+                      currentValue={currentValue}
+                      min={min}
+                      max={max}
+                      onIncrement={handleIncrementClick}
+                      onDecrement={handleDecrementClick}
+                      name={inputName}
+                    />
+                  </S.Item>
                 );
-                elementToUpdate.currentValue += increment;
-                return state;
-              });
-            };
-            const handleIncrementClick = makeButtonHandler(1);
-            const handleDecrementClick = makeButtonHandler(-1);
-            return (
-              <S.Item key={title}>
-                <S.ItemTitle>{title}</S.ItemTitle>
-                <NumberInput
-                  currentValue={currentValue}
-                  min={min}
-                  max={max}
-                  onIncrement={handleIncrementClick}
-                  onDecrement={handleDecrementClick}
-                  name={inputName}
-                />
-              </S.Item>
-            );
-          })}
-        </S.List>
-        {enableControls && (
-          <S.Controls>
-            <S.ResetButton
-              type="button"
-              isHidden={isResetHidden}
-              onClick={handleResetClick}
-            >
-              Очистить
-            </S.ResetButton>
-            <S.ApplyButton type="button" onClick={handleApplyClick}>
-              Применить
-            </S.ApplyButton>
-          </S.Controls>
-        )}
-      </S.ListContainer>
-    </S.Dropdown>
+              })}
+            </S.List>
+            {enableControls && (
+            <S.Controls>
+              <S.ResetButton
+                type="button"
+                isHidden={isResetHidden}
+                onClick={handleResetClick}
+              >
+                Очистить
+              </S.ResetButton>
+              <S.ApplyButton type="button" onClick={handleApplyClick}>
+                Применить
+              </S.ApplyButton>
+            </S.Controls>
+            )}
+          </S.ListContainer>
+        </S.Dropdown>
+      )}
+    </Field>
   );
 };
 
