@@ -1,4 +1,5 @@
 import FavoriteIcon from '@material-ui/icons/Favorite';
+
 import * as S from './LikeButton.styles';
 
 type LikeButtonProps = {
