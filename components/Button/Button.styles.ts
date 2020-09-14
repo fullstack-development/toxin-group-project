@@ -10,7 +10,6 @@ const Button = styled.button<ButtonProps>`
     const { isFilled } = props;
     return css`
       position: relative;
-      /* width: 100%; */
       box-sizing: border-box;
       display: flex;
       justify-content: center;
