@@ -15,6 +15,7 @@ const Button = styled.button`
       cursor: pointer;
 
       &:disabled {
+        cursor: auto;
         opacity: 0.38;
       }
     `;

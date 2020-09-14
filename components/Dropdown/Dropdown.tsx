@@ -3,7 +3,8 @@ import { Field } from 'react-final-form';
 
 import NumberInput from '../NumberInput/NumberInput';
 import * as S from './Dropdown.styles';
-import { getCorrectWordForm, WordForms } from './utils/getCorrectWord';
+import { WordForms } from './utils/getCorrectWord';
+import getResultStringPart from './utils/getResultStringPart';
 
 type Item = {
   title: string;
@@ -55,10 +56,6 @@ const Dropdown: React.FC<DropdownProps> = ({
   const dropdown = useRef(null);
 
   const applyChanges = (): void => {
-    function getResultStringPart(count: number, wordForms: WordForms): string {
-      return count && `${count} ${getCorrectWordForm(count, wordForms)}`;
-    }
-
     const resultStrings: string[] = Array.from(
       new Set(
         dropdownState.map((item, _, state) => {
