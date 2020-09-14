@@ -10,7 +10,7 @@ const InputWrapper = styled.div`
 `;
 
 const ButtonWrapper = styled.div`
-  max-width: 7.0714rem;
+  max-width: 7.1429rem;
   margin-bottom: 1.4286rem;
 `;
 

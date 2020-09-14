@@ -52,12 +52,10 @@ const Button = styled.button<ButtonProps>`
         }
       `}
 
-      /* TO DO */
-
-      /* &:hover,
+      &:hover,
       &:focus {
-        opacity: 0.5;
-      } */
+        background-image: ${gradients.primaryLight};
+      }
     `;
   }}
 `;

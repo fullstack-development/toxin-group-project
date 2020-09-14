@@ -18,6 +18,8 @@ export type Theme = {
   },
   gradients: {
     primary: string,
-    secondary: string
+    secondary: string,
+    primaryLight: string;
+    secondaryLight: string;
   }
 };

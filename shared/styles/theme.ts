@@ -27,6 +27,8 @@ const purpleThemePalette: Theme = {
   gradients: {
     primary: `linear-gradient(180deg, rgb(${primaryColorValue}) 0%, rgb(${primaryVariantColorValue}) 100%)`,
     secondary: `linear-gradient(180deg, rgb(${secondaryColorValue}) 0%, rgb(${secondaryVariantColorValue}) 100%)`,
+    primaryLight: `linear-gradient(180deg, rgba(${primaryColorValue}, 0.5) 0%, rgba(${primaryVariantColorValue}, 0.5) 100%)`,
+    secondaryLight: `linear-gradient(180deg, rgba(${secondaryColorValue}, 0.5) 0%, rgba(${secondaryVariantColorValue}, 0.5) 100%)`,
   },
 };
 
