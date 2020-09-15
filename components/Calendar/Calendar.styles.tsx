@@ -1,9 +1,9 @@
 import DayPicker from 'react-day-picker';
-import styled, { css } from 'styled-components';
 import { DayPickerProps } from 'react-day-picker/types/Props';
+import styled, { css } from 'styled-components';
 
 type Control = {
-  type: 'primary' | 'basic';
+  variant: 'primary' | 'basic';
   onClick: () => void;
 }
 
@@ -39,7 +39,7 @@ const CalendarControls = styled.div`
 const CalendarButton = styled.button<Control>`
   ${(props) => {
     const { colors, typography } = props.theme;
-    const { type } = props;
+    const { variant } = props;
 
     return css`
       border: none;
@@ -50,12 +50,12 @@ const CalendarButton = styled.button<Control>`
       font-weight: bold;
       text-transform: uppercase;
       cursor: pointer;
-      color: ${type === 'basic' ? colors.basicDark : colors.primary};
+      color: ${variant === 'basic' ? colors.basicDark : colors.primary};
     `;
   }}
 `;
 
-const Calendar = styled(DayPicker)<DayPickerProps>`
+const Calendar = styled(DayPicker) <DayPickerProps>`
   ${(props) => {
     const { colors, typography, gradients } = props.theme;
 
@@ -120,11 +120,15 @@ const Calendar = styled(DayPicker)<DayPickerProps>`
 
         &:not(.DayPicker-Day--start)
         :not(.DayPicker-Day--end)
+        :not(.DayPicker-Day--today)
         :hover {
           background: ${colors.basicLightest};
         }
-      }
 
+        &:hover {
+          border-radius: 50%;
+        }
+      }
 
       & .DayPicker-Day--selected {
         &.DayPicker-Day--today {
@@ -136,12 +140,19 @@ const Calendar = styled(DayPicker)<DayPickerProps>`
             width: 100%;
             height: 100%;
             position: absolute;
-            background: ${gradients.primary};
+            background: ${gradients.secondary};
             opacity: 1;
             top: 0;
             right: 0;
+            z-index: -1;
           }
         }
+      }
+
+      & .DayPicker-Day--start.DayPicker-Day--today:after,
+      & .DayPicker-Day--end.DayPicker-Day--today:after {
+        opacity: .25;
+        width: 50%;
       }
 
       & .DayPicker-NavButton {

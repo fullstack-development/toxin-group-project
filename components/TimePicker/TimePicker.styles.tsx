@@ -30,4 +30,8 @@ const FormElement = styled.div<FormElement>`
   }}
 `;
 
-export { Form, ExpandIcon, FormElement };
+export {
+  Form,
+  ExpandIcon,
+  FormElement,
+};

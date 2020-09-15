@@ -43,7 +43,7 @@ const Calendar: React.FC<Calendar> = (props: Calendar) => {
     }
   };
 
-  const handleDayClick = (day) => {
+  const handleDayClick = (day): void => {
     const range: daysSelection = DateUtils.addDayToRange(day, selectedDays);
 
     handleSelectDays(range);
@@ -51,13 +51,13 @@ const Calendar: React.FC<Calendar> = (props: Calendar) => {
     if (has.call(props, 'onSelectDate')) onSelectDate(range);
   };
 
-  const handleApplyButtonClick = (e) => {
+  const handleApplyButtonClick = (e): void => {
     e.preventDefault();
 
     if (has.call(props, 'onApply')) onApply();
   };
 
-  const clearSelectedDate = (e) => {
+  const clearSelectedDate = (e): void => {
     e.preventDefault();
 
     const clearedData = {
@@ -84,8 +84,8 @@ const Calendar: React.FC<Calendar> = (props: Calendar) => {
         onDayMouseEnter={handleDayMouseEnter}
       />
       <S.CalendarControls>
-        <S.CalendarButton type="basic" onClick={clearSelectedDate}> Очистить </S.CalendarButton>
-        <S.CalendarButton type="primary" onClick={handleApplyButtonClick}> Применить </S.CalendarButton>
+        <S.CalendarButton variant="basic" onClick={clearSelectedDate}> Очистить </S.CalendarButton>
+        <S.CalendarButton variant="primary" onClick={handleApplyButtonClick}> Применить </S.CalendarButton>
       </S.CalendarControls>
     </S.CalendarContainer>
   );
