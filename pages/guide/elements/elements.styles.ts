@@ -9,6 +9,11 @@ const InputWrapper = styled.div`
   margin-bottom: 0.45rem;
 `;
 
+const DropdownWrapper = styled.div`
+  width: 18.9286rem;
+  margin-bottom: 1.4286rem;
+`;
+
 const TextButtonWrapper = styled.span`
   margin-right: 1.4286rem;
 `;
@@ -34,4 +39,5 @@ export {
   ErrorMessage,
   CheckboxWrapper,
   BulletListWrapper,
+  DropdownWrapper,
 };
