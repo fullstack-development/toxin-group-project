@@ -1,10 +1,12 @@
-import { HTMLProps } from 'react';
+import { ComponentPropsWithoutRef, ElementType } from 'react';
 
 import * as S from './TextButton.styles';
 
 type TextButtonProps = {
   secondary?: boolean;
-} & HTMLProps<HTMLButtonElement>;
+  as?: ElementType;
+} & ComponentPropsWithoutRef<'button'>
+& ComponentPropsWithoutRef<'a'>;
 
 const TextButton: React.FC<TextButtonProps> = ({
   secondary = false,
@@ -13,7 +15,7 @@ const TextButton: React.FC<TextButtonProps> = ({
   const tag = rest.href ? 'a' : 'button';
 
   return (
-    <S.TextButton isSecondary={secondary} as={tag} {...rest} />
+    <S.TextButton {...rest} isSecondary={secondary} as={tag} />
   );
 };
 
