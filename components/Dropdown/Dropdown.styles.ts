@@ -138,12 +138,6 @@ const ResetButton = styled(S.TextButton)<ResetButtonProps>`
   }}
 `;
 
-// const ApplyButton = styled(S.TextButton)``;
-// const ApplyButton = (styled
-// ((props) => <TextButton secondary {...rest} />)<
-// {ResetButtonProps} >``;)
-// const ApplyButton = () => {return (<S.TextButton secondary/>)}
-
 export {
   Dropdown,
   Result,
@@ -153,6 +147,5 @@ export {
   ListContainer,
   Controls,
   ResetButton,
-  // ApplyButton,
   ExpandIcon,
 };

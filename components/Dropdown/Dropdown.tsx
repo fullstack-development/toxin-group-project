@@ -1,4 +1,6 @@
-import { useState, useRef, useEffect } from 'react';
+import {
+  useState, useRef, useEffect, MouseEvent,
+} from 'react';
 import { Field } from 'react-final-form';
 
 import NumberInput from '../NumberInput/NumberInput';
@@ -126,8 +128,8 @@ const Dropdown: React.FC<DropdownProps> = ({
 
                 const makeButtonHandler = (
                   increment: number,
-                ): ((e: MouseEvent) => void
-              ) => (e: MouseEvent): void => {
+                ): ((e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => void
+              ) => (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>): void => {
                   setDropdownState((prevState) => {
                     const state = [...prevState];
                     const elementToUpdate = state.find(

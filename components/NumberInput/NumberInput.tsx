@@ -1,3 +1,5 @@
+import { MouseEvent } from 'react';
+
 import * as S from './NumberInput.styles';
 
 type NumberInputProps = {
@@ -5,8 +7,8 @@ type NumberInputProps = {
   max: number;
   currentValue: number;
   name: string;
-  onIncrement: () => void;
-  onDecrement: () => void;
+  onIncrement: (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => void;
+  onDecrement: (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => void;
 }
 
 const NumberInput: React.FC<NumberInputProps> = ({
