@@ -5,6 +5,7 @@ import BulletList from 'components/BulletList/BulletList';
 import CheckboxesList from 'components/CheckboxesList/CheckboxesList';
 import roomOptions from 'components/CheckboxesList/CheckboxesListData.json';
 import Input from 'components/Input/Input';
+import TextButton from 'components/TextButton/TextButton';
 import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators/';
 
 import * as S from './elements.styles';
@@ -71,6 +72,14 @@ class Elements extends React.Component {
             </form>
           )}
         />
+        <S.TextButtonWrapper>
+          <TextButton href="https://google.com">Click me</TextButton>
+        </S.TextButtonWrapper>
+        <S.TextButtonWrapper>
+          <TextButton secondary>
+            Click me
+          </TextButton>
+        </S.TextButtonWrapper>
         <S.BulletListWrapper>
           <BulletList
             items={[

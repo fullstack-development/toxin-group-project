@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
 import MaskedInput from 'react-text-mask';
+import styled, { css } from 'styled-components';
 
 const Input = styled.div`
   width: 100%;

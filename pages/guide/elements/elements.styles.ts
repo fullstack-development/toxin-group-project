@@ -9,6 +9,10 @@ const InputWrapper = styled.div`
   margin-bottom: 0.45rem;
 `;
 
+const TextButtonWrapper = styled.span`
+  margin-right: 1.4286rem;
+`;
+
 const CheckboxWrapper = styled.div`
   width: 15.8571rem;
   margin-bottom: 0.45rem;
@@ -25,6 +29,7 @@ const BulletListWrapper = styled.div`
 
 export {
   Container,
+  TextButtonWrapper,
   InputWrapper,
   ErrorMessage,
   CheckboxWrapper,
