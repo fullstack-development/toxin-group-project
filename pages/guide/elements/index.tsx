@@ -2,6 +2,8 @@ import React from 'react';
 import { Form, Field } from 'react-final-form';
 
 import BulletList from 'components/BulletList/BulletList';
+import CheckboxesList from 'components/CheckboxesList/CheckboxesList';
+import roomOptions from 'components/CheckboxesList/CheckboxesListData.json';
 import Input from 'components/Input/Input';
 import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators/';
 
@@ -63,6 +65,9 @@ class Elements extends React.Component {
                   )}
                 />
               </S.InputWrapper>
+              <S.CheckboxWrapper>
+                <CheckboxesList roomOptions={roomOptions} />
+              </S.CheckboxWrapper>
             </form>
           )}
         />

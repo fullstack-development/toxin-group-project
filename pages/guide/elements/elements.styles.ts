@@ -9,6 +9,11 @@ const InputWrapper = styled.div`
   margin-bottom: 0.45rem;
 `;
 
+const CheckboxWrapper = styled.div`
+  width: 15.8571rem;
+  margin-bottom: 0.45rem;
+`;
+
 const ErrorMessage = styled.div`
   font-size: ${(props) => props.theme.error.fontSize};
   color: ${(props) => props.theme.error.color};
@@ -19,5 +24,9 @@ const BulletListWrapper = styled.div`
 `;
 
 export {
-  Container, InputWrapper, ErrorMessage, BulletListWrapper,
+  Container,
+  InputWrapper,
+  ErrorMessage,
+  CheckboxWrapper,
+  BulletListWrapper,
 };
