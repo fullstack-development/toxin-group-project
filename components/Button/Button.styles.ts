@@ -4,31 +4,25 @@ import { ButtonProps } from './Button.types';
 
 const commonStyles = css`
   ${(props: ThemeProps<any> & ButtonProps) => {
-    const { gradients, colors } = props.theme;
+    const { gradients, colors, typography } = props.theme;
     const { isFilled } = props;
     return css`
-      width: min-content;
+      width: max-content;
       position: relative;
       box-sizing: border-box;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 1.0714rem 1.1428rem 1rem 1.2143rem;
+      padding: 14.9996px 18.9992px 14px 19.0002px;
       white-space: nowrap;
       text-align: center;
       background-color: transparent;
       border: 0;
       z-index: 1;
       border-radius: 1.5714rem;
-      font-family: "Montserrat";
+      font: 700 0.8571rem ${typography.fontName};
       background-image: ${gradients.primary};
-      ${isFilled
-    ? css`
-          color: ${colors.defaultBackground};
-        `
-    : css`
-          color: ${colors.primary};
-      `}
+      color: ${isFilled ? colors.defaultBackground : colors.primary};
       font-weight: 700;
       text-transform: uppercase;
       text-decoration: none;
