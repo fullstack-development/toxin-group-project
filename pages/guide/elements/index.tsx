@@ -69,7 +69,7 @@ class Elements extends React.Component {
                 />
               </S.InputWrapper>
               <S.ButtonWrapper>
-                <Button as="a" href="https://google.com">click me</Button>
+                <Button href="https://google.com">click me</Button>
               </S.ButtonWrapper>
               <S.ButtonWrapper>
                 <Button type="button" isFilled>click me</Button>

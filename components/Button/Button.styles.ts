@@ -1,9 +1,9 @@
-import styled, { css } from 'styled-components';
+import styled, { css, ThemeProps } from 'styled-components';
 
-import { CustomProps } from './Button.types';
+import { ButtonProps } from './Button.types';
 
-const Button = styled.button<CustomProps>`
-  ${(props) => {
+const commonStyles = css`
+  ${(props: ThemeProps<any> & ButtonProps) => {
     const { gradients, colors } = props.theme;
     const { isFilled } = props;
     return css`
@@ -59,4 +59,12 @@ const Button = styled.button<CustomProps>`
   }}
 `;
 
-export { Button };
+const Button = styled.button<ButtonProps>`
+  ${commonStyles}
+`;
+
+const Link = styled.a<ButtonProps>`
+  ${commonStyles}
+`;
+
+export { Button, Link };

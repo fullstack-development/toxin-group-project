@@ -1,15 +1,8 @@
-import { ElementType } from 'react';
-
-import { MergeElementProps } from 'shared/helpers/mergeElementProps/mergeElementProps';
+import { ComponentPropsWithRef } from 'react';
 
 export type CustomProps = {
   isFilled?: boolean;
+  href?: string;
 }
 
-export type ButtonProps<P extends ElementType = 'button'> = {
-  as?: P;
-} & MergeElementProps<P, CustomProps>
-
-export type LinkProps<P extends ElementType = 'a'> = {
-  as?: P;
-} & MergeElementProps<P, CustomProps>
+export type ButtonProps = CustomProps & ComponentPropsWithRef<'a'> & ComponentPropsWithRef<'button'>
