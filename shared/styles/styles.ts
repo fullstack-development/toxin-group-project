@@ -13,6 +13,8 @@ const GlobalStyle = createGlobalStyle<Props>`
     return css`
       ${fontFace('Montserrat', 'montserrat-regular')}
       ${fontFace('Montserrat', 'montserrat-bold', 700)}
+      ${fontFace('Quicksand', 'quicksand-regular')}
+      ${fontFace('Quicksand', 'quicksand-bold', 700)}
 
       * {
         padding: 0;
