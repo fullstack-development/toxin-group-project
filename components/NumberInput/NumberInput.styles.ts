@@ -23,7 +23,7 @@ const Button = styled.button`
 `;
 
 const Input = styled.input`
-  max-width: 2.5rem;
+  max-width: 2.2857rem;
   border: 0;
   font: inherit;
   text-align: center;

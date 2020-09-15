@@ -1,5 +1,9 @@
 import ExpandMore from '@material-ui/icons/ExpandMore';
+import React from 'react';
 import styled, { css } from 'styled-components';
+
+import * as S from 'components/TextButton/TextButton.styles';
+// import TextButton from '@components/TextButton/TextButton';
 
 type ListContainerProps = {
   isOpen: boolean;
@@ -31,8 +35,7 @@ const Result = styled.button`
     return css`
       position: relative;
       width: 100%;
-      padding: 0.9643rem;
-      padding-right: 2.5rem;
+      padding: 0.9643rem 2.5rem 0.8571rem 0.9286rem;
       border-radius: 0.2857rem 0.2857rem 0 0;
       border: 0.0714rem solid ${colors.basicLight};
       text-align: left;
@@ -93,7 +96,7 @@ const List = styled.ul`
   ${(props) => {
     const { typography } = props.theme;
     return css`
-      padding-bottom: 0.3571rem;
+      padding-bottom: 1.2857rem;
       font: 700 0.8571rem ${typography.fontName};
       line-height: 1.0714rem;
       text-transform: uppercase;
@@ -124,7 +127,7 @@ const Controls = styled.div`
   margin-bottom: 0.9286rem;
 `;
 
-const ResetButton = styled.button<ResetButtonProps>`
+const ResetButton = styled(S.TextButton)<ResetButtonProps>`
   ${(props) => {
     const { isHidden } = props;
 
@@ -134,7 +137,12 @@ const ResetButton = styled.button<ResetButtonProps>`
       `;
   }}
 `;
-const ApplyButton = styled.button``;
+
+// const ApplyButton = styled(S.TextButton)``;
+// const ApplyButton = (styled
+// ((props) => <TextButton secondary {...rest} />)<
+// {ResetButtonProps} >``;)
+// const ApplyButton = () => {return (<S.TextButton secondary/>)}
 
 export {
   Dropdown,
@@ -145,6 +153,6 @@ export {
   ListContainer,
   Controls,
   ResetButton,
-  ApplyButton,
+  // ApplyButton,
   ExpandIcon,
 };

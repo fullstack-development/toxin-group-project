@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { Field } from 'react-final-form';
 
 import NumberInput from '../NumberInput/NumberInput';
+import ApplyButton from '../TextButton/TextButton';
 import * as S from './Dropdown.styles';
 import { WordForms } from './utils/getCorrectWord';
 import getResultStringPart from './utils/getResultStringPart';
@@ -163,9 +164,9 @@ const Dropdown: React.FC<DropdownProps> = ({
               >
                 Очистить
               </S.ResetButton>
-              <S.ApplyButton type="button" onClick={handleApplyClick}>
+              <ApplyButton secondary type="button" onClick={handleApplyClick}>
                 Применить
-              </S.ApplyButton>
+              </ApplyButton>
             </S.Controls>
             )}
           </S.ListContainer>
