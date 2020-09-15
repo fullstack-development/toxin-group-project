@@ -6,7 +6,11 @@ const Container = styled.div`
 
 const InputWrapper = styled.div`
   width: 22.8571rem;
-  margin-bottom: 0.45rem;
+  margin: 1rem 0;
+`;
+
+const LikeButtonWrapper = styled.div`
+  margin: 1rem 0;
 `;
 
 const DropdownWrapper = styled.div`
@@ -36,6 +40,7 @@ export {
   Container,
   TextButtonWrapper,
   InputWrapper,
+  LikeButtonWrapper,
   ErrorMessage,
   CheckboxWrapper,
   BulletListWrapper,

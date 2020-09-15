@@ -6,13 +6,14 @@ import CheckboxesList from 'components/CheckboxesList/CheckboxesList';
 import roomOptions from 'components/CheckboxesList/CheckboxesListData.json';
 import Dropdown from 'components/Dropdown/Dropdown';
 import Input from 'components/Input/Input';
+import LikeButtonContainer from 'components/LikeButton/LikeButtonContainer';
 import TextButton from 'components/TextButton/TextButton';
 import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators/';
 
 import * as S from './elements.styles';
 
 class Elements extends React.Component {
-  handleFormSubmit = () => {};
+  handleFormSubmit = () => { };
 
   render() {
     return (
@@ -67,6 +68,9 @@ class Elements extends React.Component {
                   )}
                 />
               </S.InputWrapper>
+              <S.LikeButtonWrapper>
+                <LikeButtonContainer likes={2} />
+              </S.LikeButtonWrapper>
               <S.DropdownWrapper>
                 <Dropdown
                   placeholder="Сколько гостей"
