@@ -1,0 +1,5 @@
+[
+  { "name": "roomOption", "value": "smoke", "label": "Можно курить" },
+  { "name": "roomOption", "value": "pets", "label": "Можно с питомцами" },
+  { "name": "roomOption", "value": "guests", "label": "Можно пригласить гостей (до 10 человек)" }
+]

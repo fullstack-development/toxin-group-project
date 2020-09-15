@@ -10,11 +10,13 @@
     "paths": {
       "@components/*": ["components/*"],
       "@shared/*": ["shared/*"],
+      "@api/*": ["api/*"],
     },
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
     "forceConsistentCasingInFileNames": true,
+    "experimentalDecorators": true,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",

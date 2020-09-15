@@ -3,7 +3,11 @@ import { Form, Field } from 'react-final-form';
 
 import BulletList from 'components/BulletList/BulletList';
 import Button from 'components/Button/Button';
+import CheckboxesList from 'components/CheckboxesList/CheckboxesList';
+import roomOptions from 'components/CheckboxesList/CheckboxesListData.json';
+import Dropdown from 'components/Dropdown/Dropdown';
 import Input from 'components/Input/Input';
+import TextButton from 'components/TextButton/TextButton';
 import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators/';
 
 import * as S from './elements.styles';
@@ -70,9 +74,68 @@ class Elements extends React.Component {
               <S.ButtonWrapper>
                 <Button type="button" isFilled>click me</Button>
               </S.ButtonWrapper>
+              <S.DropdownWrapper>
+                <Dropdown
+                  placeholder="Сколько гостей"
+                  enableControls={false}
+                  name="guests"
+                  items={[
+                    {
+                      title: 'Спальни',
+                      wordForms: ['спальня', 'спальни', 'спален'],
+                    },
+                    {
+                      title: 'Кровати',
+                      wordForms: ['кровать', 'кровати', 'кроватей'],
+                    },
+                    {
+                      title: 'Ванные комнаты',
+                      wordForms: ['ванная', 'ванные', 'ванных'],
+                    },
+                  ]}
+                />
+              </S.DropdownWrapper>
+              <S.DropdownWrapper>
+                <Dropdown
+                  placeholder="Сколько гостей"
+                  name="guests"
+                  enableControls
+                  groups={[
+                    {
+                      name: 'guests',
+                      wordForms: ['гость', 'гостя', 'гостей'],
+                    },
+                  ]}
+                  items={[
+                    {
+                      title: 'взрослые',
+                      groupName: 'guests',
+                    },
+                    {
+                      title: 'дети',
+                      groupName: 'guests',
+                    },
+                    {
+                      title: 'младенцы',
+                      wordForms: ['младенец', 'младенца', 'младенцев'],
+                    },
+                  ]}
+                />
+              </S.DropdownWrapper>
+              <S.CheckboxWrapper>
+                <CheckboxesList roomOptions={roomOptions} />
+              </S.CheckboxWrapper>
             </form>
           )}
         />
+        <S.TextButtonWrapper>
+          <TextButton href="https://google.com">Click me</TextButton>
+        </S.TextButtonWrapper>
+        <S.TextButtonWrapper>
+          <TextButton secondary>
+            Click me
+          </TextButton>
+        </S.TextButtonWrapper>
         <S.BulletListWrapper>
           <BulletList
             items={[

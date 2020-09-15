@@ -31,9 +31,12 @@ module.exports = {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx', '.tsx'] }],
     'react/react-in-jsx-scope': 'off',
     'react/state-in-constructor': 'off',
+    'class-methods-use-this': 'off',
     'react/jsx-props-no-spreading': 'off',
     'import/extensions': ['error', { ts: 'never' }],
     '@typescript-eslint/no-unused-vars': [2, { args: 'none' }],
+    'no-unused-expressions': 'off',
+    'lines-between-class-members': 'off',
     'import/order': ['warn',
       {
         groups: [['builtin', 'external'], ['internal'], ['parent', 'sibling', 'index']],
