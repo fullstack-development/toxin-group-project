@@ -1,9 +1,7 @@
 import ExpandMore from '@material-ui/icons/ExpandMore';
-import React from 'react';
 import styled, { css } from 'styled-components';
 
 import * as S from 'components/TextButton/TextButton.styles';
-// import TextButton from '@components/TextButton/TextButton';
 
 type ListContainerProps = {
   isOpen: boolean;
@@ -12,21 +10,6 @@ type ListContainerProps = {
 type ResetButtonProps = {
   isHidden: boolean;
 }
-
-const Dropdown = styled.div`
-  ${(props) => {
-    const { colors } = props.theme;
-
-    return css`
-      position: relative;
-
-      &:hover > button,
-      &:focus > button {
-        border: 0.0714rem solid ${colors.basic};
-      }
-    `;
-  }}
-`;
 
 const Result = styled.button`
   ${(props) => {
@@ -56,6 +39,21 @@ const Result = styled.button`
       &:focus {
         border: 0.0714rem solid ${colors.basic};
         outline: none;
+      }
+    `;
+  }}
+`;
+
+const Dropdown = styled.div`
+  ${(props) => {
+    const { colors } = props.theme;
+
+    return css`
+      position: relative;
+
+      &:hover > ${Result},
+      &:focus > ${Result} {
+        border: 0.0714rem solid ${colors.basic};
       }
     `;
   }}
