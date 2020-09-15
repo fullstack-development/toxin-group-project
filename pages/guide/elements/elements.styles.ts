@@ -36,6 +36,11 @@ const BulletListWrapper = styled.div`
   max-width: 18.5714rem;
 `;
 
+const BenefitsWrapper = styled.div`
+  max-width: 19.9rem;
+  margin: 1rem 0;
+`;
+
 export {
   Container,
   TextButtonWrapper,
@@ -45,4 +50,5 @@ export {
   CheckboxWrapper,
   BulletListWrapper,
   DropdownWrapper,
+  BenefitsWrapper,
 };
