@@ -14,4 +14,30 @@ const DropdownWrapper = styled.div`
   margin-bottom: 1.4286rem;
 `;
 
-export { Container, InputWrapper, DropdownWrapper };
+const TextButtonWrapper = styled.span`
+  margin-right: 1.4286rem;
+`;
+
+const CheckboxWrapper = styled.div`
+  width: 15.8571rem;
+  margin-bottom: 0.45rem;
+`;
+
+const ErrorMessage = styled.div`
+  font-size: ${(props) => props.theme.error.fontSize};
+  color: ${(props) => props.theme.error.color};
+`;
+
+const BulletListWrapper = styled.div`
+  max-width: 18.5714rem;
+`;
+
+export {
+  Container,
+  TextButtonWrapper,
+  InputWrapper,
+  ErrorMessage,
+  CheckboxWrapper,
+  BulletListWrapper,
+  DropdownWrapper,
+};
