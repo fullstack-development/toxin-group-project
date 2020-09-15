@@ -5,7 +5,6 @@ import visuallyHidden from 'shared/styles/mixins/visually-hidden';
 const Checkbox = styled.label`
   display: inline-flex;
   cursor: pointer;
-  user-select: none;
 `;
 
 const HiddenCheckbox = styled.input`
@@ -53,8 +52,12 @@ const Checkmark = styled.span`
 const Label = styled.span`
   margin: auto 0 auto 0.7143rem;
   line-height: 1.38;
+  user-select: none;
 `;
 
 export {
-  Checkbox, HiddenCheckbox, Checkmark, Label,
+  Checkbox,
+  HiddenCheckbox,
+  Checkmark,
+  Label,
 };
