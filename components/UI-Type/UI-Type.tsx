@@ -6,17 +6,13 @@ type Props = {
   fontSize: string;
 };
 
-const UIType: React.FC<Props> = (props: Props) => {
-  const { type, example, fontSize } = props;
-
-  return (
-    <S.Type>
-      <S.Title titleFontSize={fontSize}>{type}</S.Title>
-      <S.Example exampleFontSize={fontSize} exampleType={type}>
-        {example}
-      </S.Example>
-    </S.Type>
-  );
-};
+const UIType: React.FC<Props> = ({ type, example, fontSize }: Props) => (
+  <S.Type>
+    <S.Title titleFontSize={fontSize}>{type}</S.Title>
+    <S.Example exampleFontSize={fontSize} exampleType={type}>
+      {example}
+    </S.Example>
+  </S.Type>
+);
 
 export default UIType;

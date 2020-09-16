@@ -6,18 +6,14 @@ type Props = {
   opacity: number;
 };
 
-const UIColor: React.FC<Props> = (props: Props) => {
-  const { color, title, opacity } = props;
-
-  return (
-    <S.Color>
-      <S.Palette paletteColor={color} paletteOpacity={opacity} />
-      <S.Description>
-        <S.Title>{title}</S.Title>
-        <div>{color}</div>
-      </S.Description>
-    </S.Color>
-  );
-};
+const UIColor: React.FC<Props> = ({ color, title, opacity }: Props) => (
+  <S.Color>
+    <S.Palette paletteColor={color} paletteOpacity={opacity} />
+    <S.Description>
+      <S.Title>{title}</S.Title>
+      <div>{color}</div>
+    </S.Description>
+  </S.Color>
+);
 
 export default UIColor;
