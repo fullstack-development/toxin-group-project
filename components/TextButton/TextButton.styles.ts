@@ -1,7 +1,7 @@
 import { lighten } from 'polished';
 import styled, { css } from 'styled-components';
 
-import { TextButtonProps } from './interfaces';
+import { TextButtonProps } from './TextButton.types';
 
 const TextButton = styled.button<TextButtonProps>`
   ${(props) => {
