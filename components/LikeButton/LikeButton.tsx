@@ -3,10 +3,10 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import * as S from './LikeButton.styles';
 
 type LikeButtonProps = {
-  count: number,
-  isActive: boolean,
+  count: number;
+  isActive: boolean;
   onCheckboxChange: (e: React.ChangeEvent) => void;
-}
+};
 
 const LikeButton: React.FC<LikeButtonProps> = ({
   count,
@@ -15,9 +15,7 @@ const LikeButton: React.FC<LikeButtonProps> = ({
 }: LikeButtonProps) => (
   <S.LikeLabel isActive={isActive}>
     <FavoriteIcon />
-    <S.LikeSpan>
-      {count}
-    </S.LikeSpan>
+    <S.LikeSpan>{count}</S.LikeSpan>
     <S.LikeInput type="checkbox" onChange={onCheckboxChange} />
   </S.LikeLabel>
 );

@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 type LikeSpan = {
   isActive: boolean;
-}
+};
 
 const LikeInput = styled.input`
   width: 0;
@@ -59,11 +59,7 @@ const LikeSpan = styled.span`
       font-size: 0.7rem;
       user-select: none;
     `;
-  }
-}`;
+  }}
+`;
 
-export {
-  LikeInput,
-  LikeLabel,
-  LikeSpan,
-};
+export { LikeInput, LikeLabel, LikeSpan };

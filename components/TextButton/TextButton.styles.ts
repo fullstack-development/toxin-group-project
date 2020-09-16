@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 type TextButtonProps = {
   isSecondary?: boolean;
   href?: string;
-}
+};
 
 const TextButton = styled.button<TextButtonProps>`
   ${(props) => {

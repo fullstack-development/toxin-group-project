@@ -84,10 +84,4 @@ const ErrorMessage = styled.p`
   }}
 `;
 
-export {
-  Input,
-  LabelText,
-  MaskedField,
-  Field,
-  ErrorMessage,
-};
+export { Input, LabelText, MaskedField, Field, ErrorMessage };

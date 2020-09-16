@@ -13,7 +13,7 @@ import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/va
 import * as S from './elements.styles';
 
 class Elements extends React.Component {
-  handleFormSubmit = () => { };
+  handleFormSubmit = () => {};
 
   render() {
     return (
@@ -129,9 +129,7 @@ class Elements extends React.Component {
           <TextButton href="https://google.com">Click me</TextButton>
         </S.TextButtonWrapper>
         <S.TextButtonWrapper>
-          <TextButton secondary>
-            Click me
-          </TextButton>
+          <TextButton secondary>Click me</TextButton>
         </S.TextButtonWrapper>
         <S.BulletListWrapper>
           <BulletList

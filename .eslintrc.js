@@ -1,3 +1,4 @@
+/* eslint-disable */
 module.exports = {
   settings: {
     'import/resolver': {
@@ -7,7 +8,7 @@ module.exports = {
       },
       "typescript": {
         "alwaysTryTypes": true,
-        "directory": "./tsconfig.json"
+        "project": "./tsconfig.json"
       }
     },
   },
@@ -16,11 +17,7 @@ module.exports = {
     es2020: true,
   },
   extends: [
-    'airbnb-typescript',
-    'plugin:react/recommended',
-    'plugin:@typescript-eslint/recommended',
-    'prettier',
-    'prettier/@typescript-eslint',
+    'airbnb-typescript-prettier',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -34,7 +31,6 @@ module.exports = {
   plugins: [
     'react',
     '@typescript-eslint',
-    'prettier'
   ],
   rules: {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx', '.tsx'] }],
@@ -46,6 +42,7 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': [2, { args: 'none' }],
     'no-unused-expressions': 'off',
     'lines-between-class-members': 'off',
+    "@typescript-eslint/lines-between-class-members": 'off',
     'import/order': ['warn',
       {
         groups: [['builtin', 'external'], ['internal'], ['parent', 'sibling', 'index']],
@@ -53,8 +50,9 @@ module.exports = {
         alphabetize: { order: 'asc', caseInsensitive: true },
       },
     ],
+    'import/extensions': ['error', 'never', { 'json': 'always' }],
     'import/prefer-default-export': 'off',
     'jsx-a11y/label-has-associated-control': ['error', { assert: 'either' }],
-    'prettier/prettier': 2
+    'prettier/prettier': 2,
   },
 };

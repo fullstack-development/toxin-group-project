@@ -5,7 +5,7 @@ import LikeButton from './LikeButton';
 type LikeButtonContainer = {
   isPressedButton?: boolean;
   likes?: number;
-}
+};
 
 const LikeButtonContainer: React.FC<LikeButtonContainer> = (props: LikeButtonContainer) => {
   const { likes, isPressedButton } = props;
