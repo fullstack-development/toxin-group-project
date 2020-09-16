@@ -1,6 +1,7 @@
 import { css } from 'styled-components';
 
 const materialIcons = css`
+  /* stylelint-disable font-family-no-missing-generic-family-keyword */
   font-family: 'Material Icons';
   font-style: normal;
   text-rendering: optimizeLegibility;
