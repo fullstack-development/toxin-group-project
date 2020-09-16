@@ -11,7 +11,6 @@ import TextButton from 'components/TextButton/TextButton';
 import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators/';
 
 import * as S from './elements.styles';
-import { truncate } from 'fs';
 
 class Elements extends React.Component {
   handleFormSubmit = () => { };
