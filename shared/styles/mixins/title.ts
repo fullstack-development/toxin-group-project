@@ -11,6 +11,7 @@ const h1 = css`
   font-size: 1.7rem;
   line-height: 2rem;
 `;
+
 const h2 = css`
   color: ${colors.basicDarkest};
   font-weight: bold;
@@ -18,6 +19,7 @@ const h2 = css`
   font-size: 1.385rem;
   line-height: 1.9rem;
 `;
+
 const h3 = css`
   color: ${colors.basicDarkest};
   font-weight: bold;
@@ -25,12 +27,6 @@ const h3 = css`
   font-size: 0.87rem;
   line-height: 1.25rem;
   text-transform: uppercase;
-`;
-const body = css`
-  font-family: ${typography.fontName};
-  color: rgba(31,32,65,0.75);
-  line-height: 1.7rem;
-  font-size: 1rem;
 `;
 
 export {

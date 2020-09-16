@@ -9,7 +9,7 @@ const secondaryVariantColorValue = '102, 210, 234';
 const purpleThemePalette: Theme = {
   typography: {
     fontName: 'Montserrat, Arial, sans-serif',
-    secondaryFontName: 'Quicksand, Arial, sans-serif',
+    secondaryFontName: '"Open Sans", Arial, sans-serif',
     fontSize: '14px',
   },
   colors: {
