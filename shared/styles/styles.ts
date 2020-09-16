@@ -11,8 +11,8 @@ const GlobalStyle = createGlobalStyle<Props>`
   ${(props) => {
     const { colors, typography } = props.theme;
     return css`
-      ${fontFace('Montserrat', 'montserrat-regular')}
       ${fontFace('Material Icons', 'material-icons-regular')}
+      ${fontFace('Montserrat', 'montserrat-regular')}
       ${fontFace('Montserrat', 'montserrat-bold', 700)}
 
       * {
