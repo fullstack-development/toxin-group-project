@@ -1,22 +1,17 @@
-import { ComponentPropsWithoutRef, ElementType } from 'react';
-
+import { TextButtonProps } from './interfaces';
 import * as S from './TextButton.styles';
 
-type TextButtonProps = {
-  secondary?: boolean;
-  as?: ElementType;
-} & ComponentPropsWithoutRef<'button'>
-& ComponentPropsWithoutRef<'a'>;
-
 const TextButton: React.FC<TextButtonProps> = ({
-  secondary = false,
+  isSecondary = false,
+  isLink,
   ...rest
-}: TextButtonProps) => {
-  const tag = rest.href ? 'a' : 'button';
-
-  return (
-    <S.TextButton {...rest} isSecondary={secondary} as={tag} />
-  );
-};
+}: TextButtonProps) => (
+  <S.TextButton
+    as={isLink ? 'a' : 'button'}
+    isSecondary={isSecondary}
+    isLink={isLink}
+    {...rest}
+  />
+);
 
 export default TextButton;
