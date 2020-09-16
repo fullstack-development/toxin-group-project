@@ -11,7 +11,7 @@ const UIColor: React.FC<Props> = (props: Props) => {
 
   return (
     <S.Color>
-      <S.Palette color={color} opacity={opacity} />
+      <S.Palette paletteColor={color} paletteOpacity={opacity} />
       <S.Description>
         <S.Title>{title}</S.Title>
         <div>{color}</div>

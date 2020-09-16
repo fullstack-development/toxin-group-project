@@ -11,8 +11,8 @@ const UIType: React.FC<Props> = (props: Props) => {
 
   return (
     <S.Type>
-      <S.Title fontSize={fontSize}>{type}</S.Title>
-      <S.Example fontSize={fontSize} type={type}>
+      <S.Title titleFontSize={fontSize}>{type}</S.Title>
+      <S.Example exampleFontSize={fontSize} exampleType={type}>
         {example}
       </S.Example>
     </S.Type>

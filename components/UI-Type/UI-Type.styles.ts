@@ -1,5 +1,14 @@
 import styled, { css } from 'styled-components';
 
+type TitleProps = {
+  titleFontSize: string;
+};
+
+type ExampleProps = {
+  exampleFontSize: string;
+  exampleType: string;
+};
+
 const Type = styled.div`
   display: grid;
   grid-template-rows: auto;
@@ -7,28 +16,28 @@ const Type = styled.div`
   grid-gap: 3.571rem 2.143rem;
 `;
 
-const Title = styled.div`
-  ${(props: { fontSize: string , theme}) => {
-    const { fontSize } = props;
+const Title = styled.div<TitleProps>`
+  ${(props) => {
+    const { titleFontSize } = props;
     const { colors } = props.theme;
     return css`
-      font-size: ${fontSize};
+      font-size: ${titleFontSize};
       text-align: right;
       color: ${colors.basicLight};
     `;
   }}
 `;
 
-const Example = styled.div`
-  ${(props: { type: string, fontSize: string, theme }) => {
-    const { type, fontSize } = props;
+const Example = styled.div<ExampleProps>`
+  ${(props) => {
+    const { exampleType, exampleFontSize } = props;
     const { colors } = props.theme;
     return css`
-      font-weight: ${type === 'Body' ? 'normal' : 'bold'};
-      line-height: ${type === 'Body' ? '1.65' : '1.27'};
-      font-size: ${fontSize};
-      font-family: ${type === 'H3' || type === 'Body' ? 'Montserrat' : 'Quicksand'}, Arial, sans-serif;
-      text-transform: ${type === 'H3' ? 'uppercase' : 'none'};
+      font-weight: ${exampleType === 'Body' ? 'normal' : 'bold'};
+      line-height: ${exampleType === 'Body' ? '1.65' : '1.27'};
+      font-size: ${exampleFontSize};
+      font-family: ${exampleType === 'H3' || exampleType === 'Body' ? 'Montserrat' : 'Quicksand'}, Arial, sans-serif;
+      text-transform: ${exampleType === 'H3' ? 'uppercase' : 'none'};
       color: ${colors.basicDarkest};
     `;
   }}
