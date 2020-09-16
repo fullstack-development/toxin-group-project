@@ -36,6 +36,9 @@ const BulletListWrapper = styled.div`
   max-width: 18.5714rem;
 `;
 
+const CommentsWrapper = styled.div`
+`;
+
 export {
   Container,
   TextButtonWrapper,
@@ -45,4 +48,5 @@ export {
   CheckboxWrapper,
   BulletListWrapper,
   DropdownWrapper,
+  CommentsWrapper,
 };
