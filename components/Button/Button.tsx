@@ -3,12 +3,15 @@ import { ButtonProps } from './Button.types';
 
 const Button: React.FC<ButtonProps> = ({
   isFilled = false,
-  href,
+  isLink,
   ...rest
-}: ButtonProps) => (href ? (
-  <S.Link {...rest} isFilled={isFilled} href={href} />
-) : (
-  <S.Button {...rest} isFilled={isFilled} />
-));
+}: ButtonProps) => (
+  <S.Button
+    as={isLink ? 'a' : 'button'}
+    {...rest}
+    isFilled={isFilled}
+    isLink={isLink}
+  />
+);
 
 export default Button;

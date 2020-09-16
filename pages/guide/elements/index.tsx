@@ -70,10 +70,10 @@ class Elements extends React.Component {
                 />
               </S.InputWrapper>
               <S.ButtonWrapper>
-                <Button type="button" isFilled>click me</Button>
+                <Button type="button" isLink={false} isFilled>click me</Button>
               </S.ButtonWrapper>
               <S.ButtonWrapper>
-                <Button href="https://google.com">click me</Button>
+                <Button isLink href="https://google.com">click me</Button>
               </S.ButtonWrapper>
               <S.LikeButtonWrapper>
                 <LikeButtonContainer likes={2} />

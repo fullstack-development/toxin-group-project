@@ -1,8 +1,15 @@
-import { ComponentPropsWithRef } from 'react';
+import { AnchorHTMLAttributes, ButtonHTMLAttributes, ElementType } from 'react';
 
-export type CustomProps = {
+type Props = {
+  isLink: false;
   isFilled?: boolean;
-  href?: string;
-}
+  as?: ElementType;
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
-export type ButtonProps = CustomProps & ComponentPropsWithRef<'a'> & ComponentPropsWithRef<'button'>
+type AnchorProps = {
+  isLink: true;
+  isFilled?: boolean;
+  as?: ElementType;
+} & AnchorHTMLAttributes<HTMLAnchorElement>;
+
+export type ButtonProps = Props | AnchorProps;
