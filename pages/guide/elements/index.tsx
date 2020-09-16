@@ -7,6 +7,7 @@ import roomOptions from 'components/CheckboxesList/CheckboxesListData.json';
 import Dropdown from 'components/Dropdown/Dropdown';
 import Input from 'components/Input/Input';
 import LikeButtonContainer from 'components/LikeButton/LikeButtonContainer';
+import SubscriptionField from 'components/SubscriptionField/SubscriptionField';
 import TextButton from 'components/TextButton/TextButton';
 import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators/';
 
@@ -142,6 +143,7 @@ class Elements extends React.Component {
             ]}
           />
         </S.BulletListWrapper>
+        <SubscriptionField />
       </S.Container>
     );
   }

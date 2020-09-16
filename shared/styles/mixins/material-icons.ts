@@ -7,6 +7,7 @@ const materialIcons = css`
   cursor: default;
   display: inline-block;
   font-feature-settings: 'liga';
+  -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   -moz-osx-font-smoothing: grayscale;
