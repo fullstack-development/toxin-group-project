@@ -60,8 +60,7 @@ const Dropdown: React.FC<DropdownProps> = ({
     const resultStrings: string[] = Array.from(
       new Set(
         dropdownState.map((item, _, state) => {
-          const { groupName } = item;
-          const { currentValue, wordForms } = item;
+          const { groupName, currentValue, wordForms } = item;
 
           if (!groupName) return getResultStringPart(currentValue, wordForms);
 
