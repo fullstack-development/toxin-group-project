@@ -8,24 +8,28 @@ const Type = styled.div`
 `;
 
 const Title = styled.div`
-  ${(props: { fontSize: string}) => {
+  ${(props: { fontSize: string , theme}) => {
     const { fontSize } = props;
+    const { colors } = props.theme;
     return css`
       font-size: ${fontSize};
       text-align: right;
+      color: ${colors.basicLight};
     `;
   }}
 `;
 
 const Example = styled.div`
-  ${(props: { type: string, fontSize: string }) => {
+  ${(props: { type: string, fontSize: string, theme }) => {
     const { type, fontSize } = props;
+    const { colors } = props.theme;
     return css`
       font-weight: ${type === 'Body' ? 'normal' : 'bold'};
       line-height: ${type === 'Body' ? '1.65' : '1.27'};
       font-size: ${fontSize};
       font-family: ${type === 'H3' || type === 'Body' ? 'Montserrat' : 'Quicksand'}, Arial, sans-serif;
       text-transform: ${type === 'H3' ? 'uppercase' : 'none'};
+      color: ${colors.basicDarkest};
     `;
   }}
 `;
