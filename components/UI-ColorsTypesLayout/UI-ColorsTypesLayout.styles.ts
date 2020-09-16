@@ -1,12 +1,10 @@
 import styled from 'styled-components';
 
+import container from 'shared/styles/mixins/container';
 import visuallyHidden from 'shared/styles/mixins/visually-hidden';
 
 const ColorsTypesLayout = styled.div`
-  min-width: 320px;
-  max-width: 1440px;
-  padding: 0 1rem;
-  margin: 0 auto;
+  ${container}
 `;
 
 const Logo = styled.div`
@@ -16,6 +14,10 @@ const Logo = styled.div`
 
 const Content = styled.main`
   padding: 4.5rem 12.6429rem 0 9.7143rem;
+
+  @media (max-width: 1200px) {
+    padding: 2.5rem 0;
+  }
 `;
 
 const Title = styled.h1`
@@ -23,8 +25,15 @@ const Title = styled.h1`
 `;
 
 const Wrapper = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto;
   justify-content: space-between;
+
+  @media (max-width: 900px) {
+    grid-template-columns: auto;
+    justify-content: center;
+    grid-gap: 5rem;
+  }
 `;
 
 export {
