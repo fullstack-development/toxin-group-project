@@ -6,7 +6,6 @@ type Color = {
   color: string;
   title: string;
   opacity: number;
-  id: number
 };
 
 type Props = {
@@ -21,7 +20,7 @@ const UIColorsList: React.FC<Props> = (props: Props) => {
       <S.Title>Цветовая палитра</S.Title>
       <S.List lang="en">
         {colors.map((color) => (
-          <li key={color.id}>
+          <li key={color.title}>
             <UIColor
               color={color.color}
               title={color.title}

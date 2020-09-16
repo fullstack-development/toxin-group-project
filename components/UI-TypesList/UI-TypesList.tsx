@@ -6,7 +6,6 @@ type Type = {
   type: string;
   example: string;
   fontSize: string;
-  id: number
 };
 
 type Props = {
@@ -21,7 +20,7 @@ const UITypes: React.FC<Props> = (props: Props) => {
       <S.Title>Вариации текста</S.Title>
       <S.List lang="en">
         {types.map((type) => (
-          <li key={type.id}>
+          <li key={type.type}>
             <UIType
               type={type.type}
               example={type.example}
