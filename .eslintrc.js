@@ -5,6 +5,10 @@ module.exports = {
         paths: ['./'],
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
+      "typescript": {
+        "alwaysTryTypes": true,
+        "directory": "./tsconfig.json"
+      }
     },
   },
   env: {
@@ -12,8 +16,11 @@ module.exports = {
     es2020: true,
   },
   extends: [
+    'airbnb-typescript',
     'plugin:react/recommended',
-    'airbnb',
+    'plugin:@typescript-eslint/recommended',
+    'prettier',
+    'prettier/@typescript-eslint',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -22,10 +29,12 @@ module.exports = {
     },
     ecmaVersion: 11,
     sourceType: 'module',
+    project: `./tsconfig.json`
   },
   plugins: [
     'react',
     '@typescript-eslint',
+    'prettier'
   ],
   rules: {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx', '.tsx'] }],
@@ -46,5 +55,6 @@ module.exports = {
     ],
     'import/prefer-default-export': 'off',
     'jsx-a11y/label-has-associated-control': ['error', { assert: 'either' }],
+    'prettier/prettier': 2
   },
 };
