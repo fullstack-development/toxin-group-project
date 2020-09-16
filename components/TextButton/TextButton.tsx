@@ -8,9 +8,9 @@ const TextButton: React.FC<TextButtonProps> = ({
 }: TextButtonProps) => (
   <S.TextButton
     as={isLink ? 'a' : 'button'}
+    {...rest}
     isSecondary={isSecondary}
     isLink={isLink}
-    {...rest}
   />
 );
 
