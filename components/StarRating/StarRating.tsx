@@ -1,5 +1,5 @@
+import { keywords } from './StarRating.data.json';
 import * as S from './StarRating.styles';
-import { keywords } from './StarRatingData.json';
 
 type StarRatingProps = {
   rating?: number;
