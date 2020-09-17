@@ -29,7 +29,7 @@ const LikeButton: React.FC<LikeButtonProps> = (props: LikeButtonProps) => {
       </S.LikeSpan>
       <S.LikeInput type="checkbox" onChange={handleLikeButtonClick} />
     </S.LikeLabel>
-  )
+  );
 };
 
 export default LikeButton;
