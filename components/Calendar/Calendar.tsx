@@ -122,8 +122,8 @@ const Calendar: React.FC<Calendar> = (props: Calendar) => {
         navbarElement={<NavBar />}
       />
       <S.CalendarControls>
-        <TextButton secondary onClick={clearSelectedDate}>Очистить</TextButton>
-        <TextButton onClick={handleApplyButtonClick}>Применить</TextButton>
+        <TextButton isLink={false} isSecondary onClick={clearSelectedDate}>Очистить</TextButton>
+        <TextButton isLink={false} onClick={handleApplyButtonClick}>Применить</TextButton>
       </S.CalendarControls>
     </S.CalendarContainer>
   );
