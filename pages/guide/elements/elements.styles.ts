@@ -36,6 +36,12 @@ const BulletListWrapper = styled.div`
   max-width: 18.5714rem;
 `;
 
+const StarRatingWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  max-width: 18.5714rem;
+`;
+
 export {
   Container,
   TextButtonWrapper,
@@ -45,4 +51,5 @@ export {
   CheckboxWrapper,
   BulletListWrapper,
   DropdownWrapper,
+  StarRatingWrapper,
 };
