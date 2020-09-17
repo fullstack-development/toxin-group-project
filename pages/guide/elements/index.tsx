@@ -8,6 +8,7 @@ import roomOptions from 'components/CheckboxesList/CheckboxesListData.json';
 import Dropdown from 'components/Dropdown/Dropdown';
 import Input from 'components/Input/Input';
 import LikeButtonContainer from 'components/LikeButton/LikeButtonContainer';
+import StarRating from 'components/StarRating/StarRating';
 import TextButton from 'components/TextButton/TextButton';
 import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators/';
 
@@ -127,10 +128,10 @@ class Elements extends React.Component {
           )}
         />
         <S.TextButtonWrapper>
-          <TextButton href="https://google.com">Click me</TextButton>
+          <TextButton isLink href="https://google.com">Click me</TextButton>
         </S.TextButtonWrapper>
         <S.TextButtonWrapper>
-          <TextButton secondary>
+          <TextButton isLink={false} isSecondary>
             Click me
           </TextButton>
         </S.TextButtonWrapper>
@@ -144,6 +145,10 @@ class Elements extends React.Component {
           />
           <Calendar isVisible />
         </S.BulletListWrapper>
+        <S.StarRatingWrapper>
+          <StarRating rating={4} />
+          <StarRating rating={5} />
+        </S.StarRatingWrapper>
       </S.Container>
     );
   }
