@@ -168,13 +168,19 @@ const Dropdown: React.FC<DropdownProps> = ({
             {enableControls && (
             <S.Controls>
               <S.ResetButton
+                isLink={false}
                 type="button"
                 isHidden={isResetHidden}
                 onClick={handleResetClick}
               >
                 Очистить
               </S.ResetButton>
-              <ApplyButton secondary type="button" onClick={handleApplyClick}>
+              <ApplyButton
+                isSecondary
+                isLink={false}
+                type="button"
+                onClick={handleApplyClick}
+              >
                 Применить
               </ApplyButton>
             </S.Controls>
