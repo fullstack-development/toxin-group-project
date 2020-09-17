@@ -1,14 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { DateUtils } from 'react-day-picker';
-import { months, weekdaysShort } from 'shared/helpers/validators/dateValidators';
+
 import TextButton from 'components/TextButton/TextButton';
+import { months, weekdaysShort } from 'shared/helpers/validators/dateValidator';
 
 import * as S from './Calendar.styles';
 
 type daysSelection = {
-  from: Date | null;
-  to: Date | null;
-  enteredTo?: boolean | null;
+  from: SelectedDate;
+  to: SelectedDate;
+  enteredTo?: SelectedDate;
 };
 
 type Calendar = {
@@ -18,6 +19,30 @@ type Calendar = {
 }
 
 type SelectedDate = null | Date;
+
+type NavBar = {
+  onPreviousClick(callback?: () => void): void;
+  onNextClick(callback?: () => void): void;
+}
+
+const NavBar = ({ onPreviousClick, onNextClick }: NavBar) => (
+  <div>
+    <S.NavBarButton
+      type="button"
+      onClick={() => onPreviousClick()}
+      className="material-icons"
+    >
+      arrow_back
+    </S.NavBarButton>
+    <S.NavBarButton
+      type="button"
+      onClick={() => onNextClick()}
+      className="material-icons"
+    >
+      arrow_forward
+    </S.NavBarButton>
+  </div>
+);
 
 const Calendar: React.FC<Calendar> = (props: Calendar) => {
   const has = Object.prototype.hasOwnProperty;
@@ -39,7 +64,11 @@ const Calendar: React.FC<Calendar> = (props: Calendar) => {
     return () => document.removeEventListener('click', handleDocumentClick);
   }, []);
 
-  const isSelectingFirstDay = (dateFrom: SelectedDate, dateTo: SelectedDate, currentDay: Date) => {
+  const isSelectingFirstDay = (
+    dateFrom: SelectedDate,
+    dateTo: SelectedDate,
+    currentDay: Date,
+  ) => {
     const isBeforeFirstDay = dateFrom && DateUtils.isDayBefore(currentDay, dateFrom);
     const isRangeSelected = dateFrom && dateTo;
     return !dateFrom || isBeforeFirstDay || isRangeSelected;
@@ -97,6 +126,7 @@ const Calendar: React.FC<Calendar> = (props: Calendar) => {
         selectedDays={[from, { from, to }]}
         onDayClick={handleDayClick}
         onDayMouseEnter={handleDayMouseEnter}
+        navbarElement={<NavBar />}
       />
       <S.CalendarControls>
         <TextButton secondary onClick={clearSelectedDate}>Очистить</TextButton>

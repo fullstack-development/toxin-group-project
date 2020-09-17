@@ -1,6 +1,7 @@
 import DayPicker from 'react-day-picker';
 import { DayPickerProps } from 'react-day-picker/types/Props';
 import styled, { css } from 'styled-components';
+import materialIcons from 'shared/styles/mixins/material-icons';
 
 type Control = {
   variant: 'primary' | 'basic';
@@ -10,6 +11,34 @@ type Control = {
 type Container = {
   isVisible: boolean;
 }
+
+const NavBarButton = styled.button`
+  ${(props) => {
+    const { colors } = props.theme;
+
+    return css`
+      background: ${colors.primary};
+      ${materialIcons};
+      cursor: pointer;
+      border: none;
+      outline: none;
+      font-size: 1.71rem;
+
+      &:focus,
+      &:hover {
+        transform: scale(1.2);
+      }
+
+      &:first-child {
+        float: left;
+      }
+
+      &:last-child {
+        float: right;
+      }
+    `;
+  }}
+`;
 
 const CalendarContainer = styled.div<Container>`
   ${(props) => {
@@ -244,6 +273,7 @@ const Calendar = styled(DayPicker) <DayPickerProps>`
 `;
 
 export {
+  NavBarButton,
   CalendarContainer,
   CalendarControls,
   CalendarButton,
