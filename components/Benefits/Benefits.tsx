@@ -13,8 +13,8 @@ const Benefits: React.FC<Benefits> = (props: Benefits) => {
 
   return (
     <S.Benefits>
-      { items.map((item, index) => (
-        <S.BenefitItem key={Number(index).toString()}>
+      { items.map((item) => (
+        <S.BenefitItem key={item.title}>
           <S.Icon className="material-icons" icon={item.icon} />
           <S.TextWrapper>
             <S.Title>

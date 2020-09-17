@@ -14,7 +14,7 @@ const BenefitItem = styled.div`
 
     return css`
       border-bottom: 0.01rem solid ${colors.basicLight};
-      padding: 1.7rem 0;
+      padding: 1.4rem 0;
       display: flex;
     `;
   }}
@@ -33,14 +33,11 @@ const Icon = styled.span<Icon>`
 
     return css`
       font-size: 3.45rem;
-      width: 3.2rem;
-      height: 3.2rem;
       background: ${gradients.primary};
       ${materialIcons};
 
       &:before {
-        display: block;
-        content: '${'' + icon}';
+        content: '${icon}';
       }
     `;
   }}
@@ -48,7 +45,8 @@ const Icon = styled.span<Icon>`
 
 const Title = styled.h3`
   font-size: 1rem;
-  margin: 0.2rem 0 0.5rem 0;
+  line-height: 2rem;
+  word-break: break-word;
 `;
 
 const Description = styled.p``;

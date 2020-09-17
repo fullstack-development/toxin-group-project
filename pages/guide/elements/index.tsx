@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
 
-import Benefits from '@components/Benefits/Benefits';
+import Benefits from 'components/Benefits/Benefits';
 import BulletList from 'components/BulletList/BulletList';
 import CheckboxesList from 'components/CheckboxesList/CheckboxesList';
 import roomOptions from 'components/CheckboxesList/CheckboxesListData.json';
