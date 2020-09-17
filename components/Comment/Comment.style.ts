@@ -14,7 +14,7 @@ const Avatar = styled.img`
       float: left;
       max-width: 3.4rem;
       border-radius: 50%;
-      border: 2px solid ${colors.defaultBackground};
+      border: 0.15rem solid ${colors.defaultBackground};
       box-shadow: 0 0.7143rem 1.4286rem ${colors.basicLightest};
     `;
   }}
