@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
-import container from 'shared/styles/mixins/container';
-import visuallyHidden from 'shared/styles/mixins/visually-hidden';
+import { container, visuallyHidden } from 'shared/styles/mixins';
 
 const ColorsTypesLayout = styled.div`
   ${container}
