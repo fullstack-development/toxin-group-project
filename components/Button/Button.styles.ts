@@ -32,7 +32,7 @@ const Button = styled.button<ButtonProps>`
 
       ${!isFilled && css`
         &::before {
-          content: "";
+          content: '';
           position: absolute;
           z-index: -1;
           background-color: ${colors.defaultBackground};
