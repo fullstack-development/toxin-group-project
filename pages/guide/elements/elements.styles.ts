@@ -39,6 +39,12 @@ const BulletListWrapper = styled.div`
 const BenefitsWrapper = styled.div`
   max-width: 19.9rem;
   margin: 1rem 0;
+`
+
+const StarRatingWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  max-width: 18.5714rem;
 `;
 
 export {
@@ -51,4 +57,5 @@ export {
   BulletListWrapper,
   DropdownWrapper,
   BenefitsWrapper,
+  StarRatingWrapper,
 };

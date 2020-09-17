@@ -1,13 +1,15 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
 
-import Benefit from 'components/Benefit/Benefit';
+import Benefits from '@components/Benefits/Benefits';
 import BulletList from 'components/BulletList/BulletList';
 import CheckboxesList from 'components/CheckboxesList/CheckboxesList';
 import roomOptions from 'components/CheckboxesList/CheckboxesListData.json';
 import Dropdown from 'components/Dropdown/Dropdown';
 import Input from 'components/Input/Input';
 import LikeButtonContainer from 'components/LikeButton/LikeButtonContainer';
+import StarRating from 'components/StarRating/StarRating';
+import TextButton from 'components/TextButton/TextButton';
 import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators/';
 
 import * as S from './elements.styles';
@@ -126,10 +128,12 @@ class Elements extends React.Component {
           )}
         />
         <S.TextButtonWrapper>
-
+          <TextButton isLink href="https://google.com">Click me</TextButton>
         </S.TextButtonWrapper>
         <S.TextButtonWrapper>
-
+          <TextButton isLink={false} isSecondary>
+            Click me
+          </TextButton>
         </S.TextButtonWrapper>
         <S.BulletListWrapper>
           <BulletList
@@ -141,13 +145,16 @@ class Elements extends React.Component {
           />
         </S.BulletListWrapper>
         <S.BenefitsWrapper>
-          <Benefit items={[
+          <Benefits items={[
             { icon: 'insert_emoticon', title: 'Комфорт', description: 'Шумопоглощающие стены' },
             { icon: 'location_city', title: 'Удобство', description: 'Окно в каждой из спален' },
-            { icon: 'alarm_on', title: 'test', description: 'test' },
           ]}
           />
         </S.BenefitsWrapper>
+        <S.StarRatingWrapper>
+          <StarRating rating={4} />
+          <StarRating rating={5} />
+        </S.StarRatingWrapper>
       </S.Container>
     );
   }

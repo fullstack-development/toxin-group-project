@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components';
+
 import { materialIcons } from 'shared/styles/mixins';
 
-const Benefit = styled.div``;
+const Benefits = styled.div``;
 
 type Icon = {
   icon: string;
@@ -12,7 +13,7 @@ const BenefitItem = styled.div`
     const { colors } = props.theme;
 
     return css`
-      border-bottom: 1px solid ${colors.basicLight};
+      border-bottom: 0.01rem solid ${colors.basicLight};
       padding: 1.7rem 0;
       display: flex;
     `;
@@ -27,13 +28,14 @@ const TextWrapper = styled.div`
 
 const Icon = styled.span<Icon>`
   ${(props) => {
+    const { gradients } = props.theme;
     const { icon } = props;
 
     return css`
       font-size: 3.45rem;
       width: 3.2rem;
       height: 3.2rem;
-      background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+      background: ${gradients.primary};
       ${materialIcons};
 
       &:before {
@@ -52,7 +54,7 @@ const Title = styled.h3`
 const Description = styled.p``;
 
 export {
-  Benefit,
+  Benefits,
   BenefitItem,
   TextWrapper,
   Icon,

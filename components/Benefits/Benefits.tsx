@@ -1,6 +1,6 @@
-import * as S from './Benefit.style';
+import * as S from './Benefits.style';
 
-type Benefit = {
+type Benefits = {
   items: {
     icon: string,
     title: string,
@@ -8,13 +8,13 @@ type Benefit = {
   }[];
 }
 
-const Benefit: React.FC<Benefit> = (props: Benefit) => {
+const Benefits: React.FC<Benefits> = (props: Benefits) => {
   const { items } = props;
 
   return (
-    <S.Benefit>
+    <S.Benefits>
       { items.map((item, index) => (
-        <S.BenefitItem key={Symbol(index).toString()}>
+        <S.BenefitItem key={Number(index).toString()}>
           <S.Icon className="material-icons" icon={item.icon} />
           <S.TextWrapper>
             <S.Title>
@@ -26,8 +26,8 @@ const Benefit: React.FC<Benefit> = (props: Benefit) => {
           </S.TextWrapper>
         </S.BenefitItem>
       ))}
-    </S.Benefit>
+    </S.Benefits>
   );
 };
 
-export default Benefit;
+export default Benefits;
