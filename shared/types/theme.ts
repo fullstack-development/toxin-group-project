@@ -1,6 +1,7 @@
 export type Theme = {
   typography: {
     fontName: string,
+    secondaryFontName: string,
     fontSize: string,
   },
   colors: {

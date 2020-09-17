@@ -8,6 +8,7 @@ import Comment from 'components/Comment/Comment';
 import Dropdown from 'components/Dropdown/Dropdown';
 import Input from 'components/Input/Input';
 import LikeButtonContainer from 'components/LikeButton/LikeButtonContainer';
+import StarRating from 'components/StarRating/StarRating';
 import TextButton from 'components/TextButton/TextButton';
 
 import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators/';
@@ -128,10 +129,10 @@ class Elements extends React.Component {
           )}
         />
         <S.TextButtonWrapper>
-          <TextButton href="https://google.com">Click me</TextButton>
+          <TextButton isLink href="https://google.com">Click me</TextButton>
         </S.TextButtonWrapper>
         <S.TextButtonWrapper>
-          <TextButton secondary>
+          <TextButton isLink={false} isSecondary>
             Click me
           </TextButton>
         </S.TextButtonWrapper>
@@ -146,13 +147,17 @@ class Elements extends React.Component {
         </S.BulletListWrapper>
         <S.CommentsWrapper>
           <Comment
-            avatarUrl=''
+            avatarUrl='user.jpg'
             UserName='Мурад Сарафанов'
-            Date='52 дня назад'
+            Date='5 дней назад'
             Text='Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.'
-            LikesCount={11}
+            LikesCount={12}
           />
         </S.CommentsWrapper>
+        <S.StarRatingWrapper>
+          <StarRating rating={4} />
+          <StarRating rating={5} />
+        </S.StarRatingWrapper>
       </S.Container>
     );
   }

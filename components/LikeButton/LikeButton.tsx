@@ -5,7 +5,7 @@ import * as S from './LikeButton.styles';
 type LikeButtonProps = {
   count: number,
   isActive: boolean,
-  onCheckboxChange: (e: React.ChangeEvent) => void;
+  onCheckboxChange?: (e: React.ChangeEvent) => void;
 }
 
 const LikeButton: React.FC<LikeButtonProps> = ({
