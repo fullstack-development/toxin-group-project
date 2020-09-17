@@ -53,15 +53,15 @@ const Dropdown: React.FC<DropdownProps> = ({
     max: item.max || DEFAULT_SETTINGS.max,
   }));
 
-  const [dropdownState, setDropdownState] = useState([...initialState]);
+  const [dropdownState, setDropdownState] = useState(initialState);
   const [isOpen, setIsOpen] = useState(false);
   const [resultString, setResultString] = useState(placeholder);
   const dropdown = useRef(null);
 
-  const applyChanges = (): void => {
+  const applyChanges = (currentState: typeof dropdownState): void => {
     const resultStrings: string[] = Array.from(
       new Set(
-        dropdownState.map((item, _, state) => {
+        currentState.map((item, _, state) => {
           const { groupName } = item;
           const { currentValue, wordForms } = item;
 
@@ -81,8 +81,8 @@ const Dropdown: React.FC<DropdownProps> = ({
     setResultString(resultStrings.join(', ') || placeholder);
   };
 
-  const handleResetClick = (): void => {
-    setDropdownState([...initialState]);
+  const resetResult = (state: typeof dropdownState = initialState) => {
+    applyChanges(state);
   };
 
   const handleResultBarClick = (): void => {
@@ -90,7 +90,13 @@ const Dropdown: React.FC<DropdownProps> = ({
   };
 
   const handleApplyClick = (): void => {
-    applyChanges();
+    applyChanges(dropdownState);
+    handleResultBarClick();
+  };
+
+  const handleResetClick = (): void => {
+    setDropdownState(initialState);
+    resetResult();
     handleResultBarClick();
   };
 
@@ -102,12 +108,12 @@ const Dropdown: React.FC<DropdownProps> = ({
 
   useEffect(() => {
     if (!enableControls) {
-      applyChanges();
+      applyChanges(dropdownState);
     }
 
     document.addEventListener('click', handleDocumentClick);
     return () => document.removeEventListener('click', handleDocumentClick);
-  });
+  }, [dropdownState]);
 
   const isResetHidden = dropdownState.every((item) => !item.currentValue);
 
