@@ -1,4 +1,3 @@
-/* eslint-disable */
 module.exports = {
   settings: {
     'import/resolver': {
@@ -18,6 +17,9 @@ module.exports = {
   },
   extends: [
     'airbnb-typescript-prettier',
+    'plugin:react/recommended',
+    'plugin:jsx-a11y/recommended',
+    'plugin:react-hooks/recommended'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
