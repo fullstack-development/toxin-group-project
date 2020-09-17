@@ -58,8 +58,5 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  },
-  "lint-staged": {
-    "*.{js,ts,jsx,tsx}": ["./node_modules/.bin/eslint -- --fix", "git add"]
   }
 }
