@@ -13,7 +13,7 @@ const Button = styled.button<ButtonProps>`
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 14.9996px 18.9992px 14px 19.0002px;
+      padding: 1.0714rem 1.3571rem 1rem 1.3572rem;
       white-space: nowrap;
       text-align: center;
       background-color: transparent;
