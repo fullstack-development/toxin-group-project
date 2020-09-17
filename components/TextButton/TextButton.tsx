@@ -1,5 +1,5 @@
-import { TextButtonProps } from './interfaces';
 import * as S from './TextButton.styles';
+import { TextButtonProps } from './TextButton.types';
 
 const TextButton: React.FC<TextButtonProps> = ({
   isSecondary = false,
