@@ -13,7 +13,7 @@ type TimePickerProps = {
 
 const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps) => {
   const { type, dateFrom, dateTo } = props;
-  const [isCalendarVisible, setCalendarVisibility] = useState(true);
+  const [isCalendarVisible, setCalendarVisibility] = useState(false);
   const [selectedDateRange, setSelectedDateRange] = useState({
     from: dateFrom,
     to: dateTo,

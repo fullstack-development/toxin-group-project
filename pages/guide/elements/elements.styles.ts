@@ -9,7 +9,7 @@ const InputWrapper = styled.div`
   margin-bottom: 0.45rem;
 `;
 
-const CalendarWrapper = styled.div`
+const TimePickerWrapper = styled.div`
   width: 22.8571rem;
   margin-bottom: 0.45rem;
 `;
@@ -24,5 +24,9 @@ const BulletListWrapper = styled.div`
 `;
 
 export {
-  Container, InputWrapper, ErrorMessage, BulletListWrapper, CalendarWrapper
+  Container,
+  InputWrapper,
+  ErrorMessage,
+  BulletListWrapper,
+  TimePickerWrapper,
 };

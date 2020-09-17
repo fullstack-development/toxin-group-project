@@ -68,9 +68,9 @@ class Elements extends React.Component {
             </form>
           )}
         />
-        <S.CalendarWrapper>
-          <TimePicker type='single' />
-        </S.CalendarWrapper>
+        <S.TimePickerWrapper>
+          <TimePicker type="single" />
+        </S.TimePickerWrapper>
         <S.BulletListWrapper>
           <BulletList
             items={[
