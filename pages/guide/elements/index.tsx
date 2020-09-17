@@ -2,6 +2,7 @@ import React from 'react';
 import { Form, Field } from 'react-final-form';
 
 import BulletList from 'components/BulletList/BulletList';
+import Calendar from 'components/Calendar/Calendar';
 import CheckboxesList from 'components/CheckboxesList/CheckboxesList';
 import roomOptions from 'components/CheckboxesList/CheckboxesListData.json';
 import Dropdown from 'components/Dropdown/Dropdown';
@@ -141,6 +142,7 @@ class Elements extends React.Component {
               'Время прибытия — после 13:00, а выезд до 12:00',
             ]}
           />
+          <Calendar isVisible />
         </S.BulletListWrapper>
       </S.Container>
     );

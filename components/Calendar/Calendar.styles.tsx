@@ -49,10 +49,10 @@ const CalendarContainer = styled.div<Container>`
       display: ${isVisible ? 'block' : 'none'};
       top: 5rem;
       position: absolute;
-      width: 100%;
+      max-width: 22.9rem;
       border: 0.1rem solid ${colors.basicLight};
       border-radius: 0.3rem;
-      padding: 0 6%;
+      padding: 0 1.2rem;
       z-index: 1000;
       background: ${colors.defaultBackground};
     `;
