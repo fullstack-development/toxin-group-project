@@ -110,10 +110,12 @@ const Dropdown: React.FC<DropdownProps> = ({
     if (!enableControls) {
       applyChanges(dropdownState);
     }
+  }, [dropdownState]);
 
+  useEffect(() => {
     document.addEventListener('click', handleDocumentClick);
     return () => document.removeEventListener('click', handleDocumentClick);
-  }, [dropdownState]);
+  });
 
   const isResetHidden = dropdownState.every((item) => !item.currentValue);
 
