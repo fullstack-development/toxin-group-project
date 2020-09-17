@@ -1,15 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { DateUtils } from 'react-day-picker';
-
-// import { months, weekdaysShort } from 'shared/helpers/validators/dateValidators';
+import { months, weekdaysShort } from 'shared/helpers/validators/dateValidators';
 import TextButton from 'components/TextButton/TextButton';
 
 import * as S from './Calendar.styles';
 
 type daysSelection = {
-  from: Date;
-  to: Date;
-  enteredTo?: Date;
+  from: Date | null;
+  to: Date | null;
+  enteredTo?: boolean | null;
 };
 
 type Calendar = {
@@ -18,12 +17,14 @@ type Calendar = {
   onApply?: () => void;
 }
 
+type SelectedDate = null | Date;
+
 const Calendar: React.FC<Calendar> = (props: Calendar) => {
   const has = Object.prototype.hasOwnProperty;
   const { onApply, onSelectDate, isVisible } = props;
   const [selectedDays, handleSelectDays] = useState<daysSelection>({
-    from: false,
-    to: false,
+    from: null,
+    to: null,
     enteredTo: null,
   });
   const [isShown, setVisibility] = useState(isVisible);
@@ -38,8 +39,7 @@ const Calendar: React.FC<Calendar> = (props: Calendar) => {
     return () => document.removeEventListener('click', handleDocumentClick);
   }, []);
 
-  const isSelectingFirstDay = (dateFrom, dateTo, currentDay) => {
-    console.log(dateFrom, dateTo, currentDay);
+  const isSelectingFirstDay = (dateFrom: SelectedDate, dateTo: SelectedDate, currentDay: Date) => {
     const isBeforeFirstDay = dateFrom && DateUtils.isDayBefore(currentDay, dateFrom);
     const isRangeSelected = dateFrom && dateTo;
     return !dateFrom || isBeforeFirstDay || isRangeSelected;
@@ -92,8 +92,8 @@ const Calendar: React.FC<Calendar> = (props: Calendar) => {
     <S.CalendarContainer isVisible={isShown} ref={htmlContainer}>
       <S.Calendar
         modifiers={modifiers}
-        // months={months}
-        // weekdaysShort={weekdaysShort}
+        months={months}
+        weekdaysShort={weekdaysShort}
         selectedDays={[from, { from, to }]}
         onDayClick={handleDayClick}
         onDayMouseEnter={handleDayMouseEnter}
