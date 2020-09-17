@@ -126,10 +126,10 @@ class Elements extends React.Component {
           )}
         />
         <S.TextButtonWrapper>
-          <TextButton href="https://google.com">Click me</TextButton>
+          <TextButton isLink href="https://google.com">Click me</TextButton>
         </S.TextButtonWrapper>
         <S.TextButtonWrapper>
-          <TextButton secondary>
+          <TextButton isLink={false} isSecondary>
             Click me
           </TextButton>
         </S.TextButtonWrapper>
