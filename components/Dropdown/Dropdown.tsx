@@ -81,8 +81,8 @@ const Dropdown: React.FC<DropdownProps> = ({
     setResultString(resultStrings.join(', ') || placeholder);
   };
 
-  const resetResult = (state: typeof dropdownState = initialState) => {
-    applyChanges(state);
+  const resetResult = () => {
+    applyChanges(initialState);
   };
 
   const handleResultBarClick = (): void => {
