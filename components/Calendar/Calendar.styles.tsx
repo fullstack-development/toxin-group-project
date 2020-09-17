@@ -184,56 +184,6 @@ const Calendar = styled(DayPicker) <DayPickerProps>`
         width: 50%;
       }
 
-      & .DayPicker-NavButton {
-        &--prev {
-          display: block;
-          float: left;
-          width: 1rem;
-          height: 1rem;
-          cursor: pointer;
-          color: ${colors.primary};
-          outline: none;
-
-          &:hover:before {
-            transform: scale(1.2);
-          }
-
-          &:before {
-            content: '←';
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100%;
-            font-size: 2.2rem;
-          }
-        }
-
-        &--next {
-          display: block;
-          float: right;
-          width: 1rem;
-          height: 1rem;
-          cursor: pointer;
-          color: ${colors.primary};
-          outline: none;
-
-          &:hover:before {
-            transform: scale(1.2);
-          }
-
-          &:before {
-            content: '→';
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100%;
-            font-size: 2.2rem;
-          }
-        }
-      }
-
       & .DayPicker {
         &-Caption {
           font-weight: bold;

@@ -14,15 +14,14 @@ type daysSelection = {
 
 type Calendar = {
   isVisible?: boolean;
-  onSelectDate?: (day: any) => void;
-  onApply?: () => void;
+  onApply?: (...rest) => any;
 }
 
 type SelectedDate = null | Date;
 
 type NavBar = {
-  onPreviousClick(callback?: () => void): void;
-  onNextClick(callback?: () => void): void;
+  onPreviousClick?(callback?: () => void): void;
+  onNextClick?(callback?: () => void): void;
 }
 
 const NavBar = ({ onPreviousClick, onNextClick }: NavBar) => (
@@ -46,7 +45,7 @@ const NavBar = ({ onPreviousClick, onNextClick }: NavBar) => (
 
 const Calendar: React.FC<Calendar> = (props: Calendar) => {
   const has = Object.prototype.hasOwnProperty;
-  const { onApply, onSelectDate, isVisible } = props;
+  const { onApply, isVisible } = props;
   const [selectedDays, handleSelectDays] = useState<daysSelection>({
     from: null,
     to: null,
@@ -89,8 +88,6 @@ const Calendar: React.FC<Calendar> = (props: Calendar) => {
     const range: daysSelection = DateUtils.addDayToRange(day, selectedDays);
 
     handleSelectDays(range);
-
-    if (has.call(props, 'onSelectDate')) onSelectDate(range);
   };
 
   const handleApplyButtonClick = (e): void => {
@@ -110,8 +107,6 @@ const Calendar: React.FC<Calendar> = (props: Calendar) => {
     };
 
     handleSelectDays(clearedData);
-
-    if (has.call(props, 'onSelectDate')) onSelectDate(clearedData);
   };
 
   const { from, to } = selectedDays;
