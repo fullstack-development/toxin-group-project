@@ -1,6 +1,6 @@
-import DayPicker from 'react-day-picker';
-import { DayPickerProps } from 'react-day-picker/types/Props';
+import DayPicker, { DayPickerProps } from 'react-day-picker';
 import styled, { css } from 'styled-components';
+
 import materialIcons from 'shared/styles/mixins/material-icons';
 
 type Control = {

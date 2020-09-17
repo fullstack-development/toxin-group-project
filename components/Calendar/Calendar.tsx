@@ -29,14 +29,12 @@ const NavBar = ({ onPreviousClick, onNextClick }: NavBar) => (
     <S.NavBarButton
       type="button"
       onClick={() => onPreviousClick()}
-      className="material-icons"
     >
       arrow_back
     </S.NavBarButton>
     <S.NavBarButton
       type="button"
       onClick={() => onNextClick()}
-      className="material-icons"
     >
       arrow_forward
     </S.NavBarButton>
