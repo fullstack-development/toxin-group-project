@@ -8,6 +8,7 @@ import Dropdown from 'components/Dropdown/Dropdown';
 import Input from 'components/Input/Input';
 import LikeButtonContainer from 'components/LikeButton/LikeButtonContainer';
 import TextButton from 'components/TextButton/TextButton';
+import Calendar from 'components/Calendar/Calendar';
 import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators/';
 
 import * as S from './elements.styles';
@@ -142,6 +143,9 @@ class Elements extends React.Component {
             ]}
           />
         </S.BulletListWrapper>
+        <div style={{ position: 'relative', width: '24rem', height: '40rem' }}>
+          <Calendar isVisible />
+        </div>
       </S.Container>
     );
   }
