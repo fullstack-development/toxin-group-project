@@ -1,11 +1,11 @@
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import styled, { css } from 'styled-components';
 
-type FormElement = {
+type ContainerElement = {
   type?: 'single' | 'double';
 }
 
-const Form = styled.form`
+const Container = styled.div`
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -18,7 +18,7 @@ const ExpandIcon = styled(ExpandMoreIcon)`
   cursor: pointer;
 `;
 
-const FormElement = styled.div<FormElement>`
+const ContainerElement = styled.div<ContainerElement>`
   ${(props) => {
     const { type } = props;
 
@@ -31,7 +31,7 @@ const FormElement = styled.div<FormElement>`
 `;
 
 export {
-  Form,
+  Container,
   ExpandIcon,
-  FormElement,
+  ContainerElement,
 };

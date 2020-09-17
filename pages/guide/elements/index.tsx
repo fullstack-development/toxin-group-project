@@ -69,7 +69,7 @@ class Elements extends React.Component {
           )}
         />
         <S.TimePickerWrapper>
-          <TimePicker type="single" />
+          <TimePicker type="single" labelName="elements" />
         </S.TimePickerWrapper>
         <S.BulletListWrapper>
           <BulletList

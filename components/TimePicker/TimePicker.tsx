@@ -9,10 +9,11 @@ type TimePickerProps = {
   onChange?: (e: React.ChangeEvent) => void;
   dateFrom?: Date,
   dateTo?: Date,
+  labelName: string;
 }
 
 const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps) => {
-  const { type, dateFrom, dateTo } = props;
+  const { type, dateFrom, dateTo, labelName } = props;
   const [isCalendarVisible, setCalendarVisibility] = useState(false);
   const [selectedDateRange, setSelectedDateRange] = useState({
     from: dateFrom,
@@ -42,28 +43,28 @@ const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps) => {
   const getMaskedDate = (): string => (type === 'single' ? 'Выберите дату' : 'ДД.ММ.ГГГГ');
 
   return (
-    <S.Form>
-      <S.FormElement type={type} onClick={() => { setCalendarVisibility(true); }}>
+    <S.Container>
+      <S.ContainerElement type={type} onClick={() => { setCalendarVisibility(true); }}>
         <Input
           value={from ? getDateFrom() : getMaskedDate()}
-          name="date from"
+          name={`${labelName} date from`}
           label="date Dropdown"
           placeholder="date from"
           onChange={() => {}}
         />
         <S.ExpandIcon />
-      </S.FormElement>
+      </S.ContainerElement>
       {type === 'double' && (
-        <S.FormElement onClick={() => { setCalendarVisibility(true); }}>
+        <S.ContainerElement onClick={() => { setCalendarVisibility(true); }}>
           <Input
             value={to ? to.toLocaleDateString('ru-RU') : getMaskedDate()}
-            name="date to"
+            name={`${labelName} date to`}
             label="date Dropdown"
             placeholder="date to"
             onChange={() => {}}
           />
           <S.ExpandIcon />
-        </S.FormElement>
+        </S.ContainerElement>
       )}
       {
         isCalendarVisible && (
@@ -74,7 +75,7 @@ const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps) => {
           />
         )
       }
-    </S.Form>
+    </S.Container>
   );
 };
 
