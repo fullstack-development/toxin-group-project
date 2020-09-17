@@ -1,5 +1,5 @@
 import {
-  useState, useRef, useEffect, MouseEvent,
+  useState, useRef, useEffect, MouseEvent, useCallback,
 } from 'react';
 import { Field } from 'react-final-form';
 
@@ -100,11 +100,11 @@ const Dropdown: React.FC<DropdownProps> = ({
     handleResultBarClick();
   };
 
-  const handleDocumentClick = (event: globalThis.MouseEvent) => {
+  const handleDocumentClick = useCallback((event: globalThis.MouseEvent) => {
     if (isOpen && !dropdown.current.contains(event.target)) {
       handleResultBarClick();
     }
-  };
+  }, [dropdown, isOpen]);
 
   useEffect(() => {
     if (!enableControls) {
@@ -115,7 +115,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   useEffect(() => {
     document.addEventListener('click', handleDocumentClick);
     return () => document.removeEventListener('click', handleDocumentClick);
-  });
+  }, [handleDocumentClick]);
 
   const isResetHidden = dropdownState.every((item) => !item.currentValue);
 
