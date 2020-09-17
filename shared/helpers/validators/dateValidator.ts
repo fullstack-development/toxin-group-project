@@ -14,50 +14,7 @@ const isCorrectDate = (value: string): boolean => {
 const dateValidator = (date: string): string | null => (date && isCorrectDate(date) ? null : 'Некорректная дата');
 const dateFormatMask = [/\d/, /\d/, '.', /\d/, /\d/, '.', /\d/, /\d/, /\d/, /\d/];
 
-const months = [
-  'Январь',
-  'Февраль',
-  'Март',
-  'Апрель',
-  'Май',
-  'Июнь',
-  'Июль',
-  'Август',
-  'Сентябрь',
-  'Октябрь',
-  'Ноябрь',
-  'Декабрь',
-];
-
-const shortMonths = [
-  'янв',
-  'фев',
-  'мар',
-  'апр',
-  'мая',
-  'июн',
-  'июл',
-  'ивг',
-  'сен',
-  'окт',
-  'ноя',
-  'дек',
-];
-
-const weekdaysShort = [
-  'Пн',
-  'Вт',
-  'Ср',
-  'Чт',
-  'Пт',
-  'Сб',
-  'Вс',
-];
-
 export {
   dateValidator,
   dateFormatMask,
-  months,
-  shortMonths,
-  weekdaysShort,
 };
