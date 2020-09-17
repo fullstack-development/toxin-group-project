@@ -14,6 +14,8 @@ const GlobalStyle = createGlobalStyle<Props>`
       ${fontFace('Material Icons', 'material-icons', 'regular')}
       ${fontFace('Montserrat', 'montserrat', 'regular')}
       ${fontFace('Montserrat', 'montserrat', 'bold', 700)}
+      ${fontFace('Quicksand', 'quicksand', 'regular')}
+      ${fontFace('Quicksand', 'quicksand', 'bold', 700)}
 
       * {
         padding: 0;
