@@ -13,7 +13,7 @@ const StarRating: React.FC<StarRatingProps> = ({ rating = 0 }: StarRatingProps) 
     <S.StarRating>
       <S.Title>{title}</S.Title>
       {Object.keys(keywords).map((key, index) => {
-        if (!index) return '';
+        if (index === 0) return '';
 
         const isActive = index <= rating;
         const iconName = isActive ? 'star' : 'star_border';
