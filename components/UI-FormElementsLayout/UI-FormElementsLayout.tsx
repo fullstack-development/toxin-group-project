@@ -2,21 +2,25 @@ import React from 'react';
 import { Form, Field } from 'react-final-form';
 
 import BulletList from 'components/BulletList/BulletList';
+import Button from 'components/Button/Button';
 import CheckboxesList from 'components/CheckboxesList/CheckboxesList';
 import roomOptions from 'components/CheckboxesList/CheckboxesListData.json';
 import Comment from 'components/Comment/Comment';
+import checkboxData from 'components/CheckboxesList/CheckboxesListData.json';
 import Dropdown from 'components/Dropdown/Dropdown';
+import expandableCheckboxData from 'components/Expander/ExpandableList.data.json';
+import Expander from 'components/Expander/Expander';
 import Input from 'components/Input/Input';
-import LikeButtonContainer from 'components/LikeButton/LikeButtonContainer';
+import LikeButton from 'components/LikeButton/LikeButton';
 import StarRating from 'components/StarRating/StarRating';
 import TextButton from 'components/TextButton/TextButton';
 
 import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators/';
 
-import * as S from './elements.styles';
+import * as S from './UI-FormElementsLayout.styles';
 
-class Elements extends React.Component {
-  handleFormSubmit = () => { };
+class UIFormElementsLayout extends React.Component {
+  handleFormSubmit = () => {};
 
   render() {
     return (
@@ -71,8 +75,18 @@ class Elements extends React.Component {
                   )}
                 />
               </S.InputWrapper>
+              <S.ButtonWrapper>
+                <Button type="button" isLink={false} isFilled>
+                  click me
+                </Button>
+              </S.ButtonWrapper>
+              <S.ButtonWrapper>
+                <Button isLink href="https://google.com">
+                  click me
+                </Button>
+              </S.ButtonWrapper>
               <S.LikeButtonWrapper>
-                <LikeButtonContainer likes={2} />
+                <LikeButton count={2} />
               </S.LikeButtonWrapper>
               <S.DropdownWrapper>
                 <Dropdown
@@ -123,13 +137,25 @@ class Elements extends React.Component {
                 />
               </S.DropdownWrapper>
               <S.CheckboxWrapper>
-                <CheckboxesList roomOptions={roomOptions} />
+                <CheckboxesList roomOptions={checkboxData} />
               </S.CheckboxWrapper>
+              <S.ExpandableCheckboxWrapper>
+                <Expander title="expandable checkbox list" isDefaultOpen={false}>
+                  <CheckboxesList roomOptions={expandableCheckboxData} />
+                </Expander>
+              </S.ExpandableCheckboxWrapper>
+              <S.ExpandableCheckboxWrapper>
+                <Expander title="expandable checkbox list" isDefaultOpen>
+                  <CheckboxesList roomOptions={expandableCheckboxData} />
+                </Expander>
+              </S.ExpandableCheckboxWrapper>
             </form>
           )}
         />
         <S.TextButtonWrapper>
-          <TextButton isLink href="https://google.com">Click me</TextButton>
+          <TextButton isLink href="https://google.com">
+            Click me
+          </TextButton>
         </S.TextButtonWrapper>
         <S.TextButtonWrapper>
           <TextButton isLink={false} isSecondary>
@@ -147,10 +173,10 @@ class Elements extends React.Component {
         </S.BulletListWrapper>
         <S.CommentsWrapper>
           <Comment
-            avatarUrl='user.jpg'
-            userName='Мурад Сарафанов'
-            date='5 дней назад'
-            text='Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.'
+            avatarUrl="user.jpg"
+            userName="Мурад Сарафанов"
+            date="5 дней назад"
+            text="Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей."
             likesCount={12}
           />
         </S.CommentsWrapper>
@@ -163,4 +189,4 @@ class Elements extends React.Component {
   }
 }
 
-export default Elements;
+export default UIFormElementsLayout;

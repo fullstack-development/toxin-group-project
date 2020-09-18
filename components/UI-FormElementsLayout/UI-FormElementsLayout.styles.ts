@@ -13,6 +13,10 @@ const LikeButtonWrapper = styled.div`
   margin: 1rem 0;
 `;
 
+const ButtonWrapper = styled.div`
+  margin-bottom: 2.1429rem;
+`;
+
 const DropdownWrapper = styled.div`
   width: 18.9286rem;
   margin-bottom: 1.4286rem;
@@ -27,9 +31,9 @@ const CheckboxWrapper = styled.div`
   margin-bottom: 0.45rem;
 `;
 
-const ErrorMessage = styled.div`
-  font-size: ${(props) => props.theme.error.fontSize};
-  color: ${(props) => props.theme.error.color};
+const ExpandableCheckboxWrapper = styled.div`
+  width: 18.1071rem;
+  margin-bottom: 0.45rem;
 `;
 
 const BulletListWrapper = styled.div`
@@ -49,11 +53,12 @@ const StarRatingWrapper = styled.div`
 
 export {
   Container,
+  ButtonWrapper,
   TextButtonWrapper,
   InputWrapper,
   LikeButtonWrapper,
-  ErrorMessage,
   CheckboxWrapper,
+  ExpandableCheckboxWrapper,
   BulletListWrapper,
   DropdownWrapper,
   CommentsWrapper,

@@ -1,7 +1,5 @@
 import styled, { css } from 'styled-components';
 
-const Container = styled.div``;
-
 const LeftWrapper = styled.div`
   margin: 0 1rem 0 0.4rem;
 `;
@@ -29,9 +27,6 @@ const Date = styled.p`
   padding: 0.5rem 0 0 4.1rem;
 `;
 
-const UserDataWrapper = styled.div`
-`;
-
 const MessageWrapper = styled.div`
   display: flex;
   margin-top: 1.1rem;
@@ -41,13 +36,4 @@ const Text = styled.p`
   line-height: 1.7rem;
 `;
 
-export {
-  Container,
-  LeftWrapper,
-  Avatar,
-  User,
-  Date,
-  UserDataWrapper,
-  MessageWrapper,
-  Text,
-};
+export { LeftWrapper, Avatar, User, Date, MessageWrapper, Text };

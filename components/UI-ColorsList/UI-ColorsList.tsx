@@ -10,7 +10,7 @@ type Color = {
 
 type Props = {
   colors: Array<Color>;
-}
+};
 
 const UIColorsList: React.FC<Props> = ({ colors }: Props) => (
   <section>
@@ -18,11 +18,7 @@ const UIColorsList: React.FC<Props> = ({ colors }: Props) => (
     <S.List lang="en">
       {colors.map((color) => (
         <li key={color.title}>
-          <UIColor
-            color={color.color}
-            title={color.title}
-            opacity={color.opacity}
-          />
+          <UIColor color={color.color} title={color.title} opacity={color.opacity} />
         </li>
       ))}
     </S.List>
