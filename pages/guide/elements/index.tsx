@@ -126,12 +126,12 @@ class Elements extends React.Component {
                 <CheckboxesList roomOptions={checkboxData} />
               </S.CheckboxWrapper>
               <S.ExpandableCheckboxWrapper>
-                <Expander title="expandable checkbox list" isOpen={false}>
+                <Expander title="expandable checkbox list" isDefaultOpen={false}>
                   <CheckboxesList roomOptions={expandableCheckboxData} />
                 </Expander>
               </S.ExpandableCheckboxWrapper>
               <S.ExpandableCheckboxWrapper>
-                <Expander title="expandable checkbox list" isOpen>
+                <Expander title="expandable checkbox list" isDefaultOpen>
                   <CheckboxesList roomOptions={expandableCheckboxData} />
                 </Expander>
               </S.ExpandableCheckboxWrapper>
