@@ -6,7 +6,7 @@ import { months, weekdaysShort } from 'shared/helpers/validators/dateValidator';
 
 import * as S from './Calendar.styles';
 
-type daysSelection = {
+type DaysSelection = {
   from: SelectedDate;
   to: SelectedDate;
   enteredTo?: SelectedDate;
@@ -14,37 +14,37 @@ type daysSelection = {
 
 type Calendar = {
   isVisible?: boolean;
-  onApply?: (...rest) => any;
-}
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  onApply?: Function;
+};
 
 type SelectedDate = null | Date;
 
 type NavBar = {
   onPreviousClick?(callback?: () => void): void;
   onNextClick?(callback?: () => void): void;
-}
+};
 
-const NavBar = ({ onPreviousClick, onNextClick }: NavBar) => (
-  <div>
-    <S.NavBarButton
-      type="button"
-      onClick={() => onPreviousClick()}
-    >
-      arrow_back
-    </S.NavBarButton>
-    <S.NavBarButton
-      type="button"
-      onClick={() => onNextClick()}
-    >
-      arrow_forward
-    </S.NavBarButton>
-  </div>
-);
+const NavBar = ({ onPreviousClick, onNextClick }: NavBar) => {
+  const handlePreviousButtonClick = () => onPreviousClick();
+  const handleNextButtonClick = () => onNextClick();
+
+  return (
+    <div>
+      <S.NavBarButton type="button" onClick={handlePreviousButtonClick}>
+        arrow_back
+      </S.NavBarButton>
+      <S.NavBarButton type="button" onClick={handleNextButtonClick}>
+        arrow_forward
+      </S.NavBarButton>
+    </div>
+  );
+};
 
 const Calendar: React.FC<Calendar> = (props: Calendar) => {
   const has = Object.prototype.hasOwnProperty;
   const { onApply, isVisible } = props;
-  const [selectedDays, handleSelectDays] = useState<daysSelection>({
+  const [selectedDays, handleSelectDays] = useState<DaysSelection>({
     from: null,
     to: null,
     enteredTo: null,
@@ -61,11 +61,7 @@ const Calendar: React.FC<Calendar> = (props: Calendar) => {
     return () => document.removeEventListener('click', handleDocumentClick);
   }, []);
 
-  const isSelectingFirstDay = (
-    dateFrom: SelectedDate,
-    dateTo: SelectedDate,
-    currentDay: Date,
-  ) => {
+  const isSelectingFirstDay = (dateFrom: SelectedDate, dateTo: SelectedDate, currentDay: Date) => {
     const isBeforeFirstDay = dateFrom && DateUtils.isDayBefore(currentDay, dateFrom);
     const isRangeSelected = dateFrom && dateTo;
     return !dateFrom || isBeforeFirstDay || isRangeSelected;
@@ -83,7 +79,7 @@ const Calendar: React.FC<Calendar> = (props: Calendar) => {
   };
 
   const handleDayClick = (day): void => {
-    const range: daysSelection = DateUtils.addDayToRange(day, selectedDays);
+    const range: DaysSelection = DateUtils.addDayToRange(day, selectedDays);
 
     handleSelectDays(range);
   };
@@ -122,8 +118,12 @@ const Calendar: React.FC<Calendar> = (props: Calendar) => {
         navbarElement={<NavBar />}
       />
       <S.CalendarControls>
-        <TextButton isLink={false} isSecondary onClick={clearSelectedDate}>Очистить</TextButton>
-        <TextButton isLink={false} onClick={handleApplyButtonClick}>Применить</TextButton>
+        <TextButton isLink={false} isSecondary onClick={clearSelectedDate}>
+          Очистить
+        </TextButton>
+        <TextButton isLink={false} onClick={handleApplyButtonClick}>
+          Применить
+        </TextButton>
       </S.CalendarControls>
     </S.CalendarContainer>
   );

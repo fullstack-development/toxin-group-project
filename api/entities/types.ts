@@ -17,10 +17,10 @@ export type Apartment = {
     keepPets: boolean;
     largeNumberOfPersons: boolean;
   };
-  images: { url: string, alt: string }[];
-}
+  images: { url: string; alt: string }[];
+};
 
-export type ApartmentsList = {[k: number]: Apartment};
+export type ApartmentsList = { [k: number]: Apartment };
 
 export type ProfileData = {
   email: string;
@@ -30,4 +30,4 @@ export type ProfileData = {
   birthDate: string;
   gender: 'male' | 'female';
   receiveOffers: boolean;
-}
+};

@@ -10,7 +10,7 @@ type Type = {
 
 type Props = {
   types: Array<Type>;
-}
+};
 
 const UITypes: React.FC<Props> = ({ types }: Props) => (
   <section>
@@ -18,11 +18,7 @@ const UITypes: React.FC<Props> = ({ types }: Props) => (
     <S.List lang="en">
       {types.map((type) => (
         <li key={type.type}>
-          <UIType
-            type={type.type}
-            example={type.example}
-            fontSize={type.fontSize}
-          />
+          <UIType type={type.type} example={type.example} fontSize={type.fontSize} />
         </li>
       ))}
     </S.List>

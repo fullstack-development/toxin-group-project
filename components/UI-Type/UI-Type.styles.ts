@@ -36,15 +36,12 @@ const Example = styled.div<ExampleProps>`
       font-weight: ${exampleType === 'Body' ? 'normal' : 'bold'};
       line-height: ${exampleType === 'Body' ? '1.65' : '1.27'};
       font-size: ${exampleFontSize};
-      font-family: ${exampleType === 'H3' || exampleType === 'Body' ? 'Montserrat' : 'Quicksand'}, Arial, sans-serif;
+      font-family: ${exampleType === 'H3' || exampleType === 'Body' ? 'Montserrat' : 'Quicksand'},
+        Arial, sans-serif;
       text-transform: ${exampleType === 'H3' ? 'uppercase' : 'none'};
       color: ${colors.basicDarkest};
     `;
   }}
 `;
 
-export {
-  Type,
-  Title,
-  Example,
-};
+export { Type, Title, Example };

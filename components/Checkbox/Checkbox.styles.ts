@@ -1,3 +1,4 @@
+/* eslint-disable object-curly-newline */
 import styled, { css } from 'styled-components';
 
 import visuallyHidden from 'shared/styles/mixins/visually-hidden';
@@ -55,9 +56,4 @@ const Label = styled.span`
   user-select: none;
 `;
 
-export {
-  Checkbox,
-  HiddenCheckbox,
-  Checkmark,
-  Label,
-};
+export { Checkbox, HiddenCheckbox, Checkmark, Label };
