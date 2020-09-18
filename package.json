@@ -54,5 +54,8 @@
     "hooks": {
       "pre-push": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "*": "npm run lint -- --fix"
   }
 }
