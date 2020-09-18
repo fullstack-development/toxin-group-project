@@ -126,29 +126,15 @@ class Elements extends React.Component {
                 <CheckboxesList roomOptions={roomOptions} />
               </S.CheckboxWrapper>
               <S.RadioWrapper>
-                <Field
+                <RadioButton
+                  label="Мужчина"
                   name="gender"
                   value="male"
-                  type="radio"
-                  render={(props) => (
-                    <RadioButton
-                      {...props.input}
-                      {...props.meta}
-                      label="Мужчина"
-                    />
-                  )}
                 />
-                <Field
+                <RadioButton
+                  label="Женщина"
                   name="gender"
                   value="female"
-                  type="radio"
-                  render={(props) => (
-                    <RadioButton
-                      {...props.input}
-                      {...props.meta}
-                      label="Женщина"
-                    />
-                  )}
                 />
               </S.RadioWrapper>
             </form>

@@ -1,11 +1,13 @@
+import { Field } from 'react-final-form';
+
 import * as S from './RadioButton.styles';
 
 type RadioProps = {
   name: string;
   label: string;
-  checked?: boolean;
   value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  checked?: boolean;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 const RadioButton: React.FC<RadioProps> = ({
@@ -16,11 +18,20 @@ const RadioButton: React.FC<RadioProps> = ({
   };
 
   return (
-    <S.RadioButton>
-      <S.HiddenInput type="radio" name={name} checked={checked} value={value} onChange={handleChange} />
-      <S.Checkmark />
-      <S.Label>{label}</S.Label>
-    </S.RadioButton>
+    <Field
+      name={name}
+      value={value}
+      onChange={handleChange}
+      checked={checked}
+      type="radio"
+      render={(props) => (
+        <S.RadioButton>
+          <S.HiddenInput {...props.input} />
+          <S.Checkmark />
+          <S.Label>{label}</S.Label>
+        </S.RadioButton>
+      )}
+    />
   );
 };
 
