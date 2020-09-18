@@ -12,9 +12,9 @@ import StarRating from 'components/StarRating/StarRating';
 import TextButton from 'components/TextButton/TextButton';
 import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators/';
 
-import * as S from './elements.styles';
+import * as S from './UI-FormElementsLayout.styles';
 
-class Elements extends React.Component {
+class UIFormElementsLayout extends React.Component {
   handleFormSubmit = () => { };
 
   render() {
@@ -159,4 +159,4 @@ class Elements extends React.Component {
   }
 }
 
-export default Elements;
+export default UIFormElementsLayout;
