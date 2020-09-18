@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { h3 } from 'shared/styles/mixins/title';
+import { titles } from 'shared/styles/mixins';
 
 type ContentProps = {
   isOpen: boolean;
@@ -22,7 +22,7 @@ const Header = styled.button`
 `;
 
 const Title = styled.h3`
-  ${h3}
+  ${titles.h3}
 `;
 
 const Content = styled.div<ContentProps>`
