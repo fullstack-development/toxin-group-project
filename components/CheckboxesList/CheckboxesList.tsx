@@ -9,7 +9,7 @@ type Option = {
   name: string;
   value: string;
   label: string;
-}
+};
 
 type Props = {
   roomOptions: Array<Option>;
@@ -23,13 +23,7 @@ const CheckboxesList: React.FC<Props> = ({ roomOptions }: Props) => (
           type="checkbox"
           name={option.name}
           value={option.value}
-          render={(props) => (
-            <Checkbox
-              label={option.label}
-              {...props.input}
-              {...props.meta}
-            />
-          )}
+          render={(props) => <Checkbox label={option.label} {...props.input} {...props.meta} />}
         />
       </S.ListItem>
     ))}

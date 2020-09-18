@@ -8,7 +8,4 @@ const ListItem = styled.li`
   margin-bottom: 0.44rem;
 `;
 
-export {
-  List,
-  ListItem,
-};
+export { List, ListItem };

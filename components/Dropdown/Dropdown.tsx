@@ -1,6 +1,4 @@
-import {
-  useState, useRef, useEffect, MouseEvent, useCallback,
-} from 'react';
+import { useState, useRef, useEffect, MouseEvent, useCallback } from 'react';
 import { Field } from 'react-final-form';
 
 import NumberInput from '../NumberInput/NumberInput';
@@ -61,15 +59,12 @@ const Dropdown: React.FC<DropdownProps> = ({
   const applyChanges = (currentState: typeof dropdownState): void => {
     const resultStrings: string[] = Array.from(
       new Set(
-        currentState.map((item, _, state) => {
-          const { groupName } = item;
-          const { currentValue, wordForms } = item;
+        dropdownState.map((item, _, state) => {
+          const { groupName, currentValue, wordForms } = item;
 
           if (!groupName) return getResultStringPart(currentValue, wordForms);
 
-          const { wordForms: groupWordForms } = groups.find(
-            (group) => group.name === groupName,
-          );
+          const { wordForms: groupWordForms } = groups.find((group) => group.name === groupName);
           const groupCount = state
             .filter((stateItem) => stateItem.groupName === groupName)
             .reduce((sum, element) => sum + element.currentValue, 0);
@@ -100,11 +95,14 @@ const Dropdown: React.FC<DropdownProps> = ({
     handleResultBarClick();
   };
 
-  const handleDocumentClick = useCallback((event: globalThis.MouseEvent) => {
-    if (isOpen && !dropdown.current.contains(event.target)) {
-      handleResultBarClick();
-    }
-  }, [dropdown, isOpen]);
+  const handleDocumentClick = useCallback(
+    (event: globalThis.MouseEvent) => {
+      if (isOpen && !dropdown.current.contains(event.target)) {
+        handleResultBarClick();
+      }
+    },
+    [dropdown, isOpen],
+  );
 
   useEffect(() => {
     if (!enableControls) {
@@ -130,19 +128,16 @@ const Dropdown: React.FC<DropdownProps> = ({
           <S.ListContainer isOpen={isOpen}>
             <S.List>
               {dropdownState.map((el) => {
-                const {
-                  title, min, max, currentValue, inputName,
-                } = el;
+                const { title, min, max, currentValue, inputName } = el;
 
                 const makeButtonHandler = (
                   increment: number,
-                ): ((e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => void
-              ) => (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>): void => {
+                ): ((e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => void) => (
+                  e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>,
+                ): void => {
                   setDropdownState((prevState) => {
                     const state = [...prevState];
-                    const elementToUpdate = state.find(
-                      (item) => item.title === title,
-                    );
+                    const elementToUpdate = state.find((item) => item.title === title);
                     elementToUpdate.currentValue += increment;
                     return state;
                   });
@@ -166,18 +161,19 @@ const Dropdown: React.FC<DropdownProps> = ({
               })}
             </S.List>
             {enableControls && (
-            <S.Controls>
-              <S.ResetButton
-                type="button"
-                isHidden={isResetHidden}
-                onClick={handleResetClick}
-              >
-                Очистить
-              </S.ResetButton>
-              <ApplyButton secondary type="button" onClick={handleApplyClick}>
-                Применить
-              </ApplyButton>
-            </S.Controls>
+              <S.Controls>
+                <S.ResetButton
+                  isLink={false}
+                  type="button"
+                  isHidden={isResetHidden}
+                  onClick={handleResetClick}
+                >
+                  Очистить
+                </S.ResetButton>
+                <ApplyButton isSecondary isLink={false} type="button" onClick={handleApplyClick}>
+                  Применить
+                </ApplyButton>
+              </S.Controls>
             )}
           </S.ListContainer>
         </S.Dropdown>

@@ -31,8 +31,4 @@ const Star = styled.div<StarProps>`
   }}
 `;
 
-export {
-  StarRating,
-  Title,
-  Star,
-};
+export { StarRating, Title, Star };

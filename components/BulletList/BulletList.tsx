@@ -1,12 +1,16 @@
 import * as S from './BulletList.styles';
 
 type BulletListProps = {
-  items: string[]
-}
+  items: string[];
+};
 
-const BulletList: React.FC<BulletListProps> = ({ items = ['No items passed'] }: BulletListProps) => (
+const BulletList: React.FC<BulletListProps> = ({
+  items = ['No items passed'],
+}: BulletListProps) => (
   <S.List>
-    {items.map((el) => <S.Item key={el}>{el}</S.Item>)}
+    {items.map((el) => (
+      <S.Item key={el}>{el}</S.Item>
+    ))}
   </S.List>
 );
 
