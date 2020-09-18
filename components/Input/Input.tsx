@@ -49,7 +49,7 @@ const Input: React.FC<InputProps> = ({
   return (
     <S.Input>
       <label>
-        { label && <S.LabelText>{label}</S.LabelText>}
+        {label && <S.LabelText>{label}</S.LabelText>}
         {mask ? (
           <S.MaskedField
             {...rest}

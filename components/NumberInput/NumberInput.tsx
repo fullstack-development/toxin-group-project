@@ -9,7 +9,7 @@ type NumberInputProps = {
   name: string;
   onIncrement: (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => void;
   onDecrement: (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => void;
-}
+};
 
 const NumberInput: React.FC<NumberInputProps> = ({
   min,
@@ -20,19 +20,11 @@ const NumberInput: React.FC<NumberInputProps> = ({
   name,
 }: NumberInputProps) => (
   <S.InputContainer>
-    <S.Button
-      disabled={currentValue === min}
-      onClick={onDecrement}
-      type="button"
-    >
+    <S.Button disabled={currentValue === min} onClick={onDecrement} type="button">
       -
     </S.Button>
     <S.Input readOnly value={currentValue} name={name} />
-    <S.Button
-      disabled={currentValue === max}
-      onClick={onIncrement}
-      type="button"
-    >
+    <S.Button disabled={currentValue === max} onClick={onIncrement} type="button">
       +
     </S.Button>
   </S.InputContainer>
