@@ -5,7 +5,7 @@ import BulletList from 'components/BulletList/BulletList';
 import CheckboxesList from 'components/CheckboxesList/CheckboxesList';
 import checkboxData from 'components/CheckboxesList/CheckboxesListData.json';
 import Dropdown from 'components/Dropdown/Dropdown';
-import expandableCheckboxData from 'components/Expander/ExpandableListData.json';
+import expandableCheckboxData from 'components/Expander/ExpandableList.data.json';
 import Expander from 'components/Expander/Expander';
 import Input from 'components/Input/Input';
 import LikeButtonContainer from 'components/LikeButton/LikeButtonContainer';
