@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 
 type ContainerElement = {
   type?: 'single' | 'double';
-}
+};
 
 const Container = styled.div`
   position: relative;
@@ -30,8 +30,4 @@ const ContainerElement = styled.div<ContainerElement>`
   }}
 `;
 
-export {
-  Container,
-  ExpandIcon,
-  ContainerElement,
-};
+export { Container, ExpandIcon, ContainerElement };

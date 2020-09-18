@@ -8,10 +8,10 @@ import * as S from './TimePicker.styles';
 type TimePickerProps = {
   type?: 'single' | 'double';
   onChange?: (e: React.ChangeEvent) => void;
-  dateFrom?: Date,
-  dateTo?: Date,
+  dateFrom?: Date;
+  dateTo?: Date;
   labelName: string;
-}
+};
 
 const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps) => {
   const { type, dateFrom, dateTo, labelName } = props;
@@ -24,7 +24,7 @@ const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps) => {
   const { from, to } = selectedDateRange;
 
   const getDateFrom = (): string => {
-    const dateOptions: { day: string, month: string } = {
+    const dateOptions: { day: string; month: string } = {
       day: 'numeric',
       month: 'short',
     };
@@ -45,7 +45,7 @@ const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps) => {
 
   return (
     <S.Container>
-      <S.ContainerElement type={type} onClick={() => { setCalendarVisibility(true); }}>
+      <S.ContainerElement type={type} onClick={setCalendarVisibility.call(null, true)}>
         <Field
           name={`${labelName} date from`}
           type="text"
@@ -56,14 +56,14 @@ const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps) => {
               value={from ? getDateFrom() : getMaskedDate()}
               label="date Dropdown"
               placeholder="date from"
-              onChange={() => { }}
+              onChange={() => {}}
             />
           )}
         />
         <S.ExpandIcon />
       </S.ContainerElement>
       {type === 'double' && (
-        <S.ContainerElement onClick={() => { setCalendarVisibility(true); }}>
+        <S.ContainerElement onClick={setCalendarVisibility.call(null, true)}>
           <Field
             name={`${labelName} date to`}
             render={(props) => (
@@ -73,22 +73,20 @@ const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps) => {
                 value={to ? to.toLocaleDateString('ru-RU') : getMaskedDate()}
                 label="date Dropdown"
                 placeholder="date to"
-                onChange={() => { }}
+                onChange={() => {}}
               />
             )}
           />
           <S.ExpandIcon />
         </S.ContainerElement>
       )}
-      {
-        // isCalendarVisible && (
-        //   <Calendar
-        //     isVisible={isCalendarVisible}
-        //     onSelectDate={setSelectedDateRange}
-        //     onApply={() => { setCalendarVisibility(false); }}
-        //   />
-        // )
-      }
+      {isCalendarVisible && (
+        <Calendar
+          isVisible={isCalendarVisible}
+          onSelectDate={setSelectedDateRange}
+          onApply={setCalendarVisibility.call(null, false)}
+        />
+      )}
     </S.Container>
   );
 };
