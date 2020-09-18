@@ -42,6 +42,13 @@ const StarRatingWrapper = styled.div`
   max-width: 18.5714rem;
 `;
 
+const RadioWrapper = styled.div`
+  width: 17rem;
+  display: flex;
+  margin-bottom: 0.45rem;
+  justify-content: space-around;
+`;
+
 export {
   Container,
   TextButtonWrapper,
@@ -52,4 +59,5 @@ export {
   BulletListWrapper,
   DropdownWrapper,
   StarRatingWrapper,
+  RadioWrapper,
 };

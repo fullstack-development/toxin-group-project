@@ -7,6 +7,7 @@ import roomOptions from 'components/CheckboxesList/CheckboxesListData.json';
 import Dropdown from 'components/Dropdown/Dropdown';
 import Input from 'components/Input/Input';
 import LikeButtonContainer from 'components/LikeButton/LikeButtonContainer';
+import RadioButton from 'components/RadioButton/RadioButton';
 import StarRating from 'components/StarRating/StarRating';
 import TextButton from 'components/TextButton/TextButton';
 import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators/';
@@ -21,6 +22,7 @@ class Elements extends React.Component {
       <S.Container>
         <Form
           onSubmit={this.handleFormSubmit}
+          initialValues={{ gender: 'female' }}
           render={() => (
             <form>
               <S.InputWrapper>
@@ -123,6 +125,32 @@ class Elements extends React.Component {
               <S.CheckboxWrapper>
                 <CheckboxesList roomOptions={roomOptions} />
               </S.CheckboxWrapper>
+              <S.RadioWrapper>
+                <Field
+                  name="gender"
+                  value="male"
+                  type="radio"
+                  render={(props) => (
+                    <RadioButton
+                      {...props.input}
+                      {...props.meta}
+                      label="Мужчина"
+                    />
+                  )}
+                />
+                <Field
+                  name="gender"
+                  value="female"
+                  type="radio"
+                  render={(props) => (
+                    <RadioButton
+                      {...props.input}
+                      {...props.meta}
+                      label="Женщина"
+                    />
+                  )}
+                />
+              </S.RadioWrapper>
             </form>
           )}
         />
