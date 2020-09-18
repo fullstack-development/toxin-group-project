@@ -1,5 +1,4 @@
-import ExpandLess from '@material-ui/icons/ExpandLess';
-import ExpandMore from '@material-ui/icons/ExpandMore';
+import { ExpandLess, ExpandMore } from '@material-ui/icons';
 import { useState, useRef, useEffect } from 'react';
 
 import * as S from './Expander.styles';
@@ -8,10 +7,6 @@ type Props = {
   title: string;
   isDefaultOpen: boolean;
   children: JSX.Element;
-}
-
-type State = {
-  isOpen: boolean;
 }
 
 const Expander: React.FC<Props> = ({ title, isDefaultOpen, children }: Props) => {
@@ -35,7 +30,7 @@ const Expander: React.FC<Props> = ({ title, isDefaultOpen, children }: Props) =>
 
   return (
     <S.Expander ref={expander}>
-      <S.Header onClick={handleHeaderClick}>
+      <S.Header onClick={handleHeaderClick} type="button">
         <S.Title>{title}</S.Title>
         { isOpen ? <ExpandLess /> : <ExpandMore /> }
       </S.Header>

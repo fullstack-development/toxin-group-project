@@ -10,11 +10,15 @@ const Expander = styled.div`
   width: 100%;
 `;
 
-const Header = styled.div`
+const Header = styled.button`
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
+  border: none;
+  outline: none;
+  background-color: transparent;
 `;
 
 const Title = styled.h3`
