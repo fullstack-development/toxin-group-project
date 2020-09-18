@@ -13,6 +13,10 @@ const LikeButtonWrapper = styled.div`
   margin: 1rem 0;
 `;
 
+const ButtonWrapper = styled.div`
+  margin-bottom: 2.1429rem;
+`;
+
 const DropdownWrapper = styled.div`
   width: 18.9286rem;
   margin-bottom: 1.4286rem;
@@ -44,6 +48,7 @@ const StarRatingWrapper = styled.div`
 
 export {
   Container,
+  ButtonWrapper,
   TextButtonWrapper,
   InputWrapper,
   LikeButtonWrapper,

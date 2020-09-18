@@ -2,11 +2,12 @@ import React from 'react';
 import { Form, Field } from 'react-final-form';
 
 import BulletList from 'components/BulletList/BulletList';
+import Button from 'components/Button/Button';
 import CheckboxesList from 'components/CheckboxesList/CheckboxesList';
 import roomOptions from 'components/CheckboxesList/CheckboxesListData.json';
 import Dropdown from 'components/Dropdown/Dropdown';
 import Input from 'components/Input/Input';
-import LikeButtonContainer from 'components/LikeButton/LikeButtonContainer';
+import LikeButton from 'components/LikeButton/LikeButton';
 import StarRating from 'components/StarRating/StarRating';
 import TextButton from 'components/TextButton/TextButton';
 import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators/';
@@ -69,8 +70,14 @@ class UIFormElementsLayout extends React.Component {
                   )}
                 />
               </S.InputWrapper>
+              <S.ButtonWrapper>
+                <Button type="button" isLink={false} isFilled>click me</Button>
+              </S.ButtonWrapper>
+              <S.ButtonWrapper>
+                <Button isLink href="https://google.com">click me</Button>
+              </S.ButtonWrapper>
               <S.LikeButtonWrapper>
-                <LikeButtonContainer likes={2} />
+                <LikeButton count={2} />
               </S.LikeButtonWrapper>
               <S.DropdownWrapper>
                 <Dropdown
