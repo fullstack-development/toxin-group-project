@@ -23,13 +23,14 @@ const Checkmark = styled.span`
       border-radius: 50%;
 
       &:after {
-        content: "";
+        content: '';
         display: none;
         position: absolute;
-        top: 0.2143rem;
-        left: 0.2143rem;
-        width: 0.8571rem;
-        height: 0.8571rem;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: calc(100% - 0.4286rem);
+        height: calc(100% - 0.4286rem);
         border-radius: 50%;
         background: ${gradients.primary};
       }
