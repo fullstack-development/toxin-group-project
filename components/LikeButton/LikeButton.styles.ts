@@ -1,11 +1,13 @@
 import styled, { css } from 'styled-components';
 
+import visuallyHidden from 'shared/styles/mixins/visually-hidden';
+
 type LikeSpan = {
   isActive: boolean;
 };
 
 const LikeInput = styled.input`
-  width: 0;
+  ${visuallyHidden};
 `;
 
 const LikeLabel = styled.label<LikeSpan>`

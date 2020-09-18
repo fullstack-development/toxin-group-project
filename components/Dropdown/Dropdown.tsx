@@ -1,4 +1,6 @@
-import { useState, useRef, useEffect, MouseEvent } from 'react';
+import {
+  useState, useRef, useEffect, MouseEvent, useCallback,
+} from 'react';
 import { Field } from 'react-final-form';
 
 import NumberInput from '../NumberInput/NumberInput';
@@ -51,12 +53,12 @@ const Dropdown: React.FC<DropdownProps> = ({
     max: item.max || DEFAULT_SETTINGS.max,
   }));
 
-  const [dropdownState, setDropdownState] = useState([...initialState]);
+  const [dropdownState, setDropdownState] = useState(initialState);
   const [isOpen, setIsOpen] = useState(false);
   const [resultString, setResultString] = useState(placeholder);
   const dropdown = useRef(null);
 
-  const applyChanges = (): void => {
+  const applyChanges = (currentState: typeof dropdownState): void => {
     const resultStrings: string[] = Array.from(
       new Set(
         dropdownState.map((item, _, state) => {
@@ -76,8 +78,8 @@ const Dropdown: React.FC<DropdownProps> = ({
     setResultString(resultStrings.join(', ') || placeholder);
   };
 
-  const handleResetClick = (): void => {
-    setDropdownState([...initialState]);
+  const resetResult = () => {
+    applyChanges(initialState);
   };
 
   const handleResultBarClick = (): void => {
@@ -85,24 +87,32 @@ const Dropdown: React.FC<DropdownProps> = ({
   };
 
   const handleApplyClick = (): void => {
-    applyChanges();
+    applyChanges(dropdownState);
     handleResultBarClick();
   };
 
-  const handleDocumentClick = (event: globalThis.MouseEvent) => {
+  const handleResetClick = (): void => {
+    setDropdownState(initialState);
+    resetResult();
+    handleResultBarClick();
+  };
+
+  const handleDocumentClick = useCallback((event: globalThis.MouseEvent) => {
     if (isOpen && !dropdown.current.contains(event.target)) {
       handleResultBarClick();
     }
-  };
+  }, [dropdown, isOpen]);
 
   useEffect(() => {
     if (!enableControls) {
-      applyChanges();
+      applyChanges(dropdownState);
     }
+  }, [dropdownState]);
 
+  useEffect(() => {
     document.addEventListener('click', handleDocumentClick);
     return () => document.removeEventListener('click', handleDocumentClick);
-  });
+  }, [handleDocumentClick]);
 
   const isResetHidden = dropdownState.every((item) => !item.currentValue);
 
@@ -150,14 +160,24 @@ const Dropdown: React.FC<DropdownProps> = ({
               })}
             </S.List>
             {enableControls && (
-              <S.Controls>
-                <S.ResetButton type="button" isHidden={isResetHidden} onClick={handleResetClick}>
-                  Очистить
-                </S.ResetButton>
-                <ApplyButton secondary type="button" onClick={handleApplyClick}>
-                  Применить
-                </ApplyButton>
-              </S.Controls>
+            <S.Controls>
+              <S.ResetButton
+                isLink={false}
+                type="button"
+                isHidden={isResetHidden}
+                onClick={handleResetClick}
+              >
+                Очистить
+              </S.ResetButton>
+              <ApplyButton
+                isSecondary
+                isLink={false}
+                type="button"
+                onClick={handleApplyClick}
+              >
+                Применить
+              </ApplyButton>
+            </S.Controls>
             )}
           </S.ListContainer>
         </S.Dropdown>

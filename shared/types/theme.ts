@@ -1,8 +1,9 @@
 export type Theme = {
   typography: {
-    fontName: string;
-    fontSize: string;
-  };
+    fontName: string,
+    secondaryFontName: string,
+    fontSize: string,
+  },
   colors: {
     primary: string;
     primaryVariant: string;
@@ -17,7 +18,9 @@ export type Theme = {
     error: string;
   };
   gradients: {
-    primary: string;
-    secondary: string;
-  };
+    primary: string,
+    secondary: string,
+    primaryLight: string;
+    secondaryLight: string;
+  }
 };
