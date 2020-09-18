@@ -4,8 +4,8 @@ import { Theme } from '../types/theme';
 import fontFace from './mixins/font-face';
 
 type Props = {
-  theme: Theme
-}
+  theme: Theme;
+};
 
 const GlobalStyle = createGlobalStyle<Props>`
   ${(props) => {

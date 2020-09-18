@@ -30,7 +30,8 @@ const Button = styled.button<ButtonProps>`
       overflow: hidden;
       cursor: pointer;
 
-      ${!isFilled && css`
+      ${!isFilled &&
+      css`
         &::before {
           content: '';
           position: absolute;

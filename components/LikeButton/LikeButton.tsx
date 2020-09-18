@@ -4,10 +4,10 @@ import { useState } from 'react';
 import * as S from './LikeButton.styles';
 
 type LikeButtonProps = {
-  count: number,
-  isActive?: boolean,
+  count: number;
+  isActive?: boolean;
   onCheckboxChange?: (e: React.ChangeEvent) => void;
-}
+};
 
 const LikeButton: React.FC<LikeButtonProps> = (props: LikeButtonProps) => {
   const { count, isActive } = props;
@@ -24,9 +24,7 @@ const LikeButton: React.FC<LikeButtonProps> = (props: LikeButtonProps) => {
   return (
     <S.LikeLabel isActive={isLikeButtonPressed}>
       <FavoriteIcon />
-      <S.LikeSpan>
-        {likesCount}
-      </S.LikeSpan>
+      <S.LikeSpan>{likesCount}</S.LikeSpan>
       <S.LikeInput type="checkbox" onChange={handleLikeButtonClick} />
     </S.LikeLabel>
   );

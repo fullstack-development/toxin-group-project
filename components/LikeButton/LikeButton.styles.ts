@@ -4,7 +4,7 @@ import visuallyHidden from 'shared/styles/mixins/visually-hidden';
 
 type LikeSpan = {
   isActive: boolean;
-}
+};
 
 const LikeInput = styled.input`
   ${visuallyHidden};
@@ -61,11 +61,7 @@ const LikeSpan = styled.span`
       font-size: 0.7rem;
       user-select: none;
     `;
-  }
-}`;
+  }}
+`;
 
-export {
-  LikeInput,
-  LikeLabel,
-  LikeSpan,
-};
+export { LikeInput, LikeLabel, LikeSpan };

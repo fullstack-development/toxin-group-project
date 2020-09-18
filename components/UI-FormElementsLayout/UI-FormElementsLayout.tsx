@@ -17,7 +17,7 @@ import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/va
 import * as S from './UI-FormElementsLayout.styles';
 
 class UIFormElementsLayout extends React.Component {
-  handleFormSubmit = () => { };
+  handleFormSubmit = () => {};
 
   render() {
     return (
@@ -73,10 +73,14 @@ class UIFormElementsLayout extends React.Component {
                 />
               </S.InputWrapper>
               <S.ButtonWrapper>
-                <Button type="button" isLink={false} isFilled>click me</Button>
+                <Button type="button" isLink={false} isFilled>
+                  click me
+                </Button>
               </S.ButtonWrapper>
               <S.ButtonWrapper>
-                <Button isLink href="https://google.com">click me</Button>
+                <Button isLink href="https://google.com">
+                  click me
+                </Button>
               </S.ButtonWrapper>
               <S.LikeButtonWrapper>
                 <LikeButton count={2} />
@@ -146,7 +150,9 @@ class UIFormElementsLayout extends React.Component {
           )}
         />
         <S.TextButtonWrapper>
-          <TextButton isLink href="https://google.com">Click me</TextButton>
+          <TextButton isLink href="https://google.com">
+            Click me
+          </TextButton>
         </S.TextButtonWrapper>
         <S.TextButtonWrapper>
           <TextButton isLink={false} isSecondary>
