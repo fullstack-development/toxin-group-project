@@ -1,5 +1,11 @@
 import styled, { css } from 'styled-components';
 
+import { h3 } from 'shared/styles/mixins/title';
+
+type ContentProps = {
+  isOpen: boolean;
+};
+
 const Expander = styled.div`
   width: 100%;
 `;
@@ -12,12 +18,11 @@ const Header = styled.div`
 `;
 
 const Title = styled.h3`
-  font-size: 0.8571rem;
-  text-transform: uppercase;
+  ${h3}
 `;
 
-const Content = styled.div`
-  ${(props: { isOpen: boolean }) => {
+const Content = styled.div<ContentProps>`
+  ${(props) => {
     const { isOpen } = props;
     return css`
       height: ${(isOpen ? 'auto' : '0')};
