@@ -14,8 +14,7 @@ type DaysSelection = {
 
 type Calendar = {
   isVisible?: boolean;
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  onApply?: Function;
+  onApply?: (...args: unknown[]) => unknown;
 };
 
 type SelectedDate = null | Date;
@@ -52,14 +51,14 @@ const Calendar: React.FC<Calendar> = (props: Calendar) => {
   const [isShown, setVisibility] = useState(isVisible);
   const htmlContainer = useRef(null);
 
-  const handleDocumentClick = (e: Event) => {
-    if (isShown && !htmlContainer.current.contains(e.target)) setVisibility(false);
-  };
-
   useEffect(() => {
+    const handleDocumentClick = (e: Event) => {
+      if (isShown && !htmlContainer.current.contains(e.target)) setVisibility(false);
+    };
+
     document.addEventListener('click', handleDocumentClick);
     return () => document.removeEventListener('click', handleDocumentClick);
-  }, []);
+  }, [isShown]);
 
   const isSelectingFirstDay = (dateFrom: SelectedDate, dateTo: SelectedDate, currentDay: Date) => {
     const isBeforeFirstDay = dateFrom && DateUtils.isDayBefore(currentDay, dateFrom);
