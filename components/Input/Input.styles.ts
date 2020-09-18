@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
 import MaskedInput from 'react-text-mask';
+import styled, { css } from 'styled-components';
 
 const Input = styled.div`
   width: 100%;
@@ -84,10 +84,4 @@ const ErrorMessage = styled.p`
   }}
 `;
 
-export {
-  Input,
-  LabelText,
-  MaskedField,
-  Field,
-  ErrorMessage,
-};
+export { Input, LabelText, MaskedField, Field, ErrorMessage };

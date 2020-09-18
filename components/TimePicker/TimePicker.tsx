@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { Field } from 'react-final-form';
 
-import Calendar from '../Calendar/Calendar';
+// import Calendar from '../Calendar/Calendar';
 import Input from '../Input/Input';
 import * as S from './TimePicker.styles';
 
@@ -45,35 +46,48 @@ const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps) => {
   return (
     <S.Container>
       <S.ContainerElement type={type} onClick={() => { setCalendarVisibility(true); }}>
-        <Input
-          value={from ? getDateFrom() : getMaskedDate()}
+        <Field
           name={`${labelName} date from`}
-          label="date Dropdown"
-          placeholder="date from"
-          onChange={() => {}}
+          type="text"
+          render={(props) => (
+            <Input
+              {...props.input}
+              {...props.meta}
+              value={from ? getDateFrom() : getMaskedDate()}
+              label="date Dropdown"
+              placeholder="date from"
+              onChange={() => { }}
+            />
+          )}
         />
         <S.ExpandIcon />
       </S.ContainerElement>
       {type === 'double' && (
         <S.ContainerElement onClick={() => { setCalendarVisibility(true); }}>
-          <Input
-            value={to ? to.toLocaleDateString('ru-RU') : getMaskedDate()}
+          <Field
             name={`${labelName} date to`}
-            label="date Dropdown"
-            placeholder="date to"
-            onChange={() => {}}
+            render={(props) => (
+              <Input
+                {...props.input}
+                {...props.meta}
+                value={to ? to.toLocaleDateString('ru-RU') : getMaskedDate()}
+                label="date Dropdown"
+                placeholder="date to"
+                onChange={() => { }}
+              />
+            )}
           />
           <S.ExpandIcon />
         </S.ContainerElement>
       )}
       {
-        isCalendarVisible && (
-          <Calendar
-            isVisible={isCalendarVisible}
-            onSelectDate={setSelectedDateRange}
-            onApply={() => { setCalendarVisibility(false); }}
-          />
-        )
+        // isCalendarVisible && (
+        //   <Calendar
+        //     isVisible={isCalendarVisible}
+        //     onSelectDate={setSelectedDateRange}
+        //     onApply={() => { setCalendarVisibility(false); }}
+        //   />
+        // )
       }
     </S.Container>
   );

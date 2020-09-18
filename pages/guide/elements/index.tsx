@@ -65,12 +65,12 @@ class Elements extends React.Component {
                   )}
                 />
               </S.InputWrapper>
+              <S.TimePickerWrapper>
+                <TimePicker type="single" labelName="elements" />
+              </S.TimePickerWrapper>
             </form>
           )}
         />
-        <S.TimePickerWrapper>
-          <TimePicker type="single" labelName="elements" />
-        </S.TimePickerWrapper>
         <S.BulletListWrapper>
           <BulletList
             items={[
