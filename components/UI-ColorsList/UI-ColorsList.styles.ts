@@ -11,10 +11,7 @@ const List = styled.ul`
 
   li + li {
     margin-top: 1.428rem;
-  };
+  }
 `;
 
-export {
-  Title,
-  List,
-};
+export { Title, List };

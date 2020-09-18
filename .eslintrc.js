@@ -56,5 +56,7 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'jsx-a11y/label-has-associated-control': ['error', { assert: 'either' }],
     'prettier/prettier': 2,
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
   },
 };

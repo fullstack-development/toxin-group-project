@@ -1,6 +1,4 @@
-import {
-  useState, useRef, useEffect, MouseEvent, useCallback,
-} from 'react';
+import { useState, useRef, useEffect, MouseEvent, useCallback } from 'react';
 import { Field } from 'react-final-form';
 
 import NumberInput from '../NumberInput/NumberInput';
@@ -97,11 +95,14 @@ const Dropdown: React.FC<DropdownProps> = ({
     handleResultBarClick();
   };
 
-  const handleDocumentClick = useCallback((event: globalThis.MouseEvent) => {
-    if (isOpen && !dropdown.current.contains(event.target)) {
-      handleResultBarClick();
-    }
-  }, [dropdown, isOpen]);
+  const handleDocumentClick = useCallback(
+    (event: globalThis.MouseEvent) => {
+      if (isOpen && !dropdown.current.contains(event.target)) {
+        handleResultBarClick();
+      }
+    },
+    [dropdown, isOpen],
+  );
 
   useEffect(() => {
     if (!enableControls) {
@@ -160,24 +161,19 @@ const Dropdown: React.FC<DropdownProps> = ({
               })}
             </S.List>
             {enableControls && (
-            <S.Controls>
-              <S.ResetButton
-                isLink={false}
-                type="button"
-                isHidden={isResetHidden}
-                onClick={handleResetClick}
-              >
-                Очистить
-              </S.ResetButton>
-              <ApplyButton
-                isSecondary
-                isLink={false}
-                type="button"
-                onClick={handleApplyClick}
-              >
-                Применить
-              </ApplyButton>
-            </S.Controls>
+              <S.Controls>
+                <S.ResetButton
+                  isLink={false}
+                  type="button"
+                  isHidden={isResetHidden}
+                  onClick={handleResetClick}
+                >
+                  Очистить
+                </S.ResetButton>
+                <ApplyButton isSecondary isLink={false} type="button" onClick={handleApplyClick}>
+                  Применить
+                </ApplyButton>
+              </S.Controls>
             )}
           </S.ListContainer>
         </S.Dropdown>

@@ -7,7 +7,7 @@ type Props = {
   title: string;
   isDefaultOpen: boolean;
   children: JSX.Element;
-}
+};
 
 const Expander: React.FC<Props> = ({ title, isDefaultOpen, children }: Props) => {
   const [isOpen, setIsOpen] = useState(isDefaultOpen);
@@ -32,11 +32,9 @@ const Expander: React.FC<Props> = ({ title, isDefaultOpen, children }: Props) =>
     <S.Expander ref={expander}>
       <S.Header onClick={handleHeaderClick} type="button">
         <S.Title>{title}</S.Title>
-        { isOpen ? <ExpandLess /> : <ExpandMore /> }
+        {isOpen ? <ExpandLess /> : <ExpandMore />}
       </S.Header>
-      <S.Content isOpen={isOpen}>
-        {children}
-      </S.Content>
+      <S.Content isOpen={isOpen}>{children}</S.Content>
     </S.Expander>
   );
 };
