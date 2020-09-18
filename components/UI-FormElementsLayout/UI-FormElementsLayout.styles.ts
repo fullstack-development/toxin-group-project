@@ -31,9 +31,9 @@ const CheckboxWrapper = styled.div`
   margin-bottom: 0.45rem;
 `;
 
-const ErrorMessage = styled.div`
-  font-size: ${(props) => props.theme.error.fontSize};
-  color: ${(props) => props.theme.error.color};
+const ExpandableCheckboxWrapper = styled.div`
+  width: 18.1071rem;
+  margin-bottom: 0.45rem;
 `;
 
 const BulletListWrapper = styled.div`
@@ -52,8 +52,8 @@ export {
   TextButtonWrapper,
   InputWrapper,
   LikeButtonWrapper,
-  ErrorMessage,
   CheckboxWrapper,
+  ExpandableCheckboxWrapper,
   BulletListWrapper,
   DropdownWrapper,
   StarRatingWrapper,

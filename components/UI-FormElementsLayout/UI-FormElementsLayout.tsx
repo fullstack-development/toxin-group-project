@@ -4,8 +4,10 @@ import { Form, Field } from 'react-final-form';
 import BulletList from 'components/BulletList/BulletList';
 import Button from 'components/Button/Button';
 import CheckboxesList from 'components/CheckboxesList/CheckboxesList';
-import roomOptions from 'components/CheckboxesList/CheckboxesListData.json';
+import checkboxData from 'components/CheckboxesList/CheckboxesListData.json';
 import Dropdown from 'components/Dropdown/Dropdown';
+import expandableCheckboxData from 'components/Expander/ExpandableList.data.json';
+import Expander from 'components/Expander/Expander';
 import Input from 'components/Input/Input';
 import LikeButton from 'components/LikeButton/LikeButton';
 import StarRating from 'components/StarRating/StarRating';
@@ -128,8 +130,18 @@ class UIFormElementsLayout extends React.Component {
                 />
               </S.DropdownWrapper>
               <S.CheckboxWrapper>
-                <CheckboxesList roomOptions={roomOptions} />
+                <CheckboxesList roomOptions={checkboxData} />
               </S.CheckboxWrapper>
+              <S.ExpandableCheckboxWrapper>
+                <Expander title="expandable checkbox list" isDefaultOpen={false}>
+                  <CheckboxesList roomOptions={expandableCheckboxData} />
+                </Expander>
+              </S.ExpandableCheckboxWrapper>
+              <S.ExpandableCheckboxWrapper>
+                <Expander title="expandable checkbox list" isDefaultOpen>
+                  <CheckboxesList roomOptions={expandableCheckboxData} />
+                </Expander>
+              </S.ExpandableCheckboxWrapper>
             </form>
           )}
         />
