@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import visuallyHidden from 'shared/styles/mixins/visually-hidden';
+import { visuallyHidden } from 'shared/styles/mixins';
 
 const Title = styled.h2`
   ${visuallyHidden}

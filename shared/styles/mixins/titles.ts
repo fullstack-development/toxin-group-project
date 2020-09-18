@@ -1,4 +1,4 @@
-import { css } from 'styled-components';
+import { css, FlattenSimpleInterpolation } from 'styled-components';
 
 import purpleThemePalette from '../theme';
 
@@ -8,7 +8,7 @@ type Title = {
   color?: string;
 };
 
-const h1 = ({ color }: Title = {}) => css`
+const h1 = ({ color }: Title = {}): FlattenSimpleInterpolation => css`
   color: ${color || colors.basicDarkest};
   font-weight: bold;
   font-family: ${typography.secondaryFontName};
@@ -16,7 +16,7 @@ const h1 = ({ color }: Title = {}) => css`
   line-height: 2rem;
 `;
 
-const h2 = ({ color }: Title = {}) => css`
+const h2 = ({ color }: Title = {}): FlattenSimpleInterpolation => css`
   color: ${color || colors.basicDarkest};
   font-weight: bold;
   font-family: ${typography.secondaryFontName};
@@ -24,7 +24,7 @@ const h2 = ({ color }: Title = {}) => css`
   line-height: 1.9rem;
 `;
 
-const h3 = ({ color }: Title = {}) => css`
+const h3 = ({ color }: Title = {}): FlattenSimpleInterpolation => css`
   color: ${color || colors.basicDarkest};
   font-weight: bold;
   font-family: ${typography.fontName};
