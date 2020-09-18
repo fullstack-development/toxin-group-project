@@ -2,11 +2,9 @@ import styled, { css } from 'styled-components';
 
 import { materialIcons } from 'shared/styles/mixins';
 
-const Benefits = styled.div``;
-
 type Icon = {
   icon: string;
-}
+};
 
 const BenefitItem = styled.div`
   ${(props) => {
@@ -49,13 +47,4 @@ const Title = styled.h3`
   word-break: break-word;
 `;
 
-const Description = styled.p``;
-
-export {
-  Benefits,
-  BenefitItem,
-  TextWrapper,
-  Icon,
-  Title,
-  Description,
-};
+export { BenefitItem, TextWrapper, Icon, Title };
