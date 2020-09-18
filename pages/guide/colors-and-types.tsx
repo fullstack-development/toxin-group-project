@@ -1,7 +1,7 @@
-import ColorsTypesLayout from 'components/UI-ColorsTypesLayout/UI-ColorsTypesLayout';
+import UIColorsTypesLayout from 'components/UI-ColorsTypesLayout/UI-ColorsTypesLayout';
 
 const ColorsAndTypes: React.FC = () => (
-  <ColorsTypesLayout />
+  <UIColorsTypesLayout />
 );
 
 export default ColorsAndTypes;
