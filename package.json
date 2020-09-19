@@ -5,6 +5,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:types": "tsc --noEmit",
     "lint:styles": "stylelint \"./**/*.styles.ts\""
   },
   "dependencies": {
@@ -56,10 +57,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "lint-staged"
+      "pre-push": "npm run lint --max-warnings=0 && npm run lint:types"
     }
-  },
-  "lint-staged": {
-    "*": "npm run lint -- --fix"
   }
 }
