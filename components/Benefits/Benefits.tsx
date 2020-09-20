@@ -1,11 +1,12 @@
 import * as S from './Benefits.style';
 
 type Benefits = {
-  items: {
-    icon: string;
-    title: string;
-    description: string;
-  }[];
+  items: Array<
+    {
+      title: string;
+      description: string;
+    } & S.Icon
+  >;
 };
 
 const Benefits: React.FC<Benefits> = ({ items }: Benefits) => (

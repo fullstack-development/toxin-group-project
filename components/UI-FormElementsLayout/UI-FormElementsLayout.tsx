@@ -170,10 +170,11 @@ class UIFormElementsLayout extends React.Component {
           />
         </S.BulletListWrapper>
         <S.BenefitsWrapper>
-          <Benefits items={[
-            { icon: 'insert_emoticon', title: 'Комфорт', description: 'Шумопоглощающие стены' },
-            { icon: 'location_city', title: 'Удобство', description: 'Окно в каждой из спален' },
-          ]}
+          <Benefits
+            items={[
+              { icon: 'insert_emoticon', title: 'Комфорт', description: 'Шумопоглощающие стены' },
+              { icon: 'location_city', title: 'Удобство', description: 'Окно в каждой из спален' },
+            ]}
           />
         </S.BenefitsWrapper>
         <S.StarRatingWrapper>
