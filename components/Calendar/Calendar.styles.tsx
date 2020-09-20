@@ -1,16 +1,16 @@
 import DayPicker, { DayPickerProps } from 'react-day-picker';
 import styled, { css } from 'styled-components';
 
-import materialIcons from 'shared/styles/mixins/material-icons';
+import { titles, materialIcons } from 'shared/styles/mixins';
 
 type Control = {
   variant: 'primary' | 'basic';
   onClick: () => void;
-}
+};
 
 type Container = {
   isVisible: boolean;
-}
+};
 
 const NavBarButton = styled.button`
   ${(props) => {
@@ -55,6 +55,7 @@ const CalendarContainer = styled.div<Container>`
       padding: 0 1.2rem;
       z-index: 1000;
       background: ${colors.defaultBackground};
+      box-shadow: 0 0 2rem ${colors.basicLight};
     `;
   }}
 `;
@@ -84,7 +85,7 @@ const CalendarButton = styled.button<Control>`
   }}
 `;
 
-const Calendar = styled(DayPicker) <DayPickerProps>`
+const Calendar = styled(DayPicker)<DayPickerProps>`
   ${(props) => {
     const { colors, typography, gradients } = props.theme;
 
@@ -111,16 +112,16 @@ const Calendar = styled(DayPicker) <DayPickerProps>`
           color: ${colors.defaultBackground};
           font-weight: bold;
           border-radius: 50%;
-          cursor: default;
         }
 
         &--selected {
           background: ${gradients.primary};
-          opacity: .25;
+          opacity: 0.25;
           color: ${colors.basicDarkest};
         }
 
-        &--start, &--end {
+        &--start,
+        &--end {
           color: ${colors.defaultBackground};
           font-weight: bold;
           outline: none;
@@ -139,7 +140,7 @@ const Calendar = styled(DayPicker) <DayPickerProps>`
             top: 0;
             right: 0;
             z-index: -1;
-            opacity: .25;
+            opacity: 0.25;
           }
         }
 
@@ -147,10 +148,7 @@ const Calendar = styled(DayPicker) <DayPickerProps>`
           left: 0;
         }
 
-        &:not(.DayPicker-Day--start)
-        :not(.DayPicker-Day--end)
-        :not(.DayPicker-Day--today)
-        :hover {
+        &:not(.DayPicker-Day--start) :not(.DayPicker-Day--end) :not(.DayPicker-Day--today) :hover {
           background: ${colors.basicLightest};
         }
 
@@ -180,14 +178,13 @@ const Calendar = styled(DayPicker) <DayPickerProps>`
 
       & .DayPicker-Day--start.DayPicker-Day--today:after,
       & .DayPicker-Day--end.DayPicker-Day--today:after {
-        opacity: .25;
+        opacity: 0.25;
         width: 50%;
       }
 
       & .DayPicker {
         &-Caption {
-          font-weight: bold;
-          font-size: 1.3571rem;
+          ${titles.h2()};
           text-align: center;
           margin-top: 1.6rem;
         }
@@ -204,7 +201,7 @@ const Calendar = styled(DayPicker) <DayPickerProps>`
             text-decoration: none;
             font-weight: bold;
             font-family: ${typography.fontName};
-            font-size: .8rem;
+            font-size: 0.8rem;
           }
         }
 
@@ -222,10 +219,4 @@ const Calendar = styled(DayPicker) <DayPickerProps>`
   }};
 `;
 
-export {
-  NavBarButton,
-  CalendarContainer,
-  CalendarControls,
-  CalendarButton,
-  Calendar,
-};
+export { NavBarButton, CalendarContainer, CalendarControls, CalendarButton, Calendar };

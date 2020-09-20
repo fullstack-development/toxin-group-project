@@ -60,13 +60,17 @@ const Calendar: React.FC<Calendar> = (props: Calendar) => {
     return () => document.removeEventListener('click', handleDocumentClick);
   }, [isShown]);
 
-  const isSelectingFirstDay = (dateFrom: SelectedDate, dateTo: SelectedDate, currentDay: Date) => {
+  const isSelectingFirstDay = (
+    dateFrom: SelectedDate,
+    dateTo: SelectedDate,
+    currentDay: SelectedDate,
+  ) => {
     const isBeforeFirstDay = dateFrom && DateUtils.isDayBefore(currentDay, dateFrom);
     const isRangeSelected = dateFrom && dateTo;
     return !dateFrom || isBeforeFirstDay || isRangeSelected;
   };
 
-  const handleDayMouseEnter = (day) => {
+  const handleDayMouseEnter = (day: SelectedDate) => {
     const { from, to } = selectedDays;
 
     if (!isSelectingFirstDay(from, to, day)) {
@@ -77,13 +81,13 @@ const Calendar: React.FC<Calendar> = (props: Calendar) => {
     }
   };
 
-  const handleDayClick = (day): void => {
+  const handleDayClick = (day: SelectedDate): void => {
     const range: DaysSelection = DateUtils.addDayToRange(day, selectedDays);
 
     handleSelectDays(range);
   };
 
-  const handleApplyButtonClick = (e): void => {
+  const handleApplyButtonClick = (e: React.MouseEvent): void => {
     e.preventDefault();
 
     setVisibility(false);
@@ -91,7 +95,7 @@ const Calendar: React.FC<Calendar> = (props: Calendar) => {
     if (has.call(props, 'onApply')) onApply();
   };
 
-  const clearSelectedDate = (e): void => {
+  const clearSelectedDate = (e: React.MouseEvent): void => {
     e.preventDefault();
 
     const clearedData = {
