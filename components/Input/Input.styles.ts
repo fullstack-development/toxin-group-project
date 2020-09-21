@@ -56,7 +56,7 @@ const MaskedField = styled(MaskedInput)`
 
 const Field = styled.input`
   ${(props) => {
-    const { colors, typography } = props.theme;
+    const { colors } = props.theme;
     return css`
       width: 100%;
       border-radius: 0.2857rem;
@@ -65,7 +65,6 @@ const Field = styled.input`
       font-family: inherit;
 
       &::placeholder {
-        font-family: ${typography.fontName};
         color: ${colors.basicLight};
       }
 
