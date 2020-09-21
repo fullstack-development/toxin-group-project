@@ -1,9 +1,0 @@
-[
-  { "title": "Dark Shade 100%", "color": "#1F2041", "opacity": 1 },
-  { "title": "Dark Shade 75%", "color": "#1F2041", "opacity": 0.75 },
-  { "title": "Dark Shade 50%", "color": "#1F2041", "opacity": 0.5 },
-  { "title": "Dark Shade 25%", "color": "#1F2041", "opacity": 0.25 },
-  { "title": "Dark Shade 5%", "color": "#1F2041", "opacity": 0.05 },
-  { "title": "Purple", "color": "#BC9CFF", "opacity": 1 },
-  { "title": "Green", "color": "#6FCF97", "opacity": 1 }
-]
