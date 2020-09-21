@@ -5,11 +5,11 @@ import * as S from 'components/TextButton/TextButton.styles';
 
 type ListContainerProps = {
   isOpen: boolean;
-}
+};
 
 type ResetButtonProps = {
   isHidden: boolean;
-}
+};
 
 const Result = styled.button`
   ${(props) => {
@@ -51,8 +51,7 @@ const Dropdown = styled.div`
     return css`
       position: relative;
 
-      &:hover > ${Result},
-      &:focus > ${Result} {
+      &:hover > ${Result}, &:focus > ${Result} {
         border: 0.0714rem solid ${colors.basic};
       }
     `;
@@ -81,8 +80,8 @@ const ListContainer = styled.div<ListContainerProps>`
       padding: 0 0.5rem 0 0.9286rem;
       transform: translate(0, 100%);
       border: 0.0714rem solid ${colors.basic};
-      ${isOpen
-      && css`
+      ${isOpen &&
+      css`
         border-top: 0;
       `}
       border-radius: 0 0 0.2857rem 0.2857rem;
@@ -106,12 +105,12 @@ const Item = styled.li`
   ${(props) => {
     const { colors } = props.theme;
     return css`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: ${colors.basicDarkest};
-    padding: 0.3571rem 0 0.1429rem 0;
-  `;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: ${colors.basicDarkest};
+      padding: 0.3571rem 0 0.1429rem 0;
+    `;
   }}
 `;
 
@@ -129,10 +128,12 @@ const ResetButton = styled(S.TextButton)<ResetButtonProps>`
   ${(props) => {
     const { isHidden } = props;
 
-    return isHidden
-      && css`
+    return (
+      isHidden &&
+      css`
         visibility: hidden;
-      `;
+      `
+    );
   }}
 `;
 

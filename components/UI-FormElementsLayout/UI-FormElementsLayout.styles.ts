@@ -13,6 +13,10 @@ const LikeButtonWrapper = styled.div`
   margin: 1rem 0;
 `;
 
+const ButtonWrapper = styled.div`
+  margin-bottom: 2.1429rem;
+`;
+
 const DropdownWrapper = styled.div`
   width: 18.9286rem;
   margin-bottom: 1.4286rem;
@@ -27,13 +31,22 @@ const CheckboxWrapper = styled.div`
   margin-bottom: 0.45rem;
 `;
 
-const ErrorMessage = styled.div`
-  font-size: ${(props) => props.theme.error.fontSize};
-  color: ${(props) => props.theme.error.color};
+const ExpandableCheckboxWrapper = styled.div`
+  width: 18.1071rem;
+  margin-bottom: 0.45rem;
 `;
 
 const BulletListWrapper = styled.div`
   max-width: 18.5714rem;
+`;
+
+const CommentsWrapper = styled.div`
+  max-width: 50.7rem;
+  margin: 1rem 0;
+`;
+const BenefitsWrapper = styled.div`
+  max-width: 19.9rem;
+  margin: 1rem 0;
 `;
 
 const StarRatingWrapper = styled.div`
@@ -42,14 +55,25 @@ const StarRatingWrapper = styled.div`
   max-width: 18.5714rem;
 `;
 
+const RadioWrapper = styled.div`
+  width: 17rem;
+  display: flex;
+  margin-bottom: 0.45rem;
+  justify-content: space-around;
+`;
+
 export {
   Container,
+  ButtonWrapper,
   TextButtonWrapper,
   InputWrapper,
   LikeButtonWrapper,
-  ErrorMessage,
   CheckboxWrapper,
+  ExpandableCheckboxWrapper,
   BulletListWrapper,
   DropdownWrapper,
+  CommentsWrapper,
+  BenefitsWrapper,
   StarRatingWrapper,
+  RadioWrapper,
 };

@@ -18,7 +18,6 @@ const UIColorsTypesLayout: React.FC = () => (
       </S.Wrapper>
     </S.Content>
   </S.ColorsTypesLayout>
-
 );
 
 export default UIColorsTypesLayout;

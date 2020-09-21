@@ -1,26 +1,34 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
 
+import Benefits from 'components/Benefits/Benefits';
 import BulletList from 'components/BulletList/BulletList';
+import Button from 'components/Button/Button';
+import Calendar from 'components/Calendar/Calendar';
 import CheckboxesList from 'components/CheckboxesList/CheckboxesList';
-import roomOptions from 'components/CheckboxesList/CheckboxesListData.json';
+import checkboxData from 'components/CheckboxesList/CheckboxesListData.json';
+import Comment from 'components/Comment/Comment';
 import Dropdown from 'components/Dropdown/Dropdown';
+import expandableCheckboxData from 'components/Expander/ExpandableList.data.json';
+import Expander from 'components/Expander/Expander';
 import Input from 'components/Input/Input';
-import LikeButtonContainer from 'components/LikeButton/LikeButtonContainer';
+import LikeButton from 'components/LikeButton/LikeButton';
+import RadioButton from 'components/RadioButton/RadioButton';
 import StarRating from 'components/StarRating/StarRating';
 import TextButton from 'components/TextButton/TextButton';
 import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators/';
 
-import * as S from './elements.styles';
+import * as S from './UI-FormElementsLayout.styles';
 
-class Elements extends React.Component {
-  handleFormSubmit = () => { };
+class UIFormElementsLayout extends React.Component {
+  handleFormSubmit = () => {};
 
   render() {
     return (
       <S.Container>
         <Form
           onSubmit={this.handleFormSubmit}
+          initialValues={{ gender: 'female' }}
           render={() => (
             <form>
               <S.InputWrapper>
@@ -69,8 +77,18 @@ class Elements extends React.Component {
                   )}
                 />
               </S.InputWrapper>
+              <S.ButtonWrapper>
+                <Button type="button" isLink={false} isFilled>
+                  click me
+                </Button>
+              </S.ButtonWrapper>
+              <S.ButtonWrapper>
+                <Button isLink href="https://google.com">
+                  click me
+                </Button>
+              </S.ButtonWrapper>
               <S.LikeButtonWrapper>
-                <LikeButtonContainer likes={2} />
+                <LikeButton count={2} />
               </S.LikeButtonWrapper>
               <S.DropdownWrapper>
                 <Dropdown
@@ -121,13 +139,29 @@ class Elements extends React.Component {
                 />
               </S.DropdownWrapper>
               <S.CheckboxWrapper>
-                <CheckboxesList roomOptions={roomOptions} />
+                <CheckboxesList roomOptions={checkboxData} />
               </S.CheckboxWrapper>
+              <S.RadioWrapper>
+                <RadioButton label="Мужчина" name="gender" value="male" />
+                <RadioButton label="Женщина" name="gender" value="female" />
+              </S.RadioWrapper>
+              <S.ExpandableCheckboxWrapper>
+                <Expander title="expandable checkbox list" isDefaultOpen={false}>
+                  <CheckboxesList roomOptions={expandableCheckboxData} />
+                </Expander>
+              </S.ExpandableCheckboxWrapper>
+              <S.ExpandableCheckboxWrapper>
+                <Expander title="expandable checkbox list" isDefaultOpen>
+                  <CheckboxesList roomOptions={expandableCheckboxData} />
+                </Expander>
+              </S.ExpandableCheckboxWrapper>
             </form>
           )}
         />
         <S.TextButtonWrapper>
-          <TextButton isLink href="https://google.com">Click me</TextButton>
+          <TextButton isLink href="https://google.com">
+            Click me
+          </TextButton>
         </S.TextButtonWrapper>
         <S.TextButtonWrapper>
           <TextButton isLink={false} isSecondary>
@@ -142,7 +176,25 @@ class Elements extends React.Component {
               'Время прибытия — после 13:00, а выезд до 12:00',
             ]}
           />
+          <Calendar isVisible />
         </S.BulletListWrapper>
+        <S.CommentsWrapper>
+          <Comment
+            avatarUrl="user.jpg"
+            userName="Мурад Сарафанов"
+            date="5 дней назад"
+            text="Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей."
+            likesCount={12}
+          />
+        </S.CommentsWrapper>
+        <S.BenefitsWrapper>
+          <Benefits
+            items={[
+              { icon: 'insert_emoticon', title: 'Комфорт', description: 'Шумопоглощающие стены' },
+              { icon: 'location_city', title: 'Удобство', description: 'Окно в каждой из спален' },
+            ]}
+          />
+        </S.BenefitsWrapper>
         <S.StarRatingWrapper>
           <StarRating rating={4} />
           <StarRating rating={5} />
@@ -152,4 +204,4 @@ class Elements extends React.Component {
   }
 }
 
-export default Elements;
+export default UIFormElementsLayout;

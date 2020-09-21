@@ -35,10 +35,4 @@ const Wrapper = styled.div`
   }
 `;
 
-export {
-  ColorsTypesLayout,
-  Logo,
-  Content,
-  Title,
-  Wrapper,
-};
+export { ColorsTypesLayout, Logo, Content, Title, Wrapper };
