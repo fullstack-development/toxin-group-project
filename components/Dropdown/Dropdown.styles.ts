@@ -1,4 +1,3 @@
-import ExpandMore from '@material-ui/icons/ExpandMore';
 import styled, { css } from 'styled-components';
 
 import { materialIcons } from '@shared/styles/mixins';
@@ -69,13 +68,6 @@ const Dropdown = styled.div`
       }
     `;
   }}
-`;
-
-const ExpandIcon = styled(ExpandMore)`
-  position: absolute;
-
-  top: 50%;
-  transform: translate(0, -50%);
 `;
 
 const ListContainer = styled.div<ListContainerProps>`
@@ -150,14 +142,4 @@ const ResetButton = styled(S.TextButton)<ResetButtonProps>`
   }}
 `;
 
-export {
-  Dropdown,
-  Result,
-  List,
-  Item,
-  ItemTitle,
-  ListContainer,
-  Controls,
-  ResetButton,
-  ExpandIcon,
-};
+export { Dropdown, Result, List, Item, ItemTitle, ListContainer, Controls, ResetButton };
