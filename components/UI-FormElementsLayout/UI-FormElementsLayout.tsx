@@ -169,7 +169,7 @@ class UIFormElementsLayout extends React.Component {
             ]}
           />
         </S.BulletListWrapper>
-        <SubscriptionField />
+        <SubscriptionField placeholder="Email" />
         <S.StarRatingWrapper>
           <StarRating rating={4} />
           <StarRating rating={5} />

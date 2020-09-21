@@ -19,7 +19,7 @@ const SubmitButton = styled.button`
       line-height: 1.7143rem;
       background: ${gradients.primary};
       ${materialIcons}
-      padding: 0 0.5714rem;
+      padding: 0 0.6964rem;
       border: none;
       cursor: pointer;
 

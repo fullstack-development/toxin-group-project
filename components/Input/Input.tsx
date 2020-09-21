@@ -4,7 +4,7 @@ import { composeValidators, makeRequired, Validator } from 'shared/helpers/valid
 
 import * as S from './Input.styles';
 
-type InputProps = {
+export type InputProps = {
   name: string;
   placeholder: string;
   type?: string;
