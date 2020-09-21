@@ -19,7 +19,6 @@ const ColorsTypesLayout: React.FC = () => (
       </S.Wrapper>
     </S.Content>
   </S.ColorsTypesLayout>
-
 );
 
 export default ColorsTypesLayout;

@@ -16,7 +16,7 @@ const Palette = styled.div<PaletteProps>`
     return css`
       width: 5rem;
       height: 5rem;
-      border-radius: .4285rem;
+      border-radius: 0.4285rem;
       background: ${paletteColor};
       opacity: ${paletteOpacity};
       flex-shrink: 0;
@@ -41,9 +41,4 @@ const Title = styled.div`
   font-weight: bold;
 `;
 
-export {
-  Color,
-  Palette,
-  Description,
-  Title,
-};
+export { Color, Palette, Description, Title };

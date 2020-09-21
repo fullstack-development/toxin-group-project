@@ -75,9 +75,7 @@ class Firebase {
   }
 
   private init(): void {
-    this.app = !firebase.apps.length
-      ? firebase.initializeApp(this.getConfig())
-      : firebase.app();
+    this.app = !firebase.apps.length ? firebase.initializeApp(this.getConfig()) : firebase.app();
 
     this.auth = this.app.auth();
   }

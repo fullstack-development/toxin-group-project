@@ -14,7 +14,4 @@ const List = styled.ul`
   }
 `;
 
-export {
-  Title,
-  List,
-};
+export { Title, List };
