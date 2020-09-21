@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
 
+import Benefits from 'components/Benefits/Benefits';
 import BulletList from 'components/BulletList/BulletList';
 import Button from 'components/Button/Button';
 import CheckboxesList from 'components/CheckboxesList/CheckboxesList';
@@ -168,6 +169,14 @@ class UIFormElementsLayout extends React.Component {
             ]}
           />
         </S.BulletListWrapper>
+        <S.BenefitsWrapper>
+          <Benefits
+            items={[
+              { icon: 'insert_emoticon', title: 'Комфорт', description: 'Шумопоглощающие стены' },
+              { icon: 'location_city', title: 'Удобство', description: 'Окно в каждой из спален' },
+            ]}
+          />
+        </S.BenefitsWrapper>
         <S.StarRatingWrapper>
           <StarRating rating={4} />
           <StarRating rating={5} />
