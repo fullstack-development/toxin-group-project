@@ -1,6 +1,7 @@
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import styled, { css } from 'styled-components';
 
+import { materialIcons } from '@shared/styles/mixins';
 import * as S from 'components/TextButton/TextButton.styles';
 
 type ListContainerProps = {
@@ -11,9 +12,10 @@ type ResetButtonProps = {
   isHidden: boolean;
 };
 
-const Result = styled.button`
+const Result = styled.button<ListContainerProps>`
   ${(props) => {
     const { colors, typography } = props.theme;
+    const { isOpen } = props;
 
     return css`
       position: relative;
@@ -40,6 +42,17 @@ const Result = styled.button`
         border: 0.0714rem solid ${colors.basic};
         outline: none;
       }
+
+      &::before {
+        content: 'keyboard_arrow_${isOpen ? 'up' : 'down'}';
+        position: absolute;
+        background-color: ${colors.basicDark};
+        ${materialIcons};
+        right: 0.8571rem;
+        top: 50%;
+        transform: translate(0, -50%);
+        font-size: 1.5rem;
+      }
     `;
   }}
 `;
@@ -60,7 +73,7 @@ const Dropdown = styled.div`
 
 const ExpandIcon = styled(ExpandMore)`
   position: absolute;
-  right: 0.8571rem;
+
   top: 50%;
   transform: translate(0, -50%);
 `;

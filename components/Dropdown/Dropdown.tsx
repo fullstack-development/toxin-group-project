@@ -121,9 +121,8 @@ const Dropdown: React.FC<DropdownProps> = ({
     <Field name={name} parse={() => dropdownState}>
       {({ input }) => (
         <S.Dropdown ref={dropdown}>
-          <S.Result onClick={handleResultBarClick} type="button">
+          <S.Result isOpen={isOpen} onClick={handleResultBarClick} type="button">
             {resultString}
-            <S.ExpandIcon />
           </S.Result>
           <S.ListContainer isOpen={isOpen}>
             <S.List>
