@@ -1,20 +1,14 @@
-import { useState } from 'react';
+import { useState, InputHTMLAttributes } from 'react';
 
 import { composeValidators, makeRequired, Validator } from 'shared/helpers/validators';
 
 import * as S from './Input.styles';
 
 export type InputProps = {
-  name: string;
-  placeholder: string;
-  type?: string;
-  value: string;
   validators?: Array<Validator>;
   label?: string;
-  isRequired?: boolean;
   mask?: Array<RegExp | string>;
-  onChange: (e: React.ChangeEvent) => void;
-};
+} & InputHTMLAttributes<HTMLInputElement>;
 
 const Input: React.FC<InputProps> = ({
   name,
@@ -23,19 +17,14 @@ const Input: React.FC<InputProps> = ({
   value,
   label,
   mask,
-  isRequired,
   validators,
   onChange,
   ...rest
 }: InputProps) => {
   const [error, setError] = useState('');
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onChange(e);
-  };
-
-  const validate = (inputValue: string) => {
-    const allValidators = isRequired ? validators.concat([makeRequired]) : validators;
+  const validate = (inputValue: string | number | readonly string[]) => {
+    const allValidators = rest.required ? validators.concat([makeRequired]) : validators;
     const validator = composeValidators(allValidators);
     setError(validator(inputValue));
   };
@@ -58,7 +47,7 @@ const Input: React.FC<InputProps> = ({
             type={type}
             name={name}
             value={value}
-            onChange={(e) => onChange(e)}
+            onChange={onChange}
             onBlur={handleBlur}
           />
         ) : (
@@ -68,7 +57,7 @@ const Input: React.FC<InputProps> = ({
             type={type}
             name={name}
             value={value}
-            onChange={handleChange}
+            onChange={onChange}
             onBlur={handleBlur}
           />
         )}
