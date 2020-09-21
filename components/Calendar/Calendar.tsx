@@ -5,6 +5,7 @@ import TextButton from 'components/TextButton/TextButton';
 import { months, weekdaysShort } from 'shared/helpers/validators/dateValidator';
 
 import * as S from './Calendar.styles';
+import NavBar from './components/NavBar/NavBar';
 
 type DaysSelection = {
   from: SelectedDate;
@@ -13,32 +14,10 @@ type DaysSelection = {
 };
 
 type Calendar = {
-  isVisible?: boolean;
   onApply?: (...args: unknown[]) => unknown;
-};
+} & S.CalendarContainer;
 
 type SelectedDate = null | Date;
-
-type NavBar = {
-  onPreviousClick?(callback?: () => void): void;
-  onNextClick?(callback?: () => void): void;
-};
-
-const NavBar = ({ onPreviousClick, onNextClick }: NavBar) => {
-  const handlePreviousButtonClick = () => onPreviousClick();
-  const handleNextButtonClick = () => onNextClick();
-
-  return (
-    <div>
-      <S.NavBarButton type="button" onClick={handlePreviousButtonClick}>
-        arrow_back
-      </S.NavBarButton>
-      <S.NavBarButton type="button" onClick={handleNextButtonClick}>
-        arrow_forward
-      </S.NavBarButton>
-    </div>
-  );
-};
 
 const Calendar: React.FC<Calendar> = (props: Calendar) => {
   const has = Object.prototype.hasOwnProperty;
