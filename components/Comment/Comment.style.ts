@@ -18,9 +18,9 @@ const Avatar = styled.img`
   }}
 `;
 
-const User = styled.p`
+const User = styled.span`
   font-weight: bold;
-  padding: 0.3rem 0 0 4.1rem;
+  padding: 0.3rem 0 0 0.6rem;
 `;
 
 const Date = styled.p`
