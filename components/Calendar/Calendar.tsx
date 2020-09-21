@@ -7,6 +7,8 @@ import { months, weekdaysShort } from 'shared/helpers/validators';
 import * as S from './Calendar.styles';
 import NavBar from './components/NavBar/NavBar';
 
+type SelectedDate = null | Date;
+
 type DaysSelection = {
   from: SelectedDate;
   to: SelectedDate;
@@ -18,8 +20,6 @@ type Calendar = {
   onSelectDate?: (data: DaysSelection) => void;
   onClose?: () => void;
 } & S.CalendarContainer;
-
-type SelectedDate = null | Date;
 
 const Calendar: React.FC<Calendar> = (props: Calendar) => {
   const has = Object.prototype.hasOwnProperty;
