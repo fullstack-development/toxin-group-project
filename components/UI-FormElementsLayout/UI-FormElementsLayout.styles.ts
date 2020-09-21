@@ -40,10 +40,26 @@ const BulletListWrapper = styled.div`
   max-width: 18.5714rem;
 `;
 
+const CommentsWrapper = styled.div`
+  max-width: 50.7rem;
+  margin: 1rem 0;
+`;
+const BenefitsWrapper = styled.div`
+  max-width: 19.9rem;
+  margin: 1rem 0;
+`;
+
 const StarRatingWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   max-width: 18.5714rem;
+`;
+
+const RadioWrapper = styled.div`
+  width: 17rem;
+  display: flex;
+  margin-bottom: 0.45rem;
+  justify-content: space-around;
 `;
 
 export {
@@ -56,5 +72,8 @@ export {
   ExpandableCheckboxWrapper,
   BulletListWrapper,
   DropdownWrapper,
+  CommentsWrapper,
+  BenefitsWrapper,
   StarRatingWrapper,
+  RadioWrapper,
 };
