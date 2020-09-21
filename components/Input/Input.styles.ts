@@ -6,7 +6,7 @@ const Input = styled.div`
     const { typography } = props.theme;
     return css`
       position: relative;
-      margin-bottom: 20px;
+      margin-bottom: 1.25rem;
       width: 100%;
       font-family: ${typography.fontName};
     `;
