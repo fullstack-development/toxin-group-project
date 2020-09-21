@@ -7,11 +7,10 @@ import * as S from './TimePicker.styles';
 
 type TimePickerProps = {
   labelName: string;
-  type?: 'single' | 'double';
-  onChange?: (e: React.ChangeEvent) => void;
   dateFrom?: Date;
   dateTo?: Date;
-};
+  onChange?: (e: React.ChangeEvent) => void;
+} & S.ContainerElement;
 
 const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps): JSX.Element => {
   const { type, dateFrom, dateTo, labelName } = props;
