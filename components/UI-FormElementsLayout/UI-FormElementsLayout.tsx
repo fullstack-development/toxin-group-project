@@ -10,6 +10,7 @@ import Dropdown from 'components/Dropdown/Dropdown';
 import expandableCheckboxData from 'components/Expander/ExpandableList.data.json';
 import Expander from 'components/Expander/Expander';
 import Input from 'components/Input/Input';
+import RadioButton from 'components/RadioButton/RadioButton';
 import LikeButton from 'components/LikeButton/LikeButton';
 import StarRating from 'components/StarRating/StarRating';
 import TextButton from 'components/TextButton/TextButton';
@@ -25,6 +26,7 @@ class UIFormElementsLayout extends React.Component {
       <S.Container>
         <Form
           onSubmit={this.handleFormSubmit}
+          initialValues={{ gender: 'female' }}
           render={() => (
             <form>
               <S.InputWrapper>
@@ -137,6 +139,18 @@ class UIFormElementsLayout extends React.Component {
               <S.CheckboxWrapper>
                 <CheckboxesList roomOptions={checkboxData} />
               </S.CheckboxWrapper>
+              <S.RadioWrapper>
+                <RadioButton
+                  label="Мужчина"
+                  name="gender"
+                  value="male"
+                />
+                <RadioButton
+                  label="Женщина"
+                  name="gender"
+                  value="female"
+                />
+              </S.RadioWrapper>
               <S.ExpandableCheckboxWrapper>
                 <Expander title="expandable checkbox list" isDefaultOpen={false}>
                   <CheckboxesList roomOptions={expandableCheckboxData} />
