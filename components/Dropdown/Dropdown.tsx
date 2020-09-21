@@ -4,31 +4,8 @@ import { Field } from 'react-final-form';
 import NumberInput from '../NumberInput/NumberInput';
 import ApplyButton from '../TextButton/TextButton';
 import * as S from './Dropdown.styles';
-import { WordForms } from './utils/getCorrectWord';
+import { DropdownProps } from './Dropdown.types';
 import getResultStringPart from './utils/getResultStringPart';
-
-type Item = {
-  title: string;
-  groupName?: string;
-  wordForms?: WordForms;
-  min?: number;
-  max?: number;
-  initialValue?: number;
-  inputName?: string;
-};
-
-type Group = {
-  name: string;
-  wordForms: WordForms;
-};
-
-type DropdownProps = {
-  items: Item[];
-  placeholder: string;
-  name: string;
-  groups?: Group[];
-  enableControls?: boolean;
-};
 
 const DEFAULT_SETTINGS = {
   min: 0,
