@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import { Field } from 'react-final-form';
 
-// import Calendar from '../Calendar/Calendar';
+import Calendar from '../Calendar/Calendar';
 import Input from '../Input/Input';
 import * as S from './TimePicker.styles';
 
 type TimePickerProps = {
+  labelName: string;
   type?: 'single' | 'double';
   onChange?: (e: React.ChangeEvent) => void;
   dateFrom?: Date;
   dateTo?: Date;
-  labelName: string;
 };
 
-const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps) => {
+const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps): JSX.Element => {
   const { type, dateFrom, dateTo, labelName } = props;
   const [isCalendarVisible, setCalendarVisibility] = useState(false);
   const [selectedDateRange, setSelectedDateRange] = useState({
@@ -43,37 +43,43 @@ const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps) => {
 
   const getMaskedDate = (): string => (type === 'single' ? 'Выберите дату' : 'ДД.ММ.ГГГГ');
 
+  const openCalendar = (): void => {
+    setCalendarVisibility(true);
+  };
+
+  const closeCalendar = (): void => {
+    setCalendarVisibility(false);
+  };
+
   return (
     <S.Container>
-      <S.ContainerElement type={type} onClick={setCalendarVisibility.call(null, true)}>
+      <S.ContainerElement type={type} onClick={openCalendar}>
         <Field
           name={`${labelName} date from`}
           type="text"
-          render={(props) => (
+          render={(fieldProps) => (
             <Input
-              {...props.input}
-              {...props.meta}
+              {...fieldProps.input}
+              {...fieldProps.meta}
               value={from ? getDateFrom() : getMaskedDate()}
               label="date Dropdown"
               placeholder="date from"
-              onChange={() => {}}
             />
           )}
         />
         <S.ExpandIcon />
       </S.ContainerElement>
       {type === 'double' && (
-        <S.ContainerElement onClick={setCalendarVisibility.call(null, true)}>
+        <S.ContainerElement onClick={openCalendar}>
           <Field
             name={`${labelName} date to`}
-            render={(props) => (
+            render={(fieldProps) => (
               <Input
-                {...props.input}
-                {...props.meta}
+                {...fieldProps.input}
+                {...fieldProps.meta}
                 value={to ? to.toLocaleDateString('ru-RU') : getMaskedDate()}
                 label="date Dropdown"
                 placeholder="date to"
-                onChange={() => {}}
               />
             )}
           />
@@ -84,7 +90,8 @@ const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps) => {
         <Calendar
           isVisible={isCalendarVisible}
           onSelectDate={setSelectedDateRange}
-          onApply={setCalendarVisibility.call(null, false)}
+          onApply={closeCalendar}
+          onClose={closeCalendar}
         />
       )}
     </S.Container>
