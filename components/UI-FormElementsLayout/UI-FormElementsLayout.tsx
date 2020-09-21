@@ -7,12 +7,13 @@ import Button from 'components/Button/Button';
 import Calendar from 'components/Calendar/Calendar';
 import CheckboxesList from 'components/CheckboxesList/CheckboxesList';
 import checkboxData from 'components/CheckboxesList/CheckboxesListData.json';
+import Comment from 'components/Comment/Comment';
 import Dropdown from 'components/Dropdown/Dropdown';
 import expandableCheckboxData from 'components/Expander/ExpandableList.data.json';
 import Expander from 'components/Expander/Expander';
 import Input from 'components/Input/Input';
-import RadioButton from 'components/RadioButton/RadioButton';
 import LikeButton from 'components/LikeButton/LikeButton';
+import RadioButton from 'components/RadioButton/RadioButton';
 import StarRating from 'components/StarRating/StarRating';
 import TextButton from 'components/TextButton/TextButton';
 import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators/';
@@ -141,16 +142,8 @@ class UIFormElementsLayout extends React.Component {
                 <CheckboxesList roomOptions={checkboxData} />
               </S.CheckboxWrapper>
               <S.RadioWrapper>
-                <RadioButton
-                  label="Мужчина"
-                  name="gender"
-                  value="male"
-                />
-                <RadioButton
-                  label="Женщина"
-                  name="gender"
-                  value="female"
-                />
+                <RadioButton label="Мужчина" name="gender" value="male" />
+                <RadioButton label="Женщина" name="gender" value="female" />
               </S.RadioWrapper>
               <S.ExpandableCheckboxWrapper>
                 <Expander title="expandable checkbox list" isDefaultOpen={false}>
@@ -185,6 +178,15 @@ class UIFormElementsLayout extends React.Component {
           />
           <Calendar isVisible />
         </S.BulletListWrapper>
+        <S.CommentsWrapper>
+          <Comment
+            avatarUrl="user.jpg"
+            userName="Мурад Сарафанов"
+            date="5 дней назад"
+            text="Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей."
+            likesCount={12}
+          />
+        </S.CommentsWrapper>
         <S.BenefitsWrapper>
           <Benefits
             items={[
