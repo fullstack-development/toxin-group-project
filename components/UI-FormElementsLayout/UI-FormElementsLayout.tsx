@@ -4,6 +4,7 @@ import { Form, Field } from 'react-final-form';
 import Benefits from 'components/Benefits/Benefits';
 import BulletList from 'components/BulletList/BulletList';
 import Button from 'components/Button/Button';
+import Calendar from 'components/Calendar/Calendar';
 import CheckboxesList from 'components/CheckboxesList/CheckboxesList';
 import checkboxData from 'components/CheckboxesList/CheckboxesListData.json';
 import Dropdown from 'components/Dropdown/Dropdown';
@@ -182,6 +183,7 @@ class UIFormElementsLayout extends React.Component {
               'Время прибытия — после 13:00, а выезд до 12:00',
             ]}
           />
+          <Calendar isVisible />
         </S.BulletListWrapper>
         <S.BenefitsWrapper>
           <Benefits
