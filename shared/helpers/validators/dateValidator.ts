@@ -41,20 +41,6 @@ const shortMonths = [
   'дек',
 ];
 
-const weekdaysShort = [
-  'Пн',
-  'Вт',
-  'Ср',
-  'Чт',
-  'Пт',
-  'Сб',
-  'Вс',
-];
+const weekdaysShort = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
 
-export {
-  dateValidator,
-  dateFormatMask,
-  months,
-  shortMonths,
-  weekdaysShort,
-};
+export { dateValidator, dateFormatMask, months, shortMonths, weekdaysShort };
