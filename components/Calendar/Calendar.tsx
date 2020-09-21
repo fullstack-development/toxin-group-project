@@ -56,16 +56,12 @@ const Calendar: React.FC<Calendar> = (props: Calendar) => {
   };
 
   const handleApplyButtonClick = (e: React.MouseEvent): void => {
-    e.preventDefault();
-
     setVisibility(false);
 
     if (has.call(props, 'onApply')) onApply();
   };
 
   const clearSelectedDate = (e: React.MouseEvent): void => {
-    e.preventDefault();
-
     const clearedData = {
       from: undefined,
       to: undefined,
@@ -88,10 +84,10 @@ const Calendar: React.FC<Calendar> = (props: Calendar) => {
         navbarElement={<NavBar />}
       />
       <S.CalendarControls>
-        <TextButton isLink={false} isSecondary onClick={clearSelectedDate}>
+        <TextButton type="button" isLink={false} isSecondary onClick={clearSelectedDate}>
           Очистить
         </TextButton>
-        <TextButton isLink={false} onClick={handleApplyButtonClick}>
+        <TextButton type="button" isLink={false} onClick={handleApplyButtonClick}>
           Применить
         </TextButton>
       </S.CalendarControls>
