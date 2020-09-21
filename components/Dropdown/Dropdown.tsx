@@ -59,7 +59,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   const applyChanges = (currentState: typeof dropdownState): void => {
     const resultStrings: string[] = Array.from(
       new Set(
-        dropdownState.map((item, _, state) => {
+        currentState.map((item, _, state) => {
           const { groupName, currentValue, wordForms } = item;
 
           if (!groupName) return getResultStringPart(currentValue, wordForms);
@@ -165,12 +165,13 @@ const Dropdown: React.FC<DropdownProps> = ({
                 <S.ResetButton
                   isLink={false}
                   type="button"
+                  isSecondary
                   isHidden={isResetHidden}
                   onClick={handleResetClick}
                 >
                   Очистить
                 </S.ResetButton>
-                <ApplyButton isSecondary isLink={false} type="button" onClick={handleApplyClick}>
+                <ApplyButton isLink={false} type="button" onClick={handleApplyClick}>
                   Применить
                 </ApplyButton>
               </S.Controls>
