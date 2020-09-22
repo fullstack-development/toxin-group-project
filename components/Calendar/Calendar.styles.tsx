@@ -126,6 +126,10 @@ const Calendar = styled(DayPicker)<DayPickerProps>`
         &:hover {
           border-radius: 50%;
         }
+
+        &:focus {
+          outline: none;
+        }
       }
 
       & .DayPicker-Day--selected {
