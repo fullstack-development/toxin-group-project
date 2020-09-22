@@ -24,8 +24,11 @@ const ContainerElement = styled.div<ContainerElement>`
 
     return css`
       position: relative;
-      width: ${type === 'single' ? '100%' : '47%'};
       max-width: ${type === 'single' ? '19.0714rem' : '100%'};
+
+      &:not(:last-child) {
+        margin-right: 1.4rem;
+      }
     `;
   }}
 `;
