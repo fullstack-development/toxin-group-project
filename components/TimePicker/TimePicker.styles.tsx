@@ -13,7 +13,7 @@ const Container = styled.div`
 
 const ExpandIcon = styled(ExpandMoreIcon)`
   position: absolute;
-  bottom: 1.6rem;
+  bottom: 2rem;
   right: 0.8rem;
   cursor: pointer;
 `;
