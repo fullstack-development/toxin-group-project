@@ -62,6 +62,11 @@ const RadioWrapper = styled.div`
   justify-content: space-around;
 `;
 
+const ArrowButtonWrapper = styled.div`
+  width: 22.8571rem;
+  margin: 1rem 0;
+`;
+
 export {
   Container,
   ButtonWrapper,
@@ -76,4 +81,5 @@ export {
   BenefitsWrapper,
   StarRatingWrapper,
   RadioWrapper,
+  ArrowButtonWrapper,
 };
