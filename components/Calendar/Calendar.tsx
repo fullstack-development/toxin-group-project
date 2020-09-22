@@ -22,7 +22,6 @@ type Calendar = {
 } & S.CalendarContainer;
 
 const Calendar: React.FC<Calendar> = (props: Calendar) => {
-  const has = Object.prototype.hasOwnProperty;
   const { onApply, onClose, onSelectDate, isVisible } = props;
   const [selectedDays, handleSelectDays] = useState<DaysSelection>({
     from: null,
@@ -36,17 +35,17 @@ const Calendar: React.FC<Calendar> = (props: Calendar) => {
     const handleDocumentClick = (e: Event) => {
       if (isShown && !htmlContainer.current.contains(e.target)) {
         setVisibility(false);
-        if (has.call(props, 'onClose')) onClose();
+        if (onClose) onClose();
       }
     };
 
     document.addEventListener('click', handleDocumentClick);
     return () => document.removeEventListener('click', handleDocumentClick);
-  }, [has, isShown, onClose, props]);
+  }, [isShown, onClose, props]);
 
   const applySelectingDays = (newRange: DaysSelection) => {
     handleSelectDays(newRange);
-    if (has.call(props, 'onSelectDate')) onSelectDate(newRange);
+    if (onSelectDate) onSelectDate(newRange);
   };
 
   const handleDayClick = (day: SelectedDate): void => {
@@ -58,7 +57,7 @@ const Calendar: React.FC<Calendar> = (props: Calendar) => {
   const handleApplyButtonClick = (e: React.MouseEvent): void => {
     setVisibility(false);
 
-    if (has.call(props, 'onApply')) onApply();
+    if (onClose) onApply();
   };
 
   const clearSelectedDate = (e: React.MouseEvent): void => {
