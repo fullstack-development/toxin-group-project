@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
 
+import SocialMedia from '@components/SocialMedia/SocialMedia';
 import Benefits from 'components/Benefits/Benefits';
 import BulletList from 'components/BulletList/BulletList';
 import Button from 'components/Button/Button';
@@ -199,6 +200,7 @@ class UIFormElementsLayout extends React.Component {
           <StarRating rating={4} />
           <StarRating rating={5} />
         </S.StarRatingWrapper>
+        <SocialMedia />
       </S.Container>
     );
   }

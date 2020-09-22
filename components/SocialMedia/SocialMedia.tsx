@@ -1,35 +1,42 @@
-type SocialMediaItem = {
-  href: string;
-  icon: string;
-  text?: string;
-};
+import { faFacebookSquare, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
+
+import SocialMediaLink from './components/SocialMediaLink';
+import * as S from './SocialMedia.style';
+import { SocialMediaItem } from './SocialMedia.types';
 
 type SocialMediaProps = {
   items: SocialMediaItem[];
 };
 
-const defaultProps = {
-  items: [{
-    href: 'https://twitter.com',
-    icon: 'twitter'
-  },
+const defaultProps: SocialMediaItem[] = [
   {
     href: 'https://twitter.com',
-    icon: 'twitter'
+    icon: faTwitter,
+    text: 'Twitter',
   },
   {
-    href: 'https://twitter.com',
-    icon: 'twitter'
-  }]
-}
+    href: 'https://facebook.com',
+    icon: faFacebookSquare,
+    text: 'Facebook',
+  },
+  {
+    href: 'https://instagram.com',
+    icon: faInstagram,
+    text: 'Instagram',
+  },
+];
 
-const SocialMedia: React.FC<SocialMediaProps> = ({items}: SocialMediaProps) => {
+const SocialMedia: React.FC<SocialMediaProps> = ({ items = defaultProps }: SocialMediaProps) => {
   return (
-    <>
-    {items && items.map(el => )}
-    </>
-  )
-}
-
+    <S.List>
+      {items &&
+        items.map((item) => (
+          <S.ListItem key={item.href}>
+            <SocialMediaLink {...item} />
+          </S.ListItem>
+        ))}
+    </S.List>
+  );
+};
 
 export default SocialMedia;
