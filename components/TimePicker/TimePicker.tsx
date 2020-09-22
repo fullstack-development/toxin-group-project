@@ -63,6 +63,7 @@ const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps): JSX.Elem
               value={from ? getDateFrom() : getMaskedDate()}
               label="date Dropdown"
               placeholder="date from"
+              readOnly
             />
           )}
         />
@@ -79,6 +80,7 @@ const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps): JSX.Elem
                 value={to ? to.toLocaleDateString('ru-RU') : getMaskedDate()}
                 label="date Dropdown"
                 placeholder="date to"
+                readOnly
               />
             )}
           />

@@ -78,6 +78,10 @@ const Calendar = styled(DayPicker)<DayPickerProps>`
         vertical-align: middle;
         cursor: pointer;
 
+        &--outside {
+          color: ${colors.basicLight};
+        }
+
         &--today {
           background: ${gradients.secondary};
           color: ${colors.defaultBackground};

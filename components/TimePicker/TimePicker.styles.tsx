@@ -13,8 +13,8 @@ const Container = styled.div`
 
 const ExpandIcon = styled(ExpandMoreIcon)`
   position: absolute;
-  bottom: 2rem;
-  right: 0.8rem;
+  bottom: 0.9rem;
+  right: 1rem;
   cursor: pointer;
 `;
 
@@ -25,6 +25,10 @@ const ContainerElement = styled.div<ContainerElement>`
     return css`
       position: relative;
       max-width: ${type === 'single' ? '19.0714rem' : '100%'};
+
+      & > div {
+        padding: 0;
+      }
 
       &:not(:last-child) {
         margin-right: 1.4rem;
