@@ -2,7 +2,7 @@ import { Field } from 'react-final-form';
 
 import * as S from './RadioButton.styles';
 
-type RadioProps = {
+type RadioButtonProps = {
   name: string;
   label: string;
   value: string;
@@ -10,9 +10,13 @@ type RadioProps = {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-const RadioButton: React.FC<RadioProps> = ({
-  name, label, checked, value, onChange,
-}: RadioProps) => {
+const RadioButton: React.FC<RadioButtonProps> = ({
+  name,
+  label,
+  checked,
+  value,
+  onChange,
+}: RadioButtonProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange(e);
   };

@@ -16,14 +16,14 @@ import RadioButton from 'components/RadioButton/RadioButton';
 import StarRating from 'components/StarRating/StarRating';
 import TextButton from 'components/TextButton/TextButton';
 import TimePicker from 'components/TimePicker/TimePicker';
-import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators/';
+import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators';
 
 import * as S from './UI-FormElementsLayout.styles';
 
 class UIFormElementsLayout extends React.Component {
-  handleFormSubmit = () => {};
+  handleFormSubmit = (): unknown => ({});
 
-  render() {
+  render(): JSX.Element {
     return (
       <S.Container>
         <Form

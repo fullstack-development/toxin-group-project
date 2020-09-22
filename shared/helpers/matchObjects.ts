@@ -1,12 +1,17 @@
-import getType from './getType';
+import isObject from './isObject';
 
-function matchObjects(main: {}, comparable: {}): boolean {
+function matchObjects<T extends { [k: string]: unknown }>(main: T, comparable: T): boolean {
   return Object.keys(comparable).every((prop) => {
     if (!Object.prototype.hasOwnProperty.call(comparable, prop)) return true;
 
-    return getType(comparable[prop]) === 'object'
-      ? matchObjects(main[prop], comparable[prop])
-      : main[prop] === comparable[prop];
+    const mainValue = main[prop];
+    const comparableValue = comparable[prop];
+
+    if (isObject(mainValue) && isObject(comparableValue)) {
+      return matchObjects(mainValue, comparableValue);
+    }
+
+    return mainValue === comparableValue;
   });
 }
 
