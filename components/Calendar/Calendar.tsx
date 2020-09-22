@@ -57,7 +57,7 @@ const Calendar: React.FC<Calendar> = (props: Calendar) => {
   const handleApplyButtonClick = (e: React.MouseEvent): void => {
     setVisibility(false);
 
-    if (onClose) onApply();
+    if (onApply) onApply();
   };
 
   const clearSelectedDate = (e: React.MouseEvent): void => {
