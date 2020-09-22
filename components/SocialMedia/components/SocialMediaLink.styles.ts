@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 
 import fontAwesome from '@shared/styles/mixins/font-awesome';
 import faIconsMapping from '@shared/styles/mixins/font-awesome-mapping';
-import visuallyHidden from 'shared/styles/mixins/visually-hidden';
+import visuallyHidden from 'shared/styles/mixins/visually-hidden.styles';
 
 import { SocialMediaItem } from '../SocialMedia.types';
 
