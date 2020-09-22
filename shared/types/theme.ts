@@ -22,5 +22,6 @@ export type Theme = {
     secondary: string;
     primaryLight: string;
     secondaryLight: string;
+    secondaryLighten: string;
   };
 };
