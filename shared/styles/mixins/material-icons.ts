@@ -7,7 +7,6 @@ const materialIcons = css`
   text-rendering: optimizeLegibility;
   display: inline-block;
   font-feature-settings: 'liga';
-  -webkit-background-clip: text;
   background-clip: text;
   /* stylelint-disable property-no-vendor-prefix */
   -webkit-background-clip: text;
