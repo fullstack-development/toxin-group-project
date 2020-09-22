@@ -156,6 +156,7 @@ class UIFormElementsLayout extends React.Component {
                   <CheckboxesList roomOptions={expandableCheckboxData} />
                 </Expander>
               </S.ExpandableCheckboxWrapper>
+              <SubscriptionField placeholder="Email" />
             </form>
           )}
         />
@@ -179,7 +180,6 @@ class UIFormElementsLayout extends React.Component {
           />
           <Calendar isVisible />
         </S.BulletListWrapper>
-        <SubscriptionField placeholder="Email" />
         <S.CommentsWrapper>
           <Comment
             avatarUrl="user.jpg"

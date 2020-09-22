@@ -5,7 +5,6 @@ const materialIcons = css`
   font-family: 'Material Icons';
   font-style: normal;
   text-rendering: optimizeLegibility;
-  cursor: default;
   display: inline-block;
   font-feature-settings: 'liga';
   -webkit-background-clip: text;

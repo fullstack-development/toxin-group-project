@@ -12,16 +12,20 @@ const SubmitButton = styled.button`
     const { gradients } = props.theme;
     return css`
       position: absolute;
-      height: 100%;
+      height: 3.1429rem;
       right: 0;
       top: 0;
       font-size: 1.7143rem;
       line-height: 1.7143rem;
-      background: ${gradients.primary};
       ${materialIcons}
+      background-image: ${gradients.primary};
       padding: 0 0.6964rem;
       border: none;
       cursor: pointer;
+
+      &:hover {
+        background-image: ${gradients.primaryLight};
+      }
 
       &::before {
         content: 'arrow_forward';
@@ -30,8 +34,8 @@ const SubmitButton = styled.button`
   }}
 `;
 
-const InputContainer = styled.div`
+const Container = styled.div`
   position: relative;
 `;
 
-export { SubmitButton, InputContainer, Input };
+export { SubmitButton, Container, Input };
