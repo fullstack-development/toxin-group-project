@@ -1,5 +1,3 @@
-import { faFacebookSquare, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
-
 import SocialMediaLink from './components/SocialMediaLink';
 import * as S from './SocialMedia.style';
 import { SocialMediaItem } from './SocialMedia.types';
@@ -11,17 +9,17 @@ type SocialMediaProps = {
 const defaultProps: SocialMediaItem[] = [
   {
     href: 'https://twitter.com',
-    icon: faTwitter,
+    icon: 'twitter',
     text: 'Twitter',
   },
   {
     href: 'https://facebook.com',
-    icon: faFacebookSquare,
+    icon: 'facebook-square',
     text: 'Facebook',
   },
   {
     href: 'https://instagram.com',
-    icon: faInstagram,
+    icon: 'instagram',
     text: 'Instagram',
   },
 ];

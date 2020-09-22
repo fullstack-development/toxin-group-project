@@ -1,7 +1,7 @@
-import { IconDefinition } from '@fortawesome/fontawesome-common-types';
+import { IconName } from '@fortawesome/fontawesome-common-types';
 
 export type SocialMediaItem = {
-  href: string;
-  icon: IconDefinition;
+  icon: IconName;
   text: string;
+  href: string;
 };

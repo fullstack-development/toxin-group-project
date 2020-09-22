@@ -1,22 +1,34 @@
+import { AnchorHTMLAttributes } from 'react';
 import styled, { css } from 'styled-components';
 
+import fontAwesome from '@shared/styles/mixins/font-awesome';
+import faIconsMapping from '@shared/styles/mixins/font-awesome-mapping';
 import visuallyHidden from 'shared/styles/mixins/visually-hidden';
+
+import { SocialMediaItem } from '../SocialMedia.types';
+
+type LinkProps = SocialMediaItem & AnchorHTMLAttributes<HTMLAnchorElement>;
 
 const Label = styled.span`
   ${visuallyHidden}
 `;
 
-const Link = styled.a`
+const Link = styled.a<LinkProps>`
   ${(props) => {
     const { gradients } = props.theme;
+    const { icon } = props;
     return css`
       display: inline-block;
+      ${fontAwesome}
+      background-image: ${gradients.primary};
 
-      .svg-inline--fa {
+      &::before {
+        content: '${faIconsMapping[icon]}';
         font-size: 1.7143rem;
-        background: ${gradients.primary};
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+      }
+
+      &:hover {
+        background-image: ${gradients.primaryLight};
       }
     `;
   }}
