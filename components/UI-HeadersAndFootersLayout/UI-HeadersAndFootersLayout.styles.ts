@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
+import { container } from 'shared/styles/mixins';
+
 const Container = styled.div`
-  max-width: 102.8rem;
-  padding: 10rem 0;
-  margin: auto;
+  ${container};
 `;
 
 export { Container };
