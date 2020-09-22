@@ -156,7 +156,9 @@ class UIFormElementsLayout extends React.Component {
                   <CheckboxesList roomOptions={expandableCheckboxData} />
                 </Expander>
               </S.ExpandableCheckboxWrapper>
-              <SubscriptionField placeholder="Email" />
+              <S.SubscriptionWrapper>
+                <SubscriptionField placeholder="Email" />
+              </S.SubscriptionWrapper>
             </form>
           )}
         />
