@@ -4,7 +4,6 @@ import { Form, Field } from 'react-final-form';
 import Benefits from 'components/Benefits/Benefits';
 import BulletList from 'components/BulletList/BulletList';
 import Button from 'components/Button/Button';
-import Calendar from 'components/Calendar/Calendar';
 import CheckboxesList from 'components/CheckboxesList/CheckboxesList';
 import checkboxData from 'components/CheckboxesList/CheckboxesListData.json';
 import Comment from 'components/Comment/Comment';
@@ -16,14 +15,15 @@ import LikeButton from 'components/LikeButton/LikeButton';
 import RadioButton from 'components/RadioButton/RadioButton';
 import StarRating from 'components/StarRating/StarRating';
 import TextButton from 'components/TextButton/TextButton';
-import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators/';
+import TimePicker from 'components/TimePicker/TimePicker';
+import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators';
 
 import * as S from './UI-FormElementsLayout.styles';
 
 class UIFormElementsLayout extends React.Component {
-  handleFormSubmit = () => {};
+  handleFormSubmit = (): unknown => ({});
 
-  render() {
+  render(): JSX.Element {
     return (
       <S.Container>
         <Form
@@ -155,6 +155,9 @@ class UIFormElementsLayout extends React.Component {
                   <CheckboxesList roomOptions={expandableCheckboxData} />
                 </Expander>
               </S.ExpandableCheckboxWrapper>
+              <S.TimePickerWrapper>
+                <TimePicker type="double" labelName="elements" />
+              </S.TimePickerWrapper>
             </form>
           )}
         />
@@ -176,7 +179,6 @@ class UIFormElementsLayout extends React.Component {
               'Время прибытия — после 13:00, а выезд до 12:00',
             ]}
           />
-          <Calendar isVisible />
         </S.BulletListWrapper>
         <S.CommentsWrapper>
           <Comment
