@@ -1,7 +1,7 @@
 import { FormHTMLAttributes } from 'react';
 import { Field } from 'react-final-form';
 
-import { emailValidator } from '@shared/helpers/validators';
+import { emailValidator } from 'shared/helpers/validators';
 
 import { InputProps } from '../Input/Input';
 import * as S from './SubscriptionField.styles';
