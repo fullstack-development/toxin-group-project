@@ -1,4 +1,4 @@
-import { css } from 'styled-components';
+import { css, FlattenSimpleInterpolation } from 'styled-components';
 
 type FontType =
   | 'thin'
@@ -22,10 +22,11 @@ export default function fontFace(
   type: FontType,
   fontWeight: FontWeight = 400,
   fontStyle: 'normal' | 'italic' = 'normal',
-) {
+): FlattenSimpleInterpolation {
   return css`
     @font-face {
       font-family: '${fontFamily}';
+      /* stylelint-disable declaration-colon-newline-after */
       src: url('/fonts/${folderName}/${folderName}-${type}.woff2') format('woff2'),
         url('/fonts/${folderName}/${folderName}-${type}.woff') format('woff');
       font-style: ${fontStyle};

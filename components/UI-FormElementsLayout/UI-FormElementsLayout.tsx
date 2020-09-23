@@ -1,29 +1,34 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
 
+import Benefits from 'components/Benefits/Benefits';
 import BulletList from 'components/BulletList/BulletList';
 import Button from 'components/Button/Button';
 import CheckboxesList from 'components/CheckboxesList/CheckboxesList';
 import checkboxData from 'components/CheckboxesList/CheckboxesListData.json';
+import Comment from 'components/Comment/Comment';
 import Dropdown from 'components/Dropdown/Dropdown';
 import expandableCheckboxData from 'components/Expander/ExpandableList.data.json';
 import Expander from 'components/Expander/Expander';
 import Input from 'components/Input/Input';
 import LikeButton from 'components/LikeButton/LikeButton';
+import RadioButton from 'components/RadioButton/RadioButton';
 import StarRating from 'components/StarRating/StarRating';
 import TextButton from 'components/TextButton/TextButton';
-import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators/';
+import TimePicker from 'components/TimePicker/TimePicker';
+import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators';
 
 import * as S from './UI-FormElementsLayout.styles';
 
 class UIFormElementsLayout extends React.Component {
-  handleFormSubmit = () => {};
+  handleFormSubmit = (): unknown => ({});
 
-  render() {
+  render(): JSX.Element {
     return (
       <S.Container>
         <Form
           onSubmit={this.handleFormSubmit}
+          initialValues={{ gender: 'female' }}
           render={() => (
             <form>
               <S.InputWrapper>
@@ -136,6 +141,10 @@ class UIFormElementsLayout extends React.Component {
               <S.CheckboxWrapper>
                 <CheckboxesList roomOptions={checkboxData} />
               </S.CheckboxWrapper>
+              <S.RadioWrapper>
+                <RadioButton label="Мужчина" name="gender" value="male" />
+                <RadioButton label="Женщина" name="gender" value="female" />
+              </S.RadioWrapper>
               <S.ExpandableCheckboxWrapper>
                 <Expander title="expandable checkbox list" isDefaultOpen={false}>
                   <CheckboxesList roomOptions={expandableCheckboxData} />
@@ -146,6 +155,9 @@ class UIFormElementsLayout extends React.Component {
                   <CheckboxesList roomOptions={expandableCheckboxData} />
                 </Expander>
               </S.ExpandableCheckboxWrapper>
+              <S.TimePickerWrapper>
+                <TimePicker type="double" labelName="elements" />
+              </S.TimePickerWrapper>
             </form>
           )}
         />
@@ -168,6 +180,23 @@ class UIFormElementsLayout extends React.Component {
             ]}
           />
         </S.BulletListWrapper>
+        <S.CommentsWrapper>
+          <Comment
+            avatarUrl="user.jpg"
+            userName="Мурад Сарафанов"
+            date="5 дней назад"
+            text="Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей."
+            likesCount={12}
+          />
+        </S.CommentsWrapper>
+        <S.BenefitsWrapper>
+          <Benefits
+            items={[
+              { icon: 'insert_emoticon', title: 'Комфорт', description: 'Шумопоглощающие стены' },
+              { icon: 'location_city', title: 'Удобство', description: 'Окно в каждой из спален' },
+            ]}
+          />
+        </S.BenefitsWrapper>
         <S.StarRatingWrapper>
           <StarRating rating={4} />
           <StarRating rating={5} />

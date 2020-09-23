@@ -1,6 +1,7 @@
-const composeValidators = (validators: Array<Validator>) => (value: string) =>
-  validators.reduce((error, validator) => error || validator(value), null);
+export type Validator = (value: string | number | readonly string[]) => string | null;
 
-export type Validator = (value: string) => string | null;
+const composeValidators = (validators: Array<Validator>) => (
+  value: string | number | readonly string[],
+): string | Validator => validators.reduce((error, validator) => error || validator(value), null);
 
 export { composeValidators };
