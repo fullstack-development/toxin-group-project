@@ -13,7 +13,7 @@ const Button = styled.button<ButtonProps>`
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 1.0714rem 1.3571rem 1rem 1.3572rem;
+      padding: 1.0714rem 1.3571rem 1rem;
       ${isFlat &&
       css`
         padding-top: 0.7143rem;
