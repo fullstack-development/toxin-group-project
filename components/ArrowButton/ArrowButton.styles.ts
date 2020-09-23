@@ -23,8 +23,9 @@ const ArrowIcon = styled.span`
       position: absolute;
       right: 0.73rem;
       top: 50%;
-      transform: translate(0, -50%);
+      transform: translateY(-50%);
       z-index: 10;
+      cursor: pointer;
 
       &::before {
         content: 'arrow_forward';
