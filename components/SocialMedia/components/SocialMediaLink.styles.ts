@@ -1,7 +1,7 @@
 import { AnchorHTMLAttributes } from 'react';
 import styled, { css } from 'styled-components';
 
-import { fontAwesome, fontAwesomeMapping, visuallyHidden } from 'shared/styles/mixins';
+import { fontAwesome, fontAwesomeIcons, visuallyHidden } from 'shared/styles/mixins';
 
 import { SocialMediaItem } from '../SocialMedia.types';
 
@@ -21,7 +21,7 @@ const Link = styled.a<LinkProps>`
       background-image: ${gradients.primary};
 
       &::before {
-        content: '${fontAwesomeMapping[icon]}';
+        content: '${fontAwesomeIcons[icon]}';
         font-size: 1.7143rem;
       }
 
