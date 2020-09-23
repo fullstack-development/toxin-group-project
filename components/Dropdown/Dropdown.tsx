@@ -4,31 +4,8 @@ import { Field } from 'react-final-form';
 import NumberInput from '../NumberInput/NumberInput';
 import ApplyButton from '../TextButton/TextButton';
 import * as S from './Dropdown.styles';
-import { WordForms } from './utils/getCorrectWord';
+import { DropdownProps } from './Dropdown.types';
 import getResultStringPart from './utils/getResultStringPart';
-
-type Item = {
-  title: string;
-  groupName?: string;
-  wordForms?: WordForms;
-  min?: number;
-  max?: number;
-  initialValue?: number;
-  inputName?: string;
-};
-
-type Group = {
-  name: string;
-  wordForms: WordForms;
-};
-
-type DropdownProps = {
-  items: Item[];
-  placeholder: string;
-  name: string;
-  groups?: Group[];
-  enableControls?: boolean;
-};
 
 const DEFAULT_SETTINGS = {
   min: 0,
@@ -124,9 +101,8 @@ const Dropdown: React.FC<DropdownProps> = ({
     <Field name={name} parse={() => dropdownState}>
       {({ input }) => (
         <S.Dropdown ref={dropdown}>
-          <S.Result onClick={handleResultBarClick} type="button">
+          <S.Result isOpen={isOpen} onClick={handleResultBarClick} type="button">
             {resultString}
-            <S.ExpandIcon />
           </S.Result>
           <S.ListContainer isOpen={isOpen}>
             <S.List>
@@ -168,12 +144,13 @@ const Dropdown: React.FC<DropdownProps> = ({
                 <S.ResetButton
                   isLink={false}
                   type="button"
+                  isSecondary
                   isHidden={isResetHidden}
                   onClick={handleResetClick}
                 >
                   Очистить
                 </S.ResetButton>
-                <ApplyButton isSecondary isLink={false} type="button" onClick={handleApplyClick}>
+                <ApplyButton isLink={false} type="button" onClick={handleApplyClick}>
                   Применить
                 </ApplyButton>
               </S.Controls>
