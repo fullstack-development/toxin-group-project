@@ -78,17 +78,25 @@ const Calendar = styled(DayPicker)<DayPickerProps>`
         vertical-align: middle;
         cursor: pointer;
 
+        &--outside {
+          color: ${colors.basicLight};
+        }
+
         &--today {
           background: ${gradients.secondary};
           color: ${colors.defaultBackground};
           font-weight: bold;
-          border-radius: 50%;
+
+          :not(.DayPicker-Day--selected) {
+            border-radius: 50%;
+          }
         }
 
         &--selected {
-          background: ${gradients.primary};
-          opacity: 0.25;
-          color: ${colors.basicDarkest};
+          background: ${gradients.secondaryLighten};
+          :not(.DayPicker-Day--today):not(.DayPicker-Day--start):not(.DayPicker-Day--end) {
+            color: ${colors.basic};
+          }
         }
 
         &--start,
@@ -123,8 +131,12 @@ const Calendar = styled(DayPicker)<DayPickerProps>`
           background: ${colors.basicLightest};
         }
 
-        &:hover {
+        &:hover:not(.DayPicker-Day--selected) {
           border-radius: 50%;
+        }
+
+        &:focus {
+          outline: none;
         }
       }
 

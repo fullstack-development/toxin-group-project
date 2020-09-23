@@ -1,5 +1,5 @@
-export { default as fontFace } from './font-face';
-export { default as visuallyHidden } from './visually-hidden';
-export { default as materialIcons } from './material-icons';
-export { default as container } from './container';
-export { default as titles } from './titles';
+export { default as fontFace } from './font-face.styles';
+export { default as visuallyHidden } from './visually-hidden.styles';
+export { default as materialIcons } from './material-icons.styles';
+export { default as container } from './container.styles';
+export { default as titles } from './titles.styles';

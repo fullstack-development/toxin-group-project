@@ -42,7 +42,7 @@ class ApiErrors {
   }
 
   private add(
-    constructor: { new (param?: {}): ErrorConstructor },
+    constructor: { new (param?: { [k: string]: unknown }): ErrorConstructor },
     key: string,
     handler: (...rest: unknown[]) => string,
   ): void {

@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import visuallyHidden from 'shared/styles/mixins/visually-hidden';
+import { visuallyHidden } from 'shared/styles/mixins';
 
 type LikeSpan = {
   isActive: boolean;

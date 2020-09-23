@@ -2,10 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import { DateUtils } from 'react-day-picker';
 
 import TextButton from 'components/TextButton/TextButton';
-import { months, weekdaysShort } from 'shared/helpers/validators/dateValidator';
+import { months, weekdaysShort } from 'shared/helpers/validators';
 
 import * as S from './Calendar.styles';
 import NavBar from './components/NavBar/NavBar';
+
+type SelectedDate = null | Date;
 
 type DaysSelection = {
   from: SelectedDate;
@@ -15,13 +17,12 @@ type DaysSelection = {
 
 type Calendar = {
   onApply?: (...args: unknown[]) => unknown;
+  onSelectDate?: (data: DaysSelection) => void;
+  onClose?: () => void;
 } & S.CalendarContainer;
 
-type SelectedDate = null | Date;
-
 const Calendar: React.FC<Calendar> = (props: Calendar) => {
-  const has = Object.prototype.hasOwnProperty;
-  const { onApply, isVisible } = props;
+  const { onApply, onClose, onSelectDate, isVisible } = props;
   const [selectedDays, handleSelectDays] = useState<DaysSelection>({
     from: null,
     to: null,
@@ -32,57 +33,40 @@ const Calendar: React.FC<Calendar> = (props: Calendar) => {
 
   useEffect(() => {
     const handleDocumentClick = (e: Event) => {
-      if (isShown && !htmlContainer.current.contains(e.target)) setVisibility(false);
+      if (isShown && !htmlContainer.current.contains(e.target)) {
+        setVisibility(false);
+        if (onClose) onClose();
+      }
     };
 
     document.addEventListener('click', handleDocumentClick);
     return () => document.removeEventListener('click', handleDocumentClick);
-  }, [isShown]);
+  }, [isShown, onClose, props]);
 
-  const isSelectingFirstDay = (
-    dateFrom: SelectedDate,
-    dateTo: SelectedDate,
-    currentDay: SelectedDate,
-  ) => {
-    const isBeforeFirstDay = dateFrom && DateUtils.isDayBefore(currentDay, dateFrom);
-    const isRangeSelected = dateFrom && dateTo;
-    return !dateFrom || isBeforeFirstDay || isRangeSelected;
-  };
-
-  const handleDayMouseEnter = (day: SelectedDate) => {
-    const { from, to } = selectedDays;
-
-    if (!isSelectingFirstDay(from, to, day)) {
-      handleSelectDays({
-        ...selectedDays,
-        enteredTo: day,
-      });
-    }
+  const applySelectingDays = (newRange: DaysSelection) => {
+    handleSelectDays(newRange);
+    if (onSelectDate) onSelectDate(newRange);
   };
 
   const handleDayClick = (day: SelectedDate): void => {
     const range: DaysSelection = DateUtils.addDayToRange(day, selectedDays);
 
-    handleSelectDays(range);
+    applySelectingDays(range);
   };
 
   const handleApplyButtonClick = (e: React.MouseEvent): void => {
-    e.preventDefault();
-
     setVisibility(false);
 
-    if (has.call(props, 'onApply')) onApply();
+    if (onApply) onApply();
   };
 
   const clearSelectedDate = (e: React.MouseEvent): void => {
-    e.preventDefault();
-
     const clearedData = {
       from: undefined,
       to: undefined,
     };
 
-    handleSelectDays(clearedData);
+    applySelectingDays(clearedData);
   };
 
   const { from, to } = selectedDays;
@@ -91,19 +75,19 @@ const Calendar: React.FC<Calendar> = (props: Calendar) => {
   return (
     <S.CalendarContainer isVisible={isShown} ref={htmlContainer}>
       <S.Calendar
+        showOutsideDays
         modifiers={modifiers}
         months={months}
         weekdaysShort={weekdaysShort}
         selectedDays={[from, { from, to }]}
         onDayClick={handleDayClick}
-        onDayMouseEnter={handleDayMouseEnter}
         navbarElement={<NavBar />}
       />
       <S.CalendarControls>
-        <TextButton isLink={false} isSecondary onClick={clearSelectedDate}>
+        <TextButton type="button" isLink={false} isSecondary onClick={clearSelectedDate}>
           Очистить
         </TextButton>
-        <TextButton isLink={false} onClick={handleApplyButtonClick}>
+        <TextButton type="button" isLink={false} onClick={handleApplyButtonClick}>
           Применить
         </TextButton>
       </S.CalendarControls>

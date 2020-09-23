@@ -5,10 +5,10 @@ module.exports = {
         paths: ['./'],
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
-      "typescript": {
-        "alwaysTryTypes": true,
-        "project": "./tsconfig.json"
-      }
+      typescript: {
+        alwaysTryTypes: true,
+        project: './tsconfig.json',
+      },
     },
   },
   env: {
@@ -19,7 +19,7 @@ module.exports = {
     'airbnb-typescript-prettier',
     'plugin:react/recommended',
     'plugin:jsx-a11y/recommended',
-    'plugin:react-hooks/recommended'
+    'plugin:react-hooks/recommended',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -28,12 +28,9 @@ module.exports = {
     },
     ecmaVersion: 11,
     sourceType: 'module',
-    project: `./tsconfig.json`
+    project: `./tsconfig.json`,
   },
-  plugins: [
-    'react',
-    '@typescript-eslint',
-  ],
+  plugins: ['react', '@typescript-eslint'],
   rules: {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx', '.tsx'] }],
     'react/react-in-jsx-scope': 'off',
@@ -44,15 +41,16 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': [2, { args: 'none' }],
     'no-unused-expressions': 'off',
     'lines-between-class-members': 'off',
-    "@typescript-eslint/lines-between-class-members": 'off',
-    'import/order': ['warn',
+    '@typescript-eslint/lines-between-class-members': 'off',
+    'import/order': [
+      'warn',
       {
         groups: [['builtin', 'external'], ['internal'], ['parent', 'sibling', 'index']],
         'newlines-between': 'always',
         alphabetize: { order: 'asc', caseInsensitive: true },
       },
     ],
-    'import/extensions': ['error', 'never', { 'json': 'always' }],
+    'import/extensions': ['error', 'never', { json: 'always' }],
     'import/prefer-default-export': 'off',
     'jsx-a11y/label-has-associated-control': ['error', { assert: 'either' }],
     'prettier/prettier': 2,

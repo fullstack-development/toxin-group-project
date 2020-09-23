@@ -4,31 +4,8 @@ import { Field } from 'react-final-form';
 import NumberInput from '../NumberInput/NumberInput';
 import ApplyButton from '../TextButton/TextButton';
 import * as S from './Dropdown.styles';
-import { WordForms } from './utils/getCorrectWord';
+import { DropdownProps } from './Dropdown.types';
 import getResultStringPart from './utils/getResultStringPart';
-
-type Item = {
-  title: string;
-  groupName?: string;
-  wordForms?: WordForms;
-  min?: number;
-  max?: number;
-  initialValue?: number;
-  inputName?: string;
-};
-
-type Group = {
-  name: string;
-  wordForms: WordForms;
-};
-
-type DropdownProps = {
-  items: Item[];
-  placeholder: string;
-  name: string;
-  groups?: Group[];
-  enableControls?: boolean;
-};
 
 const DEFAULT_SETTINGS = {
   min: 0,
@@ -56,32 +33,35 @@ const Dropdown: React.FC<DropdownProps> = ({
   const [resultString, setResultString] = useState(placeholder);
   const dropdown = useRef(null);
 
-  const applyChanges = (currentState: typeof dropdownState): void => {
-    const resultStrings: string[] = Array.from(
-      new Set(
-        dropdownState.map((item, _, state) => {
-          const { groupName, currentValue, wordForms } = item;
+  const applyChanges = useCallback(
+    (currentState: typeof dropdownState): void => {
+      const resultStrings: string[] = Array.from(
+        new Set(
+          currentState.map((item, _, state) => {
+            const { groupName, currentValue, wordForms } = item;
 
-          if (!groupName) return getResultStringPart(currentValue, wordForms);
+            if (!groupName) return getResultStringPart(currentValue, wordForms);
 
-          const { wordForms: groupWordForms } = groups.find((group) => group.name === groupName);
-          const groupCount = state
-            .filter((stateItem) => stateItem.groupName === groupName)
-            .reduce((sum, element) => sum + element.currentValue, 0);
-          return getResultStringPart(groupCount, groupWordForms);
-        }),
-      ),
-    ).filter((el) => el);
+            const { wordForms: groupWordForms } = groups.find((group) => group.name === groupName);
+            const groupCount = state
+              .filter((stateItem) => stateItem.groupName === groupName)
+              .reduce((sum, element) => sum + element.currentValue, 0);
+            return getResultStringPart(groupCount, groupWordForms);
+          }),
+        ),
+      ).filter((el) => el);
 
-    setResultString(resultStrings.join(', ') || placeholder);
-  };
+      setResultString(resultStrings.join(', ') || placeholder);
+    },
+    [placeholder, groups],
+  );
 
   const resetResult = () => {
     applyChanges(initialState);
   };
 
   const handleResultBarClick = (): void => {
-    setIsOpen(!isOpen);
+    setIsOpen((open) => !open);
   };
 
   const handleApplyClick = (): void => {
@@ -108,7 +88,7 @@ const Dropdown: React.FC<DropdownProps> = ({
     if (!enableControls) {
       applyChanges(dropdownState);
     }
-  }, [dropdownState]);
+  }, [dropdownState, enableControls, applyChanges]);
 
   useEffect(() => {
     document.addEventListener('click', handleDocumentClick);
@@ -121,9 +101,8 @@ const Dropdown: React.FC<DropdownProps> = ({
     <Field name={name} parse={() => dropdownState}>
       {({ input }) => (
         <S.Dropdown ref={dropdown}>
-          <S.Result onClick={handleResultBarClick} type="button">
+          <S.Result isOpen={isOpen} onClick={handleResultBarClick} type="button">
             {resultString}
-            <S.ExpandIcon />
           </S.Result>
           <S.ListContainer isOpen={isOpen}>
             <S.List>
@@ -165,12 +144,13 @@ const Dropdown: React.FC<DropdownProps> = ({
                 <S.ResetButton
                   isLink={false}
                   type="button"
+                  isSecondary
                   isHidden={isResetHidden}
                   onClick={handleResetClick}
                 >
                   Очистить
                 </S.ResetButton>
-                <ApplyButton isSecondary isLink={false} type="button" onClick={handleApplyClick}>
+                <ApplyButton isLink={false} type="button" onClick={handleApplyClick}>
                   Применить
                 </ApplyButton>
               </S.Controls>

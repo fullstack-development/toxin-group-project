@@ -1,6 +1,6 @@
-export type WordForms = [string, string, string];
+import { WordForms } from '../Dropdown.types';
 
-function getCorrectWordForm(count: number, wordForms: WordForms) {
+function getCorrectWordForm(count: number, wordForms: WordForms): string {
   const num = Math.abs(count) % 100;
   const n1 = num % 10;
   if (num > 10 && num < 20) return wordForms[2];
