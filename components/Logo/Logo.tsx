@@ -1,13 +1,10 @@
-import { AnchorHTMLAttributes } from 'react';
-
 import { Toxin } from 'public/img/svg';
 
 import * as S from './Logo.styles';
+import { LogoProps } from './Logo.types';
 
-type LogoProps = AnchorHTMLAttributes<HTMLAnchorElement>;
-
-const Logo: React.FC<LogoProps> = (props: LogoProps) => (
-  <S.LogoContainer {...props}>
+const Logo: React.FC<LogoProps> = ({ isLink, ...rest }: LogoProps) => (
+  <S.LogoContainer as={isLink ? 'a' : 'div'} {...rest}>
     <S.Logo />
     <Toxin />
   </S.LogoContainer>
