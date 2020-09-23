@@ -7,5 +7,5 @@ export type SocialMediaItem = {
 };
 
 export type SocialMediaProps = {
-  items: SocialMediaItem[];
+  items?: SocialMediaItem[];
 };
