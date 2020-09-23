@@ -75,6 +75,7 @@ const Calendar: React.FC<Calendar> = (props: Calendar) => {
   return (
     <S.CalendarContainer isVisible={isShown} ref={htmlContainer}>
       <S.Calendar
+        showOutsideDays
         modifiers={modifiers}
         months={months}
         weekdaysShort={weekdaysShort}

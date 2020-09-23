@@ -56,32 +56,35 @@ const Dropdown: React.FC<DropdownProps> = ({
   const [resultString, setResultString] = useState(placeholder);
   const dropdown = useRef(null);
 
-  const applyChanges = (currentState: typeof dropdownState): void => {
-    const resultStrings: string[] = Array.from(
-      new Set(
-        dropdownState.map((item, _, state) => {
-          const { groupName, currentValue, wordForms } = item;
+  const applyChanges = useCallback(
+    (currentState: typeof dropdownState): void => {
+      const resultStrings: string[] = Array.from(
+        new Set(
+          currentState.map((item, _, state) => {
+            const { groupName, currentValue, wordForms } = item;
 
-          if (!groupName) return getResultStringPart(currentValue, wordForms);
+            if (!groupName) return getResultStringPart(currentValue, wordForms);
 
-          const { wordForms: groupWordForms } = groups.find((group) => group.name === groupName);
-          const groupCount = state
-            .filter((stateItem) => stateItem.groupName === groupName)
-            .reduce((sum, element) => sum + element.currentValue, 0);
-          return getResultStringPart(groupCount, groupWordForms);
-        }),
-      ),
-    ).filter((el) => el);
+            const { wordForms: groupWordForms } = groups.find((group) => group.name === groupName);
+            const groupCount = state
+              .filter((stateItem) => stateItem.groupName === groupName)
+              .reduce((sum, element) => sum + element.currentValue, 0);
+            return getResultStringPart(groupCount, groupWordForms);
+          }),
+        ),
+      ).filter((el) => el);
 
-    setResultString(resultStrings.join(', ') || placeholder);
-  };
+      setResultString(resultStrings.join(', ') || placeholder);
+    },
+    [placeholder, groups],
+  );
 
   const resetResult = () => {
     applyChanges(initialState);
   };
 
   const handleResultBarClick = (): void => {
-    setIsOpen(!isOpen);
+    setIsOpen((open) => !open);
   };
 
   const handleApplyClick = (): void => {
@@ -108,7 +111,7 @@ const Dropdown: React.FC<DropdownProps> = ({
     if (!enableControls) {
       applyChanges(dropdownState);
     }
-  }, [dropdownState]);
+  }, [dropdownState, enableControls, applyChanges]);
 
   useEffect(() => {
     document.addEventListener('click', handleDocumentClick);
