@@ -45,10 +45,13 @@ const SubMenuLink = styled(Link)`
 
 const SubMenuContainer = styled.div<SubMenu>`
   ${(props) => {
+    const { colors } = props.theme;
     const { isShown } = props;
 
     return css`
       display: ${isShown ? 'flex' : 'none'};
+      background: ${colors.defaultBackground};
+      z-index: 10;
       flex-direction: column;
       width: max-content;
       max-width: 11rem;
