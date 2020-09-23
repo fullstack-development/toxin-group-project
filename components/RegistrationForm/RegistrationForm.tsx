@@ -6,7 +6,9 @@ import RadioButton from 'components/RadioButton/RadioButton';
 import * as S from './RegistrationForm.styles';
 
 const RegistrationForm: React.FC = (): JSX.Element => {
-  const submitRegistrationForm = () => true;
+  const submitRegistrationForm = (): void => {
+    1 + 2;
+  };
 
   return (
     <Form
