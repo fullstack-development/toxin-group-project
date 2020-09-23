@@ -1,13 +1,12 @@
 import { Form } from 'react-final-form';
 
 import Button from 'components/Button/Button';
-import Input from 'components/Input/Input';
 import RadioButton from 'components/RadioButton/RadioButton';
 
 import * as S from './RegistrationForm.styles';
 
-const RegistrationForm = () => {
-  const submitRegistrationForm = () => {};
+const RegistrationForm: React.FC = (): JSX.Element => {
+  const submitRegistrationForm = () => true;
 
   return (
     <Form

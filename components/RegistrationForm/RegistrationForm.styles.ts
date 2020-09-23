@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 
 import Input from 'components/Input/Input';
-import RadioButton from 'components/RadioButton/RadioButton';
 import { titles } from 'shared/styles/mixins';
 
 const RegistrationForm = styled.div`
