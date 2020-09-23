@@ -30,7 +30,7 @@ const ContainerElement = styled.div<ContainerElement>`
         padding: 0;
       }
 
-      &:not(:last-child) {
+      &:nth-child(1) {
         margin-right: 1.4rem;
       }
     `;

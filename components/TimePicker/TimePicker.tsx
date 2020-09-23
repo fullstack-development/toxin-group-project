@@ -9,11 +9,20 @@ type TimePickerProps = {
   labelName: string;
   dateFrom?: Date;
   dateTo?: Date;
+  dateFromLabelText?: string;
+  dateToLabelText?: string;
   onChange?: (e: React.ChangeEvent) => void;
 } & S.ContainerElement;
 
 const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps): JSX.Element => {
-  const { type, dateFrom, dateTo, labelName } = props;
+  const {
+    type,
+    dateFrom,
+    dateTo,
+    labelName,
+    dateFromLabelText = 'Date dropdown',
+    dateToLabelText = 'Date dropdown',
+  } = props;
   const [isCalendarVisible, setCalendarVisibility] = useState(false);
   const [selectedDateRange, setSelectedDateRange] = useState({
     from: dateFrom,
@@ -52,17 +61,18 @@ const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps): JSX.Elem
 
   return (
     <S.Container>
-      <S.ContainerElement type={type} onClick={openCalendar}>
+      <S.ContainerElement type={type}>
         <Field
-          name={`${labelName} date from`}
+          name={`${labelName}-date-from`}
           type="text"
           render={(fieldProps) => (
             <Input
               {...fieldProps.input}
               {...fieldProps.meta}
               value={from ? getDateFrom() : getMaskedDate()}
-              label="date Dropdown"
+              label={dateFromLabelText}
               placeholder="date from"
+              onClick={openCalendar}
               readOnly
             />
           )}
@@ -70,16 +80,17 @@ const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps): JSX.Elem
         <S.ExpandIcon />
       </S.ContainerElement>
       {type === 'double' && (
-        <S.ContainerElement onClick={openCalendar}>
+        <S.ContainerElement>
           <Field
-            name={`${labelName} date to`}
+            name={`${labelName}-date-to`}
             render={(fieldProps) => (
               <Input
                 {...fieldProps.input}
                 {...fieldProps.meta}
                 value={to ? to.toLocaleDateString('ru-RU') : getMaskedDate()}
-                label="date Dropdown"
+                label={dateToLabelText}
                 placeholder="date to"
+                onClick={openCalendar}
                 readOnly
               />
             )}
