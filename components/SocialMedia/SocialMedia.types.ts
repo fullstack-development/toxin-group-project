@@ -5,3 +5,7 @@ export type SocialMediaItem = {
   text: string;
   href: string;
 };
+
+export type SocialMediaProps = {
+  items: SocialMediaItem[];
+};
