@@ -1,6 +1,7 @@
 import { AnchorHTMLAttributes } from 'react';
 
-import Toxin from '../../public/img/toxin.svg';
+import { Toxin } from 'public/img/svg';
+
 import * as S from './Logo.styles';
 
 type LogoProps = AnchorHTMLAttributes<HTMLAnchorElement>;

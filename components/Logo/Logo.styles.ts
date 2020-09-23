@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import LogoImg from '../../public/img/logo.svg';
+import { Logo as LogoImg } from 'public/img/svg';
 
 const LogoContainer = styled.a`
   display: flex;
