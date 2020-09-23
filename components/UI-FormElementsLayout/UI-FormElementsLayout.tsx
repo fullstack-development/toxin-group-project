@@ -202,7 +202,7 @@ class UIFormElementsLayout extends React.Component {
           <StarRating rating={4} />
           <StarRating rating={5} />
         </S.StarRatingWrapper>
-        <Logo isLink href="/" />
+        <Logo isLink />
       </S.Container>
     );
   }
