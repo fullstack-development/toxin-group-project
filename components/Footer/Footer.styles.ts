@@ -16,7 +16,7 @@ const Container = styled.div`
 const MainContainer = styled(Container)`
   display: grid;
   grid-template-columns: minmax(0, 18.5714rem) 1fr minmax(0, 18.5714rem);
-  grid-gap: 40px;
+  grid-gap: 2.8571rem;
   border-bottom: 0.0714rem solid rgba(31, 32, 65, 0.1);
   padding-top: 7.1429rem;
   padding-bottom: 7.1429rem;
