@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { container } from 'shared/styles/mixins';
+import { container, visuallyHidden } from 'shared/styles/mixins';
 
 const Container = styled.div`
   ${container}
@@ -23,12 +23,18 @@ const MainContainer = styled(Container)`
     padding-bottom: 0;
     padding-top: 8.5714rem;
     border-bottom: 0;
+  }
 
-    @media (max-width: 500px) {
-      padding-top: 3.5714rem;
-    }
+  @media (max-width: 500px) {
+    padding-top: 3.5714rem;
   }
 `;
+
+const Title = styled.h2`
+  ${visuallyHidden}
+`;
+
+const Wrapper = styled.footer``;
 
 const BottomContainer = styled(Container)`
   display: flex;
@@ -49,4 +55,4 @@ const BottomContainer = styled(Container)`
   }
 `;
 
-export { Container, MainContainer, BottomContainer };
+export { Container, MainContainer, BottomContainer, Title, Wrapper };
