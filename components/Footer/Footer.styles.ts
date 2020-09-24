@@ -1,4 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+import { titles } from 'shared/styles/mixins';
 
 const Container = styled.div`
   display: flex;
