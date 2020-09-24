@@ -1,9 +1,8 @@
-import styled, { css } from 'styled-components';
-
-import { titles } from 'shared/styles/mixins';
+import styled from 'styled-components';
 
 const Container = styled.div`
   display: flex;
+  justify-content: space-between;
 `;
 
 export { Container };

@@ -11,6 +11,7 @@ const UIHeadersAndFootersLayout: React.FC = (): JSX.Element => (
         title: 'Подписка',
         text: 'Получайте специальные предложения и новости сервиса',
       }}
+      description="Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»"
     />
   </S.FooterContainer>
 );

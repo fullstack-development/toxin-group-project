@@ -3,7 +3,10 @@ export type SubscriptionProps = {
   text: string;
 };
 
-export type FooterProps = {
-  subscription: SubscriptionProps;
+export type LogoProps = {
   description: string;
 };
+
+export type FooterProps = {
+  subscription: SubscriptionProps;
+} & LogoProps;
