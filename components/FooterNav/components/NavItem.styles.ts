@@ -1,15 +1,10 @@
 import styled, { css } from 'styled-components';
 
+import { titles } from 'shared/styles/mixins';
+
 const Title = styled.h3`
-  ${(props) => {
-    const { typography, colors } = props.theme;
-    return css`
-      margin-bottom: 1.5rem;
-      font: 700 0.8571rem ${typography.fontName};
-      color: ${colors.basicDarkest};
-      text-transform: uppercase;
-    `;
-  }}
+  ${titles.h3()}
+  margin-bottom: 1.5rem;
 `;
 
 const Link = styled.a`
