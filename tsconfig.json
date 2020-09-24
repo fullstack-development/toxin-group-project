@@ -3,11 +3,6 @@
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "baseUrl": "./",
-    "paths": {
-      "@components/*": ["components/*"],
-      "@shared/*": ["shared/*"],
-      "@api/*": ["api/*"]
-    },
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
