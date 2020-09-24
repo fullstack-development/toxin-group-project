@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
 
+import ArrowButton from 'components/ArrowButton/ArrowButton';
 import Benefits from 'components/Benefits/Benefits';
 import BulletList from 'components/BulletList/BulletList';
 import Button from 'components/Button/Button';
@@ -207,6 +208,11 @@ class UIFormElementsLayout extends React.Component {
           <StarRating rating={4} />
           <StarRating rating={5} />
         </S.StarRatingWrapper>
+        <S.ArrowButtonWrapper>
+          <ArrowButton isLink href="https://google.com">
+            Перейти к оплате
+          </ArrowButton>
+        </S.ArrowButtonWrapper>
         <SocialMedia />
         <Logo isLink />
       </S.Container>
