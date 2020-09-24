@@ -12,6 +12,7 @@ import expandableCheckboxData from 'components/Expander/ExpandableList.data.json
 import Expander from 'components/Expander/Expander';
 import Input from 'components/Input/Input';
 import LikeButton from 'components/LikeButton/LikeButton';
+import Logo from 'components/Logo/Logo';
 import RadioButton from 'components/RadioButton/RadioButton';
 import StarRating from 'components/StarRating/StarRating';
 import TextButton from 'components/TextButton/TextButton';
@@ -201,6 +202,7 @@ class UIFormElementsLayout extends React.Component {
           <StarRating rating={4} />
           <StarRating rating={5} />
         </S.StarRatingWrapper>
+        <Logo isLink />
       </S.Container>
     );
   }
