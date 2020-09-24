@@ -12,7 +12,7 @@ const Link = styled.a`
     const { typography, colors } = props.theme;
     return css`
       display: inline-block;
-      width: max-content;
+      width: fit-content;
       font-family: ${typography.fontName};
       line-height: 1.2143rem;
       color: ${colors.basic};
@@ -35,11 +35,7 @@ const Link = styled.a`
   }}
 `;
 
-const Container = styled.div`
-  &:not(:last-child) {
-    margin-right: 2.8571rem;
-  }
-`;
+const Container = styled.div``;
 
 const List = styled.ul`
   display: flex;
