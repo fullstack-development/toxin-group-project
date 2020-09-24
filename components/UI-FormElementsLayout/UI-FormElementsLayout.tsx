@@ -156,7 +156,12 @@ class UIFormElementsLayout extends React.Component {
                 </Expander>
               </S.ExpandableCheckboxWrapper>
               <S.TimePickerWrapper>
-                <TimePicker type="double" labelName="elements" />
+                <TimePicker
+                  type="double"
+                  labelName="elements"
+                  dateFromLabelText="date dropdown"
+                  dateToLabelText="date dropdown"
+                />
               </S.TimePickerWrapper>
             </form>
           )}
