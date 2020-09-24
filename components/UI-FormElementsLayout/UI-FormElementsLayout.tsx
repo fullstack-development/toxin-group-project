@@ -14,6 +14,7 @@ import Input from 'components/Input/Input';
 import LikeButton from 'components/LikeButton/LikeButton';
 import Logo from 'components/Logo/Logo';
 import RadioButton from 'components/RadioButton/RadioButton';
+import SocialMedia from 'components/SocialMedia/SocialMedia';
 import StarRating from 'components/StarRating/StarRating';
 import SubscriptionField from 'components/SubscriptionField/SubscriptionField';
 import TextButton from 'components/TextButton/TextButton';
@@ -206,6 +207,7 @@ class UIFormElementsLayout extends React.Component {
           <StarRating rating={4} />
           <StarRating rating={5} />
         </S.StarRatingWrapper>
+        <SocialMedia />
         <Logo isLink />
       </S.Container>
     );

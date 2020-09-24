@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@babel/plugin-proposal-decorators": "^7.10.5",
+    "@fortawesome/fontawesome-common-types": "^0.2.30",
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
     "autobind-decorator": "^2.4.0",
