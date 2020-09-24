@@ -15,8 +15,6 @@ const NavLink: React.FC<NavMenuLink> = ({
 
   return (
     <S.Link
-      target="_blank"
-      rel="noopener noreferrer"
       withSubMenu={!!subMenu}
       isActive={isActive}
       key={name}
@@ -30,12 +28,7 @@ const NavLink: React.FC<NavMenuLink> = ({
           <S.ExpandIcon />
           <S.SubMenuContainer isShown={isShownSubMenu} onMouseOut={collapseSubMenu}>
             {subMenu.map((subMenuLink: NavSubMenu) => (
-              <S.SubMenuLink
-                target="_blank"
-                rel="noopener noreferrer"
-                key={subMenuLink.name}
-                href={subMenuLink.path}
-              >
+              <S.SubMenuLink key={subMenuLink.name} href={subMenuLink.path}>
                 {subMenuLink.name}
               </S.SubMenuLink>
             ))}
