@@ -11,7 +11,8 @@ export type CopyrightProps = {
   copyrightText: string;
 };
 
-export type FooterProps = {
-  subscription: SubscriptionProps;
-} & CopyrightProps &
-  LogoProps;
+export type SubscriptionBlockProps = {
+  subscription?: SubscriptionProps;
+};
+
+export type FooterProps = Partial<SubscriptionBlockProps & CopyrightProps & LogoProps>;
