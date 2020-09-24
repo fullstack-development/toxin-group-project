@@ -1,15 +1,19 @@
 import { AnchorHTMLAttributes, ButtonHTMLAttributes, ElementType } from 'react';
 
+type CustomProps = {
+  isFilled?: boolean;
+  isFlat?: boolean;
+  as?: ElementType;
+};
+
 type Props = {
   isLink: false;
-  isFilled?: boolean;
-  as?: ElementType;
-} & ButtonHTMLAttributes<HTMLButtonElement>;
+} & CustomProps &
+  ButtonHTMLAttributes<HTMLButtonElement>;
 
 type AnchorProps = {
   isLink: true;
-  isFilled?: boolean;
-  as?: ElementType;
-} & AnchorHTMLAttributes<HTMLAnchorElement>;
+} & CustomProps &
+  AnchorHTMLAttributes<HTMLAnchorElement>;
 
 export type ButtonProps = Props | AnchorProps;

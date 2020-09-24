@@ -5,7 +5,7 @@ import { ButtonProps } from './Button.types';
 const Button = styled.button<ButtonProps>`
   ${(props) => {
     const { gradients, colors, typography } = props.theme;
-    const { isFilled } = props;
+    const { isFilled, isFlat } = props;
     return css`
       width: max-content;
       position: relative;
@@ -13,7 +13,12 @@ const Button = styled.button<ButtonProps>`
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 1.0714rem 1.3571rem 1rem 1.3572rem;
+      padding: 1.0714rem 1.3571rem 1rem;
+      ${isFlat &&
+      css`
+        padding-top: 0.7143rem;
+        padding-bottom: 0.7143rem;
+      `}
       white-space: nowrap;
       text-align: center;
       background-color: transparent;
