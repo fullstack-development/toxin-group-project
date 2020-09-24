@@ -63,9 +63,4 @@ const Label = styled.span`
   }}
 `;
 
-export {
-  RadioButton,
-  HiddenInput,
-  Checkmark,
-  Label,
-};
+export { RadioButton, HiddenInput, Checkmark, Label };

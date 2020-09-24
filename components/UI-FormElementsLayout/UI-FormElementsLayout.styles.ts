@@ -13,6 +13,11 @@ const LikeButtonWrapper = styled.div`
   margin: 1rem 0;
 `;
 
+const TimePickerWrapper = styled.div`
+  width: 22.8571rem;
+  margin-bottom: 0.45rem;
+`;
+
 const ButtonWrapper = styled.div`
   margin-bottom: 2.1429rem;
 `;
@@ -62,12 +67,17 @@ const RadioWrapper = styled.div`
   justify-content: space-around;
 `;
 
+const SubscriptionWrapper = styled.div`
+  max-width: 19.0714rem;
+`;
+
 export {
   Container,
   ButtonWrapper,
   TextButtonWrapper,
   InputWrapper,
   LikeButtonWrapper,
+  TimePickerWrapper,
   CheckboxWrapper,
   ExpandableCheckboxWrapper,
   BulletListWrapper,
@@ -76,4 +86,5 @@ export {
   BenefitsWrapper,
   StarRatingWrapper,
   RadioWrapper,
+  SubscriptionWrapper,
 };

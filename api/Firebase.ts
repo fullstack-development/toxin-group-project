@@ -40,7 +40,7 @@ class Firebase {
   }
 
   @boundMethod
-  public update(data: {}): void {
+  public update(data: { [k: string]: unknown }): void {
     this.getRef().update(data);
   }
 
