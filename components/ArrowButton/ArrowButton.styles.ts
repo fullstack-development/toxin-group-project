@@ -24,7 +24,7 @@ const ArrowIcon = styled.span`
       right: 0.73rem;
       top: 50%;
       transform: translateY(-50%);
-      z-index: 10;
+      z-index: 1;
       cursor: pointer;
 
       &::before {
