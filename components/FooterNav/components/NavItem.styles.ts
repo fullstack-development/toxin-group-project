@@ -4,6 +4,7 @@ import { titles } from 'shared/styles/mixins';
 
 const Title = styled.h3`
   ${titles.h3()}
+  width: max-content;
   margin-bottom: 1.5rem;
 `;
 
@@ -35,7 +36,11 @@ const Link = styled.a`
   }}
 `;
 
-const Container = styled.div``;
+const Container = styled.div`
+  &:not(:last-child) {
+    margin-right: 1.4286rem;
+  }
+`;
 
 const List = styled.ul`
   display: flex;

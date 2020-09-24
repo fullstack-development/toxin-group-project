@@ -1,8 +1,6 @@
 import styled, { css } from 'styled-components';
 
-const Container = styled.div`
-  margin-right: 2.8571rem;
-`;
+const Container = styled.div``;
 
 const Description = styled.p`
   ${(props) => {
