@@ -5,6 +5,10 @@ import { titles } from 'shared/styles/mixins';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 900px) {
+    display: none;
+  }
 `;
 
 const Title = styled.h3`

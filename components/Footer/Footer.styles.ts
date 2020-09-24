@@ -3,11 +3,7 @@ import styled from 'styled-components';
 import { container } from 'shared/styles/mixins';
 
 const Container = styled.div`
-  ${container};
-  display: grid;
-  grid-template-columns: minmax(0, 18.5714rem) 1fr minmax(0, 18.5714rem);
-  grid-gap: 40px;
-  border-bottom: 0.0714rem solid rgba(31, 32, 65, 0.1);
+  ${container}
   padding: 7.1429rem 10rem;
 
   @media (max-width: 1200px) {
@@ -15,4 +11,42 @@ const Container = styled.div`
   }
 `;
 
-export { Container };
+const MainContainer = styled(Container)`
+  display: grid;
+  grid-template-columns: minmax(0, 18.5714rem) 1fr minmax(0, 18.5714rem);
+  grid-gap: 40px;
+  border-bottom: 0.0714rem solid rgba(31, 32, 65, 0.1);
+
+  @media (max-width: 900px) {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 0;
+    padding-top: 8.5714rem;
+    border-bottom: 0;
+
+    @media (max-width: 500px) {
+      padding-top: 3.5714rem;
+    }
+  }
+`;
+
+const BottomContainer = styled(Container)`
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1.8571rem;
+  padding-bottom: 1.8571rem;
+
+  @media (max-width: 900px) {
+    padding-top: 0;
+    flex-direction: column;
+    padding-bottom: 8.5714rem;
+    align-items: center;
+    text-align: center;
+  }
+
+  @media (max-width: 500px) {
+    padding-bottom: 3.5714rem;
+  }
+`;
+
+export { Container, MainContainer, BottomContainer };

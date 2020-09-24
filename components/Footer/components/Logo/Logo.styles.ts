@@ -10,6 +10,10 @@ const Description = styled.p`
       margin: 0;
       color: ${colors.basicDark};
       line-height: 1.7143rem;
+
+      @media (max-width: 900px) {
+        display: none;
+      }
     `;
   }}
 `;
