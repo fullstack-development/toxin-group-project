@@ -1,8 +1,26 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-const NavContainer = styled.nav`
-  display: flex;
-  flex-wrap: wrap;
+type ListItem = {
+  withSubMenu?: boolean;
+};
+
+const ListItem = styled.li<ListItem>`
+  ${(props) => {
+    const { withSubMenu } = props;
+
+    return css`
+      position: relative;
+      list-style: none;
+      margin-right: ${withSubMenu ? '1.7rem' : '0'};
+    `;
+  }}
 `;
 
-export { NavContainer };
+const NavContainer = styled.nav`
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
+`;
+
+export { ListItem, NavContainer };

@@ -4,7 +4,14 @@ import { NavMain, NavMenuLink } from './NavMenu.types';
 
 const NavMenu: React.FC<NavMain> = ({ menu }: NavMain): JSX.Element => (
   <S.NavContainer>
-    {menu && menu.map((link: NavMenuLink) => <NavLink key={link.name} {...link} />)}
+    <ul>
+      {menu &&
+        menu.map((link: NavMenuLink) => (
+          <S.ListItem key={link.name} withSubMenu={!!link.subMenu}>
+            <NavLink {...link} />
+          </S.ListItem>
+        ))}
+    </ul>
   </S.NavContainer>
 );
 

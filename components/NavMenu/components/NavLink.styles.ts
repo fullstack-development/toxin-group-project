@@ -2,25 +2,26 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 import styled, { css } from 'styled-components';
 
 type SubMenu = {
-  isShown: boolean;
+  isShown?: boolean;
 };
 
 type Link = {
   isActive?: boolean;
-  withSubMenu?: boolean;
 };
+
+const NavLink = styled.div``;
 
 const Link = styled.a<Link>`
   ${(props) => {
     const { colors } = props.theme;
-    const { isActive, withSubMenu } = props;
+    const { isActive } = props;
 
     return css`
       color: ${colors.basic};
       font-weight: ${isActive ? 'bold' : 'normal'};
       text-decoration: none;
       outline: none;
-      margin-right: ${withSubMenu ? '3.2rem' : '1.5rem'};
+      margin-right: 1.5rem;
       position: relative;
     `;
   }}
@@ -64,9 +65,10 @@ const SubMenuContainer = styled.div<SubMenu>`
   }}
 `;
 
-const ExpandIcon = styled(ExpandMore)`
+const ExpandIcon = styled(ExpandMore)<SubMenu>`
   width: 2rem;
   position: absolute;
+  right: 0;
 `;
 
-export { Link, SubMenuLink, SubMenuContainer, ExpandIcon };
+export { NavLink, Link, SubMenuLink, SubMenuContainer, ExpandIcon };

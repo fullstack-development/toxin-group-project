@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 import { NavMenuLink, NavSubMenu } from '../NavMenu.types';
 import * as S from './NavLink.styles';
@@ -9,33 +9,43 @@ const NavLink: React.FC<NavMenuLink> = ({
   path,
   subMenu,
 }: NavMenuLink): JSX.Element => {
+  const LinkMenuRef = useRef(null);
   const [isShownSubMenu, setSubMenuShownStatus] = useState(false);
   const expandSubMenu = () => setSubMenuShownStatus(true);
-  const collapseSubMenu = () => setSubMenuShownStatus(false);
+
+  useEffect(() => {
+    const handleDocumentMouseMove = (e: TouchEvent) => {
+      if (isShownSubMenu && !LinkMenuRef.current.contains(e.target)) setSubMenuShownStatus(false);
+    };
+
+    document.addEventListener('mousemove', handleDocumentMouseMove);
+    return () => document.removeEventListener('mousemove', handleDocumentMouseMove);
+  }, [isShownSubMenu]);
 
   return (
-    <S.Link
-      withSubMenu={!!subMenu}
-      isActive={isActive}
-      key={name}
-      href={path}
-      onMouseOver={expandSubMenu}
-      onMouseOut={collapseSubMenu}
-    >
-      {name}
+    <S.NavLink ref={LinkMenuRef}>
+      <S.Link
+        isActive={isActive}
+        key={name}
+        href={path}
+        onMouseOver={expandSubMenu}
+        onTouchStart={expandSubMenu}
+      >
+        {name}
+      </S.Link>
       {subMenu && (
         <>
           <S.ExpandIcon />
-          <S.SubMenuContainer isShown={isShownSubMenu} onMouseOut={collapseSubMenu}>
+          <S.SubMenuContainer isShown={isShownSubMenu}>
             {subMenu.map((subMenuLink: NavSubMenu) => (
-              <S.SubMenuLink key={subMenuLink.name} href={subMenuLink.path}>
+              <S.SubMenuLink key={subMenuLink.path} href={subMenuLink.path}>
                 {subMenuLink.name}
               </S.SubMenuLink>
             ))}
           </S.SubMenuContainer>
         </>
       )}
-    </S.Link>
+    </S.NavLink>
   );
 };
 
