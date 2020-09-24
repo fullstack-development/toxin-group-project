@@ -6,7 +6,7 @@ import HeaderUserProfile from './HeaderUserProfile/HeaderUserProfile';
 const Header: React.FC<HeaderProps> = ({ authData }: HeaderProps): JSX.Element => {
   return (
     <S.Header>
-      <S.HeaderLogo isLink href="/mock-main-page" />
+      <S.HeaderLogo isLink />
       <S.AccountPanel>
         {authData ? <HeaderUserProfile authData={authData} /> : <HeaderUserLogin />}
       </S.AccountPanel>
