@@ -59,8 +59,7 @@ const SubMenuContainer = styled.div<SubMenu>`
       text-align: center;
       position: absolute;
       left: 50%;
-      margin-right: -50%;
-      transform: translate(-50%, 0);
+      transform: translateX(-50%);
     `;
   }}
 `;
