@@ -15,6 +15,7 @@ import LikeButton from 'components/LikeButton/LikeButton';
 import Logo from 'components/Logo/Logo';
 import RadioButton from 'components/RadioButton/RadioButton';
 import StarRating from 'components/StarRating/StarRating';
+import SubscriptionField from 'components/SubscriptionField/SubscriptionField';
 import TextButton from 'components/TextButton/TextButton';
 import TimePicker from 'components/TimePicker/TimePicker';
 import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators';
@@ -156,6 +157,9 @@ class UIFormElementsLayout extends React.Component {
                   <CheckboxesList roomOptions={expandableCheckboxData} />
                 </Expander>
               </S.ExpandableCheckboxWrapper>
+              <S.SubscriptionWrapper>
+                <SubscriptionField placeholder="Email" />
+              </S.SubscriptionWrapper>
               <S.TimePickerWrapper>
                 <TimePicker type="double" labelName="elements" />
               </S.TimePickerWrapper>

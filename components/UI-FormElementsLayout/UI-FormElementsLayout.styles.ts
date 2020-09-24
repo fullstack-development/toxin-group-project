@@ -67,6 +67,10 @@ const RadioWrapper = styled.div`
   justify-content: space-around;
 `;
 
+const SubscriptionWrapper = styled.div`
+  max-width: 19.0714rem;
+`;
+
 export {
   Container,
   ButtonWrapper,
@@ -82,4 +86,5 @@ export {
   BenefitsWrapper,
   StarRatingWrapper,
   RadioWrapper,
+  SubscriptionWrapper,
 };
