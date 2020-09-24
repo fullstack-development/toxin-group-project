@@ -34,3 +34,7 @@ yarn-error.log*
 .vercel
 
 /.vscode
+
+# netlify
+/out_publish/
+/out_functions/
