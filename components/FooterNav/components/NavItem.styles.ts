@@ -17,6 +17,7 @@ const Link = styled.a`
     const { typography, colors } = props.theme;
     return css`
       display: inline-block;
+      width: max-content;
       font-family: ${typography.fontName};
       line-height: 1.2143rem;
       color: ${colors.basic};
@@ -31,7 +32,8 @@ const Link = styled.a`
         text-transform: uppercase;
       }
 
-      &:hover {
+      &:hover,
+      &:focus {
         color: ${colors.basicDarkest};
       }
     `;
