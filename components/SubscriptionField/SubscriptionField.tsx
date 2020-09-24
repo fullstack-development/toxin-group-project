@@ -8,6 +8,7 @@ import * as S from './SubscriptionField.styles';
 
 type SubscriptionProps = InputProps & FormHTMLAttributes<HTMLFormElement>;
 
+// eslint-disable-next-line no-console
 const handleSubmitClick = (values) => console.log(values);
 
 const SubscriptionField: React.FC<InputProps> = ({ action, ...rest }: SubscriptionProps) => {

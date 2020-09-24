@@ -3,7 +3,7 @@ import SubscriptionField from 'components/SubscriptionField/SubscriptionField';
 
 import * as S from './Footer.styles';
 
-type FooterProps = {};
+type FooterProps = unknown;
 
 const Footer: React.FC<FooterProps> = () => (
   <S.Container>
