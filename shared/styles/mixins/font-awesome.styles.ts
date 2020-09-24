@@ -1,12 +1,10 @@
 import { css } from 'styled-components';
 
-const materialIcons = css`
+const fontAwesome = css`
   /* stylelint-disable font-family-no-missing-generic-family-keyword */
-  font-family: 'Material Icons';
+  font-family: 'FA Brands';
   font-style: normal;
   text-rendering: optimizeLegibility;
-  cursor: default;
-  display: inline-block;
   font-feature-settings: 'liga';
   background-clip: text;
   /* stylelint-disable property-no-vendor-prefix */
@@ -16,4 +14,4 @@ const materialIcons = css`
   -webkit-font-smoothing: antialiased;
 `;
 
-export default materialIcons;
+export default fontAwesome;

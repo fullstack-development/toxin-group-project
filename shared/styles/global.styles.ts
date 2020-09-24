@@ -1,7 +1,7 @@
 import { createGlobalStyle, css } from 'styled-components';
 
 import { Theme } from '../types/theme';
-import fontFace from './mixins/font-face';
+import { fontFace } from './mixins';
 
 type Props = {
   theme: Theme;
@@ -11,11 +11,14 @@ const GlobalStyle = createGlobalStyle<Props>`
   ${(props) => {
     const { colors, typography } = props.theme;
     return css`
+      ${fontFace('FA Brands', 'fa-brands', 'regular')}
       ${fontFace('Material Icons', 'material-icons', 'regular')}
       ${fontFace('Montserrat', 'montserrat', 'regular')}
       ${fontFace('Montserrat', 'montserrat', 'bold', 700)}
       ${fontFace('Quicksand', 'quicksand', 'regular')}
       ${fontFace('Quicksand', 'quicksand', 'bold', 700)}
+      ${fontFace('Open Sans', 'open-sans', 'regular')}
+      ${fontFace('Open Sans', 'open-sans', 'bold', 700)}
 
       * {
         padding: 0;

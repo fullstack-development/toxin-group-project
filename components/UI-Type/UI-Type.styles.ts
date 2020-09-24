@@ -31,13 +31,14 @@ const Title = styled.div<TitleProps>`
 const Example = styled.div<ExampleProps>`
   ${(props) => {
     const { exampleType, exampleFontSize } = props;
-    const { colors } = props.theme;
+    const { colors, typography } = props.theme;
     return css`
       font-weight: ${exampleType === 'Body' ? 'normal' : 'bold'};
       line-height: ${exampleType === 'Body' ? '1.65' : '1.27'};
       font-size: ${exampleFontSize};
-      font-family: ${exampleType === 'H3' || exampleType === 'Body' ? 'Montserrat' : 'Quicksand'},
-        Arial, sans-serif;
+      font-family: ${exampleType === 'H3' || exampleType === 'Body'
+        ? typography.fontName
+        : typography.secondaryFontName};
       text-transform: ${exampleType === 'H3' ? 'uppercase' : 'none'};
       color: ${colors.basicDarkest};
     `;

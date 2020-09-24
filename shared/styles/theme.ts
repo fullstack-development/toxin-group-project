@@ -9,7 +9,7 @@ const secondaryVariantColorValue = '102, 210, 234';
 const purpleThemePalette: Theme = {
   typography: {
     fontName: 'Montserrat, Arial, sans-serif',
-    secondaryFontName: '"Open Sans", Arial, sans-serif',
+    secondaryFontName: 'Quicksand, "Open Sans", Arial, sans-serif',
     fontSize: '14px',
   },
   colors: {
@@ -30,6 +30,7 @@ const purpleThemePalette: Theme = {
     secondary: `linear-gradient(180deg, rgb(${secondaryColorValue}) 0%, rgb(${secondaryVariantColorValue}) 100%)`,
     primaryLight: `linear-gradient(180deg, rgba(${primaryColorValue}, 0.5) 0%, rgba(${primaryVariantColorValue}, 0.5) 100%)`,
     secondaryLight: `linear-gradient(180deg, rgba(${secondaryColorValue}, 0.5) 0%, rgba(${secondaryVariantColorValue}, 0.5) 100%)`,
+    secondaryLighten: `linear-gradient(180deg, rgba(${primaryColorValue}, 0.25) 0%, rgba(${primaryVariantColorValue}, 0.25) 100%)`,
   },
 };
 

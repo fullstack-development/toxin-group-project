@@ -26,10 +26,10 @@ const Palette = styled.div<PaletteProps>`
 
 const Description = styled.div`
   ${(props) => {
-    const { colors } = props.theme;
+    const { colors, typography } = props.theme;
     return css`
       color: ${colors.basicDarkest};
-      font-family: Quicksand, Arial, sans-serif;
+      font-family: ${typography.secondaryFontName};
       font-size: 1.357rem;
       padding-left: 2.8571rem;
       line-height: 1.5;
