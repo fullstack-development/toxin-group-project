@@ -15,6 +15,7 @@ import Input from 'components/Input/Input';
 import LikeButton from 'components/LikeButton/LikeButton';
 import Logo from 'components/Logo/Logo';
 import RadioButton from 'components/RadioButton/RadioButton';
+import SearchRoomForm from 'components/SearchRoomForm/SearchRoomForm';
 import SocialMedia from 'components/SocialMedia/SocialMedia';
 import StarRating from 'components/StarRating/StarRating';
 import SubscriptionField from 'components/SubscriptionField/SubscriptionField';
@@ -215,6 +216,7 @@ class UIFormElementsLayout extends React.Component {
         </S.ArrowButtonWrapper>
         <SocialMedia />
         <Logo isLink />
+        <SearchRoomForm />
       </S.Container>
     );
   }
