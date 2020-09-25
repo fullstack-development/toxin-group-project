@@ -20,6 +20,7 @@ import StarRating from 'components/StarRating/StarRating';
 import SubscriptionField from 'components/SubscriptionField/SubscriptionField';
 import TextButton from 'components/TextButton/TextButton';
 import TimePicker from 'components/TimePicker/TimePicker';
+import Toggle from 'components/Toggle/Toggle';
 import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators';
 
 import * as S from './UI-FormElementsLayout.styles';
@@ -32,7 +33,7 @@ class UIFormElementsLayout extends React.Component {
       <S.Container>
         <Form
           onSubmit={this.handleFormSubmit}
-          initialValues={{ gender: 'female' }}
+          initialValues={{ gender: 'female', 'toggle-on': true }}
           render={() => (
             <form>
               <S.InputWrapper>
@@ -170,6 +171,8 @@ class UIFormElementsLayout extends React.Component {
                   dateToLabelText="date dropdown"
                 />
               </S.TimePickerWrapper>
+              <Toggle name="toggle-on" label="Получать спецпредложения" />
+              <Toggle name="toggle-off" label="Получать спецпредложения" />
             </form>
           )}
         />
