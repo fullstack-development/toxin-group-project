@@ -74,7 +74,7 @@ const HeaderLogo = styled(Logo)`
 const HeaderLogoWrapper = styled.div`
   display: flex;
   align-items: center;
-  flex: 2;
+  margin-right: 1.4286rem;
 `;
 
 const AccountPanel = styled.div``;
