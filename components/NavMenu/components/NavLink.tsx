@@ -13,6 +13,8 @@ const NavLink: React.FC<NavMenuLink> = ({
   const [isShownSubMenu, setSubMenuShownStatus] = useState(false);
   const expandSubMenu = () => setSubMenuShownStatus(true);
 
+  const changeSubMenuStatus = () => setSubMenuShownStatus(!isShownSubMenu);
+
   useEffect(() => {
     const handleDocumentMouseMove = (e: TouchEvent) => {
       if (isShownSubMenu && !LinkMenuRef.current.contains(e.target)) setSubMenuShownStatus(false);
@@ -35,7 +37,7 @@ const NavLink: React.FC<NavMenuLink> = ({
       </S.Link>
       {subMenu && (
         <>
-          <S.ExpandIcon />
+          <S.ExpandIcon onTouchStart={changeSubMenuStatus} />
           <S.SubMenuContainer isShown={isShownSubMenu}>
             {subMenu.map((subMenuLink: NavSubMenu) => (
               <S.SubMenuLink key={subMenuLink.path} href={subMenuLink.path}>

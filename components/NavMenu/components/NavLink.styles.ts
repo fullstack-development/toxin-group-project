@@ -78,6 +78,8 @@ const SubMenuContainer = styled.div<SubMenu>`
 
       @media (max-width: 960px) {
         position: relative;
+        transform: translate(0);
+        left: 0;
       }
     `;
   }}
@@ -87,6 +89,7 @@ const ExpandIcon = styled(ExpandMore)<SubMenu>`
   width: 2rem;
   position: absolute;
   right: 0;
+  cursor: pointer;
 
   @media (max-width: 960px) {
     top: 0;

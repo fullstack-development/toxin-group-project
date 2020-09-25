@@ -22,6 +22,8 @@ const ListItem = styled.li<ListItem>`
 `;
 
 const NavContainer = styled.nav`
+  width: 100%;
+
   ul {
     display: flex;
     flex-wrap: wrap;
