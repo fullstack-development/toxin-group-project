@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
-import { materialIcons } from '@shared/styles/mixins';
 import * as S from 'components/TextButton/TextButton.styles';
+import { materialIcons } from 'shared/styles/mixins';
 
 type ListContainerProps = {
   isOpen: boolean;
