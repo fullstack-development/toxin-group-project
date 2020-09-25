@@ -17,7 +17,7 @@
 
 Прежде чем приступить к установке убедитесь что у вас имеются следующие компоненты списка:
 
-- [Node.js](https://nodejs.org/ru/)
+- [Node.js](https://nodejs.org/ru/) версии ^12.18.0
 - [NPM](https://www.npmjs.com/)
 - [Git](https://git-scm.com/)
 
