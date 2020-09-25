@@ -9,7 +9,8 @@ const HeaderUserProfile = styled.div`
       border-left: 1px solid ${colors.basicLightest};
 
       @media (max-width: 900px) {
-        border-right: 1px solid ${colors.basicLightest};
+        border-left: none;
+        border-top: 1px solid ${colors.basicLightest};
       }
     `;
   }}
