@@ -27,5 +27,4 @@ const Toggle: React.FC<ToggleProps> = ({ name, checked, label, value, onChange }
   />
 );
 
-
 export default Toggle;
