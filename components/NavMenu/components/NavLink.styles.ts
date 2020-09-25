@@ -10,7 +10,7 @@ type Link = {
 };
 
 const NavLink = styled.div`
-  @media (max-width: 960px) {
+  @media (max-width: 900px) {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -76,7 +76,7 @@ const SubMenuContainer = styled.div<SubMenu>`
       left: 50%;
       transform: translateX(-50%);
 
-      @media (max-width: 960px) {
+      @media (max-width: 900px) {
         position: relative;
         transform: translate(0);
         left: 0;
@@ -91,7 +91,7 @@ const ExpandIcon = styled(ExpandMore)<SubMenu>`
   right: 0;
   cursor: pointer;
 
-  @media (max-width: 960px) {
+  @media (max-width: 900px) {
     top: 0;
   }
 `;
