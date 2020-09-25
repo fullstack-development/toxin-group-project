@@ -1,3 +1,5 @@
-const Index = (): JSX.Element => <h1>Main page</h1>;
+import IndexLayout from 'components/IndexLayout/IndexLayout';
+
+const Index: React.FC = () => <IndexLayout />;
 
 export default Index;
