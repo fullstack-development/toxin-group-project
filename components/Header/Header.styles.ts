@@ -72,12 +72,7 @@ const HeaderLogo = styled(Logo)`
 const HeaderLogoWrapper = styled.div`
   display: flex;
   align-items: center;
-  flex: 2;
-
-  @media (max-width: 900px) {
-    justify-content: space-between;
-    width: 100%;
-  }
+  margin-right: 1.4286rem;
 `;
 
 const AccountPanel = styled.div``;
