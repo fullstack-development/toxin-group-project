@@ -20,7 +20,7 @@ const Banner = styled.div`
   }
 
   @media (max-width: 768px) {
-    min-height: 35;
+    min-height: 35rem;
     padding: 2rem 4rem 1rem;
   }
 
