@@ -15,7 +15,7 @@ const ListItem = styled.li<ListItem>`
 
       @media (max-width: 900px) {
         margin: 0.5rem 0;
-        width: fit-content;
+        width: 100%;
       }
     `;
   }}

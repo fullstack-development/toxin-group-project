@@ -9,7 +9,22 @@ type Link = {
   isActive?: boolean;
 };
 
-const NavLink = styled.div``;
+const NavLink = styled.div`
+  @media (max-width: 960px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid gainsboro;
+    padding: 0.6rem;
+    border-radius: 8px;
+    flex-direction: column;
+
+    & > svg {
+      height: 3rem;
+      width: 3rem;
+    }
+  }
+`;
 
 const Link = styled.a<Link>`
   ${(props) => {
@@ -60,6 +75,10 @@ const SubMenuContainer = styled.div<SubMenu>`
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
+
+      @media (max-width: 960px) {
+        position: relative;
+      }
     `;
   }}
 `;
@@ -68,6 +87,10 @@ const ExpandIcon = styled(ExpandMore)<SubMenu>`
   width: 2rem;
   position: absolute;
   right: 0;
+
+  @media (max-width: 960px) {
+    top: 0;
+  }
 `;
 
 export { NavLink, Link, SubMenuLink, SubMenuContainer, ExpandIcon };
