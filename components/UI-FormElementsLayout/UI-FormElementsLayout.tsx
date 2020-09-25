@@ -163,7 +163,12 @@ class UIFormElementsLayout extends React.Component {
                 <SubscriptionField placeholder="Email" />
               </S.SubscriptionWrapper>
               <S.TimePickerWrapper>
-                <TimePicker type="double" labelName="elements" />
+                <TimePicker
+                  type="double"
+                  labelName="elements"
+                  dateFromLabelText="date dropdown"
+                  dateToLabelText="date dropdown"
+                />
               </S.TimePickerWrapper>
             </form>
           )}
