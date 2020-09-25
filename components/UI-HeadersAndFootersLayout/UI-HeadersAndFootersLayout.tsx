@@ -7,7 +7,7 @@ import * as S from './UI-HeadersAndFootersLayout.styles';
 
 const UIHeadersAndFootersLayout: React.FC = (): JSX.Element => (
   <S.Container>
-    <Header />
+    <Header authData={{ userName: 'Юлий Цезарь', pathToProfile: '/mock-user' }} />
     <Footer />
   </S.Container>
 );

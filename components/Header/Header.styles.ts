@@ -75,6 +75,11 @@ const HeaderLogoWrapper = styled.div`
   display: flex;
   align-items: center;
   flex: 2;
+
+  @media (max-width: 900px) {
+    justify-content: space-between;
+    width: 100%;
+  }
 `;
 
 const AccountPanel = styled.div``;
