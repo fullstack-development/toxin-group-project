@@ -4,7 +4,6 @@ import Button from 'components/Button/Button';
 
 const HeaderUserLogin = styled.div`
   display: flex;
-  flex-wrap: wrap;
 
   @media (max-width: 450px) {
     display: flex;
