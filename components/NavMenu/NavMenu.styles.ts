@@ -27,6 +27,7 @@ const NavContainer = styled.nav`
   ul {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 
     @media (max-width: 900px) {
       flex-direction: column;

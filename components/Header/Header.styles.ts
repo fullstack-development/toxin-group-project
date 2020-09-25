@@ -16,6 +16,7 @@ const MobileMenu = styled.div<MobileMenu>`
 
       @media (min-width: 900px) {
         display: flex;
+        flex-grow: 1;
       }
 
       @media (max-width: 900px) {
