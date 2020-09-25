@@ -1,8 +1,12 @@
 import * as S from './Banner.styles';
 
-const Banner = (): JSX.Element => (
+type BannerProps = {
+  message: string;
+};
+
+const Banner: React.FC<BannerProps> = ({ message }: BannerProps): JSX.Element => (
   <S.Banner>
-    <S.Message>Лучшие номера для вашей работы, отдыха и просто вдохновения</S.Message>
+    <S.Message>{message}</S.Message>
   </S.Banner>
 );
 
