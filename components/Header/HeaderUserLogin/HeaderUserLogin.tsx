@@ -1,6 +1,6 @@
 import * as S from './HeaderUserLogin.styles';
 
-const HeaderUserLogin = () => (
+const HeaderUserLogin: React.FC = (): JSX.Element => (
   <S.HeaderUserLogin>
     <S.HeaderLoginButton isLink={false}>Войти</S.HeaderLoginButton>
     <S.HeaderLoginButton isLink={false} isFilled>

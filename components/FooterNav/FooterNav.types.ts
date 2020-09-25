@@ -9,5 +9,5 @@ export type NavItemProps = {
 };
 
 export type NavProps = {
-  items: NavItemProps[];
+  items?: NavItemProps[];
 };

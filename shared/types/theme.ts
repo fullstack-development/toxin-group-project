@@ -10,6 +10,7 @@ export type Theme = {
     secondary: string;
     secondaryVariant: string;
     basicLightest: string;
+    basicPale: string;
     basicLight: string;
     basic: string;
     basicDark: string;

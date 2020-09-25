@@ -18,6 +18,7 @@ const purpleThemePalette: Theme = {
     secondary: `rgb(${secondaryColorValue})`,
     secondaryVariant: `rgb(${secondaryVariantColorValue})`,
     basicLightest: `rgba(${typographyColorValue}, 0.05)`,
+    basicPale: `rgba(${typographyColorValue}, 0.1)`,
     basicLight: `rgba(${typographyColorValue}, 0.25)`,
     basic: `rgba(${typographyColorValue}, 0.5)`,
     basicDark: `rgba(${typographyColorValue}, 0.75)`,
