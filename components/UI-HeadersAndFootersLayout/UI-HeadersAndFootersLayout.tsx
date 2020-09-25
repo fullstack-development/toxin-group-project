@@ -1,7 +1,7 @@
 import React from 'react';
 
 import NavMenu from 'components/NavMenu/NavMenu';
-import NavLinks from 'components/NavMenu/NavMenu.data.json';
+import NavLinks from 'components/NavMenu/NavMenu.data';
 
 import * as S from './UI-HeadersAndFootersLayout.styles';
 
