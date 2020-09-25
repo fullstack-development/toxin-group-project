@@ -9,11 +9,13 @@ type TimePickerProps = {
   labelName: string;
   dateFrom?: Date;
   dateTo?: Date;
+  dateFromLabelText?: string;
+  dateToLabelText?: string;
   onChange?: (e: React.ChangeEvent) => void;
 } & S.ContainerElement;
 
 const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps): JSX.Element => {
-  const { type, dateFrom, dateTo, labelName } = props;
+  const { type, dateFrom, dateTo, labelName, dateFromLabelText, dateToLabelText } = props;
   const [isCalendarVisible, setCalendarVisibility] = useState(false);
   const [selectedDateRange, setSelectedDateRange] = useState({
     from: dateFrom,
@@ -54,14 +56,14 @@ const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps): JSX.Elem
     <S.Container>
       <S.ContainerElement type={type} onClick={openCalendar}>
         <Field
-          name={`${labelName} date from`}
+          name={`${labelName}-date-from`}
           type="text"
           render={(fieldProps) => (
             <Input
               {...fieldProps.input}
               {...fieldProps.meta}
               value={from ? getDateFrom() : getMaskedDate()}
-              label="date Dropdown"
+              label={dateFromLabelText}
               placeholder="date from"
               readOnly
             />
@@ -72,13 +74,13 @@ const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps): JSX.Elem
       {type === 'double' && (
         <S.ContainerElement onClick={openCalendar}>
           <Field
-            name={`${labelName} date to`}
+            name={`${labelName}-date-to`}
             render={(fieldProps) => (
               <Input
                 {...fieldProps.input}
                 {...fieldProps.meta}
                 value={to ? to.toLocaleDateString('ru-RU') : getMaskedDate()}
-                label="date Dropdown"
+                label={dateToLabelText}
                 placeholder="date to"
                 readOnly
               />
