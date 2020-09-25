@@ -4,7 +4,7 @@ import Copyright from './components/Copyright/Copyright';
 import Logo from './components/Logo/Logo';
 import Nav from './components/Nav/Nav';
 import Subscription from './components/Subscription/Subscription';
-import footerData from './Footer.data.json';
+import footerData from './Footer.data';
 import * as S from './Footer.styles';
 import { FooterProps } from './Footer.types';
 
