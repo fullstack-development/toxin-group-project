@@ -38,6 +38,10 @@ const Link = styled.a<Link>`
       outline: none;
       margin-right: 1.5rem;
       position: relative;
+
+      @media (max-width: 900px) {
+        margin-right: 0;
+      }
     `;
   }}
 `;

@@ -37,7 +37,7 @@ const NavContainer = styled.nav`
     @media (max-width: 900px) {
       flex-direction: column;
       align-items: center;
-      min-width: 280px;
+      min-width: 20rem;
     }
   }
 `;
