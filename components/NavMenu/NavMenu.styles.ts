@@ -12,9 +12,7 @@ const ListItem = styled.li<ListItem>`
       position: relative;
       list-style: none;
 
-      &:not(:last-child) {
-        margin-right: ${withSubMenu ? '1.7rem' : '0'};
-      }
+      margin-right: ${withSubMenu ? '1.7rem' : '0'};
 
       @media (max-width: 900px) {
         margin: 0.5rem 0;
@@ -26,7 +24,10 @@ const ListItem = styled.li<ListItem>`
 
 const NavContainer = styled.nav`
   width: 100%;
-  margin-right: 1.4286rem;
+
+  @media (max-width: 900px) {
+    margin-right: 0;
+  }
 
   ul {
     display: flex;

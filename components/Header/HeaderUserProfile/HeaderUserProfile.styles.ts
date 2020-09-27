@@ -7,11 +7,13 @@ const HeaderUserProfile = styled.div`
     return css`
       width: max-content;
       padding-left: 1.4rem;
-      border-left: 1px solid ${colors.basicLightest};
+      border-left: 0.0714rem solid ${colors.basicLightest};
 
       @media (max-width: 900px) {
+        width: 100%;
         border-left: none;
-        border-top: 1px solid ${colors.basicLightest};
+        padding: 1.4286rem 0;
+        border-top: 0.0714rem solid ${colors.basicLightest};
       }
     `;
   }}

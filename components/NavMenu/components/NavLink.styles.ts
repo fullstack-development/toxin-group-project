@@ -14,13 +14,13 @@ const NavLink = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid gainsboro;
+    border: 0.0714rem solid gainsboro;
     padding: 0.6rem;
-    border-radius: 8px;
+    border-radius: 0.5714rem;
     flex-direction: column;
 
     & > svg {
-      height: 3rem;
+      height: 100%;
       width: 3rem;
     }
   }

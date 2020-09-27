@@ -14,9 +14,13 @@ const MobileMenu = styled.div<MobileMenu>`
       display: ${isShown ? 'flex' : 'none'};
       align-items: center;
 
-      @media (min-width: 900px) {
+      @media (min-width: 901px) {
         display: flex;
         width: 100%;
+      }
+
+      @media (max-width: 900px) {
+        flex-direction: column;
       }
     `;
   }}
@@ -74,6 +78,11 @@ const HeaderLogoWrapper = styled.div`
   margin-right: 1.4286rem;
 `;
 
-const AccountPanel = styled.div``;
+const AccountPanel = styled.div`
+  @media (max-width: 900px) {
+    width: 100%;
+    text-align: center;
+  }
+`;
 
 export { MobileMenu, HamburgerButtonWrapper, Header, AccountPanel, HeaderLogo, HeaderLogoWrapper };
