@@ -14,7 +14,9 @@ const HeaderUserLogin = styled.div`
 `;
 
 const HeaderLoginButton = styled(Button)`
-  margin: 0.9rem 0 0.9rem 1.4286rem;
+  &:not(:last-child) {
+    margin-right: 1.4286rem;
+  }
 
   @media (max-width: 450px) {
     margin: 0;

@@ -5,7 +5,8 @@ const HeaderUserProfile = styled.div`
     const { colors } = props.theme;
 
     return css`
-      padding: 0.5rem 1.4rem;
+      width: max-content;
+      padding-left: 1.4rem;
       border-left: 1px solid ${colors.basicLightest};
 
       @media (max-width: 900px) {

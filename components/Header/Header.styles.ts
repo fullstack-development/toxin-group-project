@@ -16,7 +16,6 @@ const MobileMenu = styled.div<MobileMenu>`
 
       @media (min-width: 900px) {
         display: flex;
-        flex-direction: column;
         width: 100%;
       }
     `;
