@@ -21,7 +21,7 @@ const NavLink = styled.div`
 `;
 
 const IconExpander = styled.span`
-  width: 3.5rem;
+  width: 1.5rem;
   height: 100%;
   position: absolute;
   right: 0;
@@ -34,6 +34,7 @@ const IconExpander = styled.span`
 
   @media (max-width: 1050px) {
     top: 0;
+    width: 3.5rem;
   }
 `;
 
