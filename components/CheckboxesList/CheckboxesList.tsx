@@ -9,6 +9,7 @@ type Option = {
   name: string;
   value: string;
   label: string;
+  title?: string;
 };
 
 type Props = {
@@ -17,16 +18,21 @@ type Props = {
 
 const CheckboxesList: React.FC<Props> = ({ roomOptions }: Props) => (
   <S.List>
-    {roomOptions.map((option) => (
-      <S.ListItem key={option.value}>
-        <Field
-          type="checkbox"
-          name={option.name}
-          value={option.value}
-          render={(props) => <Checkbox label={option.label} {...props.input} {...props.meta} />}
-        />
-      </S.ListItem>
-    ))}
+    {roomOptions.map((option) => {
+      const { value, title, label, name } = option;
+      return (
+        <S.ListItem key={value} title={title}>
+          <Field
+            type="checkbox"
+            name={name}
+            value={value}
+            render={(props) => (
+              <Checkbox title={title} label={label} {...props.input} {...props.meta} />
+            )}
+          />
+        </S.ListItem>
+      );
+    })}
   </S.List>
 );
 

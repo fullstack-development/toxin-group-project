@@ -6,7 +6,8 @@ import Benefits from 'components/Benefits/Benefits';
 import BulletList from 'components/BulletList/BulletList';
 import Button from 'components/Button/Button';
 import CheckboxesList from 'components/CheckboxesList/CheckboxesList';
-import checkboxData from 'components/CheckboxesList/CheckboxesListData.json';
+import checkboxData from 'components/CheckboxesList/CheckboxesList.data.json';
+import richCheckboxData from 'components/CheckboxesList/RichCheckboxesList.data.json';
 import Comment from 'components/Comment/Comment';
 import Dropdown from 'components/Dropdown/Dropdown';
 import expandableCheckboxData from 'components/Expander/ExpandableList.data.json';
@@ -173,6 +174,9 @@ class UIFormElementsLayout extends React.Component {
               </S.TimePickerWrapper>
               <Toggle name="toggle-on" label="Получать спецпредложения" />
               <Toggle name="toggle-off" label="Получать спецпредложения" />
+              <S.RichCheckboxWrapper>
+                <CheckboxesList roomOptions={richCheckboxData} />
+              </S.RichCheckboxWrapper>
             </form>
           )}
         />
