@@ -14,12 +14,12 @@ const MobileMenu = styled.div<MobileMenu>`
       display: ${isShown ? 'flex' : 'none'};
       align-items: center;
 
-      @media (min-width: 900px) {
+      @media (min-width: 1051px) {
         display: flex;
-        flex-grow: 1;
+        width: 100%;
       }
 
-      @media (max-width: 900px) {
+      @media (max-width: 1050px) {
         flex-direction: column;
       }
     `;
@@ -35,7 +35,7 @@ const HamburgerButtonWrapper = styled.button`
     cursor: pointer;
     display: none;
 
-    @media (max-width: 900px) {
+    @media (max-width: 1050px) {
       display: block;
     }
   }
@@ -58,7 +58,7 @@ const Header = styled.header`
         padding-right: 4.2857rem;
       }
 
-      @media (max-width: 900px) {
+      @media (max-width: 1050px) {
         flex-direction: column;
         min-height: 100%;
       }
@@ -67,7 +67,7 @@ const Header = styled.header`
 `;
 
 const HeaderLogo = styled(Logo)`
-  @media (max-width: 900px) {
+  @media (max-width: 1050px) {
     margin: 0.5rem 1.5rem;
   }
 `;
@@ -76,8 +76,18 @@ const HeaderLogoWrapper = styled.div`
   display: flex;
   align-items: center;
   margin-right: 1.4286rem;
+
+  @media (max-width: 1050px) {
+    width: 100%;
+    justify-content: space-between;
+  }
 `;
 
-const AccountPanel = styled.div``;
+const AccountPanel = styled.div`
+  @media (max-width: 1050px) {
+    width: 100%;
+    text-align: center;
+  }
+`;
 
 export { MobileMenu, HamburgerButtonWrapper, Header, AccountPanel, HeaderLogo, HeaderLogoWrapper };
