@@ -26,8 +26,6 @@ const AlreadyRegisterWrapper = styled.div`
   margin-top: 2.3rem;
 `;
 
-const Col = styled.div``;
-
 const InputWrapper = styled(Input)`
   margin-bottom: 0.6rem;
 `;
@@ -62,7 +60,6 @@ export {
   RegistrationForm,
   Title,
   AlreadyRegisterWrapper,
-  Col,
   InputWrapper,
   RadioButtonsWrapper,
   AccountEntryWrapper,

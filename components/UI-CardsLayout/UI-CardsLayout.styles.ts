@@ -7,4 +7,9 @@ const Container = styled.div`
   padding-top: 1rem;
 `;
 
-export { Container };
+const SearchRoomFormWrapper = styled.div``;
+const RegistrationFormWrapper = styled.div`
+  margin-top: 3rem;
+`;
+
+export { Container, SearchRoomFormWrapper, RegistrationFormWrapper };

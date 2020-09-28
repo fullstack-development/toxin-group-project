@@ -7,8 +7,12 @@ import * as S from './UI-CardsLayout.styles';
 
 const UICardsLayout: React.FC = (): JSX.Element => (
   <S.Container>
-    <SearchRoomForm />
-    <RegistrationForm />
+    <S.SearchRoomFormWrapper>
+      <SearchRoomForm />
+    </S.SearchRoomFormWrapper>
+    <S.RegistrationFormWrapper>
+      <RegistrationForm />
+    </S.RegistrationFormWrapper>
   </S.Container>
 );
 
