@@ -8,7 +8,7 @@ import * as S from './RegistrationForm.styles';
 
 const RegistrationForm: React.FC = (): JSX.Element => {
   const submitRegistrationForm = (formData: React.FormEvent<HTMLFormElement>): void => {
-    console.log(formData);
+    formData;
   };
 
   return (
