@@ -1,3 +1,5 @@
+import CloseIcon from '@material-ui/icons/Close';
+import ExpandMore from '@material-ui/icons/ExpandMore';
 import { useState, useRef, useEffect } from 'react';
 
 import { NavMenuLink, NavSubMenu } from '../NavMenu.types';
@@ -12,6 +14,8 @@ const NavLink: React.FC<NavMenuLink> = ({
   const LinkMenuRef = useRef(null);
   const [isShownSubMenu, setSubMenuShownStatus] = useState(false);
   const expandSubMenu = () => setSubMenuShownStatus(true);
+
+  const changeSubMenuStatus = () => setSubMenuShownStatus(!isShownSubMenu);
 
   useEffect(() => {
     const handleDocumentMouseMove = (e: TouchEvent) => {
@@ -35,7 +39,10 @@ const NavLink: React.FC<NavMenuLink> = ({
       </S.Link>
       {subMenu && (
         <>
-          <S.ExpandIcon />
+          <S.IconExpander onClick={expandSubMenu} onTouchStart={changeSubMenuStatus}>
+            {isShownSubMenu ? <CloseIcon /> : <ExpandMore />}
+          </S.IconExpander>
+
           <S.SubMenuContainer isShown={isShownSubMenu}>
             {subMenu.map((subMenuLink: NavSubMenu) => (
               <S.SubMenuLink key={subMenuLink.path} href={subMenuLink.path}>
