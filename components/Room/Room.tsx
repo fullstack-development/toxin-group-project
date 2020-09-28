@@ -26,6 +26,16 @@ const Room: React.FC<RoomProps> = ({
   rating = 5,
 }: RoomProps) => (
   <S.Room>
+    <S.ImgContainer>
+      <S.Img src="/img/room-1.jpg" alt="room" />
+      <S.Dots>
+        {[1, 2, 3, 4].map((el) => (
+          <S.Dot key={el}>
+            <S.DotButton />
+          </S.Dot>
+        ))}
+      </S.Dots>
+    </S.ImgContainer>
     <S.Info>
       <S.Container>
         <S.RoomNumber>
