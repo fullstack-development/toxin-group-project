@@ -39,6 +39,22 @@ const RoomNumber = styled.h3`
   }}
 `;
 
+const RoomLink = styled.a`
+  ${(props) => {
+    const { colors } = props.theme;
+
+    return css`
+      text-decoration: none;
+      color: ${colors.basicDarkest};
+
+      &:hover,
+      &:focus {
+        color: ${colors.basicLight};
+      }
+    `;
+  }}
+`;
+
 const NumberSign = styled.span`
   ${(props) => {
     const { typography } = props.theme;
@@ -47,6 +63,7 @@ const NumberSign = styled.span`
       font-family: ${typography.secondaryFontName};
       font-size: 1rem;
       margin-right: 0.3571rem;
+      color: inherit;
     `;
   }}
 `;
@@ -61,12 +78,18 @@ const Price = styled.span`
   }}
 `;
 
-const Reviews = styled.span`
+const Reviews = styled.a`
   ${(props) => {
     const { typography, colors } = props.theme;
     return css`
+      text-decoration: none;
       font: 700 1rem ${typography.fontName};
       color: ${colors.basic};
+
+      &:hover,
+      &:focus {
+        color: ${colors.basicDark};
+      }
     `;
   }}
 `;
@@ -85,12 +108,11 @@ const RatingContainer = styled(Container)`
   border-bottom: 0;
 `;
 
-const ReviewCount = styled.a`
+const ReviewCount = styled.span`
   ${(props) => {
-    const { typography, colors } = props.theme;
+    const { typography } = props.theme;
     return css`
       font: 700 1rem ${typography.fontName};
-      color: ${colors.basic};
     `;
   }}
 `;
@@ -111,6 +133,7 @@ export {
   Room,
   Info,
   RoomNumber,
+  RoomLink,
   NumberSign,
   Price,
   Reviews,
