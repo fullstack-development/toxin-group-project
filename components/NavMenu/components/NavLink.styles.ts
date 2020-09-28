@@ -1,4 +1,3 @@
-import ExpandMore from '@material-ui/icons/ExpandMore';
 import styled, { css } from 'styled-components';
 
 type SubMenu = {
@@ -9,7 +8,35 @@ type Link = {
   isActive?: boolean;
 };
 
-const NavLink = styled.div``;
+const NavLink = styled.div`
+  @media (max-width: 1050px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.0714rem solid gainsboro;
+    padding: 0.6rem;
+    border-radius: 0.5714rem;
+    flex-direction: column;
+  }
+`;
+
+const IconExpander = styled.span`
+  width: 1.5rem;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+
+  & > svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: 1050px) {
+    top: 0;
+    width: 3.5rem;
+  }
+`;
 
 const Link = styled.a<Link>`
   ${(props) => {
@@ -23,6 +50,10 @@ const Link = styled.a<Link>`
       outline: none;
       margin-right: 1.5rem;
       position: relative;
+
+      @media (max-width: 900px) {
+        margin-right: 0;
+      }
     `;
   }}
 `;
@@ -60,14 +91,14 @@ const SubMenuContainer = styled.div<SubMenu>`
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
+
+      @media (max-width: 1050px) {
+        position: relative;
+        transform: translate(0);
+        left: 0;
+      }
     `;
   }}
 `;
 
-const ExpandIcon = styled(ExpandMore)<SubMenu>`
-  width: 2rem;
-  position: absolute;
-  right: 0;
-`;
-
-export { NavLink, Link, SubMenuLink, SubMenuContainer, ExpandIcon };
+export { NavLink, IconExpander, Link, SubMenuLink, SubMenuContainer };
