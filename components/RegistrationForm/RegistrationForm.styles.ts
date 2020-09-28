@@ -1,31 +1,29 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
+import ArrowButton from 'components/ArrowButton/ArrowButton';
+import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';
 import { titles } from 'shared/styles/mixins';
 
 const RegistrationForm = styled.div`
-  ${(props) => {
-    return css`
-      max-width: 27.1429rem;
-      box-shadow: 0px 0px 1.7857rem rgba(0, 0, 0, 0.2);
-      padding: 2.8571rem 2.1429rem;
+  max-width: 27.1429rem;
+  box-shadow: 0 0 1.7857rem rgba(0, 0, 0, 0.2);
+  padding: 3rem 2.1rem 2rem 2.1rem;
 
-      & > div {
-        padding: 0;
-      }
-    `;
-  }}
+  & > div {
+    padding: 0;
+  }
 `;
 
 const Title = styled.h2`
   ${titles.h1()};
-  letter-spacing: 0.1rem;
   margin-bottom: 1.4rem;
 `;
 
-const Row = styled.div`
+const AlreadyRegisterWrapper = styled.div`
   display: flex;
   align-items: center;
+  margin-top: 2.3rem;
 `;
 
 const Col = styled.div``;
@@ -50,12 +48,24 @@ const AccountEntryWrapper = styled.div`
   }
 `;
 
+const RegisterButton = styled(ArrowButton)`
+  margin-top: 1.7rem;
+  height: 3.1rem;
+`;
+
+const EntryButton = styled(Button)`
+  width: 7rem;
+  margin-left: 2.6rem;
+`;
+
 export {
   RegistrationForm,
   Title,
-  Row,
+  AlreadyRegisterWrapper,
   Col,
   InputWrapper,
   RadioButtonsWrapper,
   AccountEntryWrapper,
+  RegisterButton,
+  EntryButton,
 };

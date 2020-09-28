@@ -1,13 +1,14 @@
 import { Form } from 'react-final-form';
 
-import Button from 'components/Button/Button';
 import RadioButton from 'components/RadioButton/RadioButton';
+import Toggle from 'components/Toggle/Toggle';
+import { dateValidator, dateFormatMask } from 'shared/helpers/validators';
 
 import * as S from './RegistrationForm.styles';
 
 const RegistrationForm: React.FC = (): JSX.Element => {
-  const submitRegistrationForm = (): void => {
-    1 + 2;
+  const submitRegistrationForm = (formData: React.FormEvent<HTMLFormElement>): void => {
+    console.log(formData);
   };
 
   return (
@@ -23,7 +24,13 @@ const RegistrationForm: React.FC = (): JSX.Element => {
               <RadioButton value="gender-man" name="gender" label="Мужчина" />
               <RadioButton value="gender-woman" name="gender" label="Женщина" />
             </S.RadioButtonsWrapper>
-            <S.InputWrapper name="date-birthday" placeholder="ДД.ММ.ГГГГ" label="Дата рождения" />
+            <S.InputWrapper
+              name="date-birthday"
+              placeholder="ДД.ММ.ГГГГ"
+              label="Дата рождения"
+              validators={[dateValidator]}
+              mask={dateFormatMask}
+            />
             <S.AccountEntryWrapper>
               <S.InputWrapper
                 name="account-email"
@@ -32,15 +39,14 @@ const RegistrationForm: React.FC = (): JSX.Element => {
               />
               <S.InputWrapper name="account-password" placeholder="Пароль" />
             </S.AccountEntryWrapper>
-            <RadioButton
-              value="receive-special-offers"
-              name="special-offers"
-              label="Получать спецпредложения"
-            />
-            <S.Row>
+            <Toggle name="special-offers" label="Получать спецпредложения" />
+            <S.RegisterButton isFlat isLink={false} isFilled>
+              Перейти к оплате
+            </S.RegisterButton>
+            <S.AlreadyRegisterWrapper>
               <span>Уже есть аккаунт на Toxin</span>
-              <Button isLink={false}>Войти</Button>
-            </S.Row>
+              <S.EntryButton isLink={false}>Войти</S.EntryButton>
+            </S.AlreadyRegisterWrapper>
           </S.RegistrationForm>
         </form>
       )}
