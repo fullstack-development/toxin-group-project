@@ -1,8 +1,8 @@
-import { Form } from 'react-final-form';
+import { Field, Form } from 'react-final-form';
 
 import RadioButton from 'components/RadioButton/RadioButton';
 import Toggle from 'components/Toggle/Toggle';
-import { dateValidator, dateFormatMask } from 'shared/helpers/validators';
+import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators';
 
 import * as S from './RegistrationForm.styles';
 
@@ -18,26 +18,55 @@ const RegistrationForm: React.FC = (): JSX.Element => {
         <form>
           <S.RegistrationForm>
             <S.Title>Регистрация аккаунта</S.Title>
-            <S.InputWrapper name="user-name" placeholder="Имя" />
-            <S.InputWrapper name="user-surname" placeholder="Фамилия" />
+            <Field
+              name="user-name"
+              render={(props) => (
+                <S.InputWrapper {...props.input} {...props.meta} placeholder="Имя" />
+              )}
+            />
+            <Field
+              name="user-surname"
+              render={(props) => (
+                <S.InputWrapper {...props.input} {...props.meta} placeholder="Фамилия" />
+              )}
+            />
             <S.RadioButtonsWrapper>
               <RadioButton value="gender-man" name="gender" label="Мужчина" />
               <RadioButton value="gender-woman" name="gender" label="Женщина" />
             </S.RadioButtonsWrapper>
-            <S.InputWrapper
+            <Field
               name="date-birthday"
-              placeholder="ДД.ММ.ГГГГ"
-              label="Дата рождения"
-              validators={[dateValidator]}
-              mask={dateFormatMask}
+              render={(props) => (
+                <S.InputWrapper
+                  {...props.input}
+                  {...props.meta}
+                  label="Дата рождения"
+                  placeholder="ДД.ММ.ГГГГ"
+                  validators={[dateValidator]}
+                  mask={dateFormatMask}
+                />
+              )}
             />
             <S.AccountEntryWrapper>
-              <S.InputWrapper
-                name="account-email"
-                placeholder="Email"
-                label="Данные для входа в сервис"
+              <Field
+                name="email"
+                type="email"
+                render={(props) => (
+                  <S.InputWrapper
+                    {...props.input}
+                    {...props.meta}
+                    label="Данные для входа в сервис"
+                    validators={[emailValidator]}
+                  />
+                )}
               />
-              <S.InputWrapper name="account-password" placeholder="Пароль" />
+              <Field
+                name="account-password"
+                type="password"
+                render={(props) => (
+                  <S.InputWrapper {...props.input} {...props.meta} placeholder="Пароль" />
+                )}
+              />
             </S.AccountEntryWrapper>
             <Toggle name="special-offers" label="Получать спецпредложения" />
             <S.RegisterButton isFlat isLink={false} isFilled>
