@@ -224,7 +224,7 @@ class UIFormElementsLayout extends React.Component {
         </S.ArrowButtonWrapper>
         <SocialMedia />
         <Logo isLink />
-        <Room price={9900} number={888} />
+        <Room price={9900} number={888} reviewCount={65} />
       </S.Container>
     );
   }

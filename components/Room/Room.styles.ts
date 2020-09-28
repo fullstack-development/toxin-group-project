@@ -14,9 +14,17 @@ const Info = styled.div`
 `;
 
 const Container = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  ${(props) => {
+    const { colors } = props.theme;
+    return css`
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 0.7143rem;
+      border-bottom: 0.0714rem solid ${colors.basicPale};
+      margin-bottom: 0.5714rem;
+    `;
+  }}
 `;
 
 const RoomNumber = styled.h3`
@@ -25,7 +33,7 @@ const RoomNumber = styled.h3`
     return css`
       ${titles.h2}
       display: flex;
-      align-items: flex-end;
+      align-items: baseline;
       font-family: ${typography.secondaryFontName};
     `;
   }}
@@ -53,14 +61,62 @@ const Price = styled.span`
   }}
 `;
 
+const Reviews = styled.span`
+  ${(props) => {
+    const { typography, colors } = props.theme;
+    return css`
+      font: 700 1rem ${typography.fontName};
+      color: ${colors.basic};
+    `;
+  }}
+`;
+
 const Measure = styled.span`
   ${(props) => {
     const { typography } = props.theme;
     return css`
-      margin-left: 5px;
+      margin-left: 0.3571rem;
       font: 400 0.8571rem ${typography.fontName};
     `;
   }}
 `;
 
-export { Room, Info, RoomNumber, NumberSign, Price, Measure, Container };
+const RatingContainer = styled(Container)`
+  border-bottom: 0;
+`;
+
+const ReviewCount = styled.a`
+  ${(props) => {
+    const { typography, colors } = props.theme;
+    return css`
+      font: 700 1rem ${typography.fontName};
+      color: ${colors.basic};
+    `;
+  }}
+`;
+
+const ReviewMeasure = styled.span`
+  ${(props) => {
+    const { typography } = props.theme;
+    return css`
+      display: inline-block;
+      margin-left: 0.3571rem;
+      font: 400 0.8571rem ${typography.fontName};
+      text-transform: capitalize;
+    `;
+  }}
+`;
+
+export {
+  Room,
+  Info,
+  RoomNumber,
+  NumberSign,
+  Price,
+  Reviews,
+  Measure,
+  Container,
+  RatingContainer,
+  ReviewCount,
+  ReviewMeasure,
+};
