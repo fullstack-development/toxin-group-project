@@ -1,4 +1,5 @@
 import MenuIcon from '@material-ui/icons/Menu';
+import MenuOpenIcon from '@material-ui/icons/MenuOpen';
 import { useState } from 'react';
 
 import NavMenu from 'components/NavMenu/NavMenu';
@@ -18,8 +19,8 @@ const Header: React.FC<HeaderProps> = ({ authData }: HeaderProps): JSX.Element =
     <S.Header>
       <S.HeaderLogoWrapper>
         <S.HeaderLogo isLink />
-        <S.HamburgerButtonWrapper>
-          <MenuIcon onClick={changeOpenMenuStatus} />
+        <S.HamburgerButtonWrapper onClick={changeOpenMenuStatus}>
+          {isOpenMobileMenu ? <MenuOpenIcon /> : <MenuIcon />}
         </S.HamburgerButtonWrapper>
       </S.HeaderLogoWrapper>
       <S.MobileMenu isShown={isOpenMobileMenu}>
