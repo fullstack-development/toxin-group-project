@@ -10,6 +10,10 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+
+  @media (max-width: 450px) {
+    flex-direction: column;
+  }
 `;
 
 const ExpandIcon = styled(ExpandMoreIcon)`
@@ -28,7 +32,9 @@ const ContainerElement = styled.div<ContainerElement>`
       position: relative;
       max-width: ${type === 'single' ? '19.0714rem' : '100%'};
       height: 100%;
-      min-width: 10.5rem;
+      @media (max-width: 450px) {
+        width: 100%;
+      }
 
       & > div {
         padding: 0;
@@ -36,6 +42,10 @@ const ContainerElement = styled.div<ContainerElement>`
 
       &:nth-child(1) {
         margin-right: 1.4rem;
+
+        @media (max-width: 450px) {
+          margin-right: 0;
+        }
       }
     `;
   }}
