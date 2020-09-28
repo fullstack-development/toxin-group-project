@@ -9,7 +9,7 @@ const HeaderUserProfile = styled.div`
       padding-left: 1.4rem;
       border-left: 0.0714rem solid ${colors.basicLightest};
 
-      @media (max-width: 900px) {
+      @media (max-width: 1050px) {
         width: 100%;
         border-left: none;
         padding: 1.4286rem 0;

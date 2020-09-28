@@ -14,7 +14,7 @@ const ListItem = styled.li<ListItem>`
 
       margin-right: ${withSubMenu ? '1.7rem' : '0'};
 
-      @media (max-width: 900px) {
+      @media (max-width: 1050px) {
         margin: 0.5rem 0;
         width: 100%;
       }
@@ -25,7 +25,7 @@ const ListItem = styled.li<ListItem>`
 const NavContainer = styled.nav`
   width: 100%;
 
-  @media (max-width: 900px) {
+  @media (max-width: 1050px) {
     margin-right: 0;
   }
 
@@ -34,7 +34,15 @@ const NavContainer = styled.nav`
     flex-wrap: wrap;
     justify-content: flex-end;
 
-    @media (max-width: 900px) {
+    @media (max-width: 1050px) {
+      justify-content: end;
+
+      & > li {
+        padding: 0.3rem 0;
+      }
+    }
+
+    @media (max-width: 1050px) {
       flex-direction: column;
       align-items: center;
       min-width: 20rem;
