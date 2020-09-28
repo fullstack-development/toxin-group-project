@@ -5,11 +5,14 @@ import Button from 'components/Button/Button';
 const HeaderUserLogin = styled.div`
   display: flex;
 
+  @media (max-width: 1050px) {
+    padding: 1.4286rem 0;
+  }
+
   @media (max-width: 450px) {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1.4286rem 0;
   }
 `;
 

@@ -14,7 +14,7 @@ const MobileMenu = styled.div<MobileMenu>`
       display: ${isShown ? 'flex' : 'none'};
       align-items: center;
 
-      @media (min-width: 1050px) {
+      @media (min-width: 1051px) {
         display: flex;
         width: 100%;
       }
