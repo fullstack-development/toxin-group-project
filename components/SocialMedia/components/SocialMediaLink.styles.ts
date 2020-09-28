@@ -19,6 +19,7 @@ const Link = styled.a<LinkProps>`
       display: inline-block;
       ${fontAwesome}
       background-image: ${gradients.primary};
+      text-decoration: none;
 
       &::before {
         content: '${fontAwesomeIcons[icon]}';
