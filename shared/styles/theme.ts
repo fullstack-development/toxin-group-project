@@ -9,7 +9,7 @@ const secondaryVariantColorValue = '102, 210, 234';
 const purpleThemePalette: Theme = {
   typography: {
     fontName: 'Montserrat, Arial, sans-serif',
-    secondaryFontName: '"Open Sans", Arial, sans-serif',
+    secondaryFontName: 'Quicksand, "Open Sans", Arial, sans-serif',
     fontSize: '14px',
   },
   colors: {
@@ -18,6 +18,7 @@ const purpleThemePalette: Theme = {
     secondary: `rgb(${secondaryColorValue})`,
     secondaryVariant: `rgb(${secondaryVariantColorValue})`,
     basicLightest: `rgba(${typographyColorValue}, 0.05)`,
+    basicPale: `rgba(${typographyColorValue}, 0.1)`,
     basicLight: `rgba(${typographyColorValue}, 0.25)`,
     basic: `rgba(${typographyColorValue}, 0.5)`,
     basicDark: `rgba(${typographyColorValue}, 0.75)`,
