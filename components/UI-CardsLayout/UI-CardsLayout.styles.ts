@@ -7,4 +7,8 @@ const Container = styled.div`
   padding-top: 1rem;
 `;
 
-export { Container };
+const AccountEntryWrapper = styled.div`
+  margin-top: 1rem;
+`;
+
+export { Container, AccountEntryWrapper };
