@@ -1,5 +1,6 @@
-import { useState, useRef, useEffect } from 'react';
 import CloseIcon from '@material-ui/icons/Close';
+import ExpandMore from '@material-ui/icons/ExpandMore';
+import { useState, useRef, useEffect } from 'react';
 
 import { NavMenuLink, NavSubMenu } from '../NavMenu.types';
 import * as S from './NavLink.styles';
@@ -39,7 +40,7 @@ const NavLink: React.FC<NavMenuLink> = ({
       {subMenu && (
         <>
           <S.IconExpander onClick={expandSubMenu} onTouchStart={changeSubMenuStatus}>
-            {isShownSubMenu ? <CloseIcon /> : <S.ExpandIcon />}
+            {isShownSubMenu ? <CloseIcon /> : <ExpandMore />}
           </S.IconExpander>
 
           <S.SubMenuContainer isShown={isShownSubMenu}>

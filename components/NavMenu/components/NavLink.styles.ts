@@ -1,4 +1,3 @@
-import ExpandMore from '@material-ui/icons/ExpandMore';
 import styled, { css } from 'styled-components';
 
 type SubMenu = {
@@ -101,6 +100,4 @@ const SubMenuContainer = styled.div<SubMenu>`
   }}
 `;
 
-const ExpandIcon = styled(ExpandMore)<SubMenu>``;
-
-export { NavLink, IconExpander, Link, SubMenuLink, SubMenuContainer, ExpandIcon };
+export { NavLink, IconExpander, Link, SubMenuLink, SubMenuContainer };
