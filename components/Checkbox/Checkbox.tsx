@@ -33,7 +33,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
       <S.Checkmark />
       <S.Label title={title}>
         {title && <S.Title>{title}</S.Title>}
-        <p>{label}</p>
+        <span>{label}</span>
       </S.Label>
     </S.Checkbox>
   );

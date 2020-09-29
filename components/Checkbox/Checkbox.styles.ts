@@ -53,7 +53,7 @@ const Checkmark = styled.span`
   }}
 `;
 
-const Label = styled.div<LabelProps>`
+const Label = styled.span<LabelProps>`
   ${(props) => {
     const { title } = props;
     return css`
@@ -67,7 +67,7 @@ const Label = styled.div<LabelProps>`
   }}
 `;
 
-const Title = styled.p`
+const Title = styled.span`
   font-size: 1rem;
   font-weight: bold;
   margin-bottom: 0.3571rem;
