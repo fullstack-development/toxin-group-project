@@ -69,13 +69,17 @@ const RegistrationForm: React.FC = (): JSX.Element => {
                 )}
               />
             </S.AccountEntryWrapper>
-            <Toggle name="special-offers" label="Получать спецпредложения" />
+            <S.SpecialOfferWrapper>
+              <Toggle name="special-offers" label="Получать спецпредложения" />
+            </S.SpecialOfferWrapper>
             <S.RegisterButton isFlat isLink={false} isFilled>
               Перейти к оплате
             </S.RegisterButton>
             <S.AlreadyRegisterWrapper>
               <span>Уже есть аккаунт на Toxin</span>
-              <S.EntryButton isLink={false}>Войти</S.EntryButton>
+              <S.EntryButton isLink href="/auth">
+                Войти
+              </S.EntryButton>
             </S.AlreadyRegisterWrapper>
           </S.RegistrationForm>
         </form>

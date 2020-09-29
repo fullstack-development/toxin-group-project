@@ -5,6 +5,10 @@ import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';
 import { titles } from 'shared/styles/mixins';
 
+type EntryButton = {
+  href: string;
+};
+
 const RegistrationForm = styled.div`
   max-width: 27.1429rem;
   box-shadow: 0 0 1.7857rem rgba(0, 0, 0, 0.2);
@@ -53,9 +57,16 @@ const RegisterButton = styled(ArrowButton)`
   height: 3.1rem;
 `;
 
-const EntryButton = styled(Button)`
+const EntryButton = styled(Button)<EntryButton>`
   width: 7rem;
-  margin-left: 2.6rem;
+  margin-left: 2.45rem;
+`;
+
+const SpecialOfferWrapper = styled.div`
+  & > label {
+    width: 100%;
+    align-items: center;
+  }
 `;
 
 export {
@@ -67,4 +78,5 @@ export {
   AccountEntryWrapper,
   RegisterButton,
   EntryButton,
+  SpecialOfferWrapper,
 };
