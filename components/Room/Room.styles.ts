@@ -12,35 +12,6 @@ const Room = styled.div`
   overflow: hidden;
 `;
 
-const ImgContainer = styled.div`
-  position: relative;
-`;
-
-const Img = styled.img``;
-
-const Dots = styled.ul`
-  display: flex;
-  position: absolute;
-  right: 1.0714rem;
-  bottom: 1.0714rem;
-`;
-
-const Dot = styled.li`
-  list-style: none;
-
-  &:not(:last-child) {
-    margin-right: 0.2679rem;
-  }
-`;
-
-const DotButton = styled.button`
-  background-color: transparent;
-  width: 8px;
-  height: 8px;
-  border: 0.0714rem solid white;
-  border-radius: 50%;
-`;
-
 const Info = styled.div`
   padding: 1.4286rem;
 `;
@@ -164,11 +135,6 @@ const ReviewMeasure = styled.span`
 `;
 
 export {
-  ImgContainer,
-  Img,
-  Dots,
-  Dot,
-  DotButton,
   Room,
   Info,
   RoomNumber,

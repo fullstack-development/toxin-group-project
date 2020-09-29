@@ -161,9 +161,6 @@ class UIFormElementsLayout extends React.Component {
                   <CheckboxesList roomOptions={expandableCheckboxData} />
                 </Expander>
               </S.ExpandableCheckboxWrapper>
-              <S.SubscriptionWrapper>
-                <SubscriptionField placeholder="Email" />
-              </S.SubscriptionWrapper>
               <S.TimePickerWrapper>
                 <TimePicker
                   type="double"
@@ -177,6 +174,9 @@ class UIFormElementsLayout extends React.Component {
             </form>
           )}
         />
+        <S.SubscriptionWrapper>
+          <SubscriptionField placeholder="Email" />
+        </S.SubscriptionWrapper>
         <S.TextButtonWrapper>
           <TextButton isLink href="https://google.com">
             Click me
