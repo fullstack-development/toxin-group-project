@@ -21,6 +21,7 @@ const Container = styled.div`
     const { colors } = props.theme;
     return css`
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
       padding-bottom: 0.7143rem;
@@ -36,6 +37,7 @@ const RoomNumber = styled.h3`
     return css`
       ${titles.h2}
       display: flex;
+      flex-wrap: wrap;
       align-items: baseline;
       font-family: ${typography.secondaryFontName};
     `;
@@ -49,11 +51,26 @@ const RoomLink = styled.a`
     return css`
       text-decoration: none;
       color: ${colors.basicDarkest};
+      margin-right: 0.3571rem;
 
       &:hover,
       &:focus {
         color: ${colors.basicLight};
       }
+    `;
+  }}
+`;
+
+const RoomType = styled.span`
+  ${(props) => {
+    const { colors, typography } = props.theme;
+
+    return css`
+      word-break: break-all;
+      text-transform: uppercase;
+      color: ${colors.primary};
+      font: 700 0.8571rem ${typography.fontName};
+      margin-right: 0.7143rem;
     `;
   }}
 `;
@@ -77,6 +94,7 @@ const Price = styled.span`
     return css`
       font: 700 1rem ${typography.fontName};
       color: ${colors.basic};
+      text-align: right;
     `;
   }}
 `;
@@ -139,6 +157,7 @@ export {
   Info,
   RoomNumber,
   RoomLink,
+  RoomType,
   NumberSign,
   Price,
   Reviews,

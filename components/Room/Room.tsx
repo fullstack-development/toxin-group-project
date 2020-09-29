@@ -10,6 +10,7 @@ type RoomProps = {
   href: string;
   reviewsHref: string;
   reviewMeasure?: string;
+  roomType?: string;
   measure?: string;
   currency?: string;
   rating?: number;
@@ -21,6 +22,7 @@ const Room: React.FC<RoomProps> = ({
   reviewCount,
   href,
   reviewsHref,
+  roomType,
   measure = 'в сутки',
   reviewMeasure = 'отзывов',
   currency = '₽',
@@ -36,6 +38,7 @@ const Room: React.FC<RoomProps> = ({
               <S.NumberSign>№</S.NumberSign>
               {number}
             </S.RoomLink>
+            {roomType && <S.RoomType>{roomType}</S.RoomType>}
           </S.RoomNumber>
           <S.Price>
             {`${price}${currency}`}

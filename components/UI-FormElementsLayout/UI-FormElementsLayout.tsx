@@ -225,6 +225,14 @@ class UIFormElementsLayout extends React.Component {
         <SocialMedia />
         <Logo isLink />
         <Room price={9900} number={888} reviewCount={65} reviewsHref="/mock" href="/mock" />
+        <Room
+          price={9900}
+          number={888}
+          reviewCount={65}
+          reviewsHref="/mock"
+          href="/mock"
+          roomType="люкс"
+        />
       </S.Container>
     );
   }
