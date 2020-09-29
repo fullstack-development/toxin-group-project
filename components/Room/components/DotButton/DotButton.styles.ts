@@ -12,6 +12,7 @@ const DotButton = styled.button<CustomProps>`
       height: 0.5714rem;
       border: 0.0714rem solid white;
       border-radius: 50%;
+      cursor: pointer;
 
       ${isActive &&
       css`
