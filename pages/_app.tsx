@@ -1,7 +1,7 @@
 import type { AppProps } from 'next/app';
 import { ThemeProvider } from 'styled-components';
 
-import Favicon from 'public/favicon/index';
+import Favicon from 'components/Favicon/Favicon';
 import GlobalStyle from 'shared/styles/global.styles';
 import purpleThemePalette from 'shared/styles/theme';
 
