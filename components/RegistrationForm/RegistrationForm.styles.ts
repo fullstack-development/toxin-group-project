@@ -9,6 +9,8 @@ const RegistrationForm = styled.div`
   max-width: 27.1429rem;
   box-shadow: 0 0 1.7857rem rgba(0, 0, 0, 0.2);
   padding: 3rem 2.1rem 2rem 2.1rem;
+  border: 0.0714rem solid rgba(0, 0, 0, 0.12);
+  border-radius: 0.2857rem;
 
   & > div {
     padding: 0;

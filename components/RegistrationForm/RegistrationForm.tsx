@@ -7,27 +7,27 @@ import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/va
 import * as S from './RegistrationForm.styles';
 
 const RegistrationForm: React.FC = (): JSX.Element => {
-  const submitRegistrationForm = (formData: React.FormEvent<HTMLFormElement>): void => {
+  const handleSubmitRegistrationForm = (formData: React.FormEvent<HTMLFormElement>): void => {
     formData;
   };
 
   return (
     <Form
-      onSubmit={submitRegistrationForm}
+      onSubmit={handleSubmitRegistrationForm}
       render={() => (
         <form>
           <S.RegistrationForm>
             <S.Title>Регистрация аккаунта</S.Title>
             <Field
               name="user-name"
-              render={(props) => (
-                <S.InputWrapper {...props.input} {...props.meta} placeholder="Имя" />
+              render={({ input, meta }) => (
+                <S.InputWrapper {...input} {...meta} placeholder="Имя" />
               )}
             />
             <Field
               name="user-surname"
-              render={(props) => (
-                <S.InputWrapper {...props.input} {...props.meta} placeholder="Фамилия" />
+              render={({ input, meta }) => (
+                <S.InputWrapper {...input} {...meta} placeholder="Фамилия" />
               )}
             />
             <S.RadioButtonsWrapper>
@@ -36,10 +36,10 @@ const RegistrationForm: React.FC = (): JSX.Element => {
             </S.RadioButtonsWrapper>
             <Field
               name="date-birthday"
-              render={(props) => (
+              render={({ input, meta }) => (
                 <S.InputWrapper
-                  {...props.input}
-                  {...props.meta}
+                  {...input}
+                  {...meta}
                   label="Дата рождения"
                   placeholder="ДД.ММ.ГГГГ"
                   validators={[dateValidator]}
@@ -51,11 +51,12 @@ const RegistrationForm: React.FC = (): JSX.Element => {
               <Field
                 name="email"
                 type="email"
-                render={(props) => (
+                render={({ input, meta }) => (
                   <S.InputWrapper
-                    {...props.input}
-                    {...props.meta}
+                    {...input}
+                    {...meta}
                     label="Данные для входа в сервис"
+                    placeholder="Email"
                     validators={[emailValidator]}
                   />
                 )}
@@ -63,8 +64,8 @@ const RegistrationForm: React.FC = (): JSX.Element => {
               <Field
                 name="account-password"
                 type="password"
-                render={(props) => (
-                  <S.InputWrapper {...props.input} {...props.meta} placeholder="Пароль" />
+                render={({ input, meta }) => (
+                  <S.InputWrapper {...input} {...meta} placeholder="Пароль" />
                 )}
               />
             </S.AccountEntryWrapper>
