@@ -26,7 +26,7 @@ const Container = styled.div`
       align-items: center;
       padding-bottom: 0.7143rem;
       border-bottom: 0.0714rem solid ${colors.basicPale};
-      margin-bottom: 0.5714rem;
+      margin-bottom: 0.4286rem;
     `;
   }}
 `;

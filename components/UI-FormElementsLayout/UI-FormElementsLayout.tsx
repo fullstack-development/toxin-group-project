@@ -224,9 +224,9 @@ class UIFormElementsLayout extends React.Component {
         </S.ArrowButtonWrapper>
         <SocialMedia />
         <Logo isLink />
-        <Room price={9900} number={888} reviewCount={65} reviewsHref="/mock" href="/mock" />
+        <Room price="9 900" number={888} reviewCount={65} reviewsHref="/mock" href="/mock" />
         <Room
-          price={9900}
+          price="9 900"
           number={888}
           reviewCount={65}
           reviewsHref="/mock"

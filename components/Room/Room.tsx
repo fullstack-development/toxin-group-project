@@ -2,19 +2,7 @@ import StarRating from 'components/StarRating/StarRating';
 
 import ImageGallery from './components/ImageGallery/ImageGallery';
 import * as S from './Room.styles';
-
-type RoomProps = {
-  price: number;
-  number: number;
-  reviewCount: number;
-  href: string;
-  reviewsHref: string;
-  reviewMeasure?: string;
-  roomType?: string;
-  measure?: string;
-  currency?: string;
-  rating?: number;
-};
+import { RoomProps } from './Room.types';
 
 const Room: React.FC<RoomProps> = ({
   price,

@@ -26,7 +26,7 @@ const Dots = styled.ul`
   position: absolute;
   z-index: 10;
   right: 1.0714rem;
-  bottom: 1.0714rem;
+  bottom: 0.6429rem;
 `;
 
 const Dot = styled.li`
