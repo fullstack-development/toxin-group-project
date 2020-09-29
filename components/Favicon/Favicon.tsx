@@ -7,7 +7,8 @@ const Favicon: React.FC = () => (
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
     <link rel="manifest" href="/favicon/site.webmanifest" />
     <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#bc9cff" />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="msapplication-config" content="browserconfig.xml" />
+    <meta name="theme-color" content="#bc9cff" />
   </Head>
 );
 
