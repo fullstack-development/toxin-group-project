@@ -4,19 +4,9 @@ import { Field } from 'react-final-form';
 import Checkbox from 'components/Checkbox/Checkbox';
 
 import * as S from './CheckboxesList.styles';
+import { CheckboxesListProps } from './CheckboxesList.types';
 
-type Option = {
-  name: string;
-  value: string;
-  label: string;
-  title?: string;
-};
-
-type Props = {
-  roomOptions: Array<Option>;
-};
-
-const CheckboxesList: React.FC<Props> = ({ roomOptions }: Props) => (
+const CheckboxesList: React.FC<CheckboxesListProps> = ({ roomOptions }: CheckboxesListProps) => (
   <S.List>
     {roomOptions.map((option) => {
       const { value, title, label, name } = option;
