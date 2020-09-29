@@ -7,13 +7,13 @@ import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/va
 import * as S from './RegistrationForm.styles';
 
 const RegistrationForm: React.FC = (): JSX.Element => {
-  const handleSubmitRegistrationForm = (formData: React.FormEvent<HTMLFormElement>): void => {
+  const handleRegistrationFormSubmit = (formData: React.FormEvent<HTMLFormElement>): void => {
     formData;
   };
 
   return (
     <Form
-      onSubmit={handleSubmitRegistrationForm}
+      onSubmit={handleRegistrationFormSubmit}
       render={() => (
         <form>
           <S.RegistrationForm>
