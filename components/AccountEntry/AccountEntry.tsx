@@ -35,7 +35,9 @@ const AccountEntry: React.FC = (): JSX.Element => {
             </ArrowButton>
             <S.ToRegisterWrapper>
               <span>Нет аккаунта на Toxin?</span>
-              <Button isLink={false}>Создать</Button>
+              <Button isLink href="/registration">
+                Создать
+              </Button>
             </S.ToRegisterWrapper>
           </form>
         )}
