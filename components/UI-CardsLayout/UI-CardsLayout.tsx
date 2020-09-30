@@ -7,8 +7,6 @@ import SearchRoomForm from 'components/SearchRoomForm/SearchRoomForm';
 
 import * as S from './UI-CardsLayout.styles';
 
-Room;
-
 const UICardsLayout: React.FC = (): JSX.Element => (
   <S.Container>
     <SearchRoomForm />
