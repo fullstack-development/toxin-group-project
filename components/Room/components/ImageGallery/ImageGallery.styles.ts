@@ -11,6 +11,7 @@ const Img = styled.img<ImageProps>`
       position: absolute;
       opacity: 0;
       transition: 0.5s;
+      width: 100%;
       user-select: none;
 
       ${isShown &&
@@ -26,7 +27,7 @@ const Dots = styled.ul`
   position: absolute;
   z-index: 10;
   right: 1.0714rem;
-  bottom: 0.6429rem;
+  bottom: 0.7857rem;
 `;
 
 const Dot = styled.li`
