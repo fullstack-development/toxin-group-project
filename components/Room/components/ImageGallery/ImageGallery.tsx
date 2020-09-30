@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
-import { GalleryProps } from '../../Room.types';
 import DotButton from '../DotButton/DotButton';
 import * as S from './ImageGallery.styles';
+import { GalleryProps } from './ImageGallery.types';
 
 const defaultState = [false, false, false, false];
 

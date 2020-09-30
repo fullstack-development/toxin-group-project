@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { materialIcons } from 'shared/styles/mixins';
 
-import { ImageProps } from '../../Room.types';
+import { ImageProps } from './ImageGallery.types';
 
 const Img = styled.img<ImageProps>`
   ${(props) => {

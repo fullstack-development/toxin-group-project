@@ -1,11 +1,3 @@
-export type ImageProps = {
-  isShown: boolean;
-};
-
-export type GalleryProps = {
-  imagePaths?: string[];
-};
-
 export type RoomProps = {
   price: string;
   number: number;

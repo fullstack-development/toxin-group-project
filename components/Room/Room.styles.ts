@@ -32,16 +32,10 @@ const Container = styled.div`
 `;
 
 const RoomNumber = styled.h3`
-  ${(props) => {
-    const { typography } = props.theme;
-    return css`
-      ${titles.h2}
-      display: flex;
-      flex-wrap: wrap;
-      align-items: baseline;
-      font-family: ${typography.secondaryFontName};
-    `;
-  }}
+  ${titles.h2}
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
 `;
 
 const RoomLink = styled.a`
