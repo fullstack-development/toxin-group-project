@@ -18,6 +18,10 @@ const RegistrationForm = styled.form`
 
   & > div {
     padding: 0;
+
+    & > p {
+      bottom: -0.5rem;
+    }
   }
 `;
 

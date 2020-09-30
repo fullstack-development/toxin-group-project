@@ -33,12 +33,13 @@ const RegistrationForm: React.FC = (): JSX.Element => {
           </S.RadioButtonsWrapper>
           <Field
             name="date-birthday"
-            render={({ input, meta }) => (
+            type="text"
+            render={({ input, rest }) => (
               <S.InputWrapper
+                {...rest}
                 {...input}
-                {...meta}
-                label="Дата рождения"
                 placeholder="ДД.ММ.ГГГГ"
+                label="Дата рождения"
                 validators={[dateValidator]}
                 mask={dateFormatMask}
               />
