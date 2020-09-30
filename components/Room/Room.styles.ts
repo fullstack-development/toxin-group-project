@@ -24,7 +24,7 @@ const Container = styled.div`
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      padding-bottom: 0.7143rem;
+      padding-bottom: 0.5714rem;
       border-bottom: 0.0714rem solid ${colors.basicPale};
       margin-bottom: 0.4286rem;
     `;
@@ -57,13 +57,12 @@ const RoomLink = styled.a`
 
 const RoomType = styled.span`
   ${(props) => {
-    const { colors, typography } = props.theme;
+    const { colors } = props.theme;
 
     return css`
       word-break: break-all;
       text-transform: uppercase;
-      color: ${colors.primary};
-      font: 700 0.8571rem ${typography.fontName};
+      ${titles.h3({ color: colors.primary })}
       margin-right: 0.7143rem;
     `;
   }}
@@ -74,7 +73,7 @@ const NumberSign = styled.span`
     const { typography } = props.theme;
     return css`
       ${titles.h2}
-      font-family: ${typography.secondaryFontName};
+      font-family: ${typography.fontName};
       font-size: 1rem;
       margin-right: 0.3571rem;
       color: inherit;
