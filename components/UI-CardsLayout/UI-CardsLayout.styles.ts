@@ -7,8 +7,14 @@ const Container = styled.div`
   padding-top: 1rem;
 `;
 
+const SearchRoomFormWrapper = styled.div``;
+
+const RegistrationFormWrapper = styled.div`
+  margin-top: 3rem;
+`;
+
 const AccountEntryWrapper = styled.div`
   margin-top: 1rem;
 `;
 
-export { Container, AccountEntryWrapper };
+export { Container, SearchRoomFormWrapper, RegistrationFormWrapper, AccountEntryWrapper };
