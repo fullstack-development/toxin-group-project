@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { container } from 'shared/styles/mixins';
 
@@ -36,11 +36,16 @@ const Banner = styled.div`
 `;
 
 const Message = styled.p`
-  line-height: 1.7142;
-  text-align: right;
-  max-width: 21.43rem;
-  justify-self: end;
-  align-self: end;
+  ${(props) => {
+    const { typography } = props.theme;
+    return css`
+      line-height: ${typography.lineHeight};
+      text-align: right;
+      max-width: 21.43rem;
+      justify-self: end;
+      align-self: end;
+    `;
+  }}
 `;
 
 export { Banner, Message };

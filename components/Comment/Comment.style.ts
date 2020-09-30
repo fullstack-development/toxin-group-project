@@ -33,7 +33,12 @@ const MessageWrapper = styled.div`
 `;
 
 const Text = styled.p`
-  line-height: 1.7rem;
+  ${(props) => {
+    const { typography } = props.theme;
+    return css`
+      line-height: ${typography.lineHeight};
+    `;
+  }}
 `;
 
 export { LeftWrapper, Avatar, User, Date, MessageWrapper, Text };
