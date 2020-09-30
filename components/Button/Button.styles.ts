@@ -53,7 +53,7 @@ const Button = styled.button<ButtonProps>`
 
       &:hover,
       &:focus {
-        background-image: ${gradients.primaryLight};
+        box-shadow: 0 0 1.0714rem ${colors.primary};
       }
     `;
   }}
