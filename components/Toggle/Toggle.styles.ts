@@ -16,7 +16,7 @@ const Checkmark = styled.span`
   ${(props) => {
     const { colors, gradients } = props.theme;
     return css`
-      width: 2.8571rem;
+      min-width: 2.8571rem;
       height: 1.4286rem;
       position: relative;
       border: 0.0714rem solid ${colors.basicLight};
@@ -42,10 +42,6 @@ const Checkmark = styled.span`
       ${HiddenInput}:checked + &:before {
         background-image: ${gradients.primary};
         left: 1.6429rem;
-
-        @media (max-width: 320px) {
-          left: 1.36rem;
-        }
       }
     `;
   }}
