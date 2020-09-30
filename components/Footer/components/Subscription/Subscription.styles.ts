@@ -18,12 +18,12 @@ const Title = styled.h3`
 
 const Description = styled.p`
   ${(props) => {
-    const { colors } = props.theme;
+    const { colors, typography } = props.theme;
     return css`
       max-width: 18.5714rem;
       margin-bottom: 1.4286rem;
       color: ${colors.basicDark};
-      line-height: 1.7143rem;
+      line-height: ${typography.lineHeight};
     `;
   }}
 `;
