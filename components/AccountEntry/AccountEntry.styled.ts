@@ -7,6 +7,8 @@ const AccountEntry = styled.section`
   min-width: 21.4286rem;
   box-shadow: 0 0 1.7857rem rgba(0, 0, 0, 0.2);
   padding: 2.75rem 2rem 2rem 2.05rem;
+  border: 0.0714rem solid rgba(0, 0, 0, 0.12);
+  border-radius: 0.2857rem;
 `;
 
 const Title = styled.h1`
