@@ -32,7 +32,7 @@ const Content = styled.div<ContentProps>`
       visibility: ${isOpen ? 'visible' : 'hidden'};
       opacity: ${isOpen ? '1' : '0'};
       transition: opacity 0.4s;
-      overflow: hidden;
+      overflow: ${isOpen ? 'visible' : 'hidden'};
       padding: 1.1rem 0 0.2143rem;
     `;
   }}
