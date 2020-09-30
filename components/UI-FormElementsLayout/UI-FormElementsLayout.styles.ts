@@ -76,6 +76,11 @@ const SubscriptionWrapper = styled.div`
   max-width: 19.0714rem;
 `;
 
+const RichCheckboxWrapper = styled.div`
+  max-width: 18.5rem;
+  margin-bottom: 0.45rem;
+`;
+
 export {
   Container,
   ButtonWrapper,
@@ -93,4 +98,5 @@ export {
   RadioWrapper,
   ArrowButtonWrapper,
   SubscriptionWrapper,
+  RichCheckboxWrapper,
 };

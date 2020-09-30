@@ -6,10 +6,13 @@ import Benefits from 'components/Benefits/Benefits';
 import BulletList from 'components/BulletList/BulletList';
 import Button from 'components/Button/Button';
 import CheckboxesList from 'components/CheckboxesList/CheckboxesList';
-import checkboxData from 'components/CheckboxesList/CheckboxesListData.json';
+import {
+  checkboxesListData,
+  expandableCheckboxesListData,
+  richCheckboxesListData,
+} from 'components/CheckboxesList/CheckboxesList.data';
 import Comment from 'components/Comment/Comment';
 import Dropdown from 'components/Dropdown/Dropdown';
-import expandableCheckboxData from 'components/Expander/ExpandableList.data.json';
 import Expander from 'components/Expander/Expander';
 import Input from 'components/Input/Input';
 import LikeButton from 'components/LikeButton/LikeButton';
@@ -144,7 +147,7 @@ class UIFormElementsLayout extends React.Component {
                 />
               </S.DropdownWrapper>
               <S.CheckboxWrapper>
-                <CheckboxesList roomOptions={checkboxData} />
+                <CheckboxesList roomOptions={checkboxesListData} />
               </S.CheckboxWrapper>
               <S.RadioWrapper>
                 <RadioButton label="Мужчина" name="gender" value="male" />
@@ -152,12 +155,12 @@ class UIFormElementsLayout extends React.Component {
               </S.RadioWrapper>
               <S.ExpandableCheckboxWrapper>
                 <Expander title="expandable checkbox list" isDefaultOpen={false}>
-                  <CheckboxesList roomOptions={expandableCheckboxData} />
+                  <CheckboxesList roomOptions={expandableCheckboxesListData} />
                 </Expander>
               </S.ExpandableCheckboxWrapper>
               <S.ExpandableCheckboxWrapper>
                 <Expander title="expandable checkbox list" isDefaultOpen>
-                  <CheckboxesList roomOptions={expandableCheckboxData} />
+                  <CheckboxesList roomOptions={expandableCheckboxesListData} />
                 </Expander>
               </S.ExpandableCheckboxWrapper>
               <S.TimePickerWrapper>
@@ -170,6 +173,9 @@ class UIFormElementsLayout extends React.Component {
               </S.TimePickerWrapper>
               <Toggle name="toggle-on" label="Получать спецпредложения" />
               <Toggle name="toggle-off" label="Получать спецпредложения" />
+              <S.RichCheckboxWrapper>
+                <CheckboxesList roomOptions={richCheckboxesListData} />
+              </S.RichCheckboxWrapper>
             </form>
           )}
         />
