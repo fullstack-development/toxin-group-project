@@ -71,11 +71,8 @@ const NumberSign = styled.span`
   ${(props) => {
     const { typography } = props.theme;
     return css`
-      ${titles.h2}
-      font-family: ${typography.fontName};
-      font-size: 1rem;
+      font: 700 1rem ${typography.fontName};
       margin-right: 0.3571rem;
-      color: inherit;
     `;
   }}
 `;
