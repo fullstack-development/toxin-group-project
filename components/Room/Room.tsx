@@ -15,34 +15,32 @@ const Room: React.FC<RoomProps> = ({
   reviewMeasure = 'отзывов',
   currency = '₽',
   rating = 5,
-}: RoomProps) => {
-  return (
-    <S.Room>
-      <ImageGallery />
-      <S.Info>
-        <S.Container>
-          <S.RoomNumber>
-            <S.RoomLink href={href}>
-              <S.NumberSign>№</S.NumberSign>
-              {number}
-            </S.RoomLink>
-            {roomType && <S.RoomType>{roomType}</S.RoomType>}
-          </S.RoomNumber>
-          <S.Price>
-            {`${price}${currency}`}
-            <S.Measure>{measure}</S.Measure>
-          </S.Price>
-        </S.Container>
-        <S.RatingContainer>
-          <StarRating rating={rating} />
-          <S.Reviews href={reviewsHref}>
-            <S.ReviewCount>{reviewCount}</S.ReviewCount>
-            <S.ReviewMeasure>{reviewMeasure}</S.ReviewMeasure>
-          </S.Reviews>
-        </S.RatingContainer>
-      </S.Info>
-    </S.Room>
-  );
-};
+}: RoomProps) => (
+  <S.Room>
+    <ImageGallery />
+    <S.Info>
+      <S.Container>
+        <S.RoomNumber>
+          <S.RoomLink href={href}>
+            <S.NumberSign>№</S.NumberSign>
+            {number}
+          </S.RoomLink>
+          {roomType && <S.RoomType>{roomType}</S.RoomType>}
+        </S.RoomNumber>
+        <S.Price>
+          {`${price}${currency}`}
+          <S.Measure>{measure}</S.Measure>
+        </S.Price>
+      </S.Container>
+      <S.RatingContainer>
+        <StarRating rating={rating} />
+        <S.Reviews href={reviewsHref}>
+          <S.ReviewCount>{reviewCount}</S.ReviewCount>
+          <S.ReviewMeasure>{reviewMeasure}</S.ReviewMeasure>
+        </S.Reviews>
+      </S.RatingContainer>
+    </S.Info>
+  </S.Room>
+);
 
 export default Room;

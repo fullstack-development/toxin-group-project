@@ -42,19 +42,17 @@ const ImageGallery: React.FC<GalleryProps> = ({
         <S.Img key={path + String(index)} src={path} isShown={imageStates[index]} />
       ))}
       <S.Dots>
-        {imageStates.map((el, index) => {
-          return (
-            <S.Dot key={el + String(index)}>
-              <DotButton
-                type="button"
-                data-index={index}
-                onClick={handleDotClick}
-                buttonId={index}
-                isActive={el}
-              />
-            </S.Dot>
-          );
-        })}
+        {imageStates.map((el, index) => (
+          <S.Dot key={el + String(index)}>
+            <DotButton
+              type="button"
+              data-index={index}
+              onClick={handleDotClick}
+              buttonId={index}
+              isActive={el}
+            />
+          </S.Dot>
+        ))}
       </S.Dots>
       <S.ArrowNextContainer>
         <S.ArrowButtonNext aria-label="Вперед" onClick={handleArrowNextClick} />
