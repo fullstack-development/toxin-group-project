@@ -42,6 +42,10 @@ const Checkmark = styled.span`
       ${HiddenInput}:checked + &:before {
         background-image: ${gradients.primary};
         left: 1.6429rem;
+
+        @media (max-width: 320px) {
+          left: 1.36rem;
+        }
       }
     `;
   }}

@@ -9,7 +9,7 @@ type EntryButton = {
   href: string;
 };
 
-const RegistrationForm = styled.div`
+const RegistrationForm = styled.form`
   max-width: 27.1429rem;
   box-shadow: 0 0 1.7857rem rgba(0, 0, 0, 0.2);
   padding: 3rem 2.1rem 2rem 2.1rem;
@@ -64,7 +64,7 @@ const EntryButton = styled(Button)<EntryButton>`
 
 const SpecialOfferWrapper = styled.div`
   & > label {
-    width: 100%;
+    width: fit-content;
     align-items: center;
   }
 `;
