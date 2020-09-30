@@ -1,87 +1,170 @@
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
+import { useState } from 'react';
 import { Field, Form } from 'react-final-form';
 
+import Api from 'api/api';
+import { ProfileData } from 'api/entities/types';
+import { UserCredential } from 'api/types';
 import RadioButton from 'components/RadioButton/RadioButton';
 import Toggle from 'components/Toggle/Toggle';
 import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators';
 
 import * as S from './RegistrationForm.styles';
 
+type SnackbarState = {
+  isOpen: boolean;
+  text: string;
+  theme?: string;
+};
+
 const RegistrationForm: React.FC = (): JSX.Element => {
-  const handleRegistrationFormSubmit = (formData: React.FormEvent<HTMLFormElement>): void => {
-    formData;
+  const [snackBarStatus, setSnackBarSettings] = useState<SnackbarState>({
+    isOpen: false,
+    text: '',
+    theme: '',
+  });
+
+  const handleSnackBarClose = () =>
+    setSnackBarSettings({
+      ...snackBarStatus,
+      isOpen: false,
+    });
+
+  const handleRegistrationFormSubmit = (formData: ProfileData): void => {
+    const { email, password, name, surname, birthDate, gender, receiveOffers } = formData;
+
+    Api.auth
+      .signUp({
+        email,
+        password,
+        name,
+        surname,
+        birthDate,
+        gender,
+        receiveOffers,
+      })
+      .then(({ user }: UserCredential) => {
+        if (user) {
+          setSnackBarSettings({
+            isOpen: true,
+            text: 'Аккаунт успешно зарегестрирован, перенаправление на страницу авторизации...',
+            theme: 'success',
+          });
+
+          setTimeout(() => {
+            window.location.href = '/auth';
+          }, 3000);
+        }
+      })
+      .catch((error) => {
+        setSnackBarSettings({
+          isOpen: true,
+          text: error.message,
+          theme: 'error',
+        });
+      });
   };
 
   return (
-    <Form
-      onSubmit={handleRegistrationFormSubmit}
-      render={() => (
-        <S.RegistrationForm>
-          <S.Title>Регистрация аккаунта</S.Title>
-          <Field
-            name="user-name"
-            render={({ input, meta }) => <S.InputWrapper {...input} {...meta} placeholder="Имя" />}
-          />
-          <Field
-            name="user-surname"
-            render={({ input, meta }) => (
-              <S.InputWrapper {...input} {...meta} placeholder="Фамилия" />
-            )}
-          />
-          <S.RadioButtonsWrapper>
-            <RadioButton value="gender-man" name="gender" label="Мужчина" />
-            <RadioButton value="gender-woman" name="gender" label="Женщина" />
-          </S.RadioButtonsWrapper>
-          <Field
-            name="date-birthday"
-            type="text"
-            render={({ input, rest }) => (
-              <S.InputWrapper
-                {...rest}
-                {...input}
-                placeholder="ДД.ММ.ГГГГ"
-                label="Дата рождения"
-                validators={[dateValidator]}
-                mask={dateFormatMask}
-              />
-            )}
-          />
-          <S.AccountEntryWrapper>
+    <>
+      <Form
+        onSubmit={handleRegistrationFormSubmit}
+        render={({ handleSubmit }) => (
+          <S.RegistrationForm onSubmit={handleSubmit}>
+            <S.Title>Регистрация аккаунта</S.Title>
             <Field
-              name="email"
-              type="email"
+              name="name"
               render={({ input, meta }) => (
+                <S.InputWrapper {...input} {...meta} placeholder="Имя" />
+              )}
+            />
+            <Field
+              name="surname"
+              render={({ input, meta }) => (
+                <S.InputWrapper {...input} {...meta} placeholder="Фамилия" />
+              )}
+            />
+            <S.RadioButtonsWrapper>
+              <RadioButton value="gender-man" name="gender" label="Мужчина" />
+              <RadioButton value="gender-woman" name="gender" label="Женщина" />
+            </S.RadioButtonsWrapper>
+            <Field
+              name="birthDate"
+              type="text"
+              render={({ input, rest }) => (
                 <S.InputWrapper
+                  {...rest}
                   {...input}
-                  {...meta}
-                  label="Данные для входа в сервис"
-                  placeholder="Email"
-                  validators={[emailValidator]}
+                  placeholder="ДД.ММ.ГГГГ"
+                  label="Дата рождения"
+                  validators={[dateValidator]}
+                  mask={dateFormatMask}
                 />
               )}
             />
-            <Field
-              name="account-password"
-              type="password"
-              render={({ input, meta }) => (
-                <S.InputWrapper {...input} {...meta} placeholder="Пароль" />
-              )}
-            />
-          </S.AccountEntryWrapper>
-          <S.SpecialOfferWrapper>
-            <Toggle name="special-offers" label="Получать спецпредложения" />
-          </S.SpecialOfferWrapper>
-          <S.RegisterButton isFlat isLink={false} isFilled>
-            Перейти к оплате
-          </S.RegisterButton>
-          <S.AlreadyRegisterWrapper>
-            <span>Уже есть аккаунт на Toxin</span>
-            <S.EntryButton isLink href="/auth">
-              Войти
-            </S.EntryButton>
-          </S.AlreadyRegisterWrapper>
-        </S.RegistrationForm>
-      )}
-    />
+            <S.AccountEntryWrapper>
+              <Field
+                name="email"
+                type="email"
+                render={({ input, meta }) => (
+                  <S.InputWrapper
+                    {...input}
+                    {...meta}
+                    required
+                    label="Данные для входа в сервис"
+                    placeholder="Email"
+                    validators={[emailValidator]}
+                  />
+                )}
+              />
+              <Field
+                name="password"
+                type="password"
+                render={({ input, meta }) => (
+                  <S.InputWrapper {...input} {...meta} required placeholder="Пароль" />
+                )}
+              />
+            </S.AccountEntryWrapper>
+            <S.SpecialOfferWrapper>
+              <Toggle name="receiveOffers" label="Получать спецпредложения" />
+            </S.SpecialOfferWrapper>
+            <S.RegisterButton isFlat isLink={false} isFilled>
+              Перейти к оплате
+            </S.RegisterButton>
+            <S.AlreadyRegisterWrapper>
+              <span>Уже есть аккаунт на Toxin</span>
+              <S.EntryButton isLink href="/auth">
+                Войти
+              </S.EntryButton>
+            </S.AlreadyRegisterWrapper>
+          </S.RegistrationForm>
+        )}
+      />
+      <S.CustomSnackBar
+        theme={snackBarStatus.theme}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        open={snackBarStatus.isOpen}
+        autoHideDuration={3000}
+        onClose={handleSnackBarClose}
+        message={snackBarStatus.text}
+        action={
+          <>
+            <IconButton
+              size="medium"
+              aria-label="close"
+              color="inherit"
+              onClick={handleSnackBarClose}
+            >
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          </>
+        }
+      />
+    </>
   );
 };
 
