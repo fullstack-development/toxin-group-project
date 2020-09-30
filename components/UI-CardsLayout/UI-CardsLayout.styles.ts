@@ -8,8 +8,13 @@ const Container = styled.div`
 `;
 
 const SearchRoomFormWrapper = styled.div``;
+
 const RegistrationFormWrapper = styled.div`
   margin-top: 3rem;
 `;
 
-export { Container, SearchRoomFormWrapper, RegistrationFormWrapper };
+const AccountEntryWrapper = styled.div`
+  margin-top: 1rem;
+`;
+
+export { Container, SearchRoomFormWrapper, RegistrationFormWrapper, AccountEntryWrapper };

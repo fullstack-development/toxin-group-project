@@ -63,7 +63,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm run lint --max-warnings=0 && npm run lint:types",
+      "pre-push": "npm run lint --max-warnings=0 && npm run lint:types && npm run build",
       "pre-commit": "lint-staged"
     }
   },
