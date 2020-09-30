@@ -81,6 +81,13 @@ const ArrowButton = styled.button`
   transform: translateY(-50%);
   z-index: 1;
   cursor: pointer;
+
+  @media (max-width: 1050px) {
+    width: 3.2143rem;
+    height: 100%;
+    left: initial;
+    right: 0;
+  }
 `;
 
 const ArrowButtonNext = styled(ArrowButton)`
