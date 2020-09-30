@@ -11,7 +11,7 @@ const purpleThemePalette: Theme = {
     fontName: 'Montserrat, Arial, sans-serif',
     secondaryFontName: 'Quicksand, "Open Sans", Arial, sans-serif',
     fontSize: '14px',
-    lineHeight: '24px',
+    lineHeight: '1.7142',
   },
   colors: {
     primary: `rgb(${primaryColorValue})`,
