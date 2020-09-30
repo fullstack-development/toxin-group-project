@@ -61,7 +61,6 @@ const RoomType = styled.span`
 
     return css`
       word-break: break-all;
-      text-transform: uppercase;
       ${titles.h3({ color: colors.primary })}
       margin-right: 0.7143rem;
     `;
