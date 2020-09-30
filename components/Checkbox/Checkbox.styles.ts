@@ -38,6 +38,10 @@ const Checkmark = styled.span`
         transform: rotate(45deg);
       }
 
+      ${HiddenCheckbox}:focus ~ & {
+        outline: auto;
+      }
+
       ${HiddenCheckbox}:checked ~ &,
       ${Checkbox}:hover ${HiddenCheckbox} ~ & {
         border: 0.0714rem solid ${colors.primary};

@@ -35,6 +35,10 @@ const Checkmark = styled.span`
         background: ${gradients.primary};
       }
 
+      ${HiddenInput}:focus ~ & {
+        outline: auto;
+      }
+
       ${HiddenInput}:checked ~ &,
       ${RadioButton}:hover & {
         border-color: ${colors.primary};

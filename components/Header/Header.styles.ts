@@ -29,7 +29,6 @@ const MobileMenu = styled.div<MobileMenu>`
 const HamburgerButtonWrapper = styled.button`
   border: none;
   background: inherit;
-  outline: none;
 
   & > svg {
     cursor: pointer;

@@ -47,7 +47,6 @@ const Link = styled.a<Link>`
       color: ${colors.basic};
       font-weight: ${isActive ? 'bold' : 'normal'};
       text-decoration: none;
-      outline: none;
       margin-right: 1.5rem;
       position: relative;
 

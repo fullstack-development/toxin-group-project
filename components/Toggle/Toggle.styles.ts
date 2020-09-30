@@ -35,6 +35,10 @@ const Checkmark = styled.span`
         transition: 0.4s;
       }
 
+      ${HiddenInput}:focus + & {
+        outline: auto;
+      }
+
       ${HiddenInput}:checked + & {
         border-color: ${colors.primary};
       }

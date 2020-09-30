@@ -17,7 +17,6 @@ const Header = styled.button`
   justify-content: space-between;
   cursor: pointer;
   border: none;
-  outline: none;
   background-color: transparent;
 `;
 
