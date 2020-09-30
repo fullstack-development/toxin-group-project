@@ -8,6 +8,14 @@ export type Apartment = {
     beds: number;
     bathrooms: number;
   };
+  additionalAmenities: {
+    breakfast: boolean;
+    desk: boolean;
+    chair: boolean;
+    crib: boolean;
+    tv: boolean;
+    shampoo: boolean;
+  };
   accessibility: {
     wideCorridor: boolean;
     invalidHelper: boolean;
