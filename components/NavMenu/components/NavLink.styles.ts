@@ -50,6 +50,10 @@ const Link = styled.a<Link>`
       margin-right: 1.5rem;
       position: relative;
 
+      &:hover {
+        color: ${colors.basicDarkest};
+      }
+
       @media (max-width: 900px) {
         margin-right: 0;
       }
