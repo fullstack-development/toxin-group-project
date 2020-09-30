@@ -15,6 +15,7 @@ import Input from 'components/Input/Input';
 import LikeButton from 'components/LikeButton/LikeButton';
 import Logo from 'components/Logo/Logo';
 import RadioButton from 'components/RadioButton/RadioButton';
+import RangeSlider from 'components/RangeSlider/RangeSlider';
 import SocialMedia from 'components/SocialMedia/SocialMedia';
 import StarRating from 'components/StarRating/StarRating';
 import SubscriptionField from 'components/SubscriptionField/SubscriptionField';
@@ -173,6 +174,9 @@ class UIFormElementsLayout extends React.Component {
               </S.TimePickerWrapper>
               <Toggle name="toggle-on" label="Получать спецпредложения" />
               <Toggle name="toggle-off" label="Получать спецпредложения" />
+              <S.InputWrapper>
+                <RangeSlider />
+              </S.InputWrapper>
             </form>
           )}
         />
