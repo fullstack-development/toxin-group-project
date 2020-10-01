@@ -1,6 +1,8 @@
 import MaskedInput from 'react-text-mask';
 import styled, { css } from 'styled-components';
 
+import { titles } from 'shared/styles/mixins';
+
 const Input = styled.div`
   ${(props) => {
     const { typography } = props.theme;
@@ -14,17 +16,10 @@ const Input = styled.div`
 `;
 
 const LabelText = styled.span`
-  ${(props) => {
-    const { colors } = props.theme;
-    return css`
-      display: inline-block;
-      font-weight: bold;
-      font-size: 0.8571rem;
-      color: ${colors.basicDarkest};
-      text-transform: uppercase;
-      margin-bottom: 0.3571rem;
-    `;
-  }}
+  ${titles.h3}
+  display: inline-block;
+  margin-bottom: 0.3rem;
+  cursor: pointer;
 `;
 
 const MaskedField = styled(MaskedInput)`

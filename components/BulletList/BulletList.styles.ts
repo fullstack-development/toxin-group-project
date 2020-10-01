@@ -8,12 +8,12 @@ const List = styled.ul`
 
 const Item = styled.li`
   ${(props) => {
-    const { colors } = props.theme;
+    const { colors, typography } = props.theme;
     return css`
       position: relative;
       margin-bottom: 0.7143rem;
       padding-left: 1.4286rem;
-      line-height: 1.7143rem;
+      line-height: ${typography.lineHeight};
       color: ${colors.basicDark};
 
       &:last-child {
