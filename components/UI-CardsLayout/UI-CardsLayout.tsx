@@ -3,16 +3,21 @@ import React from 'react';
 import AccountEntry from 'components/AccountEntry/AccountEntry';
 import RegistrationForm from 'components/RegistrationForm/RegistrationForm';
 import Room from 'components/Room/Room';
+import Rooms from 'components/Rooms/Rooms';
+import rooms from 'components/Rooms/Rooms.data';
 import SearchRoomForm from 'components/SearchRoomForm/SearchRoomForm';
 
 import * as S from './UI-CardsLayout.styles';
 
 const UICardsLayout: React.FC = (): JSX.Element => (
   <S.Container>
+    <S.RoomsWrapper>
+      <Rooms rooms={rooms} />
+    </S.RoomsWrapper>
     <SearchRoomForm />
-    <Room price="9 900" number={888} reviewCount={65} reviewsHref="/mock" href="/mock" />
+    <Room price={9900} number={888} reviewCount={65} reviewsHref="/mock" href="/mock" />
     <Room
-      price="9 900"
+      price={9900}
       number={888}
       reviewCount={65}
       reviewsHref="/mock"

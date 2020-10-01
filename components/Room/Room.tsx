@@ -1,4 +1,5 @@
 import StarRating from 'components/StarRating/StarRating';
+import getNumberWithSpaces from 'shared/helpers/getNumberWithSpaces';
 
 import ImageGallery from './components/ImageGallery/ImageGallery';
 import * as S from './Room.styles';
@@ -10,6 +11,7 @@ const Room: React.FC<RoomProps> = ({
   reviewCount,
   href,
   reviewsHref,
+  imagePaths,
   roomType,
   measure = 'в сутки',
   reviewMeasure = 'отзывов',
@@ -17,7 +19,7 @@ const Room: React.FC<RoomProps> = ({
   rating = 5,
 }: RoomProps) => (
   <S.Room>
-    <ImageGallery />
+    <ImageGallery imagePaths={imagePaths} />
     <S.Info>
       <S.Container>
         <S.RoomNumber>
@@ -28,7 +30,7 @@ const Room: React.FC<RoomProps> = ({
           {roomType && <S.RoomType>{roomType}</S.RoomType>}
         </S.RoomNumber>
         <S.Price>
-          {`${price}${currency}`}
+          {`${getNumberWithSpaces(price)}${currency}`}
           <S.Measure>{measure}</S.Measure>
         </S.Price>
       </S.Container>

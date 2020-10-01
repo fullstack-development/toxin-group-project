@@ -17,4 +17,14 @@ const AccountEntryWrapper = styled.div`
   margin-top: 1rem;
 `;
 
-export { Container, SearchRoomFormWrapper, RegistrationFormWrapper, AccountEntryWrapper };
+const RoomsWrapper = styled.div`
+  max-width: 60rem;
+`;
+
+export {
+  Container,
+  SearchRoomFormWrapper,
+  RegistrationFormWrapper,
+  AccountEntryWrapper,
+  RoomsWrapper,
+};
