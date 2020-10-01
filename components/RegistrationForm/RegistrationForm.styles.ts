@@ -28,10 +28,6 @@ const RegistrationForm = styled.form`
 
       & > div {
         padding: 0;
-
-        & > p {
-          bottom: -0.5rem;
-        }
       }
     `;
   }}
@@ -61,7 +57,7 @@ const RadioButtonsWrapper = styled.div`
 `;
 
 const AccountEntryWrapper = styled.div`
-  margin-top: 0.7rem;
+  margin-top: 1.2rem;
 
   & > div {
     padding: 0;

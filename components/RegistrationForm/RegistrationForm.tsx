@@ -6,6 +6,7 @@ import { Field, Form } from 'react-final-form';
 import Api from 'api/api';
 import { ProfileData } from 'api/entities/types';
 import { UserCredential } from 'api/types';
+import Input from 'components/Input/Input';
 import RadioButton from 'components/RadioButton/RadioButton';
 import Toggle from 'components/Toggle/Toggle';
 import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators';
@@ -93,7 +94,7 @@ const RegistrationForm: React.FC = (): JSX.Element => {
               name="birthDate"
               type="text"
               render={({ input, rest }) => (
-                <S.InputWrapper
+                <Input
                   {...rest}
                   {...input}
                   placeholder="ДД.ММ.ГГГГ"
