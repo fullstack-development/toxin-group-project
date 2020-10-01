@@ -34,7 +34,7 @@ const Example = styled.div<ExampleProps>`
     const { colors, typography } = props.theme;
     return css`
       font-weight: ${exampleType === 'Body' ? 'normal' : 'bold'};
-      line-height: ${exampleType === 'Body' ? '1.65' : '1.27'};
+      line-height: ${exampleType === 'Body' ? typography.lineHeight : '1.27'};
       font-size: ${exampleFontSize};
       font-family: ${exampleType === 'H3' || exampleType === 'Body'
         ? typography.fontName

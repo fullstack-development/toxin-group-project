@@ -3,6 +3,7 @@ export type Theme = {
     fontName: string;
     secondaryFontName: string;
     fontSize: string;
+    lineHeight: string;
   };
   colors: {
     primary: string;

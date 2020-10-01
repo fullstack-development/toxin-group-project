@@ -1,8 +1,0 @@
-[
-  { "name": "roomOption", "value": "breakfast", "label": "Завтрак" },
-  { "name": "roomOption", "value": "desk", "label": "Письменный стол" },
-  { "name": "roomOption", "value": "chair", "label": "Стул для кормления" },
-  { "name": "roomOption", "value": "crib", "label": "Кроватка" },
-  { "name": "roomOption", "value": "TV", "label": "Телевизор" },
-  { "name": "roomOption", "value": "shampoo", "label": "Шампунь" }
-]
