@@ -34,8 +34,8 @@ class UIFormElementsLayout extends React.Component {
       <S.Container>
         <Form
           onSubmit={this.handleFormSubmit}
-          initialValues={{ gender: 'female', 'toggle-on': true }}
-          render={() => (
+          initialValues={{ gender: 'female', 'toggle-on': true, range: [5000, 10000] }}
+          render={(values) => (
             <form>
               <S.InputWrapper>
                 <Field
@@ -174,9 +174,13 @@ class UIFormElementsLayout extends React.Component {
               </S.TimePickerWrapper>
               <Toggle name="toggle-on" label="Получать спецпредложения" />
               <Toggle name="toggle-off" label="Получать спецпредложения" />
-              <S.InputWrapper>
-                <RangeSlider />
-              </S.InputWrapper>
+              <S.SliderWrapper>
+                <RangeSlider
+                  initialValue={values.initialValues.range}
+                  title="range slider"
+                  name="range"
+                />
+              </S.SliderWrapper>
             </form>
           )}
         />

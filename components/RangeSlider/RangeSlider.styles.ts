@@ -1,35 +1,61 @@
 import Slider from '@material-ui/core/Slider';
 import styled, { css } from 'styled-components';
 
+import { titles } from 'shared/styles/mixins';
+
+type DescriptionProps = {
+  title: string;
+};
+
+const Description = styled.div<DescriptionProps>`
+  ${(props) => {
+    const { title } = props;
+    return css`
+      display: flex;
+      align-items: center;
+      justify-content: ${title ? 'space-between' : 'flex-end'};
+      margin-bottom: 0.7143rem;
+    `;
+  }}
+`;
+
+const Title = styled.h3`
+  ${titles.h3}
+`;
+
+const Value = styled.span`
+  font-size: 0.8571rem;
+`;
+
 const RangeSlider = styled(Slider)`
   ${(props) => {
     const { colors, gradients } = props.theme;
     return css`
       & .MuiSlider-rail {
-        height: 6px;
+        height: 0.4286rem;
         background: white;
-        border: 1px solid ${colors.basicLight};
-        border-radius: 3px;
+        border: 0.0714rem solid ${colors.basicLight};
+        border-radius: 0.2143rem;
       }
 
       & .MuiSlider-thumb {
-        width: 16px;
-        height: 16px;
+        width: 1.1429rem;
+        height: 1.1429rem;
         background: ${colors.secondary} ${gradients.secondary};
-        border: 2px solid white;
+        border: 0.1429rem solid white;
         box-shadow: none;
         outline: none;
         &:focus, &:hover {
-          box-shadow: none;
+          box-shadow: inherit;
         },
       }
 
       & .MuiSlider-track {
-        height: 6px;
+        height: 0.4286rem;
         background: ${colors.secondary} ${gradients.secondary};
       }
     `;
   }}
 `;
 
-export { RangeSlider };
+export { RangeSlider, Description, Title, Value };

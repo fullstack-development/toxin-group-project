@@ -76,6 +76,11 @@ const SubscriptionWrapper = styled.div`
   max-width: 19.0714rem;
 `;
 
+const SliderWrapper = styled.div`
+  width: 19rem;
+  margin: 1rem 0;
+`;
+
 export {
   Container,
   ButtonWrapper,
@@ -93,4 +98,5 @@ export {
   RadioWrapper,
   ArrowButtonWrapper,
   SubscriptionWrapper,
+  SliderWrapper,
 };
