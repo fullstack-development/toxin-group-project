@@ -12,7 +12,7 @@ import * as S from './UI-CardsLayout.styles';
 const UICardsLayout: React.FC = (): JSX.Element => (
   <S.Container>
     <S.RoomsWrapper>
-      <Rooms rooms={rooms} />
+      <Rooms rooms={[...rooms, ...rooms, ...rooms]} />
     </S.RoomsWrapper>
     <SearchRoomForm />
     <Room price={9900} number={888} reviewCount={65} reviewsHref="/mock" href="/mock" />
