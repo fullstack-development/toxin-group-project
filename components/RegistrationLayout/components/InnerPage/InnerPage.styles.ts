@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const Container = styled.div`
   background: url('./img/auth-register.jpg') bottom / cover no-repeat;
   min-height: 40rem;
-  padding: 2rem;
+  padding: 1.25rem;
 
   & > form {
     margin: 0 auto;
@@ -20,6 +20,7 @@ const Container = styled.div`
 
   @media (max-width: 576px) {
     min-height: 10rem;
+    padding: 0.7rem;
   }
 `;
 
