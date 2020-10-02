@@ -15,8 +15,10 @@ const Comment: React.FC<Comment> = ({ avatarUrl, userName, date, text, likesCoun
   <S.Comment>
     <S.Header>
       <S.Avatar alt={userName} src={`/img/${avatarUrl}`} />
-      <S.User>{userName}</S.User>
-      <S.Date dateTime={new Date(date).toISOString()}>{getHowMuchTimeHasPassed(date)}</S.Date>
+      <S.AuthorWrapper>
+        <S.User>{userName}</S.User>
+        <S.Date dateTime={new Date(date).toISOString()}>{getHowMuchTimeHasPassed(date)}</S.Date>
+      </S.AuthorWrapper>
     </S.Header>
     <S.MessageWrapper>
       <S.LeftWrapper>

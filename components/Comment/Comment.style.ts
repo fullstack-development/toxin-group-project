@@ -3,9 +3,7 @@ import styled, { css } from 'styled-components';
 const Comment = styled.article``;
 
 const Header = styled.header`
-  display: grid;
-  grid-template-columns: 3.4285rem 1fr;
-  gap: 0 0.714rem;
+  display: flex;
 `;
 
 const Avatar = styled.img`
@@ -13,13 +11,19 @@ const Avatar = styled.img`
     const { colors } = props.theme;
 
     return css`
-      grid-row: 1 / 3;
-      max-width: 3.4rem;
+      max-width: 3.4285rem;
+      max-height: 3.4285rem;
       border-radius: 50%;
       border: 0.15rem solid ${colors.defaultBackground};
       box-shadow: 0 0.7143rem 1.4286rem ${colors.basicLightest};
     `;
   }}
+`;
+
+const AuthorWrapper = styled.p`
+  display: flex;
+  flex-direction: column;
+  margin-left: 0.714rem;
 `;
 
 const User = styled.span`
@@ -33,7 +37,7 @@ const Date = styled.time`
 
 const MessageWrapper = styled.div`
   display: flex;
-  margin-top: 1.08rem;
+  margin-top: 1rem;
 `;
 
 const LeftWrapper = styled.div`
@@ -49,4 +53,4 @@ const Text = styled.p`
   }}
 `;
 
-export { Comment, Header, Avatar, User, Date, MessageWrapper, LeftWrapper, Text };
+export { Comment, Header, AuthorWrapper, Avatar, User, Date, MessageWrapper, LeftWrapper, Text };
