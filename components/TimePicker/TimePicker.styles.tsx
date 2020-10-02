@@ -44,6 +44,7 @@ const ContainerElement = styled.div<ContainerElement>`
         margin-right: 1.4rem;
 
         @media (max-width: 450px) {
+          margin-bottom: 1.4rem;
           margin-right: 0;
         }
       }
