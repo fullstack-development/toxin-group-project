@@ -112,4 +112,4 @@ const rooms: RoomProps[] = [
   },
 ];
 
-export default rooms;
+export default Promise.resolve([...rooms, ...rooms, ...rooms]);
