@@ -33,10 +33,10 @@ const RangeSlider: React.FC<RangeSliderProps> = ({
       name={name}
       parse={() => value}
       render={({ input }) => {
-        const handleChange = (e, currentValue) => {
+        const handleChange = (_, currentValue) => {
           setValue(currentValue);
-          input.onChange(e);
         };
+
         return (
           <>
             <S.Description title={title}>
@@ -50,6 +50,7 @@ const RangeSlider: React.FC<RangeSliderProps> = ({
               max={max}
               min={min}
               onChange={handleChange}
+              onPointerUp={input.onChange}
               value={value}
               step={step}
             />
