@@ -5,6 +5,7 @@ import Room from 'components/Room/Room';
 import roomsList from 'components/Rooms/Rooms.data';
 
 import { RoomProps } from '../Room/Room.types';
+import Preloader from './components/Preloader/Preloader';
 import * as S from './Rooms.styles';
 
 const fetchRooms: Promise<RoomProps[]> = new Promise((resolve) =>
@@ -35,8 +36,8 @@ const Rooms: React.FC = () => {
       dataLength={rooms.length}
       next={getNewRooms}
       hasMore={hasMore}
-      loader={<h4>Loading...</h4>}
-      scrollThreshold={0.7}
+      loader={<Preloader />}
+      scrollThreshold={0.6}
       style={{ overflow: 'initial' }}
     >
       <S.Rooms>

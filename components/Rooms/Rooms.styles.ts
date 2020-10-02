@@ -1,6 +1,5 @@
+import ClipLoader from 'react-spinners/ClipLoader';
 import styled from 'styled-components';
-
-import TextButton from 'components/TextButton/TextButton';
 
 const Rooms = styled.div`
   display: flex;
@@ -23,9 +22,8 @@ const RoomsGrid = styled.ul`
   margin-bottom: 2.1429rem;
 `;
 
-const MoreButton = styled(TextButton)`
-  width: max-content;
+const Preloader = styled(ClipLoader)`
   align-self: center;
 `;
 
-export { Rooms, RoomsGrid, RoomItem, MoreButton };
+export { Rooms, RoomsGrid, RoomItem, Preloader };
