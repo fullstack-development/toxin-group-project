@@ -1,7 +1,7 @@
 import LikeButton from 'components/LikeButton/LikeButton';
 
 import * as S from './Comment.style';
-import getHowMuchTimeHasPassed from './utils/getHowMuchTimeHasPassed';
+import getСommentDate from './utils/getСommentDate';
 
 type Comment = {
   avatarUrl: string;
@@ -17,7 +17,7 @@ const Comment: React.FC<Comment> = ({ avatarUrl, userName, date, text, likesCoun
       <S.Avatar alt={userName} src={`/img/${avatarUrl}`} />
       <S.AuthorWrapper>
         <S.User>{userName}</S.User>
-        <S.Date dateTime={new Date(date).toISOString()}>{getHowMuchTimeHasPassed(date)}</S.Date>
+        <S.Date dateTime={new Date(date).toISOString()}>{getСommentDate(date)}</S.Date>
       </S.AuthorWrapper>
     </S.Header>
     <S.MessageWrapper>
