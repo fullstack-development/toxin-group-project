@@ -10,10 +10,10 @@ import * as S from './UI-CardsLayout.styles';
 
 const UICardsLayout: React.FC = (): JSX.Element => (
   <S.Container>
+    <SearchRoomForm />
     <S.RoomsWrapper>
       <Rooms />
     </S.RoomsWrapper>
-    {/* <SearchRoomForm />
     <Room price={9900} number={888} reviewCount={65} reviewsHref="/mock" href="/mock" />
     <Room
       price={9900}
@@ -31,7 +31,7 @@ const UICardsLayout: React.FC = (): JSX.Element => (
     </S.RegistrationFormWrapper>
     <S.AccountEntryWrapper>
       <AccountEntry />
-    </S.AccountEntryWrapper> */}
+    </S.AccountEntryWrapper>
   </S.Container>
 );
 

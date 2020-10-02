@@ -1,5 +1,4 @@
 import { useState, useEffect, useCallback } from 'react';
-// import InfiniteScroll from 'react-infinite-scroller';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 import Room from 'components/Room/Room';
@@ -8,25 +7,23 @@ import roomsList from 'components/Rooms/Rooms.data';
 import { RoomProps } from '../Room/Room.types';
 import * as S from './Rooms.styles';
 
-export type RoomsProps = {
-  rooms: RoomProps[];
-};
+const fetchRooms: Promise<RoomProps[]> = new Promise((resolve) =>
+  setTimeout(() => resolve(roomsList), 1500),
+);
 
 const DEFAULT_INCREMENT = 12;
 
-const Rooms: React.FC<RoomsProps> = () => {
+const Rooms: React.FC = () => {
   const [rooms, setRooms] = useState([]);
   const [hasMore, setHasMore] = useState(true);
 
   const getNewRooms = useCallback(async () => {
-    const fetchedRooms = await roomsList;
-    setTimeout(() => {
-      setRooms((prevRooms) => {
-        const updatedList = fetchedRooms.slice(0, prevRooms.length + DEFAULT_INCREMENT);
-        if (updatedList.length === prevRooms.length) setHasMore(false);
-        return updatedList;
-      });
-    }, 1500);
+    const fetchedRooms = await fetchRooms;
+    setRooms((prevRooms) => {
+      const updatedList = fetchedRooms.slice(0, prevRooms.length + DEFAULT_INCREMENT);
+      if (updatedList.length === prevRooms.length) setHasMore(false);
+      return updatedList;
+    });
   }, []);
 
   useEffect(() => {
@@ -35,21 +32,17 @@ const Rooms: React.FC<RoomsProps> = () => {
 
   return (
     <InfiniteScroll
-      dataLength={rooms.length} // This is important field to render the next data
-      next={() => getNewRooms()}
+      dataLength={rooms.length}
+      next={getNewRooms}
       hasMore={hasMore}
       loader={<h4>Loading...</h4>}
-      endMessage={
-        <p style={{ textAlign: 'center' }}>
-          <b>Yay! You have seen it all</b>
-        </p>
-      }
+      scrollThreshold={0.7}
       style={{ overflow: 'initial' }}
     >
       <S.Rooms>
         <S.RoomsGrid>
-          {rooms.map((room) => (
-            <S.RoomItem key={room.number}>
+          {rooms.map((room, index) => (
+            <S.RoomItem key={room.number + String(index)}>
               <Room {...room} />
             </S.RoomItem>
           ))}
