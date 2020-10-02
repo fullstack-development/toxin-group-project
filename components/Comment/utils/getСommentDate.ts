@@ -27,32 +27,28 @@ function getСommentDate(date: string): string {
   if (seconds < 60) {
     const roundedSeconds = Math.floor(seconds);
 
-    return `${Math.floor(roundedSeconds)} ${
-      DECLENSION.seconds[valueToIndex(roundedSeconds)]
-    } назад`;
+    return `${roundedSeconds} ${DECLENSION.seconds[valueToIndex(roundedSeconds)]} назад`;
   }
 
   const minutes = seconds / 60;
   if (minutes < 60) {
     const roundedMinutes = Math.floor(minutes);
 
-    return `${Math.floor(roundedMinutes)} ${
-      DECLENSION.minutes[valueToIndex(roundedMinutes)]
-    } назад`;
+    return `${roundedMinutes} ${DECLENSION.minutes[valueToIndex(roundedMinutes)]} назад`;
   }
 
   const hours = minutes / 60;
   if (hours < 24) {
     const roundedHours = Math.floor(hours);
 
-    return `${Math.floor(roundedHours)} ${DECLENSION.hours[valueToIndex(roundedHours)]} назад`;
+    return `${roundedHours} ${DECLENSION.hours[valueToIndex(roundedHours)]} назад`;
   }
 
   const days = hours / 24;
   if (days < 30) {
     const roundedDays = Math.floor(days);
 
-    return `${Math.floor(roundedDays)} ${DECLENSION.days[valueToIndex(roundedDays)]} назад`;
+    return `${roundedDays} ${DECLENSION.days[valueToIndex(roundedDays)]} назад`;
   }
 
   return targetDate.toLocaleDateString('ru-RU', options);
