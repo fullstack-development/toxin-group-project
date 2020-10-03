@@ -39,3 +39,9 @@ export type ProfileData = {
   gender: 'male' | 'female';
   receiveOffers: boolean;
 };
+
+export type BookingData = {
+  apartmentId: number;
+  from: number;
+  to: number;
+};
