@@ -1,8 +1,5 @@
 export type FirebaseApplication = firebase.app.App;
 export type Auth = firebase.auth.Auth;
-export type UserCredential = firebase.auth.UserCredential;
-export type Unsubscribe = firebase.Unsubscribe;
-export type User = firebase.User;
 export type DB = firebase.firestore.Firestore;
 export type DocumentData = firebase.firestore.DocumentData;
 export type CollectionReference = firebase.firestore.CollectionReference<DocumentData>;

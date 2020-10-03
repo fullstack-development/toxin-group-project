@@ -3,6 +3,7 @@ import * as firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 
+import { Authentication } from './modules/Authentication';
 import {
   FirebaseApplication,
   DocumentReference,
@@ -10,16 +11,12 @@ import {
   DocumentData,
   CollectionReference,
   DB,
-  Auth,
-  UserCredential,
-  Unsubscribe,
   IConfig,
-  User,
 } from './types';
 
 class Firebase {
+  public authentication: Authentication;
   private app: FirebaseApplication;
-  private auth: Auth;
   private database: DB;
 
   constructor() {
@@ -82,39 +79,9 @@ class Firebase {
     ref.update(result);
   }
 
-  @boundMethod
-  public async createUser(email: string, password: string): Promise<UserCredential> {
-    return this.auth.createUserWithEmailAndPassword(email, password);
-  }
-
-  @boundMethod
-  public async signIn(email: string, password: string): Promise<UserCredential> {
-    return this.auth.signInWithEmailAndPassword(email, password);
-  }
-
-  @boundMethod
-  public async signOut(): Promise<void> {
-    return this.auth.signOut();
-  }
-
-  @boundMethod
-  public async resetPassword(email: string): Promise<void> {
-    return this.auth.sendPasswordResetEmail(email);
-  }
-
-  @boundMethod
-  public getCurrentUser(): User {
-    return this.auth.currentUser;
-  }
-
-  @boundMethod
-  public onAuthStateChanged(fn: (user: User) => unknown): Unsubscribe {
-    return this.auth.onAuthStateChanged(fn);
-  }
-
   private init(): void {
     this.app = !firebase.apps.length ? firebase.initializeApp(this.getConfig()) : firebase.app();
-    this.auth = this.app.auth();
+    this.authentication = new Authentication(this.app.auth());
     this.database = this.app.firestore();
   }
 
