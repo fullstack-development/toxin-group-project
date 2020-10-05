@@ -3,7 +3,7 @@ import LikeButton from 'components/LikeButton/LikeButton';
 import * as S from './Comment.style';
 import getСommentDate from './utils/getСommentDate';
 
-type Comment = {
+type Props = {
   avatarUrl: string;
   userName: string;
   date: string;
@@ -11,7 +11,7 @@ type Comment = {
   likesCount: number;
 };
 
-const Comment: React.FC<Comment> = ({ avatarUrl, userName, date, text, likesCount }: Comment) => (
+const Comment: React.FC<Props> = ({ avatarUrl, userName, date, text, likesCount }: Props) => (
   <S.Comment>
     <S.Header>
       <S.Avatar alt={userName} src={`/img/${avatarUrl}`} />
