@@ -1,5 +1,5 @@
-import ColorsTypesLayoutPage from 'components/ColorsTypesLayoutPage/ColorsTypesLayoutPage';
+import ColorsTypesPage from 'components/ColorsTypesPage/ColorsTypesPage';
 
-const ColorsAndTypes: React.FC = () => <ColorsTypesLayoutPage />;
+const ColorsAndTypes: React.FC = () => <ColorsTypesPage />;
 
 export default ColorsAndTypes;
