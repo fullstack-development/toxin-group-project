@@ -48,7 +48,7 @@ const Rooms: React.FC = () => {
       <S.Rooms>
         <S.RoomsGrid>
           {rooms.map((room, index) => (
-            <S.RoomItem key={String(room.number + index)}>
+            <S.RoomItem key={String(room.number) + String(index)}>
               <Room {...room} />
             </S.RoomItem>
           ))}
