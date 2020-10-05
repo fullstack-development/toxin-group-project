@@ -32,19 +32,19 @@ const RoomImpression: React.FC<Props> = ({ title, numberOfRatings }: Props) => (
         >
           <defs>
             <linearGradient id="gradient1" x1="60" y1="0" x2="60" y2="120">
-              <stop stopColor="#FFE39C" />
+              <stop offset="0" stopColor="#FFE39C" />
               <stop offset="1" stopColor="#FFBA9C" />
             </linearGradient>
             <linearGradient id="gradient2" x1="60" y1="0" x2="60" y2="120">
-              <stop stopColor="#BC9CFF" />
+              <stop offset="0" stopColor="#BC9CFF" />
               <stop offset="1" stopColor="#8BA4F9" />
             </linearGradient>
             <linearGradient id="gradient3" x1="60" y1="0" x2="60" y2="120">
-              <stop stopColor="#6FCF97" />
+              <stop offset="0" stopColor="#6FCF97" />
               <stop offset="1" stopColor="#66D2EA" />
             </linearGradient>
             <linearGradient id="gradient4" x1="60" y1="0" x2="60" y2="120">
-              <stop stopColor="#919191" />
+              <stop offset="0" stopColor="#919191" />
               <stop offset="1" stopColor="#3D4975" />
             </linearGradient>
           </defs>
