@@ -1,5 +1,5 @@
 import StarRating from 'components/StarRating/StarRating';
-import getNumberWithSpaces from 'shared/helpers/getNumberWithSpaces';
+import formatNumber from 'shared/helpers/formatNumber';
 
 import ImageGallery from './components/ImageGallery/ImageGallery';
 import * as S from './Room.styles';
@@ -30,7 +30,7 @@ const Room: React.FC<RoomProps> = ({
           {roomType && <S.RoomType>{roomType}</S.RoomType>}
         </S.RoomNumber>
         <S.Price>
-          {`${getNumberWithSpaces(price)}${currency}`}
+          {`${formatNumber(price)}${currency}`}
           <S.Measure>{measure}</S.Measure>
         </S.Price>
       </S.Container>
