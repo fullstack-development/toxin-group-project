@@ -18,6 +18,7 @@ import Input from 'components/Input/Input';
 import LikeButton from 'components/LikeButton/LikeButton';
 import Logo from 'components/Logo/Logo';
 import RadioButton from 'components/RadioButton/RadioButton';
+import RoomImpression from 'components/RoomImpression/RoomImpression';
 import SocialMedia from 'components/SocialMedia/SocialMedia';
 import StarRating from 'components/StarRating/StarRating';
 import SubscriptionField from 'components/SubscriptionField/SubscriptionField';
@@ -229,6 +230,10 @@ class UIFormElementsLayout extends React.Component {
         </S.ArrowButtonWrapper>
         <SocialMedia />
         <Logo isLink />
+        <RoomImpression
+          title="Впечатления от номера"
+          numberOfRatings={{ excellent: 130, good: 65, normal: 65, bad: 0 }}
+        />
       </S.Container>
     );
   }
