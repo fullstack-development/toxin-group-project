@@ -1,12 +1,27 @@
 import styled from 'styled-components';
 
-import { container } from 'shared/styles/mixins';
-
 const Container = styled.div`
-  ${container}
   background: url('./img/auth-register.jpg') bottom / cover no-repeat;
-  min-height: 59.286rem;
-  padding: 5rem 9.6rem 1.47rem 10rem;
+  min-height: 50.2rem;
+  padding: 12.25rem 8rem;
+
+  & > section {
+    margin: 0 auto;
+  }
+
+  @media (max-width: 1200px) {
+    min-height: 40.2rem;
+    padding: 10rem 6rem;
+  }
+
+  @media (max-width: 992px) {
+    min-height: 30.2rem;
+  }
+
+  @media (max-width: 576px) {
+    min-height: 20.2rem;
+    padding: 0.7rem;
+  }
 `;
 
 export { Container };

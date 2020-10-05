@@ -1,7 +1,9 @@
-import { createWrapper } from 'next-redux-wrapper';
-import { applyMiddleware, createStore, Store, Action } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
+
+import rootReducer from './reducers';
+import { watchAuthUser } from './sagas';
 
 const bindMiddleware = (middleware) => {
   if (process.env.NODE_ENV !== 'production') {
@@ -10,12 +12,8 @@ const bindMiddleware = (middleware) => {
   return applyMiddleware(...middleware);
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const makeStore = (): Store<unknown, Action<any>> => {
-  const sagaMiddleware = createSagaMiddleware();
-  const store = createStore(bindMiddleware([sagaMiddleware]));
+const sagaMiddleware = createSagaMiddleware();
 
-  return store;
-};
+export const store = createStore(rootReducer, bindMiddleware([sagaMiddleware]));
 
-export const wrapper = createWrapper(makeStore, { debug: true });
+sagaMiddleware.run(watchAuthUser);

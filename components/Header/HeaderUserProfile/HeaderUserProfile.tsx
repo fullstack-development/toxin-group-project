@@ -1,12 +1,12 @@
-import { HeaderProps } from '../Header.types';
+import { Props } from '../Header.types';
 import * as S from './HeaderUserProfile.styles';
 
-const HeaderUserProfile: React.FC<HeaderProps> = ({ authData }: HeaderProps): JSX.Element => {
-  const { userName, pathToProfile } = authData;
+const HeaderUserProfile: React.FC<Props> = ({ authData }: Props): JSX.Element => {
+  const { displayName, pathToProfile } = authData;
 
   return (
     <S.HeaderUserProfile>
-      <S.Link href={pathToProfile}>{userName}</S.Link>
+      <S.Link href={pathToProfile}>{displayName}</S.Link>
     </S.HeaderUserProfile>
   );
 };

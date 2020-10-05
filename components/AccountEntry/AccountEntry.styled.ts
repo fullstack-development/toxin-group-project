@@ -1,6 +1,22 @@
-import styled from 'styled-components';
+import Snackbar from '@material-ui/core/Snackbar';
+import styled, { css } from 'styled-components';
 
 import { titles } from 'shared/styles/mixins';
+
+type SnackBar = {
+  theme: 'success' | 'error';
+};
+
+const CustomSnackBar = styled(Snackbar)<SnackBar>`
+  ${(props) => {
+    const { theme } = props;
+    return css`
+      & > div {
+        background: ${theme === 'success' ? 'green' : 'darkred'};
+      }
+    `;
+  }}
+`;
 
 const AccountEntry = styled.section`
   max-width: 27.1429rem;
@@ -9,6 +25,7 @@ const AccountEntry = styled.section`
   padding: 2.75rem 2rem 2rem 2.05rem;
   border: 0.0714rem solid rgba(0, 0, 0, 0.12);
   border-radius: 0.2857rem;
+  background: white;
 `;
 
 const Title = styled.h1`
@@ -39,4 +56,4 @@ const FieldsWrapper = styled.div`
   }
 `;
 
-export { AccountEntry, Title, ToRegisterWrapper, FieldsWrapper };
+export { CustomSnackBar, AccountEntry, Title, ToRegisterWrapper, FieldsWrapper };

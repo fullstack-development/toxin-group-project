@@ -1,3 +1,5 @@
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 import { Field, Form } from 'react-final-form';
 
 import ArrowButton from 'components/ArrowButton/ArrowButton';
@@ -6,9 +8,24 @@ import Input from 'components/Input/Input';
 
 import * as S from './AccountEntry.styled';
 
-const AccountEntry: React.FC = (): JSX.Element => {
-  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e;
+type userData = {
+  email: string;
+  password: string;
+};
+
+type Props = {
+  hasAuth: boolean;
+  authStatusText: string;
+  requestToAuth: ({ email, password }) => void;
+};
+
+const AccountEntry: React.FC<Props> = (props: Props): JSX.Element => {
+  const { hasAuth, authStatusText, requestToAuth } = props;
+
+  const handleFormSubmit = (formData: userData) => {
+    const { email, password } = formData;
+
+    requestToAuth({ email, password });
   };
 
   return (
@@ -16,16 +33,16 @@ const AccountEntry: React.FC = (): JSX.Element => {
       <S.Title>Войти</S.Title>
       <Form
         onSubmit={handleFormSubmit}
-        render={() => (
-          <form>
+        render={({ handleSubmit }) => (
+          <form onSubmit={handleSubmit}>
             <S.FieldsWrapper>
               <Field
-                name="user-email"
+                name="email"
                 type="email"
                 render={({ input, meta }) => <Input {...input} {...meta} placeholder="Email" />}
               />
               <Field
-                name="user-password"
+                name="password"
                 type="password"
                 render={({ input, meta }) => <Input {...input} {...meta} placeholder="Пароль" />}
               />
@@ -41,6 +58,24 @@ const AccountEntry: React.FC = (): JSX.Element => {
             </S.ToRegisterWrapper>
           </form>
         )}
+      />
+      <S.CustomSnackBar
+        theme={'success'}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        open={true}
+        autoHideDuration={3000}
+        onClose={() => {}}
+        message={'text'}
+        action={
+          <>
+            <IconButton size="medium" aria-label="close" color="inherit" onClick={() => {}}>
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          </>
+        }
       />
     </S.AccountEntry>
   );
