@@ -3,9 +3,9 @@ import formatNumber from 'shared/helpers/formatNumber';
 
 import ImageGallery from './components/ImageGallery/ImageGallery';
 import * as S from './Room.styles';
-import { RoomProps } from './Room.types';
+import { Props } from './Room.types';
 
-const Room: React.FC<RoomProps> = ({
+const Room: React.FC<Props> = ({
   price,
   number,
   reviewCount,
@@ -17,7 +17,7 @@ const Room: React.FC<RoomProps> = ({
   reviewMeasure = 'отзывов',
   currency = '₽',
   rating = 5,
-}: RoomProps) => (
+}: Props) => (
   <S.Room>
     <ImageGallery imagePaths={imagePaths} />
     <S.Info>

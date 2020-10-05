@@ -1,4 +1,4 @@
-export type RoomProps = {
+export type Props = {
   price: number;
   number: number;
   reviewCount: number;

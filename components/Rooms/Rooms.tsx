@@ -4,7 +4,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import Room from 'components/Room/Room';
 import roomsList from 'components/Rooms/Rooms.data';
 
-import { RoomProps } from '../Room/Room.types';
+import { Props as RoomProps } from '../Room/Room.types';
 import Preloader from './components/Preloader/Preloader';
 import * as S from './Rooms.styles';
 
@@ -13,6 +13,8 @@ import * as S from './Rooms.styles';
 const fetchRooms: Promise<RoomProps[]> = new Promise((resolve) =>
   setTimeout(() => resolve(roomsList), 1500),
 );
+
+// TODO
 
 const DEFAULT_INCREMENT = 12;
 
