@@ -94,6 +94,10 @@ const Dropdown = styled.div`
   margin-bottom: 1.4286rem;
 `;
 
+const PriceList = styled.div`
+  margin-bottom: 2.1429rem;
+`;
+
 export {
   Container,
   RoomNumber,
@@ -106,4 +110,5 @@ export {
   RoomInfo,
   Dropdown,
   DropdownLabel,
+  PriceList,
 };

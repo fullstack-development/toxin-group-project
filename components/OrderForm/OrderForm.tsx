@@ -4,6 +4,7 @@ import ArrowButton from 'components/ArrowButton/ArrowButton';
 import Dropdown from 'components/Dropdown/Dropdown';
 import TimePicker from 'components/TimePicker/TimePicker';
 
+import PriceList from './components/PriceList/PriceList';
 import * as S from './OrderForm.styles';
 
 type Props = {
@@ -77,6 +78,20 @@ const OrderForm: React.FC<Props> = ({
               ]}
             />
           </S.Dropdown>
+          <S.PriceList>
+            <PriceList
+              items={[
+                { label: '9 990₽ х 4 суток', price: 39960 },
+                {
+                  label: 'Сбор за услуги: скидка 2 179₽',
+                  price: 0,
+                  tooltip:
+                    'Подсказка Подсказка Подсказка ПодсказкаПодсказкаПодсказкаПодсказкаПодсказкаПодсказкаПодсказкаПодсказкаПодсказкаПодсказкаПодсказкаПодсказка',
+                },
+                { label: 'Сбор за дополнительные услуги', price: 300, tooltip: 'Подсказка 2' },
+              ]}
+            />
+          </S.PriceList>
           <ArrowButton isLink={false} type="submit">
             Забронировать
           </ArrowButton>
