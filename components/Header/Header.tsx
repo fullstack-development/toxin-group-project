@@ -6,11 +6,16 @@ import NavMenu from 'components/NavMenu/NavMenu';
 import NavLinks from 'components/NavMenu/NavMenu.data';
 
 import * as S from './Header.styles';
-import { HeaderProps } from './Header.types';
 import HeaderUserLogin from './HeaderUserLogin/HeaderUserLogin';
 import HeaderUserProfile from './HeaderUserProfile/HeaderUserProfile';
 
-const Header: React.FC<HeaderProps> = ({ authData }: HeaderProps): JSX.Element => {
+export type Props = {
+  hasAuth: boolean;
+  displayName?: string;
+  pathToProfile?: string;
+};
+
+const Header: React.FC<Props> = ({ hasAuth, displayName }: Props): JSX.Element => {
   const [isOpenMobileMenu, setMobileMenuStatus] = useState(false);
 
   const changeOpenMenuStatus = () => setMobileMenuStatus(!isOpenMobileMenu);
@@ -26,7 +31,7 @@ const Header: React.FC<HeaderProps> = ({ authData }: HeaderProps): JSX.Element =
       <S.MobileMenu isShown={isOpenMobileMenu}>
         <NavMenu menu={NavLinks} />
         <S.AccountPanel>
-          {authData ? <HeaderUserProfile authData={authData} /> : <HeaderUserLogin />}
+          {hasAuth ? <HeaderUserProfile displayName={displayName} /> : <HeaderUserLogin />}
         </S.AccountPanel>
       </S.MobileMenu>
     </S.Header>

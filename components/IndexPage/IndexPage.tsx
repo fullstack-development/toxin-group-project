@@ -1,12 +1,12 @@
-import MainLayout from 'components/MainLayout/MainLayout';
+import MainLayoutContainer from 'components/MainLayout/MainLayoutContainer';
 
 import Banner from './components/Banner/Banner';
 import { BannerMessage } from './IndexPage.data';
 
 const IndexPage: React.FC = (): JSX.Element => (
-  <MainLayout>
+  <MainLayoutContainer>
     <Banner message={BannerMessage} />
-  </MainLayout>
+  </MainLayoutContainer>
 );
 
 export default IndexPage;
