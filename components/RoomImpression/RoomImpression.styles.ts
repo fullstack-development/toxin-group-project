@@ -17,12 +17,21 @@ const Title = styled.h2`
 const Figure = styled.figure`
   display: flex;
   align-items: flex-end;
+
+  @media (max-width: 410px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const PieChartWrapper = styled.div`
   position: relative;
   width: 8.5714rem;
   height: 8.5714rem;
+
+  @media (max-width: 410px) {
+    margin-bottom: 1.5rem;
+  }
 `;
 
 const ReviewsCounter = styled.p`
@@ -59,6 +68,10 @@ const List = styled.ul`
   margin: 0;
   padding-left: 3.214rem;
   list-style: none;
+
+  @media (max-width: 410px) {
+    padding: 0;
+  }
 `;
 
 const Item = styled.li`
