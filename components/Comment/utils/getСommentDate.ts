@@ -17,11 +17,9 @@ const options = {
   second: 'numeric',
 };
 
-function getСommentDate(date: string): string {
-  const targetDate = new Date(date);
+function getСommentDate(date: Date): string {
   const currentDate = Date.now();
-
-  const diff = currentDate - targetDate.valueOf();
+  const diff = currentDate - date.valueOf();
 
   const seconds = diff / 1000;
   if (seconds < 60) {
@@ -51,7 +49,7 @@ function getСommentDate(date: string): string {
     return `${roundedDays} ${getNounInDeclension(roundedDays, DECLENSION.days)} назад`;
   }
 
-  return targetDate.toLocaleDateString('ru-RU', options);
+  return date.toLocaleDateString('ru-RU', options);
 }
 
 export default getСommentDate;

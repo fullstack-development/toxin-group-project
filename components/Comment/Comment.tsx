@@ -6,7 +6,7 @@ import getСommentDate from './utils/getСommentDate';
 type Props = {
   avatarUrl: string;
   userName: string;
-  date: string;
+  date: Date;
   text: string;
   likesCount: number;
 };
@@ -17,7 +17,7 @@ const Comment: React.FC<Props> = ({ avatarUrl, userName, date, text, likesCount 
       <S.Avatar alt={userName} src={`/img/${avatarUrl}`} />
       <S.AuthorWrapper>
         <S.User>{userName}</S.User>
-        <S.Date dateTime={new Date(date).toISOString()}>{getСommentDate(date)}</S.Date>
+        <S.Date dateTime={date.toISOString()}>{getСommentDate(date)}</S.Date>
       </S.AuthorWrapper>
     </S.Header>
     <S.MessageWrapper>
