@@ -2,10 +2,10 @@ import UIColorsList from 'components/UI-ColorsList/UI-ColorsList';
 import UILogo from 'components/UI-Logo/UI-Logo';
 import UITypesList from 'components/UI-TypesList/UI-TypesList';
 
-import { colors, types } from './UI-ColorsTypesLayout.data.json';
-import * as S from './UI-ColorsTypesLayout.styles';
+import { colors, types } from './ColorsTypesPage.data.json';
+import * as S from './ColorsTypesPage.styles';
 
-const UIColorsTypesLayout: React.FC = () => (
+const ColorsTypesPage: React.FC = () => (
   <S.ColorsTypesLayout>
     <S.Logo>
       <UILogo />
@@ -20,4 +20,4 @@ const UIColorsTypesLayout: React.FC = () => (
   </S.ColorsTypesLayout>
 );
 
-export default UIColorsTypesLayout;
+export default ColorsTypesPage;
