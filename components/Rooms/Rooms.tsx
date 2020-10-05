@@ -8,6 +8,8 @@ import { RoomProps } from '../Room/Room.types';
 import Preloader from './components/Preloader/Preloader';
 import * as S from './Rooms.styles';
 
+// TODO
+
 const fetchRooms: Promise<RoomProps[]> = new Promise((resolve) =>
   setTimeout(() => resolve(roomsList), 1500),
 );
@@ -15,7 +17,8 @@ const fetchRooms: Promise<RoomProps[]> = new Promise((resolve) =>
 const DEFAULT_INCREMENT = 12;
 
 const Rooms: React.FC = () => {
-  const [rooms, setRooms] = useState([]);
+  const defaultState: RoomProps[] = [];
+  const [rooms, setRooms] = useState(defaultState);
   const [hasMore, setHasMore] = useState(true);
 
   const getNewRooms = useCallback(async () => {
@@ -43,7 +46,7 @@ const Rooms: React.FC = () => {
       <S.Rooms>
         <S.RoomsGrid>
           {rooms.map((room, index) => (
-            <S.RoomItem key={room.number + String(index)}>
+            <S.RoomItem key={String(room.number + index)}>
               <Room {...room} />
             </S.RoomItem>
           ))}
