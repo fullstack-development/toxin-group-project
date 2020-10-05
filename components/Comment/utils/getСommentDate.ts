@@ -1,4 +1,4 @@
-import valueToIndex from './valueToIntex';
+import getNounInDeclension from './getNounInDeclension';
 
 const DECLENSION = {
   seconds: ['секунда', 'секунды', 'секунд'],
@@ -27,28 +27,28 @@ function getСommentDate(date: string): string {
   if (seconds < 60) {
     const roundedSeconds = Math.floor(seconds);
 
-    return `${roundedSeconds} ${DECLENSION.seconds[valueToIndex(roundedSeconds)]} назад`;
+    return `${roundedSeconds} ${getNounInDeclension(roundedSeconds, DECLENSION.seconds)} назад`;
   }
 
   const minutes = seconds / 60;
   if (minutes < 60) {
     const roundedMinutes = Math.floor(minutes);
 
-    return `${roundedMinutes} ${DECLENSION.minutes[valueToIndex(roundedMinutes)]} назад`;
+    return `${roundedMinutes} ${getNounInDeclension(roundedMinutes, DECLENSION.minutes)} назад`;
   }
 
   const hours = minutes / 60;
   if (hours < 24) {
     const roundedHours = Math.floor(hours);
 
-    return `${roundedHours} ${DECLENSION.hours[valueToIndex(roundedHours)]} назад`;
+    return `${roundedHours} ${getNounInDeclension(roundedHours, DECLENSION.hours)} назад`;
   }
 
   const days = hours / 24;
   if (days < 30) {
     const roundedDays = Math.floor(days);
 
-    return `${roundedDays} ${DECLENSION.days[valueToIndex(roundedDays)]} назад`;
+    return `${roundedDays} ${getNounInDeclension(roundedDays, DECLENSION.days)} назад`;
   }
 
   return targetDate.toLocaleDateString('ru-RU', options);
