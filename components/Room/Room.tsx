@@ -15,7 +15,7 @@ const Room: React.FC<Props> = ({
   roomType,
   measure = 'в сутки',
   reviewMeasure = 'отзывов',
-  currency = '₽',
+  currency,
   rating = 5,
 }: Props) => (
   <S.Room>
@@ -30,7 +30,7 @@ const Room: React.FC<Props> = ({
           {roomType && <S.RoomType>{roomType}</S.RoomType>}
         </S.RoomNumber>
         <S.Price>
-          {`${formatNumber(price)}${currency}`}
+          {formatNumber(price, currency)}
           <S.Measure>{measure}</S.Measure>
         </S.Price>
       </S.Container>
