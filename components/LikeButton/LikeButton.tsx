@@ -26,6 +26,7 @@ const LikeButton: React.FC<LikeButtonProps> = (props: LikeButtonProps) => {
       <FavoriteIcon />
       <S.LikeSpan>{likesCount}</S.LikeSpan>
       <S.LikeInput type="checkbox" onChange={handleLikeButtonClick} checked={isLikeButtonPressed} />
+      <S.LikeOutline />
     </S.LikeLabel>
   );
 };

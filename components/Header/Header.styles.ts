@@ -27,17 +27,16 @@ const MobileMenu = styled.div<MobileMenu>`
 `;
 
 const HamburgerButtonWrapper = styled.button`
+  display: none;
   border: none;
   background: inherit;
-  outline: none;
 
   & > svg {
     cursor: pointer;
-    display: none;
+  }
 
-    @media (max-width: 1050px) {
-      display: block;
-    }
+  @media (max-width: 1050px) {
+    display: block;
   }
 `;
 
