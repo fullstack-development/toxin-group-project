@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+import { mediaBreakpointDown } from 'shared/styles/break-points';
+
 const Copyright = styled.p`
   ${(props) => {
     const { colors } = props.theme;
@@ -8,7 +10,7 @@ const Copyright = styled.p`
       color: ${colors.basicDark};
       line-height: 1.2143rem;
 
-      @media (max-width: 900px) {
+      @media ${mediaBreakpointDown.md} {
         margin-bottom: 1.7857rem;
       }
     `;

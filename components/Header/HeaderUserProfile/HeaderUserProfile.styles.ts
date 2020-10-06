@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+import { mediaBreakpointDown } from 'shared/styles/break-points';
+
 const HeaderUserProfile = styled.div`
   ${(props) => {
     const { colors } = props.theme;
@@ -9,7 +11,7 @@ const HeaderUserProfile = styled.div`
       padding-left: 1.4rem;
       border-left: 0.0714rem solid ${colors.basicLightest};
 
-      @media (max-width: 1050px) {
+      @media ${mediaBreakpointDown.md} {
         width: 100%;
         border-left: none;
         padding: 1.4286rem 0;

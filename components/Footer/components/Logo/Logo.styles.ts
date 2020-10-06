@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+import { mediaBreakpointDown } from 'shared/styles/break-points';
+
 const Container = styled.div``;
 
 const Description = styled.p`
@@ -11,7 +13,7 @@ const Description = styled.p`
       color: ${colors.basicDark};
       line-height: ${typography.lineHeight};
 
-      @media (max-width: 900px) {
+      @media ${mediaBreakpointDown.md} {
         display: none;
       }
     `;
