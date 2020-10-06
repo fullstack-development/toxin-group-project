@@ -85,7 +85,8 @@ const Item = styled.li`
       &:before {
         content: '';
         position: absolute;
-        top: 0.5rem;
+        top: 50%;
+        transform: translateY(-50%);
         left: -1.0714rem;
         width: 0.71428rem;
         height: 0.71428rem;
