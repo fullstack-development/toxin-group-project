@@ -112,4 +112,8 @@ const rooms: RoomProps[] = [
   },
 ];
 
-export default Promise.resolve([...rooms, ...rooms, ...rooms]);
+export default Promise.resolve([
+  ...rooms,
+  ...rooms.map((el) => ({ ...el, number: el.number * 10 })),
+  ...rooms.map((el) => ({ ...el, number: el.number * 100 })),
+]);
