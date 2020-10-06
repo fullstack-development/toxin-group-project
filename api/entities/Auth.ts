@@ -14,15 +14,15 @@ class Auth {
   }
 
   @boundMethod
-  public async signUp(data: ProfileData): Promise<UserCredential> {
+  public async signUp({ name, surname, email, password }: ProfileData): Promise<UserCredential> {
     let credential: UserCredential;
 
     try {
-      credential = await this.actions.createUser(data.email, data.password);
+      credential = await this.actions.createUser(email, password);
     } catch (err) {
       switch (err.code) {
         case 'auth/email-already-in-use':
-          throw apiErrors.trigger('auth/email-is-taken', data.email);
+          throw apiErrors.trigger('auth/email-is-taken', email);
         case 'auth/weak-password':
           throw apiErrors.trigger('auth/weak-password');
         default:
@@ -31,7 +31,12 @@ class Auth {
     }
 
     const user = this.actions.getCurrentUser();
-    user.sendEmailVerification();
+
+    user
+      .updateProfile({
+        displayName: `${name} ${surname}`,
+      })
+      .then(() => user.sendEmailVerification());
 
     return credential;
   }

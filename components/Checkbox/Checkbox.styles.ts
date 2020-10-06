@@ -1,7 +1,10 @@
-/* eslint-disable object-curly-newline */
 import styled, { css } from 'styled-components';
 
 import { visuallyHidden } from 'shared/styles/mixins';
+
+type LabelProps = {
+  title: string;
+};
 
 const Checkbox = styled.label`
   display: inline-flex;
@@ -60,10 +63,24 @@ const Checkmark = styled.span`
   }}
 `;
 
-const Label = styled.span`
-  margin: auto 0 auto 0.7143rem;
-  line-height: 1.38;
-  user-select: none;
+const Label = styled.span<LabelProps>`
+  ${(props) => {
+    const { title } = props;
+    return css`
+      display: inline-flex;
+      flex-direction: column;
+      margin: auto 0 auto 0.7143rem;
+      line-height: 1.3;
+      user-select: none;
+      font-size: ${title ? '0.8571rem' : '1rem'};
+    `;
+  }}
 `;
 
-export { Checkbox, HiddenCheckbox, Checkmark, Label };
+const Title = styled.span`
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0.3571rem;
+`;
+
+export { Checkbox, HiddenCheckbox, Checkmark, Label, Title };
