@@ -1,6 +1,6 @@
-import { UIColors, UITypes } from './UI-ColorsTypesLayout.types';
+import { UIColor, UIType } from './UI-ColorsTypesLayout.types';
 
-export const colors: Required<UIColors[]> = [
+export const colors: Required<UIColor[]> = [
   {
     title: 'Dark Shade 100%',
     color: '#1F2041',
@@ -38,7 +38,7 @@ export const colors: Required<UIColors[]> = [
   },
 ];
 
-export const types: Required<UITypes[]> = [
+export const types: Required<UIType[]> = [
   {
     type: 'H1',
     example: 'This one is the sub-section or widget title',

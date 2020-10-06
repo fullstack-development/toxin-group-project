@@ -1,10 +1,10 @@
-export type UIColors = {
+export type UIColor = {
   title: string;
   color: string;
   opacity: number;
 };
 
-export type UITypes = {
+export type UIType = {
   type: string;
   example: string;
   fontSize: string;
