@@ -31,21 +31,21 @@ const RoomImpression: React.FC<Props> = ({ title, numberOfRatings }: Props) => (
           paddingAngle={2}
         >
           <defs>
-            <linearGradient id="gradient1" x1="60" y1="0" x2="60" y2="120">
-              <stop offset="0" stopColor="#FFE39C" />
-              <stop offset="1" stopColor="#FFBA9C" />
+            <linearGradient id="gradient1" x1="100%" y1="50%" x2="0%" y2="50%">
+              <stop offset="0" stopColor="#ffe39c" />
+              <stop offset="1" stopColor="#ffba9c" />
             </linearGradient>
-            <linearGradient id="gradient2" x1="60" y1="0" x2="60" y2="120">
-              <stop offset="0" stopColor="#BC9CFF" />
-              <stop offset="1" stopColor="#8BA4F9" />
+            <linearGradient id="gradient2" x1="100%" y1="50%" x2="0%" y2="50%">
+              <stop offset="0" stopColor="#bc9cff" />
+              <stop offset="1" stopColor="#8ba4f9" />
             </linearGradient>
-            <linearGradient id="gradient3" x1="60" y1="0" x2="60" y2="120">
-              <stop offset="0" stopColor="#6FCF97" />
-              <stop offset="1" stopColor="#66D2EA" />
+            <linearGradient id="gradient3" x1="100%" y1="50%" x2="0%" y2="50%">
+              <stop offset="0" stopColor="#6fcf97" />
+              <stop offset="1" stopColor="#66d2ea" />
             </linearGradient>
-            <linearGradient id="gradient4" x1="60" y1="0" x2="60" y2="120">
+            <linearGradient id="gradient4" x1="100%" y1="50%" x2="0%" y2="50%">
               <stop offset="0" stopColor="#919191" />
-              <stop offset="1" stopColor="#3D4975" />
+              <stop offset="1" stopColor="#3d4975" />
             </linearGradient>
           </defs>
         </PieChart>
