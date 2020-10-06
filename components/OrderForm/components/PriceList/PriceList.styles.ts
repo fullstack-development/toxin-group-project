@@ -9,7 +9,9 @@ const Item = styled.li`
   ${(props) => {
     const { typography } = props.theme;
     return css`
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr max-content;
+      gap: 0 0.7143rem;
       width: 100%;
       justify-content: space-between;
       line-height: ${typography.lineHeight};
@@ -77,9 +79,7 @@ const Tooltip = styled.div`
   }}
 `;
 
-const PriceWrapper = styled.div``;
-
-const Price = styled.span``;
+const Price = styled.div``;
 
 const Label = styled.span`
   display: flex;
@@ -94,7 +94,7 @@ const Label = styled.span`
 const LabelText = styled.p`
   margin: 0;
   width: 100%;
-  max-width: 215px;
+  max-width: 15.3571rem;
 `;
 
-export { List, Item, Price, Label, Tooltip, PriceWrapper, TooltipText, LabelText };
+export { List, Item, Price, Label, Tooltip, TooltipText, LabelText };
