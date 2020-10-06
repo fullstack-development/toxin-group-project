@@ -43,11 +43,13 @@ const RangeSlider = styled(Slider)`
         height: 1.1429rem;
         background: ${colors.secondary} ${gradients.secondary};
         border: 0.1429rem solid white;
-        box-shadow: none;
-        outline: none;
-        &:focus, &:hover {
-          box-shadow: inherit;
-        },
+      }
+
+      & .MuiSlider-thumb.Mui-focusVisible,
+      & .MuiSlider-active,
+      & .MuiSlider-thumb:hover,
+      & .MuiSlider-thumb:focus {
+        box-shadow: 0 0 1.0714rem ${colors.secondary};
       }
 
       & .MuiSlider-track {
