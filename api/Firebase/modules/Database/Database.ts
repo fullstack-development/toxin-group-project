@@ -40,11 +40,8 @@ class Database {
   }
 
   @boundMethod
-  public post(options: Post): void {
-    const { ref, data } = options;
-
-    if (options.doc) ref.doc(options.doc).set(data, { merge: options.merge });
-    else ref.add(data);
+  public post({ ref, data, doc, merge }: Post): void {
+    doc ? ref.doc(doc).set(data, { merge }) : ref.add(data);
   }
 
   @boundMethod
