@@ -1,4 +1,5 @@
 export type Apartment = {
+  id: number;
   price: number;
   rating: number;
   reviews: number;
