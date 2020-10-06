@@ -3,7 +3,7 @@ import { Field } from 'react-final-form';
 
 import * as S from './RangeSlider.styles';
 
-type RangeSliderProps = {
+type Props = {
   initialValue: number[];
   name: string;
   max?: number;
@@ -13,7 +13,7 @@ type RangeSliderProps = {
   title?: string;
 };
 
-const RangeSlider: React.FC<RangeSliderProps> = ({
+const RangeSlider: React.FC<Props> = ({
   initialValue,
   name,
   max = 16000,
@@ -21,11 +21,17 @@ const RangeSlider: React.FC<RangeSliderProps> = ({
   step = 100,
   currency = '₽',
   title,
-}: RangeSliderProps) => {
+}: Props) => {
   const [value, setValue] = useState(initialValue);
 
   const getValueWithSpaces = (currentValue: number): string => {
-    return currentValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+    return currentValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' '); // TODO: использовать функцию для форматирования даты из helper'ов
+  };
+
+  const getValuesRangeString = () => {
+    return `${getValueWithSpaces(value[0])}${currency} - ${getValueWithSpaces(
+      value[1],
+    )}${currency}`;
   };
 
   return (
@@ -41,9 +47,7 @@ const RangeSlider: React.FC<RangeSliderProps> = ({
           <>
             <S.Description title={title}>
               {title && <S.Title>{title}</S.Title>}
-              <S.Value>{`${getValueWithSpaces(value[0])}${currency} - ${getValueWithSpaces(
-                value[1],
-              )}${currency}`}</S.Value>
+              <S.Value>{getValuesRangeString()}</S.Value>
             </S.Description>
             <S.RangeSlider
               aria-labelledby={name}
