@@ -12,7 +12,6 @@ import HeaderUserProfile from './HeaderUserProfile/HeaderUserProfile';
 export type Props = {
   hasAuth: boolean;
   displayName?: string;
-  pathToProfile?: string;
 };
 
 const Header: React.FC<Props> = ({ hasAuth, displayName }: Props): JSX.Element => {

@@ -7,3 +7,9 @@ export type AuthData = {
   email: string;
   password: string;
 };
+
+export type State = {
+  hasAuth?: boolean;
+  authStatusText?: string;
+  displayName?: string;
+};

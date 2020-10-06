@@ -1,16 +1,13 @@
-import { AUTH_PROCESS, AUTH_SUCCESS, AUTH_FAILED, CLOSE_SNACKBAR } from './constant';
-import { Action } from './types';
+import { AUTH_PROCESS, AUTH_SUCCESS, AUTH_FAILED } from './constant';
+import { Action, State } from './types';
 
-const initialState = {
+const initialState: State = {
   hasAuth: false,
   authStatusText: '',
   displayName: 'Аноним',
 };
 
-const rootReducer = (
-  state: Record<string, unknown> = initialState,
-  action: Action<unknown>,
-): unknown => {
+const rootReducer = (state: Record<string, unknown> = initialState, action: Action<any>): State => {
   switch (action.type) {
     case AUTH_PROCESS:
       return state;

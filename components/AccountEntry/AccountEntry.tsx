@@ -1,5 +1,6 @@
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+import { useState } from 'react';
 import { Field, Form } from 'react-final-form';
 
 import ArrowButton from 'components/ArrowButton/ArrowButton';
@@ -19,13 +20,37 @@ type Props = {
   requestToAuth: ({ email, password }) => void;
 };
 
+type SnackBar = {
+  isShown: boolean;
+  text: string;
+  theme?: string;
+};
+
 const AccountEntry: React.FC<Props> = (props: Props): JSX.Element => {
   const { hasAuth, authStatusText, requestToAuth } = props;
 
-  const handleFormSubmit = (formData: userData) => {
+  const [snackBar, setSnackBarStatus] = useState<SnackBar>({
+    isShown: false,
+    text: '',
+    theme: 'error',
+  });
+
+  const handleFormSubmit = (formData: userData): void => {
     const { email, password } = formData;
 
     requestToAuth({ email, password });
+
+    setSnackBarStatus({
+      ...snackBar,
+      isShown: !hasAuth ?? true,
+    });
+  };
+
+  const hideSnackBar = (): void => {
+    setSnackBarStatus({
+      ...snackBar,
+      isShown: false,
+    });
   };
 
   return (
@@ -60,18 +85,18 @@ const AccountEntry: React.FC<Props> = (props: Props): JSX.Element => {
         )}
       />
       <S.CustomSnackBar
-        theme={'success'}
+        theme={hasAuth ? 'success' : 'error'}
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'left',
         }}
-        open={true}
+        open={snackBar.isShown}
         autoHideDuration={3000}
-        onClose={() => {}}
-        message={'text'}
+        onClose={hideSnackBar}
+        message={authStatusText}
         action={
           <>
-            <IconButton size="medium" aria-label="close" color="inherit" onClick={() => {}}>
+            <IconButton size="medium" aria-label="close" color="inherit" onClick={hideSnackBar}>
               <CloseIcon fontSize="small" />
             </IconButton>
           </>
