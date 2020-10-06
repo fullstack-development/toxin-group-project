@@ -25,7 +25,7 @@ const SearchRoomForm: React.FC<SearchRoomFormProps> = ({ onSubmit }: SearchRoomF
             <S.TimePickerWrapper>
               <TimePicker
                 type="double"
-                labelName="search-room"
+                name="search-room-date"
                 dateFromLabelText="прибытие"
                 dateToLabelText="выезд"
               />

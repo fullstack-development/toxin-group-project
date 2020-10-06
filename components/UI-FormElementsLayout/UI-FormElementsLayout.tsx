@@ -166,7 +166,7 @@ class UIFormElementsLayout extends React.Component {
               <S.TimePickerWrapper>
                 <TimePicker
                   type="double"
-                  labelName="elements"
+                  name="elements-date"
                   dateFromLabelText="date dropdown"
                   dateToLabelText="date dropdown"
                 />
