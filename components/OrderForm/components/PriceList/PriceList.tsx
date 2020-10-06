@@ -10,7 +10,7 @@ const PriceList: React.FC<Props> = ({ items }: Props) => {
           return (
             <S.Item key={label}>
               <S.Label>
-                {label}
+                <S.LabelText>{label}</S.LabelText>
                 {tooltip && (
                   <S.Tooltip tabIndex={0}>
                     i<S.TooltipText>{tooltip}</S.TooltipText>

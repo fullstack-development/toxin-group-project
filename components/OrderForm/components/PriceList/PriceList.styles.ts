@@ -36,14 +36,14 @@ const TooltipText = styled.div`
       width: max-content;
       position: absolute;
       background-color: white;
-      left: 0;
+      left: 50%;
       z-index: 3;
       top: 1.4286rem;
       color: ${colors.basicDark};
-      transform: translateX(-100%);
+      transform: translateX(-50%);
       border: 0.0714rem solid ${colors.basicDarkest};
       cursor: default;
-      word-break: break-all;
+      overflow-wrap: anywhere;
     `;
   }}
 `;
@@ -59,10 +59,10 @@ const Tooltip = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
-      position: absolute;
       border-radius: 50%;
       right: 0;
       top: 0;
+      flex-shrink: 0;
       color: ${colors.basicLight};
       border: 0.0714rem solid ${colors.basicLight};
       cursor: pointer;
@@ -82,12 +82,19 @@ const PriceWrapper = styled.div``;
 const Price = styled.span``;
 
 const Label = styled.span`
+  display: flex;
+  justify-content: space-between;
   box-sizing: content-box;
   position: relative;
   width: 100%;
-  padding-right: 2.1429rem;
   margin-right: 0.7143rem;
-  max-width: 15.2857rem;
+  max-width: 17.1429rem;
 `;
 
-export { List, Item, Price, Label, Tooltip, PriceWrapper, TooltipText };
+const LabelText = styled.p`
+  margin: 0;
+  width: 100%;
+  max-width: 215px;
+`;
+
+export { List, Item, Price, Label, Tooltip, PriceWrapper, TooltipText, LabelText };
