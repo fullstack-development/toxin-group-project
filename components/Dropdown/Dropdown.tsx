@@ -99,65 +99,71 @@ const Dropdown: React.FC<DropdownProps> = ({
 
   return (
     <Field name={name} parse={() => dropdownState}>
-      {({ input }) => (
-        <S.Dropdown ref={dropdown}>
-          <S.Result isOpen={isOpen} onClick={handleResultBarClick} type="button">
-            {resultString}
-          </S.Result>
-          <S.ListContainer isOpen={isOpen}>
-            <S.List>
-              {dropdownState.map((el) => {
-                const { title, min, max, currentValue, inputName } = el;
+      {({ input }) => {
+        const applyDropdownChanges = (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => {
+          handleApplyClick();
+          input.onChange(e);
+        };
 
-                const makeButtonHandler = (
-                  increment: number,
-                ): ((e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => void) => (
-                  e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>,
-                ): void => {
-                  setDropdownState((prevState) => {
-                    const state = [...prevState];
-                    const elementToUpdate = state.find((item) => item.title === title);
-                    elementToUpdate.currentValue += increment;
-                    return state;
-                  });
-                  input.onChange(e);
-                };
-                const handleIncrementClick = makeButtonHandler(1);
-                const handleDecrementClick = makeButtonHandler(-1);
-                return (
-                  <S.Item key={title}>
-                    <S.ItemTitle>{title}</S.ItemTitle>
-                    <NumberInput
-                      currentValue={currentValue}
-                      min={min}
-                      max={max}
-                      onIncrement={handleIncrementClick}
-                      onDecrement={handleDecrementClick}
-                      name={inputName}
-                    />
-                  </S.Item>
-                );
-              })}
-            </S.List>
-            {enableControls && (
-              <S.Controls>
-                <S.ResetButton
-                  isLink={false}
-                  type="button"
-                  isSecondary
-                  isHidden={isResetHidden}
-                  onClick={handleResetClick}
-                >
-                  Очистить
-                </S.ResetButton>
-                <ApplyButton isLink={false} type="button" onClick={handleApplyClick}>
-                  Применить
-                </ApplyButton>
-              </S.Controls>
-            )}
-          </S.ListContainer>
-        </S.Dropdown>
-      )}
+        return (
+          <S.Dropdown ref={dropdown}>
+            <S.Result isOpen={isOpen} onClick={handleResultBarClick} type="button">
+              {resultString}
+            </S.Result>
+            <S.ListContainer isOpen={isOpen}>
+              <S.List>
+                {dropdownState.map((el) => {
+                  const { title, min, max, currentValue, inputName } = el;
+
+                  const makeButtonHandler = (
+                    increment: number,
+                  ): ((e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => void) => (
+                    e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>,
+                  ): void => {
+                    setDropdownState((prevState) => {
+                      const state = [...prevState];
+                      const elementToUpdate = state.find((item) => item.title === title);
+                      elementToUpdate.currentValue += increment;
+                      return state;
+                    });
+                  };
+                  const handleIncrementClick = makeButtonHandler(1);
+                  const handleDecrementClick = makeButtonHandler(-1);
+                  return (
+                    <S.Item key={title}>
+                      <S.ItemTitle>{title}</S.ItemTitle>
+                      <NumberInput
+                        currentValue={currentValue}
+                        min={min}
+                        max={max}
+                        onIncrement={handleIncrementClick}
+                        onDecrement={handleDecrementClick}
+                        name={inputName}
+                      />
+                    </S.Item>
+                  );
+                })}
+              </S.List>
+              {enableControls && (
+                <S.Controls>
+                  <S.ResetButton
+                    isLink={false}
+                    type="button"
+                    isSecondary
+                    isHidden={isResetHidden}
+                    onClick={handleResetClick}
+                  >
+                    Очистить
+                  </S.ResetButton>
+                  <ApplyButton isLink={false} type="button" onClick={applyDropdownChanges}>
+                    Применить
+                  </ApplyButton>
+                </S.Controls>
+              )}
+            </S.ListContainer>
+          </S.Dropdown>
+        );
+      }}
     </Field>
   );
 };

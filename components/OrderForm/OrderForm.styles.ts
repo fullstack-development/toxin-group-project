@@ -98,6 +98,25 @@ const PriceList = styled.div`
   margin-bottom: 2.1429rem;
 `;
 
+const ResultPrice = styled.div``;
+const ResultWrapper = styled.div`
+  display: grid;
+  grid-template-columns: max-content 1fr max-content;
+  gap: 0 0.3571rem;
+  ${titles.h2()}
+  margin-bottom: 1.4286rem;
+`;
+
+const Dots = styled.div`
+  ${(props) => {
+    const { colors } = props.theme;
+    return css`
+      margin-bottom: 0.4286rem;
+      border-bottom: 0.0714rem dotted ${colors.basicLight};
+    `;
+  }}
+`;
+
 export {
   Container,
   RoomNumber,
@@ -111,4 +130,7 @@ export {
   Dropdown,
   DropdownLabel,
   PriceList,
+  ResultWrapper,
+  Dots,
+  ResultPrice,
 };
