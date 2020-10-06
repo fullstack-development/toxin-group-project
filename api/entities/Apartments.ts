@@ -31,6 +31,8 @@ class Apartments {
   public async load(id: Apartment['id']): Promise<Apartment> {
     return this.actions.getDocument(this.reference, String(id));
   }
+
+  // TODO: создать метод фильтрации
 }
 
 export default Apartments;

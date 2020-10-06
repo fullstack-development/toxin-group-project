@@ -37,6 +37,7 @@ class Booking {
   }
 
   @boundMethod
+  // NOTE: Подумать над форматом аргументов, думаю надежным вариантом будет объект даты
   public async getBooked(from: number, to: number): Promise<number[]> {
     function addIDsToStorage(snapshot: QuerySnapshot, storage: BookingData[]) {
       snapshot.forEach((doc) => storage.push(doc.data() as BookingData));
@@ -60,6 +61,8 @@ class Booking {
 
     return Array.from(result);
   }
+
+  // TODO: создать метод удаления просроченных полей
 }
 
 export default Booking;
