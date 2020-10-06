@@ -1,5 +1,5 @@
+import { Props } from '../../OrderForm.types';
 import * as S from './PriceList.styles';
-import { Props } from './PriceList.types';
 
 const PriceList: React.FC<Props> = ({ items }: Props) => {
   return (
