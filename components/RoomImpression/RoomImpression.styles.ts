@@ -1,17 +1,13 @@
 import styled, { css } from 'styled-components';
 
+import { titles } from 'shared/styles/mixins';
+
 const RoomImpression = styled.section``;
 
 const Title = styled.h2`
-  ${(props) => {
-    const { typography } = props.theme;
-
-    return css`
-      margin: 0 0 1.4285rem 0;
-
-      font: bold 1.3571rem ${typography.secondaryFontName};
-    `;
-  }}
+  margin: 0 0 1.4285rem 0;
+  ${titles.h2}
+  font-size: 1.3571rem;
 `;
 
 const Figure = styled.figure`
