@@ -19,9 +19,9 @@ const options = {
 
 function getСommentDate(date: Date): string {
   const currentDate = Date.now();
-  const diff = currentDate - date.valueOf();
+  const timeHasPassed = currentDate - date.valueOf();
 
-  const seconds = diff / 1000;
+  const seconds = timeHasPassed / 1000;
   if (seconds < 60) {
     const roundedSeconds = Math.floor(seconds);
 
