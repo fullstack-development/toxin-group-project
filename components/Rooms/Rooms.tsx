@@ -8,7 +8,7 @@ import { Props as RoomProps } from '../Room/Room.types';
 import Preloader from './components/Preloader/Preloader';
 import * as S from './Rooms.styles';
 
-// TODO
+// TODO вынести запрос в отдельный слой приложения
 
 const fetchRooms: Promise<RoomProps[]> = new Promise((resolve) =>
   setTimeout(() => resolve(roomsList), 1500),
@@ -19,8 +19,7 @@ const fetchRooms: Promise<RoomProps[]> = new Promise((resolve) =>
 const DEFAULT_INCREMENT = 12;
 
 const Rooms: React.FC = () => {
-  const defaultState: RoomProps[] = [];
-  const [rooms, setRooms] = useState(defaultState);
+  const [rooms, setRooms] = useState<RoomProps[]>([]);
   const [hasMore, setHasMore] = useState(true);
 
   const getNewRooms = useCallback(async () => {
