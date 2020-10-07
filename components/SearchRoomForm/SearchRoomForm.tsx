@@ -1,5 +1,6 @@
 import { Form } from 'react-final-form';
 
+import api from 'api/api';
 import ArrowButton from 'components/ArrowButton/ArrowButton';
 import Dropdown from 'components/Dropdown/Dropdown';
 import TimePicker from 'components/TimePicker/TimePicker';
@@ -8,6 +9,12 @@ import * as S from './SearchRoomForm.styles';
 
 type SearchRoomFormProps = {
   onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
+};
+const handleDBRequest = (e) => {
+  e.preventDefault;
+  console.log('запрашиваю');
+  // api.apartments.load('2gBtycnJmv4EnwzHKD84').then((data) => console.log(data));
+  api.booking.getFreeRooms().then((data) => console.log(data));
 };
 
 const SearchRoomForm: React.FC<SearchRoomFormProps> = ({ onSubmit }: SearchRoomFormProps) => {
@@ -58,7 +65,7 @@ const SearchRoomForm: React.FC<SearchRoomFormProps> = ({ onSubmit }: SearchRoomF
                 ]}
               />
             </S.DropdownWrapper>
-            <ArrowButton isLink={false} isFilled>
+            <ArrowButton isLink={false} isFilled onClick={handleDBRequest} type="button">
               Подобрать номер
             </ArrowButton>
           </form>

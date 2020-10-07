@@ -1,3 +1,5 @@
+import { Timestamp } from 'api/Firebase/modules/Database';
+
 export type Apartment = {
   id: number;
   price: number;
@@ -29,6 +31,16 @@ export type Apartment = {
   images: { url: string; alt: string }[];
 };
 
+// type Filters = {
+//   price: {
+//     from: number,
+//     to: number
+//   },
+//   booked: {
+//     from: Date
+//   }
+// }
+
 export type ApartmentsList = { [k: number]: Apartment };
 
 export type ProfileData = {
@@ -42,7 +54,7 @@ export type ProfileData = {
 };
 
 export type BookingData = {
-  apartmentId: number;
-  from: number;
-  to: number;
+  id: number;
+  from: Timestamp;
+  to: Timestamp;
 };
