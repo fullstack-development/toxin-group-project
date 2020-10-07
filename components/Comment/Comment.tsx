@@ -1,27 +1,32 @@
 import LikeButton from 'components/LikeButton/LikeButton';
 
 import * as S from './Comment.style';
+import getСommentDate from './utils/getСommentDate';
 
-type Comment = {
+type Props = {
   avatarUrl: string;
   userName: string;
-  date: string;
+  date: Date;
   text: string;
   likesCount: number;
 };
 
-const Comment: React.FC<Comment> = ({ avatarUrl, userName, date, text, likesCount }: Comment) => (
-  <>
-    <S.Avatar alt={userName} src={`/img/${avatarUrl}`} />
-    <S.User>{userName}</S.User>
-    <S.Date>{date}</S.Date>
+const Comment: React.FC<Props> = ({ avatarUrl, userName, date, text, likesCount }: Props) => (
+  <S.Comment>
+    <S.Header>
+      <S.Avatar alt={userName} src={`/img/${avatarUrl}`} />
+      <S.AuthorWrapper>
+        <S.User>{userName}</S.User>
+        <S.Date dateTime={date.toISOString()}>{getСommentDate(date)}</S.Date>
+      </S.AuthorWrapper>
+    </S.Header>
     <S.MessageWrapper>
       <S.LeftWrapper>
         <LikeButton count={likesCount} isActive />
       </S.LeftWrapper>
       <S.Text>{text}</S.Text>
     </S.MessageWrapper>
-  </>
+  </S.Comment>
 );
 
 export default Comment;
