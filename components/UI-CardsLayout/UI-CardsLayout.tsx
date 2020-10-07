@@ -1,6 +1,7 @@
 import React from 'react';
 
 import AccountEntry from 'components/AccountEntry/AccountEntry';
+import ForgotPasswordForm from 'components/ForgotPasswordForm/ForgotPasswordForm';
 import RegistrationForm from 'components/RegistrationForm/RegistrationForm';
 import Room from 'components/Room/Room';
 import SearchRoomForm from 'components/SearchRoomForm/SearchRoomForm';
@@ -28,6 +29,9 @@ const UICardsLayout: React.FC = (): JSX.Element => (
     <S.AccountEntryWrapper>
       <AccountEntry />
     </S.AccountEntryWrapper>
+    <S.ForgotPasswordWrapper>
+      <ForgotPasswordForm />
+    </S.ForgotPasswordWrapper>
   </S.Container>
 );
 
