@@ -13,6 +13,7 @@ import {
 } from 'components/CheckboxesList/CheckboxesList.data';
 import Comment from 'components/Comment/Comment';
 import Dropdown from 'components/Dropdown/Dropdown';
+import { guestsGroups, guestsItems, amenitiesItems } from 'components/Dropdown/Dropdown.data';
 import Expander from 'components/Expander/Expander';
 import Input from 'components/Input/Input';
 import LikeButton from 'components/LikeButton/LikeButton';
@@ -102,21 +103,8 @@ class UIFormElementsLayout extends React.Component {
                 <Dropdown
                   placeholder="Сколько гостей"
                   enableControls={false}
-                  name="guests"
-                  items={[
-                    {
-                      title: 'Спальни',
-                      wordForms: ['спальня', 'спальни', 'спален'],
-                    },
-                    {
-                      title: 'Кровати',
-                      wordForms: ['кровать', 'кровати', 'кроватей'],
-                    },
-                    {
-                      title: 'Ванные комнаты',
-                      wordForms: ['ванная', 'ванные', 'ванных'],
-                    },
-                  ]}
+                  name="amenities"
+                  items={amenitiesItems}
                 />
               </S.DropdownWrapper>
               <S.DropdownWrapper>
@@ -124,26 +112,8 @@ class UIFormElementsLayout extends React.Component {
                   placeholder="Сколько гостей"
                   name="guests"
                   enableControls
-                  groups={[
-                    {
-                      name: 'guests',
-                      wordForms: ['гость', 'гостя', 'гостей'],
-                    },
-                  ]}
-                  items={[
-                    {
-                      title: 'взрослые',
-                      groupName: 'guests',
-                    },
-                    {
-                      title: 'дети',
-                      groupName: 'guests',
-                    },
-                    {
-                      title: 'младенцы',
-                      wordForms: ['младенец', 'младенца', 'младенцев'],
-                    },
-                  ]}
+                  groups={guestsGroups}
+                  items={guestsItems}
                 />
               </S.DropdownWrapper>
               <S.CheckboxWrapper>
