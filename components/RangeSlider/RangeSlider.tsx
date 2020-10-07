@@ -28,7 +28,7 @@ const RangeSlider: React.FC<Props> = ({
     return currentValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' '); // TODO: использовать функцию для форматирования даты из helper'ов
   };
 
-  const getValuesRangeString = () => {
+  const getValuesRangeText = () => {
     return `${getValueWithSpaces(value[0])}${currency} - ${getValueWithSpaces(
       value[1],
     )}${currency}`;
@@ -37,24 +37,31 @@ const RangeSlider: React.FC<Props> = ({
   return (
     <Field
       name={name}
-      parse={() => value}
       render={({ input }) => {
         const handleChange = (_, currentValue) => {
           setValue(currentValue);
+        };
+
+        const handlePointerUp = () => {
+          const result = {
+            from: value[0],
+            to: value[1],
+          };
+          input.onChange(result);
         };
 
         return (
           <>
             <S.Description title={title}>
               {title && <S.Title>{title}</S.Title>}
-              <S.Value>{getValuesRangeString()}</S.Value>
+              <S.Value>{getValuesRangeText()}</S.Value>
             </S.Description>
             <S.RangeSlider
               aria-labelledby={name}
               max={max}
               min={min}
               onChange={handleChange}
-              onPointerUp={input.onChange}
+              onPointerUp={handlePointerUp}
               value={value}
               step={step}
             />
