@@ -7,9 +7,7 @@ import * as S from './RoomImpression.styles';
 import { Props } from './RoomImpression.types';
 
 const RoomImpression: React.FC<Props> = ({ title, numberOfRatings }: Props) => {
-  const DECLANSION = {
-    votes: ['голос', 'голоса', 'голосов'],
-  };
+  const declensions = ['голос', 'голоса', 'голосов'];
   const ratingsSum = Object.values(numberOfRatings).reduce(
     (accumulator, currentValue) => accumulator + currentValue,
   );
@@ -22,7 +20,7 @@ const RoomImpression: React.FC<Props> = ({ title, numberOfRatings }: Props) => {
           <S.ReviewsCounter>
             {ratingsSum}
             <S.ReviewsCounterText>
-              {getNounInDeclension(ratingsSum, DECLANSION.votes)}
+              {getNounInDeclension(ratingsSum, declensions)}
             </S.ReviewsCounterText>
           </S.ReviewsCounter>
           <PieChart
