@@ -13,8 +13,6 @@ type SearchRoomFormProps = {
 const handleDBRequest = (e) => {
   e.preventDefault;
   console.log('request');
-  // api.apartments.load('2gBtycnJmv4EnwzHKD84').then((data) => console.log(data));
-  // api.booking.getFreeRooms().then((data) => console.log(data));
   api.booking
     .filterRooms({
       price: {

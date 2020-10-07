@@ -4,11 +4,12 @@ import { nanoid } from 'nanoid';
 import { matchObjects } from 'shared/helpers';
 
 import { Database, CollectionReference, QuerySnapshot } from '../Firebase/modules/Database';
+import { Timestamp } from '../Firebase/modules/Database/types';
 import { BookingData, Apartment, Filters } from './types';
 
-// function convertToDate(t: Timestamp): Date {
-//   return new Date(t.seconds * 1000);
-// }
+function convertToDate(t: Timestamp): Date {
+  return new Date(t.seconds * 1000);
+}
 
 class Booking {
   private readonly actions: Database;
@@ -68,7 +69,18 @@ class Booking {
     return Array.from(result);
   }
 
-  public async getFreeRooms(): Promise<Apartment[]> {
+  private async getBookedRooms(): Promise<BookingData[]> {
+    return this.booked.get().then((querySnapshot) => {
+      const result: BookingData[] = [];
+      querySnapshot.forEach((doc) => {
+        const bookedRoom = doc.data() as BookingData;
+        result.push(bookedRoom);
+      });
+      return result;
+    });
+  }
+
+  public async getFreeRooms(from: Date, to: Date): Promise<Apartment[]> {
     const allRooms = await this.apartments.get().then((querySnapshot) => {
       const result: Apartment[] = [];
       querySnapshot.forEach((doc) => {
@@ -77,22 +89,18 @@ class Booking {
       return result;
     });
 
-    const bookedRooms = await this.booked.get().then((querySnapshot) => {
-      const result: BookingData[] = [];
-      querySnapshot.forEach((doc) => {
-        const bookedRoom = doc.data() as BookingData;
-        result.push(bookedRoom);
-      });
-      return result;
-    });
+    const bookedRooms = await this.getBookedRooms();
 
-    return allRooms.filter(
-      (room) => !bookedRooms.map((bookedRoom) => bookedRoom.id).includes(room.id),
-    );
+    return allRooms.filter((room) => {
+      const isBooked = bookedRooms.find((bookedRoom) => bookedRoom.id === room.id);
+      const beforeCurrentBooking = isBooked && to < convertToDate(isBooked.from);
+      const afterCurrentBooking = isBooked && from > convertToDate(isBooked.to);
+      return !isBooked || beforeCurrentBooking || afterCurrentBooking;
+    });
   }
 
   public async filterRooms(options: Filters): Promise<Apartment[]> {
-    const rooms = await this.getFreeRooms();
+    const rooms = await this.getFreeRooms(options.booked.from, options.booked.to);
 
     const comparableOptions: (keyof Filters)[] = [
       'amenities',
@@ -106,12 +114,9 @@ class Booking {
       );
 
       const matchPrice = options.price.from < room.price && options.price.to > room.price;
+
       return matchComparable && matchPrice;
     });
-
-    // Object.keys(options).forEach((option) => {
-    //   if (comparableOptions.includes(option))
-    // })
   }
 
   // TODO: создать метод удаления просроченных полей
