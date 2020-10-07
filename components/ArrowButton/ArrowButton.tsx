@@ -1,8 +1,8 @@
-import { ButtonProps } from 'components/Button/Button.types';
+import { Props } from 'components/Button/Button.types';
 
 import * as S from './ArrowButton.styles';
 
-const ArrowButton: React.FC<ButtonProps> = ({ ...rest }: ButtonProps) => (
+const ArrowButton: React.FC<Props> = ({ ...rest }: Props) => (
   <S.ArrowButton>
     <S.BasicButton {...rest} isFilled>
       {rest.children}
