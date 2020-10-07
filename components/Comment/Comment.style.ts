@@ -1,7 +1,9 @@
 import styled, { css } from 'styled-components';
 
-const LeftWrapper = styled.div`
-  margin: 0 1rem 0 0.4rem;
+const Comment = styled.article``;
+
+const Header = styled.header`
+  display: flex;
 `;
 
 const Avatar = styled.img`
@@ -9,8 +11,8 @@ const Avatar = styled.img`
     const { colors } = props.theme;
 
     return css`
-      float: left;
-      max-width: 3.4rem;
+      max-width: 3.4285rem;
+      max-height: 3.4285rem;
       border-radius: 50%;
       border: 0.15rem solid ${colors.defaultBackground};
       box-shadow: 0 0.7143rem 1.4286rem ${colors.basicLightest};
@@ -18,18 +20,28 @@ const Avatar = styled.img`
   }}
 `;
 
-const User = styled.span`
-  font-weight: bold;
-  padding: 0.3rem 0 0 0.6rem;
+const AuthorWrapper = styled.p`
+  display: flex;
+  flex-direction: column;
+  margin-left: 0.714rem;
 `;
 
-const Date = styled.p`
-  padding: 0.5rem 0 0 4.1rem;
+const User = styled.span`
+  font-weight: bold;
+  padding-top: 0.3rem;
+`;
+
+const Date = styled.time`
+  padding-top: 0.3rem;
 `;
 
 const MessageWrapper = styled.div`
   display: flex;
-  margin-top: 1.1rem;
+  margin-top: 1rem;
+`;
+
+const LeftWrapper = styled.div`
+  margin: 0 1rem 0 0.4rem;
 `;
 
 const Text = styled.p`
@@ -41,4 +53,4 @@ const Text = styled.p`
   }}
 `;
 
-export { LeftWrapper, Avatar, User, Date, MessageWrapper, Text };
+export { Comment, Header, AuthorWrapper, Avatar, User, Date, MessageWrapper, LeftWrapper, Text };
