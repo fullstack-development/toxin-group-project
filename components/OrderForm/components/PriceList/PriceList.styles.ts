@@ -46,6 +46,8 @@ const TooltipText = styled.div`
       border: 0.0714rem solid ${colors.basicDarkest};
       cursor: default;
       overflow-wrap: anywhere;
+      transition: 0.3s;
+      opacity: 0;
     `;
   }}
 `;
@@ -62,8 +64,6 @@ const Tooltip = styled.div`
       justify-content: center;
       align-items: center;
       border-radius: 50%;
-      right: 0;
-      top: 0;
       flex-shrink: 0;
       color: ${colors.basicLight};
       border: 0.0714rem solid ${colors.basicLight};
@@ -73,6 +73,7 @@ const Tooltip = styled.div`
       &:focus {
         ${TooltipText} {
           visibility: visible;
+          opacity: 1;
         }
       }
     `;
