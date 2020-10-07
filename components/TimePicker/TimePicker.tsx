@@ -56,13 +56,12 @@ const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps): JSX.Elem
     <S.Container>
       <Field
         name={name}
-        parse={() => ({
-          from: selectedDateRange.from,
-          to: selectedDateRange.to,
-        })}
         render={({ input }) => {
-          const applyCalendar = (e): void => {
-            input.onChange(e);
+          const applyCalendar = (): void => {
+            input.onChange({
+              from: selectedDateRange.from,
+              to: selectedDateRange.to,
+            });
             setCalendarVisibility(false);
           };
           return (
