@@ -19,7 +19,7 @@ const ForgotPasswordForm = styled.section`
   }}
 `;
 
-const Title = styled.h2`
+const Title = styled.h1`
   ${titles.h1()}
   margin-bottom: 1.4285rem;
 `;
