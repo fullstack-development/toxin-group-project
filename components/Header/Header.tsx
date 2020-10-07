@@ -18,7 +18,7 @@ const Header: React.FC<HeaderProps> = ({ authData }: HeaderProps): JSX.Element =
   return (
     <S.Header>
       <S.HeaderLogoWrapper>
-        <S.HeaderLogo isLink />
+        <S.HeaderLogo />
         <S.HamburgerButtonWrapper onClick={changeOpenMenuStatus}>
           {isOpenMobileMenu ? <MenuOpenIcon /> : <MenuIcon />}
         </S.HamburgerButtonWrapper>

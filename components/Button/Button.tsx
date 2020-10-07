@@ -1,19 +1,15 @@
-import * as S from './Button.styles';
-import { ButtonProps } from './Button.types';
+import Link from 'next/link';
 
-const Button: React.FC<ButtonProps> = ({
-  isFilled = false,
-  isFlat = false,
-  isLink,
-  ...rest
-}: ButtonProps) => (
-  <S.Button
-    as={isLink ? 'a' : 'button'}
-    {...rest}
-    isFlat={isFlat}
-    isFilled={isFilled}
-    isLink={isLink}
-  />
-);
+import * as S from './Button.styles';
+import { Props } from './Button.types';
+
+const Button: React.FC<Props> = ({ isFilled = false, isFlat = false, href, ...rest }: Props) =>
+  href ? (
+    <Link href={href} passHref>
+      <S.Button as="a" {...rest} isFlat={isFlat} isFilled={isFilled} />
+    </Link>
+  ) : (
+    <S.Button as="button" {...rest} isFlat={isFlat} isFilled={isFilled} />
+  );
 
 export default Button;

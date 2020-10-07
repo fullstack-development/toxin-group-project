@@ -86,14 +86,12 @@ class UIFormElementsLayout extends React.Component {
                 />
               </S.InputWrapper>
               <S.ButtonWrapper>
-                <Button type="button" isLink={false} isFilled>
+                <Button type="button" isFilled>
                   click me
                 </Button>
               </S.ButtonWrapper>
               <S.ButtonWrapper>
-                <Button isLink href="https://google.com">
-                  click me
-                </Button>
+                <Button href="/mock-to-click">click me</Button>
               </S.ButtonWrapper>
               <S.LikeButtonWrapper>
                 <LikeButton count={2} />
@@ -183,14 +181,10 @@ class UIFormElementsLayout extends React.Component {
           <SubscriptionField placeholder="Email" />
         </S.SubscriptionWrapper>
         <S.TextButtonWrapper>
-          <TextButton isLink href="https://google.com">
-            Click me
-          </TextButton>
+          <TextButton href="/mock-to-click">Click me</TextButton>
         </S.TextButtonWrapper>
         <S.TextButtonWrapper>
-          <TextButton isLink={false} isSecondary>
-            Click me
-          </TextButton>
+          <TextButton isSecondary>Click me</TextButton>
         </S.TextButtonWrapper>
         <S.BulletListWrapper>
           <BulletList
@@ -223,12 +217,10 @@ class UIFormElementsLayout extends React.Component {
           <StarRating rating={5} />
         </S.StarRatingWrapper>
         <S.ArrowButtonWrapper>
-          <ArrowButton isLink href="https://google.com">
-            Перейти к оплате
-          </ArrowButton>
+          <ArrowButton href="/mock-to-pay">Перейти к оплате</ArrowButton>
         </S.ArrowButtonWrapper>
         <SocialMedia />
-        <Logo isLink />
+        <Logo />
       </S.Container>
     );
   }

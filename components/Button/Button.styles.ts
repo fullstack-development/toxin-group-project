@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
 
-import { ButtonProps } from './Button.types';
+import { Props } from './Button.types';
 
-const Button = styled.button<ButtonProps>`
+const Button = styled.a<Props>`
   ${(props) => {
     const { gradients, colors, typography } = props.theme;
     const { isFilled, isFlat } = props;
