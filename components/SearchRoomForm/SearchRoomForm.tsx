@@ -12,9 +12,43 @@ type SearchRoomFormProps = {
 };
 const handleDBRequest = (e) => {
   e.preventDefault;
-  console.log('запрашиваю');
+  console.log('request');
   // api.apartments.load('2gBtycnJmv4EnwzHKD84').then((data) => console.log(data));
-  api.booking.getFreeRooms().then((data) => console.log(data));
+  // api.booking.getFreeRooms().then((data) => console.log(data));
+  api.booking
+    .filterRooms({
+      price: {
+        from: 5000,
+        to: 10000,
+      },
+      booked: {
+        from: new Date(),
+        to: new Date(Date.now() + 1000000000),
+      },
+      amenities: {
+        bathrooms: 1,
+        bedrooms: 1,
+        beds: 1,
+      },
+      additionalAmenities: {
+        breakfast: false,
+        chair: false,
+        crib: true,
+        desk: true,
+        shampoo: true,
+        tv: false,
+      },
+      accessibility: {
+        invalidHelper: false,
+        wideCorridor: false,
+      },
+      opportunities: {
+        keepPets: true,
+        largeNumberOfPersons: false,
+        smoking: false,
+      },
+    })
+    .then((data) => console.log(data));
 };
 
 const SearchRoomForm: React.FC<SearchRoomFormProps> = ({ onSubmit }: SearchRoomFormProps) => {

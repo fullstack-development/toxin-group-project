@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid';
 import { matchObjects } from 'shared/helpers';
 
 import { Database, CollectionReference, QuerySnapshot } from '../Firebase/modules/Database';
-import { BookingData, Apartment } from './types';
+import { BookingData, Apartment, Filters } from './types';
 
 // function convertToDate(t: Timestamp): Date {
 //   return new Date(t.seconds * 1000);
@@ -86,16 +86,33 @@ class Booking {
       return result;
     });
 
-    console.log(bookedRooms[0].from);
-
     return allRooms.filter(
       (room) => !bookedRooms.map((bookedRoom) => bookedRoom.id).includes(room.id),
     );
   }
 
-  // public async filterRooms(): Promise<Apartment[]> {
+  public async filterRooms(options: Filters): Promise<Apartment[]> {
+    const rooms = await this.getFreeRooms();
 
-  // }
+    const comparableOptions: (keyof Filters)[] = [
+      'amenities',
+      'additionalAmenities',
+      'accessibility',
+      'opportunities',
+    ];
+    return rooms.filter((room) => {
+      const matchComparable = comparableOptions.every((option) =>
+        matchObjects(options[option], room[option]),
+      );
+
+      const matchPrice = options.price.from < room.price && options.price.to > room.price;
+      return matchComparable && matchPrice;
+    });
+
+    // Object.keys(options).forEach((option) => {
+    //   if (comparableOptions.includes(option))
+    // })
+  }
 
   // TODO: создать метод удаления просроченных полей
 }

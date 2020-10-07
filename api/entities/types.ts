@@ -1,11 +1,6 @@
 import { Timestamp } from 'api/Firebase/modules/Database';
 
-export type Apartment = {
-  id: number;
-  price: number;
-  rating: number;
-  reviews: number;
-  class: 'economy' | 'luxury';
+type Options = {
   amenities: {
     bedrooms: number;
     beds: number;
@@ -28,18 +23,26 @@ export type Apartment = {
     keepPets: boolean;
     largeNumberOfPersons: boolean;
   };
-  images: { url: string; alt: string }[];
 };
+export type Apartment = {
+  id: number;
+  price: number;
+  rating: number;
+  reviews: number;
+  class: 'economy' | 'luxury';
+  images: { url: string; alt: string }[];
+} & Options;
 
-// type Filters = {
-//   price: {
-//     from: number,
-//     to: number
-//   },
-//   booked: {
-//     from: Date
-//   }
-// }
+export type Filters = {
+  price: {
+    from: number;
+    to: number;
+  };
+  booked: {
+    from: Date;
+    to: Date;
+  };
+} & Options;
 
 export type ApartmentsList = { [k: number]: Apartment };
 
