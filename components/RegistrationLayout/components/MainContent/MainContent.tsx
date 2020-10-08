@@ -1,11 +1,11 @@
 import RegistrationForm from 'components/RegistrationForm/RegistrationForm';
 
-import * as S from './InnerPage.styles';
+import * as S from './MainContent.styles';
 
-const InnerPage: React.FC = (): JSX.Element => (
+const MainContent: React.FC = (): JSX.Element => (
   <S.Container>
     <RegistrationForm />
   </S.Container>
 );
 
-export default InnerPage;
+export default MainContent;
