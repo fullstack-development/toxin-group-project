@@ -1,17 +1,12 @@
 import { connect } from 'react-redux';
 
 import Layout from './MainLayout';
+import { Props } from './MainLayout.types';
 
-type Props = {
-  children?: JSX.Element;
-};
-
-const mapStateToProps = (state) => ({
-  hasAuth: state.hasAuth,
+const mapStateToProps = (state: Props) => ({
+  isAuthSuccess: state.isAuthSuccess,
   displayName: state.displayName,
   authStatusText: state.authStatusText,
 });
 
-const mapDispatchToProps = {};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Layout);
+export default connect(mapStateToProps)(Layout);

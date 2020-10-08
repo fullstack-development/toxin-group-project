@@ -3,11 +3,11 @@ import styled, { css } from 'styled-components';
 
 import { titles } from 'shared/styles/mixins';
 
-type SnackBar = {
+type SnackBarProps = {
   theme: 'success' | 'error';
 };
 
-const CustomSnackBar = styled(Snackbar)<SnackBar>`
+const CustomSnackBar = styled(Snackbar)<SnackBarProps>`
   ${(props) => {
     const { theme } = props;
     return css`

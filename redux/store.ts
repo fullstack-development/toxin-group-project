@@ -3,7 +3,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
 
 import rootReducer from './reducers';
-import { watchAuthUser } from './sagas';
+import { rootSaga } from './sagas';
 
 const bindMiddleware = (middleware) => {
   if (process.env.NODE_ENV !== 'production') {
@@ -16,4 +16,4 @@ const sagaMiddleware = createSagaMiddleware();
 
 export const store = createStore(rootReducer, bindMiddleware([sagaMiddleware]));
 
-sagaMiddleware.run(watchAuthUser);
+sagaMiddleware.run(rootSaga);

@@ -10,11 +10,11 @@ import HeaderUserLogin from './HeaderUserLogin/HeaderUserLogin';
 import HeaderUserProfile from './HeaderUserProfile/HeaderUserProfile';
 
 export type Props = {
-  hasAuth: boolean;
+  isAuthSuccess: boolean;
   displayName?: string;
 };
 
-const Header: React.FC<Props> = ({ hasAuth, displayName }: Props): JSX.Element => {
+const Header: React.FC<Props> = ({ isAuthSuccess, displayName }: Props): JSX.Element => {
   const [isOpenMobileMenu, setMobileMenuStatus] = useState(false);
 
   const changeOpenMenuStatus = () => setMobileMenuStatus(!isOpenMobileMenu);
@@ -30,7 +30,7 @@ const Header: React.FC<Props> = ({ hasAuth, displayName }: Props): JSX.Element =
       <S.MobileMenu isShown={isOpenMobileMenu}>
         <NavMenu menu={NavLinks} />
         <S.AccountPanel>
-          {hasAuth ? <HeaderUserProfile displayName={displayName} /> : <HeaderUserLogin />}
+          {isAuthSuccess ? <HeaderUserProfile displayName={displayName} /> : <HeaderUserLogin />}
         </S.AccountPanel>
       </S.MobileMenu>
     </S.Header>

@@ -1,26 +1,41 @@
-import { AUTH_PROCESS, AUTH_SUCCESS, AUTH_FAILED } from './constant';
-import { Action, State } from './types';
+import { AUTH_PROCESS, AUTH_SUCCESS, AUTH_FAILED, BREAK_AUTH_PROCESS } from './constant';
+import { AuthTypes } from './types';
+
+export type State = {
+  isAuthSuccess?: boolean;
+  isAuthProcessNow?: boolean;
+  authStatusText?: string | unknown;
+  displayName?: string;
+};
 
 const initialState: State = {
-  hasAuth: false,
+  isAuthSuccess: false,
+  isAuthProcessNow: false,
   authStatusText: '',
   displayName: 'Аноним',
 };
 
-const rootReducer = (state: Record<string, unknown> = initialState, action: Action<any>): State => {
+const rootReducer = (state: State = initialState, action: AuthTypes): State => {
   switch (action.type) {
     case AUTH_PROCESS:
       return state;
+    case BREAK_AUTH_PROCESS:
+      return {
+        ...state,
+        isAuthProcessNow: false,
+      };
     case AUTH_SUCCESS:
       return {
         ...state,
-        hasAuth: true,
-        authStatusText: 'Авторизация прошла успешно',
+        isAuthProcessNow: true,
+        isAuthSuccess: true,
+        authStatusText: 'Вы успешно авторизованы!',
         displayName: action.payload.user.displayName || 'Аноним',
       };
     case AUTH_FAILED:
       return {
         ...state,
+        isAuthProcessNow: true,
         authStatusText: action.payload,
       };
     default:

@@ -1,6 +1,5 @@
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
-import { useState } from 'react';
 import { Field, Form } from 'react-final-form';
 
 import ArrowButton from 'components/ArrowButton/ArrowButton';
@@ -15,42 +14,26 @@ type userData = {
 };
 
 type Props = {
-  hasAuth: boolean;
+  isAuthSuccess: boolean;
+  isAuthProcessNow: boolean;
   authStatusText: string;
   requestToAuth: ({ email, password }) => void;
-};
-
-type SnackBar = {
-  isShown: boolean;
-  text: string;
-  theme?: string;
+  breakAuthProcess: () => void;
 };
 
 const AccountEntry: React.FC<Props> = (props: Props): JSX.Element => {
-  const { hasAuth, authStatusText, requestToAuth } = props;
-
-  const [snackBar, setSnackBarStatus] = useState<SnackBar>({
-    isShown: false,
-    text: '',
-    theme: 'error',
-  });
+  const {
+    isAuthSuccess,
+    isAuthProcessNow,
+    authStatusText,
+    requestToAuth,
+    breakAuthProcess,
+  } = props;
 
   const handleFormSubmit = (formData: userData): void => {
     const { email, password } = formData;
 
     requestToAuth({ email, password });
-
-    setSnackBarStatus({
-      ...snackBar,
-      isShown: !hasAuth ?? true,
-    });
-  };
-
-  const hideSnackBar = (): void => {
-    setSnackBarStatus({
-      ...snackBar,
-      isShown: false,
-    });
   };
 
   return (
@@ -85,18 +68,18 @@ const AccountEntry: React.FC<Props> = (props: Props): JSX.Element => {
         )}
       />
       <S.CustomSnackBar
-        theme={hasAuth ? 'success' : 'error'}
+        theme={isAuthSuccess ? 'success' : 'error'}
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'left',
         }}
-        open={snackBar.isShown}
+        open={isAuthProcessNow}
         autoHideDuration={3000}
-        onClose={hideSnackBar}
+        onClose={breakAuthProcess}
         message={authStatusText}
         action={
           <>
-            <IconButton size="medium" aria-label="close" color="inherit" onClick={hideSnackBar}>
+            <IconButton size="medium" aria-label="close" color="inherit" onClick={breakAuthProcess}>
               <CloseIcon fontSize="small" />
             </IconButton>
           </>

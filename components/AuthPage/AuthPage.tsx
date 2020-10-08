@@ -1,8 +1,8 @@
 import MainLayoutContainer from 'components/MainLayout/MainLayoutContainer';
 
-import InnerPageContainer from './components/InnerPageContainer';
+import InnerPageContainer from './components/MainContentContainer';
 
-const AuthPage: React.FC = (props): JSX.Element => {
+const AuthPage: React.FC = (): JSX.Element => {
   return (
     <MainLayoutContainer>
       <InnerPageContainer />

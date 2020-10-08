@@ -1,16 +1,15 @@
 import Footer from 'components/Footer/Footer';
 import Header from 'components/Header/Header';
 
-type Props = {
-  children?: JSX.Element;
-  authStatusText: string;
-  displayName: string;
-  hasAuth: boolean;
-};
+import { Props } from './MainLayout.types';
 
-const MainLayout: React.FC<Props> = ({ children, displayName, hasAuth }: Props): JSX.Element => (
+const MainLayout: React.FC<Props> = ({
+  children,
+  displayName,
+  isAuthSuccess,
+}: Props): JSX.Element => (
   <>
-    <Header hasAuth={hasAuth} displayName={displayName} />
+    <Header isAuthSuccess={isAuthSuccess} displayName={displayName} />
     {children}
     <Footer />
   </>

@@ -16,7 +16,7 @@ export function* startAuthProcess(data: { payload: AuthData }): Generator {
     yield put(
       setAuthStatus({
         type: AUTH_SUCCESS,
-        payload: authStatus,
+        payload: authStatus as UserCredential,
       }),
     );
   } catch (error) {
@@ -29,6 +29,6 @@ export function* startAuthProcess(data: { payload: AuthData }): Generator {
   }
 }
 
-export function* watchAuthUser(): Generator {
-  yield takeLatest(AUTH_PROCESS, startAuthProcess);
+export function* rootSaga(): Generator {
+  yield takeLatest<never>(AUTH_PROCESS, startAuthProcess);
 }

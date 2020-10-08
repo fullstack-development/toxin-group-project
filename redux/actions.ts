@@ -1,11 +1,15 @@
-import { AUTH_PROCESS } from './constant';
-import { Action, AuthData } from './types';
+import { AUTH_PROCESS, BREAK_AUTH_PROCESS } from './constant';
+import { RequestToAuth, BreakAuthProcess, SetAuthStatus, AuthData } from './types';
 
-const requestToAuth = (data: AuthData): Action<AuthData> => ({
+const requestToAuth = (data: AuthData): RequestToAuth => ({
   type: AUTH_PROCESS,
   payload: data,
 });
 
-const setAuthStatus = (data: Action<unknown>): Action<unknown> => data;
+const breakAuthProcess = (): BreakAuthProcess => ({
+  type: BREAK_AUTH_PROCESS,
+});
 
-export { requestToAuth, setAuthStatus };
+const setAuthStatus = (data: SetAuthStatus): SetAuthStatus => data;
+
+export { requestToAuth, setAuthStatus, breakAuthProcess };
