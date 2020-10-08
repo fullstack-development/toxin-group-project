@@ -20,14 +20,14 @@ type SnackbarState = {
 };
 
 const RegistrationForm: React.FC = (): JSX.Element => {
-  const [snackBarStatus, setSnackBarSettings] = useState<SnackbarState>({
+  const [snackBarStatus, changeSnackBarStatus] = useState<SnackbarState>({
     isOpen: false,
     text: '',
     theme: '',
   });
 
   const handleSnackBarClose = () =>
-    setSnackBarSettings({
+    changeSnackBarStatus({
       ...snackBarStatus,
       isOpen: false,
     });
@@ -47,7 +47,7 @@ const RegistrationForm: React.FC = (): JSX.Element => {
       })
       .then(({ user }: UserCredential) => {
         if (user) {
-          setSnackBarSettings({
+          changeSnackBarStatus({
             isOpen: true,
             text: 'Аккаунт успешно зарегестрирован, перенаправление на страницу авторизации...',
             theme: 'success',
@@ -59,7 +59,7 @@ const RegistrationForm: React.FC = (): JSX.Element => {
         }
       })
       .catch((error) => {
-        setSnackBarSettings({
+        changeSnackBarStatus({
           isOpen: true,
           text: error.message,
           theme: 'error',
@@ -87,8 +87,8 @@ const RegistrationForm: React.FC = (): JSX.Element => {
               )}
             />
             <S.RadioButtonsWrapper>
-              <RadioButton value="gender-man" name="gender" label="Мужчина" />
-              <RadioButton value="gender-woman" name="gender" label="Женщина" />
+              <RadioButton value="male" name="gender" label="Мужчина" />
+              <RadioButton value="female" name="gender" label="Женщина" />
             </S.RadioButtonsWrapper>
             <Field
               name="birthDate"
