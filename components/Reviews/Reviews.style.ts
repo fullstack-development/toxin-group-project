@@ -9,12 +9,21 @@ const Reviews = styled.article`
 const Title = styled.h2`
   ${titles.h2}
   margin-bottom: 1.2857rem;
+
+  @media (max-width: 576px) {
+    margin-bottom: 0.714rem;
+  }
 `;
 
 const Counter = styled.p`
   position: absolute;
   top: 0.42857rem;
   right: 0.0714rem;
+
+  @media (max-width: 576px) {
+    position: static;
+    margin-bottom: 1.2857rem;
+  }
 `;
 
 const List = styled.ul`
