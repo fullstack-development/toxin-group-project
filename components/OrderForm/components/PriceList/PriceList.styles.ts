@@ -38,11 +38,10 @@ const TooltipText = styled.div`
       width: max-content;
       position: absolute;
       background-color: white;
-      left: 50%;
+      right: 0;
       z-index: 3;
       top: 1.4286rem;
       color: ${colors.basicDark};
-      transform: translateX(-50%);
       border: 0.0714rem solid ${colors.basicDarkest};
       cursor: default;
       overflow-wrap: anywhere;
@@ -56,6 +55,7 @@ const Tooltip = styled.div`
   ${(props) => {
     const { colors } = props.theme;
     return css`
+      position: relative;
       width: 1.4286rem;
       height: 1.4286rem;
       font-weight: 700;
