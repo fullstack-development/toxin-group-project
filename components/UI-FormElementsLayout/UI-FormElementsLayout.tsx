@@ -19,6 +19,7 @@ import LikeButton from 'components/LikeButton/LikeButton';
 import Logo from 'components/Logo/Logo';
 import RadioButton from 'components/RadioButton/RadioButton';
 import Reviews from 'components/Reviews/Reviews';
+import RangeSlider from 'components/RangeSlider/RangeSlider';
 import SocialMedia from 'components/SocialMedia/SocialMedia';
 import StarRating from 'components/StarRating/StarRating';
 import SubscriptionField from 'components/SubscriptionField/SubscriptionField';
@@ -37,8 +38,8 @@ class UIFormElementsLayout extends React.Component {
       <S.Container>
         <Form
           onSubmit={this.handleFormSubmit}
-          initialValues={{ gender: 'female', 'toggle-on': true }}
-          render={() => (
+          initialValues={{ gender: 'female', 'toggle-on': true, range: [5000, 10000] }}
+          render={(values) => (
             <form>
               <S.InputWrapper>
                 <Field
@@ -174,6 +175,13 @@ class UIFormElementsLayout extends React.Component {
               </S.TimePickerWrapper>
               <Toggle name="toggle-on" label="Получать спецпредложения" />
               <Toggle name="toggle-off" label="Получать спецпредложения" />
+              <S.SliderWrapper>
+                <RangeSlider
+                  initialValue={values.initialValues.range}
+                  title="range slider"
+                  name="range"
+                />
+              </S.SliderWrapper>
               <S.RichCheckboxWrapper>
                 <CheckboxesList roomOptions={richCheckboxesListData} />
               </S.RichCheckboxWrapper>
