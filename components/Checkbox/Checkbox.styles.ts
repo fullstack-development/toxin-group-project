@@ -18,6 +18,7 @@ const HiddenCheckbox = styled.input`
 const Checkmark = styled.span`
   ${(props) => {
     const { colors, gradients } = props.theme;
+
     return css`
       position: relative;
       height: 1.4286rem;
@@ -41,9 +42,18 @@ const Checkmark = styled.span`
         transform: rotate(45deg);
       }
 
-      ${HiddenCheckbox}:checked ~ &,
-      ${Checkbox}:hover ${HiddenCheckbox} ~ & {
+      ${HiddenCheckbox}:checked ~ & {
         border: 0.0714rem solid ${colors.primary};
+      }
+
+      ${HiddenCheckbox}:checked:hover ~ &,
+      ${HiddenCheckbox}:checked:focus ~ & {
+        box-shadow: 0 0 0.7142rem ${colors.primary};
+      }
+
+      ${HiddenCheckbox}:not(:checked):hover ~ &,
+      ${HiddenCheckbox}:not(:checked):focus ~ & {
+        box-shadow: 0 0 0.7142rem ${colors.basic};
       }
 
       ${HiddenCheckbox}:checked ~ &:after {

@@ -19,6 +19,7 @@ import Input from 'components/Input/Input';
 import LikeButton from 'components/LikeButton/LikeButton';
 import Logo from 'components/Logo/Logo';
 import RadioButton from 'components/RadioButton/RadioButton';
+import RangeSlider from 'components/RangeSlider/RangeSlider';
 import SocialMedia from 'components/SocialMedia/SocialMedia';
 import StarRating from 'components/StarRating/StarRating';
 import SubscriptionField from 'components/SubscriptionField/SubscriptionField';
@@ -37,8 +38,8 @@ class UIFormElementsLayout extends React.Component {
       <S.Container>
         <Form
           onSubmit={this.handleFormSubmit}
-          initialValues={{ gender: 'female', 'toggle-on': true }}
-          render={() => (
+          initialValues={{ gender: 'female', 'toggle-on': true, range: [5000, 10000] }}
+          render={(values) => (
             <form>
               <S.InputWrapper>
                 <Field
@@ -143,6 +144,13 @@ class UIFormElementsLayout extends React.Component {
               </S.TimePickerWrapper>
               <Toggle name="toggle-on" label="Получать спецпредложения" />
               <Toggle name="toggle-off" label="Получать спецпредложения" />
+              <S.SliderWrapper>
+                <RangeSlider
+                  initialValue={values.initialValues.range}
+                  title="range slider"
+                  name="range"
+                />
+              </S.SliderWrapper>
               <S.RichCheckboxWrapper>
                 <CheckboxesList roomOptions={richCheckboxesListData} />
               </S.RichCheckboxWrapper>
@@ -175,7 +183,7 @@ class UIFormElementsLayout extends React.Component {
           <Comment
             avatarUrl="user.jpg"
             userName="Мурад Сарафанов"
-            date="5 дней назад"
+            date={new Date('2020-09-27 12:03:14')}
             text="Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей."
             likesCount={12}
           />
