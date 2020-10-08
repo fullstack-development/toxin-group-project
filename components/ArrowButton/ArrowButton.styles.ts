@@ -9,18 +9,9 @@ const ArrowButton = styled.div`
 `;
 
 const BasicButton = styled(Button)`
-  ${(props) => {
-    const { gradients } = props.theme;
-    return css`
-      width: 100%;
-      padding-right: 2.4571rem;
-      padding-left: 2.4571rem;
-
-      ${ArrowButton}:hover & {
-        background-image: ${gradients.primaryLight};
-      }
-    `;
-  }}
+  width: 100%;
+  padding-right: 2.4571rem;
+  padding-left: 2.4571rem;
 `;
 
 const ArrowIcon = styled.span`
