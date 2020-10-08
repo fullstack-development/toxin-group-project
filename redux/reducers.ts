@@ -5,14 +5,14 @@ export type State = {
   isAuthSuccess?: boolean;
   isAuthProcessNow?: boolean;
   authStatusText?: string | unknown;
-  displayName?: string;
+  displayName?: false | string;
 };
 
 const initialState: State = {
   isAuthSuccess: false,
   isAuthProcessNow: false,
+  displayName: false,
   authStatusText: '',
-  displayName: 'Аноним',
 };
 
 const rootReducer = (state: State = initialState, action: AuthTypes): State => {
