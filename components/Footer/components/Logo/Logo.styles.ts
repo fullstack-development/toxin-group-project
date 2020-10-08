@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { mediaBreakpointDown } from 'shared/styles/break-points';
+import { breakpointDown } from 'shared/styles/break-points';
 
 const Container = styled.div``;
 
@@ -13,7 +13,7 @@ const Description = styled.p`
       color: ${colors.basicDark};
       line-height: ${typography.lineHeight};
 
-      @media ${mediaBreakpointDown.md} {
+      @media ${breakpointDown('md')} {
         display: none;
       }
     `;

@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { mediaBreakpointDown } from 'shared/styles/break-points';
+import { breakpointDown } from 'shared/styles/break-points';
 import { container } from 'shared/styles/mixins';
 
 const Banner = styled.div`
@@ -12,24 +12,24 @@ const Banner = styled.div`
   padding: 5rem 9.6rem 1.47rem 10rem;
   grid-row-gap: 22.8571rem;
 
-  @media ${mediaBreakpointDown.lg} {
+  @media ${breakpointDown('lg')} {
     min-height: 48rem;
     padding: 4rem 8rem 1.47rem;
   }
 
-  @media ${mediaBreakpointDown.md} {
+  @media ${breakpointDown('md')} {
     min-height: 40rem;
     padding: 3rem 6rem 1.47rem;
     grid-row-gap: 10.7143rem;
   }
 
-  @media ${mediaBreakpointDown.sm} {
+  @media ${breakpointDown('sm')} {
     min-height: 35rem;
     padding: 2rem 4rem 1rem;
     grid-row-gap: 7.1429rem;
   }
 
-  @media ${mediaBreakpointDown.xs} {
+  @media ${breakpointDown('xs')} {
     min-height: 30rem;
     padding: 1rem;
     grid-row-gap: 3.5714rem;

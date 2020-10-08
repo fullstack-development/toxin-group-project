@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { mediaBreakpointDown } from 'shared/styles/break-points';
+import { breakpointDown } from 'shared/styles/break-points';
 
 type ListItem = {
   withSubMenu?: boolean;
@@ -16,7 +16,7 @@ const ListItem = styled.li<ListItem>`
 
       margin-right: ${withSubMenu ? '1.7rem' : '0'};
 
-      @media ${mediaBreakpointDown.md} {
+      @media ${breakpointDown('md')} {
         margin: 0.5rem 0;
         width: 100%;
       }
@@ -27,7 +27,7 @@ const ListItem = styled.li<ListItem>`
 const NavContainer = styled.nav`
   width: 100%;
 
-  @media ${mediaBreakpointDown.md} {
+  @media ${breakpointDown('md')} {
     margin-right: 0;
   }
 
@@ -36,7 +36,7 @@ const NavContainer = styled.nav`
     flex-wrap: wrap;
     justify-content: flex-end;
 
-    @media ${mediaBreakpointDown.md} {
+    @media ${breakpointDown('md')} {
       justify-content: end;
 
       & > li {
@@ -44,7 +44,7 @@ const NavContainer = styled.nav`
       }
     }
 
-    @media ${mediaBreakpointDown.md} {
+    @media ${breakpointDown('md')} {
       flex-direction: column;
       align-items: center;
       min-width: 20rem;

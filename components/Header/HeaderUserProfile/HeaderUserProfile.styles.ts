@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { mediaBreakpointDown } from 'shared/styles/break-points';
+import { breakpointDown } from 'shared/styles/break-points';
 
 const HeaderUserProfile = styled.div`
   ${(props) => {
@@ -11,7 +11,7 @@ const HeaderUserProfile = styled.div`
       padding-left: 1.4rem;
       border-left: 0.0714rem solid ${colors.basicLightest};
 
-      @media ${mediaBreakpointDown.md} {
+      @media ${breakpointDown('md')} {
         width: 100%;
         border-left: none;
         padding: 1.4286rem 0;

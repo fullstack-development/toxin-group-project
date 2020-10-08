@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { mediaBreakpointDown } from 'shared/styles/break-points';
+import { breakpointDown } from 'shared/styles/break-points';
 import { container, visuallyHidden } from 'shared/styles/mixins';
 
 const Container = styled.div`
@@ -8,7 +8,7 @@ const Container = styled.div`
   padding-left: 10rem;
   padding-right: 10rem;
 
-  @media ${mediaBreakpointDown.lg} {
+  @media ${breakpointDown('lg')} {
     padding-left: 4.2857rem;
     padding-right: 4.2857rem;
   }
@@ -25,7 +25,7 @@ const MainContainer = styled(Container)`
       padding-top: 7.1429rem;
       padding-bottom: 7.1429rem;
 
-      @media ${mediaBreakpointDown.md} {
+      @media ${breakpointDown('md')} {
         display: flex;
         justify-content: center;
         padding-bottom: 0;
@@ -33,7 +33,7 @@ const MainContainer = styled(Container)`
         border-bottom: 0;
       }
 
-      @media ${mediaBreakpointDown.xs} {
+      @media ${breakpointDown('xs')} {
         padding-top: 3.5714rem;
       }
     `;
@@ -52,7 +52,7 @@ const BottomContainer = styled(Container)`
   padding-top: 1.8571rem;
   padding-bottom: 1.8571rem;
 
-  @media ${mediaBreakpointDown.md} {
+  @media ${breakpointDown('md')} {
     padding-top: 0;
     flex-direction: column;
     padding-bottom: 8.5714rem;
@@ -60,7 +60,7 @@ const BottomContainer = styled(Container)`
     text-align: center;
   }
 
-  @media ${mediaBreakpointDown.xs} {
+  @media ${breakpointDown('xs')} {
     padding-bottom: 3.5714rem;
   }
 `;

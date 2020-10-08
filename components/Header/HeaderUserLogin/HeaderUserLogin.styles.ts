@@ -1,16 +1,16 @@
 import styled from 'styled-components';
 
 import Button from 'components/Button/Button';
-import { mediaBreakpointDown } from 'shared/styles/break-points';
+import { breakpointDown } from 'shared/styles/break-points';
 
 const HeaderUserLogin = styled.div`
   display: flex;
 
-  @media ${mediaBreakpointDown.md} {
+  @media ${breakpointDown('md')} {
     padding: 1.4286rem 0;
   }
 
-  @media ${mediaBreakpointDown.xs} {
+  @media ${breakpointDown('xs')} {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,7 +22,7 @@ const HeaderLoginButton = styled(Button)`
     margin-right: 1.4286rem;
   }
 
-  @media ${mediaBreakpointDown.xs} {
+  @media ${breakpointDown('xs')} {
     margin: 0;
 
     &:not(:last-child) {
