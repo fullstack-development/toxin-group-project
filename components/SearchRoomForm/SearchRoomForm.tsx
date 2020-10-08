@@ -12,7 +12,6 @@ type SearchRoomFormProps = {
 };
 const handleDBRequest = (e) => {
   e.preventDefault;
-  console.log('request');
   api.booking
     .filterRooms({
       price: {
@@ -20,8 +19,8 @@ const handleDBRequest = (e) => {
         to: 10000,
       },
       booked: {
-        from: new Date(),
-        to: new Date(Date.now() + 1000000000),
+        timestampFrom: new Date().getTime(),
+        timestampTo: new Date(Date.now() + 1000000000).getTime(),
       },
       amenities: {
         bathrooms: 1,

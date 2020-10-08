@@ -39,8 +39,8 @@ export type Filters = {
     to: number;
   };
   booked: {
-    from: Date;
-    to: Date;
+    timestampFrom: number;
+    timestampTo: number;
   };
 } & Options;
 
