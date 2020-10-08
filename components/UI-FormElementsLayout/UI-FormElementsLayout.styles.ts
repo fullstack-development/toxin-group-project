@@ -81,6 +81,11 @@ const RichCheckboxWrapper = styled.div`
   margin-bottom: 0.45rem;
 `;
 
+const ReviewsWrapper = styled.div`
+  max-width: 50.8571rem;
+  margin: 1rem 0;
+`;
+
 export {
   Container,
   ButtonWrapper,
@@ -99,4 +104,5 @@ export {
   ArrowButtonWrapper,
   SubscriptionWrapper,
   RichCheckboxWrapper,
+  ReviewsWrapper,
 };

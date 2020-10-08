@@ -18,6 +18,7 @@ import Input from 'components/Input/Input';
 import LikeButton from 'components/LikeButton/LikeButton';
 import Logo from 'components/Logo/Logo';
 import RadioButton from 'components/RadioButton/RadioButton';
+import Reviews from 'components/Reviews/Reviews';
 import SocialMedia from 'components/SocialMedia/SocialMedia';
 import StarRating from 'components/StarRating/StarRating';
 import SubscriptionField from 'components/SubscriptionField/SubscriptionField';
@@ -222,6 +223,10 @@ class UIFormElementsLayout extends React.Component {
           <StarRating rating={4} />
           <StarRating rating={5} />
         </S.StarRatingWrapper>
+
+        <S.ReviewsWrapper>
+          <Reviews />
+        </S.ReviewsWrapper>
         <S.ArrowButtonWrapper>
           <ArrowButton isLink href="https://google.com">
             Перейти к оплате
