@@ -48,6 +48,7 @@ const RoomFilter: React.FC = () => {
     },
   };
 
+  // eslint-disable-next-line no-console
   const handleFormSubmit = (values) => console.log(values);
 
   return (
