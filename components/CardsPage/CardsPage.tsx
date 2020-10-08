@@ -7,6 +7,10 @@ import SearchRoomForm from 'components/SearchRoomForm/SearchRoomForm';
 
 import * as S from './CardsPage.styles';
 
+const mockFunction = () => {
+  5 + 5;
+};
+
 const CardsPage: React.FC = (): JSX.Element => (
   <S.Container>
     <SearchRoomForm />
@@ -26,7 +30,13 @@ const CardsPage: React.FC = (): JSX.Element => (
       <RegistrationForm />
     </S.RegistrationFormWrapper>
     <S.AccountEntryWrapper>
-      <AccountEntry />
+      <AccountEntry
+        isAuthSuccess={false}
+        isAuthProcessNow={false}
+        authStatusText=""
+        requestToAuth={mockFunction}
+        breakAuthProcess={mockFunction}
+      />
     </S.AccountEntryWrapper>
   </S.Container>
 );
