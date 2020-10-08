@@ -39,7 +39,7 @@ const ImageGallery: React.FC<GalleryProps> = ({
         <S.ArrowButtonPrev aria-label="Назад" onClick={handleArrowPrevClick} />
       </S.ArrowPrevContainer>
       {imagePaths.map((path, index) => (
-        <S.Img key={String(index)} src={path} isShown={imageStates[index]} />
+        <S.Img key={String(index)} src={path} isShown={imageStates[index]} alt="Фото номера" />
       ))}
       <S.Dots>
         {imageStates.map((el, index) => (

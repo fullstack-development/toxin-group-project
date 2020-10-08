@@ -12,7 +12,6 @@ const Img = styled.img<ImageProps>`
       opacity: 0;
       transition: 0.5s;
       height: 100%;
-      object-fit: cover;
       user-select: none;
 
       ${isShown &&
