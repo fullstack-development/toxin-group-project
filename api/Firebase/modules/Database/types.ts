@@ -3,6 +3,7 @@ export type DocumentData = firebase.firestore.DocumentData;
 export type CollectionReference = firebase.firestore.CollectionReference<DocumentData>;
 export type DocumentReference = firebase.firestore.DocumentReference<DocumentData>;
 export type QuerySnapshot = firebase.firestore.QuerySnapshot<DocumentData>;
+export type Timestamp = firebase.firestore.Timestamp;
 
 type PostToNonExistedDocument = {
   ref: CollectionReference;
