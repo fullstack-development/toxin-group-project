@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { container } from 'shared/styles/mixins';
 
-const Banner = styled.div`
+const Banner = styled.main`
   ${container}
   display: flex;
   justify-content: center;
