@@ -5,7 +5,6 @@ import ArrowButton from 'components/ArrowButton/ArrowButton';
 import Dropdown from 'components/Dropdown/Dropdown';
 import TimePicker from 'components/TimePicker/TimePicker';
 
-// import apartments from './apartments.json';
 import * as S from './SearchRoomForm.styles';
 
 type SearchRoomFormProps = {
@@ -64,18 +63,6 @@ const handleDBRequest = (e) => {
   api.booking.filterRooms(testRoomFilter).then((data) => console.log(data));
 };
 
-// const addDataToDB = () => {
-//   apartments.forEach((room) => {
-//     if (room.id < 80 && room.id > 50) {
-//       api.booking.add({
-//         id: room.id,
-//         from: new Date(),
-//         to: new Date(Date.now() + 1000000000),
-//       });
-//     }
-//   });
-// };
-
 const SearchRoomForm: React.FC<SearchRoomFormProps> = ({ onSubmit }: SearchRoomFormProps) => {
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     onSubmit(e);
@@ -127,9 +114,6 @@ const SearchRoomForm: React.FC<SearchRoomFormProps> = ({ onSubmit }: SearchRoomF
             <ArrowButton isLink={false} isFilled onClick={handleDBRequest} type="button">
               Подобрать номер
             </ArrowButton>
-            {/* <ArrowButton isLink={false} isFilled onClick={addDataToDB} type="button">
-              Добавить бронь
-            </ArrowButton> */}
           </form>
         )}
       />
