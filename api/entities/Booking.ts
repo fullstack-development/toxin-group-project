@@ -38,40 +38,21 @@ class Booking {
     this.actions.update(this.booked.doc(id), data);
   }
 
-  private async getBookedRooms(from: Date, to: Date): Promise<BookingData[]> {
-    const result = [];
-    const allBookedRooms = await this.booked
-      .get()
-      .then((snapshot) => this.addDataToStorage(snapshot, []));
-
-    await this.booked
-      .where('from', '>=', to)
-      .get()
-      .then((snapshot) => this.addDataToStorage(snapshot, result));
-
-    await this.booked
-      .where('to', '<=', from)
-      .get()
-      .then((snapshot) => this.addDataToStorage(snapshot, result));
-
-    return allBookedRooms.filter((room) => !result.find((el) => el.id === room.id));
-  }
-
-  public async getFreeRooms(from: Date, to: Date): Promise<Apartment[]> {
-    const allRooms = await this.apartments
-      .get()
-      .then((snapshot) => this.addDataToStorage(snapshot, []));
-
-    const bookedRooms = await this.getBookedRooms(from, to);
-
-    return allRooms.filter((room) => !bookedRooms.find((bookedRoom) => bookedRoom.id === room.id));
-  }
-
+  @boundMethod
   public async filterRooms(options: Filters): Promise<Apartment[]> {
-    const rooms = await this.getFreeRooms(
-      new Date(options.booked.timestampFrom),
-      new Date(options.booked.timestampTo),
+    const { price, booked } = options;
+    const affordableRooms: Apartment[] = await this.apartments
+      .where('price', '<=', price.to)
+      .where('price', '>=', price.from)
+      .get()
+      .then((snapshot) => this.addDataToStorage(snapshot, []));
+
+    const bookedRoomIDs = await this.getBooked(
+      new Date(booked.timestampFrom),
+      new Date(booked.timestampTo),
     );
+
+    const availableRooms = affordableRooms.filter((room) => !bookedRoomIDs.includes(room.id));
 
     const comparableOptions: (keyof Filters)[] = [
       'amenities',
@@ -79,15 +60,34 @@ class Booking {
       'accessibility',
       'opportunities',
     ];
-    return rooms.filter((room) => {
-      const matchesOptions = comparableOptions.every((option) =>
-        matchObjects(options[option], room[option]),
-      );
+    return availableRooms.filter((room) =>
+      comparableOptions.every((option) => this.areRequirementsMet(options[option], room[option])),
+    );
+  }
 
-      const matchesPrice = options.price.from < room.price && options.price.to > room.price;
+  @boundMethod
+  public async getBooked(from: Date, to: Date): Promise<number[]> {
+    function addIDsToStorage(snapshot: QuerySnapshot, storage: BookingData[]) {
+      snapshot.forEach((doc) => storage.push(doc.data() as BookingData));
+    }
 
-      return matchesOptions && matchesPrice;
+    const bookedStorage: BookingData[] = [];
+    const bookedBeforeTo = this.booked.where('from', '<=', to).get();
+    await bookedBeforeTo.then((snapshot) => addIDsToStorage(snapshot, bookedStorage));
+
+    const unbookedStorage: BookingData[] = [];
+    const unbookedAfterFrom = this.booked.where('to', '>=', from).get();
+    await unbookedAfterFrom.then((snapshot) => addIDsToStorage(snapshot, unbookedStorage));
+
+    const result: Set<number> = new Set();
+
+    bookedStorage.forEach((booked) => {
+      unbookedStorage.forEach((unbooked) => {
+        matchObjects(booked, unbooked) && result.add(booked.id);
+      });
     });
+
+    return Array.from(result);
   }
 
   // TODO: создать метод удаления просроченных полей
@@ -98,6 +98,18 @@ class Booking {
   ) {
     snapshot.forEach((doc) => storage.push(doc.data() as T));
     return storage;
+  }
+
+  private areRequirementsMet<T extends { [k: string]: boolean | number }>(
+    userOption: T,
+    roomOption: T,
+  ): boolean {
+    return Object.keys(userOption).every((prop) => {
+      const userValue = userOption[prop];
+      const roomValue = roomOption[prop];
+
+      return roomValue >= userValue;
+    });
   }
 }
 
