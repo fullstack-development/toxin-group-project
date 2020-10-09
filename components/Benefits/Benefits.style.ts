@@ -11,7 +11,7 @@ const BenefitItem = styled.div`
     const { colors } = props.theme;
 
     return css`
-      border-bottom: 0.01rem solid ${colors.basicLight};
+      border-bottom: 0.01rem solid ${colors.basicPale};
       padding: 1.4rem 0;
       display: flex;
     `;
