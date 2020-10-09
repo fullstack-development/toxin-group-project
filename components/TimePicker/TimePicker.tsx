@@ -59,8 +59,8 @@ const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps): JSX.Elem
         render={({ input }) => {
           const applyCalendar = (): void => {
             input.onChange({
-              from: selectedDateRange.from,
-              to: selectedDateRange.to,
+              from: selectedDateRange.from.getTime(),
+              to: selectedDateRange.to.getTime(),
             });
             closeCalendar();
           };

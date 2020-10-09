@@ -21,8 +21,8 @@ const RoomFilter: React.FC = () => {
       to: 10000,
     },
     booked: {
-      from: new Date(),
-      to: new Date(),
+      from: Date.now(),
+      to: Date.now(),
     },
     amenities: {
       bedrooms: 1,
