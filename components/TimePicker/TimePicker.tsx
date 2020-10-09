@@ -62,7 +62,7 @@ const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps): JSX.Elem
               from: selectedDateRange.from,
               to: selectedDateRange.to,
             });
-            setCalendarVisibility(false);
+            closeCalendar();
           };
           return (
             <>
