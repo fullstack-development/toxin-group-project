@@ -1,5 +1,3 @@
-import { Timestamp } from 'api/Firebase/modules/Database';
-
 type Options = {
   amenities: {
     bedrooms: number;
@@ -58,6 +56,7 @@ export type ProfileData = {
 
 export type BookingData = {
   id: number;
-  from: Timestamp;
-  to: Timestamp;
+  apartmentId: number;
+  from: Date;
+  to: Date;
 };
