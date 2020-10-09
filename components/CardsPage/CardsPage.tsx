@@ -6,9 +6,9 @@ import RegistrationForm from 'components/RegistrationForm/RegistrationForm';
 import Room from 'components/Room/Room';
 import SearchRoomForm from 'components/SearchRoomForm/SearchRoomForm';
 
-import * as S from './UI-CardsLayout.styles';
+import * as S from './CardsPage.styles';
 
-const UICardsLayout: React.FC = (): JSX.Element => (
+const CardsPage: React.FC = (): JSX.Element => (
   <S.Container>
     <SearchRoomForm />
     <Room price="9 900" number={888} reviewCount={65} reviewsHref="/mock" href="/mock" />
@@ -35,4 +35,4 @@ const UICardsLayout: React.FC = (): JSX.Element => (
   </S.Container>
 );
 
-export default UICardsLayout;
+export default CardsPage;
