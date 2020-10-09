@@ -55,7 +55,6 @@ export type ProfileData = {
 };
 
 export type BookingData = {
-  id: number;
   apartmentId: number;
   from: Date;
   to: Date;

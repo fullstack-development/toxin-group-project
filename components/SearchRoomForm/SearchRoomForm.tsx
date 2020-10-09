@@ -11,35 +11,35 @@ type SearchRoomFormProps = {
   onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
 };
 const testRoomFilter = {
-  price: { from: 3000, to: 10000 },
+  price: { from: 2000, to: 7000 },
   booked: {
     from: new Date().getTime(),
     to: new Date(Date.now() + 1000000000).getTime(),
   },
   amenities: {
-    bedrooms: 2,
-    beds: 2,
-    bathrooms: 2,
+    bedrooms: 1,
+    beds: 1,
+    bathrooms: 1,
   },
   additionalAmenities: {
-    breakfast: false,
+    breakfast: true,
     desk: false,
     chair: false,
     crib: false,
     tv: false,
-    shampoo: true,
+    shampoo: false,
   },
   accessibility: {
-    wideCorridor: true,
+    wideCorridor: false,
     invalidHelper: false,
   },
   opportunities: {
-    smoking: true,
+    smoking: false,
     keepPets: false,
     largeNumberOfPersons: false,
   },
 };
-const handleDBRequest = (e) => {
+const getRooms = (e) => {
   e.preventDefault;
   api.booking.filterRooms(testRoomFilter).then((data) => console.log(data));
 };
@@ -92,7 +92,7 @@ const SearchRoomForm: React.FC<SearchRoomFormProps> = ({ onSubmit }: SearchRoomF
                 ]}
               />
             </S.DropdownWrapper>
-            <ArrowButton isLink={false} isFilled type="button" onClick={handleDBRequest}>
+            <ArrowButton isLink={false} isFilled type="button" onClick={getRooms}>
               Подобрать номер
             </ArrowButton>
           </form>

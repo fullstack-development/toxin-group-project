@@ -1,4 +1,5 @@
 import { boundMethod } from 'autobind-decorator';
+import { nanoid } from 'nanoid';
 
 import { matchObjects } from 'shared/helpers';
 
@@ -18,22 +19,17 @@ class Booking {
 
   @boundMethod
   public add(data: BookingData): void {
+    const uniqueId = nanoid();
     this.actions.post({
       ref: this.booked,
-      data: { ...data },
+      doc: uniqueId,
+      data: { ...data, id: uniqueId },
     });
   }
 
   @boundMethod
   public remove(id: string): void {
-    this.booked
-      .where('id', '==', id)
-      .get()
-      .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          doc.ref.delete();
-        });
-      });
+    this.actions.removeDocument(this.booked.doc(String(id)));
   }
 
   @boundMethod
@@ -53,6 +49,7 @@ class Booking {
     const bookedRoomIDs = await this.getBooked(new Date(booked.from), new Date(booked.to));
 
     const availableRooms = affordableRooms.filter((room) => !bookedRoomIDs.includes(room.id));
+    // return availableRooms;
 
     const comparableOptions: (keyof Filters)[] = [
       'amenities',
