@@ -20,15 +20,15 @@ class Booking {
   public add(data: BookingData): void {
     this.actions.post({
       ref: this.booked,
-      doc: String(data.id),
-      data: { ...data, id: data.id },
+      doc: String(data.apartmentId),
+      data: { ...data },
     });
   }
 
   @boundMethod
   public remove(id: string): void {
     this.booked
-      // .where('id', '==', id)
+      .where('id', '==', id)
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
@@ -84,7 +84,7 @@ class Booking {
 
     bookedStorage.forEach((booked) => {
       unbookedStorage.forEach((unbooked) => {
-        matchObjects(booked, unbooked) && result.add(booked.id);
+        matchObjects(booked, unbooked) && result.add(booked.apartmentId);
       });
     });
 
