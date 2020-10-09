@@ -1,12 +1,12 @@
-import MainLayoutContainer from 'components/MainLayout/MainLayoutContainer';
+import MainLayout from 'components/MainLayout/MainLayout';
 
-import InnerPageContainer from './components/MainContentContainer';
+import MainContent from './components/MainContent';
 
 const AuthPage: React.FC = (): JSX.Element => {
   return (
-    <MainLayoutContainer>
-      <InnerPageContainer />
-    </MainLayoutContainer>
+    <MainLayout>
+      <MainContent />
+    </MainLayout>
   );
 };
 

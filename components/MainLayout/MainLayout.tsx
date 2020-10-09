@@ -1,3 +1,5 @@
+import { connect } from 'react-redux';
+
 import Footer from 'components/Footer/Footer';
 import Header from 'components/Header/Header';
 
@@ -11,4 +13,10 @@ const MainLayout: React.FC<Props> = ({ children, displayName }: Props): JSX.Elem
   </>
 );
 
-export default MainLayout;
+const mapState = (state: Props) => ({
+  isAuthSuccess: state.isAuthSuccess,
+  displayName: state.displayName,
+  authStatusText: state.authStatusText,
+});
+
+export default connect(mapState)(MainLayout);

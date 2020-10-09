@@ -1,4 +1,7 @@
+import { connect } from 'react-redux';
+
 import AccountEntry from 'components/AccountEntry/AccountEntry';
+import { requestToAuth, breakAuthProcess } from 'redux/actions';
 
 import * as S from './MainContent.styles';
 import { Props } from './MainContent.types';
@@ -8,8 +11,8 @@ const MainContent: React.FC<Props> = (props: Props): JSX.Element => {
     isAuthSuccess,
     isAuthProcessNow,
     authStatusText,
-    requestToAuth,
-    breakAuthProcess,
+    startAuthProcess,
+    stopAuthProcess,
   } = props;
 
   return (
@@ -18,11 +21,19 @@ const MainContent: React.FC<Props> = (props: Props): JSX.Element => {
         isAuthSuccess={isAuthSuccess}
         isAuthProcessNow={isAuthProcessNow}
         authStatusText={authStatusText}
-        requestToAuth={requestToAuth}
-        breakAuthProcess={breakAuthProcess}
+        requestToAuth={startAuthProcess}
+        breakAuthProcess={stopAuthProcess}
       />
     </S.Container>
   );
 };
 
-export default MainContent;
+const mapState = (state) => ({
+  isAuthSuccess: state.isAuthSuccess,
+  isAuthProcessNow: state.isAuthProcessNow,
+  authStatusText: state.authStatusText,
+});
+
+const mapDispatch = { startAuthProcess: requestToAuth, stopAuthProcess: breakAuthProcess };
+
+export default connect(mapState, mapDispatch)(MainContent);
