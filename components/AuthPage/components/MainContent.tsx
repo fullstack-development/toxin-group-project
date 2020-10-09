@@ -3,7 +3,7 @@ import AccountEntry from 'components/AccountEntry/AccountEntry';
 import * as S from './MainContent.styles';
 import { Props } from './MainContent.types';
 
-const InnerPage: React.FC<Props> = (props: Props): JSX.Element => {
+const MainContent: React.FC<Props> = (props: Props): JSX.Element => {
   const {
     isAuthSuccess,
     isAuthProcessNow,
@@ -25,4 +25,4 @@ const InnerPage: React.FC<Props> = (props: Props): JSX.Element => {
   );
 };
 
-export default InnerPage;
+export default MainContent;

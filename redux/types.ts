@@ -1,6 +1,6 @@
 import { UserCredential } from 'api/types';
 
-import { AUTH_PROCESS, BREAK_AUTH_PROCESS, AUTH_SUCCESS, AUTH_FAILED } from './constant';
+import { AUTH_PROCESS, BREAK_AUTH_PROCESS, AUTH_SUCCESS, AUTH_FAILED } from './constants';
 
 export type AuthData = {
   email: string;
@@ -16,6 +16,12 @@ export type RequestToAuth = Action<typeof AUTH_PROCESS, AuthData>;
 
 export type BreakAuthProcess = Action<typeof BREAK_AUTH_PROCESS, null>;
 
-export type SetAuthStatus = Action<typeof AUTH_SUCCESS | typeof AUTH_FAILED, UserCredential>;
+export type SetAuthStatusSuccess = Action<typeof AUTH_SUCCESS, UserCredential>;
 
-export type AuthTypes = RequestToAuth | BreakAuthProcess | SetAuthStatus;
+export type SetAuthStatusFailed = Action<typeof AUTH_FAILED, string>;
+
+export type AuthActions =
+  | RequestToAuth
+  | BreakAuthProcess
+  | SetAuthStatusSuccess
+  | SetAuthStatusFailed;

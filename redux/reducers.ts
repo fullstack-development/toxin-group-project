@@ -1,21 +1,21 @@
-import { AUTH_PROCESS, AUTH_SUCCESS, AUTH_FAILED, BREAK_AUTH_PROCESS } from './constant';
-import { AuthTypes } from './types';
+import { AUTH_PROCESS, AUTH_SUCCESS, AUTH_FAILED, BREAK_AUTH_PROCESS } from './constants';
+import { AuthActions } from './types';
 
 export type State = {
-  isAuthSuccess?: boolean;
-  isAuthProcessNow?: boolean;
-  authStatusText?: string | unknown;
-  displayName?: false | string;
+  isAuthSuccess: boolean;
+  isAuthProcessNow: boolean;
+  authStatusText: string;
+  displayName: null | string;
 };
 
 const initialState: State = {
   isAuthSuccess: false,
   isAuthProcessNow: false,
-  displayName: false,
+  displayName: null,
   authStatusText: '',
 };
 
-const rootReducer = (state: State = initialState, action: AuthTypes): State => {
+const rootReducer = (state: State = initialState, action: AuthActions): State => {
   switch (action.type) {
     case AUTH_PROCESS:
       return state;

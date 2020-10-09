@@ -1,22 +1,25 @@
-import { put, takeLatest, call } from 'redux-saga/effects';
+import { SagaIterator } from 'redux-saga';
+import { put, takeLatest, call, PutEffect } from 'redux-saga/effects';
 
 import Api from 'api/api';
 import { UserCredential } from 'api/types';
 
 import { setAuthStatus } from './actions';
-import { AUTH_PROCESS, AUTH_SUCCESS, AUTH_FAILED } from './constant';
-import { AuthData } from './types';
+import { AUTH_PROCESS, AUTH_SUCCESS, AUTH_FAILED } from './constants';
+import { AuthData, SetAuthStatusSuccess, SetAuthStatusFailed } from './types';
 
-export function* startAuthProcess(data: { payload: AuthData }): Generator {
+export function* startAuthProcess(data: {
+  payload: AuthData;
+}): Generator | Generator<PutEffect<SetAuthStatusSuccess | SetAuthStatusFailed>, void, never> {
   const { email, password } = data.payload;
 
   try {
-    const authStatus: UserCredential | unknown = yield call(Api.auth.signIn, email, password);
+    const authStatus: UserCredential = yield call(Api.auth.signIn, email, password);
 
     yield put(
       setAuthStatus({
         type: AUTH_SUCCESS,
-        payload: authStatus as UserCredential,
+        payload: authStatus,
       }),
     );
   } catch (error) {
@@ -29,6 +32,6 @@ export function* startAuthProcess(data: { payload: AuthData }): Generator {
   }
 }
 
-export function* rootSaga(): Generator {
+export function* rootSaga(): SagaIterator {
   yield takeLatest<never>(AUTH_PROCESS, startAuthProcess);
 }

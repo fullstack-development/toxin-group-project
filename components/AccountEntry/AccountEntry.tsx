@@ -8,7 +8,7 @@ import Input from 'components/Input/Input';
 
 import * as S from './AccountEntry.styled';
 
-type userData = {
+type UserData = {
   email: string;
   password: string;
 };
@@ -30,7 +30,7 @@ const AccountEntry: React.FC<Props> = (props: Props): JSX.Element => {
     breakAuthProcess,
   } = props;
 
-  const handleFormSubmit = (formData: userData): void => {
+  const handleFormSubmit = (formData: UserData): void => {
     const { email, password } = formData;
 
     requestToAuth({ email, password });

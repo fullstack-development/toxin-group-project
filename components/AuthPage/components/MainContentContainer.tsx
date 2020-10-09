@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import { requestToAuth, breakAuthProcess } from 'redux/actions';
 
-import InnerPage from './MainContent';
+import MainContent from './MainContent';
 import { Props } from './MainContent.types';
 
 const mapState = (state: Props) => ({
@@ -16,4 +16,4 @@ const mapDispatch = {
   breakAuthProcess,
 };
 
-export default connect(mapState, mapDispatch)(InnerPage);
+export default connect(mapState, mapDispatch)(MainContent);
