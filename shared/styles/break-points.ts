@@ -7,11 +7,13 @@ const breakpoints = {
   xxl: 1400,
 };
 
-const breakpointUp = (value: keyof typeof breakpoints): string => {
+type Breakpoints = keyof typeof breakpoints;
+
+const breakpointUp = (value: Breakpoints): string => {
   return `(min-width: ${breakpoints[value]}px)`;
 };
 
-const breakpointDown = (value: keyof typeof breakpoints): string => {
+const breakpointDown = (value: Breakpoints): string => {
   const breakpointsKeys = Object.keys(breakpoints);
   const breakpointIndex = breakpointsKeys.indexOf(value);
   const nextBreakpoint = breakpointsKeys[breakpointIndex + 1];
@@ -21,17 +23,14 @@ const breakpointDown = (value: keyof typeof breakpoints): string => {
   return `(max-width: ${breakpoints[value] - 0.02}px)`;
 };
 
-const breakpointOnly = (value: keyof typeof breakpoints): string => {
+const breakpointOnly = (value: Breakpoints): string => {
   if (value === 'xs') return breakpointDown(value);
   if (value === 'xxl') return breakpointUp(value);
 
   return `${breakpointUp(value)} and ${breakpointDown(value)}`;
 };
 
-const breakpointBetween = (
-  lower: keyof typeof breakpoints,
-  upper: keyof typeof breakpoints,
-): string => {
+const breakpointBetween = (lower: Breakpoints, upper: Breakpoints): string => {
   return `${breakpointUp(lower)} and ${breakpointDown(upper)}`;
 };
 
