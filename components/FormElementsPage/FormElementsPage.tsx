@@ -18,6 +18,7 @@ import Input from 'components/Input/Input';
 import LikeButton from 'components/LikeButton/LikeButton';
 import Logo from 'components/Logo/Logo';
 import RadioButton from 'components/RadioButton/RadioButton';
+import RangeSlider from 'components/RangeSlider/RangeSlider';
 import RoomImpression from 'components/RoomImpression/RoomImpression';
 import SocialMedia from 'components/SocialMedia/SocialMedia';
 import StarRating from 'components/StarRating/StarRating';
@@ -27,9 +28,9 @@ import TimePicker from 'components/TimePicker/TimePicker';
 import Toggle from 'components/Toggle/Toggle';
 import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators';
 
-import * as S from './UI-FormElementsLayout.styles';
+import * as S from './FormElementsPage.styles';
 
-class UIFormElementsLayout extends React.Component {
+class FormElementsPage extends React.Component {
   handleFormSubmit = (): unknown => ({});
 
   render(): JSX.Element {
@@ -37,8 +38,8 @@ class UIFormElementsLayout extends React.Component {
       <S.Container>
         <Form
           onSubmit={this.handleFormSubmit}
-          initialValues={{ gender: 'female', 'toggle-on': true }}
-          render={() => (
+          initialValues={{ gender: 'female', 'toggle-on': true, range: [5000, 10000] }}
+          render={(values) => (
             <form>
               <S.InputWrapper>
                 <Field
@@ -174,6 +175,13 @@ class UIFormElementsLayout extends React.Component {
               </S.TimePickerWrapper>
               <Toggle name="toggle-on" label="Получать спецпредложения" />
               <Toggle name="toggle-off" label="Получать спецпредложения" />
+              <S.SliderWrapper>
+                <RangeSlider
+                  initialValue={values.initialValues.range}
+                  title="range slider"
+                  name="range"
+                />
+              </S.SliderWrapper>
               <S.RichCheckboxWrapper>
                 <CheckboxesList roomOptions={richCheckboxesListData} />
               </S.RichCheckboxWrapper>
@@ -239,4 +247,4 @@ class UIFormElementsLayout extends React.Component {
   }
 }
 
-export default UIFormElementsLayout;
+export default FormElementsPage;
