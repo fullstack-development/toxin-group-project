@@ -28,9 +28,9 @@ import TimePicker from 'components/TimePicker/TimePicker';
 import Toggle from 'components/Toggle/Toggle';
 import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators';
 
-import * as S from './UI-FormElementsLayout.styles';
+import * as S from './FormElementsPage.styles';
 
-class UIFormElementsLayout extends React.Component {
+class FormElementsPage extends React.Component {
   handleFormSubmit = (): unknown => ({});
 
   render(): JSX.Element {
@@ -212,4 +212,4 @@ class UIFormElementsLayout extends React.Component {
   }
 }
 
-export default UIFormElementsLayout;
+export default FormElementsPage;
