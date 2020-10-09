@@ -2,7 +2,7 @@ import { Props } from 'components/Comment/Comment.types';
 
 const reviews: Required<Props[]> = [
   {
-    avatarUrl: 'user.jpg',
+    avatarUrl: 'avatar-male.jpg',
     userName: 'Мурад Сарафанов',
     date: new Date('2020-09-27 12:03:14'),
     text:
@@ -10,7 +10,7 @@ const reviews: Required<Props[]> = [
     likesCount: 12,
   },
   {
-    avatarUrl: 'user.jpg',
+    avatarUrl: 'avatar-female.jpg',
     userName: 'Патрисия Стёклышкова',
     date: new Date('2020-09-27 12:03:14'),
     text:

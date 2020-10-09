@@ -212,7 +212,7 @@ class FormElementsPage extends React.Component {
         </S.BulletListWrapper>
         <S.CommentsWrapper>
           <Comment
-            avatarUrl="user.jpg"
+            avatarUrl="avatar-male.jpg"
             userName="Мурад Сарафанов"
             date={new Date('2020-09-27 12:03:14')}
             text="Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей."
