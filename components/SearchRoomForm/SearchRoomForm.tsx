@@ -5,48 +5,76 @@ import ArrowButton from 'components/ArrowButton/ArrowButton';
 import Dropdown from 'components/Dropdown/Dropdown';
 import TimePicker from 'components/TimePicker/TimePicker';
 
+// import apartments from './apartments.json';
 import * as S from './SearchRoomForm.styles';
 
 type SearchRoomFormProps = {
   onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
 };
+const testRoomFilter = {
+  id: 26,
+  price: { from: 3000, to: 10000 },
+  booked: {
+    from: new Date().getTime(),
+    to: new Date(Date.now() + 1000000000).getTime(),
+  },
+  amenities: {
+    bedrooms: 2,
+    beds: 2,
+    bathrooms: 2,
+  },
+  additionalAmenities: {
+    breakfast: false,
+    desk: false,
+    chair: false,
+    crib: false,
+    tv: false,
+    shampoo: true,
+  },
+  accessibility: {
+    wideCorridor: true,
+    invalidHelper: false,
+  },
+  opportunities: {
+    smoking: true,
+    keepPets: false,
+    largeNumberOfPersons: false,
+  },
+  images: [
+    {
+      alt: 'номер с атмосферой пляжа',
+      url: '/images/apartments/image8.jpg',
+    },
+    {
+      alt: 'уютный двухместный номер',
+      url: '/images/apartments/image12.jpg',
+    },
+    {
+      alt: 'недорогой номер с панорамным остеклением',
+      url: '/images/apartments/image1.jpg',
+    },
+    {
+      alt: 'недорогой номер с панорамным остеклением',
+      url: '/images/apartments/image3.jpg',
+    },
+  ],
+};
 const handleDBRequest = (e) => {
   e.preventDefault;
-  api.booking
-    .filterRooms({
-      price: {
-        from: 5000,
-        to: 10000,
-      },
-      booked: {
-        timestampFrom: new Date().getTime(),
-        timestampTo: new Date(Date.now() + 1000000000).getTime(),
-      },
-      amenities: {
-        bathrooms: 1,
-        bedrooms: 1,
-        beds: 1,
-      },
-      additionalAmenities: {
-        breakfast: false,
-        chair: false,
-        crib: true,
-        desk: true,
-        shampoo: true,
-        tv: false,
-      },
-      accessibility: {
-        invalidHelper: false,
-        wideCorridor: false,
-      },
-      opportunities: {
-        keepPets: true,
-        largeNumberOfPersons: false,
-        smoking: false,
-      },
-    })
-    .then((data) => console.log(data));
+  api.booking.filterRooms(testRoomFilter).then((data) => console.log(data));
 };
+
+// const addDataToDB = () => {
+//   apartments.forEach((room) => {
+//     if (room.id < 80 && room.id > 50) {
+//       api.booking.add({
+//         id: room.id,
+//         from: new Date(),
+//         to: new Date(Date.now() + 1000000000),
+//       });
+//     }
+//   });
+// };
 
 const SearchRoomForm: React.FC<SearchRoomFormProps> = ({ onSubmit }: SearchRoomFormProps) => {
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -99,6 +127,9 @@ const SearchRoomForm: React.FC<SearchRoomFormProps> = ({ onSubmit }: SearchRoomF
             <ArrowButton isLink={false} isFilled onClick={handleDBRequest} type="button">
               Подобрать номер
             </ArrowButton>
+            {/* <ArrowButton isLink={false} isFilled onClick={addDataToDB} type="button">
+              Добавить бронь
+            </ArrowButton> */}
           </form>
         )}
       />
