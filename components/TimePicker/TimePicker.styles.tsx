@@ -30,7 +30,7 @@ const ContainerElement = styled.div<ContainerElement>`
 
     return css`
       position: relative;
-      max-width: ${type === 'single' ? '19.0714rem' : '100%'};
+      ${type === 'single' ? 'max-width: 19.0714rem;' : 'width: 100%;'}
       height: 100%;
       @media (max-width: 450px) {
         width: 100%;
@@ -44,6 +44,7 @@ const ContainerElement = styled.div<ContainerElement>`
         margin-right: 1.4rem;
 
         @media (max-width: 450px) {
+          margin-bottom: 1.4rem;
           margin-right: 0;
         }
       }

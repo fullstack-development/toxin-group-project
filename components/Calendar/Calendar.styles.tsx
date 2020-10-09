@@ -18,9 +18,12 @@ const CalendarContainer = styled.div<CalendarContainer>`
 
     return css`
       display: ${isVisible ? 'block' : 'none'};
-      top: 5rem;
       position: absolute;
+      top: 5rem;
+      left: 50%;
+      transform: translateX(-50%);
       max-width: 22.9rem;
+      width: 100%;
       border: 0.1rem solid ${colors.basicLight};
       border-radius: 0.3rem;
       padding: 0 1.2rem;
@@ -68,14 +71,12 @@ const Calendar = styled(DayPicker)<DayPickerProps>`
       }
 
       & .DayPicker-Day {
-        width: 10rem;
-        height: 2.8571rem;
-        display: table-cell;
-        text-align: center;
+        padding-top: calc(50% - 0.5357rem);
+        padding-bottom: calc(50% - 0.5357rem);
         font-family: ${typography.fontName};
         font-size: 0.8571rem;
+        text-align: center;
         color: ${colors.basicDark};
-        vertical-align: middle;
         cursor: pointer;
 
         &--outside {
@@ -189,7 +190,8 @@ const Calendar = styled(DayPicker)<DayPickerProps>`
         }
 
         &-Week {
-          display: table-row;
+          display: grid;
+          grid-template-columns: repeat(7, minmax(2.428rem, 2.857rem));
         }
 
         &-WeekdaysRow {
