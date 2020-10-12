@@ -16,12 +16,14 @@ export function* startAuthProcess(data: {
   try {
     const authStatus: UserCredential = yield call(Api.auth.signIn, email, password);
 
-    yield put(
-      setAuthStatus({
-        type: AUTH_SUCCESS,
-        payload: authStatus,
-      }),
-    );
+    // yield put(
+    //   setAuthStatus({
+    //     type: AUTH_SUCCESS,
+    //     payload: authStatus,
+    //   }),
+    // );
+
+    console.log(Api.auth.setAuthPersistence());
   } catch (error) {
     yield put(
       setAuthStatus({

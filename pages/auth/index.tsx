@@ -1,5 +1,5 @@
 import AuthPage from 'components/AuthPage/AuthPage';
 
-const auth: React.FC = (): JSX.Element => <AuthPage />;
+const Auth: React.FC = (): JSX.Element => <AuthPage />;
 
-export default auth;
+export default Auth;

@@ -6,7 +6,7 @@ type Props = {
 
 const HeaderUserProfile: React.FC<Props> = ({ displayName }: Props): JSX.Element => (
   <S.HeaderUserProfile>
-    <S.Link href="">{displayName}</S.Link>
+    <S.UserName>{displayName}</S.UserName>
   </S.HeaderUserProfile>
 );
 

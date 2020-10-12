@@ -70,6 +70,11 @@ class Firebase {
   }
 
   @boundMethod
+  public setAuthPersistence(): any {
+    return this.auth;
+  }
+
+  @boundMethod
   public onAuthStateChanged(fn: (user: User) => unknown): Unsubscribe {
     return this.auth.onAuthStateChanged(fn);
   }

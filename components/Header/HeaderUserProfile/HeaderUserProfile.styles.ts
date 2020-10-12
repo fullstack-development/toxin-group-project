@@ -19,16 +19,16 @@ const HeaderUserProfile = styled.div`
   }}
 `;
 
-const Link = styled.a`
+const UserName = styled.span`
   ${(props) => {
     const { colors } = props.theme;
 
     return css`
       color: ${colors.basic};
-      text-decoration: none;
       margin-right: 1.5rem;
       position: relative;
       margin: 0;
+      user-select: none;
 
       &:hover {
         color: ${colors.basicDarkest};
@@ -37,4 +37,4 @@ const Link = styled.a`
   }}
 `;
 
-export { HeaderUserProfile, Link };
+export { HeaderUserProfile, UserName };

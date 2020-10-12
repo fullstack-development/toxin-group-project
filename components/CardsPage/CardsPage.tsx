@@ -7,8 +7,8 @@ import SearchRoomForm from 'components/SearchRoomForm/SearchRoomForm';
 
 import * as S from './CardsPage.styles';
 
-const mockFunction = () => {
-  5 + 5;
+const mockAuthFunction = () => {
+  console.log('Successfull auth');
 };
 
 const CardsPage: React.FC = (): JSX.Element => (
@@ -34,8 +34,8 @@ const CardsPage: React.FC = (): JSX.Element => (
         isAuthSuccess={false}
         isAuthProcessNow={false}
         authStatusText=""
-        requestToAuth={mockFunction}
-        breakAuthProcess={mockFunction}
+        requestToAuth={mockAuthFunction}
+        breakAuthProcess={mockAuthFunction}
       />
     </S.AccountEntryWrapper>
   </S.Container>
