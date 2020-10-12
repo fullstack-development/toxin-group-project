@@ -17,4 +17,14 @@ const AccountEntryWrapper = styled.div`
   margin-top: 1rem;
 `;
 
-export { Container, SearchRoomFormWrapper, RegistrationFormWrapper, AccountEntryWrapper };
+const ForgotPasswordWrapper = styled.div`
+  margin: 3rem 0;
+`;
+
+export {
+  Container,
+  SearchRoomFormWrapper,
+  RegistrationFormWrapper,
+  AccountEntryWrapper,
+  ForgotPasswordWrapper,
+};

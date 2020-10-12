@@ -64,4 +64,29 @@ const LikeSpan = styled.span`
   }}
 `;
 
-export { LikeInput, LikeLabel, LikeSpan };
+const LikeOutline = styled.span`
+  ${(props) => {
+    const { colors } = props.theme;
+
+    return css`
+      position: absolute;
+      top: -0.06rem;
+      left: -0.06rem;
+      right: -0.06rem;
+      bottom: -0.06rem;
+      border-radius: 1rem;
+
+      ${LikeInput}:checked:hover ~ &,
+      ${LikeInput}:checked:focus ~ & {
+        box-shadow: 0 0 0.7142rem ${colors.primary};
+      }
+
+      ${LikeInput}:not(:checked):hover ~ &,
+      ${LikeInput}:not(:checked):focus ~ & {
+        box-shadow: 0 0 0.7142rem ${colors.basic};
+      }
+    `;
+  }}
+`;
+
+export { LikeInput, LikeLabel, LikeSpan, LikeOutline };

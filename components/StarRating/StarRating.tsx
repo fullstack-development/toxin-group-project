@@ -1,9 +1,6 @@
-import { keywords } from './StarRating.data.json';
+import { keywords } from './StarRating.data';
 import * as S from './StarRating.styles';
-
-type StarRatingProps = {
-  rating?: number;
-};
+import { StarRatingProps } from './StarRating.types';
 
 const StarRating: React.FC<StarRatingProps> = ({ rating = 0 }: StarRatingProps) => {
   const ratingTextKey = Object.values(keywords)[rating];

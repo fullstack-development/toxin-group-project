@@ -1,14 +1,15 @@
 import React from 'react';
 
 import AccountEntry from 'components/AccountEntry/AccountEntry';
+import ForgotPasswordForm from 'components/ForgotPasswordForm/ForgotPasswordForm';
 import OrderForm from 'components/OrderForm/OrderForm';
 import RegistrationForm from 'components/RegistrationForm/RegistrationForm';
 import Room from 'components/Room/Room';
 import SearchRoomForm from 'components/SearchRoomForm/SearchRoomForm';
 
-import * as S from './UI-CardsLayout.styles';
+import * as S from './CardsPage.styles';
 
-const UICardsLayout: React.FC = (): JSX.Element => (
+const CardsPage: React.FC = (): JSX.Element => (
   <S.Container>
     <SearchRoomForm />
     <OrderForm roomNumber={888} roomType="люкс" roomPrice={9990} />
@@ -30,7 +31,10 @@ const UICardsLayout: React.FC = (): JSX.Element => (
     <S.AccountEntryWrapper>
       <AccountEntry />
     </S.AccountEntryWrapper>
+    <S.ForgotPasswordWrapper>
+      <ForgotPasswordForm />
+    </S.ForgotPasswordWrapper>
   </S.Container>
 );
 
-export default UICardsLayout;
+export default CardsPage;

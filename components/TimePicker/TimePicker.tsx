@@ -6,7 +6,7 @@ import Input from '../Input/Input';
 import * as S from './TimePicker.styles';
 
 type TimePickerProps = {
-  labelName: string;
+  name: string;
   dateFrom?: Date;
   dateTo?: Date;
   dateFromLabelText?: string;
@@ -15,7 +15,7 @@ type TimePickerProps = {
 } & S.ContainerElement;
 
 const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps): JSX.Element => {
-  const { type, dateFrom, dateTo, labelName, dateFromLabelText, dateToLabelText } = props;
+  const { type, dateFrom, dateTo, name, dateFromLabelText, dateToLabelText } = props;
   const [isCalendarVisible, setCalendarVisibility] = useState(false);
   const [selectedDateRange, setSelectedDateRange] = useState({
     from: dateFrom,
@@ -55,14 +55,13 @@ const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps): JSX.Elem
   return (
     <S.Container>
       <Field
-        name={labelName}
-        parse={() => ({
-          from: selectedDateRange.from,
-          to: selectedDateRange.to,
-        })}
+        name={name}
         render={({ input }) => {
-          const applyCalendar = (e): void => {
-            input.onChange(e);
+          const applyCalendar = (): void => {
+            input.onChange({
+              from: selectedDateRange.from.getTime(),
+              to: selectedDateRange.to.getTime(),
+            });
             closeCalendar();
           };
           return (
