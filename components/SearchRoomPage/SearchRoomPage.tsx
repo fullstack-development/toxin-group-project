@@ -22,7 +22,9 @@ const SearchRoomPage: React.FC = () => {
   return (
     <MainLayout>
       <S.Container>
-        <RoomFilter handleRequest={loadData} />
+        <S.FilterContainer>
+          <RoomFilter handleRequest={loadData} />
+        </S.FilterContainer>
         <S.RoomsContainer>
           <S.RoomsTitle>Номера, которые мы для вас подобрали</S.RoomsTitle>
           {rooms.length ? (
