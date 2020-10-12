@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 
+import { breakpointDown } from 'shared/styles/break-points';
 import { titles } from 'shared/styles/mixins';
 
 const RoomImpression = styled.section``;
@@ -8,13 +9,17 @@ const Title = styled.h2`
   margin: 0 0 1.4285rem 0;
   ${titles.h2}
   font-size: 1.3571rem;
+
+  @media ${breakpointDown('xs')} {
+    text-align: center;
+  }
 `;
 
 const Figure = styled.figure`
   display: flex;
   align-items: flex-end;
 
-  @media (max-width: 410px) {
+  @media ${breakpointDown('xs')} {
     flex-direction: column;
     align-items: center;
   }
@@ -25,7 +30,7 @@ const PieChartWrapper = styled.div`
   width: 8.5714rem;
   height: 8.5714rem;
 
-  @media (max-width: 410px) {
+  @media ${breakpointDown('xs')} {
     margin-bottom: 1.5rem;
   }
 `;
@@ -65,7 +70,7 @@ const List = styled.ul`
   padding-left: 3.214rem;
   list-style: none;
 
-  @media (max-width: 410px) {
+  @media ${breakpointDown('xs')} {
     padding: 0;
   }
 `;
