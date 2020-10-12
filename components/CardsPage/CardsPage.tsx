@@ -8,6 +8,7 @@ import SearchRoomForm from 'components/SearchRoomForm/SearchRoomForm';
 import * as S from './CardsPage.styles';
 
 const mockAuthFunction = () => {
+  // eslint-disable-next-line no-console
   console.log('Successfull auth');
 };
 
