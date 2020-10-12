@@ -1,35 +1,31 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 import Room from 'components/Room/Room';
-import roomsList from 'components/Rooms/Rooms.data';
 
 import { Props as RoomProps } from '../Room/Room.types';
 import Preloader from './components/Preloader/Preloader';
 import * as S from './Rooms.styles';
-
-// TODO вынести запрос в отдельный слой приложения
-
-const fetchRooms: Promise<RoomProps[]> = new Promise((resolve) =>
-  setTimeout(() => resolve(roomsList), 1500),
-);
-
-// TODO
+import { Props } from './Rooms.types';
 
 const DEFAULT_INCREMENT = 12;
 
-const Rooms: React.FC = () => {
-  const [rooms, setRooms] = useState<RoomProps[]>([]);
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+const Rooms: React.FC<Props> = ({ rooms }: Props) => {
+  const [visibleRooms, setVisibleRooms] = useState<RoomProps[]>([]);
   const [hasMore, setHasMore] = useState(true);
 
   const getNewRooms = useCallback(async () => {
-    const fetchedRooms = await fetchRooms;
-    setRooms((prevRooms) => {
-      const updatedList = fetchedRooms.slice(0, prevRooms.length + DEFAULT_INCREMENT);
-      if (updatedList.length === prevRooms.length) setHasMore(false);
+    await delay(1500);
+    setVisibleRooms((prevRooms) => {
+      const updatedList = rooms.slice(0, prevRooms.length + DEFAULT_INCREMENT);
+      if (prevRooms.length && updatedList.length === prevRooms.length) setHasMore(false);
       return updatedList;
     });
-  }, []);
+  }, [rooms]);
 
   useEffect(() => {
     getNewRooms();
@@ -37,7 +33,7 @@ const Rooms: React.FC = () => {
 
   return (
     <InfiniteScroll
-      dataLength={rooms.length}
+      dataLength={visibleRooms.length}
       next={getNewRooms}
       hasMore={hasMore}
       loader={<Preloader />}
@@ -46,7 +42,7 @@ const Rooms: React.FC = () => {
     >
       <S.Rooms>
         <S.RoomsGrid>
-          {rooms.map((room) => (
+          {visibleRooms.map((room) => (
             <S.RoomItem key={room.number}>
               <Room {...room} />
             </S.RoomItem>
