@@ -31,7 +31,9 @@ const List = styled.ul`
 `;
 
 const Item = styled.li`
-  margin-bottom: 1.5714rem;
+  &:not(:last-child) {
+    margin-bottom: 1.5714rem;
+  }
 `;
 
 export { Reviews, Title, Counter, List, Item };
