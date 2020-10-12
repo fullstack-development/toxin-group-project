@@ -1,5 +1,6 @@
 import Benefits from 'components/Benefits/Benefits';
 import BulletList from 'components/BulletList/BulletList';
+import Reviews from 'components/Reviews/Reviews';
 
 import * as S from './MainContent.styles';
 
@@ -21,25 +22,28 @@ const MainContent = (): JSX.Element => (
           ]}
         />
       </S.Benefits>
-      <S.Wrapper>
-        <S.BulletList>
-          <S.Title>Правила</S.Title>
-          <BulletList
-            items={[
-              'Нельзя с питомцами',
-              'Без вечеринок и мероприятий',
-              'Время прибытия — после 13:00, а выезд до 12:00',
-            ]}
-          />
-        </S.BulletList>
-        <S.CancellatioTerms>
-          <S.Title>Отмена</S.Title>
-          <S.CancellatioTermsText>
-            Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до
-            прибытия вы получите полный возврат за вычетом сбора за услуги.
-          </S.CancellatioTermsText>
-        </S.CancellatioTerms>
-      </S.Wrapper>
+      <S.Wrapper />
+      <S.ReviewsWrapper>
+        <Reviews />
+      </S.ReviewsWrapper>
+      <S.BulletList>
+        <S.Title>Правила</S.Title>
+        <BulletList
+          items={[
+            'Нельзя с питомцами',
+            'Без вечеринок и мероприятий',
+            'Время прибытия — после 13:00, а выезд до 12:00',
+          ]}
+        />
+      </S.BulletList>
+      <S.CancellationTerms>
+        <S.Title>Отмена</S.Title>
+        <S.CancellationTermsText>
+          Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до
+          прибытия вы получите полный возврат за вычетом сбора за услуги.
+        </S.CancellationTermsText>
+      </S.CancellationTerms>
+      <S.OrderFormWrapper></S.OrderFormWrapper>
     </S.Details>
   </S.MainContent>
 );
