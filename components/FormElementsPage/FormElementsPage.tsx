@@ -21,6 +21,7 @@ import Logo from 'components/Logo/Logo';
 import RadioButton from 'components/RadioButton/RadioButton';
 import RangeSlider from 'components/RangeSlider/RangeSlider';
 import Reviews from 'components/Reviews/Reviews';
+import RoomImpression from 'components/RoomImpression/RoomImpression';
 import SocialMedia from 'components/SocialMedia/SocialMedia';
 import StarRating from 'components/StarRating/StarRating';
 import SubscriptionField from 'components/SubscriptionField/SubscriptionField';
@@ -212,6 +213,10 @@ class FormElementsPage extends React.Component {
         </S.ArrowButtonWrapper>
         <SocialMedia />
         <Logo isLink />
+        <RoomImpression
+          title="Впечатления от номера"
+          numberOfRatings={{ excellent: 130, good: 65, normal: 65, bad: 0 }}
+        />
       </S.Container>
     );
   }
