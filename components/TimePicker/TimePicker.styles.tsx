@@ -43,7 +43,7 @@ const ContainerElement = styled.div<ContainerElement>`
       }
 
       &:nth-child(1) {
-        margin-right: 1.4rem;
+        margin-right: ${type === 'double' ? '1.4rem' : 0};
 
         @media ${breakpointDown('xs')} {
           margin-bottom: 1.4rem;

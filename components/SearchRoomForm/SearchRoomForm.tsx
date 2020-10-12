@@ -2,6 +2,7 @@ import { Form } from 'react-final-form';
 
 import ArrowButton from 'components/ArrowButton/ArrowButton';
 import Dropdown from 'components/Dropdown/Dropdown';
+import { guestsGroups, guestsItems } from 'components/Dropdown/Dropdown.data';
 import TimePicker from 'components/TimePicker/TimePicker';
 
 import * as S from './SearchRoomForm.styles';
@@ -25,7 +26,7 @@ const SearchRoomForm: React.FC<SearchRoomFormProps> = ({ onSubmit }: SearchRoomF
             <S.TimePickerWrapper>
               <TimePicker
                 type="double"
-                labelName="search-room"
+                name="search-room-date"
                 dateFromLabelText="прибытие"
                 dateToLabelText="выезд"
               />
@@ -36,26 +37,8 @@ const SearchRoomForm: React.FC<SearchRoomFormProps> = ({ onSubmit }: SearchRoomF
                 placeholder="Сколько гостей"
                 name="guests"
                 enableControls
-                groups={[
-                  {
-                    name: 'guests',
-                    wordForms: ['гость', 'гостя', 'гостей'],
-                  },
-                ]}
-                items={[
-                  {
-                    title: 'взрослые',
-                    groupName: 'guests',
-                  },
-                  {
-                    title: 'дети',
-                    groupName: 'guests',
-                  },
-                  {
-                    title: 'младенцы',
-                    wordForms: ['младенец', 'младенца', 'младенцев'],
-                  },
-                ]}
+                groups={guestsGroups}
+                items={guestsItems}
               />
             </S.DropdownWrapper>
             <ArrowButton isLink={false} isFilled>
