@@ -2,6 +2,7 @@ import { Form } from 'react-final-form';
 
 import ArrowButton from 'components/ArrowButton/ArrowButton';
 import Dropdown from 'components/Dropdown/Dropdown';
+import { DropdownProps } from 'components/Dropdown/Dropdown.types';
 import TimePicker from 'components/TimePicker/TimePicker';
 import { formatNumber } from 'shared/helpers';
 
@@ -11,9 +12,9 @@ import { Item as PriceItem } from './OrderForm.types';
 
 type Props = {
   roomNumber: number;
-  roomType: string;
   roomPrice: number;
   priceItems?: PriceItem[];
+  roomType?: string;
   currency?: string;
   measure?: string;
 };
@@ -33,6 +34,44 @@ const defaultOptions: PriceItem[] = [
   { label: 'Сбор за дополнительные услуги', price: 300, tooltip: 'Подсказка 2' },
 ];
 
+const dropdownOptions: DropdownProps = {
+  placeholder: 'Сколько гостей',
+  name: 'guests',
+  enableControls: true,
+  groups: [
+    {
+      name: 'guests',
+      wordForms: ['гость', 'гостя', 'гостей'],
+    },
+  ],
+  items: [
+    {
+      title: 'взрослые',
+      groupName: 'guests',
+    },
+    {
+      title: 'дети',
+      groupName: 'guests',
+    },
+    {
+      title: 'младенцы',
+      wordForms: ['младенец', 'младенца', 'младенцев'],
+    },
+  ],
+};
+
+const getResultPrice = (prices: PriceItem[], currency: string): string =>
+  formatNumber(
+    Math.max(
+      prices.reduce((acc, el) => acc + el.price, 0),
+      0,
+    ),
+    currency,
+  );
+
+const getDaysDifference = (dates: { from: number; to: number }) =>
+  Math.round(Math.abs((dates.to - dates.from) / oneDay));
+
 const OrderForm: React.FC<Props> = ({
   roomNumber,
   roomType,
@@ -47,8 +86,7 @@ const OrderForm: React.FC<Props> = ({
       onSubmit={handleFormSubmit}
       render={({ handleSubmit, values }) => {
         const dates = values['order-form'];
-        const daysDifference =
-          (dates && Math.round(Math.abs((dates.to - dates.from) / oneDay))) || 0;
+        const daysDifference = (dates && getDaysDifference(dates)) || 0;
         const prices = [
           {
             label: `${formatNumber(roomPrice, currency)} х ${daysDifference} суток`,
@@ -74,36 +112,12 @@ const OrderForm: React.FC<Props> = ({
                 type="double"
                 dateFromLabelText="Прибытие"
                 dateToLabelText="Выезд"
-                labelName="order-form"
+                name="order-form"
               />
             </S.Datepicker>
             <S.Dropdown>
               <S.DropdownLabel>гости</S.DropdownLabel>
-              <Dropdown
-                placeholder="Сколько гостей"
-                name="guests"
-                enableControls
-                groups={[
-                  {
-                    name: 'guests',
-                    wordForms: ['гость', 'гостя', 'гостей'],
-                  },
-                ]}
-                items={[
-                  {
-                    title: 'взрослые',
-                    groupName: 'guests',
-                  },
-                  {
-                    title: 'дети',
-                    groupName: 'guests',
-                  },
-                  {
-                    title: 'младенцы',
-                    wordForms: ['младенец', 'младенца', 'младенцев'],
-                  },
-                ]}
-              />
+              <Dropdown {...dropdownOptions} />
             </S.Dropdown>
             <S.PriceList>
               <PriceList items={prices} />
@@ -111,15 +125,7 @@ const OrderForm: React.FC<Props> = ({
             <S.ResultWrapper>
               Итого
               <S.Dots />
-              <S.ResultPrice>
-                {formatNumber(
-                  Math.max(
-                    prices.reduce((acc, el) => acc + el.price, 0),
-                    0,
-                  ),
-                  currency,
-                )}
-              </S.ResultPrice>
+              <S.ResultPrice>{getResultPrice(prices, currency)}</S.ResultPrice>
             </S.ResultWrapper>
             <ArrowButton isLink={false} type="submit">
               Забронировать
