@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import { breakpointDown } from 'shared/styles/break-points';
 import { titles } from 'shared/styles/mixins';
 
 const Reviews = styled.article`
@@ -10,7 +11,7 @@ const Title = styled.h2`
   ${titles.h2}
   margin-bottom: 1.2857rem;
 
-  @media (max-width: 576px) {
+  @media ${breakpointDown('xs')} {
     margin-bottom: 0.714rem;
   }
 `;
@@ -20,7 +21,7 @@ const Counter = styled.p`
   top: 0.42857rem;
   right: 0.0714rem;
 
-  @media (max-width: 576px) {
+  @media ${breakpointDown('xs')} {
     position: static;
     margin-bottom: 1.2857rem;
   }

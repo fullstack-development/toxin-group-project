@@ -1,15 +1,19 @@
 import { boundMethod } from 'autobind-decorator';
 
-import Firebase from '../Firebase';
-import { UserCredential, Unsubscribe, User } from '../types';
+import {
+  Authentication,
+  UserCredential,
+  Unsubscribe,
+  User,
+} from '../Firebase/modules/Authentication';
 import apiErrors from './errors/apiErrors';
 import AuthError from './errors/AuthError';
 import { ProfileData } from './types';
 
 class Auth {
-  private readonly actions: Firebase;
+  private readonly actions: Authentication;
 
-  constructor(actions: Firebase) {
+  constructor(actions: Authentication) {
     this.actions = actions;
   }
 
@@ -29,8 +33,10 @@ class Auth {
       switch (err.code) {
         case 'auth/email-already-in-use':
           throw apiErrors.trigger('auth/email-is-taken', email);
+
         case 'auth/weak-password':
           throw apiErrors.trigger('auth/weak-password');
+
         default:
           throw new AuthError();
       }
@@ -58,6 +64,7 @@ class Auth {
       switch (err.code) {
         case 'auth/wrong-password':
           throw apiErrors.trigger('auth/wrong-password');
+
         default:
           throw new AuthError();
       }
@@ -81,6 +88,7 @@ class Auth {
       switch (err.code) {
         case 'auth/user-not-found':
           throw apiErrors.trigger('auth/user-not-found');
+
         default:
           throw new AuthError();
       }
