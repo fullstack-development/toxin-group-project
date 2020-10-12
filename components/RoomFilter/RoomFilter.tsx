@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Form } from 'react-final-form';
 
+import { Filters } from 'api/entities/types';
 import CheckboxesList from 'components/CheckboxesList/CheckboxesList';
 import {
   checkboxesListData,
@@ -14,8 +15,9 @@ import RangeSlider from 'components/RangeSlider/RangeSlider';
 import TimePicker from 'components/TimePicker/TimePicker';
 
 import * as S from './RoomFilter.styles';
+import { Props } from './RoomFilter.types';
 
-export const initialValues = {
+const defaultInitialValues: Filters = {
   price: {
     from: 5000,
     to: 10000,
@@ -48,13 +50,12 @@ export const initialValues = {
   },
 };
 
-type Props = {
-  handleRequest: (options?: typeof initialValues) => void;
-};
-
-const RoomFilter: React.FC<Props> = ({ handleRequest }: Props) => {
-  const handleFormSubmit = async (values?) => {
-    await handleRequest(values);
+const RoomFilter: React.FC<Props> = ({
+  initialValues = defaultInitialValues,
+  handleRequest,
+}: Props) => {
+  const handleFormSubmit = async (values?: Filters) => {
+    await handleRequest(values || defaultInitialValues);
   };
 
   useEffect(() => {
@@ -64,7 +65,7 @@ const RoomFilter: React.FC<Props> = ({ handleRequest }: Props) => {
   return (
     <Form
       onSubmit={handleFormSubmit}
-      initialValues={initialValues}
+      initialValues={initialValues || defaultInitialValues}
       render={({ handleSubmit }) => {
         return (
           <S.RoomFilter>

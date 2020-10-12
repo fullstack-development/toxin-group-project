@@ -16,6 +16,8 @@ const RoomsTitle = styled.h2`
   margin-bottom: 1.4286rem;
 `;
 
-const Preloader = styled.div``;
+const PreloaderWrapper = styled.div`
+  margin-top: 3.5715rem;
+`;
 
-export { Container, RoomsContainer, RoomsTitle };
+export { Container, RoomsContainer, RoomsTitle, PreloaderWrapper };

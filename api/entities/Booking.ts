@@ -49,7 +49,6 @@ class Booking {
     const bookedRoomIDs = await this.getBooked(new Date(booked.from), new Date(booked.to));
 
     const availableRooms = affordableRooms.filter((room) => !bookedRoomIDs.includes(room.id));
-    // return availableRooms;
 
     const comparableOptions: (keyof Filters)[] = [
       'amenities',
