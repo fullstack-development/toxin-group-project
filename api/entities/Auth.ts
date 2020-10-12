@@ -60,13 +60,6 @@ class Auth {
   }
 
   @boundMethod
-  public setAuthPersistence(): void {
-    const result = this.actions.setAuthPersistence();
-
-    return result;
-  }
-
-  @boundMethod
   public async signOut(): Promise<void> {
     return this.actions.signOut();
   }

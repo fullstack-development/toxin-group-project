@@ -51,7 +51,12 @@ class Firebase {
 
   @boundMethod
   public async signIn(email: string, password: string): Promise<UserCredential> {
-    return this.auth.signInWithEmailAndPassword(email, password);
+    return this.app
+      .auth()
+      .setPersistence(firebase.auth.Auth.Persistence.SESSION)
+      .then(() => {
+        return this.auth.signInWithEmailAndPassword(email, password);
+      });
   }
 
   @boundMethod
@@ -67,11 +72,6 @@ class Firebase {
   @boundMethod
   public getCurrentUser(): User {
     return this.auth.currentUser;
-  }
-
-  @boundMethod
-  public setAuthPersistence(): any {
-    return this.auth;
   }
 
   @boundMethod

@@ -2,28 +2,57 @@ import { SagaIterator } from 'redux-saga';
 import { put, takeLatest, call, PutEffect } from 'redux-saga/effects';
 
 import Api from 'api/api';
-import { UserCredential } from 'api/types';
+import { User, UserCredential } from 'api/types';
 
 import { setAuthStatus } from './actions';
-import { AUTH_PROCESS, AUTH_SUCCESS, AUTH_FAILED } from './constants';
+import { AUTH_PROCESS, AUTH_SUCCESS, PRELOAD_AUTH_DATA, AUTH_FAILED } from './constants';
 import { AuthData, SetAuthStatusSuccess, SetAuthStatusFailed } from './types';
 
-export function* startAuthProcess(data: {
+function* startAuthProcess(data: {
   payload: AuthData;
 }): Generator | Generator<PutEffect<SetAuthStatusSuccess | SetAuthStatusFailed>, void, never> {
   const { email, password } = data.payload;
 
   try {
-    const authStatus: UserCredential = yield call(Api.auth.signIn, email, password);
+    const { user }: UserCredential = yield call(Api.auth.signIn, email, password);
 
-    // yield put(
-    //   setAuthStatus({
-    //     type: AUTH_SUCCESS,
-    //     payload: authStatus,
-    //   }),
-    // );
+    yield put(
+      setAuthStatus({
+        type: AUTH_SUCCESS,
+        payload: user,
+      }),
+    );
+  } catch (error) {
+    yield put(
+      setAuthStatus({
+        type: AUTH_FAILED,
+        payload: error.message,
+      }),
+    );
+  }
+}
 
-    console.log(Api.auth.setAuthPersistence());
+const authStateChangedCallback = (): Promise<User> => {
+  return new Promise((resolve, reject) => {
+    Api.auth.onStateChanged((data) => {
+      if (data) resolve(data);
+      else reject(new Error('Пользователь не авторизован'));
+    });
+  });
+};
+
+function* prepareAuthData():
+  | Generator
+  | Generator<PutEffect<SetAuthStatusSuccess | SetAuthStatusFailed>, void, never> {
+  try {
+    const result: User = yield call(authStateChangedCallback);
+
+    yield put(
+      setAuthStatus({
+        type: AUTH_SUCCESS,
+        payload: result,
+      }),
+    );
   } catch (error) {
     yield put(
       setAuthStatus({
@@ -36,4 +65,5 @@ export function* startAuthProcess(data: {
 
 export function* rootSaga(): SagaIterator {
   yield takeLatest<never>(AUTH_PROCESS, startAuthProcess);
+  yield takeLatest<never>(PRELOAD_AUTH_DATA, prepareAuthData);
 }

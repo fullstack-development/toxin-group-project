@@ -3,4 +3,6 @@ export type Props = {
   authStatusText: string;
   displayName: string;
   isAuthSuccess: boolean;
+  wasFinishedAuthChecking: boolean;
+  preloadAuth: () => void;
 };

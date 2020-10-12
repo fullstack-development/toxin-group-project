@@ -1,3 +1,4 @@
+import CircularProgress from '@material-ui/core/CircularProgress';
 import MenuIcon from '@material-ui/icons/Menu';
 import MenuOpenIcon from '@material-ui/icons/MenuOpen';
 import { useState } from 'react';
@@ -11,9 +12,10 @@ import HeaderUserProfile from './HeaderUserProfile/HeaderUserProfile';
 
 export type Props = {
   displayName?: string;
+  wasFinishedAuthChecking: boolean;
 };
 
-const Header: React.FC<Props> = ({ displayName }: Props): JSX.Element => {
+const Header: React.FC<Props> = ({ displayName, wasFinishedAuthChecking }: Props): JSX.Element => {
   const [isOpenMobileMenu, setMobileMenuStatus] = useState(false);
 
   const changeOpenMenuStatus = () => setMobileMenuStatus(!isOpenMobileMenu);
@@ -28,9 +30,13 @@ const Header: React.FC<Props> = ({ displayName }: Props): JSX.Element => {
       </S.HeaderLogoWrapper>
       <S.MobileMenu isShown={isOpenMobileMenu}>
         <NavMenu menu={NavLinks} />
-        <S.AccountPanel>
-          {displayName ? <HeaderUserProfile displayName={displayName} /> : <HeaderUserLogin />}
-        </S.AccountPanel>
+        {wasFinishedAuthChecking ? (
+          <S.AccountPanel>
+            {displayName ? <HeaderUserProfile displayName={displayName} /> : <HeaderUserLogin />}
+          </S.AccountPanel>
+        ) : (
+          <CircularProgress />
+        )}
       </S.MobileMenu>
     </S.Header>
   );

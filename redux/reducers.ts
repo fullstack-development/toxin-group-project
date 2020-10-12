@@ -1,4 +1,10 @@
-import { AUTH_PROCESS, AUTH_SUCCESS, AUTH_FAILED, BREAK_AUTH_PROCESS } from './constants';
+import {
+  AUTH_PROCESS,
+  AUTH_SUCCESS,
+  AUTH_FAILED,
+  PRELOAD_AUTH_DATA,
+  BREAK_AUTH_PROCESS,
+} from './constants';
 import { AuthActions } from './types';
 
 export type State = {
@@ -6,11 +12,13 @@ export type State = {
   isAuthProcessNow: boolean;
   authStatusText: string;
   displayName: null | string;
+  wasFinishedAuthChecking: boolean;
 };
 
 const initialState: State = {
   isAuthSuccess: false,
   isAuthProcessNow: false,
+  wasFinishedAuthChecking: false,
   displayName: null,
   authStatusText: '',
 };
@@ -18,6 +26,7 @@ const initialState: State = {
 const rootReducer = (state: State = initialState, action: AuthActions): State => {
   switch (action.type) {
     case AUTH_PROCESS:
+    case PRELOAD_AUTH_DATA:
       return state;
     case BREAK_AUTH_PROCESS:
       return {
@@ -29,13 +38,15 @@ const rootReducer = (state: State = initialState, action: AuthActions): State =>
         ...state,
         isAuthProcessNow: true,
         isAuthSuccess: true,
+        wasFinishedAuthChecking: true,
         authStatusText: 'Вы успешно авторизованы!',
-        displayName: action.payload.user.displayName || 'Аноним',
+        displayName: action.payload.displayName || 'Аноним',
       };
     case AUTH_FAILED:
       return {
         ...state,
-        isAuthProcessNow: true,
+        isAuthProcessNow: false,
+        wasFinishedAuthChecking: true,
         authStatusText: action.payload,
       };
     default:
