@@ -8,9 +8,8 @@ import { Props } from './Room.types';
 const Room: React.FC<Props> = ({
   price,
   number,
-  reviewCount,
+  reviews,
   href,
-  reviewsHref,
   imagePaths,
   roomType,
   measure = 'в сутки',
@@ -36,8 +35,8 @@ const Room: React.FC<Props> = ({
       </S.Container>
       <S.RatingContainer>
         <StarRating rating={rating} />
-        <S.Reviews href={reviewsHref}>
-          <S.ReviewCount>{reviewCount}</S.ReviewCount>
+        <S.Reviews>
+          <S.ReviewCount>{reviews}</S.ReviewCount>
           <S.ReviewMeasure>{reviewMeasure}</S.ReviewMeasure>
         </S.Reviews>
       </S.RatingContainer>
