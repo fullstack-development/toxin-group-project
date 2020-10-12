@@ -20,6 +20,7 @@ import LikeButton from 'components/LikeButton/LikeButton';
 import Logo from 'components/Logo/Logo';
 import RadioButton from 'components/RadioButton/RadioButton';
 import RangeSlider from 'components/RangeSlider/RangeSlider';
+import Reviews from 'components/Reviews/Reviews';
 import SocialMedia from 'components/SocialMedia/SocialMedia';
 import StarRating from 'components/StarRating/StarRating';
 import SubscriptionField from 'components/SubscriptionField/SubscriptionField';
@@ -181,7 +182,7 @@ class FormElementsPage extends React.Component {
         </S.BulletListWrapper>
         <S.CommentsWrapper>
           <Comment
-            avatarUrl="user.jpg"
+            avatarUrl="avatar-male.jpg"
             userName="Мурад Сарафанов"
             date={new Date('2020-09-27 12:03:14')}
             text="Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей."
@@ -200,6 +201,10 @@ class FormElementsPage extends React.Component {
           <StarRating rating={4} />
           <StarRating rating={5} />
         </S.StarRatingWrapper>
+
+        <S.ReviewsWrapper>
+          <Reviews />
+        </S.ReviewsWrapper>
         <S.ArrowButtonWrapper>
           <ArrowButton isLink href="https://google.com">
             Перейти к оплате

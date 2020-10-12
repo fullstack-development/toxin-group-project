@@ -1,15 +1,8 @@
 import LikeButton from 'components/LikeButton/LikeButton';
 
 import * as S from './Comment.style';
+import { Props } from './Comment.types';
 import getСommentDate from './utils/getСommentDate';
-
-type Props = {
-  avatarUrl: string;
-  userName: string;
-  date: Date;
-  text: string;
-  likesCount: number;
-};
 
 const Comment: React.FC<Props> = ({ avatarUrl, userName, date, text, likesCount }: Props) => (
   <S.Comment>
