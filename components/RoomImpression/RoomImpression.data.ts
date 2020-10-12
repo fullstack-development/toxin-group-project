@@ -1,4 +1,9 @@
-import { RatingValues } from './RoomImpression.types';
+type RatingValues = {
+  excellent: string;
+  good: string;
+  normal: string;
+  bad: string;
+};
 
 const ratingValues: RatingValues = {
   excellent: 'Великолепно',
