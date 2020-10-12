@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 
+import { breakpointDown } from 'shared/styles/break-points';
 import { container, titles } from 'shared/styles/mixins';
 
 const MainContent = styled.main`
@@ -18,7 +19,7 @@ const RoomImages = styled.figure`
   grid-template-columns: 61.54% 1fr;
   justify-content: center;
 
-  @media (max-width: 576px) {
+  @media ${breakpointDown('xs')} {
     grid-template-columns: 1fr;
   }
 
@@ -41,23 +42,19 @@ const Details = styled.div`
   grid-gap: 2.1428rem 5rem;
   padding: 5rem;
 
-  @media (max-width: 1200px) {
+  @media ${breakpointDown('lg')} {
     grid-template-columns: 20.714rem 25rem;
   }
 
-  @media (max-width: 768px) {
+  @media ${breakpointDown('sm')} {
     grid-template-columns: 1fr;
+    grid-gap: 3rem;
+    padding: 3rem 2rem;
   }
 
-  @media (max-width: 576px) {
-    padding: 2rem 0.5rem;
+  @media ${breakpointDown('xs')} {
+    padding: 2rem 1rem;
   }
-`;
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
 `;
 
 const Title = styled.h2`
@@ -74,12 +71,18 @@ const Benefits = styled.section`
   & > h2 {
     margin: 0;
 
-    @media (max-width: 768px) {
+    @media ${breakpointDown('sm')} {
       text-align: center;
     }
   }
 
-  @media (max-width: 768px) {
+  @media ${breakpointDown('sm')} {
+    justify-self: center;
+  }
+`;
+
+const RoomImpressionWrapper = styled.div`
+  @media ${breakpointDown('sm')} {
     justify-self: center;
   }
 `;
@@ -87,7 +90,7 @@ const Benefits = styled.section`
 const ReviewsWrapper = styled.div`
   grid-column: 1 / 3;
 
-  @media (max-width: 768px) {
+  @media ${breakpointDown('sm')} {
     grid-column: 1;
   }
 `;
@@ -99,12 +102,12 @@ const BulletList = styled.section`
     margin-left: 1.4285rem;
     margin-bottom: 1.2142rem;
 
-    @media (max-width: 768px) {
+    @media ${breakpointDown('sm')} {
       text-align: center;
     }
   }
 
-  @media (max-width: 768px) {
+  @media ${breakpointDown('sm')} {
     justify-self: center;
   }
 `;
@@ -112,7 +115,7 @@ const BulletList = styled.section`
 const CancellationTerms = styled.section`
   max-width: 24.428rem;
 
-  @media (max-width: 768px) {
+  @media ${breakpointDown('sm')} {
     justify-self: center;
     text-align: center;
   }
@@ -131,13 +134,13 @@ const OrderFormWrapper = styled.div`
   grid-column: 3 / 4;
   grid-row: 1 / 4;
 
-  @media (max-width: 1200px) {
+  @media ${breakpointDown('lg')} {
     justify-self: center;
     grid-column: 1 / 3;
     grid-row: 4;
   }
 
-  @media (max-width: 768px) {
+  @media ${breakpointDown('sm')} {
     grid-column: 1;
     grid-row: 6;
   }
@@ -147,9 +150,9 @@ export {
   MainContent,
   RoomImages,
   Details,
-  Wrapper,
   Title,
   Benefits,
+  RoomImpressionWrapper,
   ReviewsWrapper,
   BulletList,
   CancellationTerms,

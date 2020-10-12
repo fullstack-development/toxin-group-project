@@ -1,6 +1,7 @@
 import Benefits from 'components/Benefits/Benefits';
 import BulletList from 'components/BulletList/BulletList';
 import Reviews from 'components/Reviews/Reviews';
+import RoomImpression from 'components/RoomImpression/RoomImpression';
 
 import * as S from './MainContent.styles';
 
@@ -22,7 +23,12 @@ const MainContent = (): JSX.Element => (
           ]}
         />
       </S.Benefits>
-      <S.Wrapper />
+      <S.RoomImpressionWrapper>
+        <RoomImpression
+          title="Впечатления от номера"
+          numberOfRatings={{ excellent: 130, good: 65, normal: 65, bad: 0 }}
+        />
+      </S.RoomImpressionWrapper>
       <S.ReviewsWrapper>
         <Reviews />
       </S.ReviewsWrapper>
