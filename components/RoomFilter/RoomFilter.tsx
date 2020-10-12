@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Form } from 'react-final-form';
 
 import CheckboxesList from 'components/CheckboxesList/CheckboxesList';
@@ -14,42 +15,51 @@ import TimePicker from 'components/TimePicker/TimePicker';
 
 import * as S from './RoomFilter.styles';
 
-const RoomFilter: React.FC = () => {
-  const initialValues = {
-    price: {
-      from: 5000,
-      to: 10000,
-    },
-    booked: {
-      from: Date.now(),
-      to: Date.now(),
-    },
-    amenities: {
-      bedrooms: 1,
-      beds: 1,
-      bathrooms: 0,
-    },
-    additionalAmenities: {
-      breakfast: false,
-      desk: false,
-      chair: false,
-      crib: false,
-      tv: false,
-      shampoo: false,
-    },
-    accessibility: {
-      wideCorridor: false,
-      invalidHelper: false,
-    },
-    opportunities: {
-      smoking: false,
-      keepPets: false,
-      largeNumberOfPersons: false,
-    },
+export const initialValues = {
+  price: {
+    from: 5000,
+    to: 10000,
+  },
+  booked: {
+    from: Date.now(),
+    to: Date.now(),
+  },
+  amenities: {
+    bedrooms: 1,
+    beds: 1,
+    bathrooms: 0,
+  },
+  additionalAmenities: {
+    breakfast: false,
+    desk: false,
+    chair: false,
+    crib: false,
+    tv: false,
+    shampoo: false,
+  },
+  accessibility: {
+    wideCorridor: false,
+    invalidHelper: false,
+  },
+  opportunities: {
+    smoking: false,
+    keepPets: false,
+    largeNumberOfPersons: false,
+  },
+};
+
+type Props = {
+  handleRequest: (options?: typeof initialValues) => void;
+};
+
+const RoomFilter: React.FC<Props> = ({ handleRequest }: Props) => {
+  const handleFormSubmit = async (values?) => {
+    await handleRequest(values);
   };
 
-  // eslint-disable-next-line no-console
-  const handleFormSubmit = (values) => console.log(values);
+  useEffect(() => {
+    handleFormSubmit();
+  }, []);
 
   return (
     <Form

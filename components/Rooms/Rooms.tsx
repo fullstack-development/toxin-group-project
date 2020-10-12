@@ -22,7 +22,7 @@ const Rooms: React.FC<Props> = ({ rooms }: Props) => {
     await delay(1500);
     setVisibleRooms((prevRooms) => {
       const updatedList = rooms.slice(0, prevRooms.length + DEFAULT_INCREMENT);
-      if (prevRooms.length && updatedList.length === prevRooms.length) setHasMore(false);
+      if (prevRooms.length && rooms.length === updatedList.length) setHasMore(false);
       return updatedList;
     });
   }, [rooms]);
