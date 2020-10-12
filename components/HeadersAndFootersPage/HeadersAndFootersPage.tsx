@@ -7,7 +7,7 @@ import * as S from './HeadersAndFootersPage.styles';
 
 const HeadersAndFootersPage: React.FC = (): JSX.Element => (
   <S.Container>
-    <Header />
+    <Header wasFinishedAuthChecking />
     <Footer />
   </S.Container>
 );
