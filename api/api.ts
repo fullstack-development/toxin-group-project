@@ -1,14 +1,16 @@
-import { Auth, Apartments } from './entities';
-import Firebase from './Firebase';
+import { Auth, Apartments, Booking } from './entities';
+import { Firebase } from './Firebase';
 
 class Api {
   public readonly auth: Auth;
+  public readonly booking: Booking;
   public readonly apartments: Apartments;
 
   constructor() {
-    const actions = new Firebase();
-    this.auth = new Auth(actions);
-    this.apartments = new Apartments(actions);
+    const { authentication, database } = new Firebase();
+    this.auth = new Auth(authentication);
+    this.booking = new Booking(database);
+    this.apartments = new Apartments(database);
   }
 }
 

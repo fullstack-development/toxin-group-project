@@ -1,8 +1,4 @@
-export type Apartment = {
-  price: number;
-  rating: number;
-  reviews: number;
-  class: 'economy' | 'luxury';
+type Options = {
   amenities: {
     bedrooms: number;
     beds: number;
@@ -25,8 +21,26 @@ export type Apartment = {
     keepPets: boolean;
     largeNumberOfPersons: boolean;
   };
-  images: { url: string; alt: string }[];
 };
+export type Apartment = {
+  id: number;
+  price: number;
+  rating: number;
+  reviews: number;
+  class: 'economy' | 'luxury';
+  images: { url: string; alt: string }[];
+} & Options;
+
+export type Filters = {
+  price: {
+    from: number;
+    to: number;
+  };
+  booked: {
+    from: number;
+    to: number;
+  };
+} & Options;
 
 export type ApartmentsList = { [k: number]: Apartment };
 
@@ -38,4 +52,10 @@ export type ProfileData = {
   birthDate: string;
   gender: 'male' | 'female';
   receiveOffers: boolean;
+};
+
+export type BookingData = {
+  apartmentId: number;
+  from: Date;
+  to: Date;
 };
