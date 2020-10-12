@@ -6,19 +6,30 @@ type Icon = {
   icon: string;
 };
 
-const BenefitItem = styled.div`
+const Benefits = styled.ul`
+  list-style: none;
+`;
+
+const Item = styled.li`
   ${(props) => {
     const { colors } = props.theme;
 
     return css`
-      border-bottom: 0.01rem solid ${colors.basicPale};
-      padding: 1.4rem 0;
       display: flex;
+
+      &:not(:last-child) {
+        border-bottom: 0.01rem solid ${colors.basicPale};
+        padding: 1.4rem 0;
+      }
+
+      &:last-child {
+        padding: 1.4rem 0 0.214rem;
+      }
     `;
   }}
 `;
 
-const TextWrapper = styled.div`
+const List = styled.dl`
   display: flex;
   flex-direction: column;
   padding-left: 0.8rem;
@@ -41,10 +52,11 @@ const Icon = styled.span<Icon>`
   }}
 `;
 
-const Title = styled.h3`
+const Title = styled.dt`
   font-size: 1rem;
+  font-weight: bold;
   line-height: 2rem;
   word-break: break-word;
 `;
 
-export { BenefitItem, TextWrapper, Icon, Title };
+export { Benefits, Item, List, Icon, Title };

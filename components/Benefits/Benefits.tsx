@@ -10,17 +10,17 @@ type Benefits = {
 };
 
 const Benefits: React.FC<Benefits> = ({ items }: Benefits) => (
-  <div>
+  <S.Benefits>
     {items.map((item) => (
-      <S.BenefitItem key={item.title}>
+      <S.Item key={item.title}>
         <S.Icon icon={item.icon} />
-        <S.TextWrapper>
+        <S.List>
           <S.Title>{item.title}</S.Title>
-          <p>{item.description}</p>
-        </S.TextWrapper>
-      </S.BenefitItem>
+          <dd>{item.description}</dd>
+        </S.List>
+      </S.Item>
     ))}
-  </div>
+  </S.Benefits>
 );
 
 export default Benefits;
