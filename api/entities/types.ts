@@ -28,6 +28,7 @@ export type Apartment = {
   rating: number;
   reviews: number;
   class: 'economy' | 'luxury';
+  href: string;
   images: { url: string; alt: string }[];
 } & Options;
 

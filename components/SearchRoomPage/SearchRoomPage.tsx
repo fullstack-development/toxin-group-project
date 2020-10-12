@@ -4,13 +4,14 @@ import api from 'api/api';
 import { Filters } from 'api/entities/types';
 import MainLayout from 'components/MainLayout/MainLayout';
 import Preloader from 'components/Preloader/Preloader';
+import { Props as RoomProps } from 'components/Room/Room.types';
 import RoomFilter from 'components/RoomFilter/RoomFilter';
 import Rooms from 'components/Rooms/Rooms';
 
 import * as S from './SearchRoomPage.styles';
 
 const SearchRoomPage: React.FC = () => {
-  const [rooms, setRooms] = useState([]);
+  const [rooms, setRooms] = useState<RoomProps[]>([]);
 
   async function loadData(options?: Filters) {
     setRooms([]);
