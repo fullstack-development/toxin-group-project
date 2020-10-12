@@ -4,7 +4,6 @@ type CheckboxProps = {
   name: string;
   isChecked?: boolean;
   label: string;
-  value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   title?: string;
 };
@@ -12,7 +11,6 @@ type CheckboxProps = {
 const Checkbox: React.FC<CheckboxProps> = ({
   name,
   isChecked,
-  value,
   label,
   title,
   onChange,
@@ -23,13 +21,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
 
   return (
     <S.Checkbox>
-      <S.HiddenCheckbox
-        name={name}
-        type="checkbox"
-        value={value}
-        checked={isChecked}
-        onChange={handleChange}
-      />
+      <S.HiddenCheckbox name={name} type="checkbox" checked={isChecked} onChange={handleChange} />
       <S.Checkmark />
       <S.Label title={title}>
         {title && <S.Title>{title}</S.Title>}

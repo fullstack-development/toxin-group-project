@@ -13,12 +13,14 @@ import {
 } from 'components/CheckboxesList/CheckboxesList.data';
 import Comment from 'components/Comment/Comment';
 import Dropdown from 'components/Dropdown/Dropdown';
+import { guestsGroups, guestsItems, amenitiesItems } from 'components/Dropdown/Dropdown.data';
 import Expander from 'components/Expander/Expander';
 import Input from 'components/Input/Input';
 import LikeButton from 'components/LikeButton/LikeButton';
 import Logo from 'components/Logo/Logo';
 import RadioButton from 'components/RadioButton/RadioButton';
 import RangeSlider from 'components/RangeSlider/RangeSlider';
+import Reviews from 'components/Reviews/Reviews';
 import SocialMedia from 'components/SocialMedia/SocialMedia';
 import StarRating from 'components/StarRating/StarRating';
 import SubscriptionField from 'components/SubscriptionField/SubscriptionField';
@@ -27,9 +29,9 @@ import TimePicker from 'components/TimePicker/TimePicker';
 import Toggle from 'components/Toggle/Toggle';
 import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators';
 
-import * as S from './UI-FormElementsLayout.styles';
+import * as S from './FormElementsPage.styles';
 
-class UIFormElementsLayout extends React.Component {
+class FormElementsPage extends React.Component {
   handleFormSubmit = (): unknown => ({});
 
   render(): JSX.Element {
@@ -103,21 +105,8 @@ class UIFormElementsLayout extends React.Component {
                 <Dropdown
                   placeholder="Сколько гостей"
                   enableControls={false}
-                  name="guests"
-                  items={[
-                    {
-                      title: 'Спальни',
-                      wordForms: ['спальня', 'спальни', 'спален'],
-                    },
-                    {
-                      title: 'Кровати',
-                      wordForms: ['кровать', 'кровати', 'кроватей'],
-                    },
-                    {
-                      title: 'Ванные комнаты',
-                      wordForms: ['ванная', 'ванные', 'ванных'],
-                    },
-                  ]}
+                  name="amenities"
+                  items={amenitiesItems}
                 />
               </S.DropdownWrapper>
               <S.DropdownWrapper>
@@ -125,26 +114,8 @@ class UIFormElementsLayout extends React.Component {
                   placeholder="Сколько гостей"
                   name="guests"
                   enableControls
-                  groups={[
-                    {
-                      name: 'guests',
-                      wordForms: ['гость', 'гостя', 'гостей'],
-                    },
-                  ]}
-                  items={[
-                    {
-                      title: 'взрослые',
-                      groupName: 'guests',
-                    },
-                    {
-                      title: 'дети',
-                      groupName: 'guests',
-                    },
-                    {
-                      title: 'младенцы',
-                      wordForms: ['младенец', 'младенца', 'младенцев'],
-                    },
-                  ]}
+                  groups={guestsGroups}
+                  items={guestsItems}
                 />
               </S.DropdownWrapper>
               <S.CheckboxWrapper>
@@ -167,7 +138,7 @@ class UIFormElementsLayout extends React.Component {
               <S.TimePickerWrapper>
                 <TimePicker
                   type="double"
-                  labelName="elements"
+                  name="elements-date"
                   dateFromLabelText="date dropdown"
                   dateToLabelText="date dropdown"
                 />
@@ -211,7 +182,7 @@ class UIFormElementsLayout extends React.Component {
         </S.BulletListWrapper>
         <S.CommentsWrapper>
           <Comment
-            avatarUrl="user.jpg"
+            avatarUrl="avatar-male.jpg"
             userName="Мурад Сарафанов"
             date={new Date('2020-09-27 12:03:14')}
             text="Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей."
@@ -230,6 +201,10 @@ class UIFormElementsLayout extends React.Component {
           <StarRating rating={4} />
           <StarRating rating={5} />
         </S.StarRatingWrapper>
+
+        <S.ReviewsWrapper>
+          <Reviews />
+        </S.ReviewsWrapper>
         <S.ArrowButtonWrapper>
           <ArrowButton isLink href="https://google.com">
             Перейти к оплате
@@ -242,4 +217,4 @@ class UIFormElementsLayout extends React.Component {
   }
 }
 
-export default UIFormElementsLayout;
+export default FormElementsPage;
