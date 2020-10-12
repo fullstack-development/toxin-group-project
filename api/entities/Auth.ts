@@ -18,7 +18,13 @@ class Auth {
   }
 
   @boundMethod
-  public async signUp({ name, surname, email, password }: ProfileData): Promise<UserCredential> {
+  public async signUp({
+    name,
+    surname,
+    email,
+    password,
+    gender,
+  }: ProfileData): Promise<UserCredential> {
     let credential: UserCredential;
 
     try {
@@ -41,6 +47,7 @@ class Auth {
     user
       .updateProfile({
         displayName: `${name} ${surname}`,
+        photoURL: gender === 'female' ? '/img/avatar-female.jpg' : '/img/avatar-male.jpg',
       })
       .then(() => user.sendEmailVerification());
 

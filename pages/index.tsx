@@ -1,5 +1,5 @@
-import IndexLayout from 'components/IndexLayout/IndexLayout';
+import IndexPage from 'components/IndexPage/IndexPage';
 
-const Index: React.FC = () => <IndexLayout />;
+const Index: React.FC = () => <IndexPage />;
 
 export default Index;

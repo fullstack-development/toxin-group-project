@@ -26,7 +26,6 @@ const Link = styled.a`
     return css`
       color: ${colors.basic};
       text-decoration: none;
-      outline: none;
       margin-right: 1.5rem;
       position: relative;
       margin: 0;
