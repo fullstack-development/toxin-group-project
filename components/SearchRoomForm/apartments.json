@@ -1,0 +1,3527 @@
+﻿[
+  {
+    "id": 26,
+    "price": 3700,
+    "rating": 3,
+    "reviews": 39,
+    "class": "economy",
+    "amenities": {
+      "bedrooms": 2,
+      "beds": 2,
+      "bathrooms": 2
+    },
+    "additionalAmenities": {
+      "breakfast": false,
+      "desk": false,
+      "chair": false,
+      "crib": false,
+      "tv": false,
+      "shampoo": true
+    },
+    "accessibility": {
+      "wideCorridor": true,
+      "invalidHelper": false
+    },
+    "opportunities": {
+      "smoking": true,
+      "keepPets": false,
+      "largeNumberOfPersons": false
+    },
+    "images": [
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image8.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image12.jpg"
+      },
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image1.jpg"
+      },
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image3.jpg"
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "price": 5300,
+    "rating": 5,
+    "reviews": 70,
+    "class": "economy",
+    "amenities": {
+      "bedrooms": 3,
+      "beds": 1,
+      "bathrooms": 2
+    },
+    "additionalAmenities": {
+      "breakfast": true,
+      "desk": true,
+      "chair": false,
+      "crib": false,
+      "tv": false,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": true,
+      "invalidHelper": false
+    },
+    "opportunities": {
+      "smoking": true,
+      "keepPets": true,
+      "largeNumberOfPersons": true
+    },
+    "images": [
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image12.jpg"
+      },
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image11.jpg"
+      },
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image8.jpg"
+      },
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image12.jpg"
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "price": 3700,
+    "rating": 5,
+    "reviews": 44,
+    "class": "economy",
+    "amenities": {
+      "bedrooms": 3,
+      "beds": 1,
+      "bathrooms": 3
+    },
+    "additionalAmenities": {
+      "breakfast": true,
+      "desk": false,
+      "chair": false,
+      "crib": false,
+      "tv": true,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": true,
+      "invalidHelper": false
+    },
+    "opportunities": {
+      "smoking": false,
+      "keepPets": false,
+      "largeNumberOfPersons": false
+    },
+    "images": [
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image1.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image5.jpg"
+      },
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image8.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image4.jpg"
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "price": 8000,
+    "rating": 3,
+    "reviews": 31,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 3,
+      "beds": 4,
+      "bathrooms": 2
+    },
+    "additionalAmenities": {
+      "breakfast": true,
+      "desk": false,
+      "chair": true,
+      "crib": true,
+      "tv": false,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": true,
+      "invalidHelper": false
+    },
+    "opportunities": {
+      "smoking": false,
+      "keepPets": true,
+      "largeNumberOfPersons": true
+    },
+    "images": [
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image6.jpg"
+      },
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image5.jpg"
+      },
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image9.jpg"
+      },
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image5.jpg"
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "price": 14300,
+    "rating": 3,
+    "reviews": 18,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 2,
+      "beds": 5,
+      "bathrooms": 2
+    },
+    "additionalAmenities": {
+      "breakfast": false,
+      "desk": false,
+      "chair": true,
+      "crib": false,
+      "tv": true,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": false,
+      "invalidHelper": false
+    },
+    "opportunities": {
+      "smoking": false,
+      "keepPets": true,
+      "largeNumberOfPersons": false
+    },
+    "images": [
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image12.jpg"
+      },
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image6.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image11.jpg"
+      },
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image12.jpg"
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "price": 4000,
+    "rating": 3,
+    "reviews": 44,
+    "class": "economy",
+    "amenities": {
+      "bedrooms": 2,
+      "beds": 5,
+      "bathrooms": 3
+    },
+    "additionalAmenities": {
+      "breakfast": false,
+      "desk": true,
+      "chair": true,
+      "crib": true,
+      "tv": false,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": false,
+      "invalidHelper": true
+    },
+    "opportunities": {
+      "smoking": true,
+      "keepPets": false,
+      "largeNumberOfPersons": false
+    },
+    "images": [
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image12.jpg"
+      },
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image9.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image7.jpg"
+      },
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image8.jpg"
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "price": 11400,
+    "rating": 5,
+    "reviews": 57,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 3,
+      "beds": 4,
+      "bathrooms": 2
+    },
+    "additionalAmenities": {
+      "breakfast": true,
+      "desk": false,
+      "chair": true,
+      "crib": true,
+      "tv": false,
+      "shampoo": true
+    },
+    "accessibility": {
+      "wideCorridor": true,
+      "invalidHelper": false
+    },
+    "opportunities": {
+      "smoking": false,
+      "keepPets": false,
+      "largeNumberOfPersons": false
+    },
+    "images": [
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image1.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image3.jpg"
+      },
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image10.jpg"
+      },
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image11.jpg"
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "price": 3300,
+    "rating": 1,
+    "reviews": 78,
+    "class": "economy",
+    "amenities": {
+      "bedrooms": 2,
+      "beds": 5,
+      "bathrooms": 2
+    },
+    "additionalAmenities": {
+      "breakfast": true,
+      "desk": true,
+      "chair": true,
+      "crib": false,
+      "tv": true,
+      "shampoo": true
+    },
+    "accessibility": {
+      "wideCorridor": true,
+      "invalidHelper": false
+    },
+    "opportunities": {
+      "smoking": true,
+      "keepPets": false,
+      "largeNumberOfPersons": true
+    },
+    "images": [
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image12.jpg"
+      },
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image7.jpg"
+      },
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image9.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image1.jpg"
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "price": 6800,
+    "rating": 4,
+    "reviews": 74,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 2,
+      "beds": 2,
+      "bathrooms": 1
+    },
+    "additionalAmenities": {
+      "breakfast": true,
+      "desk": false,
+      "chair": true,
+      "crib": false,
+      "tv": true,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": false,
+      "invalidHelper": false
+    },
+    "opportunities": {
+      "smoking": false,
+      "keepPets": true,
+      "largeNumberOfPersons": false
+    },
+    "images": [
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image8.jpg"
+      },
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image3.jpg"
+      },
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image5.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image3.jpg"
+      }
+    ]
+  },
+  {
+    "id": 35,
+    "price": 12600,
+    "rating": 2,
+    "reviews": 21,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 1,
+      "beds": 1,
+      "bathrooms": 1
+    },
+    "additionalAmenities": {
+      "breakfast": true,
+      "desk": true,
+      "chair": true,
+      "crib": false,
+      "tv": true,
+      "shampoo": true
+    },
+    "accessibility": {
+      "wideCorridor": false,
+      "invalidHelper": false
+    },
+    "opportunities": {
+      "smoking": true,
+      "keepPets": false,
+      "largeNumberOfPersons": true
+    },
+    "images": [
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image7.jpg"
+      },
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image6.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image9.jpg"
+      },
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image3.jpg"
+      }
+    ]
+  },
+  {
+    "id": 36,
+    "price": 7100,
+    "rating": 4,
+    "reviews": 22,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 2,
+      "beds": 1,
+      "bathrooms": 1
+    },
+    "additionalAmenities": {
+      "breakfast": false,
+      "desk": true,
+      "chair": true,
+      "crib": false,
+      "tv": true,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": true,
+      "invalidHelper": true
+    },
+    "opportunities": {
+      "smoking": true,
+      "keepPets": true,
+      "largeNumberOfPersons": true
+    },
+    "images": [
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image7.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image2.jpg"
+      },
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image8.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image3.jpg"
+      }
+    ]
+  },
+  {
+    "id": 37,
+    "price": 7700,
+    "rating": 4,
+    "reviews": 12,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 1,
+      "beds": 4,
+      "bathrooms": 2
+    },
+    "additionalAmenities": {
+      "breakfast": false,
+      "desk": false,
+      "chair": false,
+      "crib": true,
+      "tv": true,
+      "shampoo": true
+    },
+    "accessibility": {
+      "wideCorridor": false,
+      "invalidHelper": true
+    },
+    "opportunities": {
+      "smoking": true,
+      "keepPets": true,
+      "largeNumberOfPersons": true
+    },
+    "images": [
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image11.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image10.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image5.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image3.jpg"
+      }
+    ]
+  },
+  {
+    "id": 38,
+    "price": 12100,
+    "rating": 1,
+    "reviews": 29,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 2,
+      "beds": 5,
+      "bathrooms": 1
+    },
+    "additionalAmenities": {
+      "breakfast": true,
+      "desk": true,
+      "chair": false,
+      "crib": false,
+      "tv": false,
+      "shampoo": true
+    },
+    "accessibility": {
+      "wideCorridor": true,
+      "invalidHelper": true
+    },
+    "opportunities": {
+      "smoking": false,
+      "keepPets": true,
+      "largeNumberOfPersons": true
+    },
+    "images": [
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image1.jpg"
+      },
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image1.jpg"
+      },
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image8.jpg"
+      },
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image8.jpg"
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "price": 5000,
+    "rating": 4,
+    "reviews": 85,
+    "class": "economy",
+    "amenities": {
+      "bedrooms": 2,
+      "beds": 4,
+      "bathrooms": 3
+    },
+    "additionalAmenities": {
+      "breakfast": true,
+      "desk": false,
+      "chair": true,
+      "crib": true,
+      "tv": false,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": true,
+      "invalidHelper": true
+    },
+    "opportunities": {
+      "smoking": false,
+      "keepPets": true,
+      "largeNumberOfPersons": true
+    },
+    "images": [
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image2.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image8.jpg"
+      },
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image4.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image4.jpg"
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "price": 11700,
+    "rating": 5,
+    "reviews": 5,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 1,
+      "beds": 1,
+      "bathrooms": 2
+    },
+    "additionalAmenities": {
+      "breakfast": true,
+      "desk": true,
+      "chair": true,
+      "crib": true,
+      "tv": false,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": false,
+      "invalidHelper": false
+    },
+    "opportunities": {
+      "smoking": false,
+      "keepPets": true,
+      "largeNumberOfPersons": false
+    },
+    "images": [
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image10.jpg"
+      },
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image7.jpg"
+      },
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image10.jpg"
+      },
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image11.jpg"
+      }
+    ]
+  },
+  {
+    "id": 41,
+    "price": 11700,
+    "rating": 4,
+    "reviews": 49,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 2,
+      "beds": 2,
+      "bathrooms": 2
+    },
+    "additionalAmenities": {
+      "breakfast": true,
+      "desk": false,
+      "chair": false,
+      "crib": true,
+      "tv": true,
+      "shampoo": true
+    },
+    "accessibility": {
+      "wideCorridor": false,
+      "invalidHelper": false
+    },
+    "opportunities": {
+      "smoking": true,
+      "keepPets": false,
+      "largeNumberOfPersons": false
+    },
+    "images": [
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image4.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image11.jpg"
+      },
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image11.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image3.jpg"
+      }
+    ]
+  },
+  {
+    "id": 42,
+    "price": 10000,
+    "rating": 3,
+    "reviews": 2,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 3,
+      "beds": 4,
+      "bathrooms": 3
+    },
+    "additionalAmenities": {
+      "breakfast": true,
+      "desk": true,
+      "chair": false,
+      "crib": false,
+      "tv": false,
+      "shampoo": true
+    },
+    "accessibility": {
+      "wideCorridor": true,
+      "invalidHelper": false
+    },
+    "opportunities": {
+      "smoking": false,
+      "keepPets": true,
+      "largeNumberOfPersons": true
+    },
+    "images": [
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image6.jpg"
+      },
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image5.jpg"
+      },
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image3.jpg"
+      },
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image5.jpg"
+      }
+    ]
+  },
+  {
+    "id": 43,
+    "price": 3700,
+    "rating": 4,
+    "reviews": 86,
+    "class": "economy",
+    "amenities": {
+      "bedrooms": 2,
+      "beds": 5,
+      "bathrooms": 1
+    },
+    "additionalAmenities": {
+      "breakfast": true,
+      "desk": false,
+      "chair": true,
+      "crib": false,
+      "tv": true,
+      "shampoo": true
+    },
+    "accessibility": {
+      "wideCorridor": false,
+      "invalidHelper": true
+    },
+    "opportunities": {
+      "smoking": true,
+      "keepPets": false,
+      "largeNumberOfPersons": true
+    },
+    "images": [
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image4.jpg"
+      },
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image6.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image9.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image9.jpg"
+      }
+    ]
+  },
+  {
+    "id": 44,
+    "price": 6200,
+    "rating": 4,
+    "reviews": 47,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 1,
+      "beds": 2,
+      "bathrooms": 1
+    },
+    "additionalAmenities": {
+      "breakfast": false,
+      "desk": false,
+      "chair": true,
+      "crib": false,
+      "tv": false,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": true,
+      "invalidHelper": false
+    },
+    "opportunities": {
+      "smoking": true,
+      "keepPets": true,
+      "largeNumberOfPersons": false
+    },
+    "images": [
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image10.jpg"
+      },
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image11.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image7.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image4.jpg"
+      }
+    ]
+  },
+  {
+    "id": 45,
+    "price": 12400,
+    "rating": 4,
+    "reviews": 52,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 1,
+      "beds": 3,
+      "bathrooms": 2
+    },
+    "additionalAmenities": {
+      "breakfast": false,
+      "desk": true,
+      "chair": false,
+      "crib": false,
+      "tv": true,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": true,
+      "invalidHelper": false
+    },
+    "opportunities": {
+      "smoking": true,
+      "keepPets": true,
+      "largeNumberOfPersons": true
+    },
+    "images": [
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image12.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image7.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image12.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image6.jpg"
+      }
+    ]
+  },
+  {
+    "id": 46,
+    "price": 12300,
+    "rating": 3,
+    "reviews": 8,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 1,
+      "beds": 1,
+      "bathrooms": 1
+    },
+    "additionalAmenities": {
+      "breakfast": true,
+      "desk": true,
+      "chair": false,
+      "crib": false,
+      "tv": false,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": true,
+      "invalidHelper": false
+    },
+    "opportunities": {
+      "smoking": true,
+      "keepPets": false,
+      "largeNumberOfPersons": false
+    },
+    "images": [
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image3.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image10.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image1.jpg"
+      },
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image4.jpg"
+      }
+    ]
+  },
+  {
+    "id": 47,
+    "price": 9900,
+    "rating": 1,
+    "reviews": 37,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 2,
+      "beds": 1,
+      "bathrooms": 1
+    },
+    "additionalAmenities": {
+      "breakfast": true,
+      "desk": true,
+      "chair": false,
+      "crib": true,
+      "tv": true,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": false,
+      "invalidHelper": false
+    },
+    "opportunities": {
+      "smoking": false,
+      "keepPets": true,
+      "largeNumberOfPersons": true
+    },
+    "images": [
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image5.jpg"
+      },
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image1.jpg"
+      },
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image7.jpg"
+      },
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image5.jpg"
+      }
+    ]
+  },
+  {
+    "id": 48,
+    "price": 9100,
+    "rating": 4,
+    "reviews": 69,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 2,
+      "beds": 5,
+      "bathrooms": 1
+    },
+    "additionalAmenities": {
+      "breakfast": true,
+      "desk": false,
+      "chair": false,
+      "crib": true,
+      "tv": true,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": true,
+      "invalidHelper": false
+    },
+    "opportunities": {
+      "smoking": true,
+      "keepPets": false,
+      "largeNumberOfPersons": true
+    },
+    "images": [
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image9.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image10.jpg"
+      },
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image8.jpg"
+      },
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image10.jpg"
+      }
+    ]
+  },
+  {
+    "id": 49,
+    "price": 5100,
+    "rating": 1,
+    "reviews": 50,
+    "class": "economy",
+    "amenities": {
+      "bedrooms": 3,
+      "beds": 3,
+      "bathrooms": 2
+    },
+    "additionalAmenities": {
+      "breakfast": true,
+      "desk": false,
+      "chair": false,
+      "crib": true,
+      "tv": false,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": true,
+      "invalidHelper": false
+    },
+    "opportunities": {
+      "smoking": false,
+      "keepPets": true,
+      "largeNumberOfPersons": false
+    },
+    "images": [
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image7.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image12.jpg"
+      },
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image12.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image10.jpg"
+      }
+    ]
+  },
+  {
+    "id": 50,
+    "price": 3100,
+    "rating": 3,
+    "reviews": 54,
+    "class": "economy",
+    "amenities": {
+      "bedrooms": 3,
+      "beds": 1,
+      "bathrooms": 2
+    },
+    "additionalAmenities": {
+      "breakfast": false,
+      "desk": true,
+      "chair": false,
+      "crib": true,
+      "tv": false,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": true,
+      "invalidHelper": true
+    },
+    "opportunities": {
+      "smoking": true,
+      "keepPets": false,
+      "largeNumberOfPersons": false
+    },
+    "images": [
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image8.jpg"
+      },
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image4.jpg"
+      },
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image4.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image4.jpg"
+      }
+    ]
+  },
+  {
+    "id": 51,
+    "price": 3400,
+    "rating": 2,
+    "reviews": 46,
+    "class": "economy",
+    "amenities": {
+      "bedrooms": 3,
+      "beds": 4,
+      "bathrooms": 2
+    },
+    "additionalAmenities": {
+      "breakfast": false,
+      "desk": true,
+      "chair": true,
+      "crib": true,
+      "tv": false,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": true,
+      "invalidHelper": true
+    },
+    "opportunities": {
+      "smoking": true,
+      "keepPets": true,
+      "largeNumberOfPersons": false
+    },
+    "images": [
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image1.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image12.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image3.jpg"
+      },
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image12.jpg"
+      }
+    ]
+  },
+  {
+    "id": 52,
+    "price": 5600,
+    "rating": 5,
+    "reviews": 79,
+    "class": "economy",
+    "amenities": {
+      "bedrooms": 1,
+      "beds": 3,
+      "bathrooms": 2
+    },
+    "additionalAmenities": {
+      "breakfast": false,
+      "desk": true,
+      "chair": true,
+      "crib": false,
+      "tv": true,
+      "shampoo": true
+    },
+    "accessibility": {
+      "wideCorridor": true,
+      "invalidHelper": false
+    },
+    "opportunities": {
+      "smoking": true,
+      "keepPets": true,
+      "largeNumberOfPersons": false
+    },
+    "images": [
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image1.jpg"
+      },
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image9.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image2.jpg"
+      },
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image12.jpg"
+      }
+    ]
+  },
+  {
+    "id": 53,
+    "price": 5800,
+    "rating": 3,
+    "reviews": 72,
+    "class": "economy",
+    "amenities": {
+      "bedrooms": 2,
+      "beds": 1,
+      "bathrooms": 3
+    },
+    "additionalAmenities": {
+      "breakfast": false,
+      "desk": true,
+      "chair": true,
+      "crib": false,
+      "tv": false,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": true,
+      "invalidHelper": false
+    },
+    "opportunities": {
+      "smoking": false,
+      "keepPets": false,
+      "largeNumberOfPersons": false
+    },
+    "images": [
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image8.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image4.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image7.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image12.jpg"
+      }
+    ]
+  },
+  {
+    "id": 54,
+    "price": 8600,
+    "rating": 3,
+    "reviews": 95,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 1,
+      "beds": 1,
+      "bathrooms": 2
+    },
+    "additionalAmenities": {
+      "breakfast": true,
+      "desk": true,
+      "chair": false,
+      "crib": true,
+      "tv": false,
+      "shampoo": true
+    },
+    "accessibility": {
+      "wideCorridor": false,
+      "invalidHelper": true
+    },
+    "opportunities": {
+      "smoking": false,
+      "keepPets": false,
+      "largeNumberOfPersons": true
+    },
+    "images": [
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image1.jpg"
+      },
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image10.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image12.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image8.jpg"
+      }
+    ]
+  },
+  {
+    "id": 55,
+    "price": 8000,
+    "rating": 2,
+    "reviews": 11,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 1,
+      "beds": 1,
+      "bathrooms": 3
+    },
+    "additionalAmenities": {
+      "breakfast": false,
+      "desk": false,
+      "chair": false,
+      "crib": true,
+      "tv": false,
+      "shampoo": true
+    },
+    "accessibility": {
+      "wideCorridor": false,
+      "invalidHelper": true
+    },
+    "opportunities": {
+      "smoking": false,
+      "keepPets": true,
+      "largeNumberOfPersons": true
+    },
+    "images": [
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image4.jpg"
+      },
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image10.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image8.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image12.jpg"
+      }
+    ]
+  },
+  {
+    "id": 56,
+    "price": 7000,
+    "rating": 4,
+    "reviews": 13,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 1,
+      "beds": 5,
+      "bathrooms": 3
+    },
+    "additionalAmenities": {
+      "breakfast": false,
+      "desk": true,
+      "chair": false,
+      "crib": false,
+      "tv": false,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": false,
+      "invalidHelper": false
+    },
+    "opportunities": {
+      "smoking": true,
+      "keepPets": false,
+      "largeNumberOfPersons": false
+    },
+    "images": [
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image10.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image10.jpg"
+      },
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image10.jpg"
+      },
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image3.jpg"
+      }
+    ]
+  },
+  {
+    "id": 57,
+    "price": 5400,
+    "rating": 2,
+    "reviews": 13,
+    "class": "economy",
+    "amenities": {
+      "bedrooms": 3,
+      "beds": 5,
+      "bathrooms": 1
+    },
+    "additionalAmenities": {
+      "breakfast": true,
+      "desk": true,
+      "chair": true,
+      "crib": true,
+      "tv": true,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": false,
+      "invalidHelper": false
+    },
+    "opportunities": {
+      "smoking": false,
+      "keepPets": true,
+      "largeNumberOfPersons": false
+    },
+    "images": [
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image11.jpg"
+      },
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image11.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image4.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image10.jpg"
+      }
+    ]
+  },
+  {
+    "id": 58,
+    "price": 7400,
+    "rating": 3,
+    "reviews": 49,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 2,
+      "beds": 5,
+      "bathrooms": 1
+    },
+    "additionalAmenities": {
+      "breakfast": true,
+      "desk": true,
+      "chair": true,
+      "crib": true,
+      "tv": true,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": true,
+      "invalidHelper": false
+    },
+    "opportunities": {
+      "smoking": false,
+      "keepPets": true,
+      "largeNumberOfPersons": false
+    },
+    "images": [
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image8.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image2.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image1.jpg"
+      },
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image11.jpg"
+      }
+    ]
+  },
+  {
+    "id": 59,
+    "price": 3800,
+    "rating": 1,
+    "reviews": 82,
+    "class": "economy",
+    "amenities": {
+      "bedrooms": 3,
+      "beds": 5,
+      "bathrooms": 3
+    },
+    "additionalAmenities": {
+      "breakfast": true,
+      "desk": true,
+      "chair": true,
+      "crib": true,
+      "tv": true,
+      "shampoo": true
+    },
+    "accessibility": {
+      "wideCorridor": true,
+      "invalidHelper": true
+    },
+    "opportunities": {
+      "smoking": true,
+      "keepPets": true,
+      "largeNumberOfPersons": true
+    },
+    "images": [
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image2.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image8.jpg"
+      },
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image4.jpg"
+      },
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image1.jpg"
+      }
+    ]
+  },
+  {
+    "id": 60,
+    "price": 4200,
+    "rating": 4,
+    "reviews": 82,
+    "class": "economy",
+    "amenities": {
+      "bedrooms": 2,
+      "beds": 5,
+      "bathrooms": 3
+    },
+    "additionalAmenities": {
+      "breakfast": false,
+      "desk": false,
+      "chair": true,
+      "crib": true,
+      "tv": true,
+      "shampoo": true
+    },
+    "accessibility": {
+      "wideCorridor": false,
+      "invalidHelper": false
+    },
+    "opportunities": {
+      "smoking": false,
+      "keepPets": true,
+      "largeNumberOfPersons": true
+    },
+    "images": [
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image5.jpg"
+      },
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image10.jpg"
+      },
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image2.jpg"
+      },
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image9.jpg"
+      }
+    ]
+  },
+  {
+    "id": 61,
+    "price": 8400,
+    "rating": 5,
+    "reviews": 89,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 1,
+      "beds": 2,
+      "bathrooms": 1
+    },
+    "additionalAmenities": {
+      "breakfast": false,
+      "desk": true,
+      "chair": false,
+      "crib": true,
+      "tv": true,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": false,
+      "invalidHelper": true
+    },
+    "opportunities": {
+      "smoking": false,
+      "keepPets": false,
+      "largeNumberOfPersons": true
+    },
+    "images": [
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image2.jpg"
+      },
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image7.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image12.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image8.jpg"
+      }
+    ]
+  },
+  {
+    "id": 62,
+    "price": 14400,
+    "rating": 4,
+    "reviews": 36,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 1,
+      "beds": 3,
+      "bathrooms": 3
+    },
+    "additionalAmenities": {
+      "breakfast": true,
+      "desk": false,
+      "chair": true,
+      "crib": false,
+      "tv": true,
+      "shampoo": true
+    },
+    "accessibility": {
+      "wideCorridor": true,
+      "invalidHelper": true
+    },
+    "opportunities": {
+      "smoking": true,
+      "keepPets": true,
+      "largeNumberOfPersons": false
+    },
+    "images": [
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image12.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image1.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image3.jpg"
+      },
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image7.jpg"
+      }
+    ]
+  },
+  {
+    "id": 63,
+    "price": 5300,
+    "rating": 2,
+    "reviews": 46,
+    "class": "economy",
+    "amenities": {
+      "bedrooms": 1,
+      "beds": 3,
+      "bathrooms": 1
+    },
+    "additionalAmenities": {
+      "breakfast": true,
+      "desk": true,
+      "chair": true,
+      "crib": false,
+      "tv": false,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": true,
+      "invalidHelper": true
+    },
+    "opportunities": {
+      "smoking": true,
+      "keepPets": false,
+      "largeNumberOfPersons": false
+    },
+    "images": [
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image12.jpg"
+      },
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image4.jpg"
+      },
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image3.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image3.jpg"
+      }
+    ]
+  },
+  {
+    "id": 64,
+    "price": 8800,
+    "rating": 3,
+    "reviews": 47,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 3,
+      "beds": 5,
+      "bathrooms": 3
+    },
+    "additionalAmenities": {
+      "breakfast": false,
+      "desk": false,
+      "chair": true,
+      "crib": false,
+      "tv": true,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": false,
+      "invalidHelper": true
+    },
+    "opportunities": {
+      "smoking": true,
+      "keepPets": true,
+      "largeNumberOfPersons": true
+    },
+    "images": [
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image12.jpg"
+      },
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image9.jpg"
+      },
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image12.jpg"
+      },
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image9.jpg"
+      }
+    ]
+  },
+  {
+    "id": 65,
+    "price": 4400,
+    "rating": 4,
+    "reviews": 79,
+    "class": "economy",
+    "amenities": {
+      "bedrooms": 3,
+      "beds": 3,
+      "bathrooms": 3
+    },
+    "additionalAmenities": {
+      "breakfast": false,
+      "desk": true,
+      "chair": true,
+      "crib": false,
+      "tv": true,
+      "shampoo": true
+    },
+    "accessibility": {
+      "wideCorridor": false,
+      "invalidHelper": false
+    },
+    "opportunities": {
+      "smoking": false,
+      "keepPets": false,
+      "largeNumberOfPersons": false
+    },
+    "images": [
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image4.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image8.jpg"
+      },
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image5.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image4.jpg"
+      }
+    ]
+  },
+  {
+    "id": 66,
+    "price": 6300,
+    "rating": 1,
+    "reviews": 91,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 2,
+      "beds": 3,
+      "bathrooms": 3
+    },
+    "additionalAmenities": {
+      "breakfast": true,
+      "desk": false,
+      "chair": false,
+      "crib": false,
+      "tv": false,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": false,
+      "invalidHelper": false
+    },
+    "opportunities": {
+      "smoking": false,
+      "keepPets": false,
+      "largeNumberOfPersons": true
+    },
+    "images": [
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image3.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image1.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image1.jpg"
+      },
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image7.jpg"
+      }
+    ]
+  },
+  {
+    "id": 67,
+    "price": 4600,
+    "rating": 1,
+    "reviews": 70,
+    "class": "economy",
+    "amenities": {
+      "bedrooms": 1,
+      "beds": 2,
+      "bathrooms": 3
+    },
+    "additionalAmenities": {
+      "breakfast": false,
+      "desk": true,
+      "chair": false,
+      "crib": true,
+      "tv": true,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": false,
+      "invalidHelper": true
+    },
+    "opportunities": {
+      "smoking": false,
+      "keepPets": true,
+      "largeNumberOfPersons": false
+    },
+    "images": [
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image3.jpg"
+      },
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image6.jpg"
+      },
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image11.jpg"
+      },
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image2.jpg"
+      }
+    ]
+  },
+  {
+    "id": 68,
+    "price": 10000,
+    "rating": 4,
+    "reviews": 42,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 3,
+      "beds": 5,
+      "bathrooms": 3
+    },
+    "additionalAmenities": {
+      "breakfast": true,
+      "desk": false,
+      "chair": false,
+      "crib": false,
+      "tv": false,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": true,
+      "invalidHelper": false
+    },
+    "opportunities": {
+      "smoking": false,
+      "keepPets": true,
+      "largeNumberOfPersons": false
+    },
+    "images": [
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image7.jpg"
+      },
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image2.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image12.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image4.jpg"
+      }
+    ]
+  },
+  {
+    "id": 69,
+    "price": 5300,
+    "rating": 2,
+    "reviews": 58,
+    "class": "economy",
+    "amenities": {
+      "bedrooms": 1,
+      "beds": 5,
+      "bathrooms": 1
+    },
+    "additionalAmenities": {
+      "breakfast": false,
+      "desk": true,
+      "chair": true,
+      "crib": false,
+      "tv": false,
+      "shampoo": true
+    },
+    "accessibility": {
+      "wideCorridor": false,
+      "invalidHelper": true
+    },
+    "opportunities": {
+      "smoking": true,
+      "keepPets": true,
+      "largeNumberOfPersons": true
+    },
+    "images": [
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image2.jpg"
+      },
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image12.jpg"
+      },
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image12.jpg"
+      },
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image2.jpg"
+      }
+    ]
+  },
+  {
+    "id": 70,
+    "price": 13500,
+    "rating": 2,
+    "reviews": 61,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 3,
+      "beds": 1,
+      "bathrooms": 3
+    },
+    "additionalAmenities": {
+      "breakfast": true,
+      "desk": false,
+      "chair": true,
+      "crib": false,
+      "tv": false,
+      "shampoo": true
+    },
+    "accessibility": {
+      "wideCorridor": true,
+      "invalidHelper": true
+    },
+    "opportunities": {
+      "smoking": false,
+      "keepPets": true,
+      "largeNumberOfPersons": true
+    },
+    "images": [
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image1.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image8.jpg"
+      },
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image5.jpg"
+      },
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image10.jpg"
+      }
+    ]
+  },
+  {
+    "id": 71,
+    "price": 8200,
+    "rating": 5,
+    "reviews": 48,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 3,
+      "beds": 2,
+      "bathrooms": 3
+    },
+    "additionalAmenities": {
+      "breakfast": false,
+      "desk": true,
+      "chair": true,
+      "crib": true,
+      "tv": true,
+      "shampoo": true
+    },
+    "accessibility": {
+      "wideCorridor": false,
+      "invalidHelper": true
+    },
+    "opportunities": {
+      "smoking": true,
+      "keepPets": false,
+      "largeNumberOfPersons": false
+    },
+    "images": [
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image6.jpg"
+      },
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image4.jpg"
+      },
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image2.jpg"
+      },
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image6.jpg"
+      }
+    ]
+  },
+  {
+    "id": 72,
+    "price": 7500,
+    "rating": 3,
+    "reviews": 11,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 3,
+      "beds": 4,
+      "bathrooms": 3
+    },
+    "additionalAmenities": {
+      "breakfast": false,
+      "desk": false,
+      "chair": true,
+      "crib": false,
+      "tv": true,
+      "shampoo": true
+    },
+    "accessibility": {
+      "wideCorridor": false,
+      "invalidHelper": true
+    },
+    "opportunities": {
+      "smoking": false,
+      "keepPets": false,
+      "largeNumberOfPersons": true
+    },
+    "images": [
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image10.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image5.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image5.jpg"
+      },
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image2.jpg"
+      }
+    ]
+  },
+  {
+    "id": 73,
+    "price": 3600,
+    "rating": 3,
+    "reviews": 40,
+    "class": "economy",
+    "amenities": {
+      "bedrooms": 2,
+      "beds": 4,
+      "bathrooms": 3
+    },
+    "additionalAmenities": {
+      "breakfast": false,
+      "desk": true,
+      "chair": true,
+      "crib": true,
+      "tv": false,
+      "shampoo": true
+    },
+    "accessibility": {
+      "wideCorridor": true,
+      "invalidHelper": false
+    },
+    "opportunities": {
+      "smoking": false,
+      "keepPets": false,
+      "largeNumberOfPersons": false
+    },
+    "images": [
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image4.jpg"
+      },
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image12.jpg"
+      },
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image6.jpg"
+      },
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image11.jpg"
+      }
+    ]
+  },
+  {
+    "id": 74,
+    "price": 14300,
+    "rating": 4,
+    "reviews": 72,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 3,
+      "beds": 5,
+      "bathrooms": 2
+    },
+    "additionalAmenities": {
+      "breakfast": true,
+      "desk": true,
+      "chair": false,
+      "crib": true,
+      "tv": true,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": false,
+      "invalidHelper": false
+    },
+    "opportunities": {
+      "smoking": false,
+      "keepPets": false,
+      "largeNumberOfPersons": true
+    },
+    "images": [
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image7.jpg"
+      },
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image5.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image8.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image11.jpg"
+      }
+    ]
+  },
+  {
+    "id": 75,
+    "price": 5000,
+    "rating": 3,
+    "reviews": 36,
+    "class": "economy",
+    "amenities": {
+      "bedrooms": 1,
+      "beds": 2,
+      "bathrooms": 3
+    },
+    "additionalAmenities": {
+      "breakfast": true,
+      "desk": true,
+      "chair": false,
+      "crib": false,
+      "tv": true,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": false,
+      "invalidHelper": true
+    },
+    "opportunities": {
+      "smoking": false,
+      "keepPets": false,
+      "largeNumberOfPersons": true
+    },
+    "images": [
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image11.jpg"
+      },
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image4.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image7.jpg"
+      },
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image9.jpg"
+      }
+    ]
+  },
+  {
+    "id": 76,
+    "price": 15200,
+    "rating": 4,
+    "reviews": 20,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 2,
+      "beds": 4,
+      "bathrooms": 1
+    },
+    "additionalAmenities": {
+      "breakfast": false,
+      "desk": false,
+      "chair": true,
+      "crib": false,
+      "tv": false,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": false,
+      "invalidHelper": false
+    },
+    "opportunities": {
+      "smoking": true,
+      "keepPets": false,
+      "largeNumberOfPersons": true
+    },
+    "images": [
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image5.jpg"
+      },
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image4.jpg"
+      },
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image3.jpg"
+      },
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image11.jpg"
+      }
+    ]
+  },
+  {
+    "id": 77,
+    "price": 14700,
+    "rating": 2,
+    "reviews": 72,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 3,
+      "beds": 5,
+      "bathrooms": 1
+    },
+    "additionalAmenities": {
+      "breakfast": true,
+      "desk": true,
+      "chair": false,
+      "crib": true,
+      "tv": false,
+      "shampoo": true
+    },
+    "accessibility": {
+      "wideCorridor": true,
+      "invalidHelper": true
+    },
+    "opportunities": {
+      "smoking": true,
+      "keepPets": false,
+      "largeNumberOfPersons": true
+    },
+    "images": [
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image7.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image7.jpg"
+      },
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image12.jpg"
+      },
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image10.jpg"
+      }
+    ]
+  },
+  {
+    "id": 78,
+    "price": 3700,
+    "rating": 3,
+    "reviews": 21,
+    "class": "economy",
+    "amenities": {
+      "bedrooms": 3,
+      "beds": 1,
+      "bathrooms": 2
+    },
+    "additionalAmenities": {
+      "breakfast": false,
+      "desk": false,
+      "chair": true,
+      "crib": true,
+      "tv": false,
+      "shampoo": true
+    },
+    "accessibility": {
+      "wideCorridor": true,
+      "invalidHelper": false
+    },
+    "opportunities": {
+      "smoking": false,
+      "keepPets": false,
+      "largeNumberOfPersons": false
+    },
+    "images": [
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image1.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image8.jpg"
+      },
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image10.jpg"
+      },
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image8.jpg"
+      }
+    ]
+  },
+  {
+    "id": 79,
+    "price": 10100,
+    "rating": 3,
+    "reviews": 37,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 2,
+      "beds": 1,
+      "bathrooms": 1
+    },
+    "additionalAmenities": {
+      "breakfast": false,
+      "desk": false,
+      "chair": true,
+      "crib": false,
+      "tv": false,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": true,
+      "invalidHelper": true
+    },
+    "opportunities": {
+      "smoking": false,
+      "keepPets": false,
+      "largeNumberOfPersons": false
+    },
+    "images": [
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image2.jpg"
+      },
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image2.jpg"
+      },
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image4.jpg"
+      },
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image1.jpg"
+      }
+    ]
+  },
+  {
+    "id": 80,
+    "price": 6800,
+    "rating": 5,
+    "reviews": 91,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 2,
+      "beds": 2,
+      "bathrooms": 3
+    },
+    "additionalAmenities": {
+      "breakfast": false,
+      "desk": false,
+      "chair": true,
+      "crib": false,
+      "tv": true,
+      "shampoo": true
+    },
+    "accessibility": {
+      "wideCorridor": true,
+      "invalidHelper": true
+    },
+    "opportunities": {
+      "smoking": false,
+      "keepPets": false,
+      "largeNumberOfPersons": true
+    },
+    "images": [
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image1.jpg"
+      },
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image7.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image1.jpg"
+      },
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image5.jpg"
+      }
+    ]
+  },
+  {
+    "id": 81,
+    "price": 15400,
+    "rating": 5,
+    "reviews": 86,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 3,
+      "beds": 1,
+      "bathrooms": 2
+    },
+    "additionalAmenities": {
+      "breakfast": true,
+      "desk": false,
+      "chair": false,
+      "crib": true,
+      "tv": false,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": true,
+      "invalidHelper": false
+    },
+    "opportunities": {
+      "smoking": false,
+      "keepPets": false,
+      "largeNumberOfPersons": false
+    },
+    "images": [
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image9.jpg"
+      },
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image4.jpg"
+      },
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image10.jpg"
+      },
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image2.jpg"
+      }
+    ]
+  },
+  {
+    "id": 82,
+    "price": 4600,
+    "rating": 4,
+    "reviews": 38,
+    "class": "economy",
+    "amenities": {
+      "bedrooms": 3,
+      "beds": 5,
+      "bathrooms": 3
+    },
+    "additionalAmenities": {
+      "breakfast": true,
+      "desk": false,
+      "chair": false,
+      "crib": true,
+      "tv": true,
+      "shampoo": true
+    },
+    "accessibility": {
+      "wideCorridor": true,
+      "invalidHelper": true
+    },
+    "opportunities": {
+      "smoking": true,
+      "keepPets": false,
+      "largeNumberOfPersons": true
+    },
+    "images": [
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image4.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image2.jpg"
+      },
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image5.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image5.jpg"
+      }
+    ]
+  },
+  {
+    "id": 83,
+    "price": 11700,
+    "rating": 3,
+    "reviews": 34,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 1,
+      "beds": 1,
+      "bathrooms": 2
+    },
+    "additionalAmenities": {
+      "breakfast": false,
+      "desk": true,
+      "chair": false,
+      "crib": false,
+      "tv": false,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": true,
+      "invalidHelper": false
+    },
+    "opportunities": {
+      "smoking": true,
+      "keepPets": false,
+      "largeNumberOfPersons": false
+    },
+    "images": [
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image8.jpg"
+      },
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image6.jpg"
+      },
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image7.jpg"
+      },
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image11.jpg"
+      }
+    ]
+  },
+  {
+    "id": 84,
+    "price": 13400,
+    "rating": 3,
+    "reviews": 66,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 2,
+      "beds": 3,
+      "bathrooms": 3
+    },
+    "additionalAmenities": {
+      "breakfast": true,
+      "desk": true,
+      "chair": false,
+      "crib": true,
+      "tv": false,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": false,
+      "invalidHelper": true
+    },
+    "opportunities": {
+      "smoking": true,
+      "keepPets": true,
+      "largeNumberOfPersons": false
+    },
+    "images": [
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image5.jpg"
+      },
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image7.jpg"
+      },
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image6.jpg"
+      },
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image7.jpg"
+      }
+    ]
+  },
+  {
+    "id": 85,
+    "price": 3400,
+    "rating": 3,
+    "reviews": 14,
+    "class": "economy",
+    "amenities": {
+      "bedrooms": 2,
+      "beds": 1,
+      "bathrooms": 2
+    },
+    "additionalAmenities": {
+      "breakfast": false,
+      "desk": true,
+      "chair": false,
+      "crib": false,
+      "tv": false,
+      "shampoo": true
+    },
+    "accessibility": {
+      "wideCorridor": false,
+      "invalidHelper": true
+    },
+    "opportunities": {
+      "smoking": true,
+      "keepPets": false,
+      "largeNumberOfPersons": true
+    },
+    "images": [
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image12.jpg"
+      },
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image12.jpg"
+      },
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image12.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image4.jpg"
+      }
+    ]
+  },
+  {
+    "id": 86,
+    "price": 4800,
+    "rating": 3,
+    "reviews": 58,
+    "class": "economy",
+    "amenities": {
+      "bedrooms": 3,
+      "beds": 4,
+      "bathrooms": 3
+    },
+    "additionalAmenities": {
+      "breakfast": false,
+      "desk": true,
+      "chair": false,
+      "crib": false,
+      "tv": true,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": true,
+      "invalidHelper": true
+    },
+    "opportunities": {
+      "smoking": false,
+      "keepPets": false,
+      "largeNumberOfPersons": false
+    },
+    "images": [
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image2.jpg"
+      },
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image8.jpg"
+      },
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image7.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image9.jpg"
+      }
+    ]
+  },
+  {
+    "id": 87,
+    "price": 4000,
+    "rating": 1,
+    "reviews": 2,
+    "class": "economy",
+    "amenities": {
+      "bedrooms": 2,
+      "beds": 3,
+      "bathrooms": 1
+    },
+    "additionalAmenities": {
+      "breakfast": false,
+      "desk": false,
+      "chair": true,
+      "crib": false,
+      "tv": true,
+      "shampoo": true
+    },
+    "accessibility": {
+      "wideCorridor": false,
+      "invalidHelper": true
+    },
+    "opportunities": {
+      "smoking": true,
+      "keepPets": true,
+      "largeNumberOfPersons": true
+    },
+    "images": [
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image7.jpg"
+      },
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image8.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image7.jpg"
+      },
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image7.jpg"
+      }
+    ]
+  },
+  {
+    "id": 88,
+    "price": 14200,
+    "rating": 5,
+    "reviews": 25,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 2,
+      "beds": 2,
+      "bathrooms": 1
+    },
+    "additionalAmenities": {
+      "breakfast": false,
+      "desk": true,
+      "chair": false,
+      "crib": false,
+      "tv": true,
+      "shampoo": true
+    },
+    "accessibility": {
+      "wideCorridor": false,
+      "invalidHelper": true
+    },
+    "opportunities": {
+      "smoking": false,
+      "keepPets": false,
+      "largeNumberOfPersons": false
+    },
+    "images": [
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image3.jpg"
+      },
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image3.jpg"
+      },
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image12.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image6.jpg"
+      }
+    ]
+  },
+  {
+    "id": 89,
+    "price": 3100,
+    "rating": 5,
+    "reviews": 38,
+    "class": "economy",
+    "amenities": {
+      "bedrooms": 2,
+      "beds": 4,
+      "bathrooms": 2
+    },
+    "additionalAmenities": {
+      "breakfast": true,
+      "desk": true,
+      "chair": false,
+      "crib": false,
+      "tv": false,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": true,
+      "invalidHelper": true
+    },
+    "opportunities": {
+      "smoking": true,
+      "keepPets": true,
+      "largeNumberOfPersons": false
+    },
+    "images": [
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image3.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image12.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image4.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image8.jpg"
+      }
+    ]
+  },
+  {
+    "id": 90,
+    "price": 5300,
+    "rating": 4,
+    "reviews": 78,
+    "class": "economy",
+    "amenities": {
+      "bedrooms": 3,
+      "beds": 3,
+      "bathrooms": 1
+    },
+    "additionalAmenities": {
+      "breakfast": true,
+      "desk": true,
+      "chair": false,
+      "crib": true,
+      "tv": true,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": false,
+      "invalidHelper": true
+    },
+    "opportunities": {
+      "smoking": true,
+      "keepPets": false,
+      "largeNumberOfPersons": false
+    },
+    "images": [
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image11.jpg"
+      },
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image1.jpg"
+      },
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image9.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image3.jpg"
+      }
+    ]
+  },
+  {
+    "id": 91,
+    "price": 4400,
+    "rating": 1,
+    "reviews": 92,
+    "class": "economy",
+    "amenities": {
+      "bedrooms": 3,
+      "beds": 2,
+      "bathrooms": 1
+    },
+    "additionalAmenities": {
+      "breakfast": true,
+      "desk": true,
+      "chair": false,
+      "crib": true,
+      "tv": true,
+      "shampoo": true
+    },
+    "accessibility": {
+      "wideCorridor": false,
+      "invalidHelper": false
+    },
+    "opportunities": {
+      "smoking": false,
+      "keepPets": false,
+      "largeNumberOfPersons": false
+    },
+    "images": [
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image5.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image4.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image2.jpg"
+      },
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image4.jpg"
+      }
+    ]
+  },
+  {
+    "id": 92,
+    "price": 5200,
+    "rating": 4,
+    "reviews": 9,
+    "class": "economy",
+    "amenities": {
+      "bedrooms": 1,
+      "beds": 3,
+      "bathrooms": 1
+    },
+    "additionalAmenities": {
+      "breakfast": true,
+      "desk": true,
+      "chair": true,
+      "crib": true,
+      "tv": true,
+      "shampoo": true
+    },
+    "accessibility": {
+      "wideCorridor": false,
+      "invalidHelper": false
+    },
+    "opportunities": {
+      "smoking": false,
+      "keepPets": false,
+      "largeNumberOfPersons": false
+    },
+    "images": [
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image6.jpg"
+      },
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image12.jpg"
+      },
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image7.jpg"
+      },
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image1.jpg"
+      }
+    ]
+  },
+  {
+    "id": 93,
+    "price": 5300,
+    "rating": 2,
+    "reviews": 88,
+    "class": "economy",
+    "amenities": {
+      "bedrooms": 1,
+      "beds": 1,
+      "bathrooms": 1
+    },
+    "additionalAmenities": {
+      "breakfast": true,
+      "desk": true,
+      "chair": true,
+      "crib": true,
+      "tv": false,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": false,
+      "invalidHelper": true
+    },
+    "opportunities": {
+      "smoking": true,
+      "keepPets": false,
+      "largeNumberOfPersons": true
+    },
+    "images": [
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image2.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image6.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image12.jpg"
+      },
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image4.jpg"
+      }
+    ]
+  },
+  {
+    "id": 94,
+    "price": 3900,
+    "rating": 1,
+    "reviews": 26,
+    "class": "economy",
+    "amenities": {
+      "bedrooms": 3,
+      "beds": 1,
+      "bathrooms": 3
+    },
+    "additionalAmenities": {
+      "breakfast": true,
+      "desk": false,
+      "chair": true,
+      "crib": true,
+      "tv": true,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": false,
+      "invalidHelper": false
+    },
+    "opportunities": {
+      "smoking": false,
+      "keepPets": true,
+      "largeNumberOfPersons": false
+    },
+    "images": [
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image2.jpg"
+      },
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image3.jpg"
+      },
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image6.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image9.jpg"
+      }
+    ]
+  },
+  {
+    "id": 95,
+    "price": 3300,
+    "rating": 5,
+    "reviews": 1,
+    "class": "economy",
+    "amenities": {
+      "bedrooms": 2,
+      "beds": 1,
+      "bathrooms": 1
+    },
+    "additionalAmenities": {
+      "breakfast": false,
+      "desk": false,
+      "chair": true,
+      "crib": true,
+      "tv": true,
+      "shampoo": true
+    },
+    "accessibility": {
+      "wideCorridor": true,
+      "invalidHelper": false
+    },
+    "opportunities": {
+      "smoking": false,
+      "keepPets": true,
+      "largeNumberOfPersons": true
+    },
+    "images": [
+      {
+        "alt": "недорогой номер с панорамным остеклением",
+        "url": "/images/apartments/image1.jpg"
+      },
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image2.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image5.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image7.jpg"
+      }
+    ]
+  },
+  {
+    "id": 96,
+    "price": 15200,
+    "rating": 1,
+    "reviews": 72,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 1,
+      "beds": 5,
+      "bathrooms": 1
+    },
+    "additionalAmenities": {
+      "breakfast": true,
+      "desk": true,
+      "chair": false,
+      "crib": true,
+      "tv": true,
+      "shampoo": true
+    },
+    "accessibility": {
+      "wideCorridor": true,
+      "invalidHelper": false
+    },
+    "opportunities": {
+      "smoking": false,
+      "keepPets": true,
+      "largeNumberOfPersons": true
+    },
+    "images": [
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image1.jpg"
+      },
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image9.jpg"
+      },
+      {
+        "alt": "номер с панорамным остеклением",
+        "url": "/images/apartments/image3.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image3.jpg"
+      }
+    ]
+  },
+  {
+    "id": 97,
+    "price": 14700,
+    "rating": 5,
+    "reviews": 69,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 1,
+      "beds": 1,
+      "bathrooms": 3
+    },
+    "additionalAmenities": {
+      "breakfast": false,
+      "desk": true,
+      "chair": true,
+      "crib": true,
+      "tv": true,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": true,
+      "invalidHelper": false
+    },
+    "opportunities": {
+      "smoking": true,
+      "keepPets": true,
+      "largeNumberOfPersons": false
+    },
+    "images": [
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image7.jpg"
+      },
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image5.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image7.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image11.jpg"
+      }
+    ]
+  },
+  {
+    "id": 98,
+    "price": 5300,
+    "rating": 4,
+    "reviews": 26,
+    "class": "economy",
+    "amenities": {
+      "bedrooms": 1,
+      "beds": 5,
+      "bathrooms": 3
+    },
+    "additionalAmenities": {
+      "breakfast": true,
+      "desk": true,
+      "chair": false,
+      "crib": false,
+      "tv": true,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": true,
+      "invalidHelper": false
+    },
+    "opportunities": {
+      "smoking": true,
+      "keepPets": true,
+      "largeNumberOfPersons": true
+    },
+    "images": [
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image3.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image11.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image8.jpg"
+      },
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image10.jpg"
+      }
+    ]
+  },
+  {
+    "id": 99,
+    "price": 6900,
+    "rating": 2,
+    "reviews": 85,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 2,
+      "beds": 5,
+      "bathrooms": 3
+    },
+    "additionalAmenities": {
+      "breakfast": false,
+      "desk": true,
+      "chair": true,
+      "crib": false,
+      "tv": false,
+      "shampoo": true
+    },
+    "accessibility": {
+      "wideCorridor": false,
+      "invalidHelper": true
+    },
+    "opportunities": {
+      "smoking": false,
+      "keepPets": true,
+      "largeNumberOfPersons": true
+    },
+    "images": [
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image3.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image2.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image11.jpg"
+      },
+      {
+        "alt": "номер с атмосферой пляжа",
+        "url": "/images/apartments/image10.jpg"
+      }
+    ]
+  },
+  {
+    "id": 100,
+    "price": 7900,
+    "rating": 3,
+    "reviews": 99,
+    "class": "luxury",
+    "amenities": {
+      "bedrooms": 2,
+      "beds": 5,
+      "bathrooms": 2
+    },
+    "additionalAmenities": {
+      "breakfast": false,
+      "desk": false,
+      "chair": false,
+      "crib": false,
+      "tv": false,
+      "shampoo": false
+    },
+    "accessibility": {
+      "wideCorridor": true,
+      "invalidHelper": true
+    },
+    "opportunities": {
+      "smoking": false,
+      "keepPets": false,
+      "largeNumberOfPersons": false
+    },
+    "images": [
+      {
+        "alt": "просторный номер абрикосового цвета",
+        "url": "/images/apartments/image3.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image8.jpg"
+      },
+      {
+        "alt": "номер с красно-белой расцветкой",
+        "url": "/images/apartments/image1.jpg"
+      },
+      {
+        "alt": "уютный двухместный номер",
+        "url": "/images/apartments/image12.jpg"
+      }
+    ]
+  }
+]
