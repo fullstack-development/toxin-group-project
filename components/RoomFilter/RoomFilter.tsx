@@ -17,6 +17,8 @@ import TimePicker from 'components/TimePicker/TimePicker';
 import * as S from './RoomFilter.styles';
 import { Props } from './RoomFilter.types';
 
+const oneWeek = 7 * 60 * 60 * 24 * 1000;
+
 const defaultInitialValues: Filters = {
   price: {
     from: 5000,
@@ -24,7 +26,7 @@ const defaultInitialValues: Filters = {
   },
   booked: {
     from: Date.now(),
-    to: Date.now(),
+    to: Date.now() + oneWeek,
   },
   amenities: {
     bedrooms: 1,
@@ -75,6 +77,8 @@ const RoomFilter: React.FC<Props> = ({
                   type="single"
                   name="booked"
                   dateFromLabelText="даты пребывания в отеле"
+                  dateFrom={new Date(initialValues.booked.from)}
+                  dateTo={new Date(initialValues.booked.to)}
                 />
               </S.TimePickerWrapper>
               <S.DropdownWrapper>
