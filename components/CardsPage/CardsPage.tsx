@@ -44,6 +44,7 @@ const CardsPage: React.FC = (): JSX.Element => {
           isAuthSuccess={false}
           isAuthProcessNow={false}
           authStatusText=""
+          requestToAuthWithGoogle={mockAuthFunction}
           requestToAuth={mockAuthFunction}
           breakAuthProcess={mockAuthFunction}
         />
