@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 
+import { breakpointDown } from 'shared/styles/break-points';
 import { materialIcons } from 'shared/styles/mixins';
 
 import { ImageProps } from './ImageGallery.types';
@@ -11,7 +12,7 @@ const Img = styled.img<ImageProps>`
       position: absolute;
       opacity: 0;
       transition: 0.5s;
-      width: 100%;
+      height: 100%;
       user-select: none;
 
       ${isShown &&
@@ -64,7 +65,7 @@ const Container = styled.div`
     display: block;
   }
 
-  @media (max-width: 1050px) {
+  @media ${breakpointDown('md')} {
     ${ArrowContainer} {
       display: block;
     }
@@ -83,7 +84,7 @@ const ArrowButton = styled.button`
   z-index: 1;
   cursor: pointer;
 
-  @media (max-width: 1050px) {
+  @media ${breakpointDown('md')} {
     width: 3.2143rem;
     height: 100%;
     left: initial;

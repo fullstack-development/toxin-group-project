@@ -1,6 +1,8 @@
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import styled, { css } from 'styled-components';
 
+import { breakpointDown } from 'shared/styles/break-points';
+
 type ContainerElement = {
   type?: 'single' | 'double';
 };
@@ -11,7 +13,7 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: flex-end;
 
-  @media (max-width: 450px) {
+  @media ${breakpointDown('xs')} {
     flex-direction: column;
   }
 `;
@@ -32,7 +34,7 @@ const ContainerElement = styled.div<ContainerElement>`
       position: relative;
       ${type === 'single' ? 'max-width: 19.0714rem;' : 'width: 100%;'}
       height: 100%;
-      @media (max-width: 450px) {
+      @media ${breakpointDown('xs')} {
         width: 100%;
       }
 
@@ -41,9 +43,9 @@ const ContainerElement = styled.div<ContainerElement>`
       }
 
       &:nth-child(1) {
-        margin-right: 1.4rem;
+        margin-right: ${type === 'double' ? '1.4rem' : 0};
 
-        @media (max-width: 450px) {
+        @media ${breakpointDown('xs')} {
           margin-bottom: 1.4rem;
           margin-right: 0;
         }

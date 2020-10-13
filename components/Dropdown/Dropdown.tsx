@@ -98,7 +98,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   const isResetHidden = dropdownState.every((item) => !item.currentValue);
 
   return (
-    <Field name={name} parse={() => dropdownState}>
+    <Field name={name}>
       {({ input }) => (
         <S.Dropdown ref={dropdown}>
           <S.Result isOpen={isOpen} onClick={handleResultBarClick} type="button">
@@ -108,6 +108,14 @@ const Dropdown: React.FC<DropdownProps> = ({
             <S.List>
               {dropdownState.map((el) => {
                 const { title, min, max, currentValue, inputName } = el;
+
+                const formatFieldValue = () => {
+                  const result = {};
+                  dropdownState.forEach((item) => {
+                    result[item.inputName] = item.currentValue;
+                    input.onChange(result);
+                  });
+                };
 
                 const makeButtonHandler = (
                   increment: number,
@@ -120,10 +128,11 @@ const Dropdown: React.FC<DropdownProps> = ({
                     elementToUpdate.currentValue += increment;
                     return state;
                   });
-                  input.onChange(e);
+                  formatFieldValue();
                 };
                 const handleIncrementClick = makeButtonHandler(1);
                 const handleDecrementClick = makeButtonHandler(-1);
+
                 return (
                   <S.Item key={title}>
                     <S.ItemTitle>{title}</S.ItemTitle>

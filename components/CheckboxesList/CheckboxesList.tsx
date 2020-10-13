@@ -9,13 +9,12 @@ import { CheckboxesListProps } from './CheckboxesList.types';
 const CheckboxesList: React.FC<CheckboxesListProps> = ({ roomOptions }: CheckboxesListProps) => (
   <S.List>
     {roomOptions.map((option) => {
-      const { value, title, label, name } = option;
+      const { title, label, name } = option;
       return (
-        <S.ListItem key={value} title={title}>
+        <S.ListItem key={name} title={title}>
           <Field
             type="checkbox"
             name={name}
-            value={value}
             render={(props) => (
               <Checkbox title={title} label={label} {...props.input} {...props.meta} />
             )}
