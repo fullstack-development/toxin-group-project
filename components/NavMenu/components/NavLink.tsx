@@ -1,5 +1,6 @@
 import CloseIcon from '@material-ui/icons/Close';
 import ExpandMore from '@material-ui/icons/ExpandMore';
+import Link from 'next/link';
 import { useState, useRef, useEffect } from 'react';
 
 import { NavMenuLink, NavSubMenu } from '../NavMenu.types';
@@ -28,15 +29,16 @@ const NavLink: React.FC<NavMenuLink> = ({
 
   return (
     <S.NavLink ref={LinkMenuRef}>
-      <S.Link
-        isActive={isActive}
-        key={name}
-        href={path}
-        onMouseOver={expandSubMenu}
-        onTouchStart={expandSubMenu}
-      >
-        {name}
-      </S.Link>
+      <Link href={path} passHref>
+        <S.Link
+          isActive={isActive}
+          key={name}
+          onMouseOver={expandSubMenu}
+          onTouchStart={expandSubMenu}
+        >
+          {name}
+        </S.Link>
+      </Link>
       {subMenu && (
         <>
           <S.IconExpander onClick={expandSubMenu} onTouchStart={changeSubMenuStatus}>

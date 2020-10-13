@@ -32,7 +32,7 @@ const User = styled.span`
 `;
 
 const Date = styled.time`
-  padding-top: 0.3rem;
+  padding-top: 0.42857rem;
 `;
 
 const MessageWrapper = styled.div`

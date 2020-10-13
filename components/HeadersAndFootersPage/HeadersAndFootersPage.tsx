@@ -7,7 +7,8 @@ import * as S from './HeadersAndFootersPage.styles';
 
 const HeadersAndFootersPage: React.FC = (): JSX.Element => (
   <S.Container>
-    <Header wasFinishedAuthChecking />
+    <Header authData={{ userName: 'Юлий Цезарь', pathToProfile: '/mock-user' }} />
+    <Header />
     <Footer />
   </S.Container>
 );

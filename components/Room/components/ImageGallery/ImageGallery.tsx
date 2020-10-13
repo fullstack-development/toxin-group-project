@@ -7,7 +7,7 @@ import { GalleryProps } from './ImageGallery.types';
 const defaultState = [false, false, false, false];
 
 const ImageGallery: React.FC<GalleryProps> = ({
-  imagePaths = ['/img/room-1.jpg', '/img/room-2.jpg', '/img/room-3.jpg', '/img/room-4.jpg'],
+  imagePaths = ['/img/1.jpg', '/img/2.jpg', '/img/3.jpg', '/img/4.jpg'],
 }: GalleryProps) => {
   const [imageStates, setImageStates] = useState([true, false, false, false]);
 
@@ -39,11 +39,11 @@ const ImageGallery: React.FC<GalleryProps> = ({
         <S.ArrowButtonPrev aria-label="Назад" onClick={handleArrowPrevClick} />
       </S.ArrowPrevContainer>
       {imagePaths.map((path, index) => (
-        <S.Img key={path + String(index)} src={path} isShown={imageStates[index]} />
+        <S.Img key={String(index)} src={path} isShown={imageStates[index]} alt="Фото номера" />
       ))}
       <S.Dots>
         {imageStates.map((el, index) => (
-          <S.Dot key={el + String(index)}>
+          <S.Dot key={String(index)}>
             <DotButton
               type="button"
               data-index={index}

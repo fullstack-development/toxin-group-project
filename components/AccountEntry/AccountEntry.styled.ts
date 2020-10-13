@@ -1,6 +1,7 @@
 import Snackbar from '@material-ui/core/Snackbar';
 import styled, { css } from 'styled-components';
 
+import { breakpointDown } from 'shared/styles/break-points';
 import { titles } from 'shared/styles/mixins';
 
 type SnackBarProps = {
@@ -34,7 +35,7 @@ const Title = styled.h1`
   line-height: 1.25;
   margin-bottom: 1.3214rem;
 
-  @media (max-width: 460px) {
+  @media ${breakpointDown('xs')} {
     font-size: 1.5rem;
   }
 `;

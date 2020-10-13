@@ -57,14 +57,10 @@ const AccountEntry: React.FC<Props> = (props: Props): JSX.Element => {
                 render={({ input, meta }) => <Input {...input} {...meta} placeholder="Пароль" />}
               />
             </S.FieldsWrapper>
-            <ArrowButton isLink={false} isFilled>
-              Войти
-            </ArrowButton>
+            <ArrowButton isFilled>Войти</ArrowButton>
             <S.ToRegisterWrapper>
               <span>Нет аккаунта на Toxin?</span>
-              <Button isLink href="/registration">
-                Создать
-              </Button>
+              <Button href="/registration">Создать</Button>
             </S.ToRegisterWrapper>
           </form>
         )}
