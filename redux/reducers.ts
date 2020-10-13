@@ -26,6 +26,10 @@ const initialState: State = {
 const rootReducer = (state: State = initialState, action: AuthActions): State => {
   switch (action.type) {
     case AUTH_PROCESS:
+      return {
+        ...state,
+        isAuthProcessNow: true,
+      };
     case PRELOAD_AUTH_DATA:
       return state;
     case BREAK_AUTH_PROCESS:
@@ -45,7 +49,6 @@ const rootReducer = (state: State = initialState, action: AuthActions): State =>
     case AUTH_FAILED:
       return {
         ...state,
-        isAuthProcessNow: false,
         wasFinishedAuthChecking: true,
         authStatusText: action.payload,
       };

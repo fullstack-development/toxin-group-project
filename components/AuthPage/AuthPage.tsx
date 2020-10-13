@@ -1,13 +1,59 @@
-import MainLayout from 'components/MainLayout/MainLayout';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+import { connect } from 'react-redux';
 
+import MainLayout from 'components/MainLayout/MainLayout';
+import { requestToAuth, breakAuthProcess, preloadAuthData } from 'redux/actions';
+
+import { Props } from './AuthPage.types';
 import MainContent from './components/MainContent';
 
-const AuthPage: React.FC = (): JSX.Element => {
+const AuthPage: React.FC<Props> = ({
+  isAuthSuccess,
+  isAuthProcessNow,
+  authStatusText,
+  wasFinishedAuthChecking,
+  checkAuthBeforePageLoaded,
+  startAuthProcess,
+  stopAuthProcess,
+}: Props): JSX.Element => {
+  const router = useRouter();
+
+  useEffect(() => {
+    checkAuthBeforePageLoaded();
+    if (isAuthSuccess) router.push('/');
+  });
+
+  const isAuthRequired: boolean = wasFinishedAuthChecking && !isAuthSuccess;
+
   return (
-    <MainLayout>
-      <MainContent />
-    </MainLayout>
+    <>
+      {isAuthRequired && (
+        <MainLayout>
+          <MainContent
+            isAuthSuccess={isAuthSuccess}
+            isAuthProcessNow={isAuthProcessNow}
+            authStatusText={authStatusText}
+            startAuthProcess={startAuthProcess}
+            stopAuthProcess={stopAuthProcess}
+          />
+        </MainLayout>
+      )}
+    </>
   );
 };
 
-export default AuthPage;
+const mapState = (state) => ({
+  isAuthSuccess: state.isAuthSuccess,
+  isAuthProcessNow: state.isAuthProcessNow,
+  authStatusText: state.authStatusText,
+  wasFinishedAuthChecking: state.wasFinishedAuthChecking,
+});
+
+const mapDispatch = {
+  startAuthProcess: requestToAuth,
+  stopAuthProcess: breakAuthProcess,
+  checkAuthBeforePageLoaded: preloadAuthData,
+};
+
+export default connect(mapState, mapDispatch)(AuthPage);

@@ -30,6 +30,8 @@ const AccountEntry: React.FC<Props> = (props: Props): JSX.Element => {
     breakAuthProcess,
   } = props;
 
+  console.log(authStatusText);
+
   const handleFormSubmit = (formData: UserData): void => {
     const { email, password } = formData;
 
