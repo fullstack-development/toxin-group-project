@@ -75,7 +75,7 @@ const SearchRoomForm: React.FC<SearchRoomFormProps> = ({ onSubmit }: SearchRoomF
                 items={guestsItems}
               />
             </S.DropdownWrapper>
-            <ArrowButton isLink={false} isFilled type="button" onClick={getRooms}>
+            <ArrowButton isFilled type="button" onClick={getRooms}>
               Подобрать номер
             </ArrowButton>
           </form>

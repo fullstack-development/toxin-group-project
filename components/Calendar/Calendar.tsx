@@ -84,12 +84,10 @@ const Calendar: React.FC<Calendar> = (props: Calendar) => {
         navbarElement={<NavBar />}
       />
       <S.CalendarControls>
-        <TextButton type="button" isLink={false} isSecondary onClick={clearSelectedDate}>
+        <TextButton isSecondary onClick={clearSelectedDate}>
           Очистить
         </TextButton>
-        <TextButton type="button" isLink={false} onClick={handleApplyButtonClick}>
-          Применить
-        </TextButton>
+        <TextButton onClick={handleApplyButtonClick}>Применить</TextButton>
       </S.CalendarControls>
     </S.CalendarContainer>
   );
