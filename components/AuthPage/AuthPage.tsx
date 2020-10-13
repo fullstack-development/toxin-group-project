@@ -3,7 +3,12 @@ import { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import MainLayout from 'components/MainLayout/MainLayout';
-import { requestToAuth, breakAuthProcess, preloadAuthData } from 'redux/actions';
+import {
+  requestToAuth,
+  breakAuthProcess,
+  preloadAuthData,
+  requestToAuthWithGoogle,
+} from 'redux/actions';
 
 import { Props } from './AuthPage.types';
 import MainContent from './components/MainContent';
@@ -15,6 +20,7 @@ const AuthPage: React.FC<Props> = ({
   wasFinishedAuthChecking,
   checkAuthBeforePageLoaded,
   startAuthProcess,
+  startGoogleAuthProcess,
   stopAuthProcess,
 }: Props): JSX.Element => {
   const router = useRouter();
@@ -35,6 +41,7 @@ const AuthPage: React.FC<Props> = ({
             isAuthProcessNow={isAuthProcessNow}
             authStatusText={authStatusText}
             startAuthProcess={startAuthProcess}
+            startGoogleAuthProcess={startGoogleAuthProcess}
             stopAuthProcess={stopAuthProcess}
           />
         </MainLayout>
@@ -54,6 +61,7 @@ const mapDispatch = {
   startAuthProcess: requestToAuth,
   stopAuthProcess: breakAuthProcess,
   checkAuthBeforePageLoaded: preloadAuthData,
+  startGoogleAuthProcess: requestToAuthWithGoogle,
 };
 
 export default connect(mapState, mapDispatch)(AuthPage);

@@ -18,6 +18,7 @@ type Props = {
   isAuthProcessNow: boolean;
   authStatusText: string;
   requestToAuth: ({ email, password }) => void;
+  requestToAuthWithGoogle: () => void;
   breakAuthProcess: () => void;
 };
 
@@ -27,10 +28,9 @@ const AccountEntry: React.FC<Props> = (props: Props): JSX.Element => {
     isAuthProcessNow,
     authStatusText,
     requestToAuth,
+    requestToAuthWithGoogle,
     breakAuthProcess,
   } = props;
-
-  console.log(authStatusText);
 
   const handleFormSubmit = (formData: UserData): void => {
     const { email, password } = formData;
@@ -49,19 +49,29 @@ const AccountEntry: React.FC<Props> = (props: Props): JSX.Element => {
               <Field
                 name="email"
                 type="email"
-                render={({ input, meta }) => <Input {...input} {...meta} placeholder="Email" />}
+                render={({ input, meta }) => (
+                  <Input {...input} {...meta} placeholder="Email" required />
+                )}
               />
               <Field
                 name="password"
                 type="password"
-                render={({ input, meta }) => <Input {...input} {...meta} placeholder="Пароль" />}
+                render={({ input, meta }) => (
+                  <Input {...input} {...meta} placeholder="Пароль" required />
+                )}
               />
             </S.FieldsWrapper>
             <ArrowButton isFilled>Войти</ArrowButton>
-            <S.ToRegisterWrapper>
+            <S.TwoCols>
+              <S.CenteredButton type="button" onClick={requestToAuthWithGoogle}>
+                Вход через аккаунт Google
+                <S.GoogleIcon />
+              </S.CenteredButton>
+            </S.TwoCols>
+            <S.TwoCols>
               <span>Нет аккаунта на Toxin?</span>
               <Button href="/registration">Создать</Button>
-            </S.ToRegisterWrapper>
+            </S.TwoCols>
           </form>
         )}
       />

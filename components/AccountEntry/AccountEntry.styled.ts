@@ -1,6 +1,8 @@
 import Snackbar from '@material-ui/core/Snackbar';
+import GTranslateIcon from '@material-ui/icons/GTranslate';
 import styled, { css } from 'styled-components';
 
+import Button from 'components/Button/Button';
 import { breakpointDown } from 'shared/styles/break-points';
 import { titles } from 'shared/styles/mixins';
 
@@ -40,7 +42,7 @@ const Title = styled.h1`
   }
 `;
 
-const ToRegisterWrapper = styled.div`
+const TwoCols = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -57,4 +59,12 @@ const FieldsWrapper = styled.div`
   }
 `;
 
-export { CustomSnackBar, AccountEntry, Title, ToRegisterWrapper, FieldsWrapper };
+const CenteredButton = styled(Button)`
+  margin: 0 auto;
+`;
+
+const GoogleIcon = styled(GTranslateIcon)`
+  margin-left: 0.5rem;
+`;
+
+export { CustomSnackBar, AccountEntry, Title, TwoCols, FieldsWrapper, CenteredButton, GoogleIcon };

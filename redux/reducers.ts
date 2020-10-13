@@ -4,6 +4,7 @@ import {
   AUTH_FAILED,
   PRELOAD_AUTH_DATA,
   BREAK_AUTH_PROCESS,
+  AUTH_REQUIRED,
 } from './constants';
 import { AuthActions } from './types';
 
@@ -28,7 +29,6 @@ const rootReducer = (state: State = initialState, action: AuthActions): State =>
     case AUTH_PROCESS:
       return {
         ...state,
-        isAuthProcessNow: true,
       };
     case PRELOAD_AUTH_DATA:
       return state;
@@ -37,10 +37,15 @@ const rootReducer = (state: State = initialState, action: AuthActions): State =>
         ...state,
         isAuthProcessNow: false,
       };
+    case AUTH_REQUIRED:
+      return {
+        ...state,
+        wasFinishedAuthChecking: true,
+      };
     case AUTH_SUCCESS:
       return {
         ...state,
-        isAuthProcessNow: true,
+        isAuthProcessNow: false,
         isAuthSuccess: true,
         wasFinishedAuthChecking: true,
         authStatusText: 'Вы успешно авторизованы!',
@@ -49,6 +54,7 @@ const rootReducer = (state: State = initialState, action: AuthActions): State =>
     case AUTH_FAILED:
       return {
         ...state,
+        isAuthProcessNow: true,
         wasFinishedAuthChecking: true,
         authStatusText: action.payload,
       };

@@ -8,6 +8,7 @@ const MainContent: React.FC<Props> = (props: Props): JSX.Element => {
     isAuthSuccess,
     isAuthProcessNow,
     authStatusText,
+    startGoogleAuthProcess,
     startAuthProcess,
     stopAuthProcess,
   } = props;
@@ -19,6 +20,7 @@ const MainContent: React.FC<Props> = (props: Props): JSX.Element => {
         isAuthProcessNow={isAuthProcessNow}
         authStatusText={authStatusText}
         requestToAuth={startAuthProcess}
+        requestToAuthWithGoogle={startGoogleAuthProcess}
         breakAuthProcess={stopAuthProcess}
       />
     </S.Container>

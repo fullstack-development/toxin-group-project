@@ -2,26 +2,46 @@ import { SagaIterator } from 'redux-saga';
 import { put, takeLatest, call, PutEffect } from 'redux-saga/effects';
 
 import Api from 'api/api';
-import { User, UserCredential } from 'api/types';
+import { User, UserCredential } from 'api/Firebase/modules/Authentication/types';
 
 import { setAuthStatus } from './actions';
-import { AUTH_PROCESS, AUTH_SUCCESS, PRELOAD_AUTH_DATA, AUTH_FAILED } from './constants';
-import { AuthData, SetAuthStatusSuccess, SetAuthStatusFailed } from './types';
+import {
+  AUTH_PROCESS,
+  AUTH_SUCCESS,
+  PRELOAD_AUTH_DATA,
+  AUTH_FAILED,
+  AUTH_REQUIRED,
+  GOOGLE_AUTH_PROCESS,
+} from './constants';
+import { AuthData, SetAuthStatusSuccess, SetAuthStatusFailed, SetAuthRequired } from './types';
 
 function* startAuthProcess(data: {
+  type: typeof AUTH_PROCESS | typeof GOOGLE_AUTH_PROCESS;
   payload: AuthData;
 }): Generator | Generator<PutEffect<SetAuthStatusSuccess | SetAuthStatusFailed>, void, never> {
-  const { email, password } = data.payload;
+  const { type } = data;
 
   try {
-    const { user }: UserCredential = yield call(Api.auth.signIn, email, password);
+    if (type === AUTH_PROCESS) {
+      const { email, password } = data.payload;
+      const { user }: UserCredential = yield call(Api.auth.signIn, email, password);
 
-    yield put(
-      setAuthStatus({
-        type: AUTH_SUCCESS,
-        payload: user,
-      }),
-    );
+      yield put(
+        setAuthStatus({
+          type: AUTH_SUCCESS,
+          payload: user,
+        }),
+      );
+    } else if (type === GOOGLE_AUTH_PROCESS) {
+      const { user }: UserCredential = yield call(Api.auth.signInWithGoogle);
+
+      yield put(
+        setAuthStatus({
+          type: AUTH_SUCCESS,
+          payload: user,
+        }),
+      );
+    }
   } catch (error) {
     yield put(
       setAuthStatus({
@@ -36,14 +56,18 @@ const authStateChangedCallback = (): Promise<User> => {
   return new Promise((resolve, reject) => {
     Api.auth.onStateChanged((data) => {
       if (data) resolve(data);
-      else reject(new Error('Пользователь не авторизован'));
+      else reject(new Error('Пользователь не авторизован.'));
     });
   });
 };
 
 function* prepareAuthData():
   | Generator
-  | Generator<PutEffect<SetAuthStatusSuccess | SetAuthStatusFailed>, void, never> {
+  | Generator<
+      PutEffect<SetAuthStatusSuccess | SetAuthStatusFailed | SetAuthRequired>,
+      void,
+      never
+    > {
   try {
     const result: User = yield call(authStateChangedCallback);
 
@@ -56,14 +80,14 @@ function* prepareAuthData():
   } catch (error) {
     yield put(
       setAuthStatus({
-        type: AUTH_FAILED,
-        payload: error.message,
+        type: AUTH_REQUIRED,
       }),
     );
   }
 }
 
 export function* rootSaga(): SagaIterator {
-  yield takeLatest<never>(AUTH_PROCESS, startAuthProcess);
   yield takeLatest<never>(PRELOAD_AUTH_DATA, prepareAuthData);
+  yield takeLatest<never>(AUTH_PROCESS, startAuthProcess);
+  yield takeLatest<never>(GOOGLE_AUTH_PROCESS, startAuthProcess);
 }

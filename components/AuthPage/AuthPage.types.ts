@@ -5,5 +5,6 @@ export type Props = {
   authStatusText: string;
   checkAuthBeforePageLoaded?: () => void;
   startAuthProcess: ({ email, password }) => void;
+  startGoogleAuthProcess: () => void;
   stopAuthProcess: () => void;
 };

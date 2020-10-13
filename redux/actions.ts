@@ -1,4 +1,9 @@
-import { AUTH_PROCESS, BREAK_AUTH_PROCESS, PRELOAD_AUTH_DATA } from './constants';
+import {
+  AUTH_PROCESS,
+  BREAK_AUTH_PROCESS,
+  PRELOAD_AUTH_DATA,
+  GOOGLE_AUTH_PROCESS,
+} from './constants';
 import {
   RequestToAuth,
   BreakAuthProcess,
@@ -6,11 +11,16 @@ import {
   AuthData,
   SetAuthStatusSuccess,
   PreloadAuthData,
+  SetAuthRequired,
 } from './types';
 
 const requestToAuth = (data: AuthData): RequestToAuth => ({
   type: AUTH_PROCESS,
   payload: data,
+});
+
+const requestToAuthWithGoogle = (): RequestToAuth => ({
+  type: GOOGLE_AUTH_PROCESS,
 });
 
 const breakAuthProcess = (): BreakAuthProcess => ({
@@ -22,7 +32,7 @@ const preloadAuthData = (): PreloadAuthData => ({
 });
 
 const setAuthStatus = (
-  data: SetAuthStatusSuccess | SetAuthStatusFailed,
-): SetAuthStatusSuccess | SetAuthStatusFailed => data;
+  data: SetAuthStatusSuccess | SetAuthStatusFailed | SetAuthRequired,
+): SetAuthStatusSuccess | SetAuthStatusFailed | SetAuthRequired => data;
 
-export { requestToAuth, setAuthStatus, breakAuthProcess, preloadAuthData };
+export { requestToAuth, requestToAuthWithGoogle, setAuthStatus, breakAuthProcess, preloadAuthData };
