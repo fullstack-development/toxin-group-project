@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import { breakpointDown } from 'shared/styles/break-points';
 import { container, titles, visuallyHidden } from 'shared/styles/mixins';
 
 const FormElementsPage = styled.div`
@@ -23,7 +24,7 @@ const Content = styled.form`
     '. . .'
     'benefits comment comment';
 
-  @media (max-width: 1200px) {
+  @media ${breakpointDown('xl')} {
     grid-template-columns: repeat(2, 22.8571rem);
     grid-template-rows: repeat(4, auto);
     grid-template-areas:
@@ -35,7 +36,7 @@ const Content = styled.form`
     padding-top: 1.5rem;
   }
 
-  @media (max-width: 768px) {
+  @media ${breakpointDown('md')} {
     display: flex;
     flex-direction: column;
     gap: 2rem;
