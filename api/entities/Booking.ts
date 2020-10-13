@@ -104,7 +104,7 @@ class Booking {
       const userValue = userOption[prop];
       const roomValue = roomOption[prop];
 
-      return roomValue >= userValue;
+      return Number(roomValue) >= Number(userValue);
     });
   }
 }
