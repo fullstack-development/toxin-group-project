@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+import { breakpointDown } from 'shared/styles/break-points';
+
 type SubMenu = {
   isShown?: boolean;
 };
@@ -9,7 +11,7 @@ type Link = {
 };
 
 const NavLink = styled.div`
-  @media (max-width: 1050px) {
+  @media ${breakpointDown('md')} {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -32,7 +34,7 @@ const IconExpander = styled.span`
     height: 100%;
   }
 
-  @media (max-width: 1050px) {
+  @media ${breakpointDown('md')} {
     top: 0;
     width: 3.5rem;
   }
@@ -54,7 +56,7 @@ const Link = styled.a<Link>`
         color: ${colors.basicDarkest};
       }
 
-      @media (max-width: 900px) {
+      @media ${breakpointDown('md')} {
         margin-right: 0;
       }
     `;
@@ -95,7 +97,7 @@ const SubMenuContainer = styled.div<SubMenu>`
       left: 50%;
       transform: translateX(-50%);
 
-      @media (max-width: 1050px) {
+      @media ${breakpointDown('md')} {
         position: relative;
         transform: translate(0);
         left: 0;

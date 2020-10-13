@@ -1,4 +1,4 @@
-import getNounInDeclension from './getNounInDeclension';
+import getNounInDeclension from 'shared/helpers/getNounInDeclension';
 
 const DECLENSION = {
   seconds: ['секунда', 'секунды', 'секунд'],

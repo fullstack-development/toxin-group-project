@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 
+import { breakpointDown } from 'shared/styles/break-points';
 import { titles } from 'shared/styles/mixins';
 
 const SearchRoomForm = styled.section`
@@ -14,7 +15,7 @@ const SearchRoomForm = styled.section`
       box-shadow: 0 0 1.7857rem rgba(0, 0, 0, 0.2);
       border-radius: 0.2857rem;
 
-      @media (max-width: 460px) {
+      @media ${breakpointDown('xs')} {
         padding: 1rem;
       }
     `;
@@ -27,7 +28,7 @@ const Title = styled.h1`
   line-height: 1.25;
   margin-bottom: 1.3214rem;
 
-  @media (max-width: 460px) {
+  @media ${breakpointDown('xs')} {
     font-size: 1.5rem;
   }
 `;

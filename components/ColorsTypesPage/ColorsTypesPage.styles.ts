@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import { breakpointDown } from 'shared/styles/break-points';
 import { container, visuallyHidden } from 'shared/styles/mixins';
 
 const ColorsTypesLayout = styled.div`
@@ -14,7 +15,7 @@ const Logo = styled.div`
 const Content = styled.main`
   padding: 4.5rem 12.6429rem 0 9.7143rem;
 
-  @media (max-width: 1200px) {
+  @media ${breakpointDown('lg')} {
     padding: 2.5rem 0;
   }
 `;
@@ -28,7 +29,7 @@ const Wrapper = styled.div`
   grid-template-columns: auto auto;
   justify-content: space-between;
 
-  @media (max-width: 900px) {
+  @media ${breakpointDown('md')} {
     grid-template-columns: auto;
     justify-content: center;
     grid-gap: 5rem;
