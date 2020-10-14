@@ -46,8 +46,9 @@ const getRooms = (e) => {
 };
 
 const SearchRoomForm: React.FC<SearchRoomFormProps> = ({ onSubmit }: SearchRoomFormProps) => {
-  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    onSubmit(e);
+  const handleFormSubmit = (values) => {
+    console.log(values);
+    // getRooms(e);
   };
 
   return (
@@ -55,8 +56,8 @@ const SearchRoomForm: React.FC<SearchRoomFormProps> = ({ onSubmit }: SearchRoomF
       <S.Title>Найдём номера под ваши пожелания</S.Title>
       <Form
         onSubmit={handleFormSubmit}
-        render={() => (
-          <form>
+        render={({ handleSubmit, values }) => (
+          <form onSubmit={handleSubmit}>
             <S.TimePickerWrapper>
               <TimePicker
                 type="double"
@@ -75,7 +76,7 @@ const SearchRoomForm: React.FC<SearchRoomFormProps> = ({ onSubmit }: SearchRoomF
                 items={guestsItems}
               />
             </S.DropdownWrapper>
-            <ArrowButton isLink={false} isFilled type="button" onClick={getRooms}>
+            <ArrowButton isLink={false} isFilled>
               Подобрать номер
             </ArrowButton>
           </form>
