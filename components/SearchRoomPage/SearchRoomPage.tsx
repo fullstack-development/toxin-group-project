@@ -8,34 +8,41 @@ import Preloader from 'components/Preloader/Preloader';
 import { Props as RoomProps } from 'components/Room/Room.types';
 import RoomFilter from 'components/RoomFilter/RoomFilter';
 import Rooms from 'components/Rooms/Rooms';
-import { testRoomFilter } from 'components/SearchRoomForm/SearchRoomForm';
+import defaultFilters from 'components/SearchRoomForm/defaultFilters';
 
 import * as S from './SearchRoomPage.styles';
 
 const SearchRoomPage: React.FC = () => {
   const [rooms, setRooms] = useState<RoomProps[]>([]);
+  const router = useRouter();
   const { query } = useRouter();
+
+  const passedParams = query.values && JSON.parse(`${query.values}`);
+  console.log(passedParams);
+
+  const initialFilters = passedParams && {
+    ...defaultFilters,
+    ...passedParams,
+    booked: passedParams['search-room-date'] || defaultFilters.booked,
+  };
+
+  // console.log(initialFilters);
+  const filters = initialFilters || defaultFilters;
 
   async function loadData(options?: Filters) {
     setRooms([]);
-    const fetchedRooms = await api.booking.filterRooms(options);
+    const currentFilters = options ? { ...filters, ...options } : filters;
+    router.push(`/search-room?&values=${JSON.stringify(currentFilters)}`);
+    const fetchedRooms = await api.booking.filterRooms(currentFilters);
     setRooms(fetchedRooms.map((room) => ({ ...room, number: room.id })));
   }
-
-  const passedParams = query.values && JSON.parse(`${query.values}`);
-  const initialFilters = passedParams && {
-    ...testRoomFilter,
-    ...passedParams,
-    booked: passedParams['search-room-date'],
-  };
 
   return (
     <MainLayout>
       <>
-        <div>Фильтры {query.values}</div>
         <S.Container>
           <S.FilterContainer>
-            <RoomFilter initialFilters={initialFilters} handleRequest={loadData} />
+            <RoomFilter initialFilters={filters} handleRequest={loadData} />
           </S.FilterContainer>
           <S.RoomsContainer>
             <S.RoomsTitle>Номера, которые мы для вас подобрали</S.RoomsTitle>

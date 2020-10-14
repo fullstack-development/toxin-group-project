@@ -12,52 +12,16 @@ import Dropdown from 'components/Dropdown/Dropdown';
 import { guestsGroups, guestsItems, amenitiesItems } from 'components/Dropdown/Dropdown.data';
 import Expander from 'components/Expander/Expander';
 import RangeSlider from 'components/RangeSlider/RangeSlider';
+import defaultFilters from 'components/SearchRoomForm/defaultFilters';
 import TimePicker from 'components/TimePicker/TimePicker';
 
 import * as S from './RoomFilter.styles';
 import { Props } from './RoomFilter.types';
 
-const oneWeek = 7 * 60 * 60 * 24 * 1000;
-
-const defaultInitialFilters: Filters = {
-  price: {
-    from: 5000,
-    to: 10000,
-  },
-  booked: {
-    from: Date.now(),
-    to: Date.now() + oneWeek,
-  },
-  amenities: {
-    bedrooms: 1,
-    beds: 1,
-    bathrooms: 0,
-  },
-  additionalAmenities: {
-    breakfast: false,
-    desk: false,
-    chair: false,
-    crib: false,
-    tv: false,
-    shampoo: false,
-  },
-  accessibility: {
-    wideCorridor: false,
-    invalidHelper: false,
-  },
-  opportunities: {
-    smoking: false,
-    keepPets: false,
-    largeNumberOfPersons: false,
-  },
-};
-
-const RoomFilter: React.FC<Props> = ({
-  initialFilters = defaultInitialFilters,
-  handleRequest,
-}: Props) => {
+const RoomFilter: React.FC<Props> = ({ initialFilters, handleRequest }: Props) => {
   const handleFormSubmit = async (values?: Filters) => {
-    await handleRequest(values || defaultInitialFilters);
+    console.log(values);
+    await handleRequest(values);
   };
 
   useEffect(() => {
@@ -67,7 +31,7 @@ const RoomFilter: React.FC<Props> = ({
   return (
     <Form
       onSubmit={handleFormSubmit}
-      initialValues={initialFilters || defaultInitialFilters}
+      initialValues={initialFilters}
       render={({ handleSubmit, initialValues }) => {
         const { guests } = initialValues;
         const updatedDropdownProps = guestsItems.map((item) => ({
@@ -75,7 +39,8 @@ const RoomFilter: React.FC<Props> = ({
           initialValue: (guests && guests[item.inputName]) || item.initialValue,
         }));
 
-        console.log(updatedDropdownProps);
+        // console.log(initialValues);
+
         return (
           <S.RoomFilter>
             <form onSubmit={handleSubmit}>
