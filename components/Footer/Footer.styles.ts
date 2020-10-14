@@ -8,7 +8,7 @@ const Container = styled.div`
   padding-left: 10rem;
   padding-right: 10rem;
 
-  @media ${breakpointDown('lg')} {
+  @media ${breakpointDown('xl')} {
     padding-left: 4.2857rem;
     padding-right: 4.2857rem;
   }
