@@ -11,7 +11,7 @@ import * as S from './SearchRoomForm.styles';
 type SearchRoomFormProps = {
   onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
 };
-const testRoomFilter = {
+export const testRoomFilter = {
   price: { from: 2000, to: 7000 },
   booked: {
     from: new Date().getTime(),
@@ -45,6 +45,20 @@ const getRooms = (e) => {
   api.booking.filterRooms(testRoomFilter).then((data) => console.log(data));
 };
 
+const twoWeeks = 60 * 60 * 24 * 7 * 1000 * 2;
+
+const dateFrom = new Date();
+const dateTo = new Date(Date.now() + twoWeeks);
+dateFrom.setHours(0, 0, 0, 0);
+dateTo.setHours(0, 0, 0, 0);
+
+const DEFAULT_OPTIONS = {
+  dates: {
+    from: dateFrom.getTime(),
+    to: dateTo.getTime(),
+  },
+};
+
 const SearchRoomForm: React.FC<SearchRoomFormProps> = ({ onSubmit }: SearchRoomFormProps) => {
   const handleFormSubmit = (values) => {
     console.log(values);
@@ -55,6 +69,14 @@ const SearchRoomForm: React.FC<SearchRoomFormProps> = ({ onSubmit }: SearchRoomF
     <S.SearchRoomForm>
       <S.Title>Найдём номера под ваши пожелания</S.Title>
       <Form
+        initialValues={{
+          'search-room-date': DEFAULT_OPTIONS.dates,
+          guests: Object.fromEntries(
+            guestsItems
+              .filter((item) => item.initialValue)
+              .map((item) => [item.inputName, item.initialValue]),
+          ),
+        }}
         onSubmit={handleFormSubmit}
         render={({ handleSubmit, values }) => (
           <form onSubmit={handleSubmit}>
@@ -64,6 +86,8 @@ const SearchRoomForm: React.FC<SearchRoomFormProps> = ({ onSubmit }: SearchRoomF
                 name="search-room-date"
                 dateFromLabelText="прибытие"
                 dateToLabelText="выезд"
+                dateFrom={new Date(DEFAULT_OPTIONS.dates.from)}
+                dateTo={new Date(DEFAULT_OPTIONS.dates.to)}
               />
             </S.TimePickerWrapper>
             <S.DropdownWrapper>
@@ -76,7 +100,12 @@ const SearchRoomForm: React.FC<SearchRoomFormProps> = ({ onSubmit }: SearchRoomF
                 items={guestsItems}
               />
             </S.DropdownWrapper>
-            <ArrowButton isFilled type="button" onClick={getRooms}>
+            <ArrowButton
+              href={`/search-room?values=${JSON.stringify(values)}`}
+              isFilled
+              type="button"
+              onClick={getRooms}
+            >
               Подобрать номер
             </ArrowButton>
           </form>

@@ -41,6 +41,11 @@ export type Filters = {
     from: number;
     to: number;
   };
+  guests: {
+    adults: number;
+    children: number;
+    babies: number;
+  };
 } & Options;
 
 export type ApartmentsList = { [k: number]: Apartment };

@@ -19,7 +19,7 @@ import { Props } from './RoomFilter.types';
 
 const oneWeek = 7 * 60 * 60 * 24 * 1000;
 
-const defaultInitialValues: Filters = {
+const defaultInitialFilters: Filters = {
   price: {
     from: 5000,
     to: 10000,
@@ -53,11 +53,11 @@ const defaultInitialValues: Filters = {
 };
 
 const RoomFilter: React.FC<Props> = ({
-  initialValues = defaultInitialValues,
+  initialFilters = defaultInitialFilters,
   handleRequest,
 }: Props) => {
   const handleFormSubmit = async (values?: Filters) => {
-    await handleRequest(values || defaultInitialValues);
+    await handleRequest(values || defaultInitialFilters);
   };
 
   useEffect(() => {
@@ -67,8 +67,15 @@ const RoomFilter: React.FC<Props> = ({
   return (
     <Form
       onSubmit={handleFormSubmit}
-      initialValues={initialValues || defaultInitialValues}
-      render={({ handleSubmit }) => {
+      initialValues={initialFilters || defaultInitialFilters}
+      render={({ handleSubmit, initialValues }) => {
+        const { guests } = initialValues;
+        const updatedDropdownProps = guestsItems.map((item) => ({
+          ...item,
+          initialValue: (guests && guests[item.inputName]) || item.initialValue,
+        }));
+
+        console.log(updatedDropdownProps);
         return (
           <S.RoomFilter>
             <form onSubmit={handleSubmit}>
@@ -88,7 +95,7 @@ const RoomFilter: React.FC<Props> = ({
                   name="guests"
                   enableControls={false}
                   groups={guestsGroups}
-                  items={guestsItems}
+                  items={updatedDropdownProps}
                 />
               </S.DropdownWrapper>
               <S.SliderWrapper>

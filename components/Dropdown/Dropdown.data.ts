@@ -11,16 +11,19 @@ export const guestsItems: Required<Item[]> = [
   {
     title: 'взрослые',
     inputName: 'adults',
+    initialValue: 2,
     groupName: 'guests',
   },
   {
     title: 'дети',
+    initialValue: 0,
     inputName: 'children',
     groupName: 'guests',
   },
   {
     title: 'младенцы',
     inputName: 'babies',
+    initialValue: 0,
     wordForms: ['младенец', 'младенца', 'младенцев'],
   },
 ];

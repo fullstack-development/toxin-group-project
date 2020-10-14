@@ -10,7 +10,6 @@ import getResultStringPart from './utils/getResultStringPart';
 const DEFAULT_SETTINGS = {
   min: 0,
   max: 5,
-  initialValue: 0,
 };
 
 const Dropdown: React.FC<DropdownProps> = ({
@@ -22,7 +21,7 @@ const Dropdown: React.FC<DropdownProps> = ({
 }: DropdownProps) => {
   const initialState = items.map((item) => ({
     ...item,
-    currentValue: item.initialValue || DEFAULT_SETTINGS.initialValue,
+    currentValue: item.initialValue || 0,
     inputName: item.inputName || item.title,
     min: item.min || DEFAULT_SETTINGS.min,
     max: item.max || DEFAULT_SETTINGS.max,
@@ -32,6 +31,8 @@ const Dropdown: React.FC<DropdownProps> = ({
   const [isOpen, setIsOpen] = useState(false);
   const [resultString, setResultString] = useState(placeholder);
   const dropdown = useRef(null);
+
+  console.log('прилетели в дропдаун', initialState);
 
   const applyChanges = useCallback(
     (currentState: typeof dropdownState): void => {
@@ -89,6 +90,10 @@ const Dropdown: React.FC<DropdownProps> = ({
       applyChanges(dropdownState);
     }
   }, [dropdownState, enableControls, applyChanges]);
+
+  useEffect(() => {
+    applyChanges(dropdownState);
+  }, []);
 
   useEffect(() => {
     document.addEventListener('click', handleDocumentClick);
