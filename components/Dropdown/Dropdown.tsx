@@ -32,8 +32,6 @@ const Dropdown: React.FC<DropdownProps> = ({
   const [resultString, setResultString] = useState(placeholder);
   const dropdown = useRef(null);
 
-  console.log('прилетели в дропдаун', initialState);
-
   const applyChanges = useCallback(
     (currentState: typeof dropdownState): void => {
       const resultStrings: string[] = Array.from(
@@ -114,11 +112,11 @@ const Dropdown: React.FC<DropdownProps> = ({
               {dropdownState.map((el) => {
                 const { title, min, max, currentValue, inputName } = el;
 
-                const formatFieldValue = () => {
+                const updateFieldValue = (state: typeof dropdownState) => {
                   const result = {};
-                  dropdownState.forEach((item) => {
+                  state.forEach((item) => {
                     result[item.inputName] = item.currentValue;
-                    input.onChange(result);
+                    setTimeout(() => input.onChange(result));
                   });
                 };
 
@@ -131,9 +129,9 @@ const Dropdown: React.FC<DropdownProps> = ({
                     const state = [...prevState];
                     const elementToUpdate = state.find((item) => item.title === title);
                     elementToUpdate.currentValue += increment;
+                    updateFieldValue(state);
                     return state;
                   });
-                  formatFieldValue();
                 };
                 const handleIncrementClick = makeButtonHandler(1);
                 const handleDecrementClick = makeButtonHandler(-1);
