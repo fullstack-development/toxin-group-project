@@ -121,9 +121,7 @@ const RoomFilter: React.FC<Props> = ({
                   <CheckboxesList roomOptions={expandableCheckboxesListData} />
                 </Expander>
               </S.CheckboxWrapper>
-              <S.SubmitButton isLink={false} isFilled>
-                Применить
-              </S.SubmitButton>
+              <S.SubmitButton isFilled>Применить</S.SubmitButton>
             </form>
           </S.RoomFilter>
         );

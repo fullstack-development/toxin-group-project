@@ -1,12 +1,19 @@
+import Link from 'next/link';
+
 import * as S from './TextButton.styles';
 import { TextButtonProps } from './TextButton.types';
 
 const TextButton: React.FC<TextButtonProps> = ({
   isSecondary = false,
-  isLink,
+  href,
   ...rest
-}: TextButtonProps) => (
-  <S.TextButton as={isLink ? 'a' : 'button'} {...rest} isSecondary={isSecondary} isLink={isLink} />
-);
+}: TextButtonProps) =>
+  href ? (
+    <Link href={href} passHref>
+      <S.TextButton as="a" {...rest} isSecondary={isSecondary} />
+    </Link>
+  ) : (
+    <S.TextButton as="button" {...rest} isSecondary={isSecondary} />
+  );
 
 export default TextButton;
