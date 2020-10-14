@@ -1,13 +1,17 @@
+import { IconName } from '@fortawesome/fontawesome-common-types';
 import Snackbar from '@material-ui/core/Snackbar';
-import GTranslateIcon from '@material-ui/icons/GTranslate';
 import styled, { css } from 'styled-components';
 
 import Button from 'components/Button/Button';
 import { breakpointDown } from 'shared/styles/break-points';
-import { titles } from 'shared/styles/mixins';
+import { titles, fontAwesome, fontAwesomeIcons } from 'shared/styles/mixins';
 
 type SnackBarProps = {
   theme: 'success' | 'error';
+};
+
+type GoogleIconProps = {
+  icon: IconName;
 };
 
 const CustomSnackBar = styled(Snackbar)<SnackBarProps>`
@@ -63,8 +67,24 @@ const CenteredButton = styled(Button)`
   margin: 0 auto;
 `;
 
-const GoogleIcon = styled(GTranslateIcon)`
-  margin-left: 0.5rem;
+const GoogleIcon = styled.span<GoogleIconProps>`
+  ${(props) => {
+    const { gradients } = props.theme;
+    const { icon } = props;
+
+    return css`
+      margin-left: 0.5rem;
+      display: inline-block;
+      ${fontAwesome}
+      background-image: ${gradients.primary};
+      text-decoration: none;
+
+      &::before {
+        content: '${fontAwesomeIcons[icon]}';
+        font-size: 1.3rem;
+      }
+    `;
+  }}
 `;
 
 export { CustomSnackBar, AccountEntry, Title, TwoCols, FieldsWrapper, CenteredButton, GoogleIcon };

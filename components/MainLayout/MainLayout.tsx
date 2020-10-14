@@ -26,11 +26,7 @@ const MainLayout: React.FC<Props> = ({
   );
 };
 
-const mapState = (state: Props) => ({
-  displayName: state.displayName,
-  authStatusText: state.authStatusText,
-  wasFinishedAuthChecking: state.wasFinishedAuthChecking,
-});
+const mapState = (state: Props) => state;
 
 const mapDispatch = {
   preloadAuth: preloadAuthData,

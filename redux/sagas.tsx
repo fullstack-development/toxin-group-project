@@ -4,7 +4,6 @@ import { put, takeLatest, call, PutEffect } from 'redux-saga/effects';
 import Api from 'api/api';
 import { User, UserCredential } from 'api/Firebase/modules/Authentication/types';
 
-import { setAuthStatus } from './actions';
 import {
   AUTH_PROCESS,
   AUTH_SUCCESS,
@@ -26,29 +25,23 @@ function* startAuthProcess(data: {
       const { email, password } = data.payload;
       const { user }: UserCredential = yield call(Api.auth.signIn, email, password);
 
-      yield put(
-        setAuthStatus({
-          type: AUTH_SUCCESS,
-          payload: user,
-        }),
-      );
+      yield put({
+        type: AUTH_SUCCESS,
+        payload: user,
+      });
     } else if (type === GOOGLE_AUTH_PROCESS) {
       const { user }: UserCredential = yield call(Api.auth.signInWithGoogle);
 
-      yield put(
-        setAuthStatus({
-          type: AUTH_SUCCESS,
-          payload: user,
-        }),
-      );
+      yield put({
+        type: AUTH_SUCCESS,
+        payload: user,
+      });
     }
   } catch (error) {
-    yield put(
-      setAuthStatus({
-        type: AUTH_FAILED,
-        payload: error.message,
-      }),
-    );
+    yield put({
+      type: AUTH_FAILED,
+      payload: error.message,
+    });
   }
 }
 
@@ -71,18 +64,14 @@ function* prepareAuthData():
   try {
     const result: User = yield call(authStateChangedCallback);
 
-    yield put(
-      setAuthStatus({
-        type: AUTH_SUCCESS,
-        payload: result,
-      }),
-    );
+    yield put({
+      type: AUTH_SUCCESS,
+      payload: result,
+    });
   } catch (error) {
-    yield put(
-      setAuthStatus({
-        type: AUTH_REQUIRED,
-      }),
-    );
+    yield put({
+      type: AUTH_REQUIRED,
+    });
   }
 }
 
