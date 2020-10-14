@@ -26,11 +26,10 @@ const RadioButton: React.FC<RadioButtonProps> = ({
       name={name}
       value={value}
       onChange={handleChange}
-      checked={checked}
       type="radio"
       render={(props) => (
         <S.RadioButton>
-          <S.HiddenInput {...props.input} />
+          <S.HiddenInput {...props.input} checked={checked} />
           <S.Checkmark />
           <S.Label>{label}</S.Label>
         </S.RadioButton>
