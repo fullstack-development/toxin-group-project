@@ -1,6 +1,6 @@
 import { applyMiddleware, createStore, combineReducers } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import createSagaMiddleware, { Saga, SagaMiddleware } from 'redux-saga';
+import createSagaMiddleware, { Saga, SagaMiddleware, SagaIterator } from 'redux-saga';
 
 import { reduxEntry as AuthReduxEntry } from './Auth';
 import { AuthActions, AuthState } from './Auth/types';
@@ -16,7 +16,7 @@ type AvailableReducers = (state: AuthState, action: AuthActions) => AuthState;
 
 type SharedReduxEntries = {
   reducers: Record<string, AvailableReducers>;
-  sagas: Array<Saga<unknown[]>>;
+  sagas: Array<() => SagaIterator>;
 }[];
 
 const sharedReduxEntries: SharedReduxEntries = [AuthReduxEntry];
