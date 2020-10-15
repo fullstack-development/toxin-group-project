@@ -1,3 +1,5 @@
+import defaultFilters from 'components/SearchRoomForm/defaultFilters';
+
 import { Item, Group } from './Dropdown.types';
 
 export const guestsGroups: Required<Group[]> = [
@@ -7,23 +9,25 @@ export const guestsGroups: Required<Group[]> = [
   },
 ];
 
+const { adults, children, babies } = defaultFilters.guests;
+
 export const guestsItems: Required<Item[]> = [
   {
     title: 'взрослые',
     inputName: 'adults',
-    initialValue: 2,
+    initialValue: adults,
     groupName: 'guests',
   },
   {
     title: 'дети',
-    initialValue: 0,
+    initialValue: children,
     inputName: 'children',
     groupName: 'guests',
   },
   {
     title: 'младенцы',
     inputName: 'babies',
-    initialValue: 0,
+    initialValue: babies,
     wordForms: ['младенец', 'младенца', 'младенцев'],
   },
 ];
