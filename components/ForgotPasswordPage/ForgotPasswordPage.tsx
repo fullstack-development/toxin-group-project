@@ -1,14 +1,11 @@
-import Footer from 'components/Footer/Footer';
-import Header from 'components/Header/Header';
+import MainLayout from 'components/MainLayout/MainLayout';
 
 import Banner from './components/Banner/Banner';
 
 const ForgotPasswordPage: React.FC = (): JSX.Element => (
-  <>
-    <Header authData={{ userName: 'Юлий Цезарь', pathToProfile: '/mock-user' }} />
+  <MainLayout>
     <Banner />
-    <Footer />
-  </>
+  </MainLayout>
 );
 
 export default ForgotPasswordPage;
