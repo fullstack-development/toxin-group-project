@@ -7,7 +7,7 @@ type Props = {
 
 const MainLayout: React.FC<Props> = ({ children }: Props): JSX.Element => (
   <>
-    <Header />
+    <Header authData={{ userName: 'Илья Сигидин' }} />
     {children}
     <Footer />
   </>
