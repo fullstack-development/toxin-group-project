@@ -9,9 +9,11 @@ const NavItem: React.FC<NavItemProps> = ({ title, items }: NavItemProps) => (
     <S.List>
       {items &&
         items.map(({ text, href }) => (
-          <Link href={href} passHref key={text}>
-            <S.Link>{text}</S.Link>
-          </Link>
+          <S.Item key={text}>
+            <Link href={href} passHref>
+              <S.Link>{text}</S.Link>
+            </Link>
+          </S.Item>
         ))}
     </S.List>
   </S.Container>

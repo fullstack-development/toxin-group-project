@@ -13,16 +13,11 @@ const Link = styled.a`
     const { typography, colors } = props.theme;
     return css`
       display: inline-block;
-      width: fit-content;
       font-family: ${typography.fontName};
       line-height: 1.2143rem;
       color: ${colors.basic};
       text-decoration: none;
       text-transform: lowercase;
-
-      &:not(:last-child) {
-        margin-bottom: 1.4286rem;
-      }
 
       &::first-letter {
         text-transform: uppercase;
@@ -45,6 +40,13 @@ const Container = styled.div`
 const List = styled.ul`
   display: flex;
   flex-direction: column;
+  list-style: none;
 `;
 
-export { Title, Link, Container, List };
+const Item = styled.li`
+  &:not(:last-child) {
+    margin-bottom: 1.4286rem;
+  }
+`;
+
+export { Title, Link, Container, List, Item };
