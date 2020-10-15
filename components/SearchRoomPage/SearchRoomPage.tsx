@@ -11,14 +11,13 @@ import Rooms from 'components/Rooms/Rooms';
 import defaultFilters from 'components/SearchRoomForm/defaultFilters';
 
 import * as S from './SearchRoomPage.styles';
+import getPassedFilters from './utils/getPassedFilters';
 
 const SearchRoomPage: React.FC = () => {
   const [rooms, setRooms] = useState<RoomProps[]>([]);
   const router = useRouter();
-  const { query } = useRouter();
 
-  const passedParams = query.values && JSON.parse(`${query.values}`);
-  console.log(passedParams);
+  const passedParams = getPassedFilters(router.asPath);
 
   const initialFilters = passedParams && {
     ...defaultFilters,
@@ -26,12 +25,13 @@ const SearchRoomPage: React.FC = () => {
     booked: passedParams['search-room-date'] || defaultFilters.booked,
   };
 
-  // console.log(initialFilters);
+  initialFilters && delete initialFilters['search-room-date'];
+
   const filters = initialFilters || defaultFilters;
 
   async function loadData(options?: Filters) {
     setRooms([]);
-    const currentFilters = options ? { ...filters, ...options } : filters;
+    const currentFilters = options ? { ...filters, ...options } : { ...filters };
     router.push(`/search-room?&values=${JSON.stringify(currentFilters)}`);
     const fetchedRooms = await api.booking.filterRooms(currentFilters);
     setRooms(fetchedRooms.map((room) => ({ ...room, number: room.id })));

@@ -12,7 +12,6 @@ import Dropdown from 'components/Dropdown/Dropdown';
 import { guestsGroups, guestsItems, amenitiesItems } from 'components/Dropdown/Dropdown.data';
 import Expander from 'components/Expander/Expander';
 import RangeSlider from 'components/RangeSlider/RangeSlider';
-import defaultFilters from 'components/SearchRoomForm/defaultFilters';
 import TimePicker from 'components/TimePicker/TimePicker';
 
 import * as S from './RoomFilter.styles';
@@ -20,7 +19,6 @@ import { Props } from './RoomFilter.types';
 
 const RoomFilter: React.FC<Props> = ({ initialFilters, handleRequest }: Props) => {
   const handleFormSubmit = async (values?: Filters) => {
-    console.log(values);
     await handleRequest(values);
   };
 
@@ -38,8 +36,6 @@ const RoomFilter: React.FC<Props> = ({ initialFilters, handleRequest }: Props) =
           ...item,
           initialValue: (guests && guests[item.inputName]) || item.initialValue,
         }));
-
-        // console.log(initialValues);
 
         return (
           <S.RoomFilter>

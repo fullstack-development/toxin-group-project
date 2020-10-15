@@ -16,7 +16,7 @@ const defaultBookingDates = defaultFilters.booked;
 
 const SearchRoomForm: React.FC<SearchRoomFormProps> = ({ onSubmit }: SearchRoomFormProps) => {
   const handleFormSubmit = (values) => {
-    console.log(values);
+    // console.log(values);
   };
 
   return (
