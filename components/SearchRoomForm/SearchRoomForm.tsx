@@ -25,8 +25,8 @@ const SearchRoomForm: React.FC<SearchRoomFormProps> = ({ onSubmit }: SearchRoomF
       <Form
         initialValues={{
           'search-room-date': {
-            from: defaultBookingDates.from.getTime(),
-            to: defaultBookingDates.to.getTime(),
+            from: defaultBookingDates.from,
+            to: defaultBookingDates.to,
           },
           guests: Object.fromEntries(
             guestsItems
@@ -43,8 +43,8 @@ const SearchRoomForm: React.FC<SearchRoomFormProps> = ({ onSubmit }: SearchRoomF
                 name="search-room-date"
                 dateFromLabelText="прибытие"
                 dateToLabelText="выезд"
-                dateFrom={defaultBookingDates.from}
-                dateTo={defaultBookingDates.to}
+                dateFrom={new Date(defaultBookingDates.from)}
+                dateTo={new Date(defaultBookingDates.to)}
               />
             </S.TimePickerWrapper>
             <S.DropdownWrapper>

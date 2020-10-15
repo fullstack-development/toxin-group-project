@@ -19,7 +19,7 @@ const SearchRoomPage: React.FC = () => {
 
   const passedParams = getPassedFilters(router.asPath);
 
-  const initialFilters = passedParams && {
+  const initialFilters: Filters = passedParams && {
     ...defaultFilters,
     ...passedParams,
     booked: passedParams['search-room-date'] || defaultFilters.booked,
@@ -27,7 +27,7 @@ const SearchRoomPage: React.FC = () => {
 
   initialFilters && delete initialFilters['search-room-date'];
 
-  const filters = initialFilters || defaultFilters;
+  const filters: Filters = initialFilters || defaultFilters;
 
   async function loadData(options?: Filters) {
     setRooms([]);
