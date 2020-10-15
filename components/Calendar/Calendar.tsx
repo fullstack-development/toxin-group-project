@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { DateUtils } from 'react-day-picker';
+import { DateUtils, DayModifiers } from 'react-day-picker';
 
 import TextButton from 'components/TextButton/TextButton';
 import { months, weekdaysShort } from 'shared/helpers/validators';
@@ -48,7 +48,9 @@ const Calendar: React.FC<Calendar> = (props: Calendar) => {
     if (onSelectDate) onSelectDate(newRange);
   };
 
-  const handleDayClick = (day: SelectedDate): void => {
+  const handleDayClick = (day: SelectedDate, modifiers: DayModifiers): void => {
+    if (modifiers.disabled) return;
+
     const range: DaysSelection = DateUtils.addDayToRange(day, selectedDays);
 
     applySelectingDays(range);
@@ -80,6 +82,7 @@ const Calendar: React.FC<Calendar> = (props: Calendar) => {
         months={months}
         weekdaysShort={weekdaysShort}
         selectedDays={[from, { from, to }]}
+        disabledDays={{ before: new Date() }}
         onDayClick={handleDayClick}
         navbarElement={<NavBar />}
       />
