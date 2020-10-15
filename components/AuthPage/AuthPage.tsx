@@ -8,9 +8,9 @@ import {
   breakAuthProcess,
   preloadAuthData,
   requestToAuthWithGoogle,
-} from 'redux/actions';
+} from 'redux/Auth/redux/actions';
 
-import { Props } from './AuthPage.types';
+import { State, Props } from './AuthPage.types';
 import MainContent from './components/MainContent';
 
 const AuthPage: React.FC<Props> = ({
@@ -33,24 +33,27 @@ const AuthPage: React.FC<Props> = ({
   const isAuthRequired: boolean = wasFinishedAuthChecking && !isAuthSuccess;
 
   return (
-    <>
-      {isAuthRequired && (
-        <MainLayout>
-          <MainContent
-            isAuthSuccess={isAuthSuccess}
-            isAuthProcessNow={isAuthProcessNow}
-            authStatusText={authStatusText}
-            startAuthProcess={startAuthProcess}
-            startGoogleAuthProcess={startGoogleAuthProcess}
-            stopAuthProcess={stopAuthProcess}
-          />
-        </MainLayout>
-      )}
-    </>
+    isAuthRequired && (
+      <MainLayout>
+        <MainContent
+          isAuthSuccess={isAuthSuccess}
+          isAuthProcessNow={isAuthProcessNow}
+          authStatusText={authStatusText}
+          startAuthProcess={startAuthProcess}
+          startGoogleAuthProcess={startGoogleAuthProcess}
+          stopAuthProcess={stopAuthProcess}
+        />
+      </MainLayout>
+    )
   );
 };
 
-const mapState = (state) => state;
+const mapState = (state: State) => ({
+  isAuthSuccess: state.authReducer.isAuthSuccess,
+  isAuthProcessNow: state.authReducer.isAuthProcessNow,
+  authStatusText: state.authReducer.authStatusText,
+  wasFinishedAuthChecking: state.authReducer.wasFinishedAuthChecking,
+});
 
 const mapDispatch = {
   startAuthProcess: requestToAuth,

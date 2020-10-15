@@ -1,9 +1,9 @@
-import { applyMiddleware, createStore } from 'redux';
+import { applyMiddleware, createStore, combineReducers } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import createSagaMiddleware from 'redux-saga';
+import createSagaMiddleware, { Saga, SagaMiddleware } from 'redux-saga';
 
-import rootReducer from './reducers';
-import { rootSaga } from './sagas';
+import { reduxEntry as AuthReduxEntry } from './Auth';
+import { AuthActions, AuthState } from './Auth/types';
 
 const bindMiddleware = (middleware) => {
   if (process.env.NODE_ENV !== 'production') {
@@ -12,8 +12,34 @@ const bindMiddleware = (middleware) => {
   return applyMiddleware(...middleware);
 };
 
-const sagaMiddleware = createSagaMiddleware();
+type AvailableReducers = (state: AuthState, action: AuthActions) => AuthState;
+
+type SharedReduxEntries = {
+  reducers: Record<string, AvailableReducers>;
+  sagas: Array<Saga<unknown[]>>;
+}[];
+
+const sharedReduxEntries: SharedReduxEntries = [AuthReduxEntry];
+
+let preparedReducers: Record<string, AvailableReducers> = {};
+
+sharedReduxEntries.forEach((module) => {
+  const { reducers } = module;
+
+  preparedReducers = {
+    ...preparedReducers,
+    ...reducers,
+  };
+});
+
+const rootReducer = combineReducers(preparedReducers);
+
+const sagaMiddleware: SagaMiddleware = createSagaMiddleware();
 
 export const store = createStore(rootReducer, bindMiddleware([sagaMiddleware]));
 
-sagaMiddleware.run(rootSaga);
+sharedReduxEntries.forEach((module) => {
+  const { sagas } = module;
+
+  sagas.forEach((saga) => sagaMiddleware.run(saga));
+});

@@ -5,18 +5,10 @@ import {
   PRELOAD_AUTH_DATA,
   BREAK_AUTH_PROCESS,
   AUTH_REQUIRED,
-} from './constants';
-import { AuthActions } from './types';
+} from '../constants';
+import { AuthActions, AuthState } from '../types';
 
-export type State = {
-  isAuthSuccess: boolean;
-  isAuthProcessNow: boolean;
-  authStatusText: string;
-  displayName: null | string;
-  wasFinishedAuthChecking: boolean;
-};
-
-const initialState: State = {
+const initialState: AuthState = {
   isAuthSuccess: false,
   isAuthProcessNow: false,
   wasFinishedAuthChecking: false,
@@ -24,7 +16,7 @@ const initialState: State = {
   authStatusText: '',
 };
 
-const rootReducer = (state: State = initialState, action: AuthActions): State => {
+const authReducer = (state: AuthState = initialState, action: AuthActions): AuthState => {
   switch (action.type) {
     case AUTH_PROCESS:
       return {
@@ -63,4 +55,4 @@ const rootReducer = (state: State = initialState, action: AuthActions): State =>
   }
 };
 
-export default rootReducer;
+export default authReducer;

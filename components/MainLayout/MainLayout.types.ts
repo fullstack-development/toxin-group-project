@@ -6,3 +6,7 @@ export type Props = {
   wasFinishedAuthChecking: boolean;
   preloadAuth: () => void;
 };
+
+export type State = {
+  authReducer: Props;
+};

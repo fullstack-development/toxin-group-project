@@ -8,3 +8,7 @@ export type Props = {
   startGoogleAuthProcess: () => void;
   stopAuthProcess: () => void;
 };
+
+export type State = {
+  authReducer: Props;
+};

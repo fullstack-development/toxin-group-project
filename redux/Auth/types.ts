@@ -20,6 +20,14 @@ type Action<Z, T> = {
   payload?: T;
 };
 
+export type AuthState = {
+  isAuthSuccess: boolean;
+  isAuthProcessNow: boolean;
+  authStatusText: string;
+  displayName: null | string;
+  wasFinishedAuthChecking: boolean;
+};
+
 export type PreloadAuthData = Action<typeof PRELOAD_AUTH_DATA, null>;
 
 export type RequestToAuth = Action<typeof AUTH_PROCESS | typeof GOOGLE_AUTH_PROCESS, AuthData>;

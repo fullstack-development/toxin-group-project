@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 
 import Footer from 'components/Footer/Footer';
 import Header from 'components/Header/Header';
-import { preloadAuthData } from 'redux/actions';
+import { preloadAuthData } from 'redux/Auth/redux/actions';
 
-import { Props } from './MainLayout.types';
+import { State, Props } from './MainLayout.types';
 
 const MainLayout: React.FC<Props> = ({
   children,
@@ -26,7 +26,10 @@ const MainLayout: React.FC<Props> = ({
   );
 };
 
-const mapState = (state: Props) => state;
+const mapState = (state: State) => ({
+  displayName: state.authReducer.displayName,
+  wasFinishedAuthChecking: state.authReducer.wasFinishedAuthChecking,
+});
 
 const mapDispatch = {
   preloadAuth: preloadAuthData,

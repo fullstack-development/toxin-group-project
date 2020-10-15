@@ -11,8 +11,8 @@ import {
   AUTH_FAILED,
   AUTH_REQUIRED,
   GOOGLE_AUTH_PROCESS,
-} from './constants';
-import { AuthData, SetAuthStatusSuccess, SetAuthStatusFailed, SetAuthRequired } from './types';
+} from '../../constants';
+import { AuthData, SetAuthStatusSuccess, SetAuthStatusFailed, SetAuthRequired } from '../../types';
 
 function* startAuthProcess(data: {
   type: typeof AUTH_PROCESS | typeof GOOGLE_AUTH_PROCESS;

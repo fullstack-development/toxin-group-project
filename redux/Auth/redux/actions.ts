@@ -3,8 +3,8 @@ import {
   BREAK_AUTH_PROCESS,
   PRELOAD_AUTH_DATA,
   GOOGLE_AUTH_PROCESS,
-} from './constants';
-import { RequestToAuth, BreakAuthProcess, AuthData, PreloadAuthData } from './types';
+} from '../constants';
+import { RequestToAuth, BreakAuthProcess, AuthData, PreloadAuthData } from '../types';
 
 const requestToAuth = (data: AuthData): RequestToAuth => ({
   type: AUTH_PROCESS,
