@@ -26,18 +26,18 @@ const defaultFilters: Filters = {
   },
   additionalAmenities: {
     breakfast: true,
-    desk: true,
+    desk: false,
     chair: false,
     crib: false,
     tv: false,
     shampoo: false,
   },
   accessibility: {
-    wideCorridor: true,
+    wideCorridor: false,
     invalidHelper: false,
   },
   opportunities: {
-    smoking: true,
+    smoking: false,
     keepPets: false,
     largeNumberOfPersons: false,
   },

@@ -32,20 +32,25 @@ export const guestsItems: Required<Item[]> = [
   },
 ];
 
+const { beds, bathrooms, bedrooms } = defaultFilters.amenities;
+
 export const amenitiesItems: Required<Item[]> = [
   {
     title: 'Спальни',
     inputName: 'bedrooms',
+    initialValue: bedrooms,
     wordForms: ['спальня', 'спальни', 'спален'],
   },
   {
     title: 'Кровати',
     inputName: 'beds',
+    initialValue: beds,
     wordForms: ['кровать', 'кровати', 'кроватей'],
   },
   {
     title: 'Ванные комнаты',
     inputName: 'bathrooms',
+    initialValue: bathrooms,
     wordForms: ['ванная', 'ванные', 'ванных'],
   },
 ];

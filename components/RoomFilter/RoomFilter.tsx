@@ -1,21 +1,46 @@
 import { useEffect } from 'react';
 import { Form } from 'react-final-form';
 
-import { Filters } from 'api/entities/types';
+import {
+  Accessibility,
+  AdditionalAmenities,
+  Amenities,
+  Filters,
+  Opportunities,
+} from 'api/entities/types';
 import CheckboxesList from 'components/CheckboxesList/CheckboxesList';
 import {
   checkboxesListData,
   expandableCheckboxesListData,
   richCheckboxesListData,
 } from 'components/CheckboxesList/CheckboxesList.data';
+import { Option } from 'components/CheckboxesList/CheckboxesList.types';
 import Dropdown from 'components/Dropdown/Dropdown';
 import { guestsGroups, guestsItems, amenitiesItems } from 'components/Dropdown/Dropdown.data';
+import { Item } from 'components/Dropdown/Dropdown.types';
 import Expander from 'components/Expander/Expander';
 import RangeSlider from 'components/RangeSlider/RangeSlider';
 import TimePicker from 'components/TimePicker/TimePicker';
 
 import * as S from './RoomFilter.styles';
 import { Props } from './RoomFilter.types';
+
+const updateDropdownProps = (defaultProps: Item[], updatedProps: Amenities) => {
+  return defaultProps.map((item) => ({
+    ...item,
+    initialValue: updatedProps[item.inputName],
+  }));
+};
+
+const updateCheckboxProps = (
+  defaultProps: Option[],
+  updatedProps: Opportunities | Accessibility | AdditionalAmenities,
+) => {
+  return defaultProps.map((item) => ({
+    ...item,
+    isChecked: Boolean(updatedProps[`${item.name.split('.')[1]}`]),
+  }));
+};
 
 const RoomFilter: React.FC<Props> = ({ initialFilters, handleRequest }: Props) => {
   const handleFormSubmit = async (values?: Filters) => {
@@ -69,11 +94,18 @@ const RoomFilter: React.FC<Props> = ({ initialFilters, handleRequest }: Props) =
               </S.SliderWrapper>
               <S.CheckboxWrapper>
                 <S.Title elementType="checkbox">Checkbox buttons</S.Title>
-                <CheckboxesList roomOptions={checkboxesListData} />
+                <CheckboxesList
+                  roomOptions={updateCheckboxProps(checkboxesListData, initialValues.opportunities)}
+                />
               </S.CheckboxWrapper>
               <S.CheckboxWrapper>
                 <S.Title elementType="checkbox">Доступность</S.Title>
-                <CheckboxesList roomOptions={richCheckboxesListData} />
+                <CheckboxesList
+                  roomOptions={updateCheckboxProps(
+                    richCheckboxesListData,
+                    initialValues.accessibility,
+                  )}
+                />
               </S.CheckboxWrapper>
               <S.DropdownWrapper>
                 <S.Title elementType="dropdown">Удобства номера</S.Title>
@@ -81,12 +113,17 @@ const RoomFilter: React.FC<Props> = ({ initialFilters, handleRequest }: Props) =
                   placeholder="Удобства номера"
                   enableControls={false}
                   name="amenities"
-                  items={amenitiesItems}
+                  items={updateDropdownProps(amenitiesItems, initialValues.amenities)}
                 />
               </S.DropdownWrapper>
               <S.CheckboxWrapper>
                 <Expander title="дополнительные удобства" isDefaultOpen={false}>
-                  <CheckboxesList roomOptions={expandableCheckboxesListData} />
+                  <CheckboxesList
+                    roomOptions={updateCheckboxProps(
+                      expandableCheckboxesListData,
+                      initialValues.additionalAmenities,
+                    )}
+                  />
                 </Expander>
               </S.CheckboxWrapper>
               <S.SubmitButton isFilled>Применить</S.SubmitButton>
