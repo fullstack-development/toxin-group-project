@@ -88,14 +88,13 @@ const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps): JSX.Elem
                   </S.ContainerElement>
                 )}
               </>
-              {isCalendarVisible && (
-                <Calendar
-                  isVisible={isCalendarVisible}
-                  onSelectDate={setSelectedDateRange}
-                  onApply={applyCalendar}
-                  onClose={closeCalendar}
-                />
-              )}
+              <Calendar
+                isVisible={isCalendarVisible}
+                onChangeVisible={setCalendarVisibility}
+                onSelectDate={setSelectedDateRange}
+                onApply={applyCalendar}
+                onClose={closeCalendar}
+              />
             </>
           );
         }}
