@@ -16,19 +16,18 @@ type DaysSelection = {
 };
 
 type Props = {
-  isVisible: boolean;
   onChangeVisible: (isVisible: boolean) => void;
   onApply?: (...args: unknown[]) => unknown;
   onSelectDate?: (data: DaysSelection) => void;
   onClose?: () => void;
-};
+} & S.CalendarContainer;
 
 const Calendar = ({
-  isVisible,
   onChangeVisible,
   onApply,
   onClose,
   onSelectDate,
+  isVisible = false,
 }: Props): JSX.Element => {
   const [selectedDays, handleSelectDays] = useState<DaysSelection>({
     from: null,
