@@ -1,20 +1,30 @@
 import { boundMethod } from 'autobind-decorator';
 
-import Firebase from '../Firebase';
-import { UserCredential, Unsubscribe, User } from '../types';
+import {
+  Authentication,
+  UserCredential,
+  Unsubscribe,
+  User,
+} from '../Firebase/modules/Authentication';
 import apiErrors from './errors/apiErrors';
 import AuthError from './errors/AuthError';
 import { ProfileData } from './types';
 
 class Auth {
-  private readonly actions: Firebase;
+  private readonly actions: Authentication;
 
-  constructor(actions: Firebase) {
+  constructor(actions: Authentication) {
     this.actions = actions;
   }
 
   @boundMethod
-  public async signUp({ name, surname, email, password }: ProfileData): Promise<UserCredential> {
+  public async signUp({
+    name,
+    surname,
+    email,
+    password,
+    gender,
+  }: ProfileData): Promise<UserCredential> {
     let credential: UserCredential;
 
     try {
@@ -23,8 +33,10 @@ class Auth {
       switch (err.code) {
         case 'auth/email-already-in-use':
           throw apiErrors.trigger('auth/email-is-taken', email);
+
         case 'auth/weak-password':
           throw apiErrors.trigger('auth/weak-password');
+
         default:
           throw new AuthError();
       }
@@ -35,6 +47,7 @@ class Auth {
     user
       .updateProfile({
         displayName: `${name} ${surname}`,
+        photoURL: gender === 'female' ? '/img/avatar-female.jpg' : '/img/avatar-male.jpg',
       })
       .then(() => user.sendEmailVerification());
 
@@ -51,6 +64,7 @@ class Auth {
       switch (err.code) {
         case 'auth/wrong-password':
           throw apiErrors.trigger('auth/wrong-password');
+
         default:
           throw new AuthError();
       }
@@ -65,6 +79,11 @@ class Auth {
   }
 
   @boundMethod
+  public async signInWithGoogle(): Promise<UserCredential> {
+    return this.actions.signInWithGoogle();
+  }
+
+  @boundMethod
   public async resetPassword(email: string): Promise<void> {
     let resetPassword: void;
 
@@ -74,6 +93,7 @@ class Auth {
       switch (err.code) {
         case 'auth/user-not-found':
           throw apiErrors.trigger('auth/user-not-found');
+
         default:
           throw new AuthError();
       }

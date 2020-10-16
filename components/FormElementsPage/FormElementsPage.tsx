@@ -13,11 +13,15 @@ import {
 } from 'components/CheckboxesList/CheckboxesList.data';
 import Comment from 'components/Comment/Comment';
 import Dropdown from 'components/Dropdown/Dropdown';
+import { guestsGroups, guestsItems, amenitiesItems } from 'components/Dropdown/Dropdown.data';
 import Expander from 'components/Expander/Expander';
 import Input from 'components/Input/Input';
 import LikeButton from 'components/LikeButton/LikeButton';
 import Logo from 'components/Logo/Logo';
 import RadioButton from 'components/RadioButton/RadioButton';
+import RangeSlider from 'components/RangeSlider/RangeSlider';
+import Reviews from 'components/Reviews/Reviews';
+import RoomImpression from 'components/RoomImpression/RoomImpression';
 import SocialMedia from 'components/SocialMedia/SocialMedia';
 import StarRating from 'components/StarRating/StarRating';
 import SubscriptionField from 'components/SubscriptionField/SubscriptionField';
@@ -36,8 +40,8 @@ class FormElementsPage extends React.Component {
       <S.Container>
         <Form
           onSubmit={this.handleFormSubmit}
-          initialValues={{ gender: 'female', 'toggle-on': true }}
-          render={() => (
+          initialValues={{ gender: 'female', 'toggle-on': true, range: [5000, 10000] }}
+          render={(values) => (
             <form>
               <S.InputWrapper>
                 <Field
@@ -86,14 +90,12 @@ class FormElementsPage extends React.Component {
                 />
               </S.InputWrapper>
               <S.ButtonWrapper>
-                <Button type="button" isLink={false} isFilled>
+                <Button type="button" isFilled>
                   click me
                 </Button>
               </S.ButtonWrapper>
               <S.ButtonWrapper>
-                <Button isLink href="https://google.com">
-                  click me
-                </Button>
+                <Button href="/mock-to-click">click me</Button>
               </S.ButtonWrapper>
               <S.LikeButtonWrapper>
                 <LikeButton count={2} />
@@ -102,21 +104,8 @@ class FormElementsPage extends React.Component {
                 <Dropdown
                   placeholder="Сколько гостей"
                   enableControls={false}
-                  name="guests"
-                  items={[
-                    {
-                      title: 'Спальни',
-                      wordForms: ['спальня', 'спальни', 'спален'],
-                    },
-                    {
-                      title: 'Кровати',
-                      wordForms: ['кровать', 'кровати', 'кроватей'],
-                    },
-                    {
-                      title: 'Ванные комнаты',
-                      wordForms: ['ванная', 'ванные', 'ванных'],
-                    },
-                  ]}
+                  name="amenities"
+                  items={amenitiesItems}
                 />
               </S.DropdownWrapper>
               <S.DropdownWrapper>
@@ -124,26 +113,8 @@ class FormElementsPage extends React.Component {
                   placeholder="Сколько гостей"
                   name="guests"
                   enableControls
-                  groups={[
-                    {
-                      name: 'guests',
-                      wordForms: ['гость', 'гостя', 'гостей'],
-                    },
-                  ]}
-                  items={[
-                    {
-                      title: 'взрослые',
-                      groupName: 'guests',
-                    },
-                    {
-                      title: 'дети',
-                      groupName: 'guests',
-                    },
-                    {
-                      title: 'младенцы',
-                      wordForms: ['младенец', 'младенца', 'младенцев'],
-                    },
-                  ]}
+                  groups={guestsGroups}
+                  items={guestsItems}
                 />
               </S.DropdownWrapper>
               <S.CheckboxWrapper>
@@ -166,13 +137,20 @@ class FormElementsPage extends React.Component {
               <S.TimePickerWrapper>
                 <TimePicker
                   type="double"
-                  labelName="elements"
+                  name="elements-date"
                   dateFromLabelText="date dropdown"
                   dateToLabelText="date dropdown"
                 />
               </S.TimePickerWrapper>
               <Toggle name="toggle-on" label="Получать спецпредложения" />
               <Toggle name="toggle-off" label="Получать спецпредложения" />
+              <S.SliderWrapper>
+                <RangeSlider
+                  initialValue={values.initialValues.range}
+                  title="range slider"
+                  name="range"
+                />
+              </S.SliderWrapper>
               <S.RichCheckboxWrapper>
                 <CheckboxesList roomOptions={richCheckboxesListData} />
               </S.RichCheckboxWrapper>
@@ -183,14 +161,10 @@ class FormElementsPage extends React.Component {
           <SubscriptionField placeholder="Email" />
         </S.SubscriptionWrapper>
         <S.TextButtonWrapper>
-          <TextButton isLink href="https://google.com">
-            Click me
-          </TextButton>
+          <TextButton href="/mock-to-click">Click me</TextButton>
         </S.TextButtonWrapper>
         <S.TextButtonWrapper>
-          <TextButton isLink={false} isSecondary>
-            Click me
-          </TextButton>
+          <TextButton isSecondary>Click me</TextButton>
         </S.TextButtonWrapper>
         <S.BulletListWrapper>
           <BulletList
@@ -203,9 +177,9 @@ class FormElementsPage extends React.Component {
         </S.BulletListWrapper>
         <S.CommentsWrapper>
           <Comment
-            avatarUrl="user.jpg"
+            avatarUrl="avatar-male.jpg"
             userName="Мурад Сарафанов"
-            date="5 дней назад"
+            date={new Date('2020-09-27 12:03:14')}
             text="Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей."
             likesCount={12}
           />
@@ -222,13 +196,19 @@ class FormElementsPage extends React.Component {
           <StarRating rating={4} />
           <StarRating rating={5} />
         </S.StarRatingWrapper>
+
+        <S.ReviewsWrapper>
+          <Reviews />
+        </S.ReviewsWrapper>
         <S.ArrowButtonWrapper>
-          <ArrowButton isLink href="https://google.com">
-            Перейти к оплате
-          </ArrowButton>
+          <ArrowButton href="/mock-to-pay">Перейти к оплате</ArrowButton>
         </S.ArrowButtonWrapper>
         <SocialMedia />
-        <Logo isLink />
+        <Logo />
+        <RoomImpression
+          title="Впечатления от номера"
+          numberOfRatings={{ excellent: 130, good: 65, normal: 65, bad: 0 }}
+        />
       </S.Container>
     );
   }

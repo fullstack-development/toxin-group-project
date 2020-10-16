@@ -1,5 +1,5 @@
-import UIHeadersAndFootersLayout from 'components/UI-HeadersAndFootersLayout/UI-HeadersAndFootersLayout';
+import HeadersAndFootersPage from 'components/HeadersAndFootersPage/HeadersAndFootersPage';
 
-const HeadersAndFooters: React.FC = (): JSX.Element => <UIHeadersAndFootersLayout />;
+const HeadersAndFooters: React.FC = (): JSX.Element => <HeadersAndFootersPage />;
 
 export default HeadersAndFooters;

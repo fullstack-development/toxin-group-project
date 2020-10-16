@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import Logo from 'components/Logo/Logo';
+import { breakpointUp, breakpointDown } from 'shared/styles/break-points';
 
 type MobileMenu = {
   isShown?: boolean;
@@ -14,12 +15,12 @@ const MobileMenu = styled.div<MobileMenu>`
       display: ${isShown ? 'flex' : 'none'};
       align-items: center;
 
-      @media (min-width: 1051px) {
+      @media ${breakpointUp('lg')} {
         display: flex;
         width: 100%;
       }
 
-      @media (max-width: 1050px) {
+      @media ${breakpointDown('md')} {
         flex-direction: column;
       }
     `;
@@ -27,17 +28,16 @@ const MobileMenu = styled.div<MobileMenu>`
 `;
 
 const HamburgerButtonWrapper = styled.button`
+  display: none;
   border: none;
   background: inherit;
-  outline: none;
 
   & > svg {
     cursor: pointer;
-    display: none;
+  }
 
-    @media (max-width: 1050px) {
-      display: block;
-    }
+  @media ${breakpointDown('md')} {
+    display: block;
   }
 `;
 
@@ -53,12 +53,12 @@ const Header = styled.header`
       min-height: 5rem;
       box-shadow: 0 0.7143rem 1.4286rem ${colors.basicLightest};
 
-      @media (max-width: 1200px) {
+      @media ${breakpointDown('lg')} {
         padding-left: 4.2857rem;
         padding-right: 4.2857rem;
       }
 
-      @media (max-width: 1050px) {
+      @media ${breakpointDown('md')} {
         flex-direction: column;
         min-height: 100%;
       }
@@ -67,7 +67,7 @@ const Header = styled.header`
 `;
 
 const HeaderLogo = styled(Logo)`
-  @media (max-width: 1050px) {
+  @media ${breakpointDown('md')} {
     margin: 0.5rem 1.5rem;
   }
 `;
@@ -77,14 +77,14 @@ const HeaderLogoWrapper = styled.div`
   align-items: center;
   margin-right: 1.4286rem;
 
-  @media (max-width: 1050px) {
+  @media ${breakpointDown('md')} {
     width: 100%;
     justify-content: space-between;
   }
 `;
 
 const AccountPanel = styled.div`
-  @media (max-width: 1050px) {
+  @media ${breakpointDown('md')} {
     width: 100%;
     text-align: center;
   }

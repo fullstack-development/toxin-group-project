@@ -6,7 +6,7 @@ import Input from '../Input/Input';
 import * as S from './TimePicker.styles';
 
 type TimePickerProps = {
-  labelName: string;
+  name: string;
   dateFrom?: Date;
   dateTo?: Date;
   dateFromLabelText?: string;
@@ -15,7 +15,7 @@ type TimePickerProps = {
 } & S.ContainerElement;
 
 const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps): JSX.Element => {
-  const { type, dateFrom, dateTo, labelName, dateFromLabelText, dateToLabelText } = props;
+  const { type, dateFrom, dateTo, name, dateFromLabelText, dateToLabelText } = props;
   const [isCalendarVisible, setCalendarVisibility] = useState(false);
   const [selectedDateRange, setSelectedDateRange] = useState({
     from: dateFrom,
@@ -54,49 +54,52 @@ const TimePicker: React.FC<TimePickerProps> = (props: TimePickerProps): JSX.Elem
 
   return (
     <S.Container>
-      <S.ContainerElement type={type} onClick={openCalendar}>
-        <Field
-          name={`${labelName}-date-from`}
-          type="text"
-          render={(fieldProps) => (
-            <Input
-              {...fieldProps.input}
-              {...fieldProps.meta}
-              value={from ? getDateFrom() : getMaskedDate()}
-              label={dateFromLabelText}
-              placeholder="date from"
-              readOnly
-            />
-          )}
-        />
-        <S.ExpandIcon />
-      </S.ContainerElement>
-      {type === 'double' && (
-        <S.ContainerElement onClick={openCalendar}>
-          <Field
-            name={`${labelName}-date-to`}
-            render={(fieldProps) => (
-              <Input
-                {...fieldProps.input}
-                {...fieldProps.meta}
-                value={to ? to.toLocaleDateString('ru-RU') : getMaskedDate()}
-                label={dateToLabelText}
-                placeholder="date to"
-                readOnly
-              />
-            )}
-          />
-          <S.ExpandIcon />
-        </S.ContainerElement>
-      )}
-      {isCalendarVisible && (
-        <Calendar
-          isVisible={isCalendarVisible}
-          onSelectDate={setSelectedDateRange}
-          onApply={closeCalendar}
-          onClose={closeCalendar}
-        />
-      )}
+      <Field
+        name={name}
+        render={({ input }) => {
+          const applyCalendar = (): void => {
+            input.onChange({
+              from: selectedDateRange.from.getTime(),
+              to: selectedDateRange.to.getTime(),
+            });
+            closeCalendar();
+          };
+          return (
+            <>
+              <S.ContainerElement type={type} onClick={openCalendar}>
+                <Input
+                  value={from ? getDateFrom() : getMaskedDate()}
+                  label={dateFromLabelText}
+                  placeholder="date from"
+                  readOnly
+                />
+                <S.ExpandIcon />
+              </S.ContainerElement>
+              <>
+                {type === 'double' && (
+                  <S.ContainerElement onClick={openCalendar}>
+                    <Input
+                      value={to ? to.toLocaleDateString('ru-RU') : getMaskedDate()}
+                      label={dateToLabelText}
+                      placeholder="date to"
+                      readOnly
+                    />
+                    <S.ExpandIcon />
+                  </S.ContainerElement>
+                )}
+              </>
+              {isCalendarVisible && (
+                <Calendar
+                  isVisible={isCalendarVisible}
+                  onSelectDate={setSelectedDateRange}
+                  onApply={applyCalendar}
+                  onClose={closeCalendar}
+                />
+              )}
+            </>
+          );
+        }}
+      />
     </S.Container>
   );
 };

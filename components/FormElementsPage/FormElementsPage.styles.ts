@@ -76,9 +76,19 @@ const SubscriptionWrapper = styled.div`
   max-width: 19.0714rem;
 `;
 
+const SliderWrapper = styled.div`
+  width: 19rem;
+  margin: 1rem 0;
+`;
+
 const RichCheckboxWrapper = styled.div`
   max-width: 18.5rem;
   margin-bottom: 0.45rem;
+`;
+
+const ReviewsWrapper = styled.div`
+  max-width: 50.8571rem;
+  margin: 1rem 0;
 `;
 
 export {
@@ -98,5 +108,7 @@ export {
   RadioWrapper,
   ArrowButtonWrapper,
   SubscriptionWrapper,
+  SliderWrapper,
   RichCheckboxWrapper,
+  ReviewsWrapper,
 };

@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
 
-import { ButtonProps } from './Button.types';
+import { Props } from './Button.types';
 
-const Button = styled.button<ButtonProps>`
+const Button = styled.a<Props>`
   ${(props) => {
     const { gradients, colors, typography } = props.theme;
     const { isFilled, isFlat } = props;
@@ -53,7 +53,7 @@ const Button = styled.button<ButtonProps>`
 
       &:hover,
       &:focus {
-        background-image: ${gradients.primaryLight};
+        box-shadow: 0 0 1.0714rem ${colors.primary};
       }
     `;
   }}
