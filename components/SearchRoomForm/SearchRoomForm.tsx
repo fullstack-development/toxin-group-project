@@ -42,6 +42,7 @@ const testRoomFilter = {
 };
 const getRooms = (e) => {
   e.preventDefault;
+  // eslint-disable-next-line no-console
   api.booking.filterRooms(testRoomFilter).then((data) => console.log(data));
 };
 

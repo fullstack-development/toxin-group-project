@@ -29,7 +29,7 @@ const ForgotPasswordForm = (): JSX.Element => {
                 />
               )}
             />
-            <S.NextButton isFlat isLink={false} isFilled>
+            <S.NextButton isFlat isFilled>
               Далее
             </S.NextButton>
           </form>

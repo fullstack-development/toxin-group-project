@@ -5,7 +5,7 @@ import Banner from './components/Banner/Banner';
 
 const ForgotPasswordPage: React.FC = (): JSX.Element => (
   <>
-    <Header authData={{ userName: 'Юлий Цезарь', pathToProfile: '/mock-user' }} />
+    <Header wasFinishedAuthChecking />
     <Banner />
     <Footer />
   </>
