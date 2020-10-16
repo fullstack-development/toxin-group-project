@@ -62,17 +62,14 @@ const Calendar = ({
     applySelectingDays(range);
   };
 
-  const handleApplyButtonClick = (e: React.MouseEvent): void => {
+  const handleApplyButtonClick = (): void => {
     onChangeVisible(false);
 
     if (onApply) onApply();
   };
 
-  const clearSelectedDate = (e: React.MouseEvent): void => {
-    const clearedData = {
-      from: undefined,
-      to: undefined,
-    };
+  const clearSelectedDate = (): void => {
+    const clearedData = { from: undefined, to: undefined };
 
     applySelectingDays(clearedData);
   };
