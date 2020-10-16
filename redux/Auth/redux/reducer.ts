@@ -14,6 +14,7 @@ const initialState: AuthState = {
   wasFinishedAuthChecking: false,
   displayName: null,
   authStatusText: '',
+  user: null,
 };
 
 const authReducer = (state: AuthState = initialState, action: AuthActions): AuthState => {
@@ -42,6 +43,7 @@ const authReducer = (state: AuthState = initialState, action: AuthActions): Auth
         wasFinishedAuthChecking: true,
         authStatusText: 'Вы успешно авторизованы!',
         displayName: action.payload.displayName || 'Аноним',
+        user: action.payload,
       };
     case AUTH_FAILED:
       return {

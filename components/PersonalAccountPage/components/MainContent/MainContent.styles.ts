@@ -1,0 +1,25 @@
+import styled from 'styled-components';
+
+import Button from 'components/Button/Button';
+import { container, titles } from 'shared/styles/mixins';
+
+const MainContent = styled.main`
+  ${container};
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  max-width: 60rem;
+  padding: 5rem;
+`;
+
+const Title = styled.h1`
+  ${titles.h1};
+  margin-bottom: 3rem;
+`;
+
+const ButtonShowBookedRooms = styled(Button)`
+  width: 100%;
+  margin-top: 3rem;
+`;
+
+export { MainContent, Title, ButtonShowBookedRooms };
