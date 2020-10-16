@@ -1,4 +1,5 @@
 import { boundMethod } from 'autobind-decorator';
+import firebase from 'firebase';
 
 import { Auth, UserCredential, User, Unsubscribe } from './types';
 
@@ -16,7 +17,18 @@ class Authentication {
 
   @boundMethod
   public async signIn(email: string, password: string): Promise<UserCredential> {
-    return this.auth.signInWithEmailAndPassword(email, password);
+    return this.auth.app
+      .auth()
+      .setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+      .then(() => {
+        return this.auth.signInWithEmailAndPassword(email, password);
+      });
+  }
+
+  @boundMethod
+  public signInWithGoogle(): Promise<UserCredential> {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    return this.auth.signInWithPopup(provider);
   }
 
   @boundMethod

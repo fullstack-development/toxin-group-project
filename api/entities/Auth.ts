@@ -79,6 +79,11 @@ class Auth {
   }
 
   @boundMethod
+  public async signInWithGoogle(): Promise<UserCredential> {
+    return this.actions.signInWithGoogle();
+  }
+
+  @boundMethod
   public async resetPassword(email: string): Promise<void> {
     let resetPassword: void;
 
