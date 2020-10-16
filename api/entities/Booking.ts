@@ -1,6 +1,7 @@
 import { boundMethod } from 'autobind-decorator';
 import { nanoid } from 'nanoid';
 
+import defaultFilters from 'components/SearchRoomForm/defaultFilters';
 import { matchObjects } from 'shared/helpers';
 
 import { Database, CollectionReference, QuerySnapshot } from '../Firebase/modules/Database';
@@ -38,7 +39,7 @@ class Booking {
   }
 
   @boundMethod
-  public async filterRooms(options: Filters): Promise<Apartment[]> {
+  public async filterRooms(options: Filters = defaultFilters): Promise<Apartment[]> {
     const { price, booked } = options;
     const affordableRooms: Apartment[] = await this.apartments
       .where('price', '<=', price.to)

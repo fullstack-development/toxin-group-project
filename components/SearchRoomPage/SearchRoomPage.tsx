@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 
 import api from 'api/api';
 import { Filters } from 'api/entities/types';
@@ -9,12 +10,18 @@ import { Props as RoomProps } from 'components/Room/Room.types';
 import RoomFilter from 'components/RoomFilter/RoomFilter';
 import Rooms from 'components/Rooms/Rooms';
 import defaultFilters from 'components/SearchRoomForm/defaultFilters';
+import { requestRooms } from 'redux/Booking/redux/actions';
 
 import * as S from './SearchRoomPage.styles';
 import getPassedFilters from './utils/getPassedFilters';
 
-const SearchRoomPage: React.FC = () => {
-  const [rooms, setRooms] = useState<RoomProps[]>([]);
+const SearchRoomPage: React.FC = ({
+  isRequestSuccessful,
+  isPending,
+  loadedRooms,
+  error,
+  requestRooms,
+}) => {
   const router = useRouter();
 
   const passedParams = getPassedFilters(router.asPath);
@@ -30,11 +37,9 @@ const SearchRoomPage: React.FC = () => {
   const filters: Filters = initialFilters || defaultFilters;
 
   async function loadData(options?: Filters) {
-    setRooms([]);
     const currentFilters = options ? { ...filters, ...options } : { ...filters };
     router.push(`/search-room?&values=${JSON.stringify(currentFilters)}`);
-    const fetchedRooms = await api.booking.filterRooms(currentFilters);
-    setRooms(fetchedRooms.map((room) => ({ ...room, number: room.id })));
+    requestRooms(currentFilters);
   }
 
   return (
@@ -46,8 +51,8 @@ const SearchRoomPage: React.FC = () => {
           </S.FilterContainer>
           <S.RoomsContainer>
             <S.RoomsTitle>Номера, которые мы для вас подобрали</S.RoomsTitle>
-            {rooms.length ? (
-              <Rooms rooms={rooms} />
+            {loadedRooms.length ? (
+              <Rooms rooms={loadedRooms} />
             ) : (
               <S.PreloaderWrapper>
                 <Preloader />
@@ -60,4 +65,10 @@ const SearchRoomPage: React.FC = () => {
   );
 };
 
-export default SearchRoomPage;
+const mapState = (state) => ({ ...state.bookingReducer, loadedRooms: state.bookingReducer.rooms });
+
+const mapDispatch = {
+  requestRooms,
+};
+
+export default connect(mapState, mapDispatch)(SearchRoomPage);
