@@ -1,12 +1,16 @@
+import Link from 'next/link';
+
 import { Toxin } from 'public/img/svg';
 
 import * as S from './Logo.styles';
-import { LogoProps } from './Logo.types';
+import { Props } from './Logo.types';
 
-const Logo: React.FC<LogoProps> = ({ isLink, ...rest }: LogoProps) => (
-  <S.LogoContainer as={isLink ? 'a' : 'div'} {...rest} href={isLink && '/'}>
-    <S.Logo />
-    <Toxin />
-  </S.LogoContainer>
+const Logo: React.FC<Props> = ({ ...rest }: Props) => (
+  <Link href="/" passHref>
+    <S.LogoContainer {...rest}>
+      <S.Logo />
+      <Toxin />
+    </S.LogoContainer>
+  </Link>
 );
 export default Logo;

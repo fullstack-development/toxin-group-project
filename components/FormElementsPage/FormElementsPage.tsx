@@ -159,29 +159,21 @@ class FormElementsPage extends React.Component {
                 </S.SliderWrapper>
                 <S.Title>buttons</S.Title>
                 <S.ButtonWrapper>
-                  <Button type="button" isLink={false} isFilled>
+                  <Button type="button" isFilled>
                     click me
                   </Button>
                 </S.ButtonWrapper>
                 <S.ButtonWrapper>
-                  <Button isLink href="https://google.com">
-                    click me
-                  </Button>
+                  <Button href="/mock-to-click">click me</Button>
                 </S.ButtonWrapper>
                 <S.TextButtonWrapper>
-                  <TextButton isLink href="https://google.com">
-                    Click me
-                  </TextButton>
+                  <TextButton href="/mock-to-click">Click me</TextButton>
                 </S.TextButtonWrapper>
                 <S.TextButtonWrapper>
-                  <TextButton isLink={false} isSecondary>
-                    Click me
-                  </TextButton>
+                  <TextButton isSecondary>Click me</TextButton>
                 </S.TextButtonWrapper>
                 <S.ArrowButtonWrapper>
-                  <ArrowButton isLink href="https://google.com">
-                    Перейти к оплате
-                  </ArrowButton>
+                  <ArrowButton href="/mock-to-click">Перейти к оплате</ArrowButton>
                 </S.ArrowButtonWrapper>
               </div>
 
