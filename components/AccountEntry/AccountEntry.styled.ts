@@ -1,7 +1,29 @@
-import styled from 'styled-components';
+import { IconName } from '@fortawesome/fontawesome-common-types';
+import Snackbar from '@material-ui/core/Snackbar';
+import styled, { css } from 'styled-components';
 
+import Button from 'components/Button/Button';
 import { breakpointDown } from 'shared/styles/break-points';
-import { titles } from 'shared/styles/mixins';
+import { titles, fontAwesome, fontAwesomeIcons } from 'shared/styles/mixins';
+
+type SnackBarProps = {
+  theme: 'success' | 'error';
+};
+
+type GoogleIconProps = {
+  icon: IconName;
+};
+
+const CustomSnackBar = styled(Snackbar)<SnackBarProps>`
+  ${(props) => {
+    const { theme } = props;
+    return css`
+      & > div {
+        background: ${theme === 'success' ? 'green' : 'darkred'};
+      }
+    `;
+  }}
+`;
 
 const AccountEntry = styled.section`
   max-width: 27.1429rem;
@@ -10,6 +32,7 @@ const AccountEntry = styled.section`
   padding: 2.75rem 2rem 2rem 2.05rem;
   border: 0.0714rem solid rgba(0, 0, 0, 0.12);
   border-radius: 0.2857rem;
+  background: white;
 `;
 
 const Title = styled.h1`
@@ -23,7 +46,7 @@ const Title = styled.h1`
   }
 `;
 
-const ToRegisterWrapper = styled.div`
+const TwoCols = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -40,4 +63,28 @@ const FieldsWrapper = styled.div`
   }
 `;
 
-export { AccountEntry, Title, ToRegisterWrapper, FieldsWrapper };
+const CenteredButton = styled(Button)`
+  margin: 0 auto;
+`;
+
+const GoogleIcon = styled.span<GoogleIconProps>`
+  ${(props) => {
+    const { gradients } = props.theme;
+    const { icon } = props;
+
+    return css`
+      margin-left: 0.5rem;
+      display: inline-block;
+      ${fontAwesome}
+      background-image: ${gradients.primary};
+      text-decoration: none;
+
+      &::before {
+        content: '${fontAwesomeIcons[icon]}';
+        font-size: 1.3rem;
+      }
+    `;
+  }}
+`;
+
+export { CustomSnackBar, AccountEntry, Title, TwoCols, FieldsWrapper, CenteredButton, GoogleIcon };
