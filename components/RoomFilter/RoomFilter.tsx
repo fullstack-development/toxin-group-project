@@ -49,6 +49,7 @@ const RoomFilter: React.FC<Props> = ({ initialFilters, loadRooms }: Props) => {
 
   useEffect(() => {
     handleFormSubmit();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

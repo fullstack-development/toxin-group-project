@@ -29,10 +29,7 @@ const SearchRoomPage: React.FC<Props> = ({ loadedRooms, requestRooms }: Props) =
   const initialFilters: Filters = passedParams && {
     ...defaultFilters,
     ...passedParams,
-    booked: passedParams['search-room-date'] || defaultFilters.booked,
   };
-
-  initialFilters && delete initialFilters['search-room-date'];
 
   const filters: Filters = initialFilters || defaultFilters;
 

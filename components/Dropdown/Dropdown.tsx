@@ -92,6 +92,7 @@ const Dropdown: React.FC<DropdownProps> = ({
 
   useEffect(() => {
     applyChanges(dropdownState);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
