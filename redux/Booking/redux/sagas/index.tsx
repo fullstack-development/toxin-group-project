@@ -2,6 +2,8 @@ import { SagaIterator } from 'redux-saga';
 import { put, takeLatest, call, PutEffect } from 'redux-saga/effects';
 
 import Api from 'api/api';
+import { Apartment } from 'api/entities/types';
+import { RoomsRequest } from 'redux/Booking/types';
 
 import {
   ROOMS_REQUEST_PENDING,
@@ -10,14 +12,16 @@ import {
   LOAD_ROOMS,
 } from '../../constants';
 
-function* loadRooms(action): Generator {
+function* loadRooms(
+  action: RoomsRequest,
+): Generator | Generator<PutEffect<RoomsRequest>, void, never> {
   try {
     yield put({
       type: ROOMS_REQUEST_PENDING,
       payload: true,
     });
 
-    const rooms = yield call(Api.booking.filterRooms, action.payload);
+    const rooms: Apartment[] = yield call(Api.booking.filterRooms, action.payload);
     yield put({
       type: ROOMS_REQUEST_SUCCESS,
       payload: rooms,
