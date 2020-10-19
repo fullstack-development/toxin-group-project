@@ -1,9 +1,9 @@
 import { PROCESS } from '../constants';
 import { Request } from '../types';
 
-const request = (data: string): Request => ({
+const request = (email: string): Request => ({
   type: PROCESS,
-  payload: data,
+  payload: email,
 });
 
 export { request };

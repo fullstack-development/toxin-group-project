@@ -5,14 +5,16 @@ type Action<Z, T> = {
   payload?: T;
 };
 
-export type State = {
+type State = {
   statusText: string;
 };
 
-export type Request = Action<typeof PROCESS, string>;
+type Request = Action<typeof PROCESS, string>;
 
-export type SetStatusSuccess = Action<typeof SUCCESS, string>;
+type SetStatusSuccess = Action<typeof SUCCESS, string>;
 
-export type SetStatusFailed = Action<typeof FAILED, string>;
+type SetStatusFailed = Action<typeof FAILED, string>;
 
-export type Actions = Request | SetStatusSuccess | SetStatusFailed;
+type Actions = Request | SetStatusSuccess | SetStatusFailed;
+
+export type { State, Request, SetStatusSuccess, SetStatusFailed, Actions };
