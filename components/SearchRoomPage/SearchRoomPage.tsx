@@ -36,7 +36,7 @@ const SearchRoomPage: React.FC<Props> = ({ loadedRooms, requestRooms }: Props) =
 
   const filters: Filters = initialFilters || defaultFilters;
 
-  async function loadData(options?: Filters) {
+  async function loadRooms(options?: Filters) {
     const currentFilters = options ? { ...filters, ...options } : { ...filters };
     router.push(`/search-room?&values=${JSON.stringify(currentFilters)}`);
     requestRooms(currentFilters);
@@ -46,7 +46,7 @@ const SearchRoomPage: React.FC<Props> = ({ loadedRooms, requestRooms }: Props) =
     <MainLayout>
       <S.Container>
         <S.FilterContainer>
-          <RoomFilter initialFilters={filters} handleRequest={loadData} />
+          <RoomFilter initialFilters={filters} loadRooms={loadRooms} />
         </S.FilterContainer>
         <S.RoomsContainer>
           <S.RoomsTitle>Номера, которые мы для вас подобрали</S.RoomsTitle>

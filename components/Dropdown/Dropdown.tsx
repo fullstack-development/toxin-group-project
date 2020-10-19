@@ -10,6 +10,7 @@ import getResultStringPart from './utils/getResultStringPart';
 const DEFAULT_SETTINGS = {
   min: 0,
   max: 5,
+  initialValue: 0,
 };
 
 const Dropdown: React.FC<DropdownProps> = ({
@@ -21,7 +22,7 @@ const Dropdown: React.FC<DropdownProps> = ({
 }: DropdownProps) => {
   const initialState = items.map((item) => ({
     ...item,
-    currentValue: item.initialValue || 0,
+    currentValue: item.initialValue || DEFAULT_SETTINGS.initialValue,
     inputName: item.inputName || item.title,
     min: item.min || DEFAULT_SETTINGS.min,
     max: item.max || DEFAULT_SETTINGS.max,

@@ -36,7 +36,7 @@ sharedReduxEntries.forEach((module) => {
     ...reducers,
   };
 });
-console.log(preparedReducers);
+
 const rootReducer = combineReducers(preparedReducers);
 
 const sagaMiddleware: SagaMiddleware = createSagaMiddleware();

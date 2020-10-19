@@ -25,14 +25,14 @@ import TimePicker from 'components/TimePicker/TimePicker';
 import * as S from './RoomFilter.styles';
 import { Props } from './RoomFilter.types';
 
-const updateDropdownProps = (defaultProps: Item[], updatedProps: Amenities) => {
+const getDropdownProps = (defaultProps: Item[], updatedProps: Amenities) => {
   return defaultProps.map((item) => ({
     ...item,
     initialValue: updatedProps[item.inputName],
   }));
 };
 
-const updateCheckboxProps = (
+const getCheckboxProps = (
   defaultProps: Option[],
   updatedProps: Opportunities | Accessibility | AdditionalAmenities,
 ) => {
@@ -42,9 +42,9 @@ const updateCheckboxProps = (
   }));
 };
 
-const RoomFilter: React.FC<Props> = ({ initialFilters, handleRequest }: Props) => {
-  const handleFormSubmit = async (values?: Filters) => {
-    await handleRequest(values);
+const RoomFilter: React.FC<Props> = ({ initialFilters, loadRooms }: Props) => {
+  const handleFormSubmit = (values?: Filters) => {
+    loadRooms(values);
   };
 
   useEffect(() => {
@@ -95,13 +95,13 @@ const RoomFilter: React.FC<Props> = ({ initialFilters, handleRequest }: Props) =
               <S.CheckboxWrapper>
                 <S.Title elementType="checkbox">Checkbox buttons</S.Title>
                 <CheckboxesList
-                  roomOptions={updateCheckboxProps(checkboxesListData, initialValues.opportunities)}
+                  roomOptions={getCheckboxProps(checkboxesListData, initialValues.opportunities)}
                 />
               </S.CheckboxWrapper>
               <S.CheckboxWrapper>
                 <S.Title elementType="checkbox">Доступность</S.Title>
                 <CheckboxesList
-                  roomOptions={updateCheckboxProps(
+                  roomOptions={getCheckboxProps(
                     richCheckboxesListData,
                     initialValues.accessibility,
                   )}
@@ -113,13 +113,13 @@ const RoomFilter: React.FC<Props> = ({ initialFilters, handleRequest }: Props) =
                   placeholder="Удобства номера"
                   enableControls={false}
                   name="amenities"
-                  items={updateDropdownProps(amenitiesItems, initialValues.amenities)}
+                  items={getDropdownProps(amenitiesItems, initialValues.amenities)}
                 />
               </S.DropdownWrapper>
               <S.CheckboxWrapper>
                 <Expander title="дополнительные удобства" isDefaultOpen={false}>
                   <CheckboxesList
-                    roomOptions={updateCheckboxProps(
+                    roomOptions={getCheckboxProps(
                       expandableCheckboxesListData,
                       initialValues.additionalAmenities,
                     )}
