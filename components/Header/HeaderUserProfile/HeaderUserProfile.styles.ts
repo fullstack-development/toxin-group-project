@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+import { breakpointDown } from 'shared/styles/break-points';
+
 const HeaderUserProfile = styled.div`
   ${(props) => {
     const { colors } = props.theme;
@@ -9,7 +11,7 @@ const HeaderUserProfile = styled.div`
       padding-left: 1.4rem;
       border-left: 0.0714rem solid ${colors.basicLightest};
 
-      @media (max-width: 1050px) {
+      @media ${breakpointDown('md')} {
         width: 100%;
         border-left: none;
         padding: 1.4286rem 0;
@@ -19,16 +21,16 @@ const HeaderUserProfile = styled.div`
   }}
 `;
 
-const Link = styled.a`
+const UserName = styled.span`
   ${(props) => {
     const { colors } = props.theme;
 
     return css`
       color: ${colors.basic};
-      text-decoration: none;
       margin-right: 1.5rem;
       position: relative;
       margin: 0;
+      user-select: none;
 
       &:hover {
         color: ${colors.basicDarkest};
@@ -37,4 +39,4 @@ const Link = styled.a`
   }}
 `;
 
-export { HeaderUserProfile, Link };
+export { HeaderUserProfile, UserName };

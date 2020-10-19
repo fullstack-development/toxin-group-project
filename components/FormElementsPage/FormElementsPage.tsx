@@ -21,6 +21,7 @@ import Logo from 'components/Logo/Logo';
 import RadioButton from 'components/RadioButton/RadioButton';
 import RangeSlider from 'components/RangeSlider/RangeSlider';
 import Reviews from 'components/Reviews/Reviews';
+import RoomImpression from 'components/RoomImpression/RoomImpression';
 import SocialMedia from 'components/SocialMedia/SocialMedia';
 import StarRating from 'components/StarRating/StarRating';
 import SubscriptionField from 'components/SubscriptionField/SubscriptionField';
@@ -89,14 +90,12 @@ class FormElementsPage extends React.Component {
                 />
               </S.InputWrapper>
               <S.ButtonWrapper>
-                <Button type="button" isLink={false} isFilled>
+                <Button type="button" isFilled>
                   click me
                 </Button>
               </S.ButtonWrapper>
               <S.ButtonWrapper>
-                <Button isLink href="https://google.com">
-                  click me
-                </Button>
+                <Button href="/mock-to-click">click me</Button>
               </S.ButtonWrapper>
               <S.LikeButtonWrapper>
                 <LikeButton count={2} />
@@ -162,14 +161,10 @@ class FormElementsPage extends React.Component {
           <SubscriptionField placeholder="Email" />
         </S.SubscriptionWrapper>
         <S.TextButtonWrapper>
-          <TextButton isLink href="https://google.com">
-            Click me
-          </TextButton>
+          <TextButton href="/mock-to-click">Click me</TextButton>
         </S.TextButtonWrapper>
         <S.TextButtonWrapper>
-          <TextButton isLink={false} isSecondary>
-            Click me
-          </TextButton>
+          <TextButton isSecondary>Click me</TextButton>
         </S.TextButtonWrapper>
         <S.BulletListWrapper>
           <BulletList
@@ -206,12 +201,14 @@ class FormElementsPage extends React.Component {
           <Reviews />
         </S.ReviewsWrapper>
         <S.ArrowButtonWrapper>
-          <ArrowButton isLink href="https://google.com">
-            Перейти к оплате
-          </ArrowButton>
+          <ArrowButton href="/mock-to-pay">Перейти к оплате</ArrowButton>
         </S.ArrowButtonWrapper>
         <SocialMedia />
-        <Logo isLink />
+        <Logo />
+        <RoomImpression
+          title="Впечатления от номера"
+          numberOfRatings={{ excellent: 130, good: 65, normal: 65, bad: 0 }}
+        />
       </S.Container>
     );
   }

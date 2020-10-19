@@ -13,13 +13,12 @@ type ToggleProps = {
 const Toggle: React.FC<ToggleProps> = ({ name, checked, label, value, onChange }: ToggleProps) => (
   <Field
     name={name}
-    checked={checked}
     value={value}
     onChange={onChange}
     type="checkbox"
     render={(props) => (
       <S.Toggle>
-        <S.HiddenInput {...props.input} />
+        <S.HiddenInput {...props.input} checked={checked} />
         <S.Checkmark />
         {label && <S.Label>{label}</S.Label>}
       </S.Toggle>

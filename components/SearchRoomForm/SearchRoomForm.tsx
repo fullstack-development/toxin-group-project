@@ -1,5 +1,6 @@
 import { Form } from 'react-final-form';
 
+import api from 'api/api';
 import ArrowButton from 'components/ArrowButton/ArrowButton';
 import Dropdown from 'components/Dropdown/Dropdown';
 import { guestsGroups, guestsItems } from 'components/Dropdown/Dropdown.data';
@@ -9,6 +10,40 @@ import * as S from './SearchRoomForm.styles';
 
 type SearchRoomFormProps = {
   onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
+};
+const testRoomFilter = {
+  price: { from: 2000, to: 7000 },
+  booked: {
+    from: new Date().getTime(),
+    to: new Date(Date.now() + 1000000000).getTime(),
+  },
+  amenities: {
+    bedrooms: 1,
+    beds: 1,
+    bathrooms: 1,
+  },
+  additionalAmenities: {
+    breakfast: true,
+    desk: false,
+    chair: false,
+    crib: false,
+    tv: false,
+    shampoo: false,
+  },
+  accessibility: {
+    wideCorridor: false,
+    invalidHelper: false,
+  },
+  opportunities: {
+    smoking: false,
+    keepPets: false,
+    largeNumberOfPersons: false,
+  },
+};
+const getRooms = (e) => {
+  e.preventDefault;
+  // eslint-disable-next-line no-console
+  api.booking.filterRooms(testRoomFilter).then((data) => console.log(data));
 };
 
 const SearchRoomForm: React.FC<SearchRoomFormProps> = ({ onSubmit }: SearchRoomFormProps) => {
@@ -41,7 +76,7 @@ const SearchRoomForm: React.FC<SearchRoomFormProps> = ({ onSubmit }: SearchRoomF
                 items={guestsItems}
               />
             </S.DropdownWrapper>
-            <ArrowButton isLink={false} isFilled>
+            <ArrowButton isFilled type="button" onClick={getRooms}>
               Подобрать номер
             </ArrowButton>
           </form>

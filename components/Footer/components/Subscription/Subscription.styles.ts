@@ -1,12 +1,13 @@
 import styled, { css } from 'styled-components';
 
+import { breakpointDown } from 'shared/styles/break-points';
 import { titles } from 'shared/styles/mixins';
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
 
-  @media (max-width: 900px) {
+  @media ${breakpointDown('md')} {
     display: none;
   }
 `;

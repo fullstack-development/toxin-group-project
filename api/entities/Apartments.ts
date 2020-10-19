@@ -1,42 +1,35 @@
 import { boundMethod } from 'autobind-decorator';
 
-import { matchObjects } from 'shared/helpers';
-import { DeepPartial } from 'shared/types/custom';
-
-import Firebase from '../Firebase';
-import apiErrors from './errors/apiErrors';
-import { ApartmentsList, Apartment } from './types';
+import { Database, CollectionReference } from '../Firebase/modules/Database';
+import { Apartment } from './types';
 
 class Apartments {
-  private readonly path: string;
-  private readonly actions: Firebase;
+  private readonly actions: Database;
+  private readonly reference: CollectionReference;
 
-  constructor(actions: Firebase) {
-    this.path = 'apartments';
+  constructor(actions: Database) {
     this.actions = actions;
+    this.reference = this.actions.ref().collection('apartments');
   }
 
   @boundMethod
-  public async load(key = ''): Promise<unknown> {
-    const response = await this.actions.request(`${this.path}/${key}`).then((s) => s.val());
-    if (!response) throw apiErrors.trigger('apartments/nothing-found', key);
-    return response;
+  public async add(data: Apartment): Promise<void> {
+    this.actions.post({ ref: this.reference, doc: String(data.id), data });
   }
 
   @boundMethod
-  public add(id: number, apartment: Apartment): void {
-    this.actions.post(`${this.path}/${id}`, apartment);
+  public async remove(id: Apartment['id']): Promise<void> {
+    this.actions.removeDocument(this.reference.doc(String(id)));
   }
 
   @boundMethod
-  public filter(apartmentsList: ApartmentsList, params: DeepPartial<Apartment>): ApartmentsList {
-    const result: ApartmentsList = { ...apartmentsList };
+  public update(id: Apartment['id'], data: Partial<Apartment>): void {
+    this.actions.update(this.reference.doc(String(id)), data);
+  }
 
-    Object.entries(apartmentsList).forEach(([key, apartment]) => {
-      !matchObjects(apartment, params) && delete result[key];
-    });
-
-    return result;
+  @boundMethod
+  public async load(id: Apartment['id']): Promise<Apartment> {
+    return this.actions.getDocument(this.reference, String(id));
   }
 }
 

@@ -17,6 +17,10 @@ const AccountEntryWrapper = styled.div`
   margin-top: 1rem;
 `;
 
+const RoomsWrapper = styled.div`
+  max-width: 60rem;
+`;
+
 const ForgotPasswordWrapper = styled.div`
   margin: 3rem 0;
 `;
@@ -26,5 +30,6 @@ export {
   SearchRoomFormWrapper,
   RegistrationFormWrapper,
   AccountEntryWrapper,
+  RoomsWrapper,
   ForgotPasswordWrapper,
 };

@@ -1,15 +1,9 @@
-import { AnchorHTMLAttributes, ButtonHTMLAttributes, ElementType } from 'react';
+import { AnchorHTMLAttributes, ElementType } from 'react';
 
-type ButtonProps = {
-  isLink: false;
-  isSecondary?: boolean;
-  as?: ElementType;
-} & ButtonHTMLAttributes<HTMLButtonElement>;
-
-type AnchorProps = {
-  isLink: true;
+type Props = {
+  href?: string;
   isSecondary?: boolean;
   as?: ElementType;
 } & AnchorHTMLAttributes<HTMLAnchorElement>;
 
-export type TextButtonProps = ButtonProps | AnchorProps;
+export type TextButtonProps = Props;
