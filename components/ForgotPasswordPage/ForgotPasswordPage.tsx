@@ -2,7 +2,7 @@ import MainLayout from 'components/MainLayout/MainLayout';
 
 import Banner from './components/Banner/Banner';
 
-const ForgotPasswordPage: React.FC = (): JSX.Element => (
+const ForgotPasswordPage = (): JSX.Element => (
   <MainLayout>
     <Banner />
   </MainLayout>

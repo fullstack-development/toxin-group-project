@@ -1,29 +1,32 @@
 import { useState } from 'react';
 import { Form, Field } from 'react-final-form';
+import { connect } from 'react-redux';
 
-import api from 'api/api';
+import { request } from 'redux/ResetPassword/redux/actions';
 import { emailValidator } from 'shared/helpers/validators/emailValidator';
 
 import PopUp from './components/PopUp/PopUp';
 import * as S from './ForgotPasswordForm.style';
 
+type Props = {
+  statusText: string;
+  startProcess: (email: string) => void;
+};
+
+type State = {
+  reducer: Props;
+};
+
 type FormData = {
   email: string;
 };
 
-const ForgotPasswordForm = (): JSX.Element => {
-  const [messagePopUp, setMessagePopUp] = useState('');
+const ForgotPasswordForm = ({ startProcess, statusText }: Props): JSX.Element => {
   const [isVisiblePopUp, setVisiblePopUp] = useState(false);
 
-  const onFormSubmit = async ({ email }: FormData): Promise<void> => {
-    try {
-      await api.auth.resetPassword(email);
-      setMessagePopUp(`Ссылка для восстановления пароля была отправлена на ${email}`);
-    } catch (err) {
-      setMessagePopUp('Произошла ошибка, повторите попытку позже.');
-    } finally {
-      setVisiblePopUp(true);
-    }
+  const onFormSubmit = ({ email }: FormData) => {
+    startProcess(email);
+    setVisiblePopUp(true);
   };
 
   const handleConfirmButtonClick = () => {
@@ -55,11 +58,19 @@ const ForgotPasswordForm = (): JSX.Element => {
           </form>
         )}
       />
-      {isVisiblePopUp && (
-        <PopUp message={messagePopUp} onConfirmButtonClick={handleConfirmButtonClick} />
+      {isVisiblePopUp && statusText && (
+        <PopUp message={statusText} onConfirmButtonClick={handleConfirmButtonClick} />
       )}
     </S.ForgotPasswordForm>
   );
 };
 
-export default ForgotPasswordForm;
+const mapState = (state: State) => ({
+  statusText: state.reducer.statusText,
+});
+
+const mapDispatch = {
+  startProcess: request,
+};
+
+export default connect(mapState, mapDispatch)(ForgotPasswordForm);
