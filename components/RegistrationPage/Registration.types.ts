@@ -1,6 +1,6 @@
 import { ProfileData } from 'api/entities/types';
 
-export type RegistrationProps = {
+export type MapState = {
   isSuccess: boolean;
   isProcess: boolean;
   statusText: string;
@@ -9,7 +9,7 @@ export type RegistrationProps = {
 };
 
 export type State = {
-  RegistrationReducer: RegistrationProps;
+  RegistrationReducer: MapState;
   authReducer: {
     wasFinishedAuthChecking: boolean;
     isAuthSuccess: boolean;

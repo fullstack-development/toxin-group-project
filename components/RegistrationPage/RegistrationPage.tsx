@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 
 import MainLayout from 'components/MainLayout/MainLayout';
 import { preloadAuthData } from 'redux/Auth/redux/actions';
-import { sendRegistrationRequest, stopRegistrationProcess } from 'redux/Registration/redux/actions';
+import { startRegistration, cancelRegistration } from 'redux/Registration/redux/actions';
 
 import MainContent from './components/MainContent/MainContent';
-import { State, RegistrationProps } from './Registration.types';
+import { State, MapState } from './Registration.types';
 
 type Props = {
   wasFinishedAuthChecking: boolean;
@@ -15,7 +15,7 @@ type Props = {
   checkAuthBeforePageLoaded: () => void;
 };
 
-const RegistrationPage: React.FC<RegistrationProps & Props> = ({
+const RegistrationPage: React.FC<MapState & Props> = ({
   isSuccess,
   isProcess,
   statusText,
@@ -24,7 +24,7 @@ const RegistrationPage: React.FC<RegistrationProps & Props> = ({
   requestRegistration,
   stopRegistration,
   checkAuthBeforePageLoaded,
-}: RegistrationProps & Props): JSX.Element => {
+}: MapState & Props): JSX.Element => {
   const router = useRouter();
 
   useEffect(() => {
@@ -58,8 +58,8 @@ const mapState = (state: State) => ({
 });
 
 const mapDispatch = {
-  requestRegistration: sendRegistrationRequest,
-  stopRegistration: stopRegistrationProcess,
+  requestRegistration: startRegistration,
+  stopRegistration: cancelRegistration,
   checkAuthBeforePageLoaded: preloadAuthData,
 };
 

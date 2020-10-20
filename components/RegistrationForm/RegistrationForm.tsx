@@ -5,7 +5,7 @@ import { Field, Form } from 'react-final-form';
 import { ProfileData } from 'api/entities/types';
 import Input from 'components/Input/Input';
 import RadioButton from 'components/RadioButton/RadioButton';
-import { RegistrationProps } from 'components/RegistrationPage/Registration.types';
+import { MapState } from 'components/RegistrationPage/Registration.types';
 import Toggle from 'components/Toggle/Toggle';
 import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators';
 
@@ -13,13 +13,13 @@ import * as S from './RegistrationForm.styles';
 
 type FormData = ProfileData;
 
-const RegistrationForm: React.FC<RegistrationProps> = ({
+const RegistrationForm: React.FC<MapState> = ({
   isSuccess,
   isProcess,
   statusText,
   requestRegistration,
   stopRegistration,
-}: RegistrationProps): JSX.Element => {
+}: MapState): JSX.Element => {
   const handleRegistrationFormSubmit = (formData: FormData): void => {
     requestRegistration(formData);
   };

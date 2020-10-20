@@ -1,15 +1,15 @@
 import RegistrationForm from 'components/RegistrationForm/RegistrationForm';
 
-import { RegistrationProps } from '../../Registration.types';
+import { MapState } from '../../Registration.types';
 import * as S from './MainContent.styles';
 
-const MainContent: React.FC<RegistrationProps> = ({
+const MainContent: React.FC<MapState> = ({
   isSuccess,
   isProcess,
   statusText,
   requestRegistration,
   stopRegistration,
-}: RegistrationProps): JSX.Element => (
+}: MapState): JSX.Element => (
   <S.Container>
     <RegistrationForm
       isSuccess={isSuccess}
