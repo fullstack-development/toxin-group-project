@@ -19,7 +19,7 @@ const mapDispatch = {
   getRooms: requestRooms,
 };
 
-const SearchRoomPage: React.FC<Props> = ({
+const SearchRoomPage: React.FC<ReturnType<typeof mapState> & typeof mapDispatch> = ({
   rooms,
   getRooms,
 }: ReturnType<typeof mapState> & typeof mapDispatch) => {
