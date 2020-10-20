@@ -11,6 +11,8 @@ import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/va
 
 import * as S from './RegistrationForm.styles';
 
+type FormData = ProfileData;
+
 const RegistrationForm: React.FC<RegistrationProps> = ({
   isSuccess,
   isProcess,
@@ -18,7 +20,7 @@ const RegistrationForm: React.FC<RegistrationProps> = ({
   requestRegistration,
   stopRegistration,
 }: RegistrationProps): JSX.Element => {
-  const handleRegistrationFormSubmit = (formData: ProfileData): void => {
+  const handleRegistrationFormSubmit = (formData: FormData): void => {
     requestRegistration(formData);
   };
 
