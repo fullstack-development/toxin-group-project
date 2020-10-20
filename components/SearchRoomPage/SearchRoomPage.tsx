@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { connect } from 'react-redux';
 
-import { Apartment, Filters } from 'api/entities/types';
+import { Filters } from 'api/entities/types';
 import MainLayout from 'components/MainLayout/MainLayout';
 import Preloader from 'components/Preloader/Preloader';
 import { Props as RoomProps } from 'components/Room/Room.types';
@@ -16,12 +16,12 @@ import getPassedFilters from './utils/getPassedFilters';
 type Props = {
   isRequestSuccessful: boolean;
   isPending: boolean;
-  loadedRooms: RoomProps[];
+  rooms: RoomProps[];
   error: Error;
-  requestRooms: (options: Filters) => Promise<Apartment[]>;
+  requestRooms: (options: Filters) => void;
 };
 
-const SearchRoomPage: React.FC<Props> = ({ loadedRooms, requestRooms }: Props) => {
+const SearchRoomPage: React.FC<Props> = ({ rooms, requestRooms }: Props) => {
   const router = useRouter();
 
   const passedParams = getPassedFilters(router.asPath);
@@ -47,8 +47,8 @@ const SearchRoomPage: React.FC<Props> = ({ loadedRooms, requestRooms }: Props) =
         </S.FilterContainer>
         <S.RoomsContainer>
           <S.RoomsTitle>Номера, которые мы для вас подобрали</S.RoomsTitle>
-          {loadedRooms.length ? (
-            <Rooms rooms={loadedRooms} />
+          {rooms.length ? (
+            <Rooms rooms={rooms} />
           ) : (
             <S.PreloaderWrapper>
               <Preloader />
@@ -60,7 +60,7 @@ const SearchRoomPage: React.FC<Props> = ({ loadedRooms, requestRooms }: Props) =
   );
 };
 
-const mapState = (state) => ({ ...state.bookingReducer, loadedRooms: state.bookingReducer.rooms });
+const mapState = (state) => state.bookingReducer;
 
 const mapDispatch = {
   requestRooms: getRooms,
