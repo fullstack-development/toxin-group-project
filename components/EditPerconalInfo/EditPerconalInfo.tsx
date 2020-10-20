@@ -7,7 +7,7 @@ import EditEmail from './components/EditEmail/EditEmail';
 import EditGender from './components/EditGender/EditGender';
 import EditSubscription from './components/EditSubscription/EditSubscription';
 import EditUserName from './components/EditUserName/EditUserName';
-import * as S from './EditAccountInfo.styles';
+import * as S from './EditPerconalInfo.styles';
 
 type Props = {
   user: firebase.User;
@@ -17,7 +17,13 @@ type Props = {
   description?: string;
 };
 
-const Item = ({ user, title, component, value, description = '' }: Props): JSX.Element => {
+const EditPerconalInfo = ({
+  user,
+  title,
+  component,
+  value,
+  description = '',
+}: Props): JSX.Element => {
   const [isEdit, setEdit] = useState(false);
 
   const mapEditingСomponents = {
@@ -44,4 +50,4 @@ const Item = ({ user, title, component, value, description = '' }: Props): JSX.E
   );
 };
 
-export default Item;
+export default EditPerconalInfo;

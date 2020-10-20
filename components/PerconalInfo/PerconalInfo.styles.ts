@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-const EditAccountInfo = styled.ul`
+const PerconalInfo = styled.ul`
   width: 100%;
   list-style: none;
 `;
@@ -15,4 +15,4 @@ const Item = styled.li`
     `;
   }}
 `;
-export { EditAccountInfo, Item };
+export { PerconalInfo, Item };

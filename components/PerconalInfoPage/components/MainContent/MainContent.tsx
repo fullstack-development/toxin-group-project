@@ -1,11 +1,11 @@
-import AccountInfo from 'components/AccountInfo/AccountInfo';
+import PerconalInfo from 'components/PerconalInfo/PerconalInfo';
 
 import * as S from './MainContent.styles';
 
 const MainContent = (): JSX.Element => (
   <S.MainContent>
     <S.Title>Личная информация</S.Title>
-    <AccountInfo />
+    <PerconalInfo />
     <S.ButtonShowBookedRooms href="mock/">
       Показать все забронированные номера
     </S.ButtonShowBookedRooms>
