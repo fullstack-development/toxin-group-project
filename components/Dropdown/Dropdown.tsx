@@ -20,13 +20,21 @@ const Dropdown: React.FC<DropdownProps> = ({
   items = [{ title: 'No items passed' }],
   enableControls = true,
 }: DropdownProps) => {
-  const initialState = items.map((item) => ({
-    ...item,
-    currentValue: item.initialValue || DEFAULT_SETTINGS.initialValue,
-    inputName: item.inputName || item.title,
-    min: item.min || DEFAULT_SETTINGS.min,
-    max: item.max || DEFAULT_SETTINGS.max,
-  }));
+  // const {min:groupMin, max: groupMax} = groups[item.groupName]
+
+  const initialState = items.map((item) => {
+    const group =
+      item.groupName && groups.find((currentGroup) => currentGroup.name === item.groupName);
+    const groupMin = group && group.min;
+    const groupMax = group && group.max;
+    return {
+      ...item,
+      currentValue: item.initialValue || DEFAULT_SETTINGS.initialValue,
+      inputName: item.inputName || item.title,
+      min: groupMin || item.min || DEFAULT_SETTINGS.min,
+      max: groupMax || item.max || DEFAULT_SETTINGS.max,
+    };
+  });
 
   const [dropdownState, setDropdownState] = useState(initialState);
   const [isOpen, setIsOpen] = useState(false);
@@ -91,6 +99,11 @@ const Dropdown: React.FC<DropdownProps> = ({
   }, [dropdownState, enableControls, applyChanges]);
 
   useEffect(() => {
+    applyChanges(dropdownState);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
     document.addEventListener('click', handleDocumentClick);
     return () => document.removeEventListener('click', handleDocumentClick);
   }, [handleDocumentClick]);
@@ -107,13 +120,21 @@ const Dropdown: React.FC<DropdownProps> = ({
           <S.ListContainer isOpen={isOpen}>
             <S.List>
               {dropdownState.map((el) => {
-                const { title, min, max, currentValue, inputName } = el;
+                const { title, min, max, currentValue, inputName, groupName } = el;
 
-                const formatFieldValue = () => {
+                const currentMax = groupName
+                  ? currentValue +
+                    groups.find((group) => group.name === groupName).max -
+                    dropdownState
+                      .filter((item) => item.groupName === groupName)
+                      .reduce((acc, element) => acc + element.currentValue, 0)
+                  : max;
+
+                const updateFieldValue = (state: typeof dropdownState) => {
                   const result = {};
-                  dropdownState.forEach((item) => {
+                  state.forEach((item) => {
                     result[item.inputName] = item.currentValue;
-                    input.onChange(result);
+                    setTimeout(() => input.onChange(result));
                   });
                 };
 
@@ -126,9 +147,9 @@ const Dropdown: React.FC<DropdownProps> = ({
                     const state = [...prevState];
                     const elementToUpdate = state.find((item) => item.title === title);
                     elementToUpdate.currentValue += increment;
+                    updateFieldValue(state);
                     return state;
                   });
-                  formatFieldValue();
                 };
                 const handleIncrementClick = makeButtonHandler(1);
                 const handleDecrementClick = makeButtonHandler(-1);
@@ -139,7 +160,7 @@ const Dropdown: React.FC<DropdownProps> = ({
                     <NumberInput
                       currentValue={currentValue}
                       min={min}
-                      max={max}
+                      max={currentMax}
                       onIncrement={handleIncrementClick}
                       onDecrement={handleDecrementClick}
                       name={inputName}

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 
+import api from 'api/api';
 import AccountEntry from 'components/AccountEntry/AccountEntry';
+import Button from 'components/Button/Button';
 import ForgotPasswordForm from 'components/ForgotPasswordForm/ForgotPasswordForm';
 import OrderForm from 'components/OrderForm/OrderForm';
 import RegistrationForm from 'components/RegistrationForm/RegistrationForm';
@@ -16,14 +18,20 @@ const CardsPage: React.FC = (): JSX.Element => {
 
   Promise.resolve(roomsList).then((data) => setRooms(data));
 
+  const loadRoom = async () => {
+    const room = await api.apartments.updateAll();
+    console.log(room);
+  };
+
   // eslint-disable-next-line no-console
   const mockAuthFunction = () => console.log('Auth is done!');
 
   return (
     <S.Container>
-      <SearchRoomForm />
+      {/* <SearchRoomForm />
+      <Button onClick={loadRoom}>Загрузка</Button> */}
       <OrderForm roomNumber={888} roomType="люкс" roomPrice={9990} />
-      <S.RoomsWrapper>
+      {/* <S.RoomsWrapper>
         <Rooms rooms={rooms} />
       </S.RoomsWrapper>
       <Room price={9900} number={888} reviewCount={65} reviewsHref="/mock" href="/mock" />
@@ -53,7 +61,7 @@ const CardsPage: React.FC = (): JSX.Element => {
       </S.AccountEntryWrapper>
       <S.ForgotPasswordWrapper>
         <ForgotPasswordForm />
-      </S.ForgotPasswordWrapper>
+      </S.ForgotPasswordWrapper> */}
     </S.Container>
   );
 };

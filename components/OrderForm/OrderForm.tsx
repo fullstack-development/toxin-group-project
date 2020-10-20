@@ -34,6 +34,11 @@ const defaultOptions: PriceItem[] = [
   { label: 'Сбор за дополнительные услуги', price: 300, tooltip: 'Подсказка 2' },
 ];
 
+const maxGuests = {
+  adults: 3,
+  babies: 2,
+};
+
 const dropdownOptions: DropdownProps = {
   placeholder: 'Сколько гостей',
   name: 'guests',
@@ -41,24 +46,31 @@ const dropdownOptions: DropdownProps = {
   groups: [
     {
       name: 'guests',
+      max: maxGuests.adults,
       wordForms: ['гость', 'гостя', 'гостей'],
     },
   ],
   items: [
     {
       title: 'взрослые',
+      inputName: 'adults',
       groupName: 'guests',
     },
     {
       title: 'дети',
+      inputName: 'children',
       groupName: 'guests',
     },
     {
       title: 'младенцы',
+      inputName: 'babies',
+      max: maxGuests.babies,
       wordForms: ['младенец', 'младенца', 'младенцев'],
     },
   ],
 };
+
+const overcrowdingPrice = 700;
 
 const getResultPrice = (prices: PriceItem[], currency: string): string =>
   formatNumber(
@@ -85,7 +97,7 @@ const OrderForm: React.FC<Props> = ({
     <Form
       onSubmit={handleFormSubmit}
       render={({ handleSubmit, values }) => {
-        const dates = values['order-form'];
+        const dates: { from: number; to: number } = values['order-form'];
         const daysDifference = (dates && getDaysDifference(dates)) || 0;
         const prices = [
           {
@@ -127,9 +139,7 @@ const OrderForm: React.FC<Props> = ({
               <S.Dots />
               <S.ResultPrice>{getResultPrice(prices, currency)}</S.ResultPrice>
             </S.ResultWrapper>
-            <ArrowButton isLink={false} type="submit">
-              Забронировать
-            </ArrowButton>
+            <ArrowButton type="submit">Забронировать</ArrowButton>
           </form>
         );
       }}
