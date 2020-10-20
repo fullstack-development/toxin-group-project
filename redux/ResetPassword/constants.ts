@@ -1,5 +1,0 @@
-const PROCESS = 'PROCESS';
-const SUCCESS = 'SUCCESS';
-const FAILED = 'FAILED';
-
-export { PROCESS, SUCCESS, FAILED };

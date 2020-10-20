@@ -4,11 +4,8 @@ import createSagaMiddleware, { SagaMiddleware, SagaIterator } from 'redux-saga';
 
 import { reduxEntry as AuthReduxEntry } from './Auth';
 import { AuthActions, AuthState } from './Auth/types';
-import { reduxEntry as ResetPasswordReduxEntry } from './ResetPassword';
-import {
-  Actions as ResetPasswordActions,
-  State as ResetPasswordState,
-} from './ResetPassword/types';
+import { passwordResetReduxEntry } from './PasswordReset';
+import { PasswordResetActions, PasswordResetState } from './PasswordReset/types';
 
 const bindMiddleware = (middleware) => {
   if (process.env.NODE_ENV !== 'production') {
@@ -18,16 +15,16 @@ const bindMiddleware = (middleware) => {
 };
 
 type AvailableReducers = (
-  state: AuthState | ResetPasswordState,
-  action: AuthActions | ResetPasswordActions,
-) => AuthState | ResetPasswordState;
+  state: AuthState | PasswordResetState,
+  action: AuthActions | PasswordResetActions,
+) => AuthState | PasswordResetState;
 
 type SharedReduxEntries = {
   reducers: Record<string, AvailableReducers>;
   sagas: Array<() => SagaIterator>;
 }[];
 
-const sharedReduxEntries: SharedReduxEntries = [AuthReduxEntry, ResetPasswordReduxEntry];
+const sharedReduxEntries: SharedReduxEntries = [AuthReduxEntry, passwordResetReduxEntry];
 
 let preparedReducers: Record<string, AvailableReducers> = {};
 

@@ -3,16 +3,20 @@ import { put, takeLatest, call } from 'redux-saga/effects';
 
 import api from 'api/api';
 
-import { PROCESS, SUCCESS, FAILED } from '../../constants';
+import {
+  PASSWORD_RESET_PROCESS,
+  PASSWORD_RESET_SUCCESS,
+  PASSWORD_RESET_FAILED,
+} from '../../constants';
 
-function* startProcess({ payload: email }: { payload: string }) {
+function* startPasswordResetProcess({ payload: email }: { payload: string }) {
   try {
     const userInfo: string[] = yield call(api.auth.fetchSignInMethodsForEmail, email);
     const isRegister = userInfo.some((value) => value === 'password');
     if (isRegister) {
       yield call(api.auth.resetPassword, email);
       yield put({
-        type: SUCCESS,
+        type: PASSWORD_RESET_SUCCESS,
         payload: `Ссылка для восстановления пароля была отправлена на ${email}`,
       });
     } else {
@@ -20,7 +24,7 @@ function* startProcess({ payload: email }: { payload: string }) {
     }
   } catch (err) {
     yield put({
-      type: FAILED,
+      type: PASSWORD_RESET_FAILED,
       payload:
         err.message === 'Пользователь с указанным электронным адресом не зарегистрирован'
           ? err.message
@@ -30,7 +34,7 @@ function* startProcess({ payload: email }: { payload: string }) {
 }
 
 function* rootSaga(): SagaIterator {
-  yield takeLatest<never>(PROCESS, startProcess);
+  yield takeLatest<never>(PASSWORD_RESET_PROCESS, startPasswordResetProcess);
 }
 
 export { rootSaga };

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Form, Field } from 'react-final-form';
 import { connect } from 'react-redux';
 
-import { request } from 'redux/ResetPassword/redux/actions';
+import { passwordResetRequest } from 'redux/PasswordReset/redux/actions';
 import { emailValidator } from 'shared/helpers/validators/emailValidator';
 
 import PopUp from './components/PopUp/PopUp';
@@ -10,22 +10,22 @@ import * as S from './ForgotPasswordForm.style';
 
 type Props = {
   statusText: string;
-  startProcess: (email: string) => void;
+  startPasswordResetProcess: (email: string) => void;
 };
 
 type State = {
-  reducer: Props;
+  passwordResetReducer: Props;
 };
 
 type FormData = {
   email: string;
 };
 
-const ForgotPasswordForm = ({ startProcess, statusText }: Props): JSX.Element => {
+const ForgotPasswordForm = ({ startPasswordResetProcess, statusText }: Props): JSX.Element => {
   const [isVisiblePopUp, setVisiblePopUp] = useState(false);
 
   const onFormSubmit = ({ email }: FormData) => {
-    startProcess(email);
+    startPasswordResetProcess(email);
     setVisiblePopUp(true);
   };
 
@@ -66,11 +66,11 @@ const ForgotPasswordForm = ({ startProcess, statusText }: Props): JSX.Element =>
 };
 
 const mapState = (state: State) => ({
-  statusText: state.reducer.statusText,
+  statusText: state.passwordResetReducer.statusText,
 });
 
 const mapDispatch = {
-  startProcess: request,
+  startPasswordResetProcess: passwordResetRequest,
 };
 
 export default connect(mapState, mapDispatch)(ForgotPasswordForm);
