@@ -33,11 +33,11 @@ const SearchRoomPage: React.FC<Props> = ({ loadedRooms, requestRooms }: Props) =
 
   const filters: Filters = initialFilters || defaultFilters;
 
-  async function loadRooms(options?: Filters) {
+  const loadRooms = (options?: Filters) => {
     const currentFilters = options ? { ...filters, ...options } : { ...filters };
     router.push(`/search-room?&values=${JSON.stringify(currentFilters)}`);
     requestRooms(currentFilters);
-  }
+  };
 
   return (
     <MainLayout>
