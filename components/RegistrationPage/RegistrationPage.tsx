@@ -13,7 +13,7 @@ type Props = {
   wasFinishedAuthChecking: boolean;
   isAuthSuccess: boolean;
   checkAuthBeforePageLoaded: () => void;
-};
+} & MapState;
 
 const RegistrationPage: React.FC<MapState & Props> = ({
   isSuccess,
@@ -24,7 +24,7 @@ const RegistrationPage: React.FC<MapState & Props> = ({
   requestRegistration,
   stopRegistration,
   checkAuthBeforePageLoaded,
-}: MapState & Props): JSX.Element => {
+}: Props): JSX.Element => {
   const router = useRouter();
 
   useEffect(() => {
