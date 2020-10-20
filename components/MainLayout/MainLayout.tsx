@@ -17,6 +17,8 @@ const MainLayout: React.FC<Props> = ({
     preloadAuth();
   }, [preloadAuth]);
 
+  console.log(displayName);
+
   return (
     <>
       <Header displayName={displayName} wasFinishedAuthChecking={wasFinishedAuthChecking} />
