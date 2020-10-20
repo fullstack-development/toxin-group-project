@@ -29,6 +29,8 @@ function* startProcess({ payload: email }: { payload: string }) {
   }
 }
 
-export function* rootSaga(): SagaIterator {
+function* rootSaga(): SagaIterator {
   yield takeLatest<never>(PROCESS, startProcess);
 }
+
+export { rootSaga };
