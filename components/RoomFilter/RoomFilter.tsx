@@ -23,7 +23,7 @@ import RangeSlider from 'components/RangeSlider/RangeSlider';
 import TimePicker from 'components/TimePicker/TimePicker';
 
 import * as S from './RoomFilter.styles';
-import { Props } from './RoomFilter.types';
+import { OptionName, Props } from './RoomFilter.types';
 
 const getDropdownProps = (defaultProps: Item[], updatedProps: Amenities) => {
   return defaultProps.map((item) => ({
@@ -32,8 +32,8 @@ const getDropdownProps = (defaultProps: Item[], updatedProps: Amenities) => {
   }));
 };
 
-const getKeyFromString = (name: string) => {
-  return `${name.split('.')[1]}`;
+const getKeyFromString = (name: string): OptionName => {
+  return name.split('.')[1] as OptionName;
 };
 
 const getCheckboxProps = (
