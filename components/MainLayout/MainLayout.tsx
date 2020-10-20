@@ -1,16 +1,38 @@
+import { useEffect } from 'react';
+import { connect } from 'react-redux';
+
 import Footer from 'components/Footer/Footer';
 import Header from 'components/Header/Header';
+import { preloadAuthData } from 'redux/Auth/redux/actions';
 
-type Props = {
-  children?: JSX.Element;
+import { State, Props } from './MainLayout.types';
+
+const MainLayout: React.FC<Props> = ({
+  children,
+  displayName,
+  wasFinishedAuthChecking,
+  preloadAuth,
+}: Props): JSX.Element => {
+  useEffect(() => {
+    preloadAuth();
+  }, [preloadAuth]);
+
+  return (
+    <>
+      <Header displayName={displayName} wasFinishedAuthChecking={wasFinishedAuthChecking} />
+      {children}
+      <Footer />
+    </>
+  );
 };
 
-const MainLayout: React.FC<Props> = ({ children }: Props): JSX.Element => (
-  <>
-    <Header authData={{ userName: 'Илья Сигидин' }} />
-    {children}
-    <Footer />
-  </>
-);
+const mapState = (state: State) => ({
+  displayName: state.authReducer.displayName,
+  wasFinishedAuthChecking: state.authReducer.wasFinishedAuthChecking,
+});
 
-export default MainLayout;
+const mapDispatch = {
+  preloadAuth: preloadAuthData,
+};
+
+export default connect(mapState, mapDispatch)(MainLayout);

@@ -12,7 +12,12 @@ import * as S from './CardsPage.styles';
 
 const CardsPage: React.FC = (): JSX.Element => {
   const [rooms, setRooms] = useState([]);
+
   Promise.resolve(roomsList).then((data) => setRooms(data));
+
+  // eslint-disable-next-line no-console
+  const mockAuthFunction = () => console.log('Auth is done!');
+
   return (
     <S.Container>
       <SearchRoomForm />
@@ -35,7 +40,14 @@ const CardsPage: React.FC = (): JSX.Element => {
         <RegistrationForm />
       </S.RegistrationFormWrapper>
       <S.AccountEntryWrapper>
-        <AccountEntry />
+        <AccountEntry
+          isAuthSuccess={false}
+          isAuthProcessNow={false}
+          authStatusText=""
+          requestToAuthWithGoogle={mockAuthFunction}
+          requestToAuth={mockAuthFunction}
+          breakAuthProcess={mockAuthFunction}
+        />
       </S.AccountEntryWrapper>
       <S.ForgotPasswordWrapper>
         <ForgotPasswordForm />
