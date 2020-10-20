@@ -34,7 +34,7 @@ const AccountInfo = ({ user }: Props): JSX.Element => {
     <S.EditAccountInfo>
       {accountData.map((elem) => (
         <S.Item key={elem.title}>
-          <EditAccountInfo {...elem} />
+          <EditAccountInfo user={user} {...elem} />
         </S.Item>
       ))}
     </S.EditAccountInfo>

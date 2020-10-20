@@ -4,6 +4,10 @@ import createSagaMiddleware, { SagaMiddleware, SagaIterator } from 'redux-saga';
 
 import { reduxEntry as AuthReduxEntry } from './Auth';
 import { AuthActions, AuthState } from './Auth/types';
+import { emailUpdateReduxEntry } from './EmailUpdate';
+import { EmailUpdateActions, EmailUpdateState } from './EmailUpdate/types';
+import { usernameUpdateReduxEntry } from './UsernameUpdate';
+import { UsernameUpdateActions, UsernameUpdateState } from './UsernameUpdate/types';
 
 const bindMiddleware = (middleware) => {
   if (process.env.NODE_ENV !== 'production') {
@@ -12,14 +16,21 @@ const bindMiddleware = (middleware) => {
   return applyMiddleware(...middleware);
 };
 
-type AvailableReducers = (state: AuthState, action: AuthActions) => AuthState;
+type AvailableReducers = (
+  state: AuthState | UsernameUpdateState | EmailUpdateState,
+  action: AuthActions | UsernameUpdateActions | EmailUpdateActions,
+) => AuthState | UsernameUpdateState | EmailUpdateState;
 
 type SharedReduxEntries = {
   reducers: Record<string, AvailableReducers>;
   sagas: Array<() => SagaIterator>;
 }[];
 
-const sharedReduxEntries: SharedReduxEntries = [AuthReduxEntry];
+const sharedReduxEntries: SharedReduxEntries = [
+  AuthReduxEntry,
+  usernameUpdateReduxEntry,
+  emailUpdateReduxEntry,
+];
 
 let preparedReducers: Record<string, AvailableReducers> = {};
 

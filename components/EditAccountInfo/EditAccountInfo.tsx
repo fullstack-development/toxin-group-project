@@ -10,20 +10,21 @@ import EditUserName from './components/EditUserName/EditUserName';
 import * as S from './EditAccountInfo.styles';
 
 type Props = {
+  user: firebase.User;
   title: string;
   component: string;
   value?: string;
   description?: string;
 };
 
-const Item = ({ title, component, value, description = '' }: Props): JSX.Element => {
+const Item = ({ user, title, component, value, description = '' }: Props): JSX.Element => {
   const [isEdit, setEdit] = useState(false);
 
   const mapEditingСomponents = {
-    userName: <EditUserName displayName={value} />,
+    userName: <EditUserName user={user} displayName={value} />,
     gender: <EditGender gender={value} />,
     birthday: <EditBirthday birthday={value} />,
-    email: <EditEmail email={value} />,
+    email: <EditEmail user={user} email={value} />,
     subsctiption: <EditSubscription specialOffers={false} />,
   };
 

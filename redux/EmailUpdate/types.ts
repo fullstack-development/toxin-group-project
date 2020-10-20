@@ -1,0 +1,30 @@
+import { EMAIL_UPDATE_PROCESS, EMAIL_UPDATE_SUCCESS, EMAIL_UPDATE_FAILED } from './constans';
+
+type Action<Z, T> = {
+  type: Z;
+  payload?: T;
+};
+
+type SentData = {
+  user: firebase.User;
+  email: string;
+};
+
+type EmailUpdateState = {
+  statusText: string;
+};
+
+type EmailUpdateRequest = Action<typeof EMAIL_UPDATE_PROCESS, SentData>;
+type EmailUpdateSuccess = Action<typeof EMAIL_UPDATE_SUCCESS, SentData>;
+type EmailUpdateFailed = Action<typeof EMAIL_UPDATE_FAILED, SentData>;
+
+type EmailUpdateActions = EmailUpdateRequest | EmailUpdateSuccess | EmailUpdateFailed;
+
+export type {
+  SentData,
+  EmailUpdateState,
+  EmailUpdateRequest,
+  EmailUpdateSuccess,
+  EmailUpdateFailed,
+  EmailUpdateActions,
+};

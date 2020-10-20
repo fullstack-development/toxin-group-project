@@ -10,7 +10,9 @@ const Title = styled.h3`
   margin-bottom: 0.5rem;
 `;
 
-const Content = styled.div``;
+const Content = styled.div`
+  position: relative;
+`;
 
 const Description = styled.p`
   margin-bottom: 1rem;
