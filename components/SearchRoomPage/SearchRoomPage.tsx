@@ -4,24 +4,25 @@ import { connect } from 'react-redux';
 import { Filters } from 'api/entities/types';
 import MainLayout from 'components/MainLayout/MainLayout';
 import Preloader from 'components/Preloader/Preloader';
-import { Props as RoomProps } from 'components/Room/Room.types';
 import RoomFilter from 'components/RoomFilter/RoomFilter';
 import Rooms from 'components/Rooms/Rooms';
 import defaultFilters from 'components/SearchRoomForm/defaultFilters';
-import { requestRooms as getRooms } from 'redux/Booking/redux/actions';
+import { requestRooms } from 'redux/Booking/redux/actions';
 
 import * as S from './SearchRoomPage.styles';
+import { Props, State } from './SearchRoomPage.types';
 import getPassedFilters from './utils/getPassedFilters';
 
-type Props = {
-  isRequestSuccessful: boolean;
-  isPending: boolean;
-  rooms: RoomProps[];
-  error: Error;
-  requestRooms: (options: Filters) => void;
+const mapState = (state: State): Props => state.bookingReducer;
+
+const mapDispatch = {
+  getRooms: requestRooms,
 };
 
-const SearchRoomPage: React.FC<Props> = ({ rooms, requestRooms }: Props) => {
+const SearchRoomPage: React.FC<Props> = ({
+  rooms,
+  getRooms,
+}: ReturnType<typeof mapState> & typeof mapDispatch) => {
   const router = useRouter();
 
   const passedParams = getPassedFilters(router.asPath);
@@ -36,7 +37,7 @@ const SearchRoomPage: React.FC<Props> = ({ rooms, requestRooms }: Props) => {
   const loadRooms = (options?: Filters) => {
     const currentFilters = options ? { ...filters, ...options } : { ...filters };
     router.push(`/search-room?&values=${JSON.stringify(currentFilters)}`);
-    requestRooms(currentFilters);
+    getRooms(currentFilters);
   };
 
   return (
@@ -58,12 +59,6 @@ const SearchRoomPage: React.FC<Props> = ({ rooms, requestRooms }: Props) => {
       </S.Container>
     </MainLayout>
   );
-};
-
-const mapState = (state) => state.bookingReducer;
-
-const mapDispatch = {
-  requestRooms: getRooms,
 };
 
 export default connect(mapState, mapDispatch)(SearchRoomPage);
