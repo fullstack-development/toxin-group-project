@@ -1,70 +1,25 @@
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
-import { useState } from 'react';
 import { Field, Form } from 'react-final-form';
 
-import Api from 'api/api';
 import { ProfileData } from 'api/entities/types';
-import { UserCredential } from 'api/types';
 import Input from 'components/Input/Input';
 import RadioButton from 'components/RadioButton/RadioButton';
+import { RegistrationProps } from 'components/RegistrationPage/Registration.types';
 import Toggle from 'components/Toggle/Toggle';
 import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators';
 
 import * as S from './RegistrationForm.styles';
 
-type SnackbarState = {
-  isOpen: boolean;
-  text: string;
-  theme?: string;
-};
-
-const RegistrationForm: React.FC = (): JSX.Element => {
-  const [snackBarStatus, changeSnackBarStatus] = useState<SnackbarState>({
-    isOpen: false,
-    text: '',
-    theme: '',
-  });
-
-  const handleSnackBarClose = () =>
-    changeSnackBarStatus({
-      ...snackBarStatus,
-      isOpen: false,
-    });
-
+const RegistrationForm: React.FC<RegistrationProps> = ({
+  isSuccess,
+  isProcess,
+  statusText,
+  requestRegistration,
+  stopRegistration,
+}: RegistrationProps): JSX.Element => {
   const handleRegistrationFormSubmit = (formData: ProfileData): void => {
-    const { email, password, name, surname, birthDate, gender, receiveOffers } = formData;
-
-    Api.auth
-      .signUp({
-        email,
-        password,
-        name,
-        surname,
-        birthDate,
-        gender,
-        receiveOffers,
-      })
-      .then(({ user }: UserCredential) => {
-        if (user) {
-          changeSnackBarStatus({
-            isOpen: true,
-            text: 'Аккаунт успешно зарегестрирован, перенаправление на страницу авторизации...',
-            theme: 'success',
-          });
-
-          setTimeout(() => {
-            window.location.href = '/auth';
-          }, 3000);
-        }
-      })
-      .catch((error) => {
-        changeSnackBarStatus({
-          isOpen: true,
-          text: error.message,
-          theme: 'error',
-        });
-      });
+    requestRegistration(formData);
   };
 
   return (
@@ -130,36 +85,29 @@ const RegistrationForm: React.FC = (): JSX.Element => {
             <S.SpecialOfferWrapper>
               <Toggle name="receiveOffers" label="Получать спецпредложения" />
             </S.SpecialOfferWrapper>
-            <S.RegisterButton isFlat isLink={false} isFilled>
+            <S.RegisterButton isFlat isFilled>
               Перейти к оплате
             </S.RegisterButton>
             <S.AlreadyRegisterWrapper>
               <span>Уже есть аккаунт на Toxin</span>
-              <S.EntryButton isLink href="/auth">
-                Войти
-              </S.EntryButton>
+              <S.EntryButton href="/auth">Войти</S.EntryButton>
             </S.AlreadyRegisterWrapper>
           </S.RegistrationForm>
         )}
       />
       <S.CustomSnackBar
-        theme={snackBarStatus.theme}
+        theme={isSuccess ? 'success' : 'failed'}
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'left',
         }}
-        open={snackBarStatus.isOpen}
+        open={!isSuccess && isProcess}
         autoHideDuration={3000}
-        onClose={handleSnackBarClose}
-        message={snackBarStatus.text}
+        onClose={stopRegistration}
+        message={statusText}
         action={
           <>
-            <IconButton
-              size="medium"
-              aria-label="close"
-              color="inherit"
-              onClick={handleSnackBarClose}
-            >
+            <IconButton size="medium" aria-label="close" color="inherit" onClick={stopRegistration}>
               <CloseIcon fontSize="small" />
             </IconButton>
           </>
