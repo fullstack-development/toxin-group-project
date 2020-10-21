@@ -14,11 +14,11 @@ const emailUpdateReducer = (
       return state;
     case EMAIL_UPDATE_SUCCESS:
       return {
-        statusText: `Подтверждение адреса электронной почты было отправлено на ${action.payload.email}`,
+        statusText: action.payload,
       };
     case EMAIL_UPDATE_FAILED:
       return {
-        statusText: 'Произошла ошибка повторите попытку позже',
+        statusText: action.payload,
       };
     default:
       return state;

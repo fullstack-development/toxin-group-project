@@ -12,13 +12,36 @@ function* startEmailUpdateProcess({ payload }) {
 
     yield put({
       type: EMAIL_UPDATE_SUCCESS,
-      payload,
+      payload: `Подтверждение адреса электронной почты было отправлено на ${email}`,
     });
   } catch (err) {
-    yield put({
-      type: EMAIL_UPDATE_FAILED,
-      payload,
-    });
+    switch (err.code) {
+      case 'auth/invalid-email':
+        yield put({
+          type: EMAIL_UPDATE_FAILED,
+          payload: 'Указан недействительный адрес электронной почты',
+        });
+        break;
+      case 'auth/email-already-in-use':
+        yield put({
+          type: EMAIL_UPDATE_FAILED,
+          payload: 'Указанный адрес электронной почты уже используется',
+        });
+        break;
+      case 'auth/requires-recent-login':
+        yield put({
+          type: EMAIL_UPDATE_FAILED,
+          payload:
+            'Для изменения адреса электронной почты пройдите пройдите повторную аутентификацию',
+        });
+        break;
+      default: {
+        yield put({
+          type: EMAIL_UPDATE_FAILED,
+          payload: 'Произошла ошибка повторите попытку позже',
+        });
+      }
+    }
   }
 }
 

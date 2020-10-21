@@ -15,8 +15,8 @@ type EmailUpdateState = {
 };
 
 type EmailUpdateRequest = Action<typeof EMAIL_UPDATE_PROCESS, SentData>;
-type EmailUpdateSuccess = Action<typeof EMAIL_UPDATE_SUCCESS, SentData>;
-type EmailUpdateFailed = Action<typeof EMAIL_UPDATE_FAILED, SentData>;
+type EmailUpdateSuccess = Action<typeof EMAIL_UPDATE_SUCCESS, string>;
+type EmailUpdateFailed = Action<typeof EMAIL_UPDATE_FAILED, string>;
 
 type EmailUpdateActions = EmailUpdateRequest | EmailUpdateSuccess | EmailUpdateFailed;
 
