@@ -10,19 +10,18 @@ import defaultFilters from 'components/SearchRoomForm/defaultFilters';
 import { requestRooms } from 'redux/Booking/redux/actions';
 
 import * as S from './SearchRoomPage.styles';
-import { Props, State } from './SearchRoomPage.types';
+import { MapStateProps, State } from './SearchRoomPage.types';
 import getPassedFilters from './utils/getPassedFilters';
 
-const mapState = (state: State): Props => state.bookingReducer;
+const mapState = (state: State): MapStateProps => state.bookingReducer;
 
 const mapDispatch = {
   getRooms: requestRooms,
 };
 
-const SearchRoomPage: React.FC<ReturnType<typeof mapState> & typeof mapDispatch> = ({
-  rooms,
-  getRooms,
-}: ReturnType<typeof mapState> & typeof mapDispatch) => {
+type Props = ReturnType<typeof mapState> & typeof mapDispatch;
+
+const SearchRoomPage: React.FC<Props> = ({ rooms, getRooms }: Props) => {
   const router = useRouter();
 
   const passedParams = getPassedFilters(router.asPath);

@@ -1,6 +1,6 @@
 import { Props as RoomProps } from 'components/Room/Room.types';
 
-export type Props = {
+export type MapStateProps = {
   isRequestSuccessful: boolean;
   isPending: boolean;
   rooms: RoomProps[];
@@ -8,5 +8,5 @@ export type Props = {
 };
 
 export type State = {
-  bookingReducer: Props;
+  bookingReducer: MapStateProps;
 };
