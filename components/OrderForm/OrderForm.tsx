@@ -1,4 +1,4 @@
-import { Form } from 'react-final-form';
+import { Field, Form } from 'react-final-form';
 
 import ArrowButton from 'components/ArrowButton/ArrowButton';
 import Dropdown from 'components/Dropdown/Dropdown';
@@ -43,6 +43,8 @@ const defaultMaxGuests: MaxGuests = {
 
 const possibleExtraGuestsCount = 1;
 
+const noFeeGuestsCount = 1;
+
 const dropdownOptions: DropdownProps = {
   placeholder: 'Сколько гостей',
   name: 'guests',
@@ -73,15 +75,11 @@ const dropdownOptions: DropdownProps = {
     },
   ],
 };
-const noFeeGuestsCount = 1;
 
-const getResultPrice = (prices: PriceItem[], currency: string): string =>
-  formatNumber(
-    Math.max(
-      prices.reduce((acc, el) => acc + el.price, 0),
-      0,
-    ),
-    currency,
+const getResultPrice = (prices: PriceItem[]): number =>
+  Math.max(
+    prices.reduce((acc, el) => acc + el.price, 0),
+    0,
   );
 
 const getDaysDifference = (dates: { from: number; to: number }) =>
@@ -102,7 +100,7 @@ const OrderForm: React.FC<Props> = ({
     <Form
       onSubmit={handleFormSubmit}
       render={({ handleSubmit, values }) => {
-        const dates: { from: number; to: number } = values['order-form'];
+        const dates: { from: number; to: number } = values.booked;
         const daysDifference = (dates && getDaysDifference(dates)) || 0;
         const guests: {
           adults: number;
@@ -112,7 +110,8 @@ const OrderForm: React.FC<Props> = ({
           babies: values.guests.babies,
         };
 
-        const totalGuestsCount = (guests && guests.adults) || 0;
+        const totalGuestsCount = guests ? guests.adults : 0;
+        const billableGuests = Math.max(totalGuestsCount - noFeeGuestsCount, 0);
 
         const prices = [
           {
@@ -121,7 +120,7 @@ const OrderForm: React.FC<Props> = ({
           },
           {
             label: 'Сбор за гостей, начиная со второго',
-            price: breakfastPricePerGuest * Math.max(totalGuestsCount - noFeeGuestsCount, 0),
+            price: breakfastPricePerGuest * billableGuests,
           },
           ...(priceItems || defaultPrices),
         ];
@@ -153,7 +152,7 @@ const OrderForm: React.FC<Props> = ({
                 type="double"
                 dateFromLabelText="Прибытие"
                 dateToLabelText="Выезд"
-                name="order-form"
+                name="booked"
               />
             </S.Datepicker>
             <S.Dropdown>
@@ -166,7 +165,17 @@ const OrderForm: React.FC<Props> = ({
             <S.ResultWrapper>
               Итого
               <S.Dots />
-              <S.ResultPrice>{getResultPrice(prices, currency)}</S.ResultPrice>
+              <S.ResultPrice>
+                <Field
+                  type="hidden"
+                  render={({ input }) => {
+                    setTimeout(() => input.onChange(getResultPrice(prices)));
+                    return <input {...input} />;
+                  }}
+                  name="totalPrice"
+                />
+                {formatNumber(getResultPrice(prices), currency)}
+              </S.ResultPrice>
             </S.ResultWrapper>
             <ArrowButton type="submit">Забронировать</ArrowButton>
           </form>
