@@ -11,7 +11,8 @@ type Action<Z, T> = {
 
 type SentData = {
   user: firebase.User;
-  password: string;
+  currentPassword: string;
+  newPassword: string;
 };
 
 type PasswordUpdateState = {
@@ -19,8 +20,8 @@ type PasswordUpdateState = {
 };
 
 type PasswordUpdateRequest = Action<typeof PASSWORD_UPDATE_PROCESS, SentData>;
-type PasswordUpdateSuccess = Action<typeof PASSWORD_UPDATE_SUCCESS, SentData>;
-type PasswordUpdateFailed = Action<typeof PASSWORD_UPDATE_FAILED, SentData>;
+type PasswordUpdateSuccess = Action<typeof PASSWORD_UPDATE_SUCCESS, string>;
+type PasswordUpdateFailed = Action<typeof PASSWORD_UPDATE_FAILED, string>;
 
 type PasswordUpdateActions = PasswordUpdateRequest | PasswordUpdateSuccess | PasswordUpdateFailed;
 

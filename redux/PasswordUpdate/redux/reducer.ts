@@ -18,11 +18,11 @@ const passwordUpdateReducer = (
       return state;
     case PASSWORD_UPDATE_SUCCESS:
       return {
-        statusText: 'Пароль был успешно изменен',
+        statusText: action.payload,
       };
     case PASSWORD_UPDATE_FAILED:
       return {
-        statusText: 'Произошла ошибка',
+        statusText: action.payload,
       };
     default:
       return state;

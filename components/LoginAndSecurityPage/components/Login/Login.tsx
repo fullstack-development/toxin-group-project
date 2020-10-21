@@ -13,7 +13,7 @@ import * as S from './Login.styles';
 type Props = {
   user: firebase.User;
   statusText: string;
-  startPasswordUpdateProcess: ({ user, password }) => void;
+  startPasswordUpdateProcess: ({ user, currentPassword, newPassword }) => void;
 };
 
 type State = {
@@ -22,8 +22,9 @@ type State = {
 };
 
 type FormData = {
-  password: string;
-  passwordConfirm: string;
+  currentPassword: string;
+  newPassword: string;
+  confirmPassword: string;
 };
 
 const Login = ({ user, statusText, startPasswordUpdateProcess }: Props): JSX.Element => {
@@ -35,9 +36,9 @@ const Login = ({ user, statusText, startPasswordUpdateProcess }: Props): JSX.Ele
     setPopUpMessage(statusText);
   }, [statusText]);
 
-  const onSubmit = ({ password, passwordConfirm }: FormData) => {
-    if (password === passwordConfirm) {
-      startPasswordUpdateProcess({ user, password });
+  const onSubmit = ({ currentPassword, newPassword, confirmPassword }: FormData) => {
+    if (newPassword === confirmPassword) {
+      startPasswordUpdateProcess({ user, currentPassword, newPassword });
     } else {
       setPopUpMessage('Пароли не совпадают');
     }
@@ -66,17 +67,22 @@ const Login = ({ user, statusText, startPasswordUpdateProcess }: Props): JSX.Ele
               <>
                 <form onSubmit={handleSubmit}>
                   <Field
-                    name="password"
+                    name="currentPassword"
+                    type="password"
+                    render={({ input }) => <Input {...input} label="Текущий пароль" />}
+                  />
+                  <Field
+                    name="newPassword"
                     type="password"
                     render={({ input }) => <Input {...input} label="Новый пароль" />}
                   />
                   <Field
-                    name="passwordConfirm"
+                    name="confirmPassword"
                     type="password"
                     render={({ input }) => <Input {...input} label="Подтвердите пароль" />}
                   />
                   <Button isFlat isFilled>
-                    Сохранить
+                    Обновить пароль
                   </Button>
                 </form>
                 {isVisiblePopUp && popUpMessage && (

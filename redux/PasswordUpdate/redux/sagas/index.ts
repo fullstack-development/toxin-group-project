@@ -1,3 +1,4 @@
+import firebase from 'firebase';
 import { SagaIterator } from 'redux-saga';
 import { put, takeLatest } from 'redux-saga/effects';
 
@@ -9,17 +10,22 @@ import {
 
 function* startPasswordUpdateProcess({ payload }) {
   try {
-    const { user, password } = payload;
+    const { user, currentPassword, newPassword } = payload;
+    const credential = firebase.auth.EmailAuthProvider.credential(user.email, currentPassword);
 
-    yield user.updatePassword(password);
+    yield user.reauthenticateWithCredential(credential);
+    yield user.updatePassword(newPassword);
     yield put({
       type: PASSWORD_UPDATE_SUCCESS,
-      payload,
+      payload: 'Пароль успешно изменен',
     });
   } catch (err) {
     yield put({
       type: PASSWORD_UPDATE_FAILED,
-      payload,
+      payload:
+        err.code === 'auth/wrong-password'
+          ? 'Неверный пароль'
+          : 'Произошла ошибка повторите попытку позже',
     });
   }
 }

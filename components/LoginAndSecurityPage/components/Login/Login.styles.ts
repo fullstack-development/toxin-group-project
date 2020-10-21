@@ -27,7 +27,6 @@ const Header = styled.header`
 `;
 
 const Subtitle = styled.h3`
-  ${titles.h3};
   margin-bottom: 0.5rem;
 `;
 
