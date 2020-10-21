@@ -31,30 +31,6 @@ class Apartments {
   public async load(id: Apartment['id']): Promise<Apartment> {
     return this.actions.getDocument(this.reference, String(id));
   }
-
-  // @boundMethod
-  // public async updateAll(data) {
-  //   function getRandomInt(min, max) {
-  //     min = Math.ceil(min);
-  //     max = Math.floor(max);
-  //     return Math.floor(Math.random() * (max - min + 1)) + min;
-  //   }
-  //   // const result = [];
-  //   const keyValues = await this.reference.get();
-  //   keyValues.forEach((snapshot) => {
-  //     const { id } = snapshot.data();
-  //     // const { beds } = snapshot.data().amenities;
-  //     // const id = 26;
-  //     this.update(id, {
-  //       // overcrowdingPrice: 700,
-  //       // maxGuestsCount: {
-  //       //   adults: beds + 1,
-  //       //   babies: getRandomInt(1, 3),
-  //       // },
-  //       breakfastPricePerGuest: 300,
-  //     });
-  //   });
-  // }
 }
 
 export default Apartments;
