@@ -1,5 +1,6 @@
 import Benefits from 'components/Benefits/Benefits';
 import BulletList from 'components/BulletList/BulletList';
+import OrderForm from 'components/OrderForm/OrderForm';
 import Reviews from 'components/Reviews/Reviews';
 import RoomImpression from 'components/RoomImpression/RoomImpression';
 
@@ -49,7 +50,15 @@ const MainContent = (): JSX.Element => (
           прибытия вы получите полный возврат за вычетом сбора за услуги.
         </S.CancellationTermsText>
       </S.CancellationTerms>
-      <S.OrderFormWrapper></S.OrderFormWrapper>
+      <S.OrderFormWrapper>
+        <OrderForm
+          overcrowdingPrice={700}
+          breakfastPricePerGuest={300}
+          roomNumber={888}
+          roomType="люкс"
+          roomPrice={9990}
+        />
+      </S.OrderFormWrapper>
     </S.Details>
   </S.MainContent>
 );

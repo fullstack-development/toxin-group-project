@@ -1,14 +1,11 @@
-import Footer from 'components/Footer/Footer';
-import Header from 'components/Header/Header';
+import MainLayout from 'components/MainLayout/MainLayout';
 
 import MainContent from './components/MainContent/MainContent';
 
 const RoomDetailsPage: React.FC = (): JSX.Element => (
-  <>
-    <Header authData={{ userName: 'Юлий Цезарь', pathToProfile: '/mock-user' }} />
+  <MainLayout>
     <MainContent />
-    <Footer />
-  </>
+  </MainLayout>
 );
 
 export default RoomDetailsPage;
