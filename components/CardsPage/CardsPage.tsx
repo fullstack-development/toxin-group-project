@@ -18,6 +18,8 @@ const CardsPage: React.FC = (): JSX.Element => {
   // eslint-disable-next-line no-console
   const mockAuthFunction = () => console.log('Auth is done!');
 
+  console.log(rooms);
+
   return (
     <S.Container>
       <SearchRoomForm />
