@@ -24,6 +24,7 @@ type Options = {
 };
 export type Apartment = {
   id: number;
+  overcrowdingPrice: number;
   price: number;
   rating: number;
   reviews: number;
