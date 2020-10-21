@@ -43,7 +43,6 @@ class FormElementsPage extends React.Component {
           initialValues={{ gender: 'female', 'toggle-on': true, range: [5000, 10000] }}
           render={(values) => (
             <S.Content>
-              <S.HiddenTitle>Элементы формы</S.HiddenTitle>
               <div>
                 <S.InputWrapper>
                   <Field

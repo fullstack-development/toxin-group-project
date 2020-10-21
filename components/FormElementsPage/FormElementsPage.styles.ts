@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { breakpointDown } from 'shared/styles/break-points';
-import { container, titles, visuallyHidden } from 'shared/styles/mixins';
+import { container, titles } from 'shared/styles/mixins';
 
 const FormElementsPage = styled.div`
   ${container}
@@ -42,10 +42,6 @@ const Content = styled.form`
     gap: 2rem;
     align-items: center;
   }
-`;
-
-const HiddenTitle = styled.h1`
-  ${visuallyHidden}
 `;
 
 const Title = styled.h3`
@@ -149,7 +145,6 @@ export {
   Logo,
   Content,
   Title,
-  HiddenTitle,
   FormElementsPage,
   ButtonWrapper,
   TextButtonWrapper,
