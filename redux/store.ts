@@ -6,6 +6,8 @@ import { reduxEntry as AuthReduxEntry } from './Auth';
 import { AuthActions, AuthState } from './Auth/types';
 import { emailUpdateReduxEntry } from './EmailUpdate';
 import { EmailUpdateActions, EmailUpdateState } from './EmailUpdate/types';
+import { passwordUpdateReduxEntry } from './PasswordUpdate';
+import { PasswrodUpdateActions, PasswordUpdateState } from './PasswordUpdate/types';
 import { usernameUpdateReduxEntry } from './UsernameUpdate';
 import { UsernameUpdateActions, UsernameUpdateState } from './UsernameUpdate/types';
 
@@ -17,9 +19,9 @@ const bindMiddleware = (middleware) => {
 };
 
 type AvailableReducers = (
-  state: AuthState | UsernameUpdateState | EmailUpdateState,
-  action: AuthActions | UsernameUpdateActions | EmailUpdateActions,
-) => AuthState | UsernameUpdateState | EmailUpdateState;
+  state: AuthState | UsernameUpdateState | EmailUpdateState | PasswordUpdateState,
+  action: AuthActions | UsernameUpdateActions | EmailUpdateActions | PasswordUpdateActions,
+) => AuthState | UsernameUpdateState | EmailUpdateState | PasswordUpdateState;
 
 type SharedReduxEntries = {
   reducers: Record<string, AvailableReducers>;
@@ -30,6 +32,7 @@ const sharedReduxEntries: SharedReduxEntries = [
   AuthReduxEntry,
   usernameUpdateReduxEntry,
   emailUpdateReduxEntry,
+  passwordUpdateReduxEntry,
 ];
 
 let preparedReducers: Record<string, AvailableReducers> = {};

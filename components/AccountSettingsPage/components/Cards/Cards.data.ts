@@ -13,11 +13,16 @@ const cardsData: CardsData[] = [
   {
     title: 'Вход и безопасность',
     description: 'Обновите пароль и обеспечьте безопасность аккаунта',
-    href: './personal-info',
+    href: './account-settings/login-and-security',
   },
   {
     title: 'Уведомления',
     description: 'Выберите настройки уведомлений и способы связи',
+    href: './personal-info',
+  },
+  {
+    title: 'Забронированные номера',
+    description: 'Просмотрите все номера которые были забронированы вами',
     href: './personal-info',
   },
 ];

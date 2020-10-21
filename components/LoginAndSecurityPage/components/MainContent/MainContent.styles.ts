@@ -13,7 +13,7 @@ const MainContent = styled.main`
 
 const Title = styled.h1`
   ${titles.h1};
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 `;
 
 export { MainContent, Title };

@@ -4,10 +4,9 @@ import { connect } from 'react-redux';
 
 import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';
+import PopUp from 'components/PopUp/PopUp';
 import { emailUpdateRequest } from 'redux/EmailUpdate/redux/actions';
 import { emailValidator } from 'shared/helpers/validators';
-
-import PopUp from '../PopUp/PopUp';
 
 type Props = {
   user: firebase.User;
