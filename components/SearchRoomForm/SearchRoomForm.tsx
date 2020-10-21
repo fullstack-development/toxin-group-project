@@ -42,6 +42,7 @@ const testRoomFilter = {
 };
 const getRooms = (e) => {
   e.preventDefault;
+  // eslint-disable-next-line no-console
   api.booking.filterRooms(testRoomFilter).then((data) => console.log(data));
 };
 
@@ -75,7 +76,7 @@ const SearchRoomForm: React.FC<SearchRoomFormProps> = ({ onSubmit }: SearchRoomF
                 items={guestsItems}
               />
             </S.DropdownWrapper>
-            <ArrowButton isLink={false} isFilled type="button" onClick={getRooms}>
+            <ArrowButton isFilled type="button" onClick={getRooms}>
               Подобрать номер
             </ArrowButton>
           </form>

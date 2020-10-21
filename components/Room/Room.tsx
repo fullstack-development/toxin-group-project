@@ -1,23 +1,25 @@
 import StarRating from 'components/StarRating/StarRating';
+import formatNumber from 'shared/helpers/formatNumber';
 
 import ImageGallery from './components/ImageGallery/ImageGallery';
 import * as S from './Room.styles';
-import { RoomProps } from './Room.types';
+import { Props } from './Room.types';
 
-const Room: React.FC<RoomProps> = ({
+const Room: React.FC<Props> = ({
   price,
   number,
   reviewCount,
   href,
   reviewsHref,
+  imagePaths,
   roomType,
   measure = 'в сутки',
   reviewMeasure = 'отзывов',
-  currency = '₽',
+  currency,
   rating = 5,
-}: RoomProps) => (
+}: Props) => (
   <S.Room>
-    <ImageGallery />
+    <ImageGallery imagePaths={imagePaths} />
     <S.Info>
       <S.Container>
         <S.RoomNumber>
@@ -28,7 +30,7 @@ const Room: React.FC<RoomProps> = ({
           {roomType && <S.RoomType>{roomType}</S.RoomType>}
         </S.RoomNumber>
         <S.Price>
-          {`${price}${currency}`}
+          {formatNumber(price, currency)}
           <S.Measure>{measure}</S.Measure>
         </S.Price>
       </S.Container>
