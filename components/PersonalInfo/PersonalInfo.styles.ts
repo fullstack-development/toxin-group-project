@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-const PerconalInfo = styled.ul`
+const PersonalInfo = styled.ul`
   width: 100%;
   list-style: none;
 `;
@@ -15,4 +15,4 @@ const Item = styled.li`
     `;
   }}
 `;
-export { PerconalInfo, Item };
+export { PersonalInfo, Item };

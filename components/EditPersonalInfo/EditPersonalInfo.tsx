@@ -7,7 +7,7 @@ import EditEmail from './components/EditEmail/EditEmail';
 import EditGender from './components/EditGender/EditGender';
 import EditSubscription from './components/EditSubscription/EditSubscription';
 import EditUserName from './components/EditUserName/EditUserName';
-import * as S from './EditPerconalInfo.styles';
+import * as S from './EditPersonalInfo.styles';
 
 type Props = {
   user: firebase.User;
@@ -17,21 +17,15 @@ type Props = {
   description?: string;
 };
 
-const EditPerconalInfo = ({
-  user,
-  title,
-  component,
-  value,
-  description = '',
-}: Props): JSX.Element => {
+const EditPersonalInfo = ({ user, title, component, value, description }: Props): JSX.Element => {
   const [isEdit, setEdit] = useState(false);
 
-  const mapEditingСomponents = {
+  const mapEditingComponents = {
     userName: <EditUserName user={user} displayName={value} />,
     gender: <EditGender gender={value} />,
     birthday: <EditBirthday birthday={value} />,
     email: <EditEmail user={user} email={value} />,
-    subsctiption: <EditSubscription specialOffers={false} />,
+    subscription: <EditSubscription specialOffers={false} />,
   };
 
   return (
@@ -44,10 +38,15 @@ const EditPerconalInfo = ({
       </S.Header>
       <S.Content>
         <S.Description>{isEdit ? description : value}</S.Description>
-        {isEdit && mapEditingСomponents[component]}
+        {isEdit && mapEditingComponents[component]}
       </S.Content>
     </>
   );
 };
 
-export default EditPerconalInfo;
+EditPersonalInfo.defaultProps = {
+  value: '',
+  description: '',
+};
+
+export default EditPersonalInfo;

@@ -5,7 +5,7 @@ type Data = {
   description?: string;
 };
 
-const data: Data[] = [
+const data: Required<Data[]> = [
   {
     title: 'Имя по документам',
     component: 'userName',
@@ -29,7 +29,7 @@ const data: Data[] = [
   },
   {
     title: 'Подписки',
-    component: 'subsctiption',
+    component: 'subscription',
     value: 'Доступные виды подписок',
     description: 'Выберите какие новостные рассылки вы хотели бы получать',
   },

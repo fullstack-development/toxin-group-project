@@ -1,4 +1,4 @@
-import PersonalInfoPage from 'components/PerconalInfoPage/PerconalInfoPage';
+import PersonalInfoPage from 'components/PersonalInfoPage/PersonalInfoPage';
 
 const PersonalInfo = (): JSX.Element => <PersonalInfoPage />;
 

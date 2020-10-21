@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import EditPerconalInfo from '../EditPerconalInfo/EditPerconalInfo';
-import { data } from './PerconalInfo.data';
-import * as S from './PerconalInfo.styles';
+import EditPersonalInfo from '../EditPersonalInfo/EditPersonalInfo';
+import { data } from './PersonalInfo.data';
+import * as S from './PersonalInfo.styles';
 
 type Props = {
   user: firebase.User;
@@ -13,7 +13,7 @@ type State = {
   authReducer: Props;
 };
 
-const PerconalInfo = ({ user }: Props): JSX.Element => {
+const PersonalInfo = ({ user }: Props): JSX.Element => {
   const [userData, setUserData] = useState({ userName: '', email: '' });
 
   useEffect(() => {
@@ -31,13 +31,13 @@ const PerconalInfo = ({ user }: Props): JSX.Element => {
   });
 
   return (
-    <S.PerconalInfo>
+    <S.PersonalInfo>
       {accountData.map((elem) => (
         <S.Item key={elem.title}>
-          <EditPerconalInfo user={user} {...elem} />
+          <EditPersonalInfo user={user} {...elem} />
         </S.Item>
       ))}
-    </S.PerconalInfo>
+    </S.PersonalInfo>
   );
 };
 
@@ -45,4 +45,4 @@ const mapState = (state: State) => ({
   user: state.authReducer.user,
 });
 
-export default connect(mapState)(PerconalInfo);
+export default connect(mapState)(PersonalInfo);
