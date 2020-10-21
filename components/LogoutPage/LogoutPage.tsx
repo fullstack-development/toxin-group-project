@@ -26,9 +26,9 @@ const LogoutPage: React.FC<Props> = ({
   useEffect(() => {
     checkAuthBeforePageLoaded();
 
-    if (isAuthSuccess) {
-      startLogoutProcess();
-      router.push('/');
+    if (typeof isAuthSuccess === 'boolean') {
+      if (isAuthSuccess) startLogoutProcess();
+      else router.push('/');
     }
   });
 

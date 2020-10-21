@@ -34,6 +34,7 @@ const authReducer = (state: AuthState = initialState, action: AuthActions): Auth
       return {
         ...state,
         wasFinishedAuthChecking: true,
+        isAuthSuccess: false,
       };
     case AUTH_SUCCESS:
       return {
