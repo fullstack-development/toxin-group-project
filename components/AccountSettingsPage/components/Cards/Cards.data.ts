@@ -18,12 +18,12 @@ const cardsData: CardsData[] = [
   {
     title: 'Уведомления',
     description: 'Выберите настройки уведомлений и способы связи',
-    href: './personal-info',
+    href: './account-settings/notifications',
   },
   {
     title: 'Забронированные номера',
     description: 'Просмотрите все номера которые были забронированы вами',
-    href: './personal-info',
+    href: './account-settings',
   },
 ];
 

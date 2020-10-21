@@ -25,7 +25,6 @@ const EditPersonalInfo = ({ user, title, component, value, description }: Props)
     gender: <EditGender gender={value} />,
     birthday: <EditBirthday birthday={value} />,
     email: <EditEmail user={user} email={value} />,
-    subscription: <EditSubscription specialOffers={false} />,
   };
 
   return (

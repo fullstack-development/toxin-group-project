@@ -25,9 +25,7 @@ const PersonalInfo = ({ user }: Props): JSX.Element => {
   }, [user]);
 
   const accountData = data.map((elem) => {
-    // eslint-disable-next-line no-param-reassign
-    if (userData[elem.component]) elem.value = userData[elem.component];
-    return elem;
+    return { ...elem, value: userData[elem.component] };
   });
 
   return (

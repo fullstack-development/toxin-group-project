@@ -1,7 +1,6 @@
 type Data = {
   title: string;
   component: string;
-  value?: string;
   description?: string;
 };
 
@@ -14,24 +13,16 @@ const data: Required<Data[]> = [
   },
   {
     title: 'Пол',
-    value: 'Мужчина',
     component: 'gender',
   },
   {
     title: 'Дата рождения',
     component: 'birthday',
-    value: '15.07.1995',
   },
   {
     title: 'Электронный адрес',
     component: 'email',
     description: 'Укажите адрес, к которому у вас есть постоянный доступ.',
-  },
-  {
-    title: 'Подписки',
-    component: 'subscription',
-    value: 'Доступные виды подписок',
-    description: 'Выберите какие новостные рассылки вы хотели бы получать',
   },
 ];
 
