@@ -63,6 +63,31 @@ class Booking {
   }
 
   @boundMethod
+  public async getBookedByUser(email: string): Promise<Apartment[]> {
+    const bookedRooms: BookingData[] = [];
+
+    await this.booked
+      .where('booked_by', '==', email)
+      .get()
+      .then((snapshot) => {
+        snapshot.forEach((item) => bookedRooms.push(item.data() as BookingData));
+      });
+
+    const result: Apartment[] = [];
+
+    bookedRooms.forEach((bookedRoom) => {
+      this.apartments
+        .where('id', '==', bookedRoom.apartmentId)
+        .get()
+        .then((snapshot) => {
+          snapshot.forEach((item) => result.push(item.data() as Apartment));
+        });
+    });
+
+    return result;
+  }
+
+  @boundMethod
   public async getBooked(from: Date, to: Date): Promise<number[]> {
     function addIDsToStorage(snapshot: QuerySnapshot, storage: BookingData[]) {
       snapshot.forEach((doc) => storage.push(doc.data() as BookingData));

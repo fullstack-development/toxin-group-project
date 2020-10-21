@@ -26,6 +26,7 @@ export type AuthState = {
   authStatusText: string;
   displayName: null | string;
   wasFinishedAuthChecking: boolean;
+  userEmail: string;
 };
 
 export type PreloadAuthData = Action<typeof PRELOAD_AUTH_DATA, null>;

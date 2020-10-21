@@ -1,15 +1,16 @@
 import { useState } from 'react';
+import { connect } from 'react-redux';
 
+import Api from 'api/api';
 import MainLayout from 'components/MainLayout/MainLayout';
 import Rooms from 'components/Rooms/Rooms';
-import roomsList from 'components/Rooms/Rooms.data';
 
 import * as S from './SelectedRoomsPage.style';
 
 const SelectedRoomsPage: React.FC = (): JSX.Element => {
   const [rooms, setRooms] = useState([]);
 
-  Promise.resolve(roomsList).then((data) => setRooms(data));
+  Api.booking.getBookedByUser('s').then((data) => setRooms(data));
 
   return (
     <MainLayout>
@@ -27,4 +28,12 @@ const SelectedRoomsPage: React.FC = (): JSX.Element => {
   );
 };
 
-export default SelectedRoomsPage;
+const mapState = (state) => ({
+
+});
+
+const mapDispatch = {
+
+}
+
+export default connect(mapState, mapDispatch)(SelectedRoomsPage);

@@ -14,6 +14,7 @@ const initialState: AuthState = {
   wasFinishedAuthChecking: false,
   displayName: null,
   authStatusText: '',
+  userEmail: null,
 };
 
 const authReducer = (state: AuthState = initialState, action: AuthActions): AuthState => {
@@ -40,6 +41,7 @@ const authReducer = (state: AuthState = initialState, action: AuthActions): Auth
         isAuthProcessNow: false,
         isAuthSuccess: true,
         wasFinishedAuthChecking: true,
+        userEmail: action.payload.email,
         authStatusText: 'Вы успешно авторизованы!',
         displayName: action.payload.displayName || 'Аноним',
       };

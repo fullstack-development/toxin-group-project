@@ -59,4 +59,5 @@ export type BookingData = {
   apartmentId: number;
   from: Date;
   to: Date;
+  reservationBy?: string;
 };

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { breakpointDown } from 'shared/styles/break-points';
 import { titles } from 'shared/styles/mixins';
@@ -51,23 +51,29 @@ const SubTitle = styled.h2`
 `;
 
 const RoomsListContainer = styled.div`
-  max-height: 40rem;
-  overflow-y: scroll;
-  padding: 1rem;
+  ${(props) => {
+    const { colors } = props.theme;
 
-  &::-webkit-scrollbar {
-    opacity: 0;
-    width: 0.35rem;
-  }
+    return css`
+      max-height: 40rem;
+      overflow-y: scroll;
+      padding: 1rem;
 
-  &::-webkit-scrollbar-track-piece {
-    background-color: red;
-  }
+      &::-webkit-scrollbar {
+        opacity: 0;
+        width: 0.35rem;
+      }
 
-  &::-webkit-scrollbar-thumb {
-    border-radius: 0.3rem;
-    background-color: green;
-  }
+      &::-webkit-scrollbar-track-piece {
+        background-color: ${colors.basicLightest};
+      }
+
+      &::-webkit-scrollbar-thumb {
+        border-radius: 0.3rem;
+        background-color: ${colors.basicDark};
+      }
+    `;
+  }}
 `;
 
 export { Container, Title, SubTitle, RoomsListContainer };
