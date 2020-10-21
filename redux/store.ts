@@ -7,7 +7,7 @@ import { AuthActions, AuthState } from './Auth/types';
 import { emailUpdateReduxEntry } from './EmailUpdate';
 import { EmailUpdateActions, EmailUpdateState } from './EmailUpdate/types';
 import { passwordUpdateReduxEntry } from './PasswordUpdate';
-import { PasswrodUpdateActions, PasswordUpdateState } from './PasswordUpdate/types';
+import { PasswordUpdateActions, PasswordUpdateState } from './PasswordUpdate/types';
 import { usernameUpdateReduxEntry } from './UsernameUpdate';
 import { UsernameUpdateActions, UsernameUpdateState } from './UsernameUpdate/types';
 

@@ -1,8 +1,6 @@
 import { SagaIterator } from 'redux-saga';
 import { put, takeLatest } from 'redux-saga/effects';
 
-import api from 'api/api';
-
 import {
   PASSWORD_UPDATE_PROCESS,
   PASSWORD_UPDATE_SUCCESS,
