@@ -1,4 +1,4 @@
-import { EMAIL_UPDATE_PROCESS, EMAIL_UPDATE_SUCCESS, EMAIL_UPDATE_FAILED } from '../constans';
+import { EMAIL_UPDATE_PROCESS, EMAIL_UPDATE_SUCCESS, EMAIL_UPDATE_FAILED } from '../constants';
 import { EmailUpdateActions, EmailUpdateState } from '../types';
 
 const initialState: EmailUpdateState = {

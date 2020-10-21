@@ -1,4 +1,4 @@
-import { EMAIL_UPDATE_PROCESS } from '../constans';
+import { EMAIL_UPDATE_PROCESS } from '../constants';
 import { SentData, EmailUpdateRequest } from '../types';
 
 const emailUpdateRequest = (data: SentData): EmailUpdateRequest => ({

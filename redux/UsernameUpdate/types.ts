@@ -2,7 +2,7 @@ import {
   USERNAME_UPDATE_PROCESS,
   USERNAME_UPDATE_SUCCESS,
   USERNAME_UPDATE_FAILED,
-} from './constans';
+} from './constants';
 
 type Action<Z, T> = {
   type: Z;
