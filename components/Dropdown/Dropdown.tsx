@@ -20,8 +20,6 @@ const Dropdown: React.FC<DropdownProps> = ({
   items = [{ title: 'No items passed' }],
   enableControls = true,
 }: DropdownProps) => {
-  // const {min:groupMin, max: groupMax} = groups[item.groupName]
-
   const initialState = items.map((item) => {
     const group =
       item.groupName && groups.find((currentGroup) => currentGroup.name === item.groupName);
@@ -112,81 +110,85 @@ const Dropdown: React.FC<DropdownProps> = ({
 
   return (
     <Field name={name}>
-      {({ input }) => (
-        <S.Dropdown ref={dropdown}>
-          <S.Result isOpen={isOpen} onClick={handleResultBarClick} type="button">
-            {resultString}
-          </S.Result>
-          <S.ListContainer isOpen={isOpen}>
-            <S.List>
-              {dropdownState.map((el) => {
-                const { title, min, max, currentValue, inputName, groupName } = el;
+      {({ input }) => {
+        const updateFieldValue = (state: typeof dropdownState) => {
+          const result = {};
+          state.forEach((item) => {
+            result[item.inputName] = item.currentValue;
+            setTimeout(() => input.onChange(result));
+          });
+        };
+        const apply = () => {
+          handleApplyClick();
+          updateFieldValue(dropdownState);
+        };
+        return (
+          <S.Dropdown ref={dropdown}>
+            <S.Result isOpen={isOpen} onClick={handleResultBarClick} type="button">
+              {resultString}
+            </S.Result>
+            <S.ListContainer isOpen={isOpen}>
+              <S.List>
+                {dropdownState.map((el) => {
+                  const { title, min, max, currentValue, inputName, groupName } = el;
 
-                const currentMax = groupName
-                  ? currentValue +
-                    groups.find((group) => group.name === groupName).max -
-                    dropdownState
-                      .filter((item) => item.groupName === groupName)
-                      .reduce((acc, element) => acc + element.currentValue, 0)
-                  : max;
+                  const currentMax = groupName
+                    ? currentValue +
+                      groups.find((group) => group.name === groupName).max -
+                      dropdownState
+                        .filter((item) => item.groupName === groupName)
+                        .reduce((acc, element) => acc + element.currentValue, 0)
+                    : max;
 
-                const updateFieldValue = (state: typeof dropdownState) => {
-                  const result = {};
-                  state.forEach((item) => {
-                    result[item.inputName] = item.currentValue;
-                    setTimeout(() => input.onChange(result));
-                  });
-                };
+                  const makeButtonHandler = (
+                    increment: number,
+                  ): ((e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => void) => (
+                    e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>,
+                  ): void => {
+                    setDropdownState((prevState) => {
+                      const state = [...prevState];
+                      const elementToUpdate = state.find((item) => item.title === title);
+                      elementToUpdate.currentValue += increment;
+                      return state;
+                    });
+                  };
+                  const handleIncrementClick = makeButtonHandler(1);
+                  const handleDecrementClick = makeButtonHandler(-1);
 
-                const makeButtonHandler = (
-                  increment: number,
-                ): ((e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => void) => (
-                  e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>,
-                ): void => {
-                  setDropdownState((prevState) => {
-                    const state = [...prevState];
-                    const elementToUpdate = state.find((item) => item.title === title);
-                    elementToUpdate.currentValue += increment;
-                    updateFieldValue(state);
-                    return state;
-                  });
-                };
-                const handleIncrementClick = makeButtonHandler(1);
-                const handleDecrementClick = makeButtonHandler(-1);
-
-                return (
-                  <S.Item key={title}>
-                    <S.ItemTitle>{title}</S.ItemTitle>
-                    <NumberInput
-                      currentValue={currentValue}
-                      min={min}
-                      max={currentMax}
-                      onIncrement={handleIncrementClick}
-                      onDecrement={handleDecrementClick}
-                      name={inputName}
-                    />
-                  </S.Item>
-                );
-              })}
-            </S.List>
-            {enableControls && (
-              <S.Controls>
-                <S.ResetButton
-                  type="button"
-                  isSecondary
-                  isHidden={isResetHidden}
-                  onClick={handleResetClick}
-                >
-                  Очистить
-                </S.ResetButton>
-                <ApplyButton type="button" onClick={handleApplyClick}>
-                  Применить
-                </ApplyButton>
-              </S.Controls>
-            )}
-          </S.ListContainer>
-        </S.Dropdown>
-      )}
+                  return (
+                    <S.Item key={title}>
+                      <S.ItemTitle>{title}</S.ItemTitle>
+                      <NumberInput
+                        currentValue={currentValue}
+                        min={min}
+                        max={currentMax}
+                        onIncrement={handleIncrementClick}
+                        onDecrement={handleDecrementClick}
+                        name={inputName}
+                      />
+                    </S.Item>
+                  );
+                })}
+              </S.List>
+              {enableControls && (
+                <S.Controls>
+                  <S.ResetButton
+                    type="button"
+                    isSecondary
+                    isHidden={isResetHidden}
+                    onClick={handleResetClick}
+                  >
+                    Очистить
+                  </S.ResetButton>
+                  <ApplyButton type="button" onClick={apply}>
+                    Применить
+                  </ApplyButton>
+                </S.Controls>
+              )}
+            </S.ListContainer>
+          </S.Dropdown>
+        );
+      }}
     </Field>
   );
 };

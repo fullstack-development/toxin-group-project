@@ -8,11 +8,13 @@ import { formatNumber } from 'shared/helpers';
 
 import PriceList from './components/PriceList/PriceList';
 import * as S from './OrderForm.styles';
-import { Item as PriceItem } from './OrderForm.types';
+import { Item as PriceItem, MaxGuests } from './OrderForm.types';
 
 type Props = {
   roomNumber: number;
   roomPrice: number;
+  breakfastPricePerGuest: number;
+  overcrowdingPrice: number;
   priceItems?: PriceItem[];
   roomType?: string;
   currency?: string;
@@ -25,7 +27,7 @@ const handleFormSubmit = (values) => {
 };
 const oneDay = 24 * 60 * 60 * 1000;
 
-const defaultOptions: PriceItem[] = [
+const defaultPrices: PriceItem[] = [
   {
     label: `Сбор за услуги: скидка 2${'\u00A0'}179₽`,
     price: -2179,
@@ -34,10 +36,12 @@ const defaultOptions: PriceItem[] = [
   { label: 'Сбор за дополнительные услуги', price: 300, tooltip: 'Подсказка 2' },
 ];
 
-const maxGuests = {
+const defaultMaxGuests: MaxGuests = {
   adults: 3,
   babies: 2,
 };
+
+const possibleExtraGuestsCount = 1;
 
 const dropdownOptions: DropdownProps = {
   placeholder: 'Сколько гостей',
@@ -46,7 +50,7 @@ const dropdownOptions: DropdownProps = {
   groups: [
     {
       name: 'guests',
-      max: maxGuests.adults,
+      max: defaultMaxGuests.adults + possibleExtraGuestsCount,
       wordForms: ['гость', 'гостя', 'гостей'],
     },
   ],
@@ -64,13 +68,12 @@ const dropdownOptions: DropdownProps = {
     {
       title: 'младенцы',
       inputName: 'babies',
-      max: maxGuests.babies,
+      max: defaultMaxGuests.babies,
       wordForms: ['младенец', 'младенца', 'младенцев'],
     },
   ],
 };
-
-const overcrowdingPrice = 700;
+const noFeeGuestsCount = 1;
 
 const getResultPrice = (prices: PriceItem[], currency: string): string =>
   formatNumber(
@@ -89,6 +92,8 @@ const OrderForm: React.FC<Props> = ({
   roomType,
   roomPrice,
   priceItems,
+  overcrowdingPrice,
+  breakfastPricePerGuest,
   currency = 'RUB',
   measure = 'в сутки',
 }: Props) => (
@@ -99,13 +104,37 @@ const OrderForm: React.FC<Props> = ({
       render={({ handleSubmit, values }) => {
         const dates: { from: number; to: number } = values['order-form'];
         const daysDifference = (dates && getDaysDifference(dates)) || 0;
+        const guests: {
+          adults: number;
+          babies: number;
+        } = values.guests && {
+          adults: values.guests.adults + values.guests.children,
+          babies: values.guests.babies,
+        };
+
+        const totalGuestsCount = (guests && guests.adults) || 0;
+
         const prices = [
           {
             label: `${formatNumber(roomPrice, currency)} х ${daysDifference} суток`,
             price: roomPrice * daysDifference,
           },
-          ...(priceItems || defaultOptions),
+          {
+            label: 'Сбор за гостей, начиная со второго',
+            price: breakfastPricePerGuest * Math.max(totalGuestsCount - noFeeGuestsCount, 0),
+          },
+          ...(priceItems || defaultPrices),
         ];
+
+        const extraGuestFee = {
+          label: 'Оплата за дополнительного гостя',
+          price: overcrowdingPrice,
+        };
+
+        if (totalGuestsCount > defaultMaxGuests.adults) {
+          prices.push(extraGuestFee);
+        }
+
         return (
           <form onSubmit={handleSubmit}>
             <S.RoomInfo>

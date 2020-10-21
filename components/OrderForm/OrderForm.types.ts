@@ -8,3 +8,8 @@ export type Item = {
 export type Props = {
   items: Item[];
 };
+
+export type MaxGuests = {
+  adults: number;
+  babies: number;
+};

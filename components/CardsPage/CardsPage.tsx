@@ -18,11 +18,6 @@ const CardsPage: React.FC = (): JSX.Element => {
 
   Promise.resolve(roomsList).then((data) => setRooms(data));
 
-  const loadRoom = async () => {
-    const room = await api.apartments.updateAll();
-    console.log(room);
-  };
-
   // eslint-disable-next-line no-console
   const mockAuthFunction = () => console.log('Auth is done!');
 
@@ -30,7 +25,13 @@ const CardsPage: React.FC = (): JSX.Element => {
     <S.Container>
       {/* <SearchRoomForm />
       <Button onClick={loadRoom}>Загрузка</Button> */}
-      <OrderForm roomNumber={888} roomType="люкс" roomPrice={9990} />
+      <OrderForm
+        overcrowdingPrice={700}
+        breakfastPricePerGuest={300}
+        roomNumber={888}
+        roomType="люкс"
+        roomPrice={9990}
+      />
       {/* <S.RoomsWrapper>
         <Rooms rooms={rooms} />
       </S.RoomsWrapper>
