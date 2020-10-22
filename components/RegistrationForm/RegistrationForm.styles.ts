@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import Snackbar from '@material-ui/core/Snackbar';
+import styled, { css } from 'styled-components';
 
 import ArrowButton from 'components/ArrowButton/ArrowButton';
 import Button from 'components/Button/Button';
@@ -9,20 +10,27 @@ type EntryButton = {
   href: string;
 };
 
+type SnackBar = {
+  theme: 'success' | 'error';
+};
+
 const RegistrationForm = styled.form`
-  max-width: 27.1429rem;
-  box-shadow: 0 0 1.7857rem rgba(0, 0, 0, 0.2);
-  padding: 3rem 2.1rem 2rem 2.1rem;
-  border: 0.0714rem solid rgba(0, 0, 0, 0.12);
-  border-radius: 0.2857rem;
+  ${(props) => {
+    const { colors } = props.theme;
 
-  & > div {
-    padding: 0;
+    return css`
+      max-width: 27.1429rem;
+      box-shadow: 0 0 1.7857rem rgba(0, 0, 0, 0.2);
+      padding: 3rem 2.1rem 2rem 2.1rem;
+      border: 0.0714rem solid rgba(0, 0, 0, 0.12);
+      border-radius: 0.2857rem;
+      background: ${colors.defaultBackground};
 
-    & > p {
-      bottom: -0.5rem;
-    }
-  }
+      & > div {
+        padding: 0;
+      }
+    `;
+  }}
 `;
 
 const Title = styled.h2`
@@ -49,7 +57,7 @@ const RadioButtonsWrapper = styled.div`
 `;
 
 const AccountEntryWrapper = styled.div`
-  margin-top: 0.7rem;
+  margin-top: 1.2rem;
 
   & > div {
     padding: 0;
@@ -73,6 +81,18 @@ const SpecialOfferWrapper = styled.div`
   }
 `;
 
+const CustomSnackBar = styled(Snackbar)<SnackBar>`
+  ${(props) => {
+    const { theme } = props;
+
+    return css`
+      & > div {
+        background: ${theme === 'success' ? 'green' : 'darkred'};
+      }
+    `;
+  }}
+`;
+
 export {
   RegistrationForm,
   Title,
@@ -83,4 +103,5 @@ export {
   RegisterButton,
   EntryButton,
   SpecialOfferWrapper,
+  CustomSnackBar,
 };
