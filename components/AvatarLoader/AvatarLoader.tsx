@@ -17,17 +17,17 @@ const AvatarLoader: React.FC<Props> = ({ name }: Props) => {
   const [isEditorVisible, setEditorVisible] = useState(false);
   const [image, setImage] = useState(null);
   const [zoomSize, setZoomSize] = useState(1);
-  let canvas;
+  let canvas: AvatarEditor;
 
-  const setEditorRef = (editor) => {
+  const setEditorRef = (editor: AvatarEditor) => {
     canvas = editor;
   };
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files[0];
     const reader = new FileReader();
 
-    reader.onload = (event) => {
+    reader.onload = (event: ProgressEvent<FileReader>) => {
       setImage(event.target.result);
       setEditorVisible(true);
     };
@@ -35,7 +35,7 @@ const AvatarLoader: React.FC<Props> = ({ name }: Props) => {
     reader.readAsDataURL(file);
   };
 
-  const handleSliderChange = (_, value) => {
+  const handleSliderChange = (_e: React.ChangeEvent<HTMLInputElement>, value: number) => {
     setZoomSize(value);
   };
 
