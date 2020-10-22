@@ -1,9 +1,10 @@
 import { applyMiddleware, createStore, combineReducers } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import createSagaMiddleware, { SagaMiddleware, SagaIterator } from 'redux-saga';
+import createSagaMiddleware, { SagaMiddleware } from 'redux-saga';
 
 import { reduxEntry as AuthReduxEntry } from './Auth';
-import { AuthActions, AuthState } from './Auth/types';
+import { reduxEntry as RegistrationReduxEntry } from './Registration';
+import { SharedReduxEntries, AvailableReducers } from './store.types';
 
 const bindMiddleware = (middleware) => {
   if (process.env.NODE_ENV !== 'production') {
@@ -12,14 +13,7 @@ const bindMiddleware = (middleware) => {
   return applyMiddleware(...middleware);
 };
 
-type AvailableReducers = (state: AuthState, action: AuthActions) => AuthState;
-
-type SharedReduxEntries = {
-  reducers: Record<string, AvailableReducers>;
-  sagas: Array<() => SagaIterator>;
-}[];
-
-const sharedReduxEntries: SharedReduxEntries = [AuthReduxEntry];
+const sharedReduxEntries: SharedReduxEntries = [RegistrationReduxEntry, AuthReduxEntry];
 
 let preparedReducers: Record<string, AvailableReducers> = {};
 

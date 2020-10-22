@@ -47,7 +47,13 @@ const CardsPage: React.FC = (): JSX.Element => {
         <SearchRoomForm />
       </S.SearchRoomFormWrapper>
       <S.RegistrationFormWrapper>
-        <RegistrationForm />
+        <RegistrationForm
+          isSuccess
+          isProcess
+          statusText=""
+          requestRegistration={mockAuthFunction}
+          stopRegistration={mockAuthFunction}
+        />
       </S.RegistrationFormWrapper>
       <S.AccountEntryWrapper>
         <AccountEntry
