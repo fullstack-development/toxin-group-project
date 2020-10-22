@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import AccountEntry from 'components/AccountEntry/AccountEntry';
 import ForgotPasswordForm from 'components/ForgotPasswordForm/ForgotPasswordForm';
+import OrderForm from 'components/OrderForm/OrderForm';
 import RegistrationForm from 'components/RegistrationForm/RegistrationForm';
 import Room from 'components/Room/Room';
 import Rooms from 'components/Rooms/Rooms';
@@ -21,6 +22,13 @@ const CardsPage: React.FC = (): JSX.Element => {
   return (
     <S.Container>
       <SearchRoomForm />
+      <OrderForm
+        overcrowdingPrice={700}
+        breakfastPricePerGuest={300}
+        roomNumber={888}
+        roomType="люкс"
+        roomPrice={9990}
+      />
       <S.RoomsWrapper>
         <Rooms rooms={rooms} />
       </S.RoomsWrapper>
@@ -37,7 +45,13 @@ const CardsPage: React.FC = (): JSX.Element => {
         <SearchRoomForm />
       </S.SearchRoomFormWrapper>
       <S.RegistrationFormWrapper>
-        <RegistrationForm />
+        <RegistrationForm
+          isSuccess
+          isProcess
+          statusText=""
+          requestRegistration={mockAuthFunction}
+          stopRegistration={mockAuthFunction}
+        />
       </S.RegistrationFormWrapper>
       <S.AccountEntryWrapper>
         <AccountEntry
