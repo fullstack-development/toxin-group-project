@@ -1,11 +1,11 @@
 import { applyMiddleware, createStore, combineReducers } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import createSagaMiddleware, { SagaIterator, SagaMiddleware } from 'redux-saga';
+import createSagaMiddleware, { SagaMiddleware } from 'redux-saga';
 
 import { reduxEntry as AuthReduxEntry } from './Auth';
-import { AuthActions, AuthState } from './Auth/types';
 import { passwordResetReduxEntry } from './PasswordReset';
-import { PasswordResetActions, PasswordResetState } from './PasswordReset/types';
+import { reduxEntry as RegistrationReduxEntry } from './Registration';
+import { SharedReduxEntries, AvailableReducers } from './store.types';
 
 const bindMiddleware = (middleware) => {
   if (process.env.NODE_ENV !== 'production') {
@@ -14,17 +14,11 @@ const bindMiddleware = (middleware) => {
   return applyMiddleware(...middleware);
 };
 
-type AvailableReducers = (
-  state: AuthState | PasswordResetState,
-  action: AuthActions | PasswordResetActions,
-) => AuthState | PasswordResetState;
-
-type SharedReduxEntries = {
-  reducers: Record<string, AvailableReducers>;
-  sagas: Array<() => SagaIterator>;
-}[];
-
-const sharedReduxEntries: SharedReduxEntries = [AuthReduxEntry, passwordResetReduxEntry];
+const sharedReduxEntries: SharedReduxEntries = [
+  AuthReduxEntry,
+  passwordResetReduxEntry,
+  RegistrationReduxEntry,
+];
 
 let preparedReducers: Record<string, AvailableReducers> = {};
 
