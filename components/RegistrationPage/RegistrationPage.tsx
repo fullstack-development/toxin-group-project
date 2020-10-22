@@ -5,17 +5,27 @@ import { connect } from 'react-redux';
 import MainLayout from 'components/MainLayout/MainLayout';
 import { preloadAuthData } from 'redux/Auth/redux/actions';
 import { startRegistration, cancelRegistration } from 'redux/Registration/redux/actions';
+import { AppState } from 'redux/store.types';
 
 import MainContent from './components/MainContent/MainContent';
-import { State, MapState } from './Registration.types';
 
-type Props = {
-  wasFinishedAuthChecking: boolean;
-  isAuthSuccess: boolean;
-  checkAuthBeforePageLoaded: () => void;
-} & MapState;
+const mapState = (state: AppState) => ({
+  isSuccess: state.RegistrationReducer.isSuccess,
+  isProcess: state.RegistrationReducer.isProcess,
+  statusText: state.RegistrationReducer.statusText,
+  wasFinishedAuthChecking: state.authReducer.wasFinishedAuthChecking,
+  isAuthSuccess: state.authReducer.isAuthSuccess,
+});
 
-const RegistrationPage: React.FC<MapState & Props> = ({
+const mapDispatch = {
+  requestRegistration: startRegistration,
+  stopRegistration: cancelRegistration,
+  checkAuthBeforePageLoaded: preloadAuthData,
+};
+
+export type PropsConnected = ReturnType<typeof mapState> & typeof mapDispatch;
+
+const RegistrationPage: React.FC<PropsConnected> = ({
   isSuccess,
   isProcess,
   statusText,
@@ -24,7 +34,7 @@ const RegistrationPage: React.FC<MapState & Props> = ({
   requestRegistration,
   stopRegistration,
   checkAuthBeforePageLoaded,
-}: Props): JSX.Element => {
+}: PropsConnected): JSX.Element => {
   const router = useRouter();
 
   useEffect(() => {
@@ -47,20 +57,6 @@ const RegistrationPage: React.FC<MapState & Props> = ({
       </MainLayout>
     )
   );
-};
-
-const mapState = (state: State) => ({
-  isSuccess: state.RegistrationReducer.isSuccess,
-  isProcess: state.RegistrationReducer.isProcess,
-  statusText: state.RegistrationReducer.statusText,
-  wasFinishedAuthChecking: state.authReducer.wasFinishedAuthChecking,
-  isAuthSuccess: state.authReducer.isAuthSuccess,
-});
-
-const mapDispatch = {
-  requestRegistration: startRegistration,
-  stopRegistration: cancelRegistration,
-  checkAuthBeforePageLoaded: preloadAuthData,
 };
 
 export default connect(mapState, mapDispatch)(RegistrationPage);

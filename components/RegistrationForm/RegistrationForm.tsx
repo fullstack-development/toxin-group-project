@@ -2,24 +2,21 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import { Field, Form } from 'react-final-form';
 
-import { ProfileData } from 'api/entities/types';
 import Input from 'components/Input/Input';
 import RadioButton from 'components/RadioButton/RadioButton';
-import { MapState } from 'components/RegistrationPage/Registration.types';
 import Toggle from 'components/Toggle/Toggle';
 import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators';
 
 import * as S from './RegistrationForm.styles';
+import { RegistrationFormProps, FormData } from './RegistrationForm.types';
 
-type FormData = ProfileData;
-
-const RegistrationForm: React.FC<MapState> = ({
+const RegistrationForm: React.FC<RegistrationFormProps> = ({
   isSuccess,
   isProcess,
   statusText,
   requestRegistration,
   stopRegistration,
-}: MapState): JSX.Element => {
+}: RegistrationFormProps): JSX.Element => {
   const handleRegistrationFormSubmit = (formData: FormData): void => {
     requestRegistration(formData);
   };

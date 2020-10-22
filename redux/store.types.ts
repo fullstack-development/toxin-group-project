@@ -6,6 +6,11 @@ import { RegistrationActions, RegistrationState } from './Registration/types';
 export type AvailableStates = AuthState | RegistrationState;
 export type AvailableActions = AuthActions | RegistrationActions;
 
+export type AppState = {
+  authReducer: AuthState;
+  RegistrationReducer: RegistrationState;
+};
+
 export type AvailableReducers = (
   state: AvailableStates,
   action: AvailableActions,

@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { breakpointDown } from 'shared/styles/break-points';
+
 const Container = styled.div`
   background: url('./img/auth-register.jpg') bottom / cover no-repeat;
   min-height: 40rem;
@@ -9,16 +11,16 @@ const Container = styled.div`
     margin: 0 auto;
   }
 
-  @media (max-width: 1200px) {
+  @media ${breakpointDown('xl')} {
     min-height: 30rem;
     padding: 1rem;
   }
 
-  @media (max-width: 992px) {
+  @media ${breakpointDown('lg')} {
     min-height: 20rem;
   }
 
-  @media (max-width: 576px) {
+  @media ${breakpointDown('sm')} {
     min-height: 10rem;
     padding: 0.7rem;
   }
