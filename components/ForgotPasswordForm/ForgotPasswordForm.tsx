@@ -3,24 +3,26 @@ import { Form, Field } from 'react-final-form';
 import { connect } from 'react-redux';
 
 import { passwordResetRequest } from 'redux/PasswordReset/redux/actions';
+import { AppState } from 'redux/store.types';
 import { emailValidator } from 'shared/helpers/validators/emailValidator';
 
 import PopUp from './components/PopUp/PopUp';
 import * as S from './ForgotPasswordForm.style';
 
-type Props = {
-  isCompleted: boolean;
-  statusText: string;
-  startPasswordResetProcess: (email: string) => void;
-};
+const mapState = (state: AppState) => ({
+  isCompleted: state.passwordResetReducer.isCompleted,
+  statusText: state.passwordResetReducer.statusText,
+});
 
-type State = {
-  passwordResetReducer: Props;
+const mapDispatch = {
+  startPasswordResetProcess: passwordResetRequest,
 };
 
 type FormData = {
   email: string;
 };
+
+type Props = ReturnType<typeof mapState> & typeof mapDispatch;
 
 const ForgotPasswordForm = ({
   isCompleted,
@@ -71,15 +73,6 @@ const ForgotPasswordForm = ({
       )}
     </S.ForgotPasswordForm>
   );
-};
-
-const mapState = (state: State) => ({
-  isCompleted: state.passwordResetReducer.isCompleted,
-  statusText: state.passwordResetReducer.statusText,
-});
-
-const mapDispatch = {
-  startPasswordResetProcess: passwordResetRequest,
 };
 
 export default connect(mapState, mapDispatch)(ForgotPasswordForm);
