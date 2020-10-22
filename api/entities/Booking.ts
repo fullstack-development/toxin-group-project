@@ -63,28 +63,44 @@ class Booking {
   }
 
   @boundMethod
-  public async getBookedByUser(email: string): Promise<Apartment[]> {
+  public async getBookedHistory(
+    email: string,
+  ): Promise<{ bookingData: BookingData; room: Apartment }[]> {
     const bookedRooms: BookingData[] = [];
 
     await this.booked
-      .where('booked_by', '==', email)
+      .where('reservationBy', '==', email)
       .get()
       .then((snapshot) => {
         snapshot.forEach((item) => bookedRooms.push(item.data() as BookingData));
       });
 
-    const result: Apartment[] = [];
+    const result = {
+      current: [],
+      history: [],
+    };
 
     bookedRooms.forEach((bookedRoom) => {
-      this.apartments
-        .where('id', '==', bookedRoom.apartmentId)
-        .get()
-        .then((snapshot) => {
-          snapshot.forEach((item) => result.push(item.data() as Apartment));
-        });
+      console.log('hey', bookedRoom);
+      // this.apartments
+      //   .where('id', '==', bookedRoom.apartmentId)
+      //   .get()
+      //   .then((snapshot) => {
+      //     snapshot.forEach((item) =>
+      //       result.push({
+      //         bookingData: bookedRoom,
+      //         room: item.data() as Apartment,
+      //       }),
+      //     );
+      //   });
     });
 
     return result;
+  }
+
+  @boundMethod
+  public async setBookedByUser(selectedBooking: BookingData): any {
+    this.booked.doc(String(Date.now())).set(selectedBooking);
   }
 
   @boundMethod

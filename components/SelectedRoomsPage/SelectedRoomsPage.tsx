@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import Api from 'api/api';
@@ -10,7 +10,18 @@ import * as S from './SelectedRoomsPage.style';
 const SelectedRoomsPage: React.FC = (): JSX.Element => {
   const [rooms, setRooms] = useState([]);
 
-  Api.booking.getBookedByUser('s').then((data) => setRooms(data));
+  useEffect(() => {
+    // Api.booking.getBookedHistory('s').then((data) => setRooms(data));
+  }, []);
+  // Api.booking
+  //   .setBookedByUser({
+  //     apartmentId: 28,
+  //     from: new Date(Date.now() - 160000000),
+  //     to: new Date(Date.now() - 140000000),
+  //     reservationBy: 's',
+  //   })
+  //   .then((result) => console.log('вродь забронировали', result));
+  console.log(rooms);
 
   return (
     <MainLayout>
@@ -28,12 +39,8 @@ const SelectedRoomsPage: React.FC = (): JSX.Element => {
   );
 };
 
-const mapState = (state) => ({
+const mapState = (state) => ({});
 
-});
-
-const mapDispatch = {
-
-}
+const mapDispatch = {};
 
 export default connect(mapState, mapDispatch)(SelectedRoomsPage);
