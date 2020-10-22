@@ -4,14 +4,15 @@ import OrderForm from 'components/OrderForm/OrderForm';
 import Reviews from 'components/Reviews/Reviews';
 import RoomImpression from 'components/RoomImpression/RoomImpression';
 
+import { roomImagesPreview } from './MainContent.data';
 import * as S from './MainContent.styles';
 
 const MainContent = (): JSX.Element => (
   <S.MainContent>
     <S.RoomImages>
-      <img src="/img/room-image-preview-1.jpg" alt="Представление номера" />
-      <img src="/img/room-image-preview-2.jpg" alt="Представление номера" />
-      <img src="/img/room-image-preview-3.jpg" alt="Представление номера" />
+      {roomImagesPreview.map(({ src, alt }) => (
+        <img key={src} src={src} alt={alt} />
+      ))}
     </S.RoomImages>
     <S.Details>
       <S.Benefits>
