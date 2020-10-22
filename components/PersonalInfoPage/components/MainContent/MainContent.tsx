@@ -1,5 +1,4 @@
-import PersonalInfo from 'components/PersonalInfo/PersonalInfo';
-
+import PersonalInfo from '../PersonalInfo/PersonalInfo';
 import * as S from './MainContent.styles';
 
 const MainContent = (): JSX.Element => (
