@@ -7,8 +7,7 @@ function* startEmailUpdateProcess({ payload }) {
   try {
     const { user, email } = payload;
 
-    yield user.updateEmail(email);
-    yield user.sendEmailVerification();
+    yield user.verifyBeforeUpdateEmail(email);
 
     yield put({
       type: EMAIL_UPDATE_SUCCESS,
