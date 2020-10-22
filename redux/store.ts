@@ -1,6 +1,6 @@
 import { applyMiddleware, createStore, combineReducers } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import createSagaMiddleware, { SagaMiddleware, SagaIterator } from 'redux-saga';
+import createSagaMiddleware, { SagaIterator, SagaMiddleware } from 'redux-saga';
 
 import { reduxEntry as AuthReduxEntry } from './Auth';
 import { AuthActions, AuthState } from './Auth/types';
