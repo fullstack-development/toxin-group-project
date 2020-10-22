@@ -15,7 +15,9 @@ const passwordUpdateReducer = (
 ): PasswordUpdateState => {
   switch (action.type) {
     case PASSWORD_UPDATE_PROCESS:
-      return state;
+      return {
+        statusText: '',
+      };
     case PASSWORD_UPDATE_SUCCESS:
       return {
         statusText: action.payload,
