@@ -53,17 +53,17 @@ const PasswordUpdate = ({
             <Field
               name="currentPassword"
               type="password"
-              render={({ input }) => <Input {...input} label="Текущий пароль" />}
+              render={({ input }) => <Input {...input} minLength={6} label="Текущий пароль" />}
             />
             <Field
               name="newPassword"
               type="password"
-              render={({ input }) => <Input {...input} label="Новый пароль" />}
+              render={({ input }) => <Input {...input} minLength={6} label="Новый пароль" />}
             />
             <Field
               name="confirmPassword"
               type="password"
-              render={({ input }) => <Input {...input} label="Подтвердите пароль" />}
+              render={({ input }) => <Input {...input} minLength={6} label="Подтвердите пароль" />}
             />
             <Button isFlat isFilled>
               Обновить пароль
