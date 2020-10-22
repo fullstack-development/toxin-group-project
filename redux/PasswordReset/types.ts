@@ -6,6 +6,7 @@ type Action<Z, T> = {
 };
 
 type PasswordResetState = {
+  isCompleted: boolean;
   statusText: string;
 };
 

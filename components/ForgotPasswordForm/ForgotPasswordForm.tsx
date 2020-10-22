@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Form, Field } from 'react-final-form';
 import { connect } from 'react-redux';
 
@@ -9,6 +9,7 @@ import PopUp from './components/PopUp/PopUp';
 import * as S from './ForgotPasswordForm.style';
 
 type Props = {
+  isCompleted: boolean;
   statusText: string;
   startPasswordResetProcess: (email: string) => void;
 };
@@ -21,12 +22,19 @@ type FormData = {
   email: string;
 };
 
-const ForgotPasswordForm = ({ startPasswordResetProcess, statusText }: Props): JSX.Element => {
+const ForgotPasswordForm = ({
+  isCompleted,
+  statusText,
+  startPasswordResetProcess,
+}: Props): JSX.Element => {
   const [isVisiblePopUp, setVisiblePopUp] = useState(false);
+
+  useEffect(() => {
+    setVisiblePopUp(isCompleted);
+  }, [isCompleted]);
 
   const onFormSubmit = ({ email }: FormData) => {
     startPasswordResetProcess(email);
-    setVisiblePopUp(true);
   };
 
   const handleConfirmButtonClick = () => {
@@ -58,7 +66,7 @@ const ForgotPasswordForm = ({ startPasswordResetProcess, statusText }: Props): J
           </form>
         )}
       />
-      {isVisiblePopUp && statusText && (
+      {isVisiblePopUp && (
         <PopUp message={statusText} onConfirmButtonClick={handleConfirmButtonClick} />
       )}
     </S.ForgotPasswordForm>
@@ -66,6 +74,7 @@ const ForgotPasswordForm = ({ startPasswordResetProcess, statusText }: Props): J
 };
 
 const mapState = (state: State) => ({
+  isCompleted: state.passwordResetReducer.isCompleted,
   statusText: state.passwordResetReducer.statusText,
 });
 

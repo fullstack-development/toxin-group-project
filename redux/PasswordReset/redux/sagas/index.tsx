@@ -11,9 +11,9 @@ import {
 
 function* startPasswordResetProcess({ payload: email }: { payload: string }) {
   try {
-    const userInfo: string[] = yield call(api.auth.fetchSignInMethodsForEmail, email);
-    const isRegister = userInfo.some((value) => value === 'password');
-    if (isRegister) {
+    const userAuthInfo: string[] = yield call(api.auth.fetchSignInMethodsForEmail, email);
+    const isEmailAuth = userAuthInfo.includes('password');
+    if (isEmailAuth) {
       yield call(api.auth.resetPassword, email);
       yield put({
         type: PASSWORD_RESET_SUCCESS,

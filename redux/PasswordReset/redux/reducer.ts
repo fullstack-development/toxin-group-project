@@ -6,6 +6,7 @@ import {
 import { PasswordResetState, PasswordResetActions } from '../types';
 
 const initialState: PasswordResetState = {
+  isCompleted: false,
   statusText: '',
 };
 
@@ -15,13 +16,18 @@ const passwordResetReducer = (
 ): PasswordResetState => {
   switch (action.type) {
     case PASSWORD_RESET_PROCESS:
-      return state;
+      return {
+        isCompleted: false,
+        statusText: '',
+      };
     case PASSWORD_RESET_SUCCESS:
       return {
+        isCompleted: true,
         statusText: action.payload,
       };
     case PASSWORD_RESET_FAILED:
       return {
+        isCompleted: true,
         statusText: action.payload,
       };
     default:
