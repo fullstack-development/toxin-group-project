@@ -63,15 +63,16 @@ const AvatarLoader: React.FC<Props> = ({ name }: Props) => {
 
           return (
             <>
-              <Avatar photoURL={croppedImage} />
-              <S.UploadButton>
+              <S.AvatarWrapper>
+                <Avatar photoURL={croppedImage} />
+                <S.UploadButton />
                 <S.HiddenInput
                   {...input}
                   type="file"
                   accept="image/*"
                   onChange={handleInputChange}
                 />
-              </S.UploadButton>
+              </S.AvatarWrapper>
               {isEditorVisible && (
                 <S.CropperWrapper>
                   <S.CancelButton onClick={handleCancelButtonClick} />

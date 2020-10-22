@@ -28,7 +28,11 @@ const CancelButton = styled.div`
   }}
 `;
 
-const UploadButton = styled.label`
+const AvatarWrapper = styled.label`
+  cursor: pointer;
+`;
+
+const UploadButton = styled.span`
   ${(props) => {
     const { gradients } = props.theme;
 
@@ -102,6 +106,7 @@ const CropperTitle = styled.h3`
 
 export {
   AvatarLoader,
+  AvatarWrapper,
   CancelButton,
   UploadButton,
   HiddenInput,
