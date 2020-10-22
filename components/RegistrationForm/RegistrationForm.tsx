@@ -3,6 +3,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import { Field, Form } from 'react-final-form';
 
 import { ProfileData } from 'api/entities/types';
+import AvatarLoader from 'components/AvatarLoader/AvatarLoader';
 import Input from 'components/Input/Input';
 import RadioButton from 'components/RadioButton/RadioButton';
 import { MapState } from 'components/RegistrationPage/Registration.types';
@@ -31,6 +32,9 @@ const RegistrationForm: React.FC<MapState> = ({
         render={({ handleSubmit }) => (
           <S.RegistrationForm onSubmit={handleSubmit}>
             <S.Title>Регистрация аккаунта</S.Title>
+            <S.Avatar>
+              <AvatarLoader name="avatar" />
+            </S.Avatar>
             <Field
               name="name"
               render={({ input, meta }) => (
