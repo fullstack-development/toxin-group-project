@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Form, Field } from 'react-final-form';
 import { connect } from 'react-redux';
 
@@ -6,25 +6,37 @@ import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';
 import PopUp from 'components/PopUp/PopUp';
 import { emailUpdateRequest } from 'redux/EmailUpdate/redux/actions';
+import { AppState } from 'redux/store.types';
 import { emailValidator } from 'shared/helpers/validators';
+
+const mapState = (state: AppState) => ({
+  isCompleted: state.emailUpdateReducer.isCompleted,
+  statusText: state.emailUpdateReducer.statusText,
+});
+
+const mapDispatch = { startEmailUpdateProcess: emailUpdateRequest };
 
 type Props = {
   user: firebase.User;
   email: string;
-  statusText: string;
-  startEmailUpdateProcess: ({ user, email }) => void;
-};
+} & ReturnType<typeof mapState> &
+  typeof mapDispatch;
 
-type State = {
-  emailUpdateReducer: Props;
-};
-
-const EditEmail = ({ user, email, statusText, startEmailUpdateProcess }: Props): JSX.Element => {
+const EditEmail = ({
+  user,
+  email,
+  isCompleted,
+  statusText,
+  startEmailUpdateProcess,
+}: Props): JSX.Element => {
   const [isVisiblePopUp, setVisiblePopUp] = useState(false);
+
+  useEffect(() => {
+    setVisiblePopUp(isCompleted);
+  }, [isCompleted]);
 
   const onSubmit = ({ email: emailForUpdate }: { email: string }) => {
     startEmailUpdateProcess({ user, email: emailForUpdate });
-    setVisiblePopUp(true);
   };
 
   const handleConfirmButtonClick = () => {
@@ -49,7 +61,7 @@ const EditEmail = ({ user, email, statusText, startEmailUpdateProcess }: Props):
               Сохранить
             </Button>
           </form>
-          {isVisiblePopUp && statusText && (
+          {isVisiblePopUp && (
             <PopUp message={statusText} onConfirmButtonClick={handleConfirmButtonClick} />
           )}
         </>
@@ -57,11 +69,5 @@ const EditEmail = ({ user, email, statusText, startEmailUpdateProcess }: Props):
     />
   );
 };
-
-const mapState = (state: State) => ({
-  statusText: state.emailUpdateReducer.statusText,
-});
-
-const mapDispatch = { startEmailUpdateProcess: emailUpdateRequest };
 
 export default connect(mapState, mapDispatch)(EditEmail);

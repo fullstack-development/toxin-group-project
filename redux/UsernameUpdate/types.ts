@@ -15,6 +15,7 @@ type SentData = {
 };
 
 type UsernameUpdateState = {
+  isCompleted: boolean;
   statusText: string;
 };
 

@@ -5,13 +5,11 @@ import EditPersonalInfo from '../EditPersonalInfo/EditPersonalInfo';
 import { data } from './PersonalInfo.data';
 import * as S from './PersonalInfo.styles';
 
-type Props = {
-  user: firebase.User;
-};
+const mapState = (state: State) => ({
+  user: state.authReducer.user,
+});
 
-type State = {
-  authReducer: Props;
-};
+type Props = ReturnType<typeof mapState>;
 
 const PersonalInfo = ({ user }: Props): JSX.Element => {
   const [userData, setUserData] = useState({ userName: '', email: '' });
@@ -38,9 +36,5 @@ const PersonalInfo = ({ user }: Props): JSX.Element => {
     </S.PersonalInfo>
   );
 };
-
-const mapState = (state: State) => ({
-  user: state.authReducer.user,
-});
 
 export default connect(mapState)(PersonalInfo);

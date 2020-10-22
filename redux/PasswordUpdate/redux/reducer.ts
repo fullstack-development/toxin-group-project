@@ -6,6 +6,7 @@ import {
 import { PasswordUpdateActions, PasswordUpdateState } from '../types';
 
 const initialState: PasswordUpdateState = {
+  isCompleted: false,
   statusText: '',
 };
 
@@ -16,14 +17,17 @@ const passwordUpdateReducer = (
   switch (action.type) {
     case PASSWORD_UPDATE_PROCESS:
       return {
+        isCompleted: false,
         statusText: '',
       };
     case PASSWORD_UPDATE_SUCCESS:
       return {
+        isCompleted: true,
         statusText: action.payload,
       };
     case PASSWORD_UPDATE_FAILED:
       return {
+        isCompleted: true,
         statusText: action.payload,
       };
     default:

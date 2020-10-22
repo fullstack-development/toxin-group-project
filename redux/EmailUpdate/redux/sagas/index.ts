@@ -31,8 +31,7 @@ function* startEmailUpdateProcess({ payload }) {
       case 'auth/requires-recent-login':
         yield put({
           type: EMAIL_UPDATE_FAILED,
-          payload:
-            'Для изменения адреса электронной почты пройдите пройдите повторную аутентификацию',
+          payload: 'Для изменения адреса электронной почты пройдите повторную аутентификацию',
         });
         break;
       default: {

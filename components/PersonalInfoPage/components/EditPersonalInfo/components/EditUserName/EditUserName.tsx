@@ -1,22 +1,25 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Form, Field } from 'react-final-form';
 import { connect } from 'react-redux';
 
 import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';
 import PopUp from 'components/PopUp/PopUp';
+import { AppState } from 'redux/store.types';
 import { usernameUpdateRequest } from 'redux/UsernameUpdate/redux/actions';
+
+const mapState = (state: AppState) => ({
+  isCompleted: state.usernameUpdateReducer.isCompleted,
+  statusText: state.usernameUpdateReducer.statusText,
+});
+
+const mapDispatch = { startUsernameUpdateProcess: usernameUpdateRequest };
 
 type Props = {
   user: firebase.User;
   displayName: string;
-  statusText: string;
-  startUsernameUpdateProcess: ({ user, displayName }) => void;
-};
-
-type State = {
-  usernameUpdateReducer: Props;
-};
+} & ReturnType<typeof mapState> &
+  typeof mapDispatch;
 
 type FormData = {
   name: string;
@@ -26,14 +29,18 @@ type FormData = {
 const EditUserName = ({
   user,
   displayName,
+  isCompleted,
   statusText,
   startUsernameUpdateProcess,
 }: Props): JSX.Element => {
   const [isVisiblePopUp, setVisiblePopUp] = useState(false);
 
+  useEffect(() => {
+    setVisiblePopUp(isCompleted);
+  }, [isCompleted]);
+
   const onSubmit = ({ name, surname }: FormData) => {
     startUsernameUpdateProcess({ user, displayName: `${name} ${surname}` });
-    setVisiblePopUp(true);
   };
 
   const handleConfirmButtonClick = () => {
@@ -61,7 +68,7 @@ const EditUserName = ({
               Сохранить
             </Button>
           </form>
-          {isVisiblePopUp && statusText && (
+          {isVisiblePopUp && (
             <PopUp message={statusText} onConfirmButtonClick={handleConfirmButtonClick} />
           )}
         </>
@@ -69,11 +76,5 @@ const EditUserName = ({
     />
   );
 };
-
-const mapState = (state: State) => ({
-  statusText: state.usernameUpdateReducer.statusText,
-});
-
-const mapDispatch = { startUsernameUpdateProcess: usernameUpdateRequest };
 
 export default connect(mapState, mapDispatch)(EditUserName);

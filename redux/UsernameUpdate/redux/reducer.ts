@@ -6,6 +6,7 @@ import {
 import { UsernameUpdateActions, UsernameUpdateState } from '../types';
 
 const initialState: UsernameUpdateState = {
+  isCompleted: false,
   statusText: '',
 };
 
@@ -15,13 +16,18 @@ const usernameUpdateReducer = (
 ): UsernameUpdateState => {
   switch (action.type) {
     case USERNAME_UPDATE_PROCESS:
-      return state;
+      return {
+        isCompleted: false,
+        statusText: '',
+      };
     case USERNAME_UPDATE_SUCCESS:
       return {
+        isCompleted: true,
         statusText: 'Данные были успешно обновлены',
       };
     case USERNAME_UPDATE_FAILED:
       return {
+        isCompleted: true,
         statusText: 'Произошла ошибка повторите попытку позже',
       };
     default:

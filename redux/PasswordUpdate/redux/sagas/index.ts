@@ -10,8 +10,12 @@ import {
   PASSWORD_UPDATE_FAILED,
 } from '../../constants';
 
-function* startPasswordUpdateProcess({ payload: { user, currentPassword, newPassword } }) {
+function* startPasswordUpdateProcess({
+  payload: { user, currentPassword, newPassword, confirmPassword },
+}) {
   try {
+    if (newPassword !== confirmPassword) throw new Error('Пароли не совпадают');
+
     const { email } = user;
     const userAuthInfo: string[] = yield api.auth.fetchSignInMethodsForEmail(email);
     const isEmailAuth = userAuthInfo.includes('password');
@@ -43,11 +47,24 @@ function* startPasswordUpdateProcess({ payload: { user, currentPassword, newPass
           payload: 'Полученные учетные данные не соответствуют текущему пользователю',
         });
         break;
-      default:
+      case 'passwords-do-not-match':
         yield put({
           type: PASSWORD_UPDATE_FAILED,
-          payload: 'Произошла ошибка',
+          payload: 'Пароли не совпадают',
         });
+        break;
+      default:
+        if (err.message === 'Пароли не совпадают') {
+          yield put({
+            type: PASSWORD_UPDATE_FAILED,
+            payload: err.message,
+          });
+        } else {
+          yield put({
+            type: PASSWORD_UPDATE_FAILED,
+            payload: 'Произошла ошибка',
+          });
+        }
     }
   }
 }

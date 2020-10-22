@@ -5,7 +5,6 @@ import TextButton from 'components/TextButton/TextButton';
 import EditBirthday from './components/EditBirthday/EditBirthday';
 import EditEmail from './components/EditEmail/EditEmail';
 import EditGender from './components/EditGender/EditGender';
-import EditSubscription from './components/EditSubscription/EditSubscription';
 import EditUserName from './components/EditUserName/EditUserName';
 import * as S from './EditPersonalInfo.styles';
 

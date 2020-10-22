@@ -11,6 +11,7 @@ type SentData = {
 };
 
 type EmailUpdateState = {
+  isCompleted: boolean;
   statusText: string;
 };
 

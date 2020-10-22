@@ -6,17 +6,17 @@ import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';
 import PopUp from 'components/PopUp/PopUp';
 import { passwordUpdateRequest } from 'redux/PasswordUpdate/redux/actions';
+import { AppState } from 'redux/store.types';
 
-type Props = {
-  user: firebase.User;
-  statusText: string;
-  startPasswordUpdateProcess: ({ user, currentPassword, newPassword }) => void;
-};
+const mapState = (state: AppState) => ({
+  user: state.authReducer.user,
+  isCompleted: state.passwordUpdateReducer.isCompleted,
+  statusText: state.passwordUpdateReducer.statusText,
+});
 
-type State = {
-  authReducer: Props;
-  passwordUpdateReducer: Props;
-};
+const mapDispatch = { startPasswordUpdateProcess: passwordUpdateRequest };
+
+type Props = ReturnType<typeof mapState> & typeof mapDispatch;
 
 type FormData = {
   currentPassword: string;
@@ -24,21 +24,20 @@ type FormData = {
   confirmPassword: string;
 };
 
-const PasswordUpdate = ({ user, statusText, startPasswordUpdateProcess }: Props): JSX.Element => {
+const PasswordUpdate = ({
+  user,
+  isCompleted,
+  statusText,
+  startPasswordUpdateProcess,
+}: Props): JSX.Element => {
   const [isVisiblePopUp, setVisiblePopUp] = useState(false);
-  const [popUpMessage, setPopUpMessage] = useState('');
 
   useEffect(() => {
-    setPopUpMessage(statusText);
-  }, [statusText]);
+    setVisiblePopUp(isCompleted);
+  }, [isCompleted]);
 
   const onSubmit = ({ currentPassword, newPassword, confirmPassword }: FormData) => {
-    if (newPassword === confirmPassword) {
-      startPasswordUpdateProcess({ user, currentPassword, newPassword });
-    } else {
-      setPopUpMessage('Пароли не совпадают');
-    }
-    setVisiblePopUp(true);
+    startPasswordUpdateProcess({ user, currentPassword, newPassword, confirmPassword });
   };
 
   const handleConfirmButtonClick = () => {
@@ -70,20 +69,13 @@ const PasswordUpdate = ({ user, statusText, startPasswordUpdateProcess }: Props)
               Обновить пароль
             </Button>
           </form>
-          {isVisiblePopUp && popUpMessage && (
-            <PopUp message={popUpMessage} onConfirmButtonClick={handleConfirmButtonClick} />
+          {isVisiblePopUp && (
+            <PopUp message={statusText} onConfirmButtonClick={handleConfirmButtonClick} />
           )}
         </>
       )}
     />
   );
 };
-
-const mapState = (state: State) => ({
-  user: state.authReducer.user,
-  statusText: state.passwordUpdateReducer.statusText,
-});
-
-const mapDispatch = { startPasswordUpdateProcess: passwordUpdateRequest };
 
 export default connect(mapState, mapDispatch)(PasswordUpdate);

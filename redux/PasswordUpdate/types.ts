@@ -13,9 +13,11 @@ type SentData = {
   user: firebase.User;
   currentPassword: string;
   newPassword: string;
+  confirmPassword: string;
 };
 
 type PasswordUpdateState = {
+  isCompleted: boolean;
   statusText: string;
 };
 
