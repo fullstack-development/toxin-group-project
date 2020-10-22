@@ -14,12 +14,12 @@ function* startPasswordUpdateProcess({
   payload: { user, currentPassword, newPassword, confirmPassword },
 }) {
   try {
-    if (newPassword !== confirmPassword) throw new Error('Пароли не совпадают');
-
     const { email } = user;
     const userAuthInfo: string[] = yield api.auth.fetchSignInMethodsForEmail(email);
     const isEmailAuth = userAuthInfo.includes('password');
     const isGoogleAuth = userAuthInfo.includes('google.com');
+
+    if (newPassword !== confirmPassword) throw new Error('Пароли не совпадают');
 
     if (isEmailAuth) {
       const credential = firebase.auth.EmailAuthProvider.credential(email, currentPassword);
