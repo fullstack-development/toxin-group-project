@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Form, Field } from 'react-final-form';
 import { connect } from 'react-redux';
 
@@ -32,12 +32,9 @@ const PasswordUpdate = ({
 }: Props): JSX.Element => {
   const [isVisiblePopUp, setVisiblePopUp] = useState(false);
 
-  useEffect(() => {
-    setVisiblePopUp(isCompleted);
-  }, [isCompleted]);
-
   const onSubmit = ({ currentPassword, newPassword, confirmPassword }: FormData) => {
     startPasswordUpdateProcess({ user, currentPassword, newPassword, confirmPassword });
+    setVisiblePopUp(true);
   };
 
   const handleConfirmButtonClick = () => {
@@ -69,7 +66,7 @@ const PasswordUpdate = ({
               Обновить пароль
             </Button>
           </form>
-          {isVisiblePopUp && (
+          {isVisiblePopUp && isCompleted && (
             <PopUp message={statusText} onConfirmButtonClick={handleConfirmButtonClick} />
           )}
         </>

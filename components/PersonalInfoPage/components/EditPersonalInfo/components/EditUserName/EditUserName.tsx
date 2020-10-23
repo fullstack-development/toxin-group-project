@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Form, Field } from 'react-final-form';
 import { connect } from 'react-redux';
 
@@ -35,12 +35,9 @@ const EditUserName = ({
 }: Props): JSX.Element => {
   const [isVisiblePopUp, setVisiblePopUp] = useState(false);
 
-  useEffect(() => {
-    setVisiblePopUp(isCompleted);
-  }, [isCompleted]);
-
   const onSubmit = ({ name, surname }: FormData) => {
     startUsernameUpdateProcess({ user, displayName: `${name} ${surname}` });
+    setVisiblePopUp(true);
   };
 
   const handleConfirmButtonClick = () => {
@@ -68,7 +65,7 @@ const EditUserName = ({
               Сохранить
             </Button>
           </form>
-          {isVisiblePopUp && (
+          {isVisiblePopUp && isCompleted && (
             <PopUp message={statusText} onConfirmButtonClick={handleConfirmButtonClick} />
           )}
         </>
