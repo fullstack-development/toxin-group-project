@@ -30,6 +30,7 @@ export type Apartment = {
   reviews: number;
   class: 'economy' | 'luxury';
   images: { url: string; alt: string }[];
+  breakfastPricePerGuest: number;
 } & Options;
 
 export type Filters = {
