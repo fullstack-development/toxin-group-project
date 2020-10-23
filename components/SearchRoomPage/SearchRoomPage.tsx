@@ -8,12 +8,12 @@ import RoomFilter from 'components/RoomFilter/RoomFilter';
 import Rooms from 'components/Rooms/Rooms';
 import defaultFilters from 'components/SearchRoomForm/defaultFilters';
 import { requestRooms } from 'redux/Booking/redux/actions';
+import { AppState } from 'redux/store.types';
 
 import * as S from './SearchRoomPage.styles';
-import { MapStateProps, State } from './SearchRoomPage.types';
 import getPassedFilters from './utils/getPassedFilters';
 
-const mapState = (state: State): MapStateProps => state.bookingReducer;
+const mapState = (state: AppState) => state.bookingReducer;
 
 const mapDispatch = {
   getRooms: requestRooms,

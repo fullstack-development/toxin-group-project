@@ -1,4 +1,5 @@
 import { Filters } from 'api/entities/types';
+import { Props as RoomProps } from 'components/Room/Room.types';
 
 import { Apartment } from '../../api/entities/types';
 import {
@@ -21,7 +22,7 @@ export type SetFailedStatus = Action<typeof ROOMS_REQUEST_FAILED, Error>;
 
 export type BookingState = {
   isPending: boolean;
-  rooms: Apartment[];
+  rooms: RoomProps[];
   isRequestSuccessful: boolean;
   error: Error;
 };
