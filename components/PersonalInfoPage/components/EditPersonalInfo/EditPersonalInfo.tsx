@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import { User } from 'api/Firebase/modules/Authentication/types';
 import TextButton from 'components/TextButton/TextButton';
 
 import EditBirthday from './components/EditBirthday/EditBirthday';
@@ -9,7 +10,7 @@ import EditUserName from './components/EditUserName/EditUserName';
 import * as S from './EditPersonalInfo.styles';
 
 type Props = {
-  user: firebase.User;
+  user: User;
   title: string;
   component: string;
   value?: string;

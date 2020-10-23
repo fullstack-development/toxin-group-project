@@ -1,3 +1,5 @@
+import { User } from 'api/Firebase/modules/Authentication/types';
+
 import {
   PASSWORD_UPDATE_PROCESS,
   PASSWORD_UPDATE_SUCCESS,
@@ -10,7 +12,7 @@ type Action<Z, T> = {
 };
 
 type SentData = {
-  user: firebase.User;
+  user: User;
   currentPassword: string;
   newPassword: string;
   confirmPassword: string;

@@ -1,3 +1,5 @@
+import { User } from 'api/Firebase/modules/Authentication/types';
+
 import { EMAIL_UPDATE_PROCESS, EMAIL_UPDATE_SUCCESS, EMAIL_UPDATE_FAILED } from './constants';
 
 type Action<Z, T> = {
@@ -6,7 +8,7 @@ type Action<Z, T> = {
 };
 
 type SentData = {
-  user: firebase.User;
+  user: User;
   email: string;
 };
 

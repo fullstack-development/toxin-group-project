@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Form, Field } from 'react-final-form';
 import { connect } from 'react-redux';
 
+import { User } from 'api/Firebase/modules/Authentication/types';
 import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
@@ -16,7 +17,7 @@ const mapState = (state: AppState) => ({
 const mapDispatch = { startEmailUpdateProcess: emailUpdateRequest };
 
 type Props = {
-  user: firebase.User;
+  user: User;
   email: string;
 } & ReturnType<typeof mapState> &
   typeof mapDispatch;

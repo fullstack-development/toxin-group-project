@@ -24,9 +24,9 @@ export type AuthState = {
   isAuthSuccess: boolean;
   isAuthProcessNow: boolean;
   authStatusText: string;
+  user: null | User;
   displayName: null | string;
   wasFinishedAuthChecking: boolean;
-  user: firebase.User;
 };
 
 export type PreloadAuthData = Action<typeof PRELOAD_AUTH_DATA, null>;
