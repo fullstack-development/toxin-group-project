@@ -50,6 +50,9 @@ export type ProfileData = {
   password: string;
   name: string;
   surname: string;
+} & AdditionalUserInformation;
+
+export type AdditionalUserInformation = {
   birthDate: string;
   gender: 'male' | 'female';
   receiveOffers: boolean;

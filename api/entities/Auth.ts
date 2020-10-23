@@ -6,15 +6,20 @@ import {
   Unsubscribe,
   User,
 } from '../Firebase/modules/Authentication';
+import { Database, CollectionReference } from '../Firebase/modules/Database';
 import apiErrors from './errors/apiErrors';
 import AuthError from './errors/AuthError';
-import { ProfileData } from './types';
+import { ProfileData, AdditionalUserInformation } from './types';
 
 class Auth {
   private readonly actions: Authentication;
+  private readonly database: Database;
+  private readonly reference: CollectionReference;
 
-  constructor(actions: Authentication) {
+  constructor(actions: Authentication, database: Database) {
     this.actions = actions;
+    this.database = database;
+    this.reference = this.database.ref().collection('users');
   }
 
   @boundMethod
@@ -24,6 +29,8 @@ class Auth {
     email,
     password,
     gender,
+    birthDate,
+    receiveOffers,
   }: ProfileData): Promise<UserCredential> {
     let credential: UserCredential;
 
@@ -49,7 +56,10 @@ class Auth {
         displayName: `${name} ${surname}`,
         photoURL: gender === 'female' ? '/img/avatar-female.jpg' : '/img/avatar-male.jpg',
       })
-      .then(() => user.sendEmailVerification());
+      .then(() => {
+        this.addAdditionalUserInformation(user.uid, { gender, birthDate, receiveOffers });
+        user.sendEmailVerification();
+      });
 
     return credential;
   }
@@ -100,6 +110,20 @@ class Auth {
     }
 
     return resetPassword;
+  }
+
+  @boundMethod
+  public async addAdditionalUserInformation(
+    uid: string,
+    data: AdditionalUserInformation,
+  ): Promise<void> {
+    this.database.post({ ref: this.reference, doc: String(uid), data });
+  }
+
+  @boundMethod
+  public async getAdditionalUserInformation(): Promise<AdditionalUserInformation> {
+    const user = this.actions.getCurrentUser();
+    return this.database.getDocument(this.reference, user.uid);
   }
 
   @boundMethod
