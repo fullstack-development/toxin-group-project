@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 import { Form, Field } from 'react-final-form';
 import { connect } from 'react-redux';
 
+import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
 import { passwordResetRequest } from 'redux/PasswordReset/redux/actions';
 import { AppState } from 'redux/store.types';
 import { emailValidator } from 'shared/helpers/validators/emailValidator';
 
-import PopUp from './components/PopUp/PopUp';
 import * as S from './ForgotPasswordForm.style';
 
 const mapState = (state: AppState) => ({
@@ -69,7 +69,7 @@ const ForgotPasswordForm = ({
         )}
       />
       {isVisiblePopUp && (
-        <PopUp message={statusText} onConfirmButtonClick={handleConfirmButtonClick} />
+        <PopUpNotification message={statusText} onConfirmButtonClick={handleConfirmButtonClick} />
       )}
     </S.ForgotPasswordForm>
   );

@@ -1,19 +1,19 @@
 import TextButton from 'components/TextButton/TextButton';
 
-import * as S from './PopUp.styles';
+import * as S from './PopUpNotification.styles';
 
 type Props = {
   message: string;
   onConfirmButtonClick: () => void;
 };
 
-const PopUp = ({ message, onConfirmButtonClick }: Props): JSX.Element => (
-  <S.PopUp>
+const PopUpNotification = ({ message, onConfirmButtonClick }: Props): JSX.Element => (
+  <S.PopUpNotification>
     <S.Message>{message}</S.Message>
     <TextButton type="button" onClick={onConfirmButtonClick}>
       ОК
     </TextButton>
-  </S.PopUp>
+  </S.PopUpNotification>
 );
 
-export default PopUp;
+export default PopUpNotification;
