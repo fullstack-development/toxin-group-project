@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';
-import PopUp from 'components/PopUp/PopUp';
+import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
 import { passwordUpdateRequest } from 'redux/PasswordUpdate/redux/actions';
 import { AppState } from 'redux/store.types';
 
@@ -67,7 +67,10 @@ const PasswordUpdate = ({
             </Button>
           </form>
           {isVisiblePopUp && isCompleted && (
-            <PopUp message={statusText} onConfirmButtonClick={handleConfirmButtonClick} />
+            <PopUpNotification
+              message={statusText}
+              onConfirmButtonClick={handleConfirmButtonClick}
+            />
           )}
         </>
       )}

@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-const PopUp = styled.div`
+const PopUpNotification = styled.div`
   ${(props) => {
     const { colors } = props.theme;
     return css`
@@ -24,4 +24,4 @@ const Message = styled.p`
   margin-bottom: 1.5rem;
 `;
 
-export { PopUp, Message };
+export { PopUpNotification, Message };

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';
-import PopUp from 'components/PopUp/PopUp';
+import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
 import { emailUpdateRequest } from 'redux/EmailUpdate/redux/actions';
 import { AppState } from 'redux/store.types';
 import { emailValidator } from 'shared/helpers/validators';
@@ -59,7 +59,10 @@ const EditEmail = ({
             </Button>
           </form>
           {isVisiblePopUp && isCompleted && (
-            <PopUp message={statusText} onConfirmButtonClick={handleConfirmButtonClick} />
+            <PopUpNotification
+              message={statusText}
+              onConfirmButtonClick={handleConfirmButtonClick}
+            />
           )}
         </>
       )}
