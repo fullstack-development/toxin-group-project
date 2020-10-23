@@ -27,6 +27,7 @@ const RoomImages = styled.figure`
     justify-self: stretch;
     width: 100%;
     max-height: 17.3214rem;
+    object-fit: cover;
   }
 
   & > img:first-child {
