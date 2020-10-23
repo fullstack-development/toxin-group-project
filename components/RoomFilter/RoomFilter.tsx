@@ -32,8 +32,9 @@ const getDropdownProps = (defaultProps: Item[], updatedProps: Amenities) => {
   }));
 };
 
-const getKeyFromString = (name: string): OptionName => {
-  return name.split('.')[1] as OptionName;
+const getOptionName = (name: string): OptionName => {
+  const [, option] = name.split('.');
+  return option as OptionName;
 };
 
 const getCheckboxProps = (
@@ -42,7 +43,7 @@ const getCheckboxProps = (
 ) => {
   return defaultProps.map((item) => ({
     ...item,
-    isChecked: Boolean(updatedProps[getKeyFromString(item.name)]),
+    isChecked: Boolean(updatedProps[getOptionName(item.name)]),
   }));
 };
 
