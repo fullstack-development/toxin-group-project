@@ -69,7 +69,7 @@ const Benefits = styled.section`
   flex-direction: column;
   max-width: 20rem;
 
-  & > h2 {
+  & > ${Title} {
     margin: 0;
 
     @media ${breakpointDown('sm')} {
@@ -99,7 +99,7 @@ const ReviewsWrapper = styled.div`
 const BulletList = styled.section`
   max-width: 20rem;
 
-  & > h2 {
+  & > ${Title} {
     margin-left: 1.4285rem;
     margin-bottom: 1.2142rem;
 
