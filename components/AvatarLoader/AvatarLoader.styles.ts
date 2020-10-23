@@ -1,3 +1,4 @@
+import { Snackbar } from '@material-ui/core';
 import styled, { css } from 'styled-components';
 
 import { visuallyHidden, materialIcons, titles } from 'shared/styles/mixins';
@@ -104,6 +105,12 @@ const CropperTitle = styled.h3`
   ${titles.h3}
 `;
 
+const CustomSnackbar = styled(Snackbar)`
+  & > div {
+    background: darkred;
+  }
+`;
+
 export {
   AvatarLoader,
   AvatarWrapper,
@@ -114,4 +121,5 @@ export {
   CropperTitle,
   Description,
   Controls,
+  CustomSnackbar,
 };

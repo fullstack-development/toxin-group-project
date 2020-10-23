@@ -1,4 +1,5 @@
-import { Slider } from '@material-ui/core';
+import { Slider, IconButton } from '@material-ui/core';
+import CloseIcon from '@material-ui/icons/Close';
 import { useState } from 'react';
 import AvatarEditor from 'react-avatar-editor';
 import { Field } from 'react-final-form';
@@ -17,6 +18,10 @@ const AvatarLoader: React.FC<Props> = ({ name }: Props) => {
   const [isEditorVisible, setEditorVisible] = useState(false);
   const [image, setImage] = useState(null);
   const [zoomSize, setZoomSize] = useState(1);
+  const [snackBarStatus, setSnackBarSettings] = useState({
+    isOpen: false,
+    text: '',
+  });
   let canvas: AvatarEditor;
 
   const setEditorRef = (editor: AvatarEditor) => {
@@ -32,7 +37,16 @@ const AvatarLoader: React.FC<Props> = ({ name }: Props) => {
       setEditorVisible(true);
     };
 
-    reader.readAsDataURL(file);
+    try {
+      reader.readAsDataURL(file);
+    } catch (error) {
+      setSnackBarSettings({
+        isOpen: true,
+        text: 'Не удалось установить аватар',
+      });
+    }
+
+    e.target.value = '';
   };
 
   const handleSliderChange = (_e: React.ChangeEvent<HTMLInputElement>, value: number) => {
@@ -41,6 +55,13 @@ const AvatarLoader: React.FC<Props> = ({ name }: Props) => {
 
   const handleCancelButtonClick = () => {
     setEditorVisible(false);
+  };
+
+  const handleSnackBarClose = () => {
+    setSnackBarSettings({
+      ...snackBarStatus,
+      isOpen: false,
+    });
   };
 
   return (
@@ -109,6 +130,28 @@ const AvatarLoader: React.FC<Props> = ({ name }: Props) => {
             </>
           );
         }}
+      />
+      <S.CustomSnackbar
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        open={snackBarStatus.isOpen}
+        autoHideDuration={3000}
+        onClose={handleSnackBarClose}
+        message={snackBarStatus.text}
+        action={
+          <>
+            <IconButton
+              size="medium"
+              aria-label="close"
+              color="inherit"
+              onClick={handleSnackBarClose}
+            >
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          </>
+        }
       />
     </S.AvatarLoader>
   );
