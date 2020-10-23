@@ -12,6 +12,8 @@ export type Item = {
 
 export type Group = {
   name: string;
+  max?: number;
+  min?: number;
   wordForms: WordForms;
 };
 
