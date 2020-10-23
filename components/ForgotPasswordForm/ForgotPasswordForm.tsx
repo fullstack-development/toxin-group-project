@@ -9,10 +9,7 @@ import { emailValidator } from 'shared/helpers/validators/emailValidator';
 
 import * as S from './ForgotPasswordForm.style';
 
-const mapState = (state: AppState) => ({
-  isCompleted: state.passwordResetReducer.isCompleted,
-  statusText: state.passwordResetReducer.statusText,
-});
+const mapState = (state: AppState) => state.passwordResetReducer;
 
 const mapDispatch = {
   startPasswordResetProcess: passwordResetRequest,
