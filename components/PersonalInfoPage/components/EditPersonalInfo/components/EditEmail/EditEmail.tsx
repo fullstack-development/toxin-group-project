@@ -10,8 +10,7 @@ import { AppState } from 'redux/store.types';
 import { emailValidator } from 'shared/helpers/validators';
 
 const mapState = (state: AppState) => ({
-  isCompleted: state.emailUpdateReducer.isCompleted,
-  statusText: state.emailUpdateReducer.statusText,
+  ...state.emailUpdateReducer,
 });
 
 const mapDispatch = { startEmailUpdateProcess: emailUpdateRequest };

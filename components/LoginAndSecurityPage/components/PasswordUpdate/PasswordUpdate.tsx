@@ -10,8 +10,7 @@ import { AppState } from 'redux/store.types';
 
 const mapState = (state: AppState) => ({
   user: state.authReducer.user,
-  isCompleted: state.passwordUpdateReducer.isCompleted,
-  statusText: state.passwordUpdateReducer.statusText,
+  ...state.passwordUpdateReducer,
 });
 
 const mapDispatch = { startPasswordUpdateProcess: passwordUpdateRequest };

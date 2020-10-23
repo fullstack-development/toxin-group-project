@@ -9,8 +9,7 @@ import { AppState } from 'redux/store.types';
 import { usernameUpdateRequest } from 'redux/UsernameUpdate/redux/actions';
 
 const mapState = (state: AppState) => ({
-  isCompleted: state.usernameUpdateReducer.isCompleted,
-  statusText: state.usernameUpdateReducer.statusText,
+  ...state.usernameUpdateReducer,
 });
 
 const mapDispatch = { startUsernameUpdateProcess: usernameUpdateRequest };
