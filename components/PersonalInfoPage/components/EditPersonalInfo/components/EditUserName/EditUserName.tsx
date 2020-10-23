@@ -9,9 +9,7 @@ import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
 import { AppState } from 'redux/store.types';
 import { usernameUpdateRequest } from 'redux/UsernameUpdate/redux/actions';
 
-const mapState = (state: AppState) => ({
-  ...state.usernameUpdateReducer,
-});
+const mapState = (state: AppState) => state.usernameUpdateReducer;
 
 const mapDispatch = { startUsernameUpdateProcess: usernameUpdateRequest };
 

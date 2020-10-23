@@ -1,6 +1,6 @@
 import firebase from 'firebase';
 import { SagaIterator } from 'redux-saga';
-import { put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 
 import api from 'api/api';
 
@@ -14,12 +14,12 @@ function* startPasswordUpdateProcess({
   payload: { user, currentPassword, newPassword, confirmPassword },
 }) {
   try {
+    if (newPassword !== confirmPassword) throw new Error('Пароли не совпадают');
+
     const { email } = user;
-    const userAuthInfo: string[] = yield api.auth.fetchSignInMethodsForEmail(email);
+    const userAuthInfo: string[] = yield call(api.auth.fetchSignInMethodsForEmail, email);
     const isEmailAuth = userAuthInfo.includes('password');
     const isGoogleAuth = userAuthInfo.includes('google.com');
-
-    if (newPassword !== confirmPassword) throw new Error('Пароли не совпадают');
 
     if (isEmailAuth) {
       const credential = firebase.auth.EmailAuthProvider.credential(email, currentPassword);
