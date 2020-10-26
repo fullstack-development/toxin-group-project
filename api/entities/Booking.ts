@@ -78,36 +78,33 @@ class Booking {
       history: [],
     };
 
-    await new Promise((resolve) => {
-      bookedRooms.forEach(async (bookedRoom) => {
-        await this.apartments
-          .where('id', '==', bookedRoom.apartmentId)
-          .get()
-          .then((snapshot) => {
-            snapshot.forEach((item) => {
-              const itemDateFrom = new Date(bookedRoom.from.seconds * 1000).toLocaleDateString(
-                'ru-RU',
-              );
-              const itemDateToInTimeStamp = bookedRoom.to.seconds * 1000;
-              const itemDateTo = new Date(itemDateToInTimeStamp).toLocaleDateString('ru-RU');
+    // eslint-disable-next-line no-restricted-syntax
+    for await (const bookedRoom of bookedRooms) {
+      await this.apartments
+        .where('id', '==', bookedRoom.apartmentId)
+        .get()
+        .then((snapshot) => {
+          snapshot.forEach((item) => {
+            const itemDateFrom = new Date(bookedRoom.from.seconds * 1000).toLocaleDateString(
+              'ru-RU',
+            );
+            const itemDateToInTimeStamp = bookedRoom.to.seconds * 1000;
+            const itemDateTo = new Date(itemDateToInTimeStamp).toLocaleDateString('ru-RU');
 
-              if (itemDateToInTimeStamp < Date.now()) {
-                result.history.push({
-                  room: item.data() as Apartment,
-                  bookedData: { from: itemDateFrom, to: itemDateTo },
-                });
-              } else {
-                result.current.push({
-                  room: item.data() as Apartment,
-                  bookedData: { from: itemDateFrom, to: itemDateTo },
-                });
-              }
-            });
+            if (itemDateToInTimeStamp < Date.now()) {
+              result.history.push({
+                room: item.data() as Apartment,
+                bookedData: { from: itemDateFrom, to: itemDateTo },
+              });
+            } else {
+              result.current.push({
+                room: item.data() as Apartment,
+                bookedData: { from: itemDateFrom, to: itemDateTo },
+              });
+            }
           });
-      });
-
-      resolve();
-    });
+        });
+    }
 
     return result;
   }

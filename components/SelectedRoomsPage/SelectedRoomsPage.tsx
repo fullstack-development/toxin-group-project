@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { BookedRoom } from 'api/entities/types';
 import MainLayout from 'components/MainLayout/MainLayout';
-// import Rooms from 'components/Rooms/Rooms';
+import Preloader from 'components/Rooms/components/Preloader/Preloader';
 import { loadBookedRooms } from 'redux/Booking/redux/actions';
 
 import RoomsList from './components/RoomsList/RoomsList';
@@ -17,12 +17,14 @@ type AvailableRooms = {
 type Props = {
   getBookedRooms: (email: string) => void;
   bookedRooms: AvailableRooms;
+  isLoadingData: boolean;
   userEmail: string;
 };
 
 const SelectedRoomsPage: React.FC<Props> = ({
   bookedRooms,
   userEmail,
+  isLoadingData,
   getBookedRooms,
 }: Props): JSX.Element => {
   useEffect(() => {
@@ -34,11 +36,11 @@ const SelectedRoomsPage: React.FC<Props> = ({
       <S.Container>
         <S.Title>Ваши забронированные номера:</S.Title>
         <S.RoomsListContainer>
-          {bookedRooms && <RoomsList rooms={bookedRooms.current} />}
+          {isLoadingData ? <Preloader /> : bookedRooms && <RoomsList rooms={bookedRooms.current} />}
         </S.RoomsListContainer>
         <S.SubTitle>История забронированных номеров:</S.SubTitle>
         <S.RoomsListContainer>
-          {bookedRooms && <RoomsList rooms={bookedRooms.history} />}
+          {isLoadingData ? <Preloader /> : bookedRooms && <RoomsList rooms={bookedRooms.history} />}
         </S.RoomsListContainer>
       </S.Container>
     </MainLayout>
@@ -47,6 +49,7 @@ const SelectedRoomsPage: React.FC<Props> = ({
 
 const mapState = (state) => ({
   bookedRooms: state.BookingReducer.bookedRooms,
+  isLoadingData: state.BookingReducer.isLoadingData,
   userEmail: state.AuthReducer.userEmail,
 });
 

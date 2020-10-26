@@ -11,10 +11,11 @@ export type BookedList = { current: BookedRoom[]; history: BookedRoom[] };
 
 export type BookingState = {
   bookedRooms: BookedList;
+  isLoadingData: boolean;
 };
 
 export type UpdateBookedList = Action<typeof UPDATE_BOOKED_LIST, BookedList>;
 
 export type LoadRooms = Action<typeof LOAD_ROOMS, string>;
 
-export type BookedActions = UpdateBookedList;
+export type BookedActions = UpdateBookedList | LoadRooms;
