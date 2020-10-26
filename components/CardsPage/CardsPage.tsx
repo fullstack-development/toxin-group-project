@@ -32,20 +32,19 @@ const CardsPage: React.FC = (): JSX.Element => {
       <S.RoomsWrapper>
         <Rooms rooms={rooms} />
       </S.RoomsWrapper>
-      <Room price={9900} number={888} reviewCount={65} reviewsHref="/mock" href="/mock" />
-      <Room
-        price={9900}
-        number={888}
-        reviewCount={65}
-        reviewsHref="/mock"
-        href="/mock"
-        roomType="люкс"
-      />
+      <Room price={9900} number={888} reviews={65} href="/mock" />
+      <Room price={9900} number={888} reviews={65} href="/mock" roomType="люкс" />
       <S.SearchRoomFormWrapper>
         <SearchRoomForm />
       </S.SearchRoomFormWrapper>
       <S.RegistrationFormWrapper>
-        <RegistrationForm />
+        <RegistrationForm
+          isSuccess
+          isProcess
+          statusText=""
+          requestRegistration={mockAuthFunction}
+          stopRegistration={mockAuthFunction}
+        />
       </S.RegistrationFormWrapper>
       <S.AccountEntryWrapper>
         <AccountEntry

@@ -1,9 +1,8 @@
 export type Props = {
   price: number;
   number: number;
-  reviewCount: number;
+  reviews: number;
   href: string;
-  reviewsHref: string;
   imagePaths?: string[];
   reviewMeasure?: string;
   roomType?: string;
