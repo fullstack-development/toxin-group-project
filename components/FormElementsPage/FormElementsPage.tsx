@@ -187,8 +187,8 @@ class FormElementsPage extends React.Component {
         <S.BenefitsWrapper>
           <Benefits
             items={[
-              { icon: 'insert_emoticon', title: 'Комфорт', description: 'Шумопоглощающие стены' },
-              { icon: 'location_city', title: 'Удобство', description: 'Окно в каждой из спален' },
+              { icon: 'insert_emoticon', term: 'Комфорт', definition: 'Шумопоглощающие стены' },
+              { icon: 'location_city', term: 'Удобство', definition: 'Окно в каждой из спален' },
             ]}
           />
         </S.BenefitsWrapper>

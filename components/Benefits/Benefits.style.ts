@@ -52,11 +52,11 @@ const Icon = styled.span<Icon>`
   }}
 `;
 
-const Title = styled.dt`
+const Term = styled.dt`
   font-size: 1rem;
   font-weight: bold;
   line-height: 2rem;
   word-break: break-word;
 `;
 
-export { Benefits, Item, List, Icon, Title };
+export { Benefits, Item, List, Icon, Term };
