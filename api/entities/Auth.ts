@@ -117,13 +117,12 @@ class Auth {
     uid: string,
     data: AdditionalUserInformation,
   ): Promise<void> {
-    this.database.post({ ref: this.reference, doc: String(uid), data });
+    this.database.post({ ref: this.reference, doc: uid, data });
   }
 
   @boundMethod
-  public async getAdditionalUserInformation(): Promise<AdditionalUserInformation> {
-    const user = this.actions.getCurrentUser();
-    return this.database.getDocument(this.reference, user.uid);
+  public async getAdditionalUserInformation(uid: string): Promise<AdditionalUserInformation> {
+    return this.database.getDocument(this.reference, uid);
   }
 
   @boundMethod
