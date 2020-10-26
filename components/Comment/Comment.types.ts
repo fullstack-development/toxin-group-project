@@ -1,7 +1,9 @@
+import { Timestamp } from 'api/Firebase/modules/Database/types';
+
 type Props = {
   avatarUrl: string;
   userName: string;
-  date: Date;
+  date: Timestamp;
   text: string;
   likesCount: number;
 };
