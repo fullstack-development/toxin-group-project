@@ -10,8 +10,6 @@ type ContainerElement = {
 const Container = styled.div`
   position: relative;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
 
   @media ${breakpointDown('xs')} {
     flex-direction: column;

@@ -79,7 +79,8 @@ const Calendar = styled(DayPicker)<DayPickerProps>`
         color: ${colors.basicDark};
         cursor: pointer;
 
-        &--outside {
+        &--outside,
+        &--disabled {
           color: ${colors.basicLight};
         }
 

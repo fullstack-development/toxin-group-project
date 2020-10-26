@@ -1,33 +1,44 @@
-type Options = {
-  amenities: {
-    bedrooms: number;
-    beds: number;
-    bathrooms: number;
-  };
-  additionalAmenities: {
-    breakfast: boolean;
-    desk: boolean;
-    chair: boolean;
-    crib: boolean;
-    tv: boolean;
-    shampoo: boolean;
-  };
-  accessibility: {
-    wideCorridor: boolean;
-    invalidHelper: boolean;
-  };
-  opportunities: {
-    smoking: boolean;
-    keepPets: boolean;
-    largeNumberOfPersons: boolean;
-  };
+export type AdditionalAmenities = {
+  breakfast: boolean;
+  desk: boolean;
+  chair: boolean;
+  crib: boolean;
+  tv: boolean;
+  shampoo: boolean;
 };
+
+export type Accessibility = {
+  wideCorridor: boolean;
+  invalidHelper: boolean;
+};
+
+export type Opportunities = {
+  smoking: boolean;
+  keepPets: boolean;
+  largeNumberOfPersons: boolean;
+};
+
+export type Amenities = {
+  bedrooms: number;
+  beds: number;
+  bathrooms: number;
+};
+
+type Options = {
+  amenities: Amenities;
+  additionalAmenities: AdditionalAmenities;
+  accessibility: Accessibility;
+  opportunities: Opportunities;
+};
+
 export type Apartment = {
   id: number;
+  overcrowdingPrice: number;
   price: number;
   rating: number;
   reviews: number;
   class: 'economy' | 'luxury';
+  href: string;
   images: { url: string; alt: string }[];
 } & Options;
 
@@ -39,6 +50,11 @@ export type Filters = {
   booked: {
     from: number;
     to: number;
+  };
+  guests: {
+    adults: number;
+    children: number;
+    babies: number;
   };
 } & Options;
 

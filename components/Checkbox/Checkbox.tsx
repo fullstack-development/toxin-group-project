@@ -21,7 +21,12 @@ const Checkbox: React.FC<CheckboxProps> = ({
 
   return (
     <S.Checkbox>
-      <S.HiddenCheckbox name={name} type="checkbox" checked={isChecked} onChange={handleChange} />
+      <S.HiddenCheckbox
+        name={name}
+        type="checkbox"
+        defaultChecked={isChecked}
+        onChange={handleChange}
+      />
       <S.Checkmark />
       <S.Label title={title}>
         {title && <S.Title>{title}</S.Title>}
