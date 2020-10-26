@@ -1,9 +1,8 @@
-import { useState, useEffect } from 'react';
 import { Form, Field } from 'react-final-form';
 import { connect } from 'react-redux';
 
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
-import { passwordResetRequest } from 'redux/PasswordReset/redux/actions';
+import { passwordResetCompleted, passwordResetRequest } from 'redux/PasswordReset/redux/actions';
 import { AppState } from 'redux/store.types';
 import { emailValidator } from 'shared/helpers/validators/emailValidator';
 
@@ -13,6 +12,7 @@ const mapState = (state: AppState) => state.passwordResetReducer;
 
 const mapDispatch = {
   startPasswordResetProcess: passwordResetRequest,
+  stopPasswordResetProcess: passwordResetCompleted,
 };
 
 type FormData = {
@@ -25,19 +25,10 @@ const ForgotPasswordForm = ({
   isCompleted,
   statusText,
   startPasswordResetProcess,
+  stopPasswordResetProcess,
 }: Props): JSX.Element => {
-  const [isVisiblePopUp, setVisiblePopUp] = useState(false);
-
-  useEffect(() => {
-    setVisiblePopUp(isCompleted);
-  }, [isCompleted]);
-
   const onFormSubmit = ({ email }: FormData) => {
     startPasswordResetProcess(email);
-  };
-
-  const handleConfirmButtonClick = () => {
-    setVisiblePopUp(false);
   };
 
   return (
@@ -65,8 +56,8 @@ const ForgotPasswordForm = ({
           </form>
         )}
       />
-      {isVisiblePopUp && (
-        <PopUpNotification message={statusText} onConfirmButtonClick={handleConfirmButtonClick} />
+      {isCompleted && (
+        <PopUpNotification message={statusText} onConfirmButtonClick={stopPasswordResetProcess} />
       )}
     </S.ForgotPasswordForm>
   );

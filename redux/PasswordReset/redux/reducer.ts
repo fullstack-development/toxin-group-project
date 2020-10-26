@@ -2,6 +2,7 @@ import {
   PASSWORD_RESET_PROCESS,
   PASSWORD_RESET_SUCCESS,
   PASSWORD_RESET_FAILED,
+  PASSWORD_RESET_COMPLETED,
 } from '../constants';
 import { PasswordResetState, PasswordResetActions } from '../types';
 
@@ -29,6 +30,11 @@ const passwordResetReducer = (
       return {
         isCompleted: true,
         statusText: action.payload,
+      };
+    case PASSWORD_RESET_COMPLETED:
+      return {
+        isCompleted: false,
+        statusText: '',
       };
     default:
       return state;

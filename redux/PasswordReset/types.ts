@@ -1,4 +1,9 @@
-import { PASSWORD_RESET_PROCESS, PASSWORD_RESET_SUCCESS, PASSWORD_RESET_FAILED } from './constants';
+import {
+  PASSWORD_RESET_PROCESS,
+  PASSWORD_RESET_SUCCESS,
+  PASSWORD_RESET_FAILED,
+  PASSWORD_RESET_COMPLETED,
+} from './constants';
 
 type Action<Z, T> = {
   type: Z;
@@ -16,7 +21,13 @@ type PasswordResetSuccess = Action<typeof PASSWORD_RESET_SUCCESS, string>;
 
 type PasswordResetFailed = Action<typeof PASSWORD_RESET_FAILED, string>;
 
-type PasswordResetActions = PasswordResetRequest | PasswordResetSuccess | PasswordResetFailed;
+type PasswordResetCompleted = Action<typeof PASSWORD_RESET_COMPLETED, string>;
+
+type PasswordResetActions =
+  | PasswordResetRequest
+  | PasswordResetSuccess
+  | PasswordResetFailed
+  | PasswordResetCompleted;
 
 export type {
   PasswordResetState,

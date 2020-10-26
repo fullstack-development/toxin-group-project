@@ -1,4 +1,8 @@
-import { PASSWORD_RESET_PROCESS } from '../constants';
+import { DispatchEvent } from 'react-redux';
+
+import { store } from 'redux/store';
+
+import { PASSWORD_RESET_PROCESS, PASSWORD_RESET_COMPLETED } from '../constants';
 import { PasswordResetRequest } from '../types';
 
 const passwordResetRequest = (email: string): PasswordResetRequest => ({
@@ -6,4 +10,7 @@ const passwordResetRequest = (email: string): PasswordResetRequest => ({
   payload: email,
 });
 
-export { passwordResetRequest };
+const passwordResetCompleted = (): DispatchEvent =>
+  store.dispatch({ type: PASSWORD_RESET_COMPLETED });
+
+export { passwordResetRequest, passwordResetCompleted };
