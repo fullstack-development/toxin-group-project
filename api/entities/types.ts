@@ -68,6 +68,7 @@ export type ProfileData = {
   birthDate: string;
   gender: 'male' | 'female';
   receiveOffers: boolean;
+  avatar: ArrayBuffer | Blob | Uint8Array;
 };
 
 export type BookingData = {

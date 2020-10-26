@@ -13,7 +13,7 @@ function* startRegistrationProcess(data: {
 }):
   | Generator
   | Generator<PutEffect<RegistrationStatusSuccess | RegistrationStatusFailed>, void, never> {
-  const { email, password, name, surname, birthDate, gender, receiveOffers } = data.payload;
+  const { email, password, name, surname, birthDate, gender, avatar, receiveOffers } = data.payload;
 
   try {
     const result: UserCredential = yield call(Api.auth.signUp, {
@@ -23,6 +23,7 @@ function* startRegistrationProcess(data: {
       surname,
       birthDate,
       gender,
+      avatar,
       receiveOffers,
     });
 

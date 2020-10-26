@@ -25,6 +25,7 @@
     "polished": "^3.6.6",
     "query-string": "^6.13.5",
     "react": "16.13.1",
+    "react-avatar-editor": "^11.0.9",
     "react-day-picker": "^7.4.8",
     "react-dom": "16.13.1",
     "react-final-form": "^6.5.1",
@@ -41,6 +42,7 @@
   "devDependencies": {
     "@types/node": "^14.0.27",
     "@types/react": "^16.9.44",
+    "@types/react-avatar-editor": "^10.3.5",
     "@types/react-dom": "^16.9.8",
     "@types/styled-components": "^5.1.2",
     "@typescript-eslint/eslint-plugin": "^3.7.1",
