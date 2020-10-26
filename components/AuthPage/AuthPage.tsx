@@ -49,10 +49,10 @@ const AuthPage: React.FC<Props> = ({
 };
 
 const mapState = (state: State) => ({
-  isAuthSuccess: state.authReducer.isAuthSuccess,
-  isAuthProcessNow: state.authReducer.isAuthProcessNow,
-  authStatusText: state.authReducer.authStatusText,
-  wasFinishedAuthChecking: state.authReducer.wasFinishedAuthChecking,
+  isAuthSuccess: state.AuthReducer.isAuthSuccess,
+  isAuthProcessNow: state.AuthReducer.isAuthProcessNow,
+  authStatusText: state.AuthReducer.authStatusText,
+  wasFinishedAuthChecking: state.AuthReducer.wasFinishedAuthChecking,
 });
 
 const mapDispatch = {

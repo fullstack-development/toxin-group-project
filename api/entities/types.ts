@@ -57,7 +57,12 @@ export type ProfileData = {
 
 export type BookingData = {
   apartmentId: number;
-  from: Date;
-  to: Date;
+  from: { seconds: number };
+  to: { seconds: number };
   reservationBy?: string;
+};
+
+export type BookedRoom = {
+  room: Apartment;
+  bookedData: { from: string; to: string };
 };

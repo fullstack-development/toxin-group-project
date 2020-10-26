@@ -1,7 +1,7 @@
-import AuthReducer from './redux/reducer';
+import BookingReducer from './redux/reducer';
 import { rootSaga } from './redux/sagas';
 
 export const reduxEntry = {
-  reducers: { AuthReducer },
+  reducers: { BookingReducer },
   sagas: [rootSaga],
 };

@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid';
 import { matchObjects } from 'shared/helpers';
 
 import { Database, CollectionReference, QuerySnapshot } from '../Firebase/modules/Database';
-import { BookingData, Apartment, Filters } from './types';
+import { BookingData, Apartment, Filters, BookedRoom } from './types';
 
 class Booking {
   private readonly actions: Database;
@@ -63,9 +63,7 @@ class Booking {
   }
 
   @boundMethod
-  public async getBookedHistory(
-    email: string,
-  ): Promise<{ bookingData: BookingData; room: Apartment }[]> {
+  public async getBookedHistory(email: string): Promise<Record<string, BookedRoom[]>> {
     const bookedRooms: BookingData[] = [];
 
     await this.booked
@@ -75,31 +73,47 @@ class Booking {
         snapshot.forEach((item) => bookedRooms.push(item.data() as BookingData));
       });
 
-    const result = {
+    const result: Record<string, BookedRoom[]> = {
       current: [],
       history: [],
     };
 
-    bookedRooms.forEach((bookedRoom) => {
-      console.log('hey', bookedRoom);
-      // this.apartments
-      //   .where('id', '==', bookedRoom.apartmentId)
-      //   .get()
-      //   .then((snapshot) => {
-      //     snapshot.forEach((item) =>
-      //       result.push({
-      //         bookingData: bookedRoom,
-      //         room: item.data() as Apartment,
-      //       }),
-      //     );
-      //   });
+    await new Promise((resolve) => {
+      bookedRooms.forEach(async (bookedRoom) => {
+        await this.apartments
+          .where('id', '==', bookedRoom.apartmentId)
+          .get()
+          .then((snapshot) => {
+            snapshot.forEach((item) => {
+              const itemDateFrom = new Date(bookedRoom.from.seconds * 1000).toLocaleDateString(
+                'ru-RU',
+              );
+              const itemDateToInTimeStamp = bookedRoom.to.seconds * 1000;
+              const itemDateTo = new Date(itemDateToInTimeStamp).toLocaleDateString('ru-RU');
+
+              if (itemDateToInTimeStamp < Date.now()) {
+                result.history.push({
+                  room: item.data() as Apartment,
+                  bookedData: { from: itemDateFrom, to: itemDateTo },
+                });
+              } else {
+                result.current.push({
+                  room: item.data() as Apartment,
+                  bookedData: { from: itemDateFrom, to: itemDateTo },
+                });
+              }
+            });
+          });
+      });
+
+      resolve();
     });
 
     return result;
   }
 
   @boundMethod
-  public async setBookedByUser(selectedBooking: BookingData): any {
+  public setBookedByUser(selectedBooking: BookingData): void {
     this.booked.doc(String(Date.now())).set(selectedBooking);
   }
 
