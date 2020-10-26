@@ -11,16 +11,16 @@ const Container = styled.div`
     margin: 0 auto;
   }
 
-  @media (max-width: 1200px) {
+  @media ${breakpointDown('lg')} {
     min-height: 40.2rem;
     padding: 2rem 6rem;
   }
 
-  @media (max-width: 992px) {
+  @media ${breakpointDown('md')} {
     min-height: 30.2rem;
   }
 
-  @media (max-width: 576px) {
+  @media ${breakpointDown('xs')} {
     min-height: 20.2rem;
     padding: 0.7rem;
   }
@@ -58,6 +58,10 @@ const RoomsListContainer = styled.div`
       max-height: 40rem;
       overflow-y: scroll;
       padding: 1rem;
+
+      @media ${breakpointDown('md')} {
+        max-height: 100%;
+      }
 
       &::-webkit-scrollbar {
         opacity: 0;
