@@ -1,28 +1,23 @@
 import { useCallback, useEffect, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
+import Preloader from 'components/Preloader/Preloader';
 import Room from 'components/Room/Room';
 
 import { Props as RoomProps } from '../Room/Room.types';
-import Preloader from './components/Preloader/Preloader';
 import * as S from './Rooms.styles';
 import { Props } from './Rooms.types';
 
 const DEFAULT_INCREMENT = 12;
-
-function delay(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
 
 const Rooms: React.FC<Props> = ({ rooms }: Props) => {
   const [visibleRooms, setVisibleRooms] = useState<RoomProps[]>([]);
   const [hasMore, setHasMore] = useState(true);
 
   const getNewRooms = useCallback(async () => {
-    await delay(1500);
     setVisibleRooms((prevRooms) => {
       const updatedList = rooms.slice(0, prevRooms.length + DEFAULT_INCREMENT);
-      if (prevRooms.length && updatedList.length === prevRooms.length) setHasMore(false);
+      if (prevRooms.length && rooms.length === updatedList.length) setHasMore(false);
       return updatedList;
     });
   }, [rooms]);
