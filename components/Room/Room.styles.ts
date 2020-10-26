@@ -88,18 +88,12 @@ const Price = styled.span`
   }}
 `;
 
-const Reviews = styled.a`
+const Reviews = styled.span`
   ${(props) => {
     const { typography, colors } = props.theme;
     return css`
-      text-decoration: none;
       font: 700 1rem ${typography.fontName};
       color: ${colors.basic};
-
-      &:hover,
-      &:focus {
-        color: ${colors.basicDark};
-      }
     `;
   }}
 `;
