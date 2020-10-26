@@ -9,12 +9,10 @@ import RoomImpression from 'components/RoomImpression/RoomImpression';
 import { getRoomDetailsRequest } from 'redux/GetRoomDetails/redux/actions';
 import { AppState } from 'redux/store.types';
 
-import { roomImagesPreview } from './MainContent.data';
+import { roomImagesPreview, benefitsData, rulesData } from './MainContent.data';
 import * as S from './MainContent.styles';
 
-const mapState = (state: AppState) => ({
-  ...state.getRoomDetailsReducer,
-});
+const mapState = (state: AppState) => state.getRoomDetailsReducer;
 
 const mapDispatch = {
   startGetRoomDetailsProcess: getRoomDetailsRequest,
@@ -44,13 +42,7 @@ const MainContent = ({ roomDetails, startGetRoomDetailsProcess }: Props): JSX.El
       <S.Details>
         <S.Benefits>
           <S.Title>Сведения о номере</S.Title>
-          <Benefits
-            items={[
-              { icon: 'insert_emoticon', title: 'Комфорт', description: 'Шумопоглощающие стены' },
-              { icon: 'location_city', title: 'Удобство', description: 'Окно в каждой из спален' },
-              { icon: 'whatshot', title: 'Уют', description: 'Номер оснащён камином' },
-            ]}
-          />
+          <Benefits items={benefitsData} />
         </S.Benefits>
         <S.RoomImpressionWrapper>
           <RoomImpression
@@ -63,13 +55,7 @@ const MainContent = ({ roomDetails, startGetRoomDetailsProcess }: Props): JSX.El
         </S.ReviewsWrapper>
         <S.BulletList>
           <S.Title>Правила</S.Title>
-          <BulletList
-            items={[
-              'Нельзя с питомцами',
-              'Без вечеринок и мероприятий',
-              'Время прибытия — после 13:00, а выезд до 12:00',
-            ]}
-          />
+          <BulletList items={rulesData} />
         </S.BulletList>
         <S.CancellationTerms>
           <S.Title>Отмена</S.Title>

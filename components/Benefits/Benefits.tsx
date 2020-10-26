@@ -1,22 +1,23 @@
 import * as S from './Benefits.style';
 
-type Benefits = {
+type Props = {
   items: Array<
     {
-      title: string;
-      description: string;
+      term: string;
+      definition: string;
+      icon: string;
     } & S.Icon
   >;
 };
 
-const Benefits: React.FC<Benefits> = ({ items }: Benefits) => (
+const Benefits = ({ items }: Props): JSX.Element => (
   <S.Benefits>
-    {items.map((item) => (
-      <S.Item key={item.title}>
-        <S.Icon icon={item.icon} />
+    {items.map(({ term, icon, definition }) => (
+      <S.Item key={term}>
+        <S.Icon icon={icon} />
         <S.List>
-          <S.Title>{item.title}</S.Title>
-          <dd>{item.description}</dd>
+          <S.Term>{term}</S.Term>
+          <dd>{definition}</dd>
         </S.List>
       </S.Item>
     ))}
