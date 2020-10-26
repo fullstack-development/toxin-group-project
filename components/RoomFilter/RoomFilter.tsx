@@ -1,61 +1,73 @@
+import { useEffect } from 'react';
 import { Form } from 'react-final-form';
 
+import {
+  Accessibility,
+  AdditionalAmenities,
+  Amenities,
+  Filters,
+  Opportunities,
+} from 'api/entities/types';
 import CheckboxesList from 'components/CheckboxesList/CheckboxesList';
 import {
   checkboxesListData,
   expandableCheckboxesListData,
   richCheckboxesListData,
 } from 'components/CheckboxesList/CheckboxesList.data';
+import { Option } from 'components/CheckboxesList/CheckboxesList.types';
 import Dropdown from 'components/Dropdown/Dropdown';
 import { guestsGroups, guestsItems, amenitiesItems } from 'components/Dropdown/Dropdown.data';
+import { Item } from 'components/Dropdown/Dropdown.types';
 import Expander from 'components/Expander/Expander';
 import RangeSlider from 'components/RangeSlider/RangeSlider';
 import TimePicker from 'components/TimePicker/TimePicker';
 
 import * as S from './RoomFilter.styles';
+import { OptionName, Props } from './RoomFilter.types';
 
-const RoomFilter: React.FC = () => {
-  const initialValues = {
-    price: {
-      from: 5000,
-      to: 10000,
-    },
-    booked: {
-      from: Date.now(),
-      to: Date.now(),
-    },
-    amenities: {
-      bedrooms: 1,
-      beds: 1,
-      bathrooms: 0,
-    },
-    additionalAmenities: {
-      breakfast: false,
-      desk: false,
-      chair: false,
-      crib: false,
-      tv: false,
-      shampoo: false,
-    },
-    accessibility: {
-      wideCorridor: false,
-      invalidHelper: false,
-    },
-    opportunities: {
-      smoking: false,
-      keepPets: false,
-      largeNumberOfPersons: false,
-    },
+const getDropdownProps = (defaultProps: Item[], updatedProps: Amenities) => {
+  return defaultProps.map((item) => ({
+    ...item,
+    initialValue: updatedProps[item.inputName],
+  }));
+};
+
+const getOptionName = (name: string): OptionName => {
+  const [, option] = name.split('.');
+  return option as OptionName;
+};
+
+const getCheckboxProps = (
+  defaultProps: Option[],
+  updatedProps: Opportunities | Accessibility | AdditionalAmenities,
+) => {
+  return defaultProps.map((item) => ({
+    ...item,
+    isChecked: Boolean(updatedProps[getOptionName(item.name)]),
+  }));
+};
+
+const RoomFilter: React.FC<Props> = ({ initialFilters, loadRooms }: Props) => {
+  const handleFormSubmit = (values?: Filters) => {
+    loadRooms(values);
   };
 
-  // eslint-disable-next-line no-console
-  const handleFormSubmit = (values) => console.log(values);
+  useEffect(() => {
+    loadRooms();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Form
       onSubmit={handleFormSubmit}
-      initialValues={initialValues}
-      render={({ handleSubmit }) => {
+      initialValues={initialFilters}
+      render={({ handleSubmit, initialValues }) => {
+        const { guests } = initialValues;
+        const updatedDropdownProps = guestsItems.map((item) => ({
+          ...item,
+          initialValue: (guests && guests[item.inputName]) || item.initialValue,
+        }));
+
         return (
           <S.RoomFilter>
             <form onSubmit={handleSubmit}>
@@ -64,6 +76,8 @@ const RoomFilter: React.FC = () => {
                   type="single"
                   name="booked"
                   dateFromLabelText="даты пребывания в отеле"
+                  dateFrom={new Date(initialValues.booked.from)}
+                  dateTo={new Date(initialValues.booked.to)}
                 />
               </S.TimePickerWrapper>
               <S.DropdownWrapper>
@@ -73,7 +87,7 @@ const RoomFilter: React.FC = () => {
                   name="guests"
                   enableControls={false}
                   groups={guestsGroups}
-                  items={guestsItems}
+                  items={updatedDropdownProps}
                 />
               </S.DropdownWrapper>
               <S.SliderWrapper>
@@ -86,11 +100,18 @@ const RoomFilter: React.FC = () => {
               </S.SliderWrapper>
               <S.CheckboxWrapper>
                 <S.Title elementType="checkbox">Checkbox buttons</S.Title>
-                <CheckboxesList roomOptions={checkboxesListData} />
+                <CheckboxesList
+                  roomOptions={getCheckboxProps(checkboxesListData, initialValues.opportunities)}
+                />
               </S.CheckboxWrapper>
               <S.CheckboxWrapper>
                 <S.Title elementType="checkbox">Доступность</S.Title>
-                <CheckboxesList roomOptions={richCheckboxesListData} />
+                <CheckboxesList
+                  roomOptions={getCheckboxProps(
+                    richCheckboxesListData,
+                    initialValues.accessibility,
+                  )}
+                />
               </S.CheckboxWrapper>
               <S.DropdownWrapper>
                 <S.Title elementType="dropdown">Удобства номера</S.Title>
@@ -98,12 +119,17 @@ const RoomFilter: React.FC = () => {
                   placeholder="Удобства номера"
                   enableControls={false}
                   name="amenities"
-                  items={amenitiesItems}
+                  items={getDropdownProps(amenitiesItems, initialValues.amenities)}
                 />
               </S.DropdownWrapper>
               <S.CheckboxWrapper>
                 <Expander title="дополнительные удобства" isDefaultOpen={false}>
-                  <CheckboxesList roomOptions={expandableCheckboxesListData} />
+                  <CheckboxesList
+                    roomOptions={getCheckboxProps(
+                      expandableCheckboxesListData,
+                      initialValues.additionalAmenities,
+                    )}
+                  />
                 </Expander>
               </S.CheckboxWrapper>
               <S.SubmitButton isFilled>Применить</S.SubmitButton>
