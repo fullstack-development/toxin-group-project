@@ -17,7 +17,7 @@ const options = {
   second: 'numeric',
 };
 
-function getСommentDate(date: Date): string {
+function getCommentDate(date: Date): string {
   const currentDate = Date.now();
   const timeHasPassed = currentDate - date.valueOf();
 
@@ -52,4 +52,4 @@ function getСommentDate(date: Date): string {
   return date.toLocaleDateString('ru-RU', options);
 }
 
-export default getСommentDate;
+export default getCommentDate;
