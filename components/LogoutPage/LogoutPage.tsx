@@ -3,18 +3,18 @@ import { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { Logout, preloadAuthData } from 'redux/Auth/redux/actions';
+import { AppState } from 'redux/store.types';
 
-type Props = {
-  isAuthSuccess: boolean;
-  checkAuthBeforePageLoaded: () => void;
-  startLogoutProcess: () => void;
+const mapState = (state: AppState) => ({
+  isAuthSuccess: state.authReducer.isAuthSuccess,
+});
+
+const mapDispatch = {
+  startLogoutProcess: Logout,
+  checkAuthBeforePageLoaded: preloadAuthData,
 };
 
-type PropsState = {
-  authReducer: {
-    isAuthSuccess: boolean;
-  };
-};
+type Props = ReturnType<typeof mapState> & typeof mapDispatch;
 
 const LogoutPage: React.FC<Props> = ({
   isAuthSuccess,
@@ -33,15 +33,6 @@ const LogoutPage: React.FC<Props> = ({
   });
 
   return null;
-};
-
-const mapState = (state: PropsState) => ({
-  isAuthSuccess: state.authReducer.isAuthSuccess,
-});
-
-const mapDispatch = {
-  startLogoutProcess: Logout,
-  checkAuthBeforePageLoaded: preloadAuthData,
 };
 
 export default connect(mapState, mapDispatch)(LogoutPage);
