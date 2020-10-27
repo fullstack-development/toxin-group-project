@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Form, Field } from 'react-final-form';
 import { connect } from 'react-redux';
 
@@ -32,7 +31,7 @@ type FormData = {
   surname: string;
 };
 
-const EditUserName = ({
+const EditDisplayName = ({
   user,
   displayName,
   isCompleted,
@@ -77,4 +76,4 @@ const EditUserName = ({
   );
 };
 
-export default connect(mapState, mapDispatch)(EditUserName);
+export default connect(mapState, mapDispatch)(EditDisplayName);

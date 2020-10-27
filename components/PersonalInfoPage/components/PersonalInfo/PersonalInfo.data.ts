@@ -7,7 +7,7 @@ type Data = {
 const data: Required<Data[]> = [
   {
     title: 'Имя по документам',
-    component: 'userName',
+    component: 'displayName',
     description:
       'Имя, указанное в загранпаспорте, водительском удостоверении или другом выездном документе.',
   },

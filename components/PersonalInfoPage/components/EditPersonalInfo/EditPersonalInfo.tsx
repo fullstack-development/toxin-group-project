@@ -4,9 +4,9 @@ import { User } from 'api/Firebase/modules/Authentication/types';
 import TextButton from 'components/TextButton/TextButton';
 
 import EditBirthday from './components/EditBirthday/EditBirthday';
+import EditDisplayName from './components/EditDisplayName/EditDisplayName';
 import EditEmail from './components/EditEmail/EditEmail';
 import EditGender from './components/EditGender/EditGender';
-import EditUserName from './components/EditUserName/EditUserName';
 import * as S from './EditPersonalInfo.styles';
 
 type Props = {
@@ -21,9 +21,9 @@ const EditPersonalInfo = ({ user, title, component, value, description }: Props)
   const [isEdit, setEdit] = useState(false);
 
   const mapEditingComponents = {
-    userName: <EditUserName user={user} displayName={value} />,
-    gender: <EditGender gender={value} />,
-    birthday: <EditBirthday birthday={value} />,
+    displayName: <EditDisplayName user={user} displayName={value} />,
+    gender: <EditGender user={user} gender={value} />,
+    birthday: <EditBirthday user={user} birthday={value} />,
     email: <EditEmail user={user} email={value} />,
   };
 
