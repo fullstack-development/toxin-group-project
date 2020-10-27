@@ -3,8 +3,19 @@ import {
   BREAK_AUTH_PROCESS,
   PRELOAD_AUTH_DATA,
   GOOGLE_AUTH_PROCESS,
+  AUTH_LOGOUT_PROCESS,
 } from '../constants';
-import { RequestToAuth, BreakAuthProcess, AuthData, PreloadAuthData } from '../types';
+import {
+  RequestToAuth,
+  BreakAuthProcess,
+  AuthData,
+  PreloadAuthData,
+  LogoutProcess,
+} from '../types';
+
+const Logout = (): LogoutProcess => ({
+  type: AUTH_LOGOUT_PROCESS,
+});
 
 const requestToAuth = (data: AuthData): RequestToAuth => ({
   type: AUTH_PROCESS,
@@ -23,4 +34,4 @@ const preloadAuthData = (): PreloadAuthData => ({
   type: PRELOAD_AUTH_DATA,
 });
 
-export { requestToAuth, requestToAuthWithGoogle, breakAuthProcess, preloadAuthData };
+export { Logout, requestToAuth, requestToAuthWithGoogle, breakAuthProcess, preloadAuthData };

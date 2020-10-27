@@ -5,13 +5,14 @@ import {
   PRELOAD_AUTH_DATA,
   BREAK_AUTH_PROCESS,
   AUTH_REQUIRED,
+  AUTH_LOGOUT_DONE,
 } from '../constants';
 import { AuthActions, AuthState } from '../types';
 
 const initialState: AuthState = {
-  isAuthSuccess: false,
-  isAuthProcessNow: false,
-  wasFinishedAuthChecking: false,
+  isAuthSuccess: null,
+  isAuthProcessNow: null,
+  wasFinishedAuthChecking: null,
   displayName: null,
   authStatusText: '',
 };
@@ -33,6 +34,7 @@ const authReducer = (state: AuthState = initialState, action: AuthActions): Auth
       return {
         ...state,
         wasFinishedAuthChecking: true,
+        isAuthSuccess: false,
       };
     case AUTH_SUCCESS:
       return {
@@ -49,6 +51,15 @@ const authReducer = (state: AuthState = initialState, action: AuthActions): Auth
         isAuthProcessNow: true,
         wasFinishedAuthChecking: true,
         authStatusText: action.payload,
+      };
+    case AUTH_LOGOUT_DONE:
+      return {
+        ...state,
+        isAuthSuccess: false,
+        isAuthProcessNow: false,
+        wasFinishedAuthChecking: false,
+        displayName: null,
+        authStatusText: 'Требуется авторизация',
       };
     default:
       return state;

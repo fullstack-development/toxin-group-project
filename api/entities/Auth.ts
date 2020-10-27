@@ -31,6 +31,7 @@ class Auth {
     gender,
     birthDate,
     receiveOffers,
+    avatar,
   }: ProfileData): Promise<UserCredential> {
     let credential: UserCredential;
 
@@ -50,11 +51,12 @@ class Auth {
     }
 
     const user = this.actions.getCurrentUser();
+    const photoURL = avatar && (await this.getPhotoURL(user.uid, avatar));
 
     user
       .updateProfile({
         displayName: `${name} ${surname}`,
-        photoURL: gender === 'female' ? '/img/avatar-female.jpg' : '/img/avatar-male.jpg',
+        photoURL,
       })
       .then(() => {
         this.addAdditionalUserInformation(user.uid, { gender, birthDate, receiveOffers });
@@ -123,6 +125,19 @@ class Auth {
   @boundMethod
   public async getAdditionalUserInformation(uid: string): Promise<AdditionalUserInformation> {
     return this.database.getDocument(this.reference, uid);
+  }
+
+  @boundMethod
+  public async getPhotoURL(uid: string, photo: ArrayBuffer | Blob | Uint8Array): Promise<string> {
+    let photoURL: string;
+
+    try {
+      photoURL = await this.actions.setUserAvatar(uid, photo);
+    } catch (err) {
+      throw new AuthError();
+    }
+
+    return photoURL;
   }
 
   @boundMethod

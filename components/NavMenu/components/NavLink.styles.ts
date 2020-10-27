@@ -96,11 +96,14 @@ const SubMenuContainer = styled.div<SubMenu>`
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
+      padding: 1.5rem;
+      border-radius: 0.5rem;
 
       @media ${breakpointDown('md')} {
         position: relative;
         transform: translate(0);
         left: 0;
+        padding: 0;
       }
     `;
   }}

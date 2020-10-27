@@ -1,69 +1,50 @@
 import { Form } from 'react-final-form';
 
-import api from 'api/api';
 import ArrowButton from 'components/ArrowButton/ArrowButton';
 import Dropdown from 'components/Dropdown/Dropdown';
 import { guestsGroups, guestsItems } from 'components/Dropdown/Dropdown.data';
 import TimePicker from 'components/TimePicker/TimePicker';
 
+import defaultFilters from './defaultFilters';
 import * as S from './SearchRoomForm.styles';
 
 type SearchRoomFormProps = {
   onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
 };
-const testRoomFilter = {
-  price: { from: 2000, to: 7000 },
-  booked: {
-    from: new Date().getTime(),
-    to: new Date(Date.now() + 1000000000).getTime(),
-  },
-  amenities: {
-    bedrooms: 1,
-    beds: 1,
-    bathrooms: 1,
-  },
-  additionalAmenities: {
-    breakfast: true,
-    desk: false,
-    chair: false,
-    crib: false,
-    tv: false,
-    shampoo: false,
-  },
-  accessibility: {
-    wideCorridor: false,
-    invalidHelper: false,
-  },
-  opportunities: {
-    smoking: false,
-    keepPets: false,
-    largeNumberOfPersons: false,
-  },
-};
-const getRooms = (e) => {
-  e.preventDefault;
-  // eslint-disable-next-line no-console
-  api.booking.filterRooms(testRoomFilter).then((data) => console.log(data));
-};
+
+const defaultBookingDates = defaultFilters.booked;
 
 const SearchRoomForm: React.FC<SearchRoomFormProps> = ({ onSubmit }: SearchRoomFormProps) => {
-  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    onSubmit(e);
+  const handleFormSubmit = (values) => {
+    // console.log(values);
   };
 
   return (
     <S.SearchRoomForm>
       <S.Title>Найдём номера под ваши пожелания</S.Title>
       <Form
+        initialValues={{
+          booked: {
+            from: defaultBookingDates.from,
+            to: defaultBookingDates.to,
+          },
+          guests: Object.fromEntries(
+            guestsItems
+              .filter((item) => item.initialValue)
+              .map((item) => [item.inputName, item.initialValue]),
+          ),
+        }}
         onSubmit={handleFormSubmit}
-        render={() => (
-          <form>
+        render={({ handleSubmit, values }) => (
+          <form onSubmit={handleSubmit}>
             <S.TimePickerWrapper>
               <TimePicker
                 type="double"
-                name="search-room-date"
+                name="booked"
                 dateFromLabelText="прибытие"
                 dateToLabelText="выезд"
+                dateFrom={new Date(defaultBookingDates.from)}
+                dateTo={new Date(defaultBookingDates.to)}
               />
             </S.TimePickerWrapper>
             <S.DropdownWrapper>
@@ -76,7 +57,11 @@ const SearchRoomForm: React.FC<SearchRoomFormProps> = ({ onSubmit }: SearchRoomF
                 items={guestsItems}
               />
             </S.DropdownWrapper>
-            <ArrowButton isFilled type="button" onClick={getRooms}>
+            <ArrowButton
+              href={`/search-room?values=${JSON.stringify(values)}`}
+              isFilled
+              type="button"
+            >
               Подобрать номер
             </ArrowButton>
           </form>

@@ -2,6 +2,7 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import { Field, Form } from 'react-final-form';
 
+import AvatarLoader from 'components/AvatarLoader/AvatarLoader';
 import Input from 'components/Input/Input';
 import RadioButton from 'components/RadioButton/RadioButton';
 import Toggle from 'components/Toggle/Toggle';
@@ -28,6 +29,9 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
         render={({ handleSubmit }) => (
           <S.RegistrationForm onSubmit={handleSubmit}>
             <S.Title>Регистрация аккаунта</S.Title>
+            <S.Avatar>
+              <AvatarLoader name="avatar" />
+            </S.Avatar>
             <Field
               name="name"
               render={({ input, meta }) => (
