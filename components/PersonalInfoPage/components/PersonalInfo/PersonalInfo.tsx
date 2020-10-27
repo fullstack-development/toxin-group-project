@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { connect } from 'react-redux';
 
 import { User } from 'api/Firebase/modules/Authentication/types';
@@ -11,6 +11,7 @@ import * as S from './PersonalInfo.styles';
 
 interface IStateProps {
   user: User;
+  isCompleted: boolean;
   additionalUserData: any;
 }
 
@@ -27,33 +28,44 @@ type Props = ReturnType<typeof mapState> & typeof mapDispatch;
 
 const PersonalInfo = ({
   user,
+  isCompleted,
   additionalUserData,
   startGetAdditionalUserDataProcess,
 }: Props): JSX.Element => {
   const [userData, setUserData] = useState({
-    userName: '',
-    email: '',
+    displayName: '',
     gender: '',
-    birthday: null,
-    receiveOffers: false,
+    birthday: '',
+    email: '',
   });
 
+  const handleGetAdditionalUserData = useCallback(
+    (currentUser) => {
+      startGetAdditionalUserDataProcess(currentUser);
+    },
+    [startGetAdditionalUserDataProcess],
+  );
+
   useEffect(() => {
-    if (user) {
-      startGetAdditionalUserDataProcess(user);
+    if (user) handleGetAdditionalUserData(user);
+  }, [handleGetAdditionalUserData, user]);
 
-      const { displayName, email } = user;
-      const { gender, birthday, receiveOffers } = additionalUserData;
+  const handleSetAdditionalUserData = useCallback(() => {
+    const { gender, birthDate } = additionalUserData;
 
-      setUserData({
-        userName: displayName,
-        email,
-        gender,
-        birthday: birthday.toDate(),
-        receiveOffers,
-      });
-    }
-  }, [user, additionalUserData, startGetAdditionalUserDataProcess]);
+    const { displayName, email } = user;
+
+    setUserData({
+      displayName,
+      email,
+      gender,
+      birthday: birthDate,
+    });
+  }, [additionalUserData, user]);
+
+  useEffect(() => {
+    if (isCompleted) handleSetAdditionalUserData();
+  }, [handleSetAdditionalUserData, isCompleted]);
 
   const accountData = data.map((elem) => {
     return { ...elem, value: userData[elem.component] };
@@ -70,4 +82,4 @@ const PersonalInfo = ({
   );
 };
 
-export default connect(mapState)(PersonalInfo);
+export default connect(mapState, mapDispatch)(PersonalInfo);

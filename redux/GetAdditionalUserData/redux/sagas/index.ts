@@ -1,5 +1,7 @@
 import { SagaIterator } from 'redux-saga';
-import { put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
+
+import api from 'api/api';
 
 import {
   GET_ADDITIONAL_USER_DATA_PROCESS,
@@ -7,16 +9,17 @@ import {
   GET_ADDITIONAL_USER_DATA_FAILED,
 } from '../../constants';
 
-function* startGetAdditionalUserDataProcess({ payload }) {
+function* startGetAdditionalUserDataProcess({ payload: user }) {
   try {
+    const additionalUserData = yield call(api.auth.getAdditionalUserInformation, user.uid);
     yield put({
       type: GET_ADDITIONAL_USER_DATA_SUCCESS,
-      payload,
+      payload: additionalUserData,
     });
   } catch (err) {
     yield put({
       type: GET_ADDITIONAL_USER_DATA_FAILED,
-      payload,
+      payload: null,
     });
   }
 }

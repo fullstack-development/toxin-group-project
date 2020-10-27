@@ -19,6 +19,7 @@ type AdditionalUserData = {
 };
 
 type GetAdditionalUserDataState = {
+  isCompleted: boolean;
   additionalUserData: null | AdditionalUserData;
 };
 
