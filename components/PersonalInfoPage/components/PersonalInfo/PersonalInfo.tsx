@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { User } from 'api/Firebase/modules/Authentication/types';
+import { getAdditionalUserDataRequest } from 'redux/GetAdditionalUserData/redux/actions';
 import { AppState } from 'redux/store.types';
 
 import EditPersonalInfo from '../EditPersonalInfo/EditPersonalInfo';
@@ -10,24 +11,49 @@ import * as S from './PersonalInfo.styles';
 
 interface IStateProps {
   user: User;
+  additionalUserData: any;
 }
 
 const mapState = (state: AppState): IStateProps => ({
   user: state.authReducer.user,
+  ...state.getAdditionalUserDataReducer,
 });
 
-type Props = ReturnType<typeof mapState>;
+const mapDispatch = {
+  startGetAdditionalUserDataProcess: getAdditionalUserDataRequest,
+};
 
-const PersonalInfo = ({ user }: Props): JSX.Element => {
-  const [userData, setUserData] = useState({ userName: '', email: '' });
+type Props = ReturnType<typeof mapState> & typeof mapDispatch;
+
+const PersonalInfo = ({
+  user,
+  additionalUserData,
+  startGetAdditionalUserDataProcess,
+}: Props): JSX.Element => {
+  const [userData, setUserData] = useState({
+    userName: '',
+    email: '',
+    gender: '',
+    birthday: null,
+    receiveOffers: false,
+  });
 
   useEffect(() => {
     if (user) {
-      const { displayName, email } = user;
+      startGetAdditionalUserDataProcess(user);
 
-      setUserData({ userName: displayName, email });
+      const { displayName, email } = user;
+      const { gender, birthday, receiveOffers } = additionalUserData;
+
+      setUserData({
+        userName: displayName,
+        email,
+        gender,
+        birthday: birthday.toDate(),
+        receiveOffers,
+      });
     }
-  }, [user]);
+  }, [user, additionalUserData, startGetAdditionalUserDataProcess]);
 
   const accountData = data.map((elem) => {
     return { ...elem, value: userData[elem.component] };

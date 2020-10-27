@@ -14,7 +14,7 @@ type Action<Z, T> = {
 
 type SentData = {
   user: User;
-  displayName?: string;
+  displayName: string;
 };
 
 type UsernameUpdateState = {

@@ -5,9 +5,11 @@ import createSagaMiddleware, { SagaMiddleware } from 'redux-saga';
 import { reduxEntry as AuthReduxEntry } from './Auth';
 import { reduxEntry as BookingReduxEntry } from './Booking';
 import { emailUpdateReduxEntry } from './EmailUpdate';
+import { getAdditionalUserDataReduxEntry } from './GetAdditionalUserData';
 import { passwordUpdateReduxEntry } from './PasswordUpdate';
 import { reduxEntry as RegistrationReduxEntry } from './Registration';
 import { SharedReduxEntries, AvailableReducers } from './store.types';
+import { updateAdditionalUserDataReduxEntry } from './UpdateAdditionalUserData';
 import { usernameUpdateReduxEntry } from './UsernameUpdate';
 
 const bindMiddleware = (middleware) => {
@@ -20,12 +22,12 @@ const bindMiddleware = (middleware) => {
 const sharedReduxEntries: SharedReduxEntries = [
   AuthReduxEntry,
   BookingReduxEntry,
+  getAdditionalUserDataReduxEntry,
   emailUpdateReduxEntry,
+  updateAdditionalUserDataReduxEntry,
   passwordUpdateReduxEntry,
   RegistrationReduxEntry,
   usernameUpdateReduxEntry,
-  RegistrationReduxEntry,
-  AuthReduxEntry,
 ];
 
 let preparedReducers: Record<string, AvailableReducers> = {};
