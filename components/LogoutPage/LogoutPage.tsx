@@ -6,7 +6,7 @@ import { Logout, preloadAuthData } from 'redux/Auth/redux/actions';
 import { AppState } from 'redux/store.types';
 
 const mapState = (state: AppState) => ({
-  isAuthSuccess: state.authReducer.isAuthSuccess,
+  isAuthSuccess: state.AuthReducer.isAuthSuccess,
 });
 
 const mapDispatch = {
