@@ -1,6 +1,7 @@
 import { boundMethod } from 'autobind-decorator';
 import { nanoid } from 'nanoid';
 
+import defaultFilters from 'components/SearchRoomForm/defaultFilters';
 import { matchObjects } from 'shared/helpers';
 
 import { Database, CollectionReference, QuerySnapshot } from '../Firebase/modules/Database';
@@ -38,7 +39,7 @@ class Booking {
   }
 
   @boundMethod
-  public async filterRooms(options: Filters): Promise<Apartment[]> {
+  public async filterRooms(options: Filters = defaultFilters): Promise<Apartment[]> {
     const { price, booked } = options;
     const affordableRooms: Apartment[] = await this.apartments
       .where('price', '<=', price.to)
@@ -49,7 +50,6 @@ class Booking {
     const bookedRoomIDs = await this.getBooked(new Date(booked.from), new Date(booked.to));
 
     const availableRooms = affordableRooms.filter((room) => !bookedRoomIDs.includes(room.id));
-    // return availableRooms;
 
     const comparableOptions: (keyof Filters)[] = [
       'amenities',
@@ -157,7 +157,7 @@ class Booking {
       const userValue = userOption[prop];
       const roomValue = roomOption[prop];
 
-      return roomValue >= userValue;
+      return Number(roomValue) >= Number(userValue);
     });
   }
 }

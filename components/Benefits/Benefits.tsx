@@ -1,26 +1,27 @@
 import * as S from './Benefits.style';
 
-type Benefits = {
+type Props = {
   items: Array<
     {
-      title: string;
-      description: string;
+      term: string;
+      definition: string;
+      icon: string;
     } & S.Icon
   >;
 };
 
-const Benefits: React.FC<Benefits> = ({ items }: Benefits) => (
-  <div>
-    {items.map((item) => (
-      <S.BenefitItem key={item.title}>
-        <S.Icon icon={item.icon} />
-        <S.TextWrapper>
-          <S.Title>{item.title}</S.Title>
-          <p>{item.description}</p>
-        </S.TextWrapper>
-      </S.BenefitItem>
+const Benefits = ({ items }: Props): JSX.Element => (
+  <S.Benefits>
+    {items.map(({ term, icon, definition }) => (
+      <S.Item key={term}>
+        <S.Icon icon={icon} />
+        <S.List>
+          <S.Term>{term}</S.Term>
+          <dd>{definition}</dd>
+        </S.List>
+      </S.Item>
     ))}
-  </div>
+  </S.Benefits>
 );
 
 export default Benefits;

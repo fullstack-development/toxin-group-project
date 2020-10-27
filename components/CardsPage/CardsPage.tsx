@@ -32,15 +32,8 @@ const CardsPage: React.FC = (): JSX.Element => {
       <S.RoomsWrapper>
         <Rooms rooms={rooms} />
       </S.RoomsWrapper>
-      <Room price={9900} number={888} reviewCount={65} reviewsHref="/mock" href="/mock" />
-      <Room
-        price={9900}
-        number={888}
-        reviewCount={65}
-        reviewsHref="/mock"
-        href="/mock"
-        roomType="люкс"
-      />
+      <Room price={9900} number={888} reviews={[]} href="/mock" />
+      <Room price={9900} number={888} reviews={[]} href="/mock" roomType="люкс" />
       <S.SearchRoomFormWrapper>
         <SearchRoomForm />
       </S.SearchRoomFormWrapper>
