@@ -8,7 +8,7 @@ const MainContent = styled.main`
   justify-content: center;
   flex-direction: column;
   max-width: 60rem;
-  padding: 5rem;
+  padding: 5rem 5rem 20rem;
 `;
 
 const Title = styled.h1`
