@@ -4,12 +4,12 @@ import { takeLatest, call, put, CallEffect, PutEffect } from 'redux-saga/effects
 import Api from 'api/api';
 
 import { LOAD_ROOMS, UPDATE_BOOKED_LIST } from '../../constants';
-import { BookedList, UpdateBookedList } from '../../types';
+import { BookedHistoryList, UpdateBookedHistoryList } from '../../types';
 
 function* loadRooms({
   payload,
-}): Generator | CallEffect | Generator<PutEffect<UpdateBookedList>, void, never> {
-  const result: BookedList = yield call(Api.booking.getBookedHistory, payload);
+}): Generator | CallEffect | Generator<PutEffect<UpdateBookedHistoryList>, void, never> {
+  const result: BookedHistoryList = yield call(Api.booking.getBookedHistory, payload);
 
   yield put({
     type: UPDATE_BOOKED_LIST,
