@@ -36,7 +36,13 @@ export type Apartment = {
   overcrowdingPrice: number;
   price: number;
   rating: number;
-  reviews: number;
+  reviews: {
+    avatarUrl: string;
+    userName: string;
+    date: Date;
+    text: string;
+    likesCount: number;
+  }[];
   class: 'economy' | 'luxury';
   href: string;
   images: { url: string; alt: string }[];

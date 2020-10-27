@@ -4,7 +4,7 @@ const rooms: RoomProps[] = [
   {
     number: 888,
     price: 9900,
-    reviews: 145,
+    reviews: [],
     href: '/mock',
 
     roomType: 'люкс',
@@ -14,7 +14,7 @@ const rooms: RoomProps[] = [
   {
     number: 840,
     price: 9900,
-    reviews: 65,
+    reviews: [],
     href: '/mock',
 
     rating: 4,
@@ -23,7 +23,7 @@ const rooms: RoomProps[] = [
   {
     number: 980,
     price: 8500,
-    reviews: 35,
+    reviews: [],
     href: '/mock',
 
     rating: 3,
@@ -32,7 +32,7 @@ const rooms: RoomProps[] = [
   {
     number: 856,
     price: 7300,
-    reviews: 19,
+    reviews: [],
     href: '/mock',
 
     rating: 5,
@@ -41,7 +41,7 @@ const rooms: RoomProps[] = [
   {
     number: 740,
     price: 6000,
-    reviews: 44,
+    reviews: [],
     href: '/mock',
 
     rating: 4,
@@ -50,7 +50,7 @@ const rooms: RoomProps[] = [
   {
     number: 982,
     price: 5800,
-    reviews: 56,
+    reviews: [],
     href: '/mock',
 
     rating: 3,
@@ -59,7 +59,7 @@ const rooms: RoomProps[] = [
   {
     number: 678,
     price: 5500,
-    reviews: 45,
+    reviews: [],
     href: '/mock',
 
     rating: 5,
@@ -68,7 +68,7 @@ const rooms: RoomProps[] = [
   {
     number: 450,
     price: 5300,
-    reviews: 39,
+    reviews: [],
     href: '/mock',
 
     rating: 4,
@@ -77,7 +77,7 @@ const rooms: RoomProps[] = [
   {
     number: 350,
     price: 5000,
-    reviews: 77,
+    reviews: [],
     href: '/mock',
 
     rating: 3,
@@ -86,7 +86,7 @@ const rooms: RoomProps[] = [
   {
     number: 666,
     price: 5000,
-    reviews: 25,
+    reviews: [],
     href: '/mock',
 
     rating: 5,
@@ -95,7 +95,7 @@ const rooms: RoomProps[] = [
   {
     number: 444,
     price: 5000,
-    reviews: 15,
+    reviews: [],
     href: '/mock',
 
     rating: 3,
@@ -104,7 +104,7 @@ const rooms: RoomProps[] = [
   {
     number: 352,
     price: 5000,
-    reviews: 55,
+    reviews: [],
     href: '/mock',
 
     rating: 3,
