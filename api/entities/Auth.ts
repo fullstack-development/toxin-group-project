@@ -123,6 +123,14 @@ class Auth {
   }
 
   @boundMethod
+  public async updateAdditionalUserInformation(
+    uid: string,
+    data: AdditionalUserInformation,
+  ): Promise<void> {
+    this.database.update(this.reference.doc(uid), data);
+  }
+
+  @boundMethod
   public async getAdditionalUserInformation(uid: string): Promise<AdditionalUserInformation> {
     return this.database.getDocument(this.reference, uid);
   }
