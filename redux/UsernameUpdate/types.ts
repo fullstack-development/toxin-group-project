@@ -4,6 +4,7 @@ import {
   USERNAME_UPDATE_PROCESS,
   USERNAME_UPDATE_SUCCESS,
   USERNAME_UPDATE_FAILED,
+  USERNAME_UPDATE_COMPLETED,
 } from './constants';
 
 type Action<Z, T> = {
@@ -24,8 +25,13 @@ type UsernameUpdateState = {
 type UsernameUpdateRequest = Action<typeof USERNAME_UPDATE_PROCESS, SentData>;
 type UsernameUpdateSuccess = Action<typeof USERNAME_UPDATE_SUCCESS, string>;
 type UsernameUpdateFailed = Action<typeof USERNAME_UPDATE_FAILED, string>;
+type UsernameUpdateCompleted = Action<typeof USERNAME_UPDATE_COMPLETED, string>;
 
-type UsernameUpdateActions = UsernameUpdateRequest | UsernameUpdateSuccess | UsernameUpdateFailed;
+type UsernameUpdateActions =
+  | UsernameUpdateRequest
+  | UsernameUpdateSuccess
+  | UsernameUpdateFailed
+  | UsernameUpdateCompleted;
 
 export type {
   SentData,
@@ -33,5 +39,6 @@ export type {
   UsernameUpdateRequest,
   UsernameUpdateSuccess,
   UsernameUpdateFailed,
+  UsernameUpdateCompleted,
   UsernameUpdateActions,
 };

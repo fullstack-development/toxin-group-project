@@ -1,19 +1,28 @@
-import { useState } from 'react';
 import { Form, Field } from 'react-final-form';
 import { connect } from 'react-redux';
 
+import { User } from 'api/Firebase/modules/Authentication';
 import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
-import { passwordUpdateRequest } from 'redux/PasswordUpdate/redux/actions';
+import { passwordUpdateRequest, passwordUpdateCompleted } from 'redux/PasswordUpdate/redux/actions';
 import { AppState } from 'redux/store.types';
 
-const mapState = (state: AppState) => ({
+interface IStateProps {
+  user: User;
+  isCompleted: boolean;
+  statusText: string;
+}
+
+const mapState = (state: AppState): IStateProps => ({
   user: state.authReducer.user,
   ...state.passwordUpdateReducer,
 });
 
-const mapDispatch = { startPasswordUpdateProcess: passwordUpdateRequest };
+const mapDispatch = {
+  startPasswordUpdateProcess: passwordUpdateRequest,
+  stopPasswordUpdateProcess: passwordUpdateCompleted,
+};
 
 type Props = ReturnType<typeof mapState> & typeof mapDispatch;
 
@@ -28,16 +37,10 @@ const PasswordUpdate = ({
   isCompleted,
   statusText,
   startPasswordUpdateProcess,
+  stopPasswordUpdateProcess,
 }: Props): JSX.Element => {
-  const [isVisiblePopUp, setVisiblePopUp] = useState(false);
-
   const onSubmit = ({ currentPassword, newPassword, confirmPassword }: FormData) => {
     startPasswordUpdateProcess({ user, currentPassword, newPassword, confirmPassword });
-    setVisiblePopUp(true);
-  };
-
-  const handleConfirmButtonClick = () => {
-    setVisiblePopUp(false);
   };
 
   return (
@@ -65,10 +68,10 @@ const PasswordUpdate = ({
               Обновить пароль
             </Button>
           </form>
-          {isVisiblePopUp && isCompleted && (
+          {isCompleted && (
             <PopUpNotification
               message={statusText}
-              onConfirmButtonClick={handleConfirmButtonClick}
+              onConfirmButtonClick={stopPasswordUpdateProcess}
             />
           )}
         </>

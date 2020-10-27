@@ -2,6 +2,7 @@ import {
   PASSWORD_UPDATE_PROCESS,
   PASSWORD_UPDATE_SUCCESS,
   PASSWORD_UPDATE_FAILED,
+  PASSWORD_UPDATE_COMPLETED,
 } from '../constants';
 import { PasswordUpdateActions, PasswordUpdateState } from '../types';
 
@@ -29,6 +30,11 @@ const passwordUpdateReducer = (
       return {
         isCompleted: true,
         statusText: action.payload,
+      };
+    case PASSWORD_UPDATE_COMPLETED:
+      return {
+        isCompleted: false,
+        statusText: '',
       };
     default:
       return state;

@@ -1,6 +1,11 @@
 import { User } from 'api/Firebase/modules/Authentication/types';
 
-import { EMAIL_UPDATE_PROCESS, EMAIL_UPDATE_SUCCESS, EMAIL_UPDATE_FAILED } from './constants';
+import {
+  EMAIL_UPDATE_PROCESS,
+  EMAIL_UPDATE_SUCCESS,
+  EMAIL_UPDATE_FAILED,
+  EMAIL_UPDATE_COMPLETED,
+} from './constants';
 
 type Action<Z, T> = {
   type: Z;
@@ -20,8 +25,13 @@ type EmailUpdateState = {
 type EmailUpdateRequest = Action<typeof EMAIL_UPDATE_PROCESS, SentData>;
 type EmailUpdateSuccess = Action<typeof EMAIL_UPDATE_SUCCESS, string>;
 type EmailUpdateFailed = Action<typeof EMAIL_UPDATE_FAILED, string>;
+type EmailUpdateCompleted = Action<typeof EMAIL_UPDATE_COMPLETED, string>;
 
-type EmailUpdateActions = EmailUpdateRequest | EmailUpdateSuccess | EmailUpdateFailed;
+type EmailUpdateActions =
+  | EmailUpdateRequest
+  | EmailUpdateSuccess
+  | EmailUpdateFailed
+  | EmailUpdateCompleted;
 
 export type {
   SentData,
@@ -29,5 +39,6 @@ export type {
   EmailUpdateRequest,
   EmailUpdateSuccess,
   EmailUpdateFailed,
+  EmailUpdateCompleted,
   EmailUpdateActions,
 };

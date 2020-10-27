@@ -7,11 +7,19 @@ import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
 import { AppState } from 'redux/store.types';
-import { usernameUpdateRequest } from 'redux/UsernameUpdate/redux/actions';
+import { usernameUpdateRequest, usernameUpdateCompleted } from 'redux/UsernameUpdate/redux/actions';
 
-const mapState = (state: AppState) => state.usernameUpdateReducer;
+interface IStateProps {
+  isCompleted: boolean;
+  statusText: string;
+}
 
-const mapDispatch = { startUsernameUpdateProcess: usernameUpdateRequest };
+const mapState = (state: AppState): IStateProps => state.usernameUpdateReducer;
+
+const mapDispatch = {
+  startUsernameUpdateProcess: usernameUpdateRequest,
+  stopUsernameUpdateProcess: usernameUpdateCompleted,
+};
 
 type Props = {
   user: User;
@@ -30,16 +38,10 @@ const EditUserName = ({
   isCompleted,
   statusText,
   startUsernameUpdateProcess,
+  stopUsernameUpdateProcess,
 }: Props): JSX.Element => {
-  const [isVisiblePopUp, setVisiblePopUp] = useState(false);
-
   const onSubmit = ({ name, surname }: FormData) => {
     startUsernameUpdateProcess({ user, displayName: `${name} ${surname}` });
-    setVisiblePopUp(true);
-  };
-
-  const handleConfirmButtonClick = () => {
-    setVisiblePopUp(false);
   };
 
   const [name, surname] = displayName.split(' ');
@@ -63,10 +65,10 @@ const EditUserName = ({
               Сохранить
             </Button>
           </form>
-          {isVisiblePopUp && isCompleted && (
+          {isCompleted && (
             <PopUpNotification
               message={statusText}
-              onConfirmButtonClick={handleConfirmButtonClick}
+              onConfirmButtonClick={stopUsernameUpdateProcess}
             />
           )}
         </>

@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Form, Field } from 'react-final-form';
 import { connect } from 'react-redux';
 
@@ -6,13 +5,21 @@ import { User } from 'api/Firebase/modules/Authentication/types';
 import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
-import { emailUpdateRequest } from 'redux/EmailUpdate/redux/actions';
+import { emailUpdateRequest, emailUpdateCompleted } from 'redux/EmailUpdate/redux/actions';
 import { AppState } from 'redux/store.types';
 import { emailValidator } from 'shared/helpers/validators';
 
-const mapState = (state: AppState) => state.emailUpdateReducer;
+interface IStateProps {
+  isCompleted: boolean;
+  statusText: string;
+}
 
-const mapDispatch = { startEmailUpdateProcess: emailUpdateRequest };
+const mapState = (state: AppState): IStateProps => state.emailUpdateReducer;
+
+const mapDispatch = {
+  startEmailUpdateProcess: emailUpdateRequest,
+  stopEmailUpdateProcess: emailUpdateCompleted,
+};
 
 type Props = {
   user: User;
@@ -26,16 +33,10 @@ const EditEmail = ({
   isCompleted,
   statusText,
   startEmailUpdateProcess,
+  stopEmailUpdateProcess,
 }: Props): JSX.Element => {
-  const [isVisiblePopUp, setVisiblePopUp] = useState(false);
-
   const onSubmit = ({ email: emailForUpdate }: { email: string }) => {
     startEmailUpdateProcess({ user, email: emailForUpdate });
-    setVisiblePopUp(true);
-  };
-
-  const handleConfirmButtonClick = () => {
-    setVisiblePopUp(false);
   };
 
   return (
@@ -56,11 +57,8 @@ const EditEmail = ({
               Сохранить
             </Button>
           </form>
-          {isVisiblePopUp && isCompleted && (
-            <PopUpNotification
-              message={statusText}
-              onConfirmButtonClick={handleConfirmButtonClick}
-            />
+          {isCompleted && (
+            <PopUpNotification message={statusText} onConfirmButtonClick={stopEmailUpdateProcess} />
           )}
         </>
       )}

@@ -4,6 +4,7 @@ import {
   PASSWORD_UPDATE_PROCESS,
   PASSWORD_UPDATE_SUCCESS,
   PASSWORD_UPDATE_FAILED,
+  PASSWORD_UPDATE_COMPLETED,
 } from './constants';
 
 type Action<Z, T> = {
@@ -26,8 +27,13 @@ type PasswordUpdateState = {
 type PasswordUpdateRequest = Action<typeof PASSWORD_UPDATE_PROCESS, SentData>;
 type PasswordUpdateSuccess = Action<typeof PASSWORD_UPDATE_SUCCESS, string>;
 type PasswordUpdateFailed = Action<typeof PASSWORD_UPDATE_FAILED, string>;
+type PasswordUpdateCompleted = Action<typeof PASSWORD_UPDATE_COMPLETED, string>;
 
-type PasswordUpdateActions = PasswordUpdateRequest | PasswordUpdateSuccess | PasswordUpdateFailed;
+type PasswordUpdateActions =
+  | PasswordUpdateRequest
+  | PasswordUpdateSuccess
+  | PasswordUpdateFailed
+  | PasswordUpdateCompleted;
 
 export type {
   SentData,
@@ -35,5 +41,6 @@ export type {
   PasswordUpdateRequest,
   PasswordUpdateSuccess,
   PasswordUpdateFailed,
+  PasswordUpdateCompleted,
   PasswordUpdateActions,
 };

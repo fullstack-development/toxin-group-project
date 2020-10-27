@@ -1,11 +1,18 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
+import { User } from 'api/Firebase/modules/Authentication/types';
+import { AppState } from 'redux/store.types';
+
 import EditPersonalInfo from '../EditPersonalInfo/EditPersonalInfo';
 import { data } from './PersonalInfo.data';
 import * as S from './PersonalInfo.styles';
 
-const mapState = (state: State) => ({
+interface IStateProps {
+  user: User;
+}
+
+const mapState = (state: AppState): IStateProps => ({
   user: state.authReducer.user,
 });
 

@@ -2,6 +2,7 @@ import {
   USERNAME_UPDATE_PROCESS,
   USERNAME_UPDATE_SUCCESS,
   USERNAME_UPDATE_FAILED,
+  USERNAME_UPDATE_COMPLETED,
 } from '../constants';
 import { UsernameUpdateActions, UsernameUpdateState } from '../types';
 
@@ -29,6 +30,11 @@ const usernameUpdateReducer = (
       return {
         isCompleted: true,
         statusText: 'Произошла ошибка повторите попытку позже',
+      };
+    case USERNAME_UPDATE_COMPLETED:
+      return {
+        isCompleted: false,
+        statusText: '',
       };
     default:
       return state;
