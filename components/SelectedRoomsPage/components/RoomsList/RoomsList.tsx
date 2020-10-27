@@ -12,18 +12,12 @@ const RoomsList: React.FC<Props> = ({ rooms }: Props): JSX.Element => {
     <S.Container>
       {rooms &&
         rooms.map(({ room, bookedData }, index) => {
-          const { reviews, id } = room;
+          const { id } = room;
           const { from, to } = bookedData;
 
           return (
             <S.RoomWrapper key={Number(index)}>
-              <Room
-                {...room}
-                reviewsHref="/reviews-mock"
-                href="/mock"
-                number={id}
-                reviewCount={reviews}
-              />
+              <Room {...room} href="/mock" number={id} />
               <S.Price>
                 <span>Дата бронирования: </span>
                 <span>
