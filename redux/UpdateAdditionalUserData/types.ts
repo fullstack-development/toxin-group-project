@@ -15,7 +15,7 @@ type Action<Z, T> = {
 type SentData = {
   user: User;
   data: {
-    birthday?: Date;
+    birthDate?: string;
     gender?: string;
     receiveOffers?: boolean;
   };
