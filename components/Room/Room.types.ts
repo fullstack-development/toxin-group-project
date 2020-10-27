@@ -1,7 +1,9 @@
+import { Props as ReviewProps } from 'components/Comment/Comment.types';
+
 export type Props = {
   price: number;
   number: number;
-  reviews: number;
+  reviews: ReviewProps[];
   href: string;
   imagePaths?: string[];
   reviewMeasure?: string;
