@@ -3,7 +3,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware, { SagaMiddleware } from 'redux-saga';
 
 import { reduxEntry as AuthReduxEntry } from './Auth';
-import { reduxEntry as BookingReduxEntry } from './Booking';
+import { reduxEntry as BookedHistoryReduxEntry } from './BookingHistory';
 import { reduxEntry as RegistrationReduxEntry } from './Registration';
 import { SharedReduxEntries, AvailableReducers } from './store.types';
 
@@ -15,7 +15,7 @@ const bindMiddleware = (middleware) => {
 };
 
 const sharedReduxEntries: SharedReduxEntries = [
-  BookingReduxEntry,
+  BookedHistoryReduxEntry,
   RegistrationReduxEntry,
   AuthReduxEntry,
 ];

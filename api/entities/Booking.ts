@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid';
 import { matchObjects } from 'shared/helpers';
 
 import { Database, CollectionReference, QuerySnapshot } from '../Firebase/modules/Database';
-import { BookingData, Apartment, Filters, BookedRoom } from './types';
+import { BookingData, Apartment, Filters, BookedRoom, BookedRoomsHistory } from './types';
 
 class Booking {
   private readonly actions: Database;
@@ -73,7 +73,7 @@ class Booking {
         snapshot.forEach((item) => bookedRooms.push(item.data() as BookingData));
       });
 
-    const result: Record<string, BookedRoom[]> = {
+    const result: BookedRoomsHistory = {
       current: [],
       history: [],
     };

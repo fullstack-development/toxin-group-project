@@ -66,3 +66,5 @@ export type BookedRoom = {
   room: Apartment;
   bookedData: { from: string; to: string };
 };
+
+export type BookedRoomsHistory = Record<string, BookedRoom[]>;

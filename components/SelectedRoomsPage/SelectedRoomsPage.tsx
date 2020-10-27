@@ -1,25 +1,32 @@
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import { BookedRoom } from 'api/entities/types';
+import { BookedRoomsHistory } from 'api/entities/types';
 import MainLayout from 'components/MainLayout/MainLayout';
 import Preloader from 'components/Rooms/components/Preloader/Preloader';
-import { loadBookedRooms } from 'redux/Booking/redux/actions';
+import { loadBookedHistoryRooms } from 'redux/BookingHistory/redux/actions';
+import { AppState } from 'redux/store.types';
 
 import RoomsList from './components/RoomsList/RoomsList';
 import * as S from './SelectedRoomsPage.style';
 
-type AvailableRooms = {
-  current?: BookedRoom[];
-  history?: BookedRoom[];
-};
-
-type Props = {
-  getBookedRooms: (email: string) => void;
-  bookedRooms: AvailableRooms;
+type StateProps = {
+  bookedRooms: BookedRoomsHistory;
   isLoadingData: boolean;
   userEmail: string;
 };
+
+const mapState = (state: AppState): StateProps => ({
+  bookedRooms: state.BookedHistoryReducer.bookedRooms,
+  isLoadingData: state.BookedHistoryReducer.isLoadingData,
+  userEmail: state.AuthReducer.userEmail,
+});
+
+const mapDispatch = {
+  getBookedRooms: loadBookedHistoryRooms,
+};
+
+type Props = ReturnType<typeof mapState> & typeof mapDispatch;
 
 const SelectedRoomsPage: React.FC<Props> = ({
   bookedRooms,
@@ -45,16 +52,6 @@ const SelectedRoomsPage: React.FC<Props> = ({
       </S.Container>
     </MainLayout>
   );
-};
-
-const mapState = (state) => ({
-  bookedRooms: state.BookingReducer.bookedRooms,
-  isLoadingData: state.BookingReducer.isLoadingData,
-  userEmail: state.AuthReducer.userEmail,
-});
-
-const mapDispatch = {
-  getBookedRooms: loadBookedRooms,
 };
 
 export default connect(mapState, mapDispatch)(SelectedRoomsPage);

@@ -1,12 +1,15 @@
 import { UPDATE_BOOKED_LIST, LOAD_ROOMS } from '../constants';
-import { BookingState, BookedActions } from '../types';
+import { BookedHistoryState, BookedHistoryActions } from '../types';
 
-const initialState: BookingState = {
+const initialState: BookedHistoryState = {
   bookedRooms: null,
   isLoadingData: null,
 };
 
-const BookingReducer = (state = initialState, action: BookedActions): BookingState => {
+const BookedHistoryReducer = (
+  state = initialState,
+  action: BookedHistoryActions,
+): BookedHistoryState => {
   switch (action.type) {
     case LOAD_ROOMS:
       return {
@@ -24,4 +27,4 @@ const BookingReducer = (state = initialState, action: BookedActions): BookingSta
   }
 };
 
-export default BookingReducer;
+export default BookedHistoryReducer;
