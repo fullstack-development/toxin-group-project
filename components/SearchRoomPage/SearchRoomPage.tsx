@@ -31,8 +31,6 @@ const SearchRoomPage: React.FC<Props> = ({ rooms, getRooms, isPending }: Props) 
     ...passedParams,
   };
 
-  console.log('pending', isPending);
-
   const filters: Filters = initialFilters || defaultFilters;
 
   const loadRooms = (options?: Filters) => {
