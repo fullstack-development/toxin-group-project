@@ -4,9 +4,9 @@ const rooms: RoomProps[] = [
   {
     number: 888,
     price: 9900,
-    reviewCount: 145,
+    reviews: [],
     href: '/mock',
-    reviewsHref: '/mock',
+
     roomType: 'люкс',
     rating: 5,
     imagePaths: ['/img/1.jpg', '/img/2.jpg', '/img/3.jpg', '/img/4.jpg'],
@@ -14,99 +14,99 @@ const rooms: RoomProps[] = [
   {
     number: 840,
     price: 9900,
-    reviewCount: 65,
+    reviews: [],
     href: '/mock',
-    reviewsHref: '/mock',
+
     rating: 4,
     imagePaths: ['/img/2.jpg', '/img/2.jpg', '/img/3.jpg', '/img/4.jpg'],
   },
   {
     number: 980,
     price: 8500,
-    reviewCount: 35,
+    reviews: [],
     href: '/mock',
-    reviewsHref: '/mock',
+
     rating: 3,
     imagePaths: ['/img/3.jpg', '/img/2.jpg', '/img/3.jpg', '/img/4.jpg'],
   },
   {
     number: 856,
     price: 7300,
-    reviewCount: 19,
+    reviews: [],
     href: '/mock',
-    reviewsHref: '/mock',
+
     rating: 5,
     imagePaths: ['/img/4.jpg', '/img/2.jpg', '/img/3.jpg', '/img/4.jpg'],
   },
   {
     number: 740,
     price: 6000,
-    reviewCount: 44,
+    reviews: [],
     href: '/mock',
-    reviewsHref: '/mock',
+
     rating: 4,
     imagePaths: ['/img/5.jpg', '/img/2.jpg', '/img/3.jpg', '/img/4.jpg'],
   },
   {
     number: 982,
     price: 5800,
-    reviewCount: 56,
+    reviews: [],
     href: '/mock',
-    reviewsHref: '/mock',
+
     rating: 3,
     imagePaths: ['/img/6.jpg', '/img/2.jpg', '/img/3.jpg', '/img/4.jpg'],
   },
   {
     number: 678,
     price: 5500,
-    reviewCount: 45,
+    reviews: [],
     href: '/mock',
-    reviewsHref: '/mock',
+
     rating: 5,
     imagePaths: ['/img/7.jpg', '/img/2.jpg', '/img/3.jpg', '/img/4.jpg'],
   },
   {
     number: 450,
     price: 5300,
-    reviewCount: 39,
+    reviews: [],
     href: '/mock',
-    reviewsHref: '/mock',
+
     rating: 4,
     imagePaths: ['/img/8.jpg', '/img/2.jpg', '/img/3.jpg', '/img/4.jpg'],
   },
   {
     number: 350,
     price: 5000,
-    reviewCount: 77,
+    reviews: [],
     href: '/mock',
-    reviewsHref: '/mock',
+
     rating: 3,
     imagePaths: ['/img/9.jpg', '/img/2.jpg', '/img/3.jpg', '/img/4.jpg'],
   },
   {
     number: 666,
     price: 5000,
-    reviewCount: 25,
+    reviews: [],
     href: '/mock',
-    reviewsHref: '/mock',
+
     rating: 5,
     imagePaths: ['/img/10.jpg', '/img/2.jpg', '/img/3.jpg', '/img/4.jpg'],
   },
   {
     number: 444,
     price: 5000,
-    reviewCount: 15,
+    reviews: [],
     href: '/mock',
-    reviewsHref: '/mock',
+
     rating: 3,
     imagePaths: ['/img/11.jpg', '/img/2.jpg', '/img/3.jpg', '/img/4.jpg'],
   },
   {
     number: 352,
     price: 5000,
-    reviewCount: 55,
+    reviews: [],
     href: '/mock',
-    reviewsHref: '/mock',
+
     rating: 3,
     imagePaths: ['/img/12.jpg', '/img/2.jpg', '/img/3.jpg', '/img/4.jpg'],
   },

@@ -14,6 +14,7 @@ export type ProfileData = {
   surname: string;
   birthDate: string;
   gender: 'male' | 'female';
+  avatar: ArrayBuffer | Blob | Uint8Array;
   receiveOffers: boolean;
 };
 

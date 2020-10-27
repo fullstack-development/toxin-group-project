@@ -23,7 +23,7 @@ class Auth {
     surname,
     email,
     password,
-    gender,
+    avatar,
   }: ProfileData): Promise<UserCredential> {
     let credential: UserCredential;
 
@@ -43,11 +43,12 @@ class Auth {
     }
 
     const user = this.actions.getCurrentUser();
+    const photoURL = avatar && (await this.getPhotoURL(user.uid, avatar));
 
     user
       .updateProfile({
         displayName: `${name} ${surname}`,
-        photoURL: gender === 'female' ? '/img/avatar-female.jpg' : '/img/avatar-male.jpg',
+        photoURL,
       })
       .then(() => user.sendEmailVerification());
 
@@ -100,6 +101,19 @@ class Auth {
     }
 
     return resetPassword;
+  }
+
+  @boundMethod
+  public async getPhotoURL(uid: string, photo: ArrayBuffer | Blob | Uint8Array): Promise<string> {
+    let photoURL: string;
+
+    try {
+      photoURL = await this.actions.setUserAvatar(uid, photo);
+    } catch (err) {
+      throw new AuthError();
+    }
+
+    return photoURL;
   }
 
   @boundMethod

@@ -253,13 +253,13 @@ class FormElementsPage extends React.Component {
                   items={[
                     {
                       icon: 'insert_emoticon',
-                      title: 'Комфорт',
-                      description: 'Шумопоглощающие стены',
+                      term: 'Комфорт',
+                      definition: 'Шумопоглощающие стены',
                     },
                     {
                       icon: 'location_city',
-                      title: 'Удобство',
-                      description: 'Окно в каждой из спален',
+                      term: 'Удобство',
+                      definition: 'Окно в каждой из спален',
                     },
                   ]}
                 />

@@ -1,6 +1,7 @@
 import { SagaIterator } from 'redux-saga';
 
 import { AuthActions, AuthState } from './Auth/types';
+import { BookingActions, BookingState } from './Booking/types';
 import { EmailUpdateActions, EmailUpdateState } from './EmailUpdate/types';
 import { PasswordUpdateActions, PasswordUpdateState } from './PasswordUpdate/types';
 import { RegistrationActions, RegistrationState } from './Registration/types';
@@ -8,12 +9,14 @@ import { UsernameUpdateActions, UsernameUpdateState } from './UsernameUpdate/typ
 
 export type AvailableStates =
   | AuthState
+  | BookingState
   | EmailUpdateState
   | PasswordUpdateState
   | RegistrationState
   | UsernameUpdateState;
 export type AvailableActions =
   | AuthActions
+  | BookingActions
   | EmailUpdateActions
   | PasswordUpdateActions
   | RegistrationActions
@@ -21,6 +24,7 @@ export type AvailableActions =
 
 export type AppState = {
   authReducer: AuthState;
+  bookingReducer: BookingState;
   emailUpdateReducer: EmailUpdateState;
   passwordUpdateReducer: PasswordUpdateState;
   RegistrationReducer: RegistrationState;
