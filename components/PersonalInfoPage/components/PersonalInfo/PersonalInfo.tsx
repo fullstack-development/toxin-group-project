@@ -52,15 +52,13 @@ const PersonalInfo = ({
   }, [handleGetAdditionalUserData, user]);
 
   const handleSetAdditionalUserData = useCallback(() => {
-    const { gender, birthDate } = additionalUserData;
-
     const { displayName, email } = user;
 
     setUserData({
       displayName,
       email,
-      gender,
-      birthday: birthDate,
+      gender: additionalUserData ? additionalUserData.gender : '',
+      birthday: additionalUserData ? additionalUserData.birthDate : '',
     });
   }, [additionalUserData, user]);
 

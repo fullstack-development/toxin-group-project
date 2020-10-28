@@ -11,7 +11,12 @@ import {
 
 function* startUpdateAdditionalUserDataProcess({ payload: { user, data } }) {
   try {
-    yield call(api.auth.updateAdditionalUserInformation, user.uid, data);
+    const isDocument = yield call(api.auth.getAdditionalUserInformation, user.uid);
+    if (isDocument) {
+      yield call(api.auth.updateAdditionalUserInformation, user.uid, data);
+    } else {
+      yield call(api.auth.addAdditionalUserInformation, user.uid, data);
+    }
     yield put({
       type: UPDATE_ADDITIONAL_USER_DATA_SUCCESS,
       payload: null,

@@ -47,7 +47,10 @@ const MainContent = ({
     <S.MainContent>
       <S.Title>Уведомления</S.Title>
       {isCompleted && (
-        <Subscriptions user={user} receiveOffers={additionalUserData.receiveOffers} />
+        <Subscriptions
+          user={user}
+          receiveOffers={additionalUserData ? additionalUserData.receiveOffers : false}
+        />
       )}
     </S.MainContent>
   );
