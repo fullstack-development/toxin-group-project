@@ -43,17 +43,21 @@ const PasswordUpdate = ({
     startPasswordUpdateProcess({ user, currentPassword, newPassword, confirmPassword });
   };
 
+  const isUserRegistered = user.providerData.some((value) => value.providerId === 'password');
+
   return (
     <Form
       onSubmit={onSubmit}
       render={({ handleSubmit }) => (
         <>
           <form onSubmit={handleSubmit}>
-            <Field
-              name="currentPassword"
-              type="password"
-              render={({ input }) => <Input {...input} minLength={6} label="Текущий пароль" />}
-            />
+            {isUserRegistered && (
+              <Field
+                name="currentPassword"
+                type="password"
+                render={({ input }) => <Input {...input} minLength={6} label="Текущий пароль" />}
+              />
+            )}
             <Field
               name="newPassword"
               type="password"
