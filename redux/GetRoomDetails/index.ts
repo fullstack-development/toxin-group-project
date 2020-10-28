@@ -1,8 +1,8 @@
-import { getRoomDetailsReducer } from './redux/reducer';
+import { getRoomDetails } from './redux/reducer';
 import { rootSaga } from './redux/sagas';
 
 const getRoomDetailsReduxEntry = {
-  reducers: { getRoomDetailsReducer },
+  reducers: { getRoomDetails },
   sagas: [rootSaga],
 };
 

@@ -20,7 +20,7 @@ interface IStateProps {
 }
 
 const mapState = (state: AppState): IStateProps => ({
-  roomDetails: state.getRoomDetailsReducer.roomDetails,
+  roomDetails: state.getRoomDetails.roomDetails,
 });
 
 const mapDispatch = {
@@ -29,11 +29,7 @@ const mapDispatch = {
 
 type Props = ReturnType<typeof mapState> & typeof mapDispatch;
 
-const MainContent = ({
-  isCompleted,
-  roomDetails,
-  startGetRoomDetailsProcess,
-}: Props): JSX.Element => {
+const MainContent = ({ roomDetails, startGetRoomDetailsProcess }: Props): JSX.Element => {
   const router = useRouter();
   const roomNumber = router.asPath.split('=')[1];
 

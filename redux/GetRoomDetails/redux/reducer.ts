@@ -9,7 +9,7 @@ const initialState: GetRoomDetailsState = {
   roomDetails: null,
 };
 
-const getRoomDetailsReducer = (
+const getRoomDetails = (
   state: GetRoomDetailsState = initialState,
   actions: GetRoomDetailsActions,
 ): GetRoomDetailsState => {
@@ -31,4 +31,4 @@ const getRoomDetailsReducer = (
   }
 };
 
-export { getRoomDetailsReducer };
+export { getRoomDetails };

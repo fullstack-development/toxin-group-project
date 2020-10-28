@@ -14,7 +14,7 @@ export type AvailableActions =
 
 export type AppState = {
   authReducer: AuthState;
-  getRoomDetailsReducer: GetRoomDetailsState;
+  getRoomDetails: GetRoomDetailsState;
   RegistrationReducer: RegistrationState;
   bookingReducer: BookingState;
 };
