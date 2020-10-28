@@ -13,13 +13,21 @@ type Props = {
   user: User;
   title: string;
   component: string;
+  currentEditing: string;
+  onEditButtonClick: (title: string) => void;
   value?: string;
   description?: string;
 };
 
-const EditPersonalInfo = ({ user, title, component, value, description }: Props): JSX.Element => {
-  const [isEdit, setEdit] = useState(false);
-
+const EditPersonalInfo = ({
+  user,
+  title,
+  component,
+  currentEditing,
+  onEditButtonClick,
+  value,
+  description,
+}: Props): JSX.Element => {
   const mapEditingComponents = {
     displayName: <EditDisplayName user={user} displayName={value} />,
     gender: <EditGender user={user} gender={value} />,
@@ -27,11 +35,17 @@ const EditPersonalInfo = ({ user, title, component, value, description }: Props)
     email: <EditEmail user={user} email={value} />,
   };
 
+  const isEdit = currentEditing === title;
+
   return (
     <>
       <S.Header>
         <S.Title>{title}</S.Title>
-        <TextButton type="button" onClick={() => setEdit(!isEdit)}>
+        <TextButton
+          type="button"
+          onClick={() => onEditButtonClick(title)}
+          disabled={currentEditing ? !isEdit : false}
+        >
           {isEdit ? 'Отменить' : 'Редактировать'}
         </TextButton>
       </S.Header>

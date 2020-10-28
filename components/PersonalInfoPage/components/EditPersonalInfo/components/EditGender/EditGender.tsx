@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Form } from 'react-final-form';
 import { connect } from 'react-redux';
 
@@ -5,6 +6,7 @@ import { User } from 'api/Firebase/modules/Authentication/types';
 import Button from 'components/Button/Button';
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
 import RadioButton from 'components/RadioButton/RadioButton';
+import { AppState } from 'redux/store.types';
 import {
   updateAdditionalUserDataRequest,
   updateAdditionalUserDataCompleted,
@@ -45,6 +47,10 @@ const EditGender = ({
   const onSubmit = ({ gender: newGender }: FormData) => {
     startUpdateAdditionalUserDataProcess({ user, data: { gender: newGender } });
   };
+
+  useEffect(() => {
+    stopUpdateAdditionalUserDataProcess();
+  }, [stopUpdateAdditionalUserDataProcess]);
 
   return (
     <Form

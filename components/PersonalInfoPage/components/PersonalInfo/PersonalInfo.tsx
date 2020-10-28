@@ -70,11 +70,26 @@ const PersonalInfo = ({
     return { ...elem, value: userData[elem.component] };
   });
 
+  const [currentEditing, setCurrentEditing] = useState('');
+
+  const handleEditButtonClick = (title: string) => {
+    if (title === currentEditing) {
+      setCurrentEditing('');
+    } else {
+      setCurrentEditing(title);
+    }
+  };
+
   return (
     <S.PersonalInfo>
       {accountData.map((elem) => (
         <S.Item key={elem.title}>
-          <EditPersonalInfo user={user} {...elem} />
+          <EditPersonalInfo
+            user={user}
+            currentEditing={currentEditing}
+            onEditButtonClick={handleEditButtonClick}
+            {...elem}
+          />
         </S.Item>
       ))}
     </S.PersonalInfo>

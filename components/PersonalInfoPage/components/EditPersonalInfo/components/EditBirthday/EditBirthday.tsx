@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Form, Field } from 'react-final-form';
 import { connect } from 'react-redux';
 
@@ -45,6 +46,10 @@ const EditBirthday = ({
   const onSubmit = ({ birthday: newBirthday }: FormData) => {
     startUpdateAdditionalUserDataProcess({ user, data: { birthDate: newBirthday } });
   };
+
+  useEffect(() => {
+    stopUpdateAdditionalUserDataProcess();
+  }, [stopUpdateAdditionalUserDataProcess]);
 
   return (
     <Form
