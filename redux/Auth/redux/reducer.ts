@@ -17,7 +17,7 @@ const initialState: AuthState = {
   authStatusText: '',
 };
 
-const authReducer = (state: AuthState = initialState, action: AuthActions): AuthState => {
+const auth = (state: AuthState = initialState, action: AuthActions): AuthState => {
   switch (action.type) {
     case AUTH_PROCESS:
       return {
@@ -66,4 +66,4 @@ const authReducer = (state: AuthState = initialState, action: AuthActions): Auth
   }
 };
 
-export default authReducer;
+export default auth;

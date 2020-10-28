@@ -10,11 +10,11 @@ import { AppState } from 'redux/store.types';
 import MainContent from './components/MainContent/MainContent';
 
 const mapState = (state: AppState) => ({
-  isSuccess: state.RegistrationReducer.isSuccess,
-  isProcess: state.RegistrationReducer.isProcess,
-  statusText: state.RegistrationReducer.statusText,
-  wasFinishedAuthChecking: state.authReducer.wasFinishedAuthChecking,
-  isAuthSuccess: state.authReducer.isAuthSuccess,
+  isSuccess: state.registration.isSuccess,
+  isProcess: state.registration.isProcess,
+  statusText: state.registration.statusText,
+  wasFinishedAuthChecking: state.auth.wasFinishedAuthChecking,
+  isAuthSuccess: state.auth.isAuthSuccess,
 });
 
 const mapDispatch = {

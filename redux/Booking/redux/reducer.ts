@@ -13,10 +13,7 @@ const initialState: BookingState = {
   error: null,
 };
 
-const bookingReducer = (
-  state: BookingState = initialState,
-  action: BookingActions,
-): BookingState => {
+const booking = (state: BookingState = initialState, action: BookingActions): BookingState => {
   switch (action.type) {
     case LOAD_ROOMS:
       return { ...state, rooms: [] };
@@ -45,4 +42,4 @@ const bookingReducer = (
   }
 };
 
-export default bookingReducer;
+export default booking;

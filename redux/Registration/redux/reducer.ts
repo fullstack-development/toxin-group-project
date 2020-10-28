@@ -12,7 +12,7 @@ const initialState: RegistrationState = {
   statusText: '',
 };
 
-const RegistrationReducer = (
+const registration = (
   state: RegistrationState = initialState,
   action: RegistrationActions,
 ): RegistrationState => {
@@ -43,4 +43,4 @@ const RegistrationReducer = (
   }
 };
 
-export default RegistrationReducer;
+export default registration;
