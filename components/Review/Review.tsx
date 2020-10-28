@@ -1,11 +1,16 @@
+import { Review as Props } from 'api/entities/types';
 import LikeButton from 'components/LikeButton/LikeButton';
 
 import * as S from './Review.style';
-import { Props } from './Review.types';
 import getReviewDate from './utils/getReviewDate';
 
 const Review = ({ avatarUrl, userName, date, text, likesCount }: Props): JSX.Element => {
-  const convertedDate = date.toDate();
+  let correctDate: Date;
+  if (date instanceof Date) {
+    correctDate = date;
+  } else {
+    correctDate = date.toDate();
+  }
 
   return (
     <S.Review>
@@ -13,7 +18,7 @@ const Review = ({ avatarUrl, userName, date, text, likesCount }: Props): JSX.Ele
         <S.Avatar alt={userName} src={`/img/${avatarUrl}`} />
         <S.AuthorWrapper>
           <S.User>{userName}</S.User>
-          <S.Date dateTime={convertedDate.toISOString()}>{getReviewDate(convertedDate)}</S.Date>
+          <S.Date dateTime={correctDate.toISOString()}>{getReviewDate(correctDate)}</S.Date>
         </S.AuthorWrapper>
       </S.Header>
       <S.MessageWrapper>

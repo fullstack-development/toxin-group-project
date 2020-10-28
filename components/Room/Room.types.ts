@@ -1,9 +1,9 @@
-import { Props as ReviewProps } from 'components/Comment/Comment.types';
+import { Review } from 'api/entities/types';
 
 export type Props = {
   price: number;
   number: number;
-  reviews: ReviewProps[];
+  reviews: Review[];
   href: string;
   imagePaths?: string[];
   reviewMeasure?: string;
