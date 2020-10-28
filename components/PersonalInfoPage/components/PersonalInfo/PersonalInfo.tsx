@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { connect } from 'react-redux';
 
+import { AdditionalUserInformation } from 'api/entities/types';
 import { User } from 'api/Firebase/modules/Authentication/types';
 import { getAdditionalUserDataRequest } from 'redux/GetAdditionalUserData/redux/actions';
 import { AppState } from 'redux/store.types';
@@ -12,7 +13,7 @@ import * as S from './PersonalInfo.styles';
 interface IStateProps {
   user: User;
   isCompleted: boolean;
-  additionalUserData: any;
+  additionalUserData: AdditionalUserInformation;
 }
 
 const mapState = (state: AppState): IStateProps => ({

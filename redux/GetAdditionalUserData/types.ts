@@ -1,5 +1,5 @@
+import { AdditionalUserInformation } from 'api/entities/types';
 import { User } from 'api/Firebase/modules/Authentication/types';
-import { Timestamp } from 'api/Firebase/modules/Database';
 
 import {
   GET_ADDITIONAL_USER_DATA_PROCESS,
@@ -12,15 +12,9 @@ type Action<Z, T> = {
   payload?: T;
 };
 
-type AdditionalUserData = {
-  gender: string;
-  birthday: Timestamp;
-  receiveOffers: boolean;
-};
-
 type GetAdditionalUserDataState = {
   isCompleted: boolean;
-  additionalUserData: null | AdditionalUserData;
+  additionalUserData: null | AdditionalUserInformation;
 };
 
 type GetAdditionalUserDataRequest = Action<typeof GET_ADDITIONAL_USER_DATA_PROCESS, User>;
