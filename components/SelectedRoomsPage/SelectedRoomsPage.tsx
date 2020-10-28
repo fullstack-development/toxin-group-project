@@ -26,7 +26,7 @@ const mapDispatch = {
   getBookedRooms: loadBookedHistoryRooms,
 };
 
-type Props = ReturnType<typeof mapState> & typeof mapDispatch;
+type Props = StateProps & typeof mapDispatch;
 
 const SelectedRoomsPage: React.FC<Props> = ({
   bookedRooms,

@@ -91,14 +91,16 @@ class Booking {
             const itemDateToInTimeStamp = bookedRoom.to.seconds * 1000;
             const itemDateTo = new Date(itemDateToInTimeStamp).toLocaleDateString('ru-RU');
 
+            const roomData: Apartment = <Apartment>item.data();
+
             if (itemDateToInTimeStamp < Date.now()) {
               result.history.push({
-                room: item.data() as Apartment,
+                room: roomData,
                 bookedData: { from: itemDateFrom, to: itemDateTo },
               });
             } else {
               result.current.push({
-                room: item.data() as Apartment,
+                room: roomData,
                 bookedData: { from: itemDateFrom, to: itemDateTo },
               });
             }
