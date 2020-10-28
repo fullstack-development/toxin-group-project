@@ -147,6 +147,10 @@ const OrderFormWrapper = styled.div`
   }
 `;
 
+const PreloaderWrapper = styled.div`
+  margin: 20rem auto 15rem;
+`;
+
 export {
   MainContent,
   RoomImages,
@@ -159,4 +163,5 @@ export {
   CancellationTerms,
   CancellationTermsText,
   OrderFormWrapper,
+  PreloaderWrapper,
 };
