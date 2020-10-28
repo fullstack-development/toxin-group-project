@@ -10,7 +10,7 @@ const initialState: GetAdditionalUserDataState = {
   additionalUserData: null,
 };
 
-const getAdditionalUserDataReducer = (
+const getAdditionalUserData = (
   state: GetAdditionalUserDataState = initialState,
   action: GetAdditionalUserDataActions,
 ): GetAdditionalUserDataState => {
@@ -35,4 +35,4 @@ const getAdditionalUserDataReducer = (
   }
 };
 
-export { getAdditionalUserDataReducer };
+export { getAdditionalUserData };

@@ -1,8 +1,8 @@
-import { passwordUpdateReducer } from './redux/reducer';
+import { passwordUpdate } from './redux/reducer';
 import { rootSaga } from './redux/sagas';
 
 const passwordUpdateReduxEntry = {
-  reducers: { passwordUpdateReducer },
+  reducers: { passwordUpdate },
   sagas: [rootSaga],
 };
 

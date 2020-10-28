@@ -1,8 +1,8 @@
-import { updateAdditionalUserDataReducer } from './redux/reducer';
+import { updateAdditionalUserData } from './redux/reducer';
 import { rootSaga } from './redux/sagas';
 
 const updateAdditionalUserDataReduxEntry = {
-  reducers: { updateAdditionalUserDataReducer },
+  reducers: { updateAdditionalUserData },
   sagas: [rootSaga],
 };
 

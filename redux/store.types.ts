@@ -37,12 +37,12 @@ export type AvailableActions =
 export type AppState = {
   authReducer: AuthState;
   bookingReducer: BookingState;
-  emailUpdateReducer: EmailUpdateState;
-  getAdditionalUserDataReducer: GetAdditionalUserDataState;
-  passwordUpdateReducer: PasswordUpdateState;
+  emailUpdate: EmailUpdateState;
+  getAdditionalUserData: GetAdditionalUserDataState;
+  passwordUpdate: PasswordUpdateState;
   RegistrationReducer: RegistrationState;
-  updateAdditionalUserDataReducer: UpdateAdditionalUserDataState;
-  usernameUpdateReducer: UsernameUpdateState;
+  updateAdditionalUserData: UpdateAdditionalUserDataState;
+  usernameUpdate: UsernameUpdateState;
 };
 
 export type AvailableReducers = (

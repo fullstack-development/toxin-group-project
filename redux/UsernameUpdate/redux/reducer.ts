@@ -11,7 +11,7 @@ const initialState: UsernameUpdateState = {
   statusText: '',
 };
 
-const usernameUpdateReducer = (
+const usernameUpdate = (
   state: UsernameUpdateState = initialState,
   action: UsernameUpdateActions,
 ): UsernameUpdateState => {
@@ -41,4 +41,4 @@ const usernameUpdateReducer = (
   }
 };
 
-export { usernameUpdateReducer };
+export { usernameUpdate };

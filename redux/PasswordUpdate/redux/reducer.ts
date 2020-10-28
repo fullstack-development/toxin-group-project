@@ -11,7 +11,7 @@ const initialState: PasswordUpdateState = {
   statusText: '',
 };
 
-const passwordUpdateReducer = (
+const passwordUpdate = (
   state: PasswordUpdateState = initialState,
   action: PasswordUpdateActions,
 ): PasswordUpdateState => {
@@ -41,4 +41,4 @@ const passwordUpdateReducer = (
   }
 };
 
-export { passwordUpdateReducer };
+export { passwordUpdate };

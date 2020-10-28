@@ -1,8 +1,8 @@
-import { emailUpdateReducer } from './redux/reducer';
+import { emailUpdate } from './redux/reducer';
 import { rootSaga } from './redux/sagas';
 
 const emailUpdateReduxEntry = {
-  reducers: { emailUpdateReducer },
+  reducers: { emailUpdate },
   sagas: [rootSaga],
 };
 

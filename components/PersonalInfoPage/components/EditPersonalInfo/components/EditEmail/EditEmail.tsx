@@ -15,8 +15,8 @@ interface IStateProps {
 }
 
 const mapState = (state: AppState): IStateProps => ({
-  isCompleted: state.emailUpdateReducer.isCompleted,
-  statusText: state.emailUpdateReducer.statusText,
+  isCompleted: state.emailUpdate.isCompleted,
+  statusText: state.emailUpdate.statusText,
 });
 
 const mapDispatch = {

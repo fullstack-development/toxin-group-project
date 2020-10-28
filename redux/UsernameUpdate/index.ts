@@ -1,8 +1,8 @@
-import { usernameUpdateReducer } from './redux/reducer';
+import { usernameUpdate } from './redux/reducer';
 import { rootSaga } from './redux/sagas';
 
 const usernameUpdateReduxEntry = {
-  reducers: { usernameUpdateReducer },
+  reducers: { usernameUpdate },
   sagas: [rootSaga],
 };
 

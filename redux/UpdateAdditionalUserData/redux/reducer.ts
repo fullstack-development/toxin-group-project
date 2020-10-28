@@ -11,7 +11,7 @@ const initialState: UpdateAdditionalUserDataState = {
   statusText: '',
 };
 
-const updateAdditionalUserDataReducer = (
+const updateAdditionalUserData = (
   state: UpdateAdditionalUserDataState = initialState,
   action: UpdateAdditionalUserDataActions,
 ): UpdateAdditionalUserDataState => {
@@ -41,4 +41,4 @@ const updateAdditionalUserDataReducer = (
   }
 };
 
-export { updateAdditionalUserDataReducer };
+export { updateAdditionalUserData };

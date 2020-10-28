@@ -11,7 +11,7 @@ const initialState: EmailUpdateState = {
   statusText: '',
 };
 
-const emailUpdateReducer = (
+const emailUpdate = (
   state: EmailUpdateState = initialState,
   action: EmailUpdateActions,
 ): EmailUpdateState => {
@@ -41,4 +41,4 @@ const emailUpdateReducer = (
   }
 };
 
-export { emailUpdateReducer };
+export { emailUpdate };
