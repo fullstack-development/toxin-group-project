@@ -1,4 +1,4 @@
-import { Props } from 'components/Comment/Comment.types';
+import { Props } from 'components/Review/Review.types';
 
 const reviews: Required<Props[]> = [
   {

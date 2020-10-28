@@ -1,19 +1,19 @@
 import LikeButton from 'components/LikeButton/LikeButton';
 
-import * as S from './Comment.style';
-import { Props } from './Comment.types';
-import getCommentDate from './utils/getCommentDate';
+import * as S from './Review.style';
+import { Props } from './Review.types';
+import getReviewDate from './utils/getReviewDate';
 
-const Comment: React.FC<Props> = ({ avatarUrl, userName, date, text, likesCount }: Props) => {
+const Review = ({ avatarUrl, userName, date, text, likesCount }: Props): JSX.Element => {
   const convertedDate = date.toDate();
 
   return (
-    <S.Comment>
+    <S.Review>
       <S.Header>
         <S.Avatar alt={userName} src={`/img/${avatarUrl}`} />
         <S.AuthorWrapper>
           <S.User>{userName}</S.User>
-          <S.Date dateTime={convertedDate.toISOString()}>{getCommentDate(convertedDate)}</S.Date>
+          <S.Date dateTime={convertedDate.toISOString()}>{getReviewDate(convertedDate)}</S.Date>
         </S.AuthorWrapper>
       </S.Header>
       <S.MessageWrapper>
@@ -22,8 +22,8 @@ const Comment: React.FC<Props> = ({ avatarUrl, userName, date, text, likesCount 
         </S.LeftWrapper>
         <S.Text>{text}</S.Text>
       </S.MessageWrapper>
-    </S.Comment>
+    </S.Review>
   );
 };
 
-export default Comment;
+export default Review;

@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-const Comment = styled.article``;
+const Review = styled.article``;
 
 const Header = styled.header`
   display: flex;
@@ -53,4 +53,4 @@ const Text = styled.p`
   }}
 `;
 
-export { Comment, Header, AuthorWrapper, Avatar, User, Date, MessageWrapper, LeftWrapper, Text };
+export { Review, Header, AuthorWrapper, Avatar, User, Date, MessageWrapper, LeftWrapper, Text };
