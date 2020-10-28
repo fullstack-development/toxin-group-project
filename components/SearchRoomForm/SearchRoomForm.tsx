@@ -1,4 +1,5 @@
 import { Form } from 'react-final-form';
+import { useTranslation } from 'react-i18next';
 
 import ArrowButton from 'components/ArrowButton/ArrowButton';
 import Dropdown from 'components/Dropdown/Dropdown';
@@ -18,10 +19,11 @@ const SearchRoomForm: React.FC<SearchRoomFormProps> = ({ onSubmit }: SearchRoomF
   const handleFormSubmit = (values) => {
     // console.log(values);
   };
+  const { t } = useTranslation('SearchRoomForm');
 
   return (
     <S.SearchRoomForm>
-      <S.Title>Найдём номера под ваши пожелания</S.Title>
+      <S.Title>{t('We will find rooms according to your wishes')}</S.Title>
       <Form
         initialValues={{
           booked: {
@@ -41,16 +43,16 @@ const SearchRoomForm: React.FC<SearchRoomFormProps> = ({ onSubmit }: SearchRoomF
               <TimePicker
                 type="double"
                 name="booked"
-                dateFromLabelText="прибытие"
-                dateToLabelText="выезд"
+                dateFromLabelText={t('arrival')}
+                dateToLabelText={t('departure')}
                 dateFrom={new Date(defaultBookingDates.from)}
                 dateTo={new Date(defaultBookingDates.to)}
               />
             </S.TimePickerWrapper>
             <S.DropdownWrapper>
-              <S.DropdownTitle>гости</S.DropdownTitle>
+              <S.DropdownTitle>{t('Guests')}</S.DropdownTitle>
               <Dropdown
-                placeholder="Сколько гостей"
+                placeholder={t('How many guests')}
                 name="guests"
                 enableControls
                 groups={guestsGroups}
@@ -62,7 +64,7 @@ const SearchRoomForm: React.FC<SearchRoomFormProps> = ({ onSubmit }: SearchRoomF
               isFilled
               type="button"
             >
-              Подобрать номер
+              {t('Choose number')}
             </ArrowButton>
           </form>
         )}

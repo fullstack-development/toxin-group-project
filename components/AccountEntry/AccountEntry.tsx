@@ -38,21 +38,12 @@ const AccountEntry: React.FC<Props> = (props: Props): JSX.Element => {
 
     requestToAuth({ email, password });
   };
-  const accountEntry = {
-    en: {
-      translation: {
-        aloha: 'privet',
-      },
-    },
-  };
 
-  const { t } = useTranslation(['accountEntry']);
-
-  console.log(t('aloha'));
+  const { t } = useTranslation(['AccountEntry']);
 
   return (
     <S.AccountEntry>
-      <S.Title>Войти</S.Title>
+      <S.Title>{t('Sign In')}</S.Title>
       <Form
         onSubmit={handleFormSubmit}
         render={({ handleSubmit }) => (
@@ -69,20 +60,20 @@ const AccountEntry: React.FC<Props> = (props: Props): JSX.Element => {
                 name="password"
                 type="password"
                 render={({ input, meta }) => (
-                  <Input {...input} {...meta} placeholder="Пароль" required />
+                  <Input {...input} {...meta} placeholder={t('password')} required />
                 )}
               />
             </S.FieldsWrapper>
-            <ArrowButton isFilled>Войти</ArrowButton>
+            <ArrowButton isFilled>{t('Sign In')}</ArrowButton>
             <S.TwoCols>
               <S.CenteredButton type="button" onClick={requestToAuthWithGoogle}>
-                Вход через аккаунт Google
+                {t('SignIn with account google')}
                 <S.GoogleIcon icon="google" />
               </S.CenteredButton>
             </S.TwoCols>
             <S.TwoCols>
-              <span>Нет аккаунта на Toxin?</span>
-              <Button href="/registration">Создать</Button>
+              <span>{t('No toxin account?')}</span>
+              <Button href="/registration">{t('Sign up')}</Button>
             </S.TwoCols>
           </form>
         )}

@@ -1,10 +1,13 @@
+import { useTranslation } from 'react-i18next';
+
 import { keywords } from './StarRating.data';
 import * as S from './StarRating.styles';
 import { StarRatingProps } from './StarRating.types';
 
 const StarRating: React.FC<StarRatingProps> = ({ rating = 0 }: StarRatingProps) => {
+  const { t } = useTranslation('StarRating');
   const ratingTextKey = Object.values(keywords)[rating];
-  const title = `Оценка номера - ${ratingTextKey}`;
+  const title = `${t('Room rating')} - ${ratingTextKey}`;
 
   return (
     <S.StarRating>

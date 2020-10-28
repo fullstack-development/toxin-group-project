@@ -1,13 +1,16 @@
+import i18next from 'shared/lang';
+
 import { FooterProps } from './Footer.types';
 
 const data: Required<FooterProps> = {
   subscription: {
-    title: 'Подписка',
-    text: 'Получайте специальные предложения и новости сервиса',
+    title: i18next.t('Subscription'),
+    text: i18next.t('Receive special offers and service news'),
   },
-  description:
-    'Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»',
-  copyrightText: 'Copyright © 2018 Toxin отель. Все права зачищены.',
+  description: i18next.t(
+    'Reservation of rooms in the best hotel of 2019 according to the "Hotel Views" association',
+  ),
+  copyrightText: i18next.t('Copyright © 2018 Toxin Hotel. All rights reserved.'),
 };
 
 export default data;

@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
 import { Filters } from 'api/entities/types';
@@ -24,6 +25,8 @@ type Props = ReturnType<typeof mapState> & typeof mapDispatch;
 const SearchRoomPage: React.FC<Props> = ({ rooms, getRooms }: Props) => {
   const router = useRouter();
 
+  const { t } = useTranslation('SearchRoomPage');
+
   const passedParams = getPassedFilters(router.asPath);
 
   const initialFilters: Filters = passedParams && {
@@ -46,7 +49,7 @@ const SearchRoomPage: React.FC<Props> = ({ rooms, getRooms }: Props) => {
           <RoomFilter initialFilters={filters} loadRooms={loadRooms} />
         </S.FilterContainer>
         <S.RoomsContainer>
-          <S.RoomsTitle>Номера, которые мы для вас подобрали</S.RoomsTitle>
+          <S.RoomsTitle>{t('The numbers we have selected for you')}</S.RoomsTitle>
           {rooms.length ? (
             <Rooms rooms={rooms} />
           ) : (

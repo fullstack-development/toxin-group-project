@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, MouseEvent, useCallback } from 'react';
 import { Field } from 'react-final-form';
+import { useTranslation } from 'react-i18next';
 
 import NumberInput from '../NumberInput/NumberInput';
 import ApplyButton from '../TextButton/TextButton';
@@ -34,6 +35,7 @@ const Dropdown: React.FC<DropdownProps> = ({
     };
   });
 
+  const { t } = useTranslation('Dropdown');
   const [dropdownState, setDropdownState] = useState(initialState);
   const [isOpen, setIsOpen] = useState(false);
   const [resultString, setResultString] = useState(placeholder);
@@ -178,10 +180,10 @@ const Dropdown: React.FC<DropdownProps> = ({
                     isHidden={isResetHidden}
                     onClick={handleResetClick}
                   >
-                    Очистить
+                    {t('Clear')}
                   </S.ResetButton>
                   <ApplyButton type="button" onClick={apply}>
-                    Применить
+                    {t('Apply')}
                   </ApplyButton>
                 </S.Controls>
               )}

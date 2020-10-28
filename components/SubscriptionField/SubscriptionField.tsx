@@ -1,5 +1,6 @@
 import { FormHTMLAttributes } from 'react';
 import { Field, Form } from 'react-final-form';
+import { useTranslation } from 'react-i18next';
 
 import { emailValidator } from 'shared/helpers/validators';
 
@@ -12,6 +13,8 @@ type SubscriptionProps = InputProps & FormHTMLAttributes<HTMLFormElement>;
 const handleSubmitClick = (values) => console.log(values);
 
 const SubscriptionField: React.FC<InputProps> = ({ action, ...rest }: SubscriptionProps) => {
+  const { t } = useTranslation('SubscriptionField');
+
   return (
     <Form
       onSubmit={handleSubmitClick}
@@ -23,7 +26,7 @@ const SubscriptionField: React.FC<InputProps> = ({ action, ...rest }: Subscripti
             render={(props) => (
               <S.Container>
                 <S.Input {...props.input} {...props.meta} {...rest} validators={[emailValidator]} />
-                <S.SubmitButton aria-label="Отправить" />
+                <S.SubmitButton aria-label={t('Send')} />
               </S.Container>
             )}
           />

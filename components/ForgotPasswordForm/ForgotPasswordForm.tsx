@@ -1,4 +1,5 @@
 import { Form, Field } from 'react-final-form';
+import { useTranslation } from 'react-i18next';
 
 import { emailValidator } from 'shared/helpers/validators/emailValidator';
 
@@ -8,10 +9,11 @@ const ForgotPasswordForm = (): JSX.Element => {
   const handleForgotPasswordFormSubmit = (formData: React.FormEvent<HTMLFormElement>): void => {
     formData;
   };
+  const { t } = useTranslation('ForgotPasswordForm');
 
   return (
     <S.ForgotPasswordForm>
-      <S.Title>Восстановление аккаунта</S.Title>
+      <S.Title>{t('Account recovery')}</S.Title>
       <Form
         onSubmit={handleForgotPasswordFormSubmit}
         render={() => (
@@ -23,14 +25,14 @@ const ForgotPasswordForm = (): JSX.Element => {
                 <S.InputWrapper
                   {...input}
                   {...meta}
-                  label="Адрес электронной почты"
+                  label={t('Email address')}
                   placeholder="Email"
                   validators={[emailValidator]}
                 />
               )}
             />
             <S.NextButton isFlat isFilled>
-              Далее
+              {t('Next')}
             </S.NextButton>
           </form>
         )}

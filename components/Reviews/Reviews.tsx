@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import Comment from 'components/Comment/Comment';
 import getNounInDeclension from 'shared/helpers/getNounInDeclension';
 
@@ -6,20 +8,24 @@ import * as S from './Reviews.style';
 
 const declensions = ['отзыв', 'отзыва', 'отзывов'];
 
-const Reviews = (): JSX.Element => (
-  <S.Reviews>
-    <S.Title>Отзывы посетителей номера</S.Title>
-    <S.Counter>
-      {reviews.length} {getNounInDeclension(reviews.length, declensions)}
-    </S.Counter>
-    <S.List>
-      {reviews.map((review) => (
-        <S.Item key={review.userName}>
-          <Comment {...review} />
-        </S.Item>
-      ))}
-    </S.List>
-  </S.Reviews>
-);
+const Reviews = (): JSX.Element => {
+  const { t } = useTranslation('Reviews');
+
+  return (
+    <S.Reviews>
+      <S.Title>{t('Guest reviews')}</S.Title>
+      <S.Counter>
+        {reviews.length} {getNounInDeclension(reviews.length, declensions)}
+      </S.Counter>
+      <S.List>
+        {reviews.map((review) => (
+          <S.Item key={review.userName}>
+            <Comment {...review} />
+          </S.Item>
+        ))}
+      </S.List>
+    </S.Reviews>
+  );
+};
 
 export default Reviews;

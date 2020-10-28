@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Form } from 'react-final-form';
+import { useTranslation } from 'react-i18next';
 
 import {
   Accessibility,
@@ -52,6 +53,8 @@ const RoomFilter: React.FC<Props> = ({ initialFilters, loadRooms }: Props) => {
     loadRooms(values);
   };
 
+  const { t } = useTranslation('RoomFilter');
+
   useEffect(() => {
     loadRooms();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -75,15 +78,15 @@ const RoomFilter: React.FC<Props> = ({ initialFilters, loadRooms }: Props) => {
                 <TimePicker
                   type="single"
                   name="booked"
-                  dateFromLabelText="даты пребывания в отеле"
+                  dateFromLabelText={t('Dates of stay in hotel')}
                   dateFrom={new Date(initialValues.booked.from)}
                   dateTo={new Date(initialValues.booked.to)}
                 />
               </S.TimePickerWrapper>
               <S.DropdownWrapper>
-                <S.Title elementType="dropdown">Гости</S.Title>
+                <S.Title elementType="dropdown">{t('Guests')}</S.Title>
                 <Dropdown
-                  placeholder="Сколько гостей"
+                  placeholder={t('How many guests')}
                   name="guests"
                   enableControls={false}
                   groups={guestsGroups}
@@ -93,19 +96,19 @@ const RoomFilter: React.FC<Props> = ({ initialFilters, loadRooms }: Props) => {
               <S.SliderWrapper>
                 <RangeSlider
                   name="price"
-                  title="диапазон цены"
+                  title={t('Price range')}
                   initialValue={[initialValues.price.from, initialValues.price.to]}
                 />
-                <S.SliderDescription>Стоимость за сутки пребывания в номере</S.SliderDescription>
+                <S.SliderDescription>{t('Cost per day of stay in the room')}</S.SliderDescription>
               </S.SliderWrapper>
               <S.CheckboxWrapper>
-                <S.Title elementType="checkbox">Checkbox buttons</S.Title>
+                <S.Title elementType="checkbox">{t('Checkbox buttons')}</S.Title>
                 <CheckboxesList
                   roomOptions={getCheckboxProps(checkboxesListData, initialValues.opportunities)}
                 />
               </S.CheckboxWrapper>
               <S.CheckboxWrapper>
-                <S.Title elementType="checkbox">Доступность</S.Title>
+                <S.Title elementType="checkbox">{t('Availability')}</S.Title>
                 <CheckboxesList
                   roomOptions={getCheckboxProps(
                     richCheckboxesListData,
@@ -114,16 +117,16 @@ const RoomFilter: React.FC<Props> = ({ initialFilters, loadRooms }: Props) => {
                 />
               </S.CheckboxWrapper>
               <S.DropdownWrapper>
-                <S.Title elementType="dropdown">Удобства номера</S.Title>
+                <S.Title elementType="dropdown">{t('Room amenities')}</S.Title>
                 <Dropdown
-                  placeholder="Удобства номера"
+                  placeholder={t('Room amenities')}
                   enableControls={false}
                   name="amenities"
                   items={getDropdownProps(amenitiesItems, initialValues.amenities)}
                 />
               </S.DropdownWrapper>
               <S.CheckboxWrapper>
-                <Expander title="дополнительные удобства" isDefaultOpen={false}>
+                <Expander title={t('Additional amenities')} isDefaultOpen={false}>
                   <CheckboxesList
                     roomOptions={getCheckboxProps(
                       expandableCheckboxesListData,
@@ -132,7 +135,7 @@ const RoomFilter: React.FC<Props> = ({ initialFilters, loadRooms }: Props) => {
                   />
                 </Expander>
               </S.CheckboxWrapper>
-              <S.SubmitButton isFilled>Применить</S.SubmitButton>
+              <S.SubmitButton isFilled>{t('Apply')}</S.SubmitButton>
             </form>
           </S.RoomFilter>
         );

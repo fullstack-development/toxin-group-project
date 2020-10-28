@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import getNounInDeclension from 'shared/helpers/getNounInDeclension';
 
 import Chart from './components/Chart/Chart';
@@ -15,7 +17,8 @@ type Props = {
 };
 
 const RoomImpression: React.FC<Props> = ({ title, numberOfRatings }: Props) => {
-  const declensions = ['голос', 'голоса', 'голосов'];
+  const { t } = useTranslation('RoomImpression');
+  const declensions = [t('Vote'), t('A votes'), t('Votes')];
   const ratingsSum = Object.values(numberOfRatings).reduce(
     (accumulator, currentValue) => accumulator + currentValue,
   );

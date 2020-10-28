@@ -1,63 +1,65 @@
+import i18next from 'shared/lang';
+
 import { NavProps } from './FooterNav.types';
 
 const data: Required<NavProps> = {
   items: [
     {
-      title: 'навигация',
+      title: i18next.t('Navigation'),
       items: [
         {
           href: '/mock',
-          text: 'О нас',
+          text: i18next.t('About us'),
         },
         {
           href: '/mock',
-          text: 'Новости',
+          text: i18next.t('News'),
         },
         {
           href: '/mock',
-          text: 'Служба поддержки',
+          text: i18next.t('Support'),
         },
         {
           href: '/mock',
-          text: 'Услуги',
+          text: i18next.t('Services'),
         },
       ],
     },
     {
-      title: 'о нас',
+      title: i18next.t('About us'),
       items: [
         {
           href: '/mock',
-          text: 'О сервисе',
+          text: i18next.t('About service'),
         },
         {
           href: '/mock',
-          text: 'Наша команда',
+          text: i18next.t('Our team'),
         },
         {
           href: '/mock',
-          text: 'Вакансии',
+          text: i18next.t('Vacancies'),
         },
         {
           href: '/mock',
-          text: 'Инвесторы',
+          text: i18next.t('Investors'),
         },
       ],
     },
     {
-      title: 'Служба поддержки',
+      title: i18next.t('Support'),
       items: [
         {
           href: '/mock',
-          text: 'Соглашения',
+          text: i18next.t('Agreements'),
         },
         {
           href: '/mock',
-          text: 'Сообщества',
+          text: i18next.t('Communities'),
         },
         {
           href: '/mock',
-          text: 'Связь с нами',
+          text: i18next.t('Contact us'),
         },
       ],
     },

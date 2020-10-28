@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { DateUtils, DayModifiers } from 'react-day-picker';
+import { useTranslation } from 'react-i18next';
 
 import TextButton from 'components/TextButton/TextButton';
 import { months, weekdaysShort } from 'shared/helpers/validators';
@@ -35,6 +36,7 @@ const Calendar = ({
     enteredTo: null,
   });
   const htmlContainer = useRef(null);
+  const { t } = useTranslation('Calendar');
 
   useEffect(() => {
     const handleDocumentClick = (e: Event) => {
@@ -90,10 +92,10 @@ const Calendar = ({
       />
       <S.CalendarControls>
         <TextButton type="button" isSecondary onClick={clearSelectedDate}>
-          Очистить
+          {t('Clear')}
         </TextButton>
         <TextButton type="button" onClick={handleApplyButtonClick}>
-          Применить
+          {t('Apply')}
         </TextButton>
       </S.CalendarControls>
     </S.CalendarContainer>

@@ -3,27 +3,27 @@ import { initReactI18next } from 'react-i18next';
 
 const resources = {
   en: {
-    translation: {
-      'Welcome to React': 'hello world',
+    accountEntry: {
+      entry: 'SignIn',
+      googleAccountEntry: 'SignIn with account google',
+      withoutToxinAccount: 'No toxin account?',
+      createAccount: 'SignUp',
+      password: 'Password',
     },
   },
-  fr: {
-    translation: {
-      'Welcome to React': 'Bienvenue à React et react-i18next',
-    },
-  },
-};
-
-const accountEntry = {
-  en: {
-    translation: {
-      aloha: 'privet',
+  ru: {
+    accountEntry: {
+      entry: 'Войти',
+      googleAccountEntry: 'Вход через аккаунт Google',
+      withoutToxinAccount: 'Нет аккаунта на Toxin?',
+      createAccount: 'Создать',
+      password: 'Пароль',
     },
   },
 };
 
 i18next.use(initReactI18next).init({
-  ns: ['resources', 'accountEntry'],
+  resources,
   lng: 'en',
 
   keySeparator: false,

@@ -1,5 +1,6 @@
 import StarRating from 'components/StarRating/StarRating';
 import formatNumber from 'shared/helpers/formatNumber';
+import i18next from 'shared/lang';
 
 import ImageGallery from './components/ImageGallery/ImageGallery';
 import * as S from './Room.styles';
@@ -12,8 +13,8 @@ const Room: React.FC<Props> = ({
   href,
   imagePaths,
   roomType,
-  measure = 'в сутки',
-  reviewMeasure = 'отзывов',
+  measure = i18next.t('Per day'),
+  reviewMeasure = i18next.t('Reviews'),
   currency,
   rating = 5,
 }: Props) => (

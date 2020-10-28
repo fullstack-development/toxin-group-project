@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Field } from 'react-final-form';
+import { useTranslation } from 'react-i18next';
 
 import Calendar from '../Calendar/Calendar';
 import Input from '../Input/Input';
@@ -24,6 +25,7 @@ const TimePicker = ({
 }: Props): JSX.Element => {
   const [isCalendarVisible, setCalendarVisibility] = useState(false);
   const [selectedDateRange, setSelectedDateRange] = useState({ from: dateFrom, to: dateTo });
+  const { t } = useTranslation('TimePicker');
 
   const { from, to } = selectedDateRange;
 
@@ -45,7 +47,7 @@ const TimePicker = ({
       : from.toLocaleDateString('ru-RU');
   };
 
-  const getMaskedDate = (): string => (type === 'single' ? 'Выберите дату' : 'ДД.ММ.ГГГГ');
+  const getMaskedDate = (): string => (type === 'single' ? t('Select Date') : t('Date mask'));
 
   const openCalendar = (): void => {
     setCalendarVisibility(true);
