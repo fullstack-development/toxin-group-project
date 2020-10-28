@@ -1,6 +1,7 @@
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import { Field, Form } from 'react-final-form';
+import { useTranslation } from 'react-i18next';
 
 import ArrowButton from 'components/ArrowButton/ArrowButton';
 import Button from 'components/Button/Button';
@@ -37,6 +38,17 @@ const AccountEntry: React.FC<Props> = (props: Props): JSX.Element => {
 
     requestToAuth({ email, password });
   };
+  const accountEntry = {
+    en: {
+      translation: {
+        aloha: 'privet',
+      },
+    },
+  };
+
+  const { t } = useTranslation(['accountEntry']);
+
+  console.log(t('aloha'));
 
   return (
     <S.AccountEntry>
