@@ -13,7 +13,10 @@ interface IStateProps {
   statusText: string;
 }
 
-const mapState = (state: AppState): IStateProps => state.passwordResetReducer;
+const mapState = (state: AppState): IStateProps => ({
+  isCompleted: state.passwordResetReducer.isCompleted,
+  statusText: state.passwordResetReducer.statusText,
+});
 
 const mapDispatch = {
   startPasswordResetProcess: passwordResetRequest,
