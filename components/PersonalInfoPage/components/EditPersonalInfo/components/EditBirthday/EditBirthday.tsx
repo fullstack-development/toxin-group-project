@@ -18,7 +18,10 @@ interface IStateProps {
   statusText: string;
 }
 
-const mapState = (state: AppState): IStateProps => state.updateAdditionalUserDataReducer;
+const mapState = (state: AppState): IStateProps => ({
+  isCompleted: state.updateAdditionalUserDataReducer.isCompleted,
+  statusText: state.updateAdditionalUserDataReducer.statusText,
+});
 
 const mapDispatch = {
   startUpdateAdditionalUserDataProcess: updateAdditionalUserDataRequest,

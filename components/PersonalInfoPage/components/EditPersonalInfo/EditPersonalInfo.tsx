@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import { User } from 'api/Firebase/modules/Authentication/types';
 import TextButton from 'components/TextButton/TextButton';
 

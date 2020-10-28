@@ -21,7 +21,8 @@ interface IStateProps {
 
 const mapState = (state: AppState): IStateProps => ({
   user: state.authReducer.user,
-  ...state.updateAdditionalUserDataReducer,
+  isCompleted: state.updateAdditionalUserDataReducer.isCompleted,
+  statusText: state.updateAdditionalUserDataReducer.statusText,
 });
 
 const mapDispatch = {

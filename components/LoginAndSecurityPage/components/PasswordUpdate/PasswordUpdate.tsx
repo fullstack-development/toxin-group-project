@@ -16,7 +16,8 @@ interface IStateProps {
 
 const mapState = (state: AppState): IStateProps => ({
   user: state.authReducer.user,
-  ...state.passwordUpdateReducer,
+  isCompleted: state.passwordUpdateReducer.isCompleted,
+  statusText: state.passwordUpdateReducer.statusText,
 });
 
 const mapDispatch = {
