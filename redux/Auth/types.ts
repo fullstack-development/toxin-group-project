@@ -8,6 +8,8 @@ import {
   PRELOAD_AUTH_DATA,
   AUTH_REQUIRED,
   GOOGLE_AUTH_PROCESS,
+  AUTH_LOGOUT_PROCESS,
+  AUTH_LOGOUT_DONE,
 } from './constants';
 
 export type AuthData = {
@@ -40,10 +42,15 @@ export type SetAuthRequired = Action<typeof AUTH_REQUIRED, null>;
 
 export type SetAuthStatusFailed = Action<typeof AUTH_FAILED, string>;
 
+export type LogoutProcess = Action<typeof AUTH_LOGOUT_PROCESS, null>;
+
+export type LogoutDone = Action<typeof AUTH_LOGOUT_DONE, null>;
+
 export type AuthActions =
   | RequestToAuth
   | BreakAuthProcess
   | SetAuthStatusSuccess
   | SetAuthRequired
   | SetAuthStatusFailed
-  | PreloadAuthData;
+  | PreloadAuthData
+  | LogoutDone;

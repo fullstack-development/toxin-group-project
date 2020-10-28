@@ -38,6 +38,11 @@ const Title = styled.h2`
   margin-bottom: 1.4rem;
 `;
 
+const Avatar = styled.div`
+  max-width: max-content;
+  margin: 0 auto 1.4rem auto;
+`;
+
 const AlreadyRegisterWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -96,6 +101,7 @@ const CustomSnackBar = styled(Snackbar)<SnackBar>`
 export {
   RegistrationForm,
   Title,
+  Avatar,
   AlreadyRegisterWrapper,
   InputWrapper,
   RadioButtonsWrapper,

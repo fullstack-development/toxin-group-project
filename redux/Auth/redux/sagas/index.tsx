@@ -11,6 +11,8 @@ import {
   AUTH_FAILED,
   AUTH_REQUIRED,
   GOOGLE_AUTH_PROCESS,
+  AUTH_LOGOUT_PROCESS,
+  AUTH_LOGOUT_DONE,
 } from '../../constants';
 import { AuthData, SetAuthStatusSuccess, SetAuthStatusFailed, SetAuthRequired } from '../../types';
 
@@ -75,8 +77,14 @@ function* prepareAuthData():
   }
 }
 
+function* logoutUser(): Generator {
+  yield call(Api.auth.signOut);
+  yield put({ type: AUTH_LOGOUT_DONE });
+}
+
 export function* rootSaga(): SagaIterator {
   yield takeLatest<never>(PRELOAD_AUTH_DATA, prepareAuthData);
   yield takeLatest<never>(AUTH_PROCESS, startAuthProcess);
   yield takeLatest<never>(GOOGLE_AUTH_PROCESS, startAuthProcess);
+  yield takeLatest<never>(AUTH_LOGOUT_PROCESS, logoutUser);
 }

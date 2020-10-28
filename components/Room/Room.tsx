@@ -36,7 +36,7 @@ const Room: React.FC<Props> = ({
       <S.RatingContainer>
         <StarRating rating={rating} />
         <S.Reviews>
-          <S.ReviewCount>{reviews}</S.ReviewCount>
+          <S.ReviewCount>{reviews.length}</S.ReviewCount>
           <S.ReviewMeasure>{reviewMeasure}</S.ReviewMeasure>
         </S.Reviews>
       </S.RatingContainer>
