@@ -4,7 +4,7 @@ import { titles } from 'shared/styles/mixins';
 
 const Cards = styled.ul`
   display: grid;
-  grid-template-columns: repeat(3, 22rem);
+  grid-template-columns: repeat(auto-fill, 22rem);
   justify-content: center;
   gap: 2rem;
   list-style: none;
@@ -19,6 +19,7 @@ const Card = styled.a`
     return css`
       display: flex;
       flex-direction: column;
+      height: 100%;
       padding: 2rem;
       background: ${colors.defaultBackground};
       box-shadow: 0 0 1.7857rem rgba(0, 0, 0, 0.2);

@@ -7,7 +7,7 @@ const Header = styled.header`
 `;
 
 const Title = styled.h3`
-  margin-bottom: 0.5rem;
+  margin: 0 0.5rem 0.5rem 0;
 `;
 
 const Content = styled.div`
