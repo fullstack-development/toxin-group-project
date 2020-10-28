@@ -14,7 +14,7 @@ export type AvailableActions =
 
 export type AppState = {
   authReducer: AuthState;
-  passwordResetReducer: PasswordResetState;
+  passwordReset: PasswordResetState;
   RegistrationReducer: RegistrationState;
   bookingReducer: BookingState;
 };

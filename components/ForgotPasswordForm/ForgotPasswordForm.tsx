@@ -14,8 +14,8 @@ interface IStateProps {
 }
 
 const mapState = (state: AppState): IStateProps => ({
-  isCompleted: state.passwordResetReducer.isCompleted,
-  statusText: state.passwordResetReducer.statusText,
+  isCompleted: state.passwordReset.isCompleted,
+  statusText: state.passwordReset.statusText,
 });
 
 const mapDispatch = {

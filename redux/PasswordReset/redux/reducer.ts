@@ -11,7 +11,7 @@ const initialState: PasswordResetState = {
   statusText: '',
 };
 
-const passwordResetReducer = (
+const passwordReset = (
   state: PasswordResetState = initialState,
   action: PasswordResetActions,
 ): PasswordResetState => {
@@ -41,4 +41,4 @@ const passwordResetReducer = (
   }
 };
 
-export { passwordResetReducer };
+export { passwordReset };
