@@ -76,7 +76,7 @@ export type ProfileData = {
 
 export type AdditionalUserInformation = {
   birthDate: string;
-  gender: 'Мужчина' | 'Женщина';
+  gender: 'female' | 'male';
   receiveOffers: boolean;
 };
 
