@@ -34,6 +34,7 @@ const EditPersonalInfo = ({
   };
 
   const isEdit = currentEditing === title;
+  const isButtonDisabled = currentEditing ? !isEdit : false;
 
   return (
     <>
@@ -41,8 +42,8 @@ const EditPersonalInfo = ({
         <S.Title>{title}</S.Title>
         <TextButton
           type="button"
+          disabled={isButtonDisabled}
           onClick={() => onEditButtonClick(title)}
-          disabled={currentEditing ? !isEdit : false}
         >
           {isEdit ? 'Отменить' : 'Редактировать'}
         </TextButton>
