@@ -3,16 +3,16 @@ import {
   GET_ROOM_DETAILS_SUCCESS,
   GET_ROOM_DETAILS_FAILED,
 } from '../constants';
-import { GetRoomDetailsState, GetRoomDetailsActions } from '../types';
+import { ApartmentState, ApartmentActions } from '../types';
 
-const initialState: GetRoomDetailsState = {
+const initialState: ApartmentState = {
   roomDetails: null,
 };
 
-const getRoomDetails = (
-  state: GetRoomDetailsState = initialState,
-  actions: GetRoomDetailsActions,
-): GetRoomDetailsState => {
+const apartment = (
+  state: ApartmentState = initialState,
+  actions: ApartmentActions,
+): ApartmentState => {
   switch (actions.type) {
     case GET_ROOM_DETAILS_PROCESS:
       return {
@@ -31,4 +31,4 @@ const getRoomDetails = (
   }
 };
 
-export { getRoomDetails };
+export { apartment };

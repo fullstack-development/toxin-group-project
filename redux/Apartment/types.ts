@@ -11,7 +11,7 @@ type Action<Z, T> = {
   payload?: T;
 };
 
-type GetRoomDetailsState = {
+type ApartmentState = {
   roomDetails: Apartment | null;
 };
 
@@ -19,12 +19,12 @@ type GetRoomDetailsRequest = Action<typeof GET_ROOM_DETAILS_PROCESS, number | st
 type GetRoomDetailsSuccess = Action<typeof GET_ROOM_DETAILS_SUCCESS, Apartment>;
 type GetRoomDetailsFailed = Action<typeof GET_ROOM_DETAILS_FAILED, null>;
 
-type GetRoomDetailsActions = GetRoomDetailsRequest | GetRoomDetailsSuccess | GetRoomDetailsFailed;
+type ApartmentActions = GetRoomDetailsRequest | GetRoomDetailsSuccess | GetRoomDetailsFailed;
 
 export type {
-  GetRoomDetailsState,
+  ApartmentState,
   GetRoomDetailsRequest,
   GetRoomDetailsSuccess,
   GetRoomDetailsFailed,
-  GetRoomDetailsActions,
+  ApartmentActions,
 };

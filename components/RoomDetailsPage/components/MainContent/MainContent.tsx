@@ -9,7 +9,7 @@ import OrderForm from 'components/OrderForm/OrderForm';
 import Preloader from 'components/Preloader/Preloader';
 import Reviews from 'components/Reviews/Reviews';
 import RoomImpression from 'components/RoomImpression/RoomImpression';
-import { getRoomDetailsRequest } from 'redux/GetRoomDetails/redux/actions';
+import { getRoomDetailsRequest } from 'redux/Apartment/redux/actions';
 import { AppState } from 'redux/store.types';
 
 import { roomImagesPreview, benefitsData, rulesData } from './MainContent.data';
@@ -20,7 +20,7 @@ interface IStateProps {
 }
 
 const mapState = (state: AppState): IStateProps => ({
-  roomDetails: state.getRoomDetails.roomDetails,
+  roomDetails: state.apartment.roomDetails,
 });
 
 const mapDispatch = {
