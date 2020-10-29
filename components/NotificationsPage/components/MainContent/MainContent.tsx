@@ -9,13 +9,13 @@ import { AppState } from 'redux/store.types';
 import Subscriptions from '../Subscriptions/Subscriptions';
 import * as S from './MainContent.styles';
 
-interface IStateProps {
+type StateProps = {
   user: User;
   isCompleted: boolean;
   additionalUserData: AdditionalUserInformation;
-}
+};
 
-const mapState = (state: AppState): IStateProps => ({
+const mapState = (state: AppState): StateProps => ({
   user: state.auth.user,
   isCompleted: state.profile.isGetAdditionalUserDataCompleted,
   additionalUserData: state.profile.additionalUserData,
@@ -25,7 +25,7 @@ const mapDispatch = {
   startGetAdditionalUserDataProcess: getAdditionalUserDataRequest,
 };
 
-type Props = ReturnType<typeof mapState> & typeof mapDispatch;
+type Props = StateProps & typeof mapDispatch;
 
 const MainContent = ({
   user,

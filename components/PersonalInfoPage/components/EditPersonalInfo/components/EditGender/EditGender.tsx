@@ -14,12 +14,12 @@ import { AppState } from 'redux/store.types';
 
 import * as S from './EditGender.styles';
 
-interface IStateProps {
+type StateProps = {
   isCompleted: boolean;
   statusText: string;
-}
+};
 
-const mapState = (state: AppState): IStateProps => ({
+const mapState = (state: AppState): StateProps => ({
   isCompleted: state.profile.isUpdateAdditionalUserDataCompleted,
   statusText: state.profile.updateAdditionalUserDataStatusText,
 });
@@ -32,7 +32,7 @@ const mapDispatch = {
 type Props = {
   user: User;
   gender: string;
-} & ReturnType<typeof mapState> &
+} & StateProps &
   typeof mapDispatch;
 
 type FormData = {

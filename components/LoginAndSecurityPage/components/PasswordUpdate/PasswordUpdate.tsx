@@ -9,13 +9,13 @@ import { passwordUpdateRequest, passwordUpdateCompleted } from 'redux/Profile/re
 import { AppState } from 'redux/store.types';
 import { passwordValidator } from 'shared/helpers/validators/passwordValidator';
 
-interface IStateProps {
+type StateProps = {
   user: User;
   isCompleted: boolean;
   statusText: string;
-}
+};
 
-const mapState = (state: AppState): IStateProps => ({
+const mapState = (state: AppState): StateProps => ({
   user: state.auth.user,
   isCompleted: state.profile.isPasswordUpdateCompleted,
   statusText: state.profile.passwordUpdateStatusText,
@@ -26,7 +26,7 @@ const mapDispatch = {
   stopPasswordUpdateProcess: passwordUpdateCompleted,
 };
 
-type Props = ReturnType<typeof mapState> & typeof mapDispatch;
+type Props = StateProps & typeof mapDispatch;
 
 type FormData = {
   currentPassword: string;

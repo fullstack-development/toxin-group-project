@@ -10,13 +10,13 @@ import EditPersonalInfo from '../EditPersonalInfo/EditPersonalInfo';
 import { data } from './PersonalInfo.data';
 import * as S from './PersonalInfo.styles';
 
-interface IStateProps {
+type StateProps = {
   user: User;
   isCompleted: boolean;
   additionalUserData: AdditionalUserInformation;
-}
+};
 
-const mapState = (state: AppState): IStateProps => ({
+const mapState = (state: AppState): StateProps => ({
   user: state.auth.user,
   isCompleted: state.profile.isGetAdditionalUserDataCompleted,
   additionalUserData: state.profile.additionalUserData,
@@ -26,7 +26,7 @@ const mapDispatch = {
   startGetAdditionalUserDataProcess: getAdditionalUserDataRequest,
 };
 
-type Props = ReturnType<typeof mapState> & typeof mapDispatch;
+type Props = StateProps & typeof mapDispatch;
 
 const PersonalInfo = ({
   user,

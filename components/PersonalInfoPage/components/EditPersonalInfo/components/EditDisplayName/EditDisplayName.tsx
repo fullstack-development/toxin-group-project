@@ -8,12 +8,12 @@ import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
 import { usernameUpdateRequest, usernameUpdateCompleted } from 'redux/Profile/redux/actions';
 import { AppState } from 'redux/store.types';
 
-interface IStateProps {
+type StateProps = {
   isCompleted: boolean;
   statusText: string;
-}
+};
 
-const mapState = (state: AppState): IStateProps => ({
+const mapState = (state: AppState): StateProps => ({
   isCompleted: state.profile.isUsernameUpdateCompleted,
   statusText: state.profile.usernameUpdateStatusText,
 });
@@ -26,7 +26,7 @@ const mapDispatch = {
 type Props = {
   user: User;
   displayName: string;
-} & ReturnType<typeof mapState> &
+} & StateProps &
   typeof mapDispatch;
 
 type FormData = {

@@ -13,12 +13,12 @@ import {
 import { AppState } from 'redux/store.types';
 import { dateValidator, dateFormatMask } from 'shared/helpers/validators';
 
-interface IStateProps {
+interface StateProps {
   isCompleted: boolean;
   statusText: string;
 }
 
-const mapState = (state: AppState): IStateProps => ({
+const mapState = (state: AppState): StateProps => ({
   isCompleted: state.profile.isUpdateAdditionalUserDataCompleted,
   statusText: state.profile.updateAdditionalUserDataStatusText,
 });
@@ -31,7 +31,7 @@ const mapDispatch = {
 type Props = {
   user: User;
   birthday: string;
-} & ReturnType<typeof mapState> &
+} & StateProps &
   typeof mapDispatch;
 
 type FormData = {
