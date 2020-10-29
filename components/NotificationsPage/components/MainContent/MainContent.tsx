@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { AdditionalUserInformation } from 'api/entities/types';
 import { User } from 'api/Firebase/modules/Authentication/types';
+import NavAccountSettings from 'components/NavAccountSettings/NavAccountSettings';
 import { getAdditionalUserDataRequest } from 'redux/Profile/redux/actions';
 import { AppState } from 'redux/store.types';
 
@@ -46,6 +47,7 @@ const MainContent = ({
 
   return (
     <S.MainContent>
+      <NavAccountSettings title="Уведомления" />
       <S.Title>Уведомления</S.Title>
       {isCompleted && (
         <Subscriptions
