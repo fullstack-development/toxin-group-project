@@ -41,7 +41,7 @@ const PersonalInfo = ({
     email: '',
   });
 
-  const handleGetAdditionalUserData = useCallback(
+  const getAdditionalUserData = useCallback(
     (currentUser) => {
       startGetAdditionalUserDataProcess(currentUser);
     },
@@ -49,10 +49,10 @@ const PersonalInfo = ({
   );
 
   useEffect(() => {
-    if (user) handleGetAdditionalUserData(user);
-  }, [handleGetAdditionalUserData, user]);
+    if (user) getAdditionalUserData(user);
+  }, [getAdditionalUserData, user]);
 
-  const handleSetAdditionalUserData = useCallback(() => {
+  const setAdditionalUserData = useCallback(() => {
     const { displayName, email } = user;
 
     setUserData({
@@ -64,8 +64,8 @@ const PersonalInfo = ({
   }, [additionalUserData, user]);
 
   useEffect(() => {
-    if (isCompleted) handleSetAdditionalUserData();
-  }, [handleSetAdditionalUserData, isCompleted]);
+    if (isCompleted) setAdditionalUserData();
+  }, [setAdditionalUserData, isCompleted]);
 
   const accountData = data.map((elem) => {
     return { ...elem, value: userData[elem.component] };

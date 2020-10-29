@@ -33,7 +33,7 @@ const MainContent = ({
   additionalUserData,
   startGetAdditionalUserDataProcess,
 }: Props): JSX.Element => {
-  const handleGetAdditionalUserData = useCallback(
+  const getAdditionalUserData = useCallback(
     (currentUser) => {
       startGetAdditionalUserDataProcess(currentUser);
     },
@@ -41,8 +41,8 @@ const MainContent = ({
   );
 
   useEffect(() => {
-    handleGetAdditionalUserData(user);
-  }, [handleGetAdditionalUserData, user]);
+    getAdditionalUserData(user);
+  }, [getAdditionalUserData, user]);
 
   return (
     <S.MainContent>
