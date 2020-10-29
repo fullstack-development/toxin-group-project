@@ -2,7 +2,7 @@ import { Form, Field } from 'react-final-form';
 import { connect } from 'react-redux';
 
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
-import { passwordResetCompleted, passwordResetRequest } from 'redux/PasswordReset/redux/actions';
+import { passwordResetCompleted, passwordResetRequest } from 'redux/Auth/redux/actions';
 import { AppState } from 'redux/store.types';
 import { emailValidator } from 'shared/helpers/validators/emailValidator';
 
@@ -14,8 +14,8 @@ interface IStateProps {
 }
 
 const mapState = (state: AppState): IStateProps => ({
-  isCompleted: state.passwordReset.isCompleted,
-  statusText: state.passwordReset.statusText,
+  isCompleted: state.auth.isPasswordResetCompleted,
+  statusText: state.auth.passwordResetStatusText,
 });
 
 const mapDispatch = {

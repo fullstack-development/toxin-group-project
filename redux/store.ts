@@ -4,7 +4,6 @@ import createSagaMiddleware, { SagaMiddleware } from 'redux-saga';
 
 import { reduxEntry as AuthReduxEntry } from './Auth';
 import { reduxEntry as BookingReduxEntry } from './Booking';
-import { passwordResetReduxEntry } from './PasswordReset';
 import { reduxEntry as RegistrationReduxEntry } from './Registration';
 import { SharedReduxEntries, AvailableReducers } from './store.types';
 
@@ -18,7 +17,6 @@ const bindMiddleware = (middleware) => {
 const sharedReduxEntries: SharedReduxEntries = [
   AuthReduxEntry,
   BookingReduxEntry,
-  passwordResetReduxEntry,
   RegistrationReduxEntry,
 ];
 

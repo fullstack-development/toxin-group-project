@@ -11,6 +11,9 @@ import {
   AUTH_FAILED,
   AUTH_REQUIRED,
   GOOGLE_AUTH_PROCESS,
+  PASSWORD_RESET_PROCESS,
+  PASSWORD_RESET_SUCCESS,
+  PASSWORD_RESET_FAILED,
 } from '../../constants';
 import { AuthData, SetAuthStatusSuccess, SetAuthStatusFailed, SetAuthRequired } from '../../types';
 
@@ -75,8 +78,33 @@ function* prepareAuthData():
   }
 }
 
+function* startPasswordResetProcess({ payload: email }: { payload: string }) {
+  try {
+    const userAuthInfo: string[] = yield call(Api.auth.fetchSignInMethodsForEmail, email);
+    const isEmailAuth = userAuthInfo.includes('password');
+    if (isEmailAuth) {
+      yield call(Api.auth.resetPassword, email);
+      yield put({
+        type: PASSWORD_RESET_SUCCESS,
+        payload: `Ссылка для восстановления пароля была отправлена на ${email}`,
+      });
+    } else {
+      throw new Error('Пользователь с указанным электронным адресом не зарегистрирован');
+    }
+  } catch (err) {
+    yield put({
+      type: PASSWORD_RESET_FAILED,
+      payload:
+        err.message === 'Пользователь с указанным электронным адресом не зарегистрирован'
+          ? err.message
+          : 'Произошла ошибка повторите попытку позже',
+    });
+  }
+}
+
 export function* rootSaga(): SagaIterator {
   yield takeLatest<never>(PRELOAD_AUTH_DATA, prepareAuthData);
   yield takeLatest<never>(AUTH_PROCESS, startAuthProcess);
   yield takeLatest<never>(GOOGLE_AUTH_PROCESS, startAuthProcess);
+  yield takeLatest<never>(PASSWORD_RESET_PROCESS, startPasswordResetProcess);
 }

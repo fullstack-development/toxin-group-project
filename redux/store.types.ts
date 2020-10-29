@@ -2,19 +2,13 @@ import { SagaIterator } from 'redux-saga';
 
 import { AuthActions, AuthState } from './Auth/types';
 import { BookingActions, BookingState } from './Booking/types';
-import { PasswordResetActions, PasswordResetState } from './PasswordReset/types';
 import { RegistrationActions, RegistrationState } from './Registration/types';
 
-export type AvailableStates = AuthState | BookingState | PasswordResetState | RegistrationState;
-export type AvailableActions =
-  | AuthActions
-  | BookingActions
-  | PasswordResetActions
-  | RegistrationActions;
+export type AvailableStates = AuthState | BookingState | RegistrationState;
+export type AvailableActions = AuthActions | BookingActions | RegistrationActions;
 
 export type AppState = {
-  authReducer: AuthState;
-  passwordReset: PasswordResetState;
+  auth: AuthState;
   RegistrationReducer: RegistrationState;
   bookingReducer: BookingState;
 };

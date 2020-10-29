@@ -8,6 +8,10 @@ import {
   PRELOAD_AUTH_DATA,
   AUTH_REQUIRED,
   GOOGLE_AUTH_PROCESS,
+  PASSWORD_RESET_PROCESS,
+  PASSWORD_RESET_SUCCESS,
+  PASSWORD_RESET_FAILED,
+  PASSWORD_RESET_COMPLETED,
 } from './constants';
 
 export type AuthData = {
@@ -26,6 +30,8 @@ export type AuthState = {
   authStatusText: string;
   displayName: null | string;
   wasFinishedAuthChecking: boolean;
+  isPasswordResetCompleted: boolean;
+  passwordResetStatusText: string;
 };
 
 export type PreloadAuthData = Action<typeof PRELOAD_AUTH_DATA, null>;
@@ -40,10 +46,22 @@ export type SetAuthRequired = Action<typeof AUTH_REQUIRED, null>;
 
 export type SetAuthStatusFailed = Action<typeof AUTH_FAILED, string>;
 
+export type PasswordResetRequest = Action<typeof PASSWORD_RESET_PROCESS, string>;
+
+export type PasswordResetSuccess = Action<typeof PASSWORD_RESET_SUCCESS, string>;
+
+export type PasswordResetFailed = Action<typeof PASSWORD_RESET_FAILED, string>;
+
+export type PasswordResetCompleted = Action<typeof PASSWORD_RESET_COMPLETED, string>;
+
 export type AuthActions =
   | RequestToAuth
   | BreakAuthProcess
   | SetAuthStatusSuccess
   | SetAuthRequired
   | SetAuthStatusFailed
-  | PreloadAuthData;
+  | PreloadAuthData
+  | PasswordResetRequest
+  | PasswordResetSuccess
+  | PasswordResetFailed
+  | PasswordResetCompleted;

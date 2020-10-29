@@ -5,6 +5,10 @@ import {
   PRELOAD_AUTH_DATA,
   BREAK_AUTH_PROCESS,
   AUTH_REQUIRED,
+  PASSWORD_RESET_PROCESS,
+  PASSWORD_RESET_SUCCESS,
+  PASSWORD_RESET_FAILED,
+  PASSWORD_RESET_COMPLETED,
 } from '../constants';
 import { AuthActions, AuthState } from '../types';
 
@@ -14,9 +18,11 @@ const initialState: AuthState = {
   wasFinishedAuthChecking: false,
   displayName: null,
   authStatusText: '',
+  isPasswordResetCompleted: false,
+  passwordResetStatusText: '',
 };
 
-const authReducer = (state: AuthState = initialState, action: AuthActions): AuthState => {
+const auth = (state: AuthState = initialState, action: AuthActions): AuthState => {
   switch (action.type) {
     case AUTH_PROCESS:
       return {
@@ -50,9 +56,33 @@ const authReducer = (state: AuthState = initialState, action: AuthActions): Auth
         wasFinishedAuthChecking: true,
         authStatusText: action.payload,
       };
+    case PASSWORD_RESET_PROCESS:
+      return {
+        ...state,
+        isPasswordResetCompleted: false,
+        passwordResetStatusText: '',
+      };
+    case PASSWORD_RESET_SUCCESS:
+      return {
+        ...state,
+        isPasswordResetCompleted: true,
+        passwordResetStatusText: action.payload,
+      };
+    case PASSWORD_RESET_FAILED:
+      return {
+        ...state,
+        isPasswordResetCompleted: true,
+        passwordResetStatusText: action.payload,
+      };
+    case PASSWORD_RESET_COMPLETED:
+      return {
+        ...state,
+        isPasswordResetCompleted: false,
+        passwordResetStatusText: '',
+      };
     default:
       return state;
   }
 };
 
-export default authReducer;
+export default auth;
