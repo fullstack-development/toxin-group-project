@@ -13,8 +13,8 @@ const mapState = (state: AppState) => ({
   isSuccess: state.RegistrationReducer.isSuccess,
   isProcess: state.RegistrationReducer.isProcess,
   statusText: state.RegistrationReducer.statusText,
-  wasFinishedAuthChecking: state.authReducer.wasFinishedAuthChecking,
-  isAuthSuccess: state.authReducer.isAuthSuccess,
+  wasFinishedAuthChecking: state.auth.wasFinishedAuthChecking,
+  isAuthSuccess: state.auth.isAuthSuccess,
 });
 
 const mapDispatch = {

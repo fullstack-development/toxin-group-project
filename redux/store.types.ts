@@ -35,7 +35,7 @@ export type AvailableActions =
   | UsernameUpdateActions;
 
 export type AppState = {
-  authReducer: AuthState;
+  auth: AuthState;
   bookingReducer: BookingState;
   emailUpdate: EmailUpdateState;
   getAdditionalUserData: GetAdditionalUserDataState;

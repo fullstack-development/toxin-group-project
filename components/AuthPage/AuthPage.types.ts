@@ -10,5 +10,5 @@ export type Props = {
 };
 
 export type State = {
-  authReducer: Props;
+  auth: Props;
 };

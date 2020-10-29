@@ -10,7 +10,9 @@ type Props = {
 const PopUpNotification = ({ message, onConfirmButtonClick }: Props): JSX.Element => (
   <S.PopUpNotification>
     <S.Message>{message}</S.Message>
-    <TextButton onClick={onConfirmButtonClick}>ОК</TextButton>
+    <TextButton type="button" onClick={onConfirmButtonClick}>
+      ОК
+    </TextButton>
   </S.PopUpNotification>
 );
 
