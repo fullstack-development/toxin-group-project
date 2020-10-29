@@ -2,6 +2,7 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import { Field, Form } from 'react-final-form';
 import { useTranslation } from 'react-i18next';
+import i18next from 'shared/lang';
 
 import ArrowButton from 'components/ArrowButton/ArrowButton';
 import Button from 'components/Button/Button';
@@ -39,7 +40,7 @@ const AccountEntry: React.FC<Props> = (props: Props): JSX.Element => {
     requestToAuth({ email, password });
   };
 
-  const { t } = useTranslation(['AccountEntry']);
+  const { t } = useTranslation();
 
   return (
     <S.AccountEntry>
@@ -60,7 +61,7 @@ const AccountEntry: React.FC<Props> = (props: Props): JSX.Element => {
                 name="password"
                 type="password"
                 render={({ input, meta }) => (
-                  <Input {...input} {...meta} placeholder={t('password')} required />
+                  <Input {...input} {...meta} placeholder={t('Password')} required />
                 )}
               />
             </S.FieldsWrapper>
