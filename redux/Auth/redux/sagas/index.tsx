@@ -5,15 +5,17 @@ import Api from 'api/api';
 import { User, UserCredential } from 'api/Firebase/modules/Authentication/types';
 
 import {
-  AUTH_PROCESS,
-  AUTH_SUCCESS,
-  PRELOAD_AUTH_DATA,
   AUTH_FAILED,
+  AUTH_LOGOUT_DONE,
+  AUTH_LOGOUT_PROCESS,
+  AUTH_PROCESS,
   AUTH_REQUIRED,
+  AUTH_SUCCESS,
   GOOGLE_AUTH_PROCESS,
+  PASSWORD_RESET_FAILED,
   PASSWORD_RESET_PROCESS,
   PASSWORD_RESET_SUCCESS,
-  PASSWORD_RESET_FAILED,
+  PRELOAD_AUTH_DATA,
 } from '../../constants';
 import { AuthData, SetAuthStatusSuccess, SetAuthStatusFailed, SetAuthRequired } from '../../types';
 
@@ -102,9 +104,15 @@ function* startPasswordResetProcess({ payload: email }: { payload: string }) {
   }
 }
 
+function* logoutUser(): Generator {
+  yield call(Api.auth.signOut);
+  yield put({ type: AUTH_LOGOUT_DONE });
+}
+
 export function* rootSaga(): SagaIterator {
-  yield takeLatest<never>(PRELOAD_AUTH_DATA, prepareAuthData);
+  yield takeLatest<never>(AUTH_LOGOUT_PROCESS, logoutUser);
   yield takeLatest<never>(AUTH_PROCESS, startAuthProcess);
   yield takeLatest<never>(GOOGLE_AUTH_PROCESS, startAuthProcess);
   yield takeLatest<never>(PASSWORD_RESET_PROCESS, startPasswordResetProcess);
+  yield takeLatest<never>(PRELOAD_AUTH_DATA, prepareAuthData);
 }

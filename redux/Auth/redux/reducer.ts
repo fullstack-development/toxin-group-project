@@ -1,21 +1,22 @@
 import {
-  AUTH_PROCESS,
-  AUTH_SUCCESS,
   AUTH_FAILED,
-  PRELOAD_AUTH_DATA,
-  BREAK_AUTH_PROCESS,
+  AUTH_LOGOUT_DONE,
+  AUTH_PROCESS,
   AUTH_REQUIRED,
+  AUTH_SUCCESS,
+  BREAK_AUTH_PROCESS,
+  PASSWORD_RESET_COMPLETED,
+  PASSWORD_RESET_FAILED,
   PASSWORD_RESET_PROCESS,
   PASSWORD_RESET_SUCCESS,
-  PASSWORD_RESET_FAILED,
-  PASSWORD_RESET_COMPLETED,
+  PRELOAD_AUTH_DATA,
 } from '../constants';
 import { AuthActions, AuthState } from '../types';
 
 const initialState: AuthState = {
-  isAuthSuccess: false,
-  isAuthProcessNow: false,
-  wasFinishedAuthChecking: false,
+  isAuthSuccess: null,
+  isAuthProcessNow: null,
+  wasFinishedAuthChecking: null,
   displayName: null,
   authStatusText: '',
   isPasswordResetCompleted: false,
@@ -39,6 +40,7 @@ const auth = (state: AuthState = initialState, action: AuthActions): AuthState =
       return {
         ...state,
         wasFinishedAuthChecking: true,
+        isAuthSuccess: false,
       };
     case AUTH_SUCCESS:
       return {
@@ -79,6 +81,15 @@ const auth = (state: AuthState = initialState, action: AuthActions): AuthState =
         ...state,
         isPasswordResetCompleted: false,
         passwordResetStatusText: '',
+      };
+    case AUTH_LOGOUT_DONE:
+      return {
+        ...state,
+        isAuthSuccess: false,
+        isAuthProcessNow: false,
+        wasFinishedAuthChecking: false,
+        displayName: null,
+        authStatusText: 'Требуется авторизация',
       };
     default:
       return state;

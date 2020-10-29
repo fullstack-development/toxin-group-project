@@ -24,4 +24,4 @@ const NavLinks: NavMenuLink[] = [
   },
 ];
 
-export default NavLinks;
+export { NavLinks };

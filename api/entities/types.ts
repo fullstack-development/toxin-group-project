@@ -36,7 +36,13 @@ export type Apartment = {
   overcrowdingPrice: number;
   price: number;
   rating: number;
-  reviews: number;
+  reviews: {
+    avatarUrl: string;
+    userName: string;
+    date: Date;
+    text: string;
+    likesCount: number;
+  }[];
   class: 'economy' | 'luxury';
   href: string;
   images: { url: string; alt: string }[];
@@ -65,6 +71,10 @@ export type ProfileData = {
   password: string;
   name: string;
   surname: string;
+  avatar: ArrayBuffer | Blob | Uint8Array;
+} & AdditionalUserInformation;
+
+export type AdditionalUserInformation = {
   birthDate: string;
   gender: 'male' | 'female';
   receiveOffers: boolean;

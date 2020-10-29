@@ -4,7 +4,7 @@ import MenuOpenIcon from '@material-ui/icons/MenuOpen';
 import { useState } from 'react';
 
 import NavMenu from 'components/NavMenu/NavMenu';
-import NavLinks from 'components/NavMenu/NavMenu.data';
+import { NavLinks } from 'components/NavMenu/NavMenu.data';
 
 import * as S from './Header.styles';
 import HeaderUserLogin from './HeaderUserLogin/HeaderUserLogin';
