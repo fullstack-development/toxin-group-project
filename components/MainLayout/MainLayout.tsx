@@ -27,8 +27,8 @@ const MainLayout: React.FC<Props> = ({
 };
 
 const mapState = (state: State) => ({
-  displayName: state.AuthReducer.displayName,
-  wasFinishedAuthChecking: state.AuthReducer.wasFinishedAuthChecking,
+  displayName: state.auth.displayName,
+  wasFinishedAuthChecking: state.auth.wasFinishedAuthChecking,
 });
 
 const mapDispatch = {

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { BookedRoomsHistory } from 'api/entities/types';
 import MainLayout from 'components/MainLayout/MainLayout';
 import Preloader from 'components/Preloader/Preloader';
-import { loadBookedHistoryRooms } from 'redux/BookingHistory/redux/actions';
+import { loadBookedHistoryRooms } from 'redux/Booking/redux/actions';
 import { AppState } from 'redux/store.types';
 
 import RoomsList from './components/RoomsList/RoomsList';
@@ -17,9 +17,9 @@ type StateProps = {
 };
 
 const mapState = (state: AppState): StateProps => ({
-  bookedRooms: state.BookedHistoryReducer.bookedRooms,
-  isLoadingData: state.BookedHistoryReducer.isLoadingData,
-  userEmail: state.AuthReducer.userEmail,
+  bookedRooms: state.booking.bookedRooms,
+  isLoadingData: state.booking.isPending,
+  userEmail: state.auth.userEmail,
 });
 
 const mapDispatch = {

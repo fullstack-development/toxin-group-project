@@ -10,7 +10,10 @@ import {
   ROOMS_REQUEST_SUCCESS,
   ROOMS_REQUEST_FAILED,
   LOAD_ROOMS,
+  LOAD_BOOKED_HISTORY,
+  UPDATE_BOOKED_HISTORY,
 } from '../../constants';
+import { BookedHistoryList, UpdateBookedHistory } from '../../types';
 
 function* loadRooms(
   action: RoomsRequest,
@@ -39,6 +42,18 @@ function* loadRooms(
   }
 }
 
+function* loadRoomsHistory({
+  payload,
+}): Generator | Generator<PutEffect<UpdateBookedHistory>, void, never> {
+  const result: BookedHistoryList = yield call(Api.booking.getBookedHistory, payload);
+
+  yield put({
+    type: UPDATE_BOOKED_HISTORY,
+    payload: result,
+  });
+}
+
 export function* rootSaga(): SagaIterator {
   yield takeLatest<never>(LOAD_ROOMS, loadRooms);
+  yield takeLatest<never>(LOAD_BOOKED_HISTORY, loadRoomsHistory);
 }

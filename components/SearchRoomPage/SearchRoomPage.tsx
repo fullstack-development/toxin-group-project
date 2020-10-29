@@ -13,7 +13,7 @@ import { AppState } from 'redux/store.types';
 import * as S from './SearchRoomPage.styles';
 import getPassedFilters from './utils/getPassedFilters';
 
-const mapState = (state: AppState) => state.bookingReducer;
+const mapState = (state: AppState) => state.booking;
 
 const mapDispatch = {
   getRooms: requestRooms,
@@ -21,7 +21,7 @@ const mapDispatch = {
 
 type Props = ReturnType<typeof mapState> & typeof mapDispatch;
 
-const SearchRoomPage: React.FC<Props> = ({ rooms, getRooms }: Props) => {
+const SearchRoomPage: React.FC<Props> = ({ rooms, getRooms, isPending }: Props) => {
   const router = useRouter();
 
   const passedParams = getPassedFilters(router.asPath);
@@ -47,12 +47,15 @@ const SearchRoomPage: React.FC<Props> = ({ rooms, getRooms }: Props) => {
         </S.FilterContainer>
         <S.RoomsContainer>
           <S.RoomsTitle>Номера, которые мы для вас подобрали</S.RoomsTitle>
-          {rooms.length ? (
-            <Rooms rooms={rooms} />
-          ) : (
+          {isPending && (
             <S.PreloaderWrapper>
               <Preloader />
             </S.PreloaderWrapper>
+          )}
+          {rooms.length ? (
+            <Rooms rooms={rooms} />
+          ) : (
+            !isPending && <span>По вашему запросу не найдено результатов :(</span>
           )}
         </S.RoomsContainer>
       </S.Container>

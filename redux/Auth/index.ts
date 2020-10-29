@@ -1,7 +1,7 @@
-import AuthReducer from './redux/reducer';
+import auth from './redux/reducer';
 import { rootSaga } from './redux/sagas';
 
 export const reduxEntry = {
-  reducers: { AuthReducer },
+  reducers: { auth },
   sagas: [rootSaga],
 };

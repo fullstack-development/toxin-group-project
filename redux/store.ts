@@ -4,7 +4,6 @@ import createSagaMiddleware, { SagaMiddleware } from 'redux-saga';
 
 import { reduxEntry as AuthReduxEntry } from './Auth';
 import { reduxEntry as BookingReduxEntry } from './Booking';
-import { reduxEntry as BookedHistoryReduxEntry } from './BookingHistory';
 import { reduxEntry as RegistrationReduxEntry } from './Registration';
 import { SharedReduxEntries, AvailableReducers } from './store.types';
 
@@ -16,12 +15,9 @@ const bindMiddleware = (middleware) => {
 };
 
 const sharedReduxEntries: SharedReduxEntries = [
-  BookedHistoryReduxEntry,
-  RegistrationReduxEntry,
-  AuthReduxEntry,
-  RegistrationReduxEntry,
   AuthReduxEntry,
   BookingReduxEntry,
+  RegistrationReduxEntry,
 ];
 
 let preparedReducers: Record<string, AvailableReducers> = {};
