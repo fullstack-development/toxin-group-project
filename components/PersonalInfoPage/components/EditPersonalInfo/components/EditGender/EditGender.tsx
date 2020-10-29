@@ -6,11 +6,11 @@ import { User } from 'api/Firebase/modules/Authentication/types';
 import Button from 'components/Button/Button';
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
 import RadioButton from 'components/RadioButton/RadioButton';
-import { AppState } from 'redux/store.types';
 import {
   updateAdditionalUserDataRequest,
   updateAdditionalUserDataCompleted,
-} from 'redux/UpdateAdditionalUserData/redux/actions';
+} from 'redux/Profile/redux/actions';
+import { AppState } from 'redux/store.types';
 
 import * as S from './EditGender.styles';
 
@@ -20,8 +20,8 @@ interface IStateProps {
 }
 
 const mapState = (state: AppState): IStateProps => ({
-  isCompleted: state.updateAdditionalUserData.isCompleted,
-  statusText: state.updateAdditionalUserData.statusText,
+  isCompleted: state.profile.isUpdateAdditionalUserDataCompleted,
+  statusText: state.profile.updateAdditionalUserDataStatusText,
 });
 
 const mapDispatch = {

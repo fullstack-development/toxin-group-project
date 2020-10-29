@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { AdditionalUserInformation } from 'api/entities/types';
 import { User } from 'api/Firebase/modules/Authentication/types';
-import { getAdditionalUserDataRequest } from 'redux/GetAdditionalUserData/redux/actions';
+import { getAdditionalUserDataRequest } from 'redux/Profile/redux/actions';
 import { AppState } from 'redux/store.types';
 
 import Subscriptions from '../Subscriptions/Subscriptions';
@@ -16,9 +16,9 @@ interface IStateProps {
 }
 
 const mapState = (state: AppState): IStateProps => ({
-  user: state.authReducer.user,
-  isCompleted: state.getAdditionalUserData.isCompleted,
-  additionalUserData: state.getAdditionalUserData.additionalUserData,
+  user: state.auth.user,
+  isCompleted: state.profile.isGetAdditionalUserDataCompleted,
+  additionalUserData: state.profile.additionalUserData,
 });
 
 const mapDispatch = {

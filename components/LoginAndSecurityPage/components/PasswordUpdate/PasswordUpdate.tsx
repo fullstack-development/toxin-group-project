@@ -5,7 +5,7 @@ import { User } from 'api/Firebase/modules/Authentication';
 import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
-import { passwordUpdateRequest, passwordUpdateCompleted } from 'redux/PasswordUpdate/redux/actions';
+import { passwordUpdateRequest, passwordUpdateCompleted } from 'redux/Profile/redux/actions';
 import { AppState } from 'redux/store.types';
 
 interface IStateProps {
@@ -15,9 +15,9 @@ interface IStateProps {
 }
 
 const mapState = (state: AppState): IStateProps => ({
-  user: state.authReducer.user,
-  isCompleted: state.passwordUpdate.isCompleted,
-  statusText: state.passwordUpdate.statusText,
+  user: state.auth.user,
+  isCompleted: state.profile.isPasswordUpdateCompleted,
+  statusText: state.profile.passwordUpdateStatusText,
 });
 
 const mapDispatch = {

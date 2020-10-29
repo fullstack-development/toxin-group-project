@@ -5,24 +5,22 @@ import { User } from 'api/Firebase/modules/Authentication/types';
 import Button from 'components/Button/Button';
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
 import Toggle from 'components/Toggle/Toggle';
-import { AppState } from 'redux/store.types';
 import {
   updateAdditionalUserDataRequest,
   updateAdditionalUserDataCompleted,
-} from 'redux/UpdateAdditionalUserData/redux/actions';
+} from 'redux/Profile/redux/actions';
+import { AppState } from 'redux/store.types';
 
 import * as S from './Subscriptions.styles';
 
 interface IStateProps {
-  user: User;
   isCompleted: boolean;
   statusText: string;
 }
 
 const mapState = (state: AppState): IStateProps => ({
-  user: state.authReducer.user,
-  isCompleted: state.updateAdditionalUserData.isCompleted,
-  statusText: state.updateAdditionalUserData.statusText,
+  isCompleted: state.profile.isUpdateAdditionalUserDataCompleted,
+  statusText: state.profile.updateAdditionalUserDataStatusText,
 });
 
 const mapDispatch = {

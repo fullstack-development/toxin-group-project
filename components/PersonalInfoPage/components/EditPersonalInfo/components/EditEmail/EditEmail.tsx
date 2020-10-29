@@ -5,7 +5,7 @@ import { User } from 'api/Firebase/modules/Authentication/types';
 import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
-import { emailUpdateRequest, emailUpdateCompleted } from 'redux/EmailUpdate/redux/actions';
+import { emailUpdateRequest, emailUpdateCompleted } from 'redux/Profile/redux/actions';
 import { AppState } from 'redux/store.types';
 import { emailValidator } from 'shared/helpers/validators';
 
@@ -15,8 +15,8 @@ interface IStateProps {
 }
 
 const mapState = (state: AppState): IStateProps => ({
-  isCompleted: state.emailUpdate.isCompleted,
-  statusText: state.emailUpdate.statusText,
+  isCompleted: state.profile.isEmailUpdateCompleted,
+  statusText: state.profile.emailUpdateStatusText,
 });
 
 const mapDispatch = {

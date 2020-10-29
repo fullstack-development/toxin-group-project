@@ -2,47 +2,17 @@ import { SagaIterator } from 'redux-saga';
 
 import { AuthActions, AuthState } from './Auth/types';
 import { BookingActions, BookingState } from './Booking/types';
-import { EmailUpdateActions, EmailUpdateState } from './EmailUpdate/types';
-import {
-  GetAdditionalUserDataActions,
-  GetAdditionalUserDataState,
-} from './GetAdditionalUserData/types';
-import { PasswordUpdateActions, PasswordUpdateState } from './PasswordUpdate/types';
+import { ProfileState, ProfileActions } from './Profile/types';
 import { RegistrationActions, RegistrationState } from './Registration/types';
-import {
-  UpdateAdditionalUserDataActions,
-  UpdateAdditionalUserDataState,
-} from './UpdateAdditionalUserData/types';
-import { UsernameUpdateActions, UsernameUpdateState } from './UsernameUpdate/types';
 
-export type AvailableStates =
-  | AuthState
-  | BookingState
-  | EmailUpdateState
-  | GetAdditionalUserDataState
-  | PasswordUpdateState
-  | RegistrationState
-  | UpdateAdditionalUserDataState
-  | UsernameUpdateState;
-export type AvailableActions =
-  | AuthActions
-  | BookingActions
-  | EmailUpdateActions
-  | GetAdditionalUserDataActions
-  | PasswordUpdateActions
-  | RegistrationActions
-  | UpdateAdditionalUserDataActions
-  | UsernameUpdateActions;
+export type AvailableStates = AuthState | BookingState | ProfileState | RegistrationState;
+export type AvailableActions = AuthActions | BookingActions | ProfileActions | RegistrationActions;
 
 export type AppState = {
   auth: AuthState;
   bookingReducer: BookingState;
-  emailUpdate: EmailUpdateState;
-  getAdditionalUserData: GetAdditionalUserDataState;
-  passwordUpdate: PasswordUpdateState;
+  profile: ProfileState;
   RegistrationReducer: RegistrationState;
-  updateAdditionalUserData: UpdateAdditionalUserDataState;
-  usernameUpdate: UsernameUpdateState;
 };
 
 export type AvailableReducers = (

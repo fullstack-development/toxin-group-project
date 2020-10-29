@@ -6,11 +6,11 @@ import { User } from 'api/Firebase/modules/Authentication/types';
 import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
-import { AppState } from 'redux/store.types';
 import {
   updateAdditionalUserDataRequest,
   updateAdditionalUserDataCompleted,
-} from 'redux/UpdateAdditionalUserData/redux/actions';
+} from 'redux/Profile/redux/actions';
+import { AppState } from 'redux/store.types';
 import { dateValidator, dateFormatMask } from 'shared/helpers/validators';
 
 interface IStateProps {
@@ -19,8 +19,8 @@ interface IStateProps {
 }
 
 const mapState = (state: AppState): IStateProps => ({
-  isCompleted: state.updateAdditionalUserData.isCompleted,
-  statusText: state.updateAdditionalUserData.statusText,
+  isCompleted: state.profile.isUpdateAdditionalUserDataCompleted,
+  statusText: state.profile.updateAdditionalUserDataStatusText,
 });
 
 const mapDispatch = {
