@@ -57,11 +57,13 @@ const EditDisplayName = ({
           <form onSubmit={handleSubmit}>
             <Field
               name="name"
-              render={({ input }) => <Input {...input} label="Имя" placeholder="Имя" />}
+              render={({ input }) => <Input {...input} label="Имя" placeholder="Имя" required />}
             />
             <Field
               name="surname"
-              render={({ input }) => <Input {...input} label="Фамилия" placeholder="Фамилия" />}
+              render={({ input }) => (
+                <Input {...input} label="Фамилия" placeholder="Фамилия" required />
+              )}
             />
             <Button isFlat isFilled>
               Сохранить

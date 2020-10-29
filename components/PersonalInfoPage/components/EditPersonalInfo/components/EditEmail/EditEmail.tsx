@@ -52,6 +52,7 @@ const EditEmail = ({
             <Field
               name="email"
               type="email"
+              validate={emailValidator}
               render={({ input }) => (
                 <Input {...input} placeholder="Email" validators={[emailValidator]} />
               )}

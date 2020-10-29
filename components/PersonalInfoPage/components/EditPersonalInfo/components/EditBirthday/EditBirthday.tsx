@@ -63,11 +63,12 @@ const EditBirthday = ({
           <form onSubmit={handleSubmit}>
             <Field
               name="birthday"
+              validate={dateValidator}
               render={({ input }) => (
                 <Input
                   {...input}
-                  placeholder="ДД.ММ.ГГГГ"
                   validators={[dateValidator]}
+                  placeholder="ДД.ММ.ГГГГ"
                   mask={dateFormatMask}
                 />
               )}

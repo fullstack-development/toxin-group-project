@@ -7,6 +7,7 @@ import Input from 'components/Input/Input';
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
 import { passwordUpdateRequest, passwordUpdateCompleted } from 'redux/Profile/redux/actions';
 import { AppState } from 'redux/store.types';
+import { passwordValidator } from 'shared/helpers/validators/passwordValidator';
 
 interface IStateProps {
   user: User;
@@ -56,18 +57,27 @@ const PasswordUpdate = ({
               <Field
                 name="currentPassword"
                 type="password"
-                render={({ input }) => <Input {...input} minLength={6} label="Текущий пароль" />}
+                render={({ input }) => <Input {...input} label="Текущий пароль" required />}
               />
             )}
             <Field
               name="newPassword"
               type="password"
-              render={({ input }) => <Input {...input} minLength={6} label="Новый пароль" />}
+              validate={passwordValidator}
+              render={({ input }) => (
+                <Input
+                  {...input}
+                  validators={[passwordValidator]}
+                  minLength={8}
+                  label="Новый пароль"
+                  required
+                />
+              )}
             />
             <Field
               name="confirmPassword"
               type="password"
-              render={({ input }) => <Input {...input} minLength={6} label="Подтвердите пароль" />}
+              render={({ input }) => <Input {...input} label="Подтвердите пароль" />}
             />
             <Button isFlat isFilled>
               Обновить пароль
