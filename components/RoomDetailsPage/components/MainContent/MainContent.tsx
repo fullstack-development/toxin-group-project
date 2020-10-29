@@ -15,11 +15,11 @@ import { AppState } from 'redux/store.types';
 import { roomImagesPreview, benefitsData, rulesData } from './MainContent.data';
 import * as S from './MainContent.styles';
 
-interface IStateProps {
+type StateProps = {
   roomDetails: Apartment;
-}
+};
 
-const mapState = (state: AppState): IStateProps => ({
+const mapState = (state: AppState): StateProps => ({
   roomDetails: state.apartment.roomDetails,
 });
 
@@ -27,7 +27,7 @@ const mapDispatch = {
   startGetRoomDetailsProcess: getRoomDetailsRequest,
 };
 
-type Props = ReturnType<typeof mapState> & typeof mapDispatch;
+type Props = StateProps & typeof mapDispatch;
 
 const MainContent = ({ roomDetails, startGetRoomDetailsProcess }: Props): JSX.Element => {
   const router = useRouter();
