@@ -4,7 +4,7 @@ import { titles } from 'shared/styles/mixins';
 
 const Cards = styled.ul`
   display: grid;
-  grid-template-columns: repeat(auto-fill, 22rem);
+  grid-template-columns: repeat(auto-fit, 22rem);
   justify-content: center;
   gap: 2rem;
   list-style: none;
