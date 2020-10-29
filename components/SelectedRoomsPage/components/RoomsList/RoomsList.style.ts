@@ -25,4 +25,6 @@ const RoomWrapper = styled.div`
   width: 100%;
 `;
 
-export { Container, Price, RoomWrapper };
+const PriceDescription = styled.span``;
+
+export { Container, Price, RoomWrapper, PriceDescription };

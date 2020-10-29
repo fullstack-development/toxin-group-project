@@ -70,7 +70,10 @@ class Booking {
       .where('reservationBy', '==', email)
       .get()
       .then((snapshot) => {
-        snapshot.forEach((item) => bookedRooms.push(item.data() as BookingData));
+        snapshot.forEach((item) => {
+          const data: BookingData = <BookingData>item.data();
+          bookedRooms.push(data);
+        });
       });
 
     const result: BookedRoomsHistory = {

@@ -19,10 +19,10 @@ const RoomsList: React.FC<Props> = ({ rooms }: Props): JSX.Element => {
             <S.RoomWrapper key={Number(index)}>
               <Room {...room} href="/mock" number={id} />
               <S.Price>
-                <span>Дата бронирования: </span>
-                <span>
+                <S.PriceDescription>Дата бронирования: </S.PriceDescription>
+                <S.PriceDescription>
                   {from} - {to}
-                </span>
+                </S.PriceDescription>
               </S.Price>
             </S.RoomWrapper>
           );
