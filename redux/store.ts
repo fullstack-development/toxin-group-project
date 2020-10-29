@@ -15,9 +15,9 @@ const bindMiddleware = (middleware) => {
 };
 
 const sharedReduxEntries: SharedReduxEntries = [
-  RegistrationReduxEntry,
   AuthReduxEntry,
   BookingReduxEntry,
+  RegistrationReduxEntry,
 ];
 
 let preparedReducers: Record<string, AvailableReducers> = {};
