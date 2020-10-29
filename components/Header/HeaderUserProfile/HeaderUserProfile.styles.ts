@@ -30,7 +30,7 @@ const UserName = styled.span`
       margin-right: 1.5rem;
       position: relative;
       margin: 0;
-      user-select: none;
+      cursor: pointer;
 
       &:hover {
         color: ${colors.basicDarkest};

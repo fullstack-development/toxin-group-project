@@ -82,6 +82,10 @@ export type ProfileData = {
   password: string;
   name: string;
   surname: string;
+  avatar: ArrayBuffer | Blob | Uint8Array;
+} & AdditionalUserInformation;
+
+export type AdditionalUserInformation = {
   birthDate: string;
   gender: 'male' | 'female';
   receiveOffers: boolean;

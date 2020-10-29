@@ -1,10 +1,25 @@
 import {
+  AUTH_LOGOUT_PROCESS,
   AUTH_PROCESS,
   BREAK_AUTH_PROCESS,
-  PRELOAD_AUTH_DATA,
   GOOGLE_AUTH_PROCESS,
+  PASSWORD_RESET_COMPLETED,
+  PASSWORD_RESET_PROCESS,
+  PRELOAD_AUTH_DATA,
 } from '../constants';
-import { RequestToAuth, BreakAuthProcess, AuthData, PreloadAuthData } from '../types';
+import {
+  AuthData,
+  BreakAuthProcess,
+  LogoutProcess,
+  PasswordResetCompleted,
+  PasswordResetRequest,
+  PreloadAuthData,
+  RequestToAuth,
+} from '../types';
+
+const logout = (): LogoutProcess => ({
+  type: AUTH_LOGOUT_PROCESS,
+});
 
 const requestToAuth = (data: AuthData): RequestToAuth => ({
   type: AUTH_PROCESS,
@@ -23,4 +38,21 @@ const preloadAuthData = (): PreloadAuthData => ({
   type: PRELOAD_AUTH_DATA,
 });
 
-export { requestToAuth, requestToAuthWithGoogle, breakAuthProcess, preloadAuthData };
+const passwordResetRequest = (email: string): PasswordResetRequest => ({
+  type: PASSWORD_RESET_PROCESS,
+  payload: email,
+});
+
+const passwordResetCompleted = (): PasswordResetCompleted => ({
+  type: PASSWORD_RESET_COMPLETED,
+});
+
+export {
+  breakAuthProcess,
+  logout,
+  passwordResetCompleted,
+  passwordResetRequest,
+  preloadAuthData,
+  requestToAuth,
+  requestToAuthWithGoogle,
+};

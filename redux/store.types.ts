@@ -13,10 +13,10 @@ export type AvailableActions =
   | RegistrationActions;
 
 export type AppState = {
-  authReducer: AuthState;
+  auth: AuthState;
+  bookingReducer: BookingState;
   getRoomDetails: GetRoomDetailsState;
   RegistrationReducer: RegistrationState;
-  bookingReducer: BookingState;
 };
 
 export type AvailableReducers = (

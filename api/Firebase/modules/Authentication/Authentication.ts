@@ -1,13 +1,16 @@
 import { boundMethod } from 'autobind-decorator';
 import firebase from 'firebase';
 
+import { Storage } from '../Storage';
 import { Auth, UserCredential, User, Unsubscribe } from './types';
 
 class Authentication {
   private readonly auth: Auth;
+  private readonly storage: Storage;
 
-  constructor(module: Auth) {
+  constructor(module: Auth, storage: Storage) {
     this.auth = module;
+    this.storage = storage;
   }
 
   @boundMethod
@@ -23,6 +26,20 @@ class Authentication {
       .then(() => {
         return this.auth.signInWithEmailAndPassword(email, password);
       });
+  }
+
+  @boundMethod
+  public async setUserAvatar(uid: string, file: ArrayBuffer | Blob | Uint8Array): Promise<string> {
+    const filePath = `users/${uid}/profilePicture/${uid}-avatar`;
+    const photoURL = await this.storage
+      .childRef(filePath)
+      .put(file)
+      .then((fileSnapshot) => {
+        return fileSnapshot.ref.getDownloadURL().then((url) => {
+          return url;
+        });
+      });
+    return photoURL;
   }
 
   @boundMethod
@@ -49,6 +66,11 @@ class Authentication {
   @boundMethod
   public onAuthStateChanged(fn: (user: User) => unknown): Unsubscribe {
     return this.auth.onAuthStateChanged(fn);
+  }
+
+  @boundMethod
+  public async fetchSignInMethodsForEmail(email: string): Promise<string[]> {
+    return this.auth.fetchSignInMethodsForEmail(email);
   }
 }
 
