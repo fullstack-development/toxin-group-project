@@ -18,6 +18,7 @@ const initialState: AuthState = {
   isAuthProcessNow: null,
   wasFinishedAuthChecking: null,
   displayName: null,
+  userEmail: null,
   authStatusText: '',
   isPasswordResetCompleted: false,
   passwordResetStatusText: '',
@@ -48,6 +49,7 @@ const auth = (state: AuthState = initialState, action: AuthActions): AuthState =
         isAuthProcessNow: false,
         isAuthSuccess: true,
         wasFinishedAuthChecking: true,
+        userEmail: action.payload.email,
         authStatusText: 'Вы успешно авторизованы!',
         displayName: action.payload.displayName || 'Аноним',
       };

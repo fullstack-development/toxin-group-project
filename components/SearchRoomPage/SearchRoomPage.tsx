@@ -22,8 +22,8 @@ type StateProps = {
 };
 
 const mapState = (state: AppState): StateProps => ({
-  rooms: state.bookingReducer.rooms,
-  isPending: state.bookingReducer.isPending,
+  rooms: state.booking.rooms,
+  isPending: state.booking.isPending,
 });
 
 const mapDispatch = {
