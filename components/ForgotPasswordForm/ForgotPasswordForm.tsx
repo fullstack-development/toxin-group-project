@@ -8,10 +8,10 @@ import { emailValidator } from 'shared/helpers/validators/emailValidator';
 
 import * as S from './ForgotPasswordForm.style';
 
-interface StateProps {
+type StateProps = {
   isCompleted: boolean;
   statusText: string;
-}
+};
 
 const mapState = (state: AppState): StateProps => ({
   isCompleted: state.auth.isPasswordResetCompleted,
