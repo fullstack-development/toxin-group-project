@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import { Logout, preloadAuthData } from 'redux/Auth/redux/actions';
+import { logout, preloadAuthData } from 'redux/Auth/redux/actions';
 import { AppState } from 'redux/store.types';
 
 const mapState = (state: AppState) => ({
@@ -10,7 +10,7 @@ const mapState = (state: AppState) => ({
 });
 
 const mapDispatch = {
-  startLogoutProcess: Logout,
+  startLogoutProcess: logout,
   checkAuthBeforePageLoaded: preloadAuthData,
 };
 
