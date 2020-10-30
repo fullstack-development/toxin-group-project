@@ -32,6 +32,7 @@ export type AuthState = {
   authStatusText: string;
   displayName: null | string;
   wasFinishedAuthChecking: boolean;
+  userEmail: string;
   isPasswordResetCompleted: boolean;
   passwordResetStatusText: string;
 };

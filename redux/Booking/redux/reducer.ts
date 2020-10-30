@@ -3,6 +3,8 @@ import {
   ROOMS_REQUEST_SUCCESS,
   ROOMS_REQUEST_FAILED,
   LOAD_ROOMS,
+  UPDATE_BOOKED_HISTORY,
+  LOAD_BOOKED_HISTORY,
 } from '../constants';
 import { BookingActions, BookingState } from '../types';
 
@@ -11,6 +13,7 @@ const initialState: BookingState = {
   isPending: false,
   rooms: [],
   error: null,
+  bookedRooms: null,
 };
 
 const booking = (state: BookingState = initialState, action: BookingActions): BookingState => {
@@ -36,6 +39,17 @@ const booking = (state: BookingState = initialState, action: BookingActions): Bo
         isPending: false,
         isRequestSuccessful: false,
         error: action.payload,
+      };
+    case LOAD_BOOKED_HISTORY:
+      return {
+        ...state,
+        isPending: true,
+      };
+    case UPDATE_BOOKED_HISTORY:
+      return {
+        ...state,
+        isPending: false,
+        bookedRooms: { ...action.payload },
       };
     default:
       return state;

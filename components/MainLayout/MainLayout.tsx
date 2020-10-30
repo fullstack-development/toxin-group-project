@@ -7,6 +7,11 @@ import { preloadAuthData } from 'redux/Auth/redux/actions';
 
 import { State, Props } from './MainLayout.types';
 
+type StateProps = {
+  displayName: string;
+  wasFinishedAuthChecking: boolean;
+};
+
 const MainLayout: React.FC<Props> = ({
   children,
   displayName,
@@ -26,7 +31,7 @@ const MainLayout: React.FC<Props> = ({
   );
 };
 
-const mapState = (state: State) => ({
+const mapState = (state: State): StateProps => ({
   displayName: state.auth.displayName,
   wasFinishedAuthChecking: state.auth.wasFinishedAuthChecking,
 });
