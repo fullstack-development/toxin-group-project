@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { breakpointDown } from 'shared/styles/break-points';
 import { titles } from 'shared/styles/mixins';
@@ -18,6 +18,35 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
   }
+`;
+
+const TitleContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+const Sort = styled.div``;
+
+const Select = styled.select`
+  ${(props) => {
+    const { colors } = props.theme;
+    return css`
+      margin-left: 1.4286rem;
+      background-color: transparent;
+      font: inherit;
+      border-radius: 0.2857rem;
+      border: 0.0714rem solid ${colors.basicLight};
+
+      &:hover,
+      &:focus {
+        border: 0.0714rem solid ${colors.basic};
+        outline: none;
+
+        &::placeholder {
+          color: ${colors.basicDark};
+        }
+      }
+    `;
+  }}/* border: 0; */
 `;
 
 const FilterContainer = styled.div`
@@ -41,4 +70,13 @@ const PreloaderWrapper = styled.div`
   margin-top: 3.5715rem;
 `;
 
-export { Container, RoomsContainer, RoomsTitle, PreloaderWrapper, FilterContainer };
+export {
+  Container,
+  RoomsContainer,
+  TitleContainer,
+  RoomsTitle,
+  PreloaderWrapper,
+  FilterContainer,
+  Sort,
+  Select,
+};
