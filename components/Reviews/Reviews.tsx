@@ -7,6 +7,7 @@ import * as S from './Reviews.style';
 type Props = {
   reviews: ReviewProps[];
 };
+
 const NUMBER_OF_REVIEWS = 2;
 
 const declensions = ['отзыв', 'отзыва', 'отзывов'];
@@ -18,11 +19,14 @@ const Reviews = ({ reviews }: Props): JSX.Element => (
       {reviews.length} {getNounInDeclension(reviews.length, declensions)}
     </S.Counter>
     <S.List>
-      {reviews.slice(-NUMBER_OF_REVIEWS).map((review) => (
-        <S.Item key={review.userName}>
-          <Review {...review} />
-        </S.Item>
-      ))}
+      {reviews
+        .sort((a, b) => b.likesCount - a.likesCount)
+        .slice(0, NUMBER_OF_REVIEWS)
+        .map((review) => (
+          <S.Item key={review.userName}>
+            <Review {...review} />
+          </S.Item>
+        ))}
     </S.List>
   </S.Reviews>
 );
