@@ -9,8 +9,8 @@ export type AvailableActions = AuthActions | BookingActions | RegistrationAction
 
 export type AppState = {
   auth: AuthState;
-  RegistrationReducer: RegistrationState;
-  bookingReducer: BookingState;
+  registration: RegistrationState;
+  booking: BookingState;
 };
 
 export type AvailableReducers = (
