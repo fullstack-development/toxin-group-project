@@ -10,9 +10,9 @@ export type AvailableActions = AuthActions | BookingActions | ProfileActions | R
 
 export type AppState = {
   auth: AuthState;
-  bookingReducer: BookingState;
+  booking: BookingState;
   profile: ProfileState;
-  RegistrationReducer: RegistrationState;
+  registration: RegistrationState;
 };
 
 export type AvailableReducers = (

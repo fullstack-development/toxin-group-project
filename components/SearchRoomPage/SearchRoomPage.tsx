@@ -13,7 +13,7 @@ import { AppState } from 'redux/store.types';
 import * as S from './SearchRoomPage.styles';
 import getPassedFilters from './utils/getPassedFilters';
 
-const mapState = (state: AppState) => state.bookingReducer;
+const mapState = (state: AppState) => state.booking;
 
 const mapDispatch = {
   getRooms: requestRooms,
