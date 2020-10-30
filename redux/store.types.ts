@@ -15,8 +15,8 @@ export type AvailableActions =
 export type AppState = {
   apartment: ApartmentState;
   auth: AuthState;
-  bookingReducer: BookingState;
-  RegistrationReducer: RegistrationState;
+  booking: BookingState;
+  registration: RegistrationState;
 };
 
 export type AvailableReducers = (
