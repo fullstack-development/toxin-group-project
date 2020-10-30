@@ -6,20 +6,6 @@ const Header = styled.header`
   display: flex;
 `;
 
-const Avatar = styled.img`
-  ${(props) => {
-    const { colors } = props.theme;
-
-    return css`
-      max-width: 3.4285rem;
-      max-height: 3.4285rem;
-      border-radius: 50%;
-      border: 0.15rem solid ${colors.defaultBackground};
-      box-shadow: 0 0.7143rem 1.4286rem ${colors.basicLightest};
-    `;
-  }}
-`;
-
 const AuthorWrapper = styled.p`
   display: flex;
   flex-direction: column;
@@ -53,4 +39,4 @@ const Text = styled.p`
   }}
 `;
 
-export { Review, Header, AuthorWrapper, Avatar, User, Date, MessageWrapper, LeftWrapper, Text };
+export { Review, Header, AuthorWrapper, User, Date, MessageWrapper, LeftWrapper, Text };

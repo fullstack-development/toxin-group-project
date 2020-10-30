@@ -1,4 +1,5 @@
 import { Review as Props } from 'api/entities/types';
+import Avatar from 'components/Avatar/Avatar';
 import LikeButton from 'components/LikeButton/LikeButton';
 
 import * as S from './Review.style';
@@ -15,7 +16,7 @@ const Review = ({ avatarUrl, userName, date, text, likesCount }: Props): JSX.Ele
   return (
     <S.Review>
       <S.Header>
-        <S.Avatar alt={userName} src={`/img/${avatarUrl}`} />
+        <Avatar photoURL={`${avatarUrl}`} width="3.42857rem" height="3.42857rem" />
         <S.AuthorWrapper>
           <S.User>{userName}</S.User>
           <S.Date dateTime={correctDate.toISOString()}>{getReviewDate(correctDate)}</S.Date>
