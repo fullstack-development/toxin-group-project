@@ -16,14 +16,17 @@ const apartment = (
   switch (actions.type) {
     case GET_ROOM_DETAILS_PROCESS:
       return {
+        ...state,
         roomDetails: null,
       };
     case GET_ROOM_DETAILS_SUCCESS:
       return {
+        ...state,
         roomDetails: actions.payload,
       };
     case GET_ROOM_DETAILS_FAILED:
       return {
+        ...state,
         roomDetails: null,
       };
     default:
