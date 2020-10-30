@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useState, Fragment } from 'react';
 import { connect } from 'react-redux';
 
 import { Filters } from 'api/entities/types';
@@ -13,30 +13,44 @@ import { requestRooms } from 'redux/Booking/redux/actions';
 import { AppState } from 'redux/store.types';
 
 import * as S from './SearchRoomPage.styles';
+import { SortOrder, SortData, SortParam } from './SearchRoomPage.types';
 import getPassedFilters from './utils/getPassedFilters';
 
-const mapState = (state: AppState) => state.bookingReducer;
+type StateProps = {
+  rooms: RoomProps[];
+  isPending: boolean;
+};
+
+const mapState = (state: AppState): StateProps => ({
+  rooms: state.bookingReducer.rooms,
+  isPending: state.bookingReducer.isPending,
+});
 
 const mapDispatch = {
   getRooms: requestRooms,
 };
 
-type Props = ReturnType<typeof mapState> & typeof mapDispatch;
-
-type SortFunction = (a: RoomProps, b: RoomProps) => number;
-
-type SortParam = 'price' | 'rating';
-
-type SortOrder = 'desc' | 'asc';
-
-type SortData = {
-  parameter: SortParam;
-  name: string;
-  sortFunction: SortFunction;
-};
+type Props = StateProps & typeof mapDispatch;
 
 const separator = ' ';
 
+const sortData: SortData[] = [
+  {
+    parameter: 'price',
+    name: 'цена',
+    sortFunction: (a: RoomProps, b: RoomProps) => a.price - b.price,
+  },
+  {
+    parameter: 'rating',
+    name: 'рейтинг',
+    sortFunction: (a: RoomProps, b: RoomProps) => a.rating - b.rating,
+  },
+  {
+    parameter: 'reviews',
+    name: 'количество отзывов',
+    sortFunction: (a: RoomProps, b: RoomProps) => a.reviews.length - b.reviews.length,
+  },
+];
 const [descKey, ascKey] = ['desc', 'asc'] as SortOrder[];
 
 const SearchRoomPage: React.FC<Props> = ({ rooms, getRooms, isPending }: Props) => {
@@ -56,19 +70,6 @@ const SearchRoomPage: React.FC<Props> = ({ rooms, getRooms, isPending }: Props) 
     router.push(`/search-room?&values=${JSON.stringify(currentFilters)}`);
     getRooms(currentFilters);
   };
-
-  const sortData: SortData[] = [
-    {
-      parameter: 'price',
-      name: 'цена',
-      sortFunction: (a: RoomProps, b: RoomProps) => a.price - b.price,
-    },
-    {
-      parameter: 'rating',
-      name: 'рейтинг',
-      sortFunction: (a: RoomProps, b: RoomProps) => a.rating - b.rating,
-    },
-  ];
 
   const [sortParam, setSortParam] = useState<SortParam>('price');
   const [isAscendingSort, setIsAscendingSort] = useState(true);
@@ -99,7 +100,7 @@ const SearchRoomPage: React.FC<Props> = ({ rooms, getRooms, isPending }: Props) 
               Сортировать по параметру:
               <S.Select onChange={handleSelectChange}>
                 {sortData.map((paramData) => (
-                  <>
+                  <Fragment key={paramData.parameter}>
                     <option
                       value={`${paramData.parameter}${separator}${ascKey}`}
                       key={`${paramData.parameter}${separator}${ascKey}`}
@@ -112,7 +113,7 @@ const SearchRoomPage: React.FC<Props> = ({ rooms, getRooms, isPending }: Props) 
                     >
                       {paramData.name} ↓
                     </option>
-                  </>
+                  </Fragment>
                 ))}
               </S.Select>
             </S.Sort>
