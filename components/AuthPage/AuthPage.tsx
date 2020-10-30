@@ -13,6 +13,13 @@ import {
 import { State, Props } from './AuthPage.types';
 import MainContent from './components/MainContent';
 
+type StateProps = {
+  isAuthSuccess: boolean;
+  isAuthProcessNow: boolean;
+  wasFinishedAuthChecking: boolean;
+  authStatusText: string;
+};
+
 const AuthPage: React.FC<Props> = ({
   isAuthSuccess,
   isAuthProcessNow,
@@ -48,11 +55,11 @@ const AuthPage: React.FC<Props> = ({
   );
 };
 
-const mapState = (state: State) => ({
-  isAuthSuccess: state.authReducer.isAuthSuccess,
-  isAuthProcessNow: state.authReducer.isAuthProcessNow,
-  authStatusText: state.authReducer.authStatusText,
-  wasFinishedAuthChecking: state.authReducer.wasFinishedAuthChecking,
+const mapState = (state: State): StateProps => ({
+  isAuthSuccess: state.auth.isAuthSuccess,
+  isAuthProcessNow: state.auth.isAuthProcessNow,
+  authStatusText: state.auth.authStatusText,
+  wasFinishedAuthChecking: state.auth.wasFinishedAuthChecking,
 });
 
 const mapDispatch = {
