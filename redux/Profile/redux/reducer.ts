@@ -112,13 +112,13 @@ const profile = (state: ProfileState = initialState, action: ProfileActions): Pr
       return {
         ...state,
         isUpdateAdditionalUserDataCompleted: true,
-        updateAdditionalUserDataStatusText: 'Данные были успешно обновлены',
+        updateAdditionalUserDataStatusText: action.payload,
       };
     case UPDATE_ADDITIONAL_USER_DATA_FAILED:
       return {
         ...state,
         isUpdateAdditionalUserDataCompleted: true,
-        updateAdditionalUserDataStatusText: 'Произошла ошибка повторите попытку позже',
+        updateAdditionalUserDataStatusText: action.payload,
       };
     case UPDATE_ADDITIONAL_USER_DATA_COMPLETED:
       return {
@@ -136,13 +136,13 @@ const profile = (state: ProfileState = initialState, action: ProfileActions): Pr
       return {
         ...state,
         isUsernameUpdateCompleted: true,
-        usernameUpdateStatusText: 'Данные были успешно обновлены',
+        usernameUpdateStatusText: action.payload,
       };
     case USERNAME_UPDATE_FAILED:
       return {
         ...state,
         isUsernameUpdateCompleted: true,
-        usernameUpdateStatusText: 'Произошла ошибка повторите попытку позже',
+        usernameUpdateStatusText: action.payload,
       };
     case USERNAME_UPDATE_COMPLETED:
       return {

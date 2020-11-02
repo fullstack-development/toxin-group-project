@@ -22,6 +22,19 @@ import {
   USERNAME_UPDATE_FAILED,
 } from '../../constants';
 
+const getEmailUpdateErrorMessage = ({ code }) => {
+  switch (code) {
+    case 'auth/invalid-email':
+      return 'Указан недействительный адрес электронной почты';
+    case 'auth/email-already-in-use':
+      return 'Указанный адрес электронной почты уже используется';
+    case 'auth/requires-recent-login':
+      return 'Для изменения адреса электронной почты пройдите повторную аутентификацию';
+    default:
+      return 'Произошла ошибка повторите попытку позже';
+  }
+};
+
 function* emailUpdate({ payload }) {
   try {
     const { user, email } = payload;
@@ -33,34 +46,26 @@ function* emailUpdate({ payload }) {
       payload: `Подтверждение адреса электронной почты было отправлено на ${email}`,
     });
   } catch (err) {
-    switch (err.code) {
-      case 'auth/invalid-email':
-        yield put({
-          type: EMAIL_UPDATE_FAILED,
-          payload: 'Указан недействительный адрес электронной почты',
-        });
-        break;
-      case 'auth/email-already-in-use':
-        yield put({
-          type: EMAIL_UPDATE_FAILED,
-          payload: 'Указанный адрес электронной почты уже используется',
-        });
-        break;
-      case 'auth/requires-recent-login':
-        yield put({
-          type: EMAIL_UPDATE_FAILED,
-          payload: 'Для изменения адреса электронной почты пройдите повторную аутентификацию',
-        });
-        break;
-      default: {
-        yield put({
-          type: EMAIL_UPDATE_FAILED,
-          payload: 'Произошла ошибка повторите попытку позже',
-        });
-      }
-    }
+    yield put({
+      type: EMAIL_UPDATE_FAILED,
+      payload: getEmailUpdateErrorMessage(err),
+    });
   }
 }
+
+const getPasswordUpdateErrorMessage = ({ code, message }) => {
+  switch (code) {
+    case 'auth/wrong-password':
+      return 'Неверный пароль';
+    case 'auth/user-mismatch':
+      return 'Полученные учетные данные не соответствуют текущему пользователю';
+    case 'passwords-do-not-match':
+      return 'Пароли не совпадают';
+    default:
+      if (message === 'Пароли не совпадают') return message;
+      return 'Произошла ошибка';
+  }
+};
 
 function* passwordUpdate({ payload: { user, currentPassword, newPassword, confirmPassword } }) {
   try {
@@ -79,43 +84,16 @@ function* passwordUpdate({ payload: { user, currentPassword, newPassword, confir
     }
 
     yield user.updatePassword(newPassword);
+
     yield put({
       type: PASSWORD_UPDATE_SUCCESS,
       payload: 'Пароль успешно изменен',
     });
   } catch (err) {
-    switch (err.code) {
-      case 'auth/wrong-password':
-        yield put({
-          type: PASSWORD_UPDATE_FAILED,
-          payload: 'Неверный пароль',
-        });
-        break;
-      case 'auth/user-mismatch':
-        yield put({
-          type: PASSWORD_UPDATE_FAILED,
-          payload: 'Полученные учетные данные не соответствуют текущему пользователю',
-        });
-        break;
-      case 'passwords-do-not-match':
-        yield put({
-          type: PASSWORD_UPDATE_FAILED,
-          payload: 'Пароли не совпадают',
-        });
-        break;
-      default:
-        if (err.message === 'Пароли не совпадают') {
-          yield put({
-            type: PASSWORD_UPDATE_FAILED,
-            payload: err.message,
-          });
-        } else {
-          yield put({
-            type: PASSWORD_UPDATE_FAILED,
-            payload: 'Произошла ошибка',
-          });
-        }
-    }
+    yield put({
+      type: PASSWORD_UPDATE_FAILED,
+      payload: getPasswordUpdateErrorMessage(err),
+    });
   }
 }
 
@@ -129,12 +107,12 @@ function* updateAdditionalUserData({ payload: { user, data } }) {
     }
     yield put({
       type: UPDATE_ADDITIONAL_USER_DATA_SUCCESS,
-      payload: null,
+      payload: 'Данные были успешно обновлены',
     });
   } catch (err) {
     yield put({
       type: UPDATE_ADDITIONAL_USER_DATA_FAILED,
-      payload: null,
+      payload: 'Произошла ошибка повторите попытку позже',
     });
   }
 }
@@ -147,12 +125,12 @@ function* usernameUpdate({ payload }) {
 
     yield put({
       type: USERNAME_UPDATE_SUCCESS,
-      payload,
+      payload: 'Данные были успешно обновлены',
     });
   } catch (err) {
     yield put({
       type: USERNAME_UPDATE_FAILED,
-      payload,
+      payload: 'Произошла ошибка повторите попытку позже',
     });
   }
 }
