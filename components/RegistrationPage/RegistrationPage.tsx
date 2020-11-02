@@ -9,7 +9,15 @@ import { AppState } from 'redux/store.types';
 
 import MainContent from './components/MainContent/MainContent';
 
-const mapState = (state: AppState) => ({
+type StateProps = {
+  isSuccess: boolean;
+  isProcess: boolean;
+  statusText: string;
+  isAuthSuccess: boolean;
+  wasFinishedAuthChecking: boolean;
+};
+
+const mapState = (state: AppState): StateProps => ({
   isSuccess: state.registration.isSuccess,
   isProcess: state.registration.isProcess,
   statusText: state.registration.statusText,
@@ -23,7 +31,7 @@ const mapDispatch = {
   checkAuthBeforePageLoaded: preloadAuthData,
 };
 
-export type PropsConnected = ReturnType<typeof mapState> & typeof mapDispatch;
+export type PropsConnected = StateProps & typeof mapDispatch;
 
 const RegistrationPage: React.FC<PropsConnected> = ({
   isSuccess,

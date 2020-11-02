@@ -5,7 +5,11 @@ import { connect } from 'react-redux';
 import { logout, preloadAuthData } from 'redux/Auth/redux/actions';
 import { AppState } from 'redux/store.types';
 
-const mapState = (state: AppState) => ({
+type StateProps = {
+  isAuthSuccess: boolean;
+};
+
+const mapState = (state: AppState): StateProps => ({
   isAuthSuccess: state.auth.isAuthSuccess,
 });
 
@@ -14,7 +18,7 @@ const mapDispatch = {
   checkAuthBeforePageLoaded: preloadAuthData,
 };
 
-type Props = ReturnType<typeof mapState> & typeof mapDispatch;
+type Props = StateProps & typeof mapDispatch;
 
 const LogoutPage: React.FC<Props> = ({
   isAuthSuccess,
