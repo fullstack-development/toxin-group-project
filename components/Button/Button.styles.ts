@@ -55,6 +55,12 @@ const Button = styled.a<Props>`
       &:focus {
         box-shadow: 0 0 1.0714rem ${colors.primary};
       }
+
+      &:disabled {
+        cursor: auto;
+        box-shadow: none;
+        opacity: 0.7;
+      }
     `;
   }}
 `;

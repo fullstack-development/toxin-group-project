@@ -1,5 +1,5 @@
 import { SagaIterator } from 'redux-saga';
-import { put, takeLatest, call, PutEffect } from 'redux-saga/effects';
+import { put, takeLatest, call, PutEffect, takeLeading } from 'redux-saga/effects';
 
 import Api from 'api/api';
 import { Apartment } from 'api/entities/types';
@@ -54,6 +54,6 @@ function* loadRoomsHistory({
 }
 
 export function* rootSaga(): SagaIterator {
-  yield takeLatest<never>(LOAD_ROOMS, loadRooms);
+  yield takeLeading<never>(LOAD_ROOMS, loadRooms);
   yield takeLatest<never>(LOAD_BOOKED_HISTORY, loadRoomsHistory);
 }
