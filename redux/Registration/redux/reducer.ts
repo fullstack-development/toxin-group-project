@@ -7,7 +7,7 @@ import {
 import { RegistrationState, RegistrationActions } from '../types';
 
 const initialState: RegistrationState = {
-  isSuccess: true,
+  isSuccess: false,
   isProcess: false,
   statusText: '',
 };

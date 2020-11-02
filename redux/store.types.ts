@@ -1,8 +1,8 @@
 import { SagaIterator } from 'redux-saga';
 
-import { AuthActions, AuthState } from './Auth/types';
+import { AuthState, AuthActions } from './Auth/types';
 import { BookingActions, BookingState } from './Booking/types';
-import { ProfileState, ProfileActions } from './Profile/types';
+import { ProfileActions, ProfileState } from './Profile/types';
 import { RegistrationActions, RegistrationState } from './Registration/types';
 
 export type AvailableStates = AuthState | BookingState | ProfileState | RegistrationState;
