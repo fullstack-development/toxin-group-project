@@ -27,7 +27,7 @@ import {
   UsernameUpdateCompleted,
 } from '../types';
 
-const emailUpdateRequest = (data: EmailUpdate): EmailUpdateRequest => ({
+const emailUpdate = (data: EmailUpdate): EmailUpdateRequest => ({
   type: EMAIL_UPDATE_PROCESS,
   payload: data,
 });
@@ -36,12 +36,12 @@ const emailUpdateCompleted = (): EmailUpdateCompleted => ({
   type: EMAIL_UPDATE_COMPLETED,
 });
 
-const getAdditionalUserDataRequest = (user: User): GetAdditionalUserDataRequest => ({
+const getAdditionalUserData = (user: User): GetAdditionalUserDataRequest => ({
   type: GET_ADDITIONAL_USER_DATA_PROCESS,
   payload: user,
 });
 
-const passwordUpdateRequest = (data: PasswordUpdate): PasswordUpdateRequest => ({
+const passwordUpdate = (data: PasswordUpdate): PasswordUpdateRequest => ({
   type: PASSWORD_UPDATE_PROCESS,
   payload: data,
 });
@@ -50,7 +50,7 @@ const passwordUpdateCompleted = (): PasswordUpdateCompleted => ({
   type: PASSWORD_UPDATE_COMPLETED,
 });
 
-const updateAdditionalUserDataRequest = (
+const updateAdditionalUserData = (
   data: UpdateAdditionalUserData,
 ): UpdateAdditionalUserDataRequest => ({
   type: UPDATE_ADDITIONAL_USER_DATA_PROCESS,
@@ -61,7 +61,7 @@ const updateAdditionalUserDataCompleted = (): UpdateAdditionalUserDataCompleted 
   type: UPDATE_ADDITIONAL_USER_DATA_COMPLETED,
 });
 
-const usernameUpdateRequest = (data: UsernameUpdate): UsernameUpdateRequest => ({
+const usernameUpdate = (data: UsernameUpdate): UsernameUpdateRequest => ({
   type: USERNAME_UPDATE_PROCESS,
   payload: data,
 });
@@ -71,13 +71,13 @@ const usernameUpdateCompleted = (): UsernameUpdateCompleted => ({
 });
 
 export {
-  emailUpdateRequest,
+  emailUpdate,
   emailUpdateCompleted,
-  getAdditionalUserDataRequest,
-  passwordUpdateRequest,
+  getAdditionalUserData,
+  passwordUpdate,
   passwordUpdateCompleted,
-  updateAdditionalUserDataRequest,
+  updateAdditionalUserData,
   updateAdditionalUserDataCompleted,
-  usernameUpdateRequest,
+  usernameUpdate,
   usernameUpdateCompleted,
 };

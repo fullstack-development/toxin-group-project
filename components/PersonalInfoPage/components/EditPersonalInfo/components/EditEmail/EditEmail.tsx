@@ -5,7 +5,7 @@ import { User } from 'api/Firebase/modules/Authentication/types';
 import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
-import { emailUpdateRequest, emailUpdateCompleted } from 'redux/Profile/redux/actions';
+import { emailUpdate, emailUpdateCompleted } from 'redux/Profile/redux/actions';
 import { AppState } from 'redux/store.types';
 import { emailValidator } from 'shared/helpers/validators';
 
@@ -20,8 +20,8 @@ const mapState = (state: AppState): StateProps => ({
 });
 
 const mapDispatch = {
-  startEmailUpdateProcess: emailUpdateRequest,
-  stopEmailUpdateProcess: emailUpdateCompleted,
+  startEmailUpdate: emailUpdate,
+  stopEmailUpdate: emailUpdateCompleted,
 };
 
 type Props = {
@@ -35,11 +35,11 @@ const EditEmail = ({
   email,
   isCompleted,
   statusText,
-  startEmailUpdateProcess,
-  stopEmailUpdateProcess,
+  startEmailUpdate,
+  stopEmailUpdate,
 }: Props): JSX.Element => {
   const onSubmit = ({ email: emailForUpdate }: { email: string }) => {
-    startEmailUpdateProcess({ user, email: emailForUpdate });
+    startEmailUpdate({ user, email: emailForUpdate });
   };
 
   return (
@@ -62,7 +62,7 @@ const EditEmail = ({
             </Button>
           </form>
           {isCompleted && (
-            <PopUpNotification message={statusText} onConfirmButtonClick={stopEmailUpdateProcess} />
+            <PopUpNotification message={statusText} onConfirmButtonClick={stopEmailUpdate} />
           )}
         </>
       )}

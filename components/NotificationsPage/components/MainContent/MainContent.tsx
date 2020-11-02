@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { AdditionalUserInformation } from 'api/entities/types';
 import { User } from 'api/Firebase/modules/Authentication/types';
 import NavAccountSettings from 'components/NavAccountSettings/NavAccountSettings';
-import { getAdditionalUserDataRequest } from 'redux/Profile/redux/actions';
+import { getAdditionalUserData as getAdditionalUserDataRequest } from 'redux/Profile/redux/actions';
 import { AppState } from 'redux/store.types';
 
 import Subscriptions from '../Subscriptions/Subscriptions';
@@ -23,7 +23,7 @@ const mapState = (state: AppState): StateProps => ({
 });
 
 const mapDispatch = {
-  startGetAdditionalUserDataProcess: getAdditionalUserDataRequest,
+  startGetAdditionalUserData: getAdditionalUserDataRequest,
 };
 
 type Props = StateProps & typeof mapDispatch;
@@ -32,13 +32,13 @@ const MainContent = ({
   user,
   isCompleted,
   additionalUserData,
-  startGetAdditionalUserDataProcess,
+  startGetAdditionalUserData,
 }: Props): JSX.Element => {
   const getAdditionalUserData = useCallback(
     (currentUser) => {
-      startGetAdditionalUserDataProcess(currentUser);
+      startGetAdditionalUserData(currentUser);
     },
-    [startGetAdditionalUserDataProcess],
+    [startGetAdditionalUserData],
   );
 
   useEffect(() => {

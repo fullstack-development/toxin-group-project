@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { AdditionalUserInformation } from 'api/entities/types';
 import { User } from 'api/Firebase/modules/Authentication/types';
-import { getAdditionalUserDataRequest } from 'redux/Profile/redux/actions';
+import { getAdditionalUserData as getAdditionalUserDataRequest } from 'redux/Profile/redux/actions';
 import { AppState } from 'redux/store.types';
 
 import EditPersonalInfo from '../EditPersonalInfo/EditPersonalInfo';
@@ -23,7 +23,7 @@ const mapState = (state: AppState): StateProps => ({
 });
 
 const mapDispatch = {
-  startGetAdditionalUserDataProcess: getAdditionalUserDataRequest,
+  startGetAdditionalUserData: getAdditionalUserDataRequest,
 };
 
 type Props = StateProps & typeof mapDispatch;
@@ -32,7 +32,7 @@ const PersonalInfo = ({
   user,
   isCompleted,
   additionalUserData,
-  startGetAdditionalUserDataProcess,
+  startGetAdditionalUserData,
 }: Props): JSX.Element => {
   const [userData, setUserData] = useState({
     displayName: '',
@@ -43,9 +43,9 @@ const PersonalInfo = ({
 
   const getAdditionalUserData = useCallback(
     (currentUser) => {
-      startGetAdditionalUserDataProcess(currentUser);
+      startGetAdditionalUserData(currentUser);
     },
-    [startGetAdditionalUserDataProcess],
+    [startGetAdditionalUserData],
   );
 
   useEffect(() => {

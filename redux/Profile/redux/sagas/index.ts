@@ -22,7 +22,7 @@ import {
   USERNAME_UPDATE_FAILED,
 } from '../../constants';
 
-function* startEmailUpdateProcess({ payload }) {
+function* emailUpdate({ payload }) {
   try {
     const { user, email } = payload;
 
@@ -62,9 +62,7 @@ function* startEmailUpdateProcess({ payload }) {
   }
 }
 
-function* startPasswordUpdateProcess({
-  payload: { user, currentPassword, newPassword, confirmPassword },
-}) {
+function* passwordUpdate({ payload: { user, currentPassword, newPassword, confirmPassword } }) {
   try {
     if (newPassword !== confirmPassword) throw new Error('Пароли не совпадают');
 
@@ -121,7 +119,7 @@ function* startPasswordUpdateProcess({
   }
 }
 
-function* startUpdateAdditionalUserDataProcess({ payload: { user, data } }) {
+function* updateAdditionalUserData({ payload: { user, data } }) {
   try {
     const isDocument = yield call(api.auth.getAdditionalUserInformation, user.uid);
     if (isDocument) {
@@ -141,7 +139,7 @@ function* startUpdateAdditionalUserDataProcess({ payload: { user, data } }) {
   }
 }
 
-function* startUsernameUpdateProcess({ payload }) {
+function* usernameUpdate({ payload }) {
   try {
     const { user, displayName } = payload;
 
@@ -159,7 +157,7 @@ function* startUsernameUpdateProcess({ payload }) {
   }
 }
 
-function* startGetAdditionalUserDataProcess({ payload: user }) {
+function* getAdditionalUserData({ payload: user }) {
   try {
     const additionalUserData = yield call(api.auth.getAdditionalUserInformation, user.uid);
     yield put({
@@ -175,14 +173,11 @@ function* startGetAdditionalUserDataProcess({ payload: user }) {
 }
 
 function* rootSaga(): SagaIterator {
-  yield takeLatest<never>(EMAIL_UPDATE_PROCESS, startEmailUpdateProcess);
-  yield takeLatest<never>(GET_ADDITIONAL_USER_DATA_PROCESS, startGetAdditionalUserDataProcess);
-  yield takeLatest<never>(PASSWORD_UPDATE_PROCESS, startPasswordUpdateProcess);
-  yield takeLatest<never>(
-    UPDATE_ADDITIONAL_USER_DATA_PROCESS,
-    startUpdateAdditionalUserDataProcess,
-  );
-  yield takeLatest<never>(USERNAME_UPDATE_PROCESS, startUsernameUpdateProcess);
+  yield takeLatest<never>(EMAIL_UPDATE_PROCESS, emailUpdate);
+  yield takeLatest<never>(GET_ADDITIONAL_USER_DATA_PROCESS, getAdditionalUserData);
+  yield takeLatest<never>(PASSWORD_UPDATE_PROCESS, passwordUpdate);
+  yield takeLatest<never>(UPDATE_ADDITIONAL_USER_DATA_PROCESS, updateAdditionalUserData);
+  yield takeLatest<never>(USERNAME_UPDATE_PROCESS, usernameUpdate);
 }
 
 export { rootSaga };

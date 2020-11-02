@@ -7,7 +7,7 @@ import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
 import {
-  updateAdditionalUserDataRequest,
+  updateAdditionalUserData,
   updateAdditionalUserDataCompleted,
 } from 'redux/Profile/redux/actions';
 import { AppState } from 'redux/store.types';
@@ -24,8 +24,8 @@ const mapState = (state: AppState): StateProps => ({
 });
 
 const mapDispatch = {
-  startUpdateAdditionalUserDataProcess: updateAdditionalUserDataRequest,
-  stopUpdateAdditionalUserDataProcess: updateAdditionalUserDataCompleted,
+  startUpdateAdditionalUserData: updateAdditionalUserData,
+  stopUpdateAdditionalUserData: updateAdditionalUserDataCompleted,
 };
 
 type Props = {
@@ -43,16 +43,16 @@ const EditBirthday = ({
   birthday,
   isCompleted,
   statusText,
-  startUpdateAdditionalUserDataProcess,
-  stopUpdateAdditionalUserDataProcess,
+  startUpdateAdditionalUserData,
+  stopUpdateAdditionalUserData,
 }: Props): JSX.Element => {
   const onSubmit = ({ birthday: newBirthday }: FormData) => {
-    startUpdateAdditionalUserDataProcess({ user, data: { birthDate: newBirthday } });
+    startUpdateAdditionalUserData({ user, data: { birthDate: newBirthday } });
   };
 
   useEffect(() => {
-    stopUpdateAdditionalUserDataProcess();
-  }, [stopUpdateAdditionalUserDataProcess]);
+    stopUpdateAdditionalUserData();
+  }, [stopUpdateAdditionalUserData]);
 
   return (
     <Form
@@ -80,7 +80,7 @@ const EditBirthday = ({
           {isCompleted && (
             <PopUpNotification
               message={statusText}
-              onConfirmButtonClick={stopUpdateAdditionalUserDataProcess}
+              onConfirmButtonClick={stopUpdateAdditionalUserData}
             />
           )}
         </>

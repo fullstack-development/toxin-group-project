@@ -7,7 +7,7 @@ import Button from 'components/Button/Button';
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
 import RadioButton from 'components/RadioButton/RadioButton';
 import {
-  updateAdditionalUserDataRequest,
+  updateAdditionalUserData,
   updateAdditionalUserDataCompleted,
 } from 'redux/Profile/redux/actions';
 import { AppState } from 'redux/store.types';
@@ -25,8 +25,8 @@ const mapState = (state: AppState): StateProps => ({
 });
 
 const mapDispatch = {
-  startUpdateAdditionalUserDataProcess: updateAdditionalUserDataRequest,
-  stopUpdateAdditionalUserDataProcess: updateAdditionalUserDataCompleted,
+  startUpdateAdditionalUserData: updateAdditionalUserData,
+  stopUpdateAdditionalUserData: updateAdditionalUserDataCompleted,
 };
 
 type Props = {
@@ -44,16 +44,16 @@ const EditGender = ({
   gender,
   isCompleted,
   statusText,
-  startUpdateAdditionalUserDataProcess,
-  stopUpdateAdditionalUserDataProcess,
+  startUpdateAdditionalUserData,
+  stopUpdateAdditionalUserData,
 }: Props): JSX.Element => {
   const onSubmit = ({ gender: newGender }: FormData) => {
-    startUpdateAdditionalUserDataProcess({ user, data: { gender: newGender } });
+    startUpdateAdditionalUserData({ user, data: { gender: newGender } });
   };
 
   useEffect(() => {
-    stopUpdateAdditionalUserDataProcess();
-  }, [stopUpdateAdditionalUserDataProcess]);
+    stopUpdateAdditionalUserData();
+  }, [stopUpdateAdditionalUserData]);
 
   return (
     <Form
@@ -73,7 +73,7 @@ const EditGender = ({
           {isCompleted && (
             <PopUpNotification
               message={statusText}
-              onConfirmButtonClick={stopUpdateAdditionalUserDataProcess}
+              onConfirmButtonClick={stopUpdateAdditionalUserData}
             />
           )}
         </>

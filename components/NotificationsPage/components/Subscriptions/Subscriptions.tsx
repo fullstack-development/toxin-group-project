@@ -6,7 +6,7 @@ import Button from 'components/Button/Button';
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
 import Toggle from 'components/Toggle/Toggle';
 import {
-  updateAdditionalUserDataRequest,
+  updateAdditionalUserData,
   updateAdditionalUserDataCompleted,
 } from 'redux/Profile/redux/actions';
 import { AppState } from 'redux/store.types';
@@ -24,8 +24,8 @@ const mapState = (state: AppState): StateProps => ({
 });
 
 const mapDispatch = {
-  startUpdateAdditionalUserDataProcess: updateAdditionalUserDataRequest,
-  stopUpdateAdditionalUserDataProcess: updateAdditionalUserDataCompleted,
+  startUpdateAdditionalUserData: updateAdditionalUserData,
+  stopUpdateAdditionalUserData: updateAdditionalUserDataCompleted,
 };
 
 type Props = {
@@ -43,11 +43,11 @@ const Subscriptions = ({
   receiveOffers,
   isCompleted,
   statusText,
-  startUpdateAdditionalUserDataProcess,
-  stopUpdateAdditionalUserDataProcess,
+  startUpdateAdditionalUserData,
+  stopUpdateAdditionalUserData,
 }: Props): JSX.Element => {
   const onSubmit = ({ specialOffers }: FormData) => {
-    startUpdateAdditionalUserDataProcess({ user, data: { receiveOffers: specialOffers } });
+    startUpdateAdditionalUserData({ user, data: { receiveOffers: specialOffers } });
   };
 
   return (
@@ -71,7 +71,7 @@ const Subscriptions = ({
             {isCompleted && (
               <PopUpNotification
                 message={statusText}
-                onConfirmButtonClick={stopUpdateAdditionalUserDataProcess}
+                onConfirmButtonClick={stopUpdateAdditionalUserData}
               />
             )}
           </>

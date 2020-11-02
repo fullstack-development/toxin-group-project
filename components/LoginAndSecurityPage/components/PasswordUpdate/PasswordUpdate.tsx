@@ -5,7 +5,7 @@ import { User } from 'api/Firebase/modules/Authentication';
 import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
-import { passwordUpdateRequest, passwordUpdateCompleted } from 'redux/Profile/redux/actions';
+import { passwordUpdate, passwordUpdateCompleted } from 'redux/Profile/redux/actions';
 import { AppState } from 'redux/store.types';
 import { passwordValidator } from 'shared/helpers/validators/passwordValidator';
 
@@ -22,8 +22,8 @@ const mapState = (state: AppState): StateProps => ({
 });
 
 const mapDispatch = {
-  startPasswordUpdateProcess: passwordUpdateRequest,
-  stopPasswordUpdateProcess: passwordUpdateCompleted,
+  startPasswordUpdate: passwordUpdate,
+  stopPasswordUpdate: passwordUpdateCompleted,
 };
 
 type Props = StateProps & typeof mapDispatch;
@@ -38,11 +38,11 @@ const PasswordUpdate = ({
   user,
   isCompleted,
   statusText,
-  startPasswordUpdateProcess,
-  stopPasswordUpdateProcess,
+  startPasswordUpdate,
+  stopPasswordUpdate,
 }: Props): JSX.Element => {
   const onSubmit = ({ currentPassword, newPassword, confirmPassword }: FormData) => {
-    startPasswordUpdateProcess({ user, currentPassword, newPassword, confirmPassword });
+    startPasswordUpdate({ user, currentPassword, newPassword, confirmPassword });
   };
 
   const isUserRegistered = user.providerData.some((value) => value.providerId === 'password');
@@ -84,10 +84,7 @@ const PasswordUpdate = ({
             </Button>
           </form>
           {isCompleted && (
-            <PopUpNotification
-              message={statusText}
-              onConfirmButtonClick={stopPasswordUpdateProcess}
-            />
+            <PopUpNotification message={statusText} onConfirmButtonClick={stopPasswordUpdate} />
           )}
         </>
       )}

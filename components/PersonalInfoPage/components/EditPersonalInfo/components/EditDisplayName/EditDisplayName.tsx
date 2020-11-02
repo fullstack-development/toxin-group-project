@@ -5,7 +5,7 @@ import { User } from 'api/Firebase/modules/Authentication/types';
 import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
-import { usernameUpdateRequest, usernameUpdateCompleted } from 'redux/Profile/redux/actions';
+import { usernameUpdate, usernameUpdateCompleted } from 'redux/Profile/redux/actions';
 import { AppState } from 'redux/store.types';
 
 type StateProps = {
@@ -19,8 +19,8 @@ const mapState = (state: AppState): StateProps => ({
 });
 
 const mapDispatch = {
-  startUsernameUpdateProcess: usernameUpdateRequest,
-  stopUsernameUpdateProcess: usernameUpdateCompleted,
+  startUsernameUpdate: usernameUpdate,
+  stopUsernameUpdate: usernameUpdateCompleted,
 };
 
 type Props = {
@@ -39,11 +39,11 @@ const EditDisplayName = ({
   displayName,
   isCompleted,
   statusText,
-  startUsernameUpdateProcess,
-  stopUsernameUpdateProcess,
+  startUsernameUpdate,
+  stopUsernameUpdate,
 }: Props): JSX.Element => {
   const onSubmit = ({ name, surname }: FormData) => {
-    startUsernameUpdateProcess({ user, displayName: `${name} ${surname}` });
+    startUsernameUpdate({ user, displayName: `${name} ${surname}` });
   };
 
   const [name, surname] = displayName.split(' ');
@@ -70,10 +70,7 @@ const EditDisplayName = ({
             </Button>
           </form>
           {isCompleted && (
-            <PopUpNotification
-              message={statusText}
-              onConfirmButtonClick={stopUsernameUpdateProcess}
-            />
+            <PopUpNotification message={statusText} onConfirmButtonClick={stopUsernameUpdate} />
           )}
         </>
       )}
