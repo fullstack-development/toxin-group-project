@@ -3,6 +3,8 @@ import {
   ROOMS_REQUEST_SUCCESS,
   ROOMS_REQUEST_FAILED,
   LOAD_ROOMS,
+  UPDATE_BOOKED_HISTORY,
+  LOAD_BOOKED_HISTORY,
 } from '../constants';
 import { BookingActions, BookingState } from '../types';
 
@@ -11,12 +13,10 @@ const initialState: BookingState = {
   isPending: false,
   rooms: [],
   error: null,
+  bookedRooms: null,
 };
 
-const bookingReducer = (
-  state: BookingState = initialState,
-  action: BookingActions,
-): BookingState => {
+const booking = (state: BookingState = initialState, action: BookingActions): BookingState => {
   switch (action.type) {
     case LOAD_ROOMS:
       return { ...state, rooms: [] };
@@ -40,9 +40,20 @@ const bookingReducer = (
         isRequestSuccessful: false,
         error: action.payload,
       };
+    case LOAD_BOOKED_HISTORY:
+      return {
+        ...state,
+        isPending: true,
+      };
+    case UPDATE_BOOKED_HISTORY:
+      return {
+        ...state,
+        isPending: false,
+        bookedRooms: { ...action.payload },
+      };
     default:
       return state;
   }
 };
 
-export default bookingReducer;
+export default booking;
