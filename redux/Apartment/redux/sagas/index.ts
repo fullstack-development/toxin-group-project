@@ -10,7 +10,7 @@ import {
   GET_ROOM_DETAILS_FAILED,
 } from '../../constants';
 
-function* startGetRoomDetailsProcess({ payload: id }) {
+function* getRoomDetails({ payload: id }) {
   try {
     const roomDetails: Apartment = yield call(api.apartments.load, id);
     yield put({
@@ -26,7 +26,7 @@ function* startGetRoomDetailsProcess({ payload: id }) {
 }
 
 function* rootSaga(): SagaIterator {
-  yield takeLatest<never>(GET_ROOM_DETAILS_PROCESS, startGetRoomDetailsProcess);
+  yield takeLatest<never>(GET_ROOM_DETAILS_PROCESS, getRoomDetails);
 }
 
 export { rootSaga };

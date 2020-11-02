@@ -9,7 +9,7 @@ import OrderForm from 'components/OrderForm/OrderForm';
 import Preloader from 'components/Preloader/Preloader';
 import Reviews from 'components/Reviews/Reviews';
 import RoomImpression from 'components/RoomImpression/RoomImpression';
-import { getRoomDetailsRequest } from 'redux/Apartment/redux/actions';
+import { getRoomDetails as getRoomDetailsRequest } from 'redux/Apartment/redux/actions';
 import { AppState } from 'redux/store.types';
 
 import { roomImagesPreview, benefitsData, rulesData } from './MainContent.data';
@@ -24,25 +24,25 @@ const mapState = (state: AppState): StateProps => ({
 });
 
 const mapDispatch = {
-  startGetRoomDetailsProcess: getRoomDetailsRequest,
+  startGetRoomDetails: getRoomDetailsRequest,
 };
 
 type Props = StateProps & typeof mapDispatch;
 
-const MainContent = ({ roomDetails, startGetRoomDetailsProcess }: Props): JSX.Element => {
+const MainContent = ({ roomDetails, startGetRoomDetails }: Props): JSX.Element => {
   const router = useRouter();
   const roomNumber = router.asPath.split('=')[1];
 
-  const handlerGetRoomDetails = useCallback(
+  const getRoomDetails = useCallback(
     (id) => {
-      startGetRoomDetailsProcess(id);
+      startGetRoomDetails(id);
     },
-    [startGetRoomDetailsProcess],
+    [startGetRoomDetails],
   );
 
   useEffect(() => {
-    handlerGetRoomDetails(roomNumber);
-  }, [handlerGetRoomDetails, roomNumber]);
+    getRoomDetails(roomNumber);
+  }, [getRoomDetails, roomNumber]);
 
   return (
     <>
