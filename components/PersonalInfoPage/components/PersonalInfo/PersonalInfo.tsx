@@ -40,6 +40,7 @@ const PersonalInfo = ({
     birthday: '',
     email: '',
   });
+  const [currentEditing, setCurrentEditing] = useState('');
 
   const getAdditionalUserData = useCallback(
     (currentUser) => {
@@ -50,7 +51,7 @@ const PersonalInfo = ({
 
   useEffect(() => {
     if (user) getAdditionalUserData(user);
-  }, [getAdditionalUserData, user]);
+  }, [getAdditionalUserData, user, currentEditing]);
 
   const setAdditionalUserData = useCallback(() => {
     const { displayName, email } = user;
@@ -70,8 +71,6 @@ const PersonalInfo = ({
   const accountData = data.map((elem) => {
     return { ...elem, value: userData[elem.component] };
   });
-
-  const [currentEditing, setCurrentEditing] = useState('');
 
   const handleEditButtonClick = (title: string) => {
     if (title === currentEditing) {
