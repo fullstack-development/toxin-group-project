@@ -20,6 +20,7 @@ const Reviews = ({ reviews }: Props): JSX.Element => (
     </S.Counter>
     <S.List>
       {reviews
+        .slice()
         .sort((a, b) => b.likesCount - a.likesCount)
         .slice(0, NUMBER_OF_REVIEWS)
         .map((review) => (
