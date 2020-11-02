@@ -29,7 +29,7 @@ export type Amenities = {
 export type Review = {
   avatarUrl: string;
   userName: string;
-  date: Timestamp | Date;
+  date: Timestamp;
   text: string;
   likesCount: number;
 };

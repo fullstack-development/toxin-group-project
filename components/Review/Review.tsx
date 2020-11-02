@@ -1,9 +1,17 @@
-import { Review as Props } from 'api/entities/types';
+import { Timestamp } from 'api/Firebase/modules/Database/types';
 import Avatar from 'components/Avatar/Avatar';
 import LikeButton from 'components/LikeButton/LikeButton';
 
 import * as S from './Review.style';
 import getReviewDate from './utils/getReviewDate';
+
+type Props = {
+  avatarUrl: string;
+  userName: string;
+  date: Timestamp | Date;
+  text: string;
+  likesCount: number;
+};
 
 const Review = ({ avatarUrl, userName, date, text, likesCount }: Props): JSX.Element => {
   const correctDate = date instanceof Date ? date : date.toDate();
