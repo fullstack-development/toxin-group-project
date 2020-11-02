@@ -6,12 +6,7 @@ import * as S from './Review.style';
 import getReviewDate from './utils/getReviewDate';
 
 const Review = ({ avatarUrl, userName, date, text, likesCount }: Props): JSX.Element => {
-  let correctDate: Date;
-  if (date instanceof Date) {
-    correctDate = date;
-  } else {
-    correctDate = date.toDate();
-  }
+  const correctDate = date instanceof Date ? date : date.toDate();
 
   return (
     <S.Review>
