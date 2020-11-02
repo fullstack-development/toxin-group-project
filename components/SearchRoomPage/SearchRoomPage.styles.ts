@@ -16,6 +16,8 @@ const Container = styled.div`
 
   @media ${breakpointDown('md')} {
     display: flex;
+    padding-left: 2.2857rem;
+    padding-right: 2.2857rem;
     flex-direction: column;
   }
 `;
@@ -23,8 +25,21 @@ const Container = styled.div`
 const TitleContainer = styled.div`
   display: flex;
   justify-content: space-between;
+
+  @media ${breakpointDown('md')} {
+    flex-direction: column;
+  }
 `;
-const Sort = styled.div``;
+const Sort = styled.div`
+  text-align: right;
+  margin-left: 1.4286rem;
+
+  @media ${breakpointDown('md')} {
+    text-align: center;
+    margin-left: 0;
+    margin-bottom: 1.4286rem;
+  }
+`;
 
 const Select = styled.select`
   ${(props) => {
