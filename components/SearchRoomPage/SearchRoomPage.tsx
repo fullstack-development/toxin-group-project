@@ -74,7 +74,7 @@ const SearchRoomPage: React.FC<Props> = ({ rooms, getRooms, isPending }: Props) 
   const [sortParam, setSortParam] = useState<SortParam>('price');
   const [isAscendingSort, setIsAscendingSort] = useState(true);
 
-  const ascSortedRooms = rooms.sort(
+  const ascSortedRooms = [...rooms].sort(
     sortData.find((obj) => obj.parameter === sortParam).sortFunction,
   );
 
