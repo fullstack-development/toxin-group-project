@@ -77,11 +77,14 @@ export type ProfileData = {
 export type AdditionalUserInformation = {
   birthDate: string;
   gender: 'male' | 'female';
-  receiveOffers: boolean;
 };
 
 export type BookingData = {
   apartmentId: number;
   from: Date;
   to: Date;
+};
+
+export type SubscriptionData = {
+  specialOffers: boolean;
 };

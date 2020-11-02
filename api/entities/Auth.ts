@@ -30,7 +30,6 @@ class Auth {
     password,
     gender,
     birthDate,
-    receiveOffers,
     avatar,
   }: ProfileData): Promise<UserCredential> {
     let credential: UserCredential;
@@ -59,7 +58,7 @@ class Auth {
         photoURL,
       })
       .then(() => {
-        this.addAdditionalUserInformation(user.uid, { gender, birthDate, receiveOffers });
+        this.addAdditionalUserInformation(user.uid, { gender, birthDate });
         user.sendEmailVerification();
       });
 
@@ -120,6 +119,14 @@ class Auth {
     data: AdditionalUserInformation,
   ): Promise<void> {
     this.database.post({ ref: this.reference, doc: uid, data });
+  }
+
+  @boundMethod
+  public async updateAdditionalUserInformation(
+    uid: string,
+    data: AdditionalUserInformation,
+  ): Promise<void> {
+    this.database.update(this.reference.doc(uid), data);
   }
 
   @boundMethod
