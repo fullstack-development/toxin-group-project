@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Form, Field } from 'react-final-form';
 import { connect } from 'react-redux';
 
@@ -48,6 +49,10 @@ const EditDisplayName = ({
   };
 
   const [name, surname] = displayName.split(' ');
+
+  useEffect(() => {
+    stopUsernameUpdate();
+  }, [stopUsernameUpdate]);
 
   return (
     <Form

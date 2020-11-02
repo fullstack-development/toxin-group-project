@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Form, Field } from 'react-final-form';
 import { connect } from 'react-redux';
 
@@ -42,6 +43,10 @@ const EditEmail = ({
   const onSubmit = ({ email: emailForUpdate }: { email: string }) => {
     startEmailUpdate({ user, email: emailForUpdate });
   };
+
+  useEffect(() => {
+    stopEmailUpdate();
+  }, [stopEmailUpdate]);
 
   return (
     <Form

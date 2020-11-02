@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Form, Field } from 'react-final-form';
 import { connect } from 'react-redux';
 
@@ -46,6 +47,10 @@ const PasswordUpdate = ({
   };
 
   const isUserRegistered = user.providerData.some((value) => value.providerId === 'password');
+
+  useEffect(() => {
+    stopPasswordUpdate();
+  }, [stopPasswordUpdate]);
 
   return (
     <Form
