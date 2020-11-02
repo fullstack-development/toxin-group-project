@@ -29,11 +29,12 @@ const mapDispatch = {
   stopUpdateAdditionalUserData: updateAdditionalUserDataCompleted,
 };
 
-type Props = {
+type OwnProps = {
   user: User;
   gender: string;
-} & StateProps &
-  typeof mapDispatch;
+};
+
+type Props = OwnProps & StateProps & typeof mapDispatch;
 
 type FormData = {
   gender: string;

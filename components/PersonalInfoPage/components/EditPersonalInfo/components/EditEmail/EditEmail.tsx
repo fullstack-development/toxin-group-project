@@ -9,10 +9,10 @@ import { emailUpdate, emailUpdateCompleted } from 'redux/Profile/redux/actions';
 import { AppState } from 'redux/store.types';
 import { emailValidator } from 'shared/helpers/validators';
 
-interface StateProps {
+type StateProps = {
   isCompleted: boolean;
   statusText: string;
-}
+};
 
 const mapState = (state: AppState): StateProps => ({
   isCompleted: state.profile.isEmailUpdateCompleted,
@@ -24,11 +24,12 @@ const mapDispatch = {
   stopEmailUpdate: emailUpdateCompleted,
 };
 
-type Props = {
+type OwnProps = {
   user: User;
   email: string;
-} & StateProps &
-  typeof mapDispatch;
+};
+
+type Props = OwnProps & StateProps & typeof mapDispatch;
 
 const EditEmail = ({
   user,

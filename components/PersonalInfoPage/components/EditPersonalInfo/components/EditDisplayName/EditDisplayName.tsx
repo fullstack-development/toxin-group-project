@@ -23,11 +23,12 @@ const mapDispatch = {
   stopUsernameUpdate: usernameUpdateCompleted,
 };
 
-type Props = {
+type OwnProps = {
   user: User;
   displayName: string;
-} & StateProps &
-  typeof mapDispatch;
+};
+
+type Props = OwnProps & StateProps & typeof mapDispatch;
 
 type FormData = {
   name: string;

@@ -28,11 +28,12 @@ const mapDispatch = {
   stopUpdateAdditionalUserData: updateAdditionalUserDataCompleted,
 };
 
-type Props = {
+type OwnProps = {
   user: User;
   receiveOffers: boolean;
-} & StateProps &
-  typeof mapDispatch;
+};
+
+type Props = OwnProps & StateProps & typeof mapDispatch;
 
 type FormData = {
   specialOffers: boolean;
