@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
 
+import AccountEntry from 'components/AccountEntry/AccountEntry';
 import MainLayout from 'components/MainLayout/MainLayout';
 import {
   requestToAuth,
@@ -11,7 +12,7 @@ import {
 } from 'redux/Auth/redux/actions';
 import { AppState } from 'redux/store.types';
 
-import MainContent from './components/MainContent';
+import * as S from './AuthPage.styles';
 
 type StateProps = {
   isAuthSuccess: boolean;
@@ -33,8 +34,7 @@ const mapDispatch = {
   checkAuthBeforePageLoaded: preloadAuthData,
   startGoogleAuthProcess: requestToAuthWithGoogle,
 };
-
-type Props = StateProps & typeof mapDispatch;
+export type Props = StateProps & typeof mapDispatch;
 
 const AuthPage: React.FC<Props> = ({
   isAuthSuccess,
@@ -54,18 +54,19 @@ const AuthPage: React.FC<Props> = ({
   });
 
   const isAuthRequired: boolean = wasFinishedAuthChecking && !isAuthSuccess;
-
   return (
     isAuthRequired && (
       <MainLayout>
-        <MainContent
-          isAuthSuccess={isAuthSuccess}
-          isAuthProcessNow={isAuthProcessNow}
-          authStatusText={authStatusText}
-          startAuthProcess={startAuthProcess}
-          startGoogleAuthProcess={startGoogleAuthProcess}
-          stopAuthProcess={stopAuthProcess}
-        />
+        <S.Container>
+          <AccountEntry
+            isAuthSuccess={isAuthSuccess}
+            isAuthProcessNow={isAuthProcessNow}
+            authStatusText={authStatusText}
+            requestToAuth={startAuthProcess}
+            requestToAuthWithGoogle={startGoogleAuthProcess}
+            breakAuthProcess={stopAuthProcess}
+          />
+        </S.Container>
       </MainLayout>
     )
   );
