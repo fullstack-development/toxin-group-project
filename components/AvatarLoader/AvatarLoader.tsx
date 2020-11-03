@@ -1,4 +1,4 @@
-import { Slider, IconButton } from '@material-ui/core';
+import { IconButton } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import { useState } from 'react';
 import AvatarEditor from 'react-avatar-editor';
@@ -6,6 +6,7 @@ import { Field } from 'react-final-form';
 
 import Avatar from 'components/Avatar/Avatar';
 import Button from 'components/Button/Button';
+import Slider from 'components/Slider/Slider';
 
 import * as S from './AvatarLoader.styles';
 
@@ -49,7 +50,7 @@ const AvatarLoader: React.FC<Props> = ({ name }: Props) => {
     e.target.value = '';
   };
 
-  const handleSliderChange = (_e: React.ChangeEvent<HTMLInputElement>, value: number) => {
+  const handleSliderChange = (value: number) => {
     setZoomSize(value);
   };
 
@@ -113,14 +114,16 @@ const AvatarLoader: React.FC<Props> = ({ name }: Props) => {
                     rotate={0}
                   />
                   <S.Controls>
-                    <Slider
-                      min={1}
-                      max={10}
-                      step={0.1}
-                      value={zoomSize}
-                      onChange={handleSliderChange}
-                      style={{ width: 200 }}
-                    />
+                    <S.SliderWrapper>
+                      <Slider
+                        name="zoom-size"
+                        min={1}
+                        max={10}
+                        step={0.1}
+                        initialValue={zoomSize}
+                        onChange={handleSliderChange}
+                      />
+                    </S.SliderWrapper>
                     <Button isFilled isFlat onClick={handleSaveButtonClick}>
                       Сохранить
                     </Button>

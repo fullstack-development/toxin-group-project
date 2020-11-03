@@ -1,37 +1,39 @@
 import { useState } from 'react';
 import { Field } from 'react-final-form';
 
-import * as S from './RangeSlider.styles';
+import { formatNumber } from 'shared/helpers';
+
+import * as S from './Slider.styles';
 
 type Props = {
-  initialValue: number[];
+  initialValue: number | number[];
   name: string;
   max?: number;
   min?: number;
   step?: number;
   currency?: string;
   title?: string;
+  showValue?: boolean;
+  onChange?: (value: number) => void;
 };
 
-const RangeSlider: React.FC<Props> = ({
+const Slider: React.FC<Props> = ({
   initialValue,
   name,
   max = 16000,
   min = 0,
   step = 100,
-  currency = '₽',
   title,
+  showValue,
+  onChange,
 }: Props) => {
   const [value, setValue] = useState(initialValue);
 
-  const getValueWithSpaces = (currentValue: number): string => {
-    return currentValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' '); // TODO: использовать функцию для форматирования даты из helper'ов
-  };
-
   const getValuesRangeText = () => {
-    return `${getValueWithSpaces(value[0])}${currency} - ${getValueWithSpaces(
-      value[1],
-    )}${currency}`;
+    if (Array.isArray(value)) {
+      return `${formatNumber(value[0])} - ${formatNumber(value[1])}`;
+    }
+    return `${formatNumber(value)}`;
   };
 
   return (
@@ -40,23 +42,28 @@ const RangeSlider: React.FC<Props> = ({
       render={({ input }) => {
         const handleChange = (_, currentValue) => {
           setValue(currentValue);
+          onChange && onChange(currentValue);
         };
 
         const handlePointerUp = () => {
-          const result = {
-            from: value[0],
-            to: value[1],
-          };
-          input.onChange(result);
+          if (Array.isArray(value)) {
+            const result = {
+              from: value[0],
+              to: value[1],
+            };
+            input.onChange(result);
+          } else {
+            input.onChange(value);
+          }
         };
 
         return (
           <>
             <S.Description title={title}>
               {title && <S.Title>{title}</S.Title>}
-              <S.Value>{getValuesRangeText()}</S.Value>
+              {showValue && <S.Value>{getValuesRangeText()}</S.Value>}
             </S.Description>
-            <S.RangeSlider
+            <S.Slider
               aria-labelledby={name}
               max={max}
               min={min}
@@ -72,4 +79,4 @@ const RangeSlider: React.FC<Props> = ({
   );
 };
 
-export default RangeSlider;
+export default Slider;
