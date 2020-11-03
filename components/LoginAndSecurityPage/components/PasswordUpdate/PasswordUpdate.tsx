@@ -12,12 +12,14 @@ import { passwordValidator } from 'shared/helpers/validators/passwordValidator';
 
 type StateProps = {
   user: User;
+  isPending: boolean;
   isCompleted: boolean;
   statusText: string;
 };
 
 const mapState = (state: AppState): StateProps => ({
   user: state.auth.user,
+  isPending: state.profile.isPasswordUpdatePending,
   isCompleted: state.profile.isPasswordUpdateCompleted,
   statusText: state.profile.passwordUpdateStatusText,
 });
@@ -37,6 +39,7 @@ type FormData = {
 
 const PasswordUpdate = ({
   user,
+  isPending,
   isCompleted,
   statusText,
   startPasswordUpdate,
@@ -84,7 +87,7 @@ const PasswordUpdate = ({
               type="password"
               render={({ input }) => <Input {...input} label="Подтвердите пароль" />}
             />
-            <Button isFlat isFilled>
+            <Button disabled={isPending} isFlat isFilled>
               Обновить пароль
             </Button>
           </form>

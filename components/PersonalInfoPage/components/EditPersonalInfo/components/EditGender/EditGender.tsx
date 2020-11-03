@@ -15,11 +15,13 @@ import { AppState } from 'redux/store.types';
 import * as S from './EditGender.styles';
 
 type StateProps = {
+  isPending: boolean;
   isCompleted: boolean;
   statusText: string;
 };
 
 const mapState = (state: AppState): StateProps => ({
+  isPending: state.profile.isUpdateAdditionalUserDataPending,
   isCompleted: state.profile.isUpdateAdditionalUserDataCompleted,
   statusText: state.profile.updateAdditionalUserDataStatusText,
 });
@@ -43,6 +45,7 @@ type FormData = {
 const EditGender = ({
   user,
   gender,
+  isPending,
   isCompleted,
   statusText,
   startUpdateAdditionalUserData,
@@ -67,7 +70,7 @@ const EditGender = ({
               <RadioButton name="gender" value="Мужчина" label="Мужчина" />
               <RadioButton name="gender" value="Женщина" label="Женщина" />
             </S.Gender>
-            <Button isFlat isFilled>
+            <Button disabled={isPending} isFlat isFilled>
               Сохранить
             </Button>
           </form>

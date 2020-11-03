@@ -14,11 +14,13 @@ import { AppState } from 'redux/store.types';
 import { dateValidator, dateFormatMask } from 'shared/helpers/validators';
 
 type StateProps = {
+  isPending: boolean;
   isCompleted: boolean;
   statusText: string;
 };
 
 const mapState = (state: AppState): StateProps => ({
+  isPending: state.profile.isUpdateAdditionalUserDataPending,
   isCompleted: state.profile.isUpdateAdditionalUserDataCompleted,
   statusText: state.profile.updateAdditionalUserDataStatusText,
 });
@@ -42,6 +44,7 @@ type FormData = {
 const EditBirthday = ({
   user,
   birthday,
+  isPending,
   isCompleted,
   statusText,
   startUpdateAdditionalUserData,
@@ -74,7 +77,7 @@ const EditBirthday = ({
                 />
               )}
             />
-            <Button isFlat isFilled>
+            <Button disabled={isPending} isFlat isFilled>
               Сохранить
             </Button>
           </form>

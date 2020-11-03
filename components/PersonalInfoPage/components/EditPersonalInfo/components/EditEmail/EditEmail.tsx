@@ -11,11 +11,13 @@ import { AppState } from 'redux/store.types';
 import { emailValidator } from 'shared/helpers/validators';
 
 type StateProps = {
+  isPending: boolean;
   isCompleted: boolean;
   statusText: string;
 };
 
 const mapState = (state: AppState): StateProps => ({
+  isPending: state.profile.isEmailUpdatePending,
   isCompleted: state.profile.isEmailUpdateCompleted,
   statusText: state.profile.emailUpdateStatusText,
 });
@@ -35,6 +37,7 @@ type Props = OwnProps & StateProps & typeof mapDispatch;
 const EditEmail = ({
   user,
   email,
+  isPending,
   isCompleted,
   statusText,
   startEmailUpdate,
@@ -63,7 +66,7 @@ const EditEmail = ({
                 <Input {...input} placeholder="Email" validators={[emailValidator]} />
               )}
             />
-            <Button isFlat isFilled>
+            <Button disabled={isPending} isFlat isFilled>
               Сохранить
             </Button>
           </form>

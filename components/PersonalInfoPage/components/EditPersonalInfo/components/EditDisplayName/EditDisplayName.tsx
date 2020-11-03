@@ -10,11 +10,13 @@ import { usernameUpdate, usernameUpdateCompleted } from 'redux/Profile/redux/act
 import { AppState } from 'redux/store.types';
 
 type StateProps = {
+  isPending: boolean;
   isCompleted: boolean;
   statusText: string;
 };
 
 const mapState = (state: AppState): StateProps => ({
+  isPending: state.profile.isUsernameUpdatePending,
   isCompleted: state.profile.isUsernameUpdateCompleted,
   statusText: state.profile.usernameUpdateStatusText,
 });
@@ -39,6 +41,7 @@ type FormData = {
 const EditDisplayName = ({
   user,
   displayName,
+  isPending,
   isCompleted,
   statusText,
   startUsernameUpdate,
@@ -71,7 +74,7 @@ const EditDisplayName = ({
                 <Input {...input} label="Фамилия" placeholder="Фамилия" required />
               )}
             />
-            <Button isFlat isFilled>
+            <Button disabled={isPending} isFlat isFilled>
               Сохранить
             </Button>
           </form>

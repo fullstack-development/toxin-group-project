@@ -55,14 +55,18 @@ type UsernameUpdate = {
 };
 
 type ProfileState = {
+  isEmailUpdatePending: boolean;
   isEmailUpdateCompleted: boolean;
   emailUpdateStatusText: string;
   isGetAdditionalUserDataCompleted: boolean;
   additionalUserData: AdditionalUserInformation;
+  isPasswordUpdatePending: boolean;
   isPasswordUpdateCompleted: boolean;
   passwordUpdateStatusText: string;
+  isUpdateAdditionalUserDataPending: boolean;
   isUpdateAdditionalUserDataCompleted: boolean;
   updateAdditionalUserDataStatusText: string;
+  isUsernameUpdatePending: boolean;
   isUsernameUpdateCompleted: boolean;
   usernameUpdateStatusText: string;
 };

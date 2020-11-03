@@ -1,6 +1,6 @@
 import firebase from 'firebase';
 import { SagaIterator } from 'redux-saga';
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLeading } from 'redux-saga/effects';
 
 import api from 'api/api';
 
@@ -151,11 +151,11 @@ function* getAdditionalUserData({ payload: user }) {
 }
 
 function* rootSaga(): SagaIterator {
-  yield takeLatest<never>(EMAIL_UPDATE_PROCESS, emailUpdate);
-  yield takeLatest<never>(GET_ADDITIONAL_USER_DATA_PROCESS, getAdditionalUserData);
-  yield takeLatest<never>(PASSWORD_UPDATE_PROCESS, passwordUpdate);
-  yield takeLatest<never>(UPDATE_ADDITIONAL_USER_DATA_PROCESS, updateAdditionalUserData);
-  yield takeLatest<never>(USERNAME_UPDATE_PROCESS, usernameUpdate);
+  yield takeLeading<never>(EMAIL_UPDATE_PROCESS, emailUpdate);
+  yield takeLeading<never>(GET_ADDITIONAL_USER_DATA_PROCESS, getAdditionalUserData);
+  yield takeLeading<never>(PASSWORD_UPDATE_PROCESS, passwordUpdate);
+  yield takeLeading<never>(UPDATE_ADDITIONAL_USER_DATA_PROCESS, updateAdditionalUserData);
+  yield takeLeading<never>(USERNAME_UPDATE_PROCESS, usernameUpdate);
 }
 
 export { rootSaga };

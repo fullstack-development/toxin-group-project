@@ -14,11 +14,13 @@ import { AppState } from 'redux/store.types';
 import * as S from './Subscriptions.styles';
 
 type StateProps = {
+  isPending: boolean;
   isCompleted: boolean;
   statusText: string;
 };
 
 const mapState = (state: AppState): StateProps => ({
+  isPending: state.profile.isUpdateAdditionalUserDataPending,
   isCompleted: state.profile.isUpdateAdditionalUserDataCompleted,
   statusText: state.profile.updateAdditionalUserDataStatusText,
 });
@@ -42,6 +44,7 @@ type FormData = {
 const Subscriptions = ({
   user,
   receiveOffers,
+  isPending,
   isCompleted,
   statusText,
   startUpdateAdditionalUserData,
@@ -65,7 +68,7 @@ const Subscriptions = ({
                   <Toggle name="specialOffers" label="Получать спецпредложения" />
                 </S.Item>
               </S.List>
-              <Button isFlat isFilled>
+              <Button disabled={isPending} isFlat isFilled>
                 Сохранить
               </Button>
             </form>
