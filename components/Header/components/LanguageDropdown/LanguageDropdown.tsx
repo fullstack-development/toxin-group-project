@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import { useState, useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 
@@ -28,6 +29,7 @@ const LanguageDropdown: React.FC<Props> = ({
   currentLanguage,
   setNewLanguage,
 }: Props): JSX.Element => {
+  const router = useRouter();
   const [isShownMenu, setShownMenu] = useState(false);
 
   const openMenu = () => setShownMenu(true);
@@ -38,6 +40,7 @@ const LanguageDropdown: React.FC<Props> = ({
     const targetLanguage = targetElement.getAttribute('data-language');
 
     setNewLanguage(targetLanguage);
+    router.reload();
   };
 
   const dropdownLink = useRef(null);

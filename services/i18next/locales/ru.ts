@@ -1,30 +1,29 @@
 export const ru = {
-  AccountEntry: {
+  Shared: {
     Password: 'Пароль',
-    'Sign In': 'Войти',
-    'SignIn with account google': 'Входч ерез аккаунт google',
-    'No toxin account?': 'Нет аккаунта на Toxin?',
-    'Sign up': 'Создать',
-  },
-  RegistrationForm: {
-    'Sign up account': 'Регистрация аккаунта',
+    Register: 'Зарегистрироваться',
     Name: 'Имя',
     Surname: 'Фамилия',
     Male: 'Мужчина',
     Female: 'Женщина',
+    Entry: 'Войти',
+  },
+  AccountEntry: {
+    'SignIn with account google': 'Вход через аккаунт google',
+    'No toxin account?': 'Нет аккаунта на Toxin?',
+  },
+  RegistrationForm: {
+    'Sign up account': 'Регистрация аккаунта',
     'Date mask': 'ДД.ММ.ГГГГ',
     'Birthday date': 'Дата рождения',
     'Service login details': 'Данные для входа в сервис',
-    Password: 'Пароль',
     'Receive special offers': 'Получать спецпредложения',
     'Proceed to checkout': 'Перейти к оплате',
     'Already have an account on Toxin': 'Уже есть аккаунт на Toxin',
-    Entry: 'Войти',
   },
   Buttons: {
     'Sign In': 'Войти',
     'Sign up': 'Создать',
-    Register: 'Зарегистрироваться',
     Apply: 'Применить',
     Clear: 'Очистить',
     Next: 'Далее',
@@ -95,6 +94,7 @@ export const ru = {
     'Contact us': 'Связь с нами',
     'The best rooms for your work, relaxation and just inspiration':
       'Лучшие номера для вашей работы, отдыха и просто вдохновения',
+    'Loading numbers ...': 'Загружаем номера ...',
   },
   SearchRoomForm: {
     'We will find rooms according to your wishes': 'Найдём номера под ваши пожелания',
@@ -105,5 +105,9 @@ export const ru = {
   ForgotPasswordForm: {
     'Account recovery': 'Восстановление аккаунта',
     'Email address': 'Адрес электронной почты',
+  },
+  SearchRoomPage: {
+    'The numbers we have selected for you': 'Номера, которые мы для вас подобрали',
+    'No results were found for your request :(': 'К сожалению, мы не смогли ничего подобрать :(',
   },
 };

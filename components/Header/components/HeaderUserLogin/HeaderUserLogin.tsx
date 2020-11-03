@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import * as S from './HeaderUserLogin.styles';
 
 const HeaderUserLogin: React.FC = (): JSX.Element => {
-  const { t } = useTranslation('Buttons');
+  const { t } = useTranslation(['Buttons', 'Shared']);
 
   return (
     <S.HeaderUserLogin>
@@ -11,7 +11,7 @@ const HeaderUserLogin: React.FC = (): JSX.Element => {
         {t('Sign In')}
       </S.HeaderLoginButton>
       <S.HeaderLoginButton href="/registration" isFilled isFlat>
-        {t('Register')}
+        {t('Shared:Register')}
       </S.HeaderLoginButton>
     </S.HeaderUserLogin>
   );
