@@ -24,7 +24,7 @@ class Subscriptions {
   }
 
   @boundMethod
-  public update(email: string, data: SubscriptionData): void {
+  public async update(email: string, data: SubscriptionData): Promise<void> {
     this.actions.update(this.reference.doc(email), data);
   }
 

@@ -10,8 +10,8 @@ import {
 import { SubscriptionState, SubscriptionActions } from '../types';
 
 const initialState: SubscriptionState = {
-  isGetSubscriptionDataCompleted: false,
   subscriptionData: null,
+  isSubscriptionUpdatePending: false,
   isSubscriptionUpdateCompleted: false,
   subscriptionUpdateStatusText: '',
 };
@@ -24,42 +24,43 @@ const subscriptions = (
     case GET_SUBSCRIPTION_DATA_PROCESS:
       return {
         ...state,
-        isGetSubscriptionDataCompleted: false,
         subscriptionData: null,
       };
     case GET_SUBSCRIPTION_DATA_SUCCESS:
       return {
         ...state,
-        isGetSubscriptionDataCompleted: true,
         subscriptionData: action.payload,
       };
     case GET_SUBSCRIPTION_DATA_FAILED:
       return {
         ...state,
-        isGetSubscriptionDataCompleted: false,
         subscriptionData: action.payload,
       };
     case SUBSCRIPTION_UPDATE_PROCESS:
       return {
         ...state,
+        isSubscriptionUpdatePending: true,
         isSubscriptionUpdateCompleted: false,
         subscriptionUpdateStatusText: '',
       };
     case SUBSCRIPTION_UPDATE_SUCCESS:
       return {
         ...state,
+        isSubscriptionUpdatePending: false,
         isSubscriptionUpdateCompleted: true,
         subscriptionUpdateStatusText: action.payload,
       };
     case SUBSCRIPTION_UPDATE_FAILED:
       return {
         ...state,
+        isSubscriptionUpdatePending: false,
         isSubscriptionUpdateCompleted: true,
         subscriptionUpdateStatusText: action.payload,
       };
     case SUBSCRIPTION_UPDATE_COMPLETED:
       return {
         ...state,
+        isSubscriptionUpdatePending: false,
         isSubscriptionUpdateCompleted: false,
         subscriptionUpdateStatusText: '',
       };

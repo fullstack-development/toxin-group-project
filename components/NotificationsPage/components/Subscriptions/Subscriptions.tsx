@@ -1,15 +1,11 @@
 import { Form } from 'react-final-form';
 import { connect } from 'react-redux';
 
-import { User } from 'api/Firebase/modules/Authentication/types';
 import Button from 'components/Button/Button';
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
 import Toggle from 'components/Toggle/Toggle';
-import {
-  updateAdditionalUserData,
-  updateAdditionalUserDataCompleted,
-} from 'redux/Profile/redux/actions';
 import { AppState } from 'redux/store.types';
+import { subscriptionUpdate, subscriptionUpdateCompleted } from 'redux/Subscriptions/redux/actions';
 
 import * as S from './Subscriptions.styles';
 
@@ -20,19 +16,19 @@ type StateProps = {
 };
 
 const mapState = (state: AppState): StateProps => ({
-  isPending: state.profile.isUpdateAdditionalUserDataPending,
-  isCompleted: state.profile.isUpdateAdditionalUserDataCompleted,
-  statusText: state.profile.updateAdditionalUserDataStatusText,
+  isPending: state.subscriptions.isSubscriptionUpdatePending,
+  isCompleted: state.subscriptions.isSubscriptionUpdateCompleted,
+  statusText: state.subscriptions.subscriptionUpdateStatusText,
 });
 
 const mapDispatch = {
-  startUpdateAdditionalUserData: updateAdditionalUserData,
-  stopUpdateAdditionalUserData: updateAdditionalUserDataCompleted,
+  startSubscriptionUpdate: subscriptionUpdate,
+  stopSubscriptionUpdate: subscriptionUpdateCompleted,
 };
 
 type OwnProps = {
-  user: User;
-  receiveOffers: boolean;
+  email: string;
+  specialOffers: boolean;
 };
 
 type Props = OwnProps & StateProps & typeof mapDispatch;
@@ -42,23 +38,23 @@ type FormData = {
 };
 
 const Subscriptions = ({
-  user,
-  receiveOffers,
+  email,
+  specialOffers,
   isPending,
   isCompleted,
   statusText,
-  startUpdateAdditionalUserData,
-  stopUpdateAdditionalUserData,
+  startSubscriptionUpdate,
+  stopSubscriptionUpdate,
 }: Props): JSX.Element => {
-  const onSubmit = ({ specialOffers }: FormData) => {
-    startUpdateAdditionalUserData({ user, data: { receiveOffers: specialOffers } });
+  const onSubmit = ({ specialOffers: newValue }: FormData) => {
+    startSubscriptionUpdate({ email, subscriptions: { specialOffers: newValue } });
   };
 
   return (
     <S.Subscriptions>
       <S.Title>Новостные рассылки</S.Title>
       <Form
-        initialValues={{ specialOffers: receiveOffers }}
+        initialValues={{ specialOffers }}
         onSubmit={onSubmit}
         render={({ handleSubmit }) => (
           <>
@@ -75,7 +71,7 @@ const Subscriptions = ({
             {isCompleted && (
               <PopUpNotification
                 message={statusText}
-                onConfirmButtonClick={stopUpdateAdditionalUserData}
+                onConfirmButtonClick={stopSubscriptionUpdate}
               />
             )}
           </>

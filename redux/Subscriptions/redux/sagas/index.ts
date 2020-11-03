@@ -1,5 +1,5 @@
 import { SagaIterator } from 'redux-saga';
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLeading } from 'redux-saga/effects';
 
 import api from 'api/api';
 
@@ -12,9 +12,10 @@ import {
   GET_SUBSCRIPTION_DATA_PROCESS,
 } from '../../constants';
 
-function* getSubscriptionsData({ payload: { email } }) {
+function* getSubscriptionsData({ payload: email }) {
   try {
     const subscriptionData = yield call(api.subscriptions.load, email);
+
     yield put({
       type: GET_SUBSCRIPTION_DATA_SUCCESS,
       payload: subscriptionData,
@@ -48,8 +49,8 @@ function* subscriptionUpdate({ payload: { email, subscriptions } }) {
 }
 
 function* rootSaga(): SagaIterator {
-  yield takeLatest<never>(GET_SUBSCRIPTION_DATA_PROCESS, getSubscriptionsData);
-  yield takeLatest<never>(SUBSCRIPTION_UPDATE_PROCESS, subscriptionUpdate);
+  yield takeLeading<never>(GET_SUBSCRIPTION_DATA_PROCESS, getSubscriptionsData);
+  yield takeLeading<never>(SUBSCRIPTION_UPDATE_PROCESS, subscriptionUpdate);
 }
 
 export { rootSaga };

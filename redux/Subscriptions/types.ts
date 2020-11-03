@@ -25,8 +25,8 @@ type SubscriptionUpdate = {
 };
 
 type SubscriptionState = {
-  isGetSubscriptionDataCompleted: boolean;
   subscriptionData: null | SubscriptionData;
+  isSubscriptionUpdatePending: boolean;
   isSubscriptionUpdateCompleted: boolean;
   subscriptionUpdateStatusText: string;
 };
