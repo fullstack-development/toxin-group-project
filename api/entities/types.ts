@@ -81,10 +81,18 @@ export type AdditionalUserInformation = {
 
 export type BookingData = {
   apartmentId: number;
-  from: Date;
-  to: Date;
+  from: { seconds: number };
+  to: { seconds: number };
+  reservationBy?: string;
+};
+
+export type BookedRoom = {
+  room: Apartment;
+  bookedData: { from: string; to: string };
 };
 
 export type SubscriptionData = {
   specialOffers: boolean;
 };
+
+export type BookedRoomsHistory = Record<string, BookedRoom[]>;

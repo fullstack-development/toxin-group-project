@@ -30,8 +30,10 @@ export type AuthState = {
   isAuthSuccess: boolean;
   isAuthProcessNow: boolean;
   authStatusText: string;
+  user: null | User;
   displayName: null | string;
   wasFinishedAuthChecking: boolean;
+  userEmail: string;
   isPasswordResetCompleted: boolean;
   passwordResetStatusText: string;
 };

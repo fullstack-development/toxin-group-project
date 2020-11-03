@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Filters } from 'api/entities/types';
 import MainLayout from 'components/MainLayout/MainLayout';
 import Preloader from 'components/Preloader/Preloader';
+import { Props as RoomProps } from 'components/Room/Room.types';
 import RoomFilter from 'components/RoomFilter/RoomFilter';
 import Rooms from 'components/Rooms/Rooms';
 import defaultFilters from 'components/SearchRoomForm/defaultFilters';
@@ -13,13 +14,21 @@ import { AppState } from 'redux/store.types';
 import * as S from './SearchRoomPage.styles';
 import getPassedFilters from './utils/getPassedFilters';
 
-const mapState = (state: AppState) => state.booking;
+type StateProps = {
+  rooms: RoomProps[];
+  isPending: boolean;
+};
+
+const mapState = (state: AppState): StateProps => ({
+  rooms: state.booking.rooms,
+  isPending: state.booking.isPending,
+});
 
 const mapDispatch = {
   getRooms: requestRooms,
 };
 
-type Props = ReturnType<typeof mapState> & typeof mapDispatch;
+type Props = StateProps & typeof mapDispatch;
 
 const SearchRoomPage: React.FC<Props> = ({ rooms, getRooms, isPending }: Props) => {
   const router = useRouter();

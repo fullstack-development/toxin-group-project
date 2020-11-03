@@ -13,6 +13,13 @@ import {
 import { State, Props } from './AuthPage.types';
 import MainContent from './components/MainContent';
 
+type StateProps = {
+  isAuthSuccess: boolean;
+  isAuthProcessNow: boolean;
+  wasFinishedAuthChecking: boolean;
+  authStatusText: string;
+};
+
 const AuthPage: React.FC<Props> = ({
   isAuthSuccess,
   isAuthProcessNow,
@@ -48,7 +55,7 @@ const AuthPage: React.FC<Props> = ({
   );
 };
 
-const mapState = (state: State) => ({
+const mapState = (state: State): StateProps => ({
   isAuthSuccess: state.auth.isAuthSuccess,
   isAuthProcessNow: state.auth.isAuthProcessNow,
   authStatusText: state.auth.authStatusText,

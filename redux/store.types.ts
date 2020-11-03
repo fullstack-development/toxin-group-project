@@ -1,21 +1,29 @@
 import { SagaIterator } from 'redux-saga';
 
-import { AuthActions, AuthState } from './Auth/types';
+import { AuthState, AuthActions } from './Auth/types';
 import { BookingActions, BookingState } from './Booking/types';
+import { ProfileActions, ProfileState } from './Profile/types';
 import { RegistrationActions, RegistrationState } from './Registration/types';
 import { SubscriptionActions, SubscriptionState } from './Subscriptions/types';
 
-export type AvailableStates = AuthState | BookingState | RegistrationState | SubscriptionState;
+export type AvailableStates =
+  | AuthState
+  | BookingState
+  | ProfileState
+  | RegistrationState
+  | SubscriptionState;
 export type AvailableActions =
   | AuthActions
   | BookingActions
+  | ProfileActions
   | RegistrationActions
   | SubscriptionActions;
 
 export type AppState = {
   auth: AuthState;
-  registration: RegistrationState;
   booking: BookingState;
+  profile: ProfileState;
+  registration: RegistrationState;
   subscriptions: SubscriptionState;
 };
 
