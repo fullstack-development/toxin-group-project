@@ -38,14 +38,12 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
             </S.Avatar>
             <Field
               name="name"
-              render={({ input, meta }) => (
-                <S.InputWrapper {...input} {...meta} placeholder="Имя" required />
-              )}
+              render={({ input }) => <S.InputWrapper {...input} placeholder="Имя" required />}
             />
             <Field
               name="surname"
               render={({ input, meta }) => (
-                <S.InputWrapper {...input} {...meta} placeholder="Фамилия" required />
+                <S.InputWrapper {...input} placeholder="Фамилия" required />
               )}
             />
             <S.RadioButtonsWrapper>
@@ -71,10 +69,9 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
               <Field
                 name="email"
                 type="email"
-                render={({ input, meta }) => (
+                render={({ input }) => (
                   <S.InputWrapper
                     {...input}
-                    {...meta}
                     required
                     label="Данные для входа в сервис"
                     placeholder="Email"
@@ -85,9 +82,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
               <Field
                 name="password"
                 type="password"
-                render={({ input, meta }) => (
-                  <S.InputWrapper {...input} {...meta} required placeholder="Пароль" />
-                )}
+                render={({ input }) => <S.InputWrapper {...input} required placeholder="Пароль" />}
               />
             </S.AccountEntryWrapper>
             <S.SpecialOfferWrapper>
