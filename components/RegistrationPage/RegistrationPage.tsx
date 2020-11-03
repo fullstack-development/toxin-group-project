@@ -47,7 +47,7 @@ const RegistrationPage: React.FC<PropsConnected> = ({
 
   useEffect(() => {
     checkAuthBeforePageLoaded();
-    if (isAuthSuccess) router.push('/');
+    if (isAuthSuccess) router.back();
   });
 
   const isAuthRequired: boolean = wasFinishedAuthChecking && !isAuthSuccess;

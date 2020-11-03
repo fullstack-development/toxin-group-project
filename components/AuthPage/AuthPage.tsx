@@ -9,8 +9,8 @@ import {
   preloadAuthData,
   requestToAuthWithGoogle,
 } from 'redux/Auth/redux/actions';
+import { AppState } from 'redux/store.types';
 
-import { State, Props } from './AuthPage.types';
 import MainContent from './components/MainContent';
 
 type StateProps = {
@@ -19,6 +19,22 @@ type StateProps = {
   wasFinishedAuthChecking: boolean;
   authStatusText: string;
 };
+
+const mapState = (state: AppState): StateProps => ({
+  isAuthSuccess: state.auth.isAuthSuccess,
+  isAuthProcessNow: state.auth.isAuthProcessNow,
+  authStatusText: state.auth.authStatusText,
+  wasFinishedAuthChecking: state.auth.wasFinishedAuthChecking,
+});
+
+const mapDispatch = {
+  startAuthProcess: requestToAuth,
+  stopAuthProcess: breakAuthProcess,
+  checkAuthBeforePageLoaded: preloadAuthData,
+  startGoogleAuthProcess: requestToAuthWithGoogle,
+};
+
+type Props = StateProps & typeof mapDispatch;
 
 const AuthPage: React.FC<Props> = ({
   isAuthSuccess,
@@ -34,7 +50,7 @@ const AuthPage: React.FC<Props> = ({
 
   useEffect(() => {
     checkAuthBeforePageLoaded();
-    if (isAuthSuccess) router.push('/');
+    if (isAuthSuccess) router.back();
   });
 
   const isAuthRequired: boolean = wasFinishedAuthChecking && !isAuthSuccess;
@@ -53,20 +69,6 @@ const AuthPage: React.FC<Props> = ({
       </MainLayout>
     )
   );
-};
-
-const mapState = (state: State): StateProps => ({
-  isAuthSuccess: state.auth.isAuthSuccess,
-  isAuthProcessNow: state.auth.isAuthProcessNow,
-  authStatusText: state.auth.authStatusText,
-  wasFinishedAuthChecking: state.auth.wasFinishedAuthChecking,
-});
-
-const mapDispatch = {
-  startAuthProcess: requestToAuth,
-  stopAuthProcess: breakAuthProcess,
-  checkAuthBeforePageLoaded: preloadAuthData,
-  startGoogleAuthProcess: requestToAuthWithGoogle,
 };
 
 export default connect(mapState, mapDispatch)(AuthPage);
