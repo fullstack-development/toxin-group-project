@@ -12,13 +12,13 @@ import * as S from './PersonalInfo.styles';
 
 type StateProps = {
   user: User;
-  isCompleted: boolean;
+  isSuccess: boolean;
   additionalUserData: AdditionalUserInformation;
 };
 
 const mapState = (state: AppState): StateProps => ({
   user: state.auth.user,
-  isCompleted: state.profile.isGetAdditionalUserDataCompleted,
+  isSuccess: state.profile.isGetAdditionalUserDataSuccess,
   additionalUserData: state.profile.additionalUserData,
 });
 
@@ -30,7 +30,7 @@ type Props = StateProps & typeof mapDispatch;
 
 const PersonalInfo = ({
   user,
-  isCompleted,
+  isSuccess,
   additionalUserData,
   startGetAdditionalUserData,
 }: Props): JSX.Element => {
@@ -65,8 +65,8 @@ const PersonalInfo = ({
   }, [additionalUserData, user]);
 
   useEffect(() => {
-    if (isCompleted) setAdditionalUserData();
-  }, [setAdditionalUserData, isCompleted]);
+    if (isSuccess) setAdditionalUserData();
+  }, [setAdditionalUserData, isSuccess]);
 
   const accountData = data.map((elem) => {
     return { ...elem, value: userData[elem.component] };

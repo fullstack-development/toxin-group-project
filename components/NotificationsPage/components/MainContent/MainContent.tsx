@@ -12,13 +12,11 @@ import * as S from './MainContent.styles';
 
 type StateProps = {
   user: User;
-  isCompleted: boolean;
   additionalUserData: AdditionalUserInformation;
 };
 
 const mapState = (state: AppState): StateProps => ({
   user: state.auth.user,
-  isCompleted: state.profile.isGetAdditionalUserDataCompleted,
   additionalUserData: state.profile.additionalUserData,
 });
 
@@ -30,7 +28,6 @@ type Props = StateProps & typeof mapDispatch;
 
 const MainContent = ({
   user,
-  isCompleted,
   additionalUserData,
   startGetAdditionalUserData,
 }: Props): JSX.Element => {
@@ -49,12 +46,10 @@ const MainContent = ({
     <S.MainContent>
       <NavAccountSettings title="Уведомления" />
       <S.Title>Уведомления</S.Title>
-      {isCompleted && (
-        <Subscriptions
-          user={user}
-          receiveOffers={additionalUserData ? additionalUserData.receiveOffers : false}
-        />
-      )}
+      <Subscriptions
+        user={user}
+        receiveOffers={additionalUserData ? additionalUserData.receiveOffers : false}
+      />
     </S.MainContent>
   );
 };

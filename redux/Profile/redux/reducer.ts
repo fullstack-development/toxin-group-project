@@ -25,7 +25,7 @@ const initialState: ProfileState = {
   isEmailUpdatePending: false,
   isEmailUpdateCompleted: false,
   emailUpdateStatusText: '',
-  isGetAdditionalUserDataCompleted: false,
+  isGetAdditionalUserDataSuccess: false,
   additionalUserData: null,
   isPasswordUpdatePending: false,
   isPasswordUpdateCompleted: false,
@@ -71,19 +71,19 @@ const profile = (state: ProfileState = initialState, action: ProfileActions): Pr
     case GET_ADDITIONAL_USER_DATA_PROCESS:
       return {
         ...state,
-        isGetAdditionalUserDataCompleted: false,
+        isGetAdditionalUserDataSuccess: false,
         additionalUserData: null,
       };
     case GET_ADDITIONAL_USER_DATA_SUCCESS:
       return {
         ...state,
-        isGetAdditionalUserDataCompleted: true,
+        isGetAdditionalUserDataSuccess: true,
         additionalUserData: action.payload,
       };
     case GET_ADDITIONAL_USER_DATA_FAILED:
       return {
         ...state,
-        isGetAdditionalUserDataCompleted: false,
+        isGetAdditionalUserDataSuccess: false,
         additionalUserData: null,
       };
     case PASSWORD_UPDATE_PROCESS:

@@ -58,7 +58,7 @@ type ProfileState = {
   isEmailUpdatePending: boolean;
   isEmailUpdateCompleted: boolean;
   emailUpdateStatusText: string;
-  isGetAdditionalUserDataCompleted: boolean;
+  isGetAdditionalUserDataSuccess: boolean;
   additionalUserData: AdditionalUserInformation;
   isPasswordUpdatePending: boolean;
   isPasswordUpdateCompleted: boolean;
