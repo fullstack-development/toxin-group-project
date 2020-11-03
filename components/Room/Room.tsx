@@ -1,6 +1,6 @@
 import StarRating from 'components/StarRating/StarRating';
 import formatNumber from 'shared/helpers/formatNumber';
-import i18next from 'shared/lang';
+import i18next from 'services/i18next';
 
 import ImageGallery from './components/ImageGallery/ImageGallery';
 import * as S from './Room.styles';

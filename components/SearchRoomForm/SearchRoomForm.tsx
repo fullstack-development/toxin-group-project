@@ -19,7 +19,7 @@ const SearchRoomForm: React.FC<SearchRoomFormProps> = ({ onSubmit }: SearchRoomF
   const handleFormSubmit = (values) => {
     // console.log(values);
   };
-  const { t } = useTranslation('SearchRoomForm');
+  const { t } = useTranslation(['SearchRoomForm', 'RoomFilter']);
 
   return (
     <S.SearchRoomForm>
@@ -43,14 +43,14 @@ const SearchRoomForm: React.FC<SearchRoomFormProps> = ({ onSubmit }: SearchRoomF
               <TimePicker
                 type="double"
                 name="booked"
-                dateFromLabelText={t('arrival')}
-                dateToLabelText={t('departure')}
+                dateFromLabelText={t('Arrival')}
+                dateToLabelText={t('Departure')}
                 dateFrom={new Date(defaultBookingDates.from)}
                 dateTo={new Date(defaultBookingDates.to)}
               />
             </S.TimePickerWrapper>
             <S.DropdownWrapper>
-              <S.DropdownTitle>{t('Guests')}</S.DropdownTitle>
+              <S.DropdownTitle>{t('RoomFilter:Guests')}</S.DropdownTitle>
               <Dropdown
                 placeholder={t('How many guests')}
                 name="guests"

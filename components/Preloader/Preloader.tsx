@@ -1,6 +1,6 @@
 import ClipLoader from 'react-spinners/ClipLoader';
 
-import i18next from 'shared/lang';
+import i18next from 'services/i18next';
 
 import * as S from './Preloader.styles';
 

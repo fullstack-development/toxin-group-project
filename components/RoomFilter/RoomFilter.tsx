@@ -8,7 +8,7 @@ import {
   Amenities,
   Filters,
   Opportunities,
-} from 'api/entities/types';
+} from 'services/api/entities/types';
 import CheckboxesList from 'components/CheckboxesList/CheckboxesList';
 import {
   checkboxesListData,
@@ -53,7 +53,7 @@ const RoomFilter: React.FC<Props> = ({ initialFilters, loadRooms }: Props) => {
     loadRooms(values);
   };
 
-  const { t } = useTranslation('RoomFilter');
+  const { t } = useTranslation(['RoomFilter', 'Buttons']);
 
   useEffect(() => {
     loadRooms();
@@ -135,7 +135,7 @@ const RoomFilter: React.FC<Props> = ({ initialFilters, loadRooms }: Props) => {
                   />
                 </Expander>
               </S.CheckboxWrapper>
-              <S.SubmitButton isFilled>{t('Apply')}</S.SubmitButton>
+              <S.SubmitButton isFilled>{t('Buttons:Apply')}</S.SubmitButton>
             </form>
           </S.RoomFilter>
         );

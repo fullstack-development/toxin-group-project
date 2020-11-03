@@ -1,4 +1,4 @@
-import { BookedRoom } from 'api/entities/types';
+import { BookedRoom } from 'services/api/entities/types';
 import Room from 'components/Room/Room';
 
 import * as S from './RoomsList.style';

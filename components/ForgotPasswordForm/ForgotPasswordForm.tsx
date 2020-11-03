@@ -39,7 +39,7 @@ const ForgotPasswordForm = ({
   const onFormSubmit = ({ email }: FormData) => {
     startPasswordResetProcess(email);
   };
-  const { t } = useTranslation('ForgotPasswordForm');
+  const { t } = useTranslation(['ForgotPasswordForm', 'Buttons']);
 
   return (
     <S.ForgotPasswordForm>
@@ -62,7 +62,7 @@ const ForgotPasswordForm = ({
               )}
             />
             <S.NextButton isFlat isFilled>
-              {t('Next')}
+              {t('Buttons:Next')}
             </S.NextButton>
           </form>
         )}

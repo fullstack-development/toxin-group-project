@@ -36,7 +36,7 @@ const Calendar = ({
     enteredTo: null,
   });
   const htmlContainer = useRef(null);
-  const { t } = useTranslation('Calendar');
+  const { t } = useTranslation('Calendar, Buttons');
 
   useEffect(() => {
     const handleDocumentClick = (e: Event) => {
@@ -92,10 +92,10 @@ const Calendar = ({
       />
       <S.CalendarControls>
         <TextButton type="button" isSecondary onClick={clearSelectedDate}>
-          {t('Clear')}
+          {t('Buttons:Clear')}
         </TextButton>
         <TextButton type="button" onClick={handleApplyButtonClick}>
-          {t('Apply')}
+          {t('Buttons:Apply')}
         </TextButton>
       </S.CalendarControls>
     </S.CalendarContainer>

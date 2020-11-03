@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
-import { Filters } from 'api/entities/types';
+import { Filters } from 'services/api/entities/types';
 import MainLayout from 'components/MainLayout/MainLayout';
 import Preloader from 'components/Preloader/Preloader';
 import { Props as RoomProps } from 'components/Room/Room.types';

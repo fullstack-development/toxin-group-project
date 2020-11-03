@@ -1,5 +1,5 @@
 import defaultFilters from 'components/SearchRoomForm/defaultFilters';
-import i18next from 'shared/lang';
+import i18next from 'services/i18next';
 
 import { Item, Group } from './Dropdown.types';
 
@@ -29,7 +29,7 @@ export const guestsItems: Required<Item[]> = [
     title: i18next.t('Babies'),
     inputName: 'babies',
     initialValue: babies,
-    wordForms: ['a baby', 'baby', 'babies'],
+    wordForms: [i18next.t('A baby'), i18next.t('Baby'), i18next.t('Babies')],
   },
 ];
 

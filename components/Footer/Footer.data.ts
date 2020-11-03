@@ -1,4 +1,4 @@
-import i18next from 'shared/lang';
+import i18next from 'services/i18next';
 
 import { FooterProps } from './Footer.types';
 

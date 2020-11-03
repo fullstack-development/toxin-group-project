@@ -1,5 +1,5 @@
 import defaultFilters from 'components/SearchRoomForm/defaultFilters';
-import i18next from 'shared/lang';
+import i18next from 'services/i18next';
 
 import { Option } from './CheckboxesList.types';
 

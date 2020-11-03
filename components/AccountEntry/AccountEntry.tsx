@@ -2,7 +2,6 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import { Field, Form } from 'react-final-form';
 import { useTranslation } from 'react-i18next';
-import i18next from 'shared/lang';
 
 import ArrowButton from 'components/ArrowButton/ArrowButton';
 import Button from 'components/Button/Button';
@@ -40,11 +39,11 @@ const AccountEntry: React.FC<Props> = (props: Props): JSX.Element => {
     requestToAuth({ email, password });
   };
 
-  const { t } = useTranslation();
+  const { t } = useTranslation('AccountEntry, Buttons');
 
   return (
     <S.AccountEntry>
-      <S.Title>{t('Sign In')}</S.Title>
+      <S.Title>{t('AccountEntry:Sign In')}</S.Title>
       <Form
         onSubmit={handleFormSubmit}
         render={({ handleSubmit }) => (
@@ -61,20 +60,20 @@ const AccountEntry: React.FC<Props> = (props: Props): JSX.Element => {
                 name="password"
                 type="password"
                 render={({ input, meta }) => (
-                  <Input {...input} {...meta} placeholder={t('Password')} required />
+                  <Input {...input} {...meta} placeholder={t('AccountEntry:Password')} required />
                 )}
               />
             </S.FieldsWrapper>
-            <ArrowButton isFilled>{t('Sign In')}</ArrowButton>
+            <ArrowButton isFilled>{t('Buttons:Sign In')}</ArrowButton>
             <S.TwoCols>
               <S.CenteredButton type="button" onClick={requestToAuthWithGoogle}>
-                {t('SignIn with account google')}
+                {t('AccountEntry:SignIn with account google')}
                 <S.GoogleIcon icon="google" />
               </S.CenteredButton>
             </S.TwoCols>
             <S.TwoCols>
-              <span>{t('No toxin account?')}</span>
-              <Button href="/registration">{t('Sign up')}</Button>
+              <span>{t('AccountEntry:No toxin account?')}</span>
+              <Button href="/registration">{t('Buttons:Sign up')}</Button>
             </S.TwoCols>
           </form>
         )}

@@ -1,4 +1,4 @@
-import { User } from 'api/Firebase/modules/Authentication/types';
+import { User } from 'services/api/Firebase/modules/Authentication/types';
 
 import {
   AUTH_FAILED,

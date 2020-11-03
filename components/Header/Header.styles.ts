@@ -14,6 +14,7 @@ const MobileMenu = styled.div<MobileMenu>`
     return css`
       display: ${isShown ? 'flex' : 'none'};
       align-items: center;
+      justify-content: flex-end;
 
       @media ${breakpointUp('lg')} {
         display: flex;

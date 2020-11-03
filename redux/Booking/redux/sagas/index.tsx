@@ -1,8 +1,8 @@
 import { SagaIterator } from 'redux-saga';
 import { put, takeLatest, call, PutEffect } from 'redux-saga/effects';
 
-import Api from 'api/api';
-import { Apartment } from 'api/entities/types';
+import Api from 'services/api/api';
+import { Apartment } from 'services/api/entities/types';
 import { RoomsRequest } from 'redux/Booking/types';
 
 import {

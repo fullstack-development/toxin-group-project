@@ -4,6 +4,7 @@ import createSagaMiddleware, { SagaMiddleware } from 'redux-saga';
 
 import { reduxEntry as AuthReduxEntry } from './Auth';
 import { reduxEntry as BookingReduxEntry } from './Booking';
+import { reduxEntry as LanguageReduxEntry } from './Language';
 import { reduxEntry as RegistrationReduxEntry } from './Registration';
 import { SharedReduxEntries, AvailableReducers } from './store.types';
 
@@ -18,6 +19,7 @@ const sharedReduxEntries: SharedReduxEntries = [
   AuthReduxEntry,
   BookingReduxEntry,
   RegistrationReduxEntry,
+  LanguageReduxEntry,
 ];
 
 let preparedReducers: Record<string, AvailableReducers> = {};
