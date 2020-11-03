@@ -1,5 +1,5 @@
 import { SagaIterator } from 'redux-saga';
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLeading } from 'redux-saga/effects';
 
 import api from 'api/api';
 import { Apartment } from 'api/entities/types';
@@ -20,13 +20,13 @@ function* getRoomDetails({ payload: id }) {
   } catch (err) {
     yield put({
       type: GET_ROOM_DETAILS_FAILED,
-      payload: id,
+      payload: null,
     });
   }
 }
 
 function* rootSaga(): SagaIterator {
-  yield takeLatest<never>(GET_ROOM_DETAILS_PROCESS, getRoomDetails);
+  yield takeLeading<never>(GET_ROOM_DETAILS_PROCESS, getRoomDetails);
 }
 
 export { rootSaga };

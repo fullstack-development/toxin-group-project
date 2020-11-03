@@ -6,6 +6,7 @@ import {
 import { ApartmentState, ApartmentActions } from '../types';
 
 const initialState: ApartmentState = {
+  isGetRoomDetailsPending: false,
   roomDetails: null,
 };
 
@@ -17,16 +18,19 @@ const apartment = (
     case GET_ROOM_DETAILS_PROCESS:
       return {
         ...state,
+        isGetRoomDetailsPending: true,
         roomDetails: null,
       };
     case GET_ROOM_DETAILS_SUCCESS:
       return {
         ...state,
+        isGetRoomDetailsPending: false,
         roomDetails: actions.payload,
       };
     case GET_ROOM_DETAILS_FAILED:
       return {
         ...state,
+        isGetRoomDetailsPending: false,
         roomDetails: null,
       };
     default:

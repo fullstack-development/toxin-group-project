@@ -16,10 +16,12 @@ import { roomImagesPreview, benefitsData, rulesData } from './MainContent.data';
 import * as S from './MainContent.styles';
 
 type StateProps = {
+  isPending: boolean;
   roomDetails: Apartment;
 };
 
 const mapState = (state: AppState): StateProps => ({
+  isPending: state.apartment.isGetRoomDetailsPending,
   roomDetails: state.apartment.roomDetails,
 });
 
@@ -29,7 +31,7 @@ const mapDispatch = {
 
 type Props = StateProps & typeof mapDispatch;
 
-const MainContent = ({ roomDetails, startGetRoomDetails }: Props): JSX.Element => {
+const MainContent = ({ isPending, roomDetails, startGetRoomDetails }: Props): JSX.Element => {
   const router = useRouter();
   const roomNumber = router.asPath.split('=')[1];
 
@@ -46,6 +48,11 @@ const MainContent = ({ roomDetails, startGetRoomDetails }: Props): JSX.Element =
 
   return (
     <>
+      {isPending && (
+        <S.Loading>
+          <Preloader label="Загрузка информации о номере..." />
+        </S.Loading>
+      )}
       {roomDetails ? (
         <S.MainContent>
           <S.RoomImages>
@@ -59,15 +66,13 @@ const MainContent = ({ roomDetails, startGetRoomDetails }: Props): JSX.Element =
               <Benefits items={benefitsData} />
             </S.Benefits>
             <S.RoomImpressionWrapper>
-              {roomDetails && (
-                <RoomImpression
-                  title="Впечатления от номера"
-                  numberOfRatings={roomDetails.numberOfRatings}
-                />
-              )}
+              <RoomImpression
+                title="Впечатления от номера"
+                numberOfRatings={roomDetails.numberOfRatings}
+              />
             </S.RoomImpressionWrapper>
             <S.ReviewsWrapper>
-              {roomDetails && <Reviews reviews={roomDetails.reviews} />}
+              <Reviews reviews={roomDetails.reviews} />
             </S.ReviewsWrapper>
             <S.BulletList>
               <S.Title>Правила</S.Title>
@@ -81,22 +86,18 @@ const MainContent = ({ roomDetails, startGetRoomDetails }: Props): JSX.Element =
               </S.CancellationTermsText>
             </S.CancellationTerms>
             <S.OrderFormWrapper>
-              {roomDetails && (
-                <OrderForm
-                  overcrowdingPrice={roomDetails.overcrowdingPrice}
-                  breakfastPricePerGuest={roomDetails.breakfastPricePerGuest}
-                  roomNumber={roomDetails.id}
-                  roomType={roomDetails.class}
-                  roomPrice={roomDetails.price}
-                />
-              )}
+              <OrderForm
+                overcrowdingPrice={roomDetails.overcrowdingPrice}
+                breakfastPricePerGuest={roomDetails.breakfastPricePerGuest}
+                roomNumber={roomDetails.id}
+                roomType={roomDetails.class}
+                roomPrice={roomDetails.price}
+              />
             </S.OrderFormWrapper>
           </S.Details>
         </S.MainContent>
       ) : (
-        <S.PreloaderWrapper>
-          <Preloader label="Загрузка информации о номере..." />
-        </S.PreloaderWrapper>
+        !isPending && <S.Loading>Не удалось загрузить информацию о номере</S.Loading>
       )}
     </>
   );

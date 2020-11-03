@@ -147,8 +147,10 @@ const OrderFormWrapper = styled.div`
   }
 `;
 
-const PreloaderWrapper = styled.div`
-  margin: 20rem auto 15rem;
+const Loading = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 20rem 0 15rem;
 `;
 
 export {
@@ -163,5 +165,5 @@ export {
   CancellationTerms,
   CancellationTermsText,
   OrderFormWrapper,
-  PreloaderWrapper,
+  Loading,
 };

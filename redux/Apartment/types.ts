@@ -12,6 +12,7 @@ type Action<Z, T> = {
 };
 
 type ApartmentState = {
+  isGetRoomDetailsPending: boolean;
   roomDetails: Apartment | null;
 };
 
