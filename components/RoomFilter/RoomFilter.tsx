@@ -47,7 +47,7 @@ const getCheckboxProps = (
   }));
 };
 
-const RoomFilter: React.FC<Props> = ({ initialFilters, loadRooms }: Props) => {
+const RoomFilter: React.FC<Props> = ({ initialFilters, loadRooms, isPending = false }: Props) => {
   const handleFormSubmit = (values?: Filters) => {
     loadRooms(values);
   };
@@ -132,7 +132,9 @@ const RoomFilter: React.FC<Props> = ({ initialFilters, loadRooms }: Props) => {
                   />
                 </Expander>
               </S.CheckboxWrapper>
-              <S.SubmitButton isFilled>Применить</S.SubmitButton>
+              <S.SubmitButton disabled={isPending} isFilled>
+                Применить
+              </S.SubmitButton>
             </form>
           </S.RoomFilter>
         );
