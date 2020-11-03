@@ -9,13 +9,14 @@ const Login = (): JSX.Element => {
   const [isEdit, setEdit] = useState(false);
 
   const changeEdit = (value: boolean) => !value;
+  const handleEditButtonClick = () => setEdit(changeEdit(isEdit));
 
   return (
     <S.Login>
       <S.Title>Вход</S.Title>
       <S.Header>
         <S.Subtitle>Пароль</S.Subtitle>
-        <TextButton type="button" onClick={() => setEdit(changeEdit(isEdit))}>
+        <TextButton type="button" onClick={handleEditButtonClick}>
           {isEdit ? 'Отменить' : 'Изменить'}
         </TextButton>
       </S.Header>
