@@ -25,6 +25,10 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
   return (
     <>
       <Form
+        initialValues={{
+          receiveOffers: false,
+          gender: 'male',
+        }}
         onSubmit={handleRegistrationFormSubmit}
         render={({ handleSubmit }) => (
           <S.RegistrationForm onSubmit={handleSubmit}>
@@ -35,13 +39,13 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
             <Field
               name="name"
               render={({ input, meta }) => (
-                <S.InputWrapper {...input} {...meta} placeholder="Имя" />
+                <S.InputWrapper {...input} {...meta} placeholder="Имя" required />
               )}
             />
             <Field
               name="surname"
               render={({ input, meta }) => (
-                <S.InputWrapper {...input} {...meta} placeholder="Фамилия" />
+                <S.InputWrapper {...input} {...meta} placeholder="Фамилия" required />
               )}
             />
             <S.RadioButtonsWrapper>
@@ -59,6 +63,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
                   label="Дата рождения"
                   validators={[dateValidator]}
                   mask={dateFormatMask}
+                  required
                 />
               )}
             />
@@ -104,7 +109,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
           vertical: 'bottom',
           horizontal: 'left',
         }}
-        open={!isSuccess && isProcess}
+        open={!isSuccess && isProcess && Boolean(statusText)}
         autoHideDuration={3000}
         onClose={stopRegistration}
         message={statusText}
