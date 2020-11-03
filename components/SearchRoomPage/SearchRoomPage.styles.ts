@@ -61,7 +61,7 @@ const Select = styled.select`
         }
       }
     `;
-  }}/* border: 0; */
+  }}
 `;
 
 const FilterContainer = styled.div`

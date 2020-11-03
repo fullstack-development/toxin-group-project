@@ -78,8 +78,9 @@ const SearchRoomPage: React.FC<Props> = ({ rooms, getRooms, isPending }: Props) 
     sortData.find((obj) => obj.parameter === sortParam).sortFunction,
   );
 
-  const handleSelectChange = (e) => {
-    const [param, sortOrder] = e.target.value.split(separator);
+  const handleSelectChange = (e: React.FormEvent<HTMLSelectElement>) => {
+    const target = e.target as HTMLSelectElement;
+    const [param, sortOrder] = target.value.split(separator) as [SortParam, SortOrder];
     setSortParam(param);
     setIsAscendingSort(sortOrder === ascKey);
   };
