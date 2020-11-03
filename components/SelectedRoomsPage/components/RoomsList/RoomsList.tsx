@@ -1,5 +1,5 @@
-import { BookedRoom } from 'services/api/entities/types';
 import Room from 'components/Room/Room';
+import { BookedRoom } from 'services/api/entities/types';
 
 import * as S from './RoomsList.style';
 

@@ -5,8 +5,8 @@ import ArrowButton from 'components/ArrowButton/ArrowButton';
 import Dropdown from 'components/Dropdown/Dropdown';
 import { DropdownProps } from 'components/Dropdown/Dropdown.types';
 import TimePicker from 'components/TimePicker/TimePicker';
-import { formatNumber } from 'shared/helpers';
 import i18next from 'services/i18next';
+import { formatNumber } from 'shared/helpers';
 
 import PriceList from './components/PriceList/PriceList';
 import * as S from './OrderForm.styles';

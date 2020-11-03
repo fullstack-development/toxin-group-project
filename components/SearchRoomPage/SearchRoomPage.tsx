@@ -2,7 +2,6 @@ import { useRouter } from 'next/router';
 import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
-import { Filters } from 'services/api/entities/types';
 import MainLayout from 'components/MainLayout/MainLayout';
 import Preloader from 'components/Preloader/Preloader';
 import { Props as RoomProps } from 'components/Room/Room.types';
@@ -11,6 +10,7 @@ import Rooms from 'components/Rooms/Rooms';
 import defaultFilters from 'components/SearchRoomForm/defaultFilters';
 import { requestRooms } from 'redux/Booking/redux/actions';
 import { AppState } from 'redux/store.types';
+import { Filters } from 'services/api/entities/types';
 
 import * as S from './SearchRoomPage.styles';
 import getPassedFilters from './utils/getPassedFilters';

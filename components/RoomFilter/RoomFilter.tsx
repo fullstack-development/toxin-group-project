@@ -2,13 +2,6 @@ import { useEffect } from 'react';
 import { Form } from 'react-final-form';
 import { useTranslation } from 'react-i18next';
 
-import {
-  Accessibility,
-  AdditionalAmenities,
-  Amenities,
-  Filters,
-  Opportunities,
-} from 'services/api/entities/types';
 import CheckboxesList from 'components/CheckboxesList/CheckboxesList';
 import {
   checkboxesListData,
@@ -22,6 +15,13 @@ import { Item } from 'components/Dropdown/Dropdown.types';
 import Expander from 'components/Expander/Expander';
 import RangeSlider from 'components/RangeSlider/RangeSlider';
 import TimePicker from 'components/TimePicker/TimePicker';
+import {
+  Accessibility,
+  AdditionalAmenities,
+  Amenities,
+  Filters,
+  Opportunities,
+} from 'services/api/entities/types';
 
 import * as S from './RoomFilter.styles';
 import { OptionName, Props } from './RoomFilter.types';
