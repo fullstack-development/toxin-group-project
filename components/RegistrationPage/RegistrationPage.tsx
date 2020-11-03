@@ -47,7 +47,9 @@ const RegistrationPage: React.FC<PropsConnected> = ({
 
   useEffect(() => {
     checkAuthBeforePageLoaded();
-    if (isAuthSuccess) router.back();
+    if (isAuthSuccess) {
+      document.referrer ? router.back() : router.push('/');
+    }
   });
 
   const isAuthRequired: boolean = wasFinishedAuthChecking && !isAuthSuccess;

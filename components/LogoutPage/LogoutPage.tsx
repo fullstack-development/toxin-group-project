@@ -32,7 +32,7 @@ const LogoutPage: React.FC<Props> = ({
 
     if (typeof isAuthSuccess === 'boolean') {
       if (isAuthSuccess) startLogoutProcess();
-      else router.back();
+      else document.referrer ? router.back() : router.push('/');
     }
   });
 
