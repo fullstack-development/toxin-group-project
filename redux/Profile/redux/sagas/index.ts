@@ -25,8 +25,15 @@ import {
   USERNAME_UPDATE_SUCCESS,
   USERNAME_UPDATE_FAILED,
 } from '../../constants';
+import {
+  EmailUpdateRequest,
+  PasswordUpdateRequest,
+  UpdateAdditionalUserDataRequest,
+  UsernameUpdateRequest,
+  GetAdditionalUserDataRequest,
+} from '../../types';
 
-function* emailUpdate({ payload }) {
+function* emailUpdate({ payload }: EmailUpdateRequest) {
   try {
     const { user, email } = payload;
 
@@ -44,7 +51,9 @@ function* emailUpdate({ payload }) {
   }
 }
 
-function* passwordUpdate({ payload: { user, currentPassword, newPassword, confirmPassword } }) {
+function* passwordUpdate({
+  payload: { user, currentPassword, newPassword, confirmPassword },
+}: PasswordUpdateRequest) {
   try {
     if (newPassword !== confirmPassword) throw new Error('Пароли не совпадают');
 
@@ -74,7 +83,7 @@ function* passwordUpdate({ payload: { user, currentPassword, newPassword, confir
   }
 }
 
-function* updateAdditionalUserData({ payload: { user, data } }) {
+function* updateAdditionalUserData({ payload: { user, data } }: UpdateAdditionalUserDataRequest) {
   try {
     const isDocument = yield call(api.auth.getAdditionalUserInformation, user.uid);
     if (isDocument) {
@@ -94,7 +103,7 @@ function* updateAdditionalUserData({ payload: { user, data } }) {
   }
 }
 
-function* usernameUpdate({ payload }) {
+function* usernameUpdate({ payload }: UsernameUpdateRequest) {
   try {
     const { user, displayName } = payload;
 
@@ -112,7 +121,7 @@ function* usernameUpdate({ payload }) {
   }
 }
 
-function* getAdditionalUserData({ payload: user }) {
+function* getAdditionalUserData({ payload: user }: GetAdditionalUserDataRequest) {
   try {
     const additionalUserData = yield call(api.auth.getAdditionalUserInformation, user.uid);
     yield put({
@@ -128,11 +137,11 @@ function* getAdditionalUserData({ payload: user }) {
 }
 
 function* rootSaga(): SagaIterator {
-  yield takeLeading<never>(EMAIL_UPDATE_PROCESS, emailUpdate);
-  yield takeLeading<never>(GET_ADDITIONAL_USER_DATA_PROCESS, getAdditionalUserData);
-  yield takeLeading<never>(PASSWORD_UPDATE_PROCESS, passwordUpdate);
-  yield takeLeading<never>(UPDATE_ADDITIONAL_USER_DATA_PROCESS, updateAdditionalUserData);
-  yield takeLeading<never>(USERNAME_UPDATE_PROCESS, usernameUpdate);
+  yield takeLeading(EMAIL_UPDATE_PROCESS, emailUpdate);
+  yield takeLeading(GET_ADDITIONAL_USER_DATA_PROCESS, getAdditionalUserData);
+  yield takeLeading(PASSWORD_UPDATE_PROCESS, passwordUpdate);
+  yield takeLeading(UPDATE_ADDITIONAL_USER_DATA_PROCESS, updateAdditionalUserData);
+  yield takeLeading(USERNAME_UPDATE_PROCESS, usernameUpdate);
 }
 
 export { rootSaga };

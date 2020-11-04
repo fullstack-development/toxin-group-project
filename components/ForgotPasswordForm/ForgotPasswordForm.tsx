@@ -2,7 +2,7 @@ import { Form, Field } from 'react-final-form';
 import { connect } from 'react-redux';
 
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
-import { passwordResetCompleted, passwordResetRequest } from 'redux/Auth/redux/actions';
+import { passwordReset, passwordResetCompleted } from 'redux/Auth/redux/actions';
 import { AppState } from 'redux/store.types';
 import { emailValidator } from 'shared/helpers/validators/emailValidator';
 
@@ -19,8 +19,8 @@ const mapState = (state: AppState): StateProps => ({
 });
 
 const mapDispatch = {
-  startPasswordResetProcess: passwordResetRequest,
-  stopPasswordResetProcess: passwordResetCompleted,
+  startPasswordReset: passwordReset,
+  stopPasswordReset: passwordResetCompleted,
 };
 
 type FormData = {
@@ -32,11 +32,11 @@ type Props = StateProps & typeof mapDispatch;
 const ForgotPasswordForm = ({
   isCompleted,
   statusText,
-  startPasswordResetProcess,
-  stopPasswordResetProcess,
+  startPasswordReset,
+  stopPasswordReset,
 }: Props): JSX.Element => {
   const onFormSubmit = ({ email }: FormData) => {
-    startPasswordResetProcess(email);
+    startPasswordReset(email);
   };
 
   return (
@@ -65,7 +65,7 @@ const ForgotPasswordForm = ({
         )}
       />
       {isCompleted && (
-        <PopUpNotification message={statusText} onConfirmButtonClick={stopPasswordResetProcess} />
+        <PopUpNotification message={statusText} onConfirmButtonClick={stopPasswordReset} />
       )}
     </S.ForgotPasswordForm>
   );
