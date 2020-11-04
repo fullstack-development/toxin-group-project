@@ -16,7 +16,7 @@ type ApartmentState = {
   roomDetails: Apartment | null;
 };
 
-type GetRoomDetailsRequest = Action<typeof GET_ROOM_DETAILS_PROCESS, number | string>;
+type GetRoomDetailsRequest = Action<typeof GET_ROOM_DETAILS_PROCESS, number>;
 type GetRoomDetailsSuccess = Action<typeof GET_ROOM_DETAILS_SUCCESS, Apartment>;
 type GetRoomDetailsFailed = Action<typeof GET_ROOM_DETAILS_FAILED, null>;
 

@@ -9,8 +9,9 @@ import {
   GET_ROOM_DETAILS_SUCCESS,
   GET_ROOM_DETAILS_FAILED,
 } from '../../constants';
+import { GetRoomDetailsRequest } from '../../types';
 
-function* getRoomDetails({ payload: id }) {
+function* getRoomDetails({ payload: id }: GetRoomDetailsRequest) {
   try {
     const roomDetails: Apartment = yield call(api.apartments.load, id);
     yield put({
@@ -26,7 +27,7 @@ function* getRoomDetails({ payload: id }) {
 }
 
 function* rootSaga(): SagaIterator {
-  yield takeLeading<never>(GET_ROOM_DETAILS_PROCESS, getRoomDetails);
+  yield takeLeading(GET_ROOM_DETAILS_PROCESS, getRoomDetails);
 }
 
 export { rootSaga };
