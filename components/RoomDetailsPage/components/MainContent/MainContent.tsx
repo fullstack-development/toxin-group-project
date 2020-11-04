@@ -33,10 +33,10 @@ type Props = StateProps & typeof mapDispatch;
 
 const MainContent = ({ isPending, roomDetails, startGetRoomDetails }: Props): JSX.Element => {
   const router = useRouter();
-  const roomNumber = router.asPath.split('=')[1];
+  const roomNumber = Number(router.asPath.split('=')[1]);
 
   const getRoomDetails = useCallback(
-    (id) => {
+    (id: number) => {
       startGetRoomDetails(id);
     },
     [startGetRoomDetails],
