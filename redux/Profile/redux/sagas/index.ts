@@ -3,6 +3,10 @@ import { SagaIterator } from 'redux-saga';
 import { call, put, takeLeading } from 'redux-saga/effects';
 
 import api from 'api/api';
+import {
+  getEmailUpdateErrorMessage,
+  getPasswordUpdateErrorMessage,
+} from 'shared/helpers/errorMessages';
 
 import {
   EMAIL_UPDATE_PROCESS,
@@ -22,19 +26,6 @@ import {
   USERNAME_UPDATE_FAILED,
 } from '../../constants';
 
-const getEmailUpdateErrorMessage = ({ code }) => {
-  switch (code) {
-    case 'auth/invalid-email':
-      return 'Указан недействительный адрес электронной почты';
-    case 'auth/email-already-in-use':
-      return 'Указанный адрес электронной почты уже используется';
-    case 'auth/requires-recent-login':
-      return 'Для изменения адреса электронной почты пройдите повторную аутентификацию';
-    default:
-      return 'Произошла ошибка повторите попытку позже';
-  }
-};
-
 function* emailUpdate({ payload }) {
   try {
     const { user, email } = payload;
@@ -52,20 +43,6 @@ function* emailUpdate({ payload }) {
     });
   }
 }
-
-const getPasswordUpdateErrorMessage = ({ code, message }) => {
-  switch (code) {
-    case 'auth/wrong-password':
-      return 'Неверный пароль';
-    case 'auth/user-mismatch':
-      return 'Полученные учетные данные не соответствуют текущему пользователю';
-    case 'passwords-do-not-match':
-      return 'Пароли не совпадают';
-    default:
-      if (message === 'Пароли не совпадают') return message;
-      return 'Произошла ошибка';
-  }
-};
 
 function* passwordUpdate({ payload: { user, currentPassword, newPassword, confirmPassword } }) {
   try {
