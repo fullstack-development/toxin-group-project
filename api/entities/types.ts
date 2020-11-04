@@ -75,9 +75,9 @@ export type ProfileData = {
 } & AdditionalUserInformation;
 
 export type AdditionalUserInformation = {
-  birthDate: string;
-  gender: 'female' | 'male';
-  receiveOffers: boolean;
+  birthDate?: string;
+  gender?: 'female' | 'male';
+  receiveOffers?: boolean;
 };
 
 export type BookingData = {

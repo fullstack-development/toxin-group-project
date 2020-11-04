@@ -44,7 +44,7 @@ type UpdateAdditionalUserData = {
   user: User;
   data: {
     birthDate?: string;
-    gender?: string;
+    gender?: 'female' | 'male';
     receiveOffers?: boolean;
   };
 };
