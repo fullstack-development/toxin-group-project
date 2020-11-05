@@ -14,7 +14,7 @@ type Props = {
   currency?: string;
   title?: string;
   showValue?: boolean;
-  onChange?: (value: number) => void;
+  onChange?: (value: number | number[]) => void;
 };
 
 const Slider: React.FC<Props> = ({
@@ -31,7 +31,8 @@ const Slider: React.FC<Props> = ({
 
   const getValuesRangeText = () => {
     if (Array.isArray(value)) {
-      return `${formatNumber(value[0])} - ${formatNumber(value[1])}`;
+      const [from, to] = value;
+      return `${formatNumber(from)} - ${formatNumber(to)}`;
     }
     return `${formatNumber(value)}`;
   };
@@ -40,18 +41,18 @@ const Slider: React.FC<Props> = ({
     <Field
       name={name}
       render={({ input }) => {
-        const handleChange = (_, currentValue) => {
+        const handleChange = (
+          _: React.ChangeEvent<HTMLInputElement>,
+          currentValue: number | number[],
+        ) => {
           setValue(currentValue);
           onChange && onChange(currentValue);
         };
 
         const handlePointerUp = () => {
           if (Array.isArray(value)) {
-            const result = {
-              from: value[0],
-              to: value[1],
-            };
-            input.onChange(result);
+            const [from, to] = value;
+            input.onChange({ from, to });
           } else {
             input.onChange(value);
           }
