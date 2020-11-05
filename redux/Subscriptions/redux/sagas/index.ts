@@ -11,8 +11,9 @@ import {
   GET_SUBSCRIPTION_DATA_FAILED,
   GET_SUBSCRIPTION_DATA_PROCESS,
 } from '../../constants';
+import { GetSubscriptionDataRequest, SubscriptionUpdateRequest } from '../../types';
 
-function* getSubscriptionsData({ payload: email }) {
+function* getSubscriptionsData({ payload: email }: GetSubscriptionDataRequest) {
   try {
     const subscriptionData = yield call(api.subscriptions.load, email);
 
@@ -28,7 +29,7 @@ function* getSubscriptionsData({ payload: email }) {
   }
 }
 
-function* subscriptionUpdate({ payload: { email, subscriptions } }) {
+function* subscriptionUpdate({ payload: { email, subscriptions } }: SubscriptionUpdateRequest) {
   try {
     const isDocument = yield call(api.subscriptions.load, email);
     if (isDocument) {
@@ -49,8 +50,8 @@ function* subscriptionUpdate({ payload: { email, subscriptions } }) {
 }
 
 function* rootSaga(): SagaIterator {
-  yield takeLeading<never>(GET_SUBSCRIPTION_DATA_PROCESS, getSubscriptionsData);
-  yield takeLeading<never>(SUBSCRIPTION_UPDATE_PROCESS, subscriptionUpdate);
+  yield takeLeading(GET_SUBSCRIPTION_DATA_PROCESS, getSubscriptionsData);
+  yield takeLeading(SUBSCRIPTION_UPDATE_PROCESS, subscriptionUpdate);
 }
 
 export { rootSaga };
