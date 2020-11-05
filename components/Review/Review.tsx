@@ -1,3 +1,5 @@
+import { makeStyles } from '@material-ui/core/styles';
+
 import { Timestamp } from 'api/Firebase/modules/Database/types';
 import Avatar from 'components/Avatar/Avatar';
 import LikeButton from 'components/LikeButton/LikeButton';
@@ -16,10 +18,15 @@ type Props = {
 const Review = ({ avatarUrl, userName, date, text, likesCount }: Props): JSX.Element => {
   const correctDate = date instanceof Date ? date : date.toDate();
 
+  const useStyles = makeStyles(() => ({
+    avatarReviews: { width: '3.42857rem', height: '3.42857rem' },
+  }));
+  const classes = useStyles();
+
   return (
     <S.Review>
       <S.Header>
-        <Avatar photoURL={`${avatarUrl}`} width="3.42857rem" height="3.42857rem" />
+        <Avatar photoURL={`${avatarUrl}`} className={classes.avatarReviews} />
         <S.AuthorWrapper>
           <S.User>{userName}</S.User>
           <S.Date dateTime={correctDate.toISOString()}>{getReviewDate(correctDate)}</S.Date>
