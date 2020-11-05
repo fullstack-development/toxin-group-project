@@ -39,11 +39,11 @@ const AccountEntry: React.FC<Props> = (props: Props): JSX.Element => {
     requestToAuth({ email, password });
   };
 
-  const { t } = useTranslation('AccountEntry, Buttons');
+  const { t } = useTranslation(['AccountEntry', 'Buttons']);
 
   return (
     <S.AccountEntry>
-      <S.Title>{t('AccountEntry:Sign In')}</S.Title>
+      <S.Title>{t('Buttons:Sign In')}</S.Title>
       <Form
         onSubmit={handleFormSubmit}
         render={({ handleSubmit }) => (
@@ -72,7 +72,7 @@ const AccountEntry: React.FC<Props> = (props: Props): JSX.Element => {
               </S.CenteredButton>
             </S.TwoCols>
             <S.TwoCols>
-              <span>{t('AccountEntry:No toxin account?')}</span>
+              <span>{t('AccountEntry:No Toxin account?')}</span>
               <Button href="/registration">{t('Buttons:Sign up')}</Button>
             </S.TwoCols>
           </form>

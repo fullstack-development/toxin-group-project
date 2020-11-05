@@ -10,7 +10,7 @@ type Props = {
 };
 
 const Preloader: React.ComponentType<WithTranslation & Props> = ({
-  label = 'Loading numbers ...',
+  label = 'Loading rooms ...',
   t,
 }: Props) => (
   <S.Container>

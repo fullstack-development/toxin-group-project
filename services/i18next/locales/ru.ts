@@ -10,7 +10,7 @@ export const ru = {
   },
   AccountEntry: {
     'SignIn with account google': 'Вход через аккаунт google',
-    'No toxin account?': 'Нет аккаунта на Toxin?',
+    'No Toxin account?': 'Нет аккаунта на Toxin?',
   },
   RegistrationForm: {
     'Sign up account': 'Регистрация аккаунта',
@@ -38,7 +38,7 @@ export const ru = {
     Availability: 'Доступность',
     'Room amenities': 'Удобства номера',
     'Additional amenities': 'Дополнительные удобства',
-    'Loading numbers ...': 'Загружаем номера ...',
+    'Loading rooms ...': 'Загружаем номера ...',
   },
   CheckboxesList: {
     'Smoking is allowed': 'Можно курить',
@@ -78,6 +78,7 @@ export const ru = {
     Review: 'отзыв',
     Reviews: 'отзывов',
     ReviewsSecondary: 'отзыва',
+    'Per day': 'в сутки',
   },
   Footer: {
     Subscription: 'Подписка',
@@ -141,5 +142,11 @@ export const ru = {
     Fri: 'Пт',
     Sat: 'Сб',
     Sun: 'Вс',
+  },
+  AvatarLoader: {
+    'Select display area': 'Выберите область отображения',
+    'The selected thumbnail will be used in the comments you leave.':
+      'Выбранная миниатюра будет использоваться в оставленных вами комментариях.',
+    'Failed to set avatar': 'Не удалось установить аватар',
   },
 };

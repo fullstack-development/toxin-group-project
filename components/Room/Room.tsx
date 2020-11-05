@@ -33,18 +33,18 @@ const Room: React.ComponentType<WithTranslation & Props> = ({
         </S.RoomNumber>
         <S.Price>
           {formatNumber(price, currency)}
-          <S.Measure>{t(measure)}</S.Measure>
+          <S.Measure>{t(`WordForms:${measure}`)}</S.Measure>
         </S.Price>
       </S.Container>
       <S.RatingContainer>
         <StarRating rating={rating} />
         <S.Reviews>
           <S.ReviewCount>{reviews.length}</S.ReviewCount>
-          <S.ReviewMeasure>{t(reviewMeasure)}</S.ReviewMeasure>
+          <S.ReviewMeasure>{t(`WordForms:${reviewMeasure}`)}</S.ReviewMeasure>
         </S.Reviews>
       </S.RatingContainer>
     </S.Info>
   </S.Room>
 );
 
-export default withTranslation()(Room);
+export default withTranslation('WordForms')(Room);

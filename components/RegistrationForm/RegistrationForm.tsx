@@ -22,7 +22,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
   const handleRegistrationFormSubmit = (formData: FormData): void => {
     requestRegistration(formData);
   };
-  const { t } = useTranslation('RegistrationForm');
+  const { t } = useTranslation(['RegistrationForm', 'Shared']);
 
   return (
     <>
@@ -37,18 +37,18 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
             <Field
               name="name"
               render={({ input, meta }) => (
-                <S.InputWrapper {...input} {...meta} placeholder={t('Name')} />
+                <S.InputWrapper {...input} {...meta} placeholder={t('Shared:Name')} />
               )}
             />
             <Field
               name="surname"
               render={({ input, meta }) => (
-                <S.InputWrapper {...input} {...meta} placeholder={t('Surname')} />
+                <S.InputWrapper {...input} {...meta} placeholder={t('Shared:Surname')} />
               )}
             />
             <S.RadioButtonsWrapper>
-              <RadioButton value="male" name="gender" label={t('Male')} />
-              <RadioButton value="female" name="gender" label={t('Female')} />
+              <RadioButton value="male" name="gender" label={t('Shared:Male')} />
+              <RadioButton value="female" name="gender" label={t('Shared:Female')} />
             </S.RadioButtonsWrapper>
             <Field
               name="birthDate"
@@ -83,7 +83,12 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
                 name="password"
                 type="password"
                 render={({ input, meta }) => (
-                  <S.InputWrapper {...input} {...meta} required placeholder={t('Password')} />
+                  <S.InputWrapper
+                    {...input}
+                    {...meta}
+                    required
+                    placeholder={t('Shared:Password')}
+                  />
                 )}
               />
             </S.AccountEntryWrapper>
@@ -95,7 +100,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
             </S.RegisterButton>
             <S.AlreadyRegisterWrapper>
               <span>{t('Already have an account on Toxin')}</span>
-              <S.EntryButton href="/auth">{t('Entry')}</S.EntryButton>
+              <S.EntryButton href="/auth">{t('Shared:Entry')}</S.EntryButton>
             </S.AlreadyRegisterWrapper>
           </S.RegistrationForm>
         )}
