@@ -5,7 +5,6 @@ import ArrowButton from 'components/ArrowButton/ArrowButton';
 import Dropdown from 'components/Dropdown/Dropdown';
 import { DropdownProps } from 'components/Dropdown/Dropdown.types';
 import TimePicker from 'components/TimePicker/TimePicker';
-import i18next from 'services/i18next';
 import { formatNumber } from 'shared/helpers';
 
 import PriceList from './components/PriceList/PriceList';
@@ -49,32 +48,32 @@ const possibleExtraGuestsCount = 1;
 const noFeeGuestsCount = 1;
 
 const dropdownOptions: DropdownProps = {
-  placeholder: i18next.t('How many guests'),
+  placeholder: 'How many guests',
   name: 'guests',
   enableControls: true,
   groups: [
     {
       name: 'guests',
       max: defaultMaxGuests.adults + possibleExtraGuestsCount,
-      wordForms: [i18next.t('a guest'), i18next.t('guest'), i18next.t('guests')],
+      wordForms: ['a guest', 'guest', 'guests'],
     },
   ],
   items: [
     {
-      title: i18next.t('adults'),
+      title: 'adults',
       inputName: 'adults',
       groupName: 'guests',
     },
     {
-      title: i18next.t('childrens'),
+      title: 'childrens',
       inputName: 'children',
       groupName: 'guests',
     },
     {
-      title: i18next.t('babies'),
+      title: 'babies',
       inputName: 'babies',
       max: defaultMaxGuests.babies,
-      wordForms: [i18next.t('a baby'), i18next.t('baby'), i18next.t('babies')],
+      wordForms: ['a baby', 'baby', 'babies'],
     },
   ],
 };
@@ -96,7 +95,7 @@ const OrderForm: React.FC<Props> = ({
   overcrowdingPrice,
   breakfastPricePerGuest,
   currency = 'RUB',
-  measure = i18next.t('per day'),
+  measure = 'per day',
 }: Props) => {
   const { t } = useTranslation('OrderForm');
 

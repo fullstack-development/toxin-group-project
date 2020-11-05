@@ -6,10 +6,9 @@ import getNounInDeclension from 'shared/helpers/getNounInDeclension';
 import { reviews } from './Reviews.data';
 import * as S from './Reviews.style';
 
-const declensions = ['отзыв', 'отзыва', 'отзывов'];
-
 const Reviews = (): JSX.Element => {
   const { t } = useTranslation('Reviews');
+  const declensions = [t('Review'), t('ReviewsSecondary'), t('Reviews')];
 
   return (
     <S.Reviews>

@@ -41,7 +41,7 @@ const MainContent = (): JSX.Element => {
           <S.Title>{t('Cancel')}</S.Title>
           <S.CancellationTermsText>
             {t(
-              'Free cancellation within 48 hours. Thereafter, if canceled no later than 5 days in advance. before upon arrival, you will receive a full refund minus the service fee.',
+              'Thereafter you will get a full refund minus the service fee if the reservation is canceled 5 days or more prior to the arrival date',
             )}
           </S.CancellationTermsText>
         </S.CancellationTerms>

@@ -1,15 +1,17 @@
+import { withTranslation, WithTranslation } from 'react-i18next';
+
 import LogoImg from 'components/Logo/Logo';
 
 import { LogoProps } from '../../Footer.types';
 import * as S from './Logo.styles';
 
-const Logo: React.FC<LogoProps> = ({ description }: LogoProps) => (
+const Logo: React.ComponentType<WithTranslation & LogoProps> = ({ description, t }: LogoProps) => (
   <S.Container>
     <S.ImgContainer>
       <LogoImg />
     </S.ImgContainer>
-    <S.Description>{description}</S.Description>
+    <S.Description>{t(`Footer:${description}`)}</S.Description>
   </S.Container>
 );
 
-export default Logo;
+export default withTranslation()(Logo);

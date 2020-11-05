@@ -1,3 +1,5 @@
+import { TFunction } from 'i18next';
+
 import { Props as ReviewProps } from 'components/Comment/Comment.types';
 
 export type Props = {
@@ -11,4 +13,5 @@ export type Props = {
   measure?: string;
   currency?: string;
   rating?: number;
+  t: TFunction;
 };

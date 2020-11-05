@@ -25,7 +25,7 @@ const TimePicker = ({
 }: Props): JSX.Element => {
   const [isCalendarVisible, setCalendarVisibility] = useState(false);
   const [selectedDateRange, setSelectedDateRange] = useState({ from: dateFrom, to: dateTo });
-  const { t } = useTranslation('TimePicker');
+  const { t, i18n } = useTranslation('TimePicker');
 
   const { from, to } = selectedDateRange;
 
@@ -35,16 +35,18 @@ const TimePicker = ({
       month: 'short',
     };
 
-    const selectedDateFrom: string = from.toLocaleDateString('ru-RU', dateOptions).replace('.', '');
+    const selectedDateFrom: string = from
+      .toLocaleDateString(i18n.language, dateOptions)
+      .replace('.', '');
     let selectedDateTo: string;
 
     if (to) {
-      selectedDateTo = to.toLocaleDateString('ru-RU', dateOptions).replace('.', '');
+      selectedDateTo = to.toLocaleDateString(i18n.language, dateOptions).replace('.', '');
     }
 
     return type === 'single'
       ? `${`${selectedDateFrom}`} ${to ? `- ${selectedDateTo}` : ''}`
-      : from.toLocaleDateString('ru-RU');
+      : from.toLocaleDateString(i18n.language);
   };
 
   const getMaskedDate = (): string => (type === 'single' ? t('Select Date') : t('Date mask'));
@@ -83,7 +85,7 @@ const TimePicker = ({
               {type === 'double' && (
                 <S.ContainerElement onClick={openCalendar}>
                   <Input
-                    value={to ? to.toLocaleDateString('ru-RU') : getMaskedDate()}
+                    value={to ? to.toLocaleDateString(i18n.language) : getMaskedDate()}
                     label={dateToLabelText}
                     placeholder="date to"
                     readOnly

@@ -58,7 +58,7 @@ const SearchRoomPage: React.FC<Props> = ({ rooms, getRooms, isPending }: Props) 
           <RoomFilter initialFilters={filters} loadRooms={loadRooms} />
         </S.FilterContainer>
         <S.RoomsContainer>
-          <S.RoomsTitle>{t('The numbers we have selected for you')}</S.RoomsTitle>
+          <S.RoomsTitle>{t('The rooms we have selected for you')}</S.RoomsTitle>
           {rooms.length ? (
             <Rooms rooms={rooms} />
           ) : (

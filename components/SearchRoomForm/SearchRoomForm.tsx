@@ -64,7 +64,7 @@ const SearchRoomForm: React.FC<SearchRoomFormProps> = ({ onSubmit }: SearchRoomF
               isFilled
               type="button"
             >
-              {t('Choose number')}
+              {t('Search for a room')}
             </ArrowButton>
           </form>
         )}

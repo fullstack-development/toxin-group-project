@@ -3,10 +3,11 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import { initReactI18next } from 'react-i18next';
 
 import { FALLBACK_LANGUAGE } from './constants';
-import { ru } from './locales/index';
+import { ru, en } from './locales/index';
 
 const resources = {
   ru: { ...ru },
+  en: { ...en },
 };
 
 i18next
@@ -18,6 +19,11 @@ i18next
     keySeparator: false,
     interpolation: {
       escapeValue: false,
+    },
+    react: {
+      wait: false,
+      bindI18n: 'languageChanged',
+      bindI18nStore: '',
     },
   });
 

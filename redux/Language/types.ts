@@ -1,3 +1,5 @@
+import { Lang } from 'services/i18next/types';
+
 import { CHANGE_LANGUAGE_SUCCESS } from './constants';
 
 export type LanguageState = {
@@ -9,6 +11,6 @@ export type Action<Z, T> = {
   payload?: T;
 };
 
-export type ChangeLanguage = Action<typeof CHANGE_LANGUAGE_SUCCESS, string>;
+export type ChangeLanguage = Action<typeof CHANGE_LANGUAGE_SUCCESS, Lang>;
 
 export type LanguageActions = ChangeLanguage;

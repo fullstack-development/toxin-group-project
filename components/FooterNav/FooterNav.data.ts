@@ -1,65 +1,63 @@
-import i18next from 'services/i18next';
-
 import { NavProps } from './FooterNav.types';
 
 const data: Required<NavProps> = {
   items: [
     {
-      title: i18next.t('Navigation'),
+      title: 'Navigation',
       items: [
         {
           href: '/mock',
-          text: i18next.t('About us'),
+          text: 'About us',
         },
         {
           href: '/mock',
-          text: i18next.t('News'),
+          text: 'News',
         },
         {
           href: '/mock',
-          text: i18next.t('Support'),
+          text: 'Support',
         },
         {
           href: '/mock',
-          text: i18next.t('Services'),
+          text: 'Services',
         },
       ],
     },
     {
-      title: i18next.t('About us'),
+      title: 'About us',
       items: [
         {
           href: '/mock',
-          text: i18next.t('About service'),
+          text: 'About service',
         },
         {
           href: '/mock',
-          text: i18next.t('Our team'),
+          text: 'Our team',
         },
         {
           href: '/mock',
-          text: i18next.t('Vacancies'),
+          text: 'Vacancies',
         },
         {
           href: '/mock',
-          text: i18next.t('Investors'),
+          text: 'Investors',
         },
       ],
     },
     {
-      title: i18next.t('Support'),
+      title: 'Support',
       items: [
         {
           href: '/mock',
-          text: i18next.t('Agreements'),
+          text: 'Agreements',
         },
         {
           href: '/mock',
-          text: i18next.t('Communities'),
+          text: 'Communities',
         },
         {
           href: '/mock',
-          text: i18next.t('Contact us'),
+          text: 'Contact us',
         },
       ],
     },
