@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { connect } from 'react-redux';
 
 import { AdditionalUserInformation } from 'api/entities/types';
@@ -53,16 +53,24 @@ const PersonalInfo = ({
     if (user) getAdditionalUserData(user);
   }, [getAdditionalUserData, user, currentEditing]);
 
+  const mapGender = useMemo(
+    () => ({
+      female: 'Женщина',
+      male: 'Мужчина',
+    }),
+    [],
+  );
+
   const setAdditionalUserData = useCallback(() => {
     const { displayName, email } = user;
 
     setUserData({
       displayName,
       email,
-      gender: additionalUserData ? additionalUserData.gender : '',
+      gender: additionalUserData ? mapGender[additionalUserData.gender] : '',
       birthday: additionalUserData ? additionalUserData.birthDate : '',
     });
-  }, [additionalUserData, user]);
+  }, [additionalUserData, mapGender, user]);
 
   useEffect(() => {
     if (isSuccess) setAdditionalUserData();

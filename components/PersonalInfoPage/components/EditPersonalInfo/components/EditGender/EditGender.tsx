@@ -39,7 +39,7 @@ type OwnProps = {
 type Props = OwnProps & StateProps & typeof mapDispatch;
 
 type FormData = {
-  gender: string;
+  gender: 'female' | 'male';
 };
 
 const EditGender = ({
@@ -59,16 +59,21 @@ const EditGender = ({
     stopUpdateAdditionalUserData();
   }, [stopUpdateAdditionalUserData]);
 
+  const mapGender = {
+    Мужчина: 'male',
+    Женщина: 'female',
+  };
+
   return (
     <Form
-      initialValues={{ gender }}
+      initialValues={{ gender: mapGender[gender] }}
       onSubmit={onSubmit}
       render={({ handleSubmit }) => (
         <>
           <form onSubmit={handleSubmit}>
             <S.Gender>
-              <RadioButton name="gender" value="Мужчина" label="Мужчина" />
-              <RadioButton name="gender" value="Женщина" label="Женщина" />
+              <RadioButton name="gender" value="male" label="Мужчина" />
+              <RadioButton name="gender" value="female" label="Женщина" />
             </S.Gender>
             <Button disabled={isPending} isFlat isFilled>
               Сохранить

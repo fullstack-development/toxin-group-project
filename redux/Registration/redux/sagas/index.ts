@@ -41,5 +41,5 @@ function* startRegistrationProcess(data: {
 }
 
 export function* rootSaga(): SagaIterator {
-  yield takeLatest<never>(REGISTRATION_REQUEST, startRegistrationProcess);
+  yield takeLatest(REGISTRATION_REQUEST, startRegistrationProcess);
 }
