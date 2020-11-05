@@ -1,6 +1,6 @@
 import { FooterProps } from './Footer.types';
 
-const data: Required<FooterProps> = {
+const data: FooterProps = {
   subscription: {
     title: 'Subscription',
     text: 'Receive special offers and service news',

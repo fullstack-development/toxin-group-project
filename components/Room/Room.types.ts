@@ -13,5 +13,5 @@ export type Props = {
   measure?: string;
   currency?: string;
   rating?: number;
-  t: TFunction;
+  t?: TFunction;
 };
