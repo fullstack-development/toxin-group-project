@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Form } from 'react-final-form';
+import { animateScroll as scroll } from 'react-scroll';
 
 import {
   Accessibility,
@@ -56,6 +57,10 @@ const RoomFilter: React.FC<Props> = ({ initialFilters, loadRooms, isPending = fa
     loadRooms();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const handleButtonClick = () => {
+    scroll.scrollToTop();
+  };
 
   return (
     <Form
@@ -132,7 +137,7 @@ const RoomFilter: React.FC<Props> = ({ initialFilters, loadRooms, isPending = fa
                   />
                 </Expander>
               </S.CheckboxWrapper>
-              <S.SubmitButton disabled={isPending} isFilled>
+              <S.SubmitButton disabled={isPending} isFilled onClick={handleButtonClick}>
                 Применить
               </S.SubmitButton>
             </form>
