@@ -1,3 +1,4 @@
+import { InputHTMLAttributes } from 'react';
 import { Field } from 'react-final-form';
 
 import * as S from './RadioButton.styles';
@@ -7,7 +8,7 @@ type Props = {
   label: string;
   value: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-};
+} & InputHTMLAttributes<HTMLInputElement>;
 
 const RadioButton: React.FC<Props> = ({ name, label, value, onChange }: Props) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
