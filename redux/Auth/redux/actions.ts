@@ -38,7 +38,7 @@ const preloadAuthData = (): PreloadAuthData => ({
   type: PRELOAD_AUTH_DATA,
 });
 
-const passwordResetRequest = (email: string): PasswordResetRequest => ({
+const passwordReset = (email: string): PasswordResetRequest => ({
   type: PASSWORD_RESET_PROCESS,
   payload: email,
 });
@@ -51,7 +51,7 @@ export {
   breakAuthProcess,
   logout,
   passwordResetCompleted,
-  passwordResetRequest,
+  passwordReset,
   preloadAuthData,
   requestToAuth,
   requestToAuthWithGoogle,

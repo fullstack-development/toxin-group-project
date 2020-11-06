@@ -17,6 +17,7 @@ const initialState: AuthState = {
   isAuthSuccess: null,
   isAuthProcessNow: null,
   wasFinishedAuthChecking: null,
+  user: null,
   displayName: null,
   userEmail: null,
   authStatusText: '',
@@ -51,6 +52,7 @@ const auth = (state: AuthState = initialState, action: AuthActions): AuthState =
         wasFinishedAuthChecking: true,
         userEmail: action.payload.email,
         authStatusText: 'Вы успешно авторизованы!',
+        user: action.payload,
         displayName: action.payload.displayName || 'Аноним',
       };
     case AUTH_FAILED:
