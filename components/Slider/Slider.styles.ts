@@ -1,4 +1,4 @@
-import Slider from '@material-ui/core/Slider';
+import { Slider as MuiSlider } from '@material-ui/core';
 import styled, { css } from 'styled-components';
 
 import { titles } from 'shared/styles/mixins';
@@ -27,7 +27,7 @@ const Value = styled.span`
   font-size: 0.8571rem;
 `;
 
-const RangeSlider = styled(Slider)`
+const Slider = styled(MuiSlider)`
   ${(props) => {
     const { colors, gradients } = props.theme;
     return css`
@@ -54,10 +54,11 @@ const RangeSlider = styled(Slider)`
 
       & .MuiSlider-track {
         height: 0.4286rem;
+        border-radius: 0.2143rem;
         background: ${colors.secondary} ${gradients.secondary};
       }
     `;
   }}
 `;
 
-export { RangeSlider, Description, Title, Value };
+export { Slider, Description, Title, Value };
