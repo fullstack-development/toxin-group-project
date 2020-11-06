@@ -8,7 +8,7 @@ import * as S from './Login.styles';
 const Login = (): JSX.Element => {
   const [isEdit, setEdit] = useState(false);
 
-  const handleEditButtonClick = () => setEdit(!isEdit);
+  const handleEditButtonClick = () => setEdit((prevValue) => !prevValue);
 
   return (
     <S.Login>
