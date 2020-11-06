@@ -88,6 +88,9 @@ class Booking {
         .get()
         .then((snapshot) => {
           snapshot.forEach((item) => {
+            console.log(bookedRoom);
+            const hola = <{ seconds: number }>bookedRoom.from;
+            console.log(hola.seconds);
             const itemDateFrom = new Date(bookedRoom.from.seconds * 1000).toLocaleDateString(
               'ru-RU',
             );
