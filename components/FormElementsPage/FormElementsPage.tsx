@@ -17,7 +17,7 @@ import Expander from 'components/Expander/Expander';
 import Input from 'components/Input/Input';
 import LikeButton from 'components/LikeButton/LikeButton';
 import RadioButton from 'components/RadioButton/RadioButton';
-import RangeSlider from 'components/RangeSlider/RangeSlider';
+import Slider from 'components/Slider/Slider';
 import Review from 'components/Review/Review';
 import StarRating from 'components/StarRating/StarRating';
 import SubscriptionField from 'components/SubscriptionField/SubscriptionField';
@@ -150,10 +150,11 @@ class FormElementsPage extends React.Component {
 
               <div>
                 <S.SliderWrapper>
-                  <RangeSlider
+                  <Slider
                     initialValue={values.initialValues.range}
                     title="range slider"
                     name="range"
+                    showValue
                   />
                 </S.SliderWrapper>
                 <S.Title>buttons</S.Title>

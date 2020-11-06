@@ -20,7 +20,7 @@ import Dropdown from 'components/Dropdown/Dropdown';
 import { guestsGroups, guestsItems, amenitiesItems } from 'components/Dropdown/Dropdown.data';
 import { Item } from 'components/Dropdown/Dropdown.types';
 import Expander from 'components/Expander/Expander';
-import RangeSlider from 'components/RangeSlider/RangeSlider';
+import Slider from 'components/Slider/Slider';
 import TimePicker from 'components/TimePicker/TimePicker';
 
 import * as S from './RoomFilter.styles';
@@ -93,10 +93,11 @@ const RoomFilter: React.FC<Props> = ({ initialFilters, loadRooms, isPending = fa
                 />
               </S.DropdownWrapper>
               <S.SliderWrapper>
-                <RangeSlider
+                <Slider
                   name="price"
                   title="диапазон цены"
                   initialValue={[initialValues.price.from, initialValues.price.to]}
+                  showValue
                 />
                 <S.SliderDescription>Стоимость за сутки пребывания в номере</S.SliderDescription>
               </S.SliderWrapper>
