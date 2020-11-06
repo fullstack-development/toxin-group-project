@@ -2,6 +2,7 @@ import { applyMiddleware, createStore, combineReducers } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware, { SagaMiddleware } from 'redux-saga';
 
+import { apartmentReduxEntry } from './Apartment';
 import { reduxEntry as AuthReduxEntry } from './Auth';
 import { reduxEntry as BookingReduxEntry } from './Booking';
 import { profileReduxEntry } from './Profile';
@@ -16,6 +17,7 @@ const bindMiddleware = (middleware) => {
 };
 
 const sharedReduxEntries: SharedReduxEntries = [
+  apartmentReduxEntry,
   AuthReduxEntry,
   BookingReduxEntry,
   profileReduxEntry,

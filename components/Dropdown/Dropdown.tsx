@@ -115,8 +115,8 @@ const Dropdown: React.FC<DropdownProps> = ({
           const result = {};
           state.forEach((item) => {
             result[item.inputName] = item.currentValue;
-            setTimeout(() => input.onChange(result));
           });
+          setTimeout(() => input.onChange(result));
         };
         const apply = () => {
           handleApplyClick();
@@ -149,6 +149,9 @@ const Dropdown: React.FC<DropdownProps> = ({
                       const state = [...prevState];
                       const elementToUpdate = state.find((item) => item.title === title);
                       elementToUpdate.currentValue += increment;
+                      if (!enableControls) {
+                        updateFieldValue(state);
+                      }
                       return state;
                     });
                   };

@@ -1,4 +1,5 @@
 import { Slider, IconButton } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import CloseIcon from '@material-ui/icons/Close';
 import { useState } from 'react';
 import AvatarEditor from 'react-avatar-editor';
@@ -64,6 +65,11 @@ const AvatarLoader: React.FC<Props> = ({ name }: Props) => {
     });
   };
 
+  const useStyles = makeStyles(() => ({
+    avatarLoader: { width: '7.14285rem', height: '7.14285rem' },
+  }));
+  const classes = useStyles();
+
   return (
     <S.AvatarLoader>
       <Field
@@ -85,7 +91,7 @@ const AvatarLoader: React.FC<Props> = ({ name }: Props) => {
           return (
             <>
               <S.AvatarWrapper>
-                <Avatar photoURL={croppedImage} />
+                <Avatar photoURL={croppedImage} className={classes.avatarLoader} />
                 <S.UploadButton />
                 <S.HiddenInput
                   {...input}
