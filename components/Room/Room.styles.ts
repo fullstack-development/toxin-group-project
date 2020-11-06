@@ -12,8 +12,11 @@ const Room = styled.div`
   overflow: hidden;
 `;
 
-const Info = styled.div`
+const Info = styled.a`
+  cursor: pointer;
+  outline: none;
   padding: 1.4286rem;
+  text-decoration: none;
 `;
 
 const Container = styled.div`
@@ -32,23 +35,16 @@ const Container = styled.div`
 `;
 
 const RoomNumber = styled.h3`
-  ${titles.h2}
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-`;
-
-const RoomLink = styled.a`
   ${(props) => {
     const { colors } = props.theme;
-
     return css`
-      text-decoration: none;
-      color: ${colors.basicDarkest};
-      margin-right: 0.3571rem;
+      ${titles.h2}
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
 
-      &:hover,
-      &:focus {
+      ${Info}:hover &,
+      ${Info}:focus & {
         color: ${colors.basicLight};
       }
     `;
@@ -139,7 +135,6 @@ export {
   Room,
   Info,
   RoomNumber,
-  RoomLink,
   RoomType,
   NumberSign,
   Price,

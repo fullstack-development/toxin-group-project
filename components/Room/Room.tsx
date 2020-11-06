@@ -18,13 +18,11 @@ const Room: React.FC<Props> = ({
 }: Props) => (
   <S.Room>
     <ImageGallery imagePaths={imagePaths} />
-    <S.Info>
+    <S.Info href={`/room-details?room=${number}`}>
       <S.Container>
         <S.RoomNumber>
-          <S.RoomLink href={`/room-details?room=${number}`}>
-            <S.NumberSign>№</S.NumberSign>
-            {number}
-          </S.RoomLink>
+          <S.NumberSign>№</S.NumberSign>
+          {number}
           {roomType && <S.RoomType>{roomType}</S.RoomType>}
         </S.RoomNumber>
         <S.Price>
