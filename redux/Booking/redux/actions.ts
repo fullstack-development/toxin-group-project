@@ -1,9 +1,9 @@
 import { Filters } from 'api/entities/types';
 
 import { LOAD_ROOMS, LOAD_BOOKED_HISTORY, CONFIRM_BOOKED_ROOM } from '../constants';
-import { RoomsRequest, LoadBookedHistory } from '../types';
+import { RoomsRequest, LoadBookedHistory, BookCurrentRoom, SelectedBookedRoom } from '../types';
 
-const setBookedRoom = (data) => ({
+const setBookedRoom = (data: SelectedBookedRoom): BookCurrentRoom => ({
   type: CONFIRM_BOOKED_ROOM,
   payload: data,
 });
