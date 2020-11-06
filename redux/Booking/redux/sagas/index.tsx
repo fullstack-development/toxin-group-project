@@ -1,9 +1,14 @@
 import { SagaIterator } from 'redux-saga';
-import { put, takeLatest, call, PutEffect } from 'redux-saga/effects';
+import { put, takeLatest, call, PutEffect, takeLeading } from 'redux-saga/effects';
 
 import Api from 'api/api';
 import { Apartment } from 'api/entities/types';
-import { RoomsRequest } from 'redux/Booking/types';
+import {
+  RoomsRequest,
+  LoadBookedHistory,
+  BookedHistoryList,
+  UpdateBookedHistory,
+} from 'redux/Booking/types';
 
 import {
   ROOMS_REQUEST_PENDING,
@@ -13,7 +18,6 @@ import {
   LOAD_BOOKED_HISTORY,
   UPDATE_BOOKED_HISTORY,
 } from '../../constants';
-import { BookedHistoryList, UpdateBookedHistory } from '../../types';
 
 function* loadRooms(
   action: RoomsRequest,
@@ -44,7 +48,7 @@ function* loadRooms(
 
 function* loadRoomsHistory({
   payload,
-}): Generator | Generator<PutEffect<UpdateBookedHistory>, void, never> {
+}: LoadBookedHistory): Generator | Generator<PutEffect<UpdateBookedHistory>, void, never> {
   const result: BookedHistoryList = yield call(Api.booking.getBookedHistory, payload);
 
   yield put({
@@ -54,6 +58,6 @@ function* loadRoomsHistory({
 }
 
 export function* rootSaga(): SagaIterator {
-  yield takeLatest<never>(LOAD_ROOMS, loadRooms);
-  yield takeLatest<never>(LOAD_BOOKED_HISTORY, loadRoomsHistory);
+  yield takeLeading(LOAD_ROOMS, loadRooms);
+  yield takeLatest(LOAD_BOOKED_HISTORY, loadRoomsHistory);
 }

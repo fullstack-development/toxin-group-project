@@ -1,5 +1,5 @@
 import { SagaIterator } from 'redux-saga';
-import { put, takeLatest, call, PutEffect } from 'redux-saga/effects';
+import { put, takeLatest, takeLeading, call, PutEffect } from 'redux-saga/effects';
 
 import Api from 'api/api';
 import { User, UserCredential } from 'api/Firebase/modules/Authentication/types';
@@ -17,7 +17,13 @@ import {
   PASSWORD_RESET_SUCCESS,
   PRELOAD_AUTH_DATA,
 } from '../../constants';
-import { AuthData, SetAuthStatusSuccess, SetAuthStatusFailed, SetAuthRequired } from '../../types';
+import {
+  AuthData,
+  SetAuthStatusSuccess,
+  SetAuthStatusFailed,
+  SetAuthRequired,
+  PasswordResetRequest,
+} from '../../types';
 
 function* startAuthProcess(data: {
   type: typeof AUTH_PROCESS | typeof GOOGLE_AUTH_PROCESS;
@@ -80,7 +86,7 @@ function* prepareAuthData():
   }
 }
 
-function* startPasswordResetProcess({ payload: email }: { payload: string }) {
+function* passwordReset({ payload: email }: PasswordResetRequest) {
   try {
     const userAuthInfo: string[] = yield call(Api.auth.fetchSignInMethodsForEmail, email);
     const isEmailAuth = userAuthInfo.includes('password');
@@ -110,9 +116,9 @@ function* logoutUser(): Generator {
 }
 
 export function* rootSaga(): SagaIterator {
-  yield takeLatest<never>(AUTH_LOGOUT_PROCESS, logoutUser);
-  yield takeLatest<never>(AUTH_PROCESS, startAuthProcess);
-  yield takeLatest<never>(GOOGLE_AUTH_PROCESS, startAuthProcess);
-  yield takeLatest<never>(PASSWORD_RESET_PROCESS, startPasswordResetProcess);
-  yield takeLatest<never>(PRELOAD_AUTH_DATA, prepareAuthData);
+  yield takeLatest(AUTH_LOGOUT_PROCESS, logoutUser);
+  yield takeLatest(AUTH_PROCESS, startAuthProcess);
+  yield takeLatest(GOOGLE_AUTH_PROCESS, startAuthProcess);
+  yield takeLatest(PRELOAD_AUTH_DATA, prepareAuthData);
+  yield takeLeading(PASSWORD_RESET_PROCESS, passwordReset);
 }
