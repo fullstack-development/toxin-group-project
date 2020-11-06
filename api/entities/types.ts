@@ -1,3 +1,5 @@
+import { Timestamp } from 'api/Firebase/modules/Database/types';
+
 export type AdditionalAmenities = {
   breakfast: boolean;
   desk: boolean;
@@ -24,6 +26,14 @@ export type Amenities = {
   bathrooms: number;
 };
 
+export type Review = {
+  avatarUrl: string;
+  userName: string;
+  date: Timestamp;
+  text: string;
+  likesCount: number;
+};
+
 type Options = {
   amenities: Amenities;
   additionalAmenities: AdditionalAmenities;
@@ -36,16 +46,17 @@ export type Apartment = {
   overcrowdingPrice: number;
   price: number;
   rating: number;
-  reviews: {
-    avatarUrl: string;
-    userName: string;
-    date: Date;
-    text: string;
-    likesCount: number;
-  }[];
+  numberOfRatings: {
+    excellent: number;
+    good: number;
+    normal: number;
+    bad: number;
+  };
+  reviews: Review[];
   class: 'economy' | 'luxury';
   href: string;
   images: { url: string; alt: string }[];
+  breakfastPricePerGuest: number;
 } & Options;
 
 export type Filters = {
