@@ -11,12 +11,14 @@ import { AppState } from 'redux/store.types';
 
 type StateProps = {
   isPending: boolean;
+  isSuccess: boolean;
   isCompleted: boolean;
   statusText: string;
 };
 
 const mapState = (state: AppState): StateProps => ({
   isPending: state.profile.isUsernameUpdatePending,
+  isSuccess: state.profile.isUsernameUpdateSuccess,
   isCompleted: state.profile.isUsernameUpdateCompleted,
   statusText: state.profile.usernameUpdateStatusText,
 });
@@ -29,6 +31,7 @@ const mapDispatch = {
 type OwnProps = {
   user: User;
   displayName: string;
+  onChanged: (title: string) => void;
 };
 
 type Props = OwnProps & StateProps & typeof mapDispatch;
@@ -42,8 +45,10 @@ const EditDisplayName = ({
   user,
   displayName,
   isPending,
+  isSuccess,
   isCompleted,
   statusText,
+  onChanged,
   startUsernameUpdate,
   stopUsernameUpdate,
 }: Props): JSX.Element => {
@@ -56,6 +61,11 @@ const EditDisplayName = ({
   useEffect(() => {
     stopUsernameUpdate();
   }, [stopUsernameUpdate]);
+
+  const handleConfirmButtonClick = () => {
+    stopUsernameUpdate();
+    if (isSuccess) onChanged('');
+  };
 
   return (
     <Form
@@ -79,7 +89,10 @@ const EditDisplayName = ({
             </Button>
           </form>
           {isCompleted && (
-            <PopUpNotification message={statusText} onConfirmButtonClick={stopUsernameUpdate} />
+            <PopUpNotification
+              message={statusText}
+              onConfirmButtonClick={handleConfirmButtonClick}
+            />
           )}
         </>
       )}

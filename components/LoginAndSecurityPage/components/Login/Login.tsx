@@ -20,7 +20,11 @@ const Login = (): JSX.Element => {
         </TextButton>
       </S.Header>
       <S.Content>
-        {isEdit ? <PasswordUpdate /> : <S.Description>Изменение текущего пароля</S.Description>}
+        {isEdit ? (
+          <PasswordUpdate onChanged={handleEditButtonClick} />
+        ) : (
+          <S.Description>Изменение текущего пароля</S.Description>
+        )}
       </S.Content>
     </S.Login>
   );

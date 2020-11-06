@@ -16,12 +16,14 @@ import * as S from './EditGender.styles';
 
 type StateProps = {
   isPending: boolean;
+  isSuccess: boolean;
   isCompleted: boolean;
   statusText: string;
 };
 
 const mapState = (state: AppState): StateProps => ({
   isPending: state.profile.isUpdateAdditionalUserDataPending,
+  isSuccess: state.profile.isUpdateAdditionalUserDataSuccess,
   isCompleted: state.profile.isUpdateAdditionalUserDataCompleted,
   statusText: state.profile.updateAdditionalUserDataStatusText,
 });
@@ -34,6 +36,7 @@ const mapDispatch = {
 type OwnProps = {
   user: User;
   gender: string;
+  onChanged: (title: string) => void;
 };
 
 type Props = OwnProps & StateProps & typeof mapDispatch;
@@ -46,8 +49,10 @@ const EditGender = ({
   user,
   gender,
   isPending,
+  isSuccess,
   isCompleted,
   statusText,
+  onChanged,
   startUpdateAdditionalUserData,
   stopUpdateAdditionalUserData,
 }: Props): JSX.Element => {
@@ -62,6 +67,11 @@ const EditGender = ({
   const mapGender = {
     Мужчина: 'male',
     Женщина: 'female',
+  };
+
+  const handleConfirmButtonClick = () => {
+    stopUpdateAdditionalUserData();
+    if (isSuccess) onChanged('');
   };
 
   return (
@@ -82,7 +92,7 @@ const EditGender = ({
           {isCompleted && (
             <PopUpNotification
               message={statusText}
-              onConfirmButtonClick={stopUpdateAdditionalUserData}
+              onConfirmButtonClick={handleConfirmButtonClick}
             />
           )}
         </>

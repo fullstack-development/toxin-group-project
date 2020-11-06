@@ -13,6 +13,7 @@ import { passwordValidator } from 'shared/helpers/validators/passwordValidator';
 type StateProps = {
   user: User;
   isPending: boolean;
+  isSuccess: boolean;
   isCompleted: boolean;
   statusText: string;
 };
@@ -20,6 +21,7 @@ type StateProps = {
 const mapState = (state: AppState): StateProps => ({
   user: state.auth.user,
   isPending: state.profile.isPasswordUpdatePending,
+  isSuccess: state.profile.isPasswordUpdateSuccess,
   isCompleted: state.profile.isPasswordUpdateCompleted,
   statusText: state.profile.passwordUpdateStatusText,
 });
@@ -29,7 +31,11 @@ const mapDispatch = {
   stopPasswordUpdate: passwordUpdateCompleted,
 };
 
-type Props = StateProps & typeof mapDispatch;
+type OwnProps = {
+  onChanged: () => void;
+};
+
+type Props = StateProps & OwnProps & typeof mapDispatch;
 
 type FormData = {
   currentPassword: string;
@@ -40,8 +46,10 @@ type FormData = {
 const PasswordUpdate = ({
   user,
   isPending,
+  isSuccess,
   isCompleted,
   statusText,
+  onChanged,
   startPasswordUpdate,
   stopPasswordUpdate,
 }: Props): JSX.Element => {
@@ -54,6 +62,11 @@ const PasswordUpdate = ({
   useEffect(() => {
     stopPasswordUpdate();
   }, [stopPasswordUpdate]);
+
+  const handleConfirmButtonClick = () => {
+    stopPasswordUpdate();
+    if (isSuccess) onChanged();
+  };
 
   return (
     <Form
@@ -92,7 +105,10 @@ const PasswordUpdate = ({
             </Button>
           </form>
           {isCompleted && (
-            <PopUpNotification message={statusText} onConfirmButtonClick={stopPasswordUpdate} />
+            <PopUpNotification
+              message={statusText}
+              onConfirmButtonClick={handleConfirmButtonClick}
+            />
           )}
         </>
       )}

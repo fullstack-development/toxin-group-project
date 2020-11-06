@@ -12,12 +12,14 @@ import { emailValidator } from 'shared/helpers/validators';
 
 type StateProps = {
   isPending: boolean;
+  isSuccess: boolean;
   isCompleted: boolean;
   statusText: string;
 };
 
 const mapState = (state: AppState): StateProps => ({
   isPending: state.profile.isEmailUpdatePending,
+  isSuccess: state.profile.isEmailUpdateSuccess,
   isCompleted: state.profile.isEmailUpdateCompleted,
   statusText: state.profile.emailUpdateStatusText,
 });
@@ -30,6 +32,7 @@ const mapDispatch = {
 type OwnProps = {
   user: User;
   email: string;
+  onChanged: (title: string) => void;
 };
 
 type Props = OwnProps & StateProps & typeof mapDispatch;
@@ -38,8 +41,10 @@ const EditEmail = ({
   user,
   email,
   isPending,
+  isSuccess,
   isCompleted,
   statusText,
+  onChanged,
   startEmailUpdate,
   stopEmailUpdate,
 }: Props): JSX.Element => {
@@ -50,6 +55,11 @@ const EditEmail = ({
   useEffect(() => {
     stopEmailUpdate();
   }, [stopEmailUpdate]);
+
+  const handleConfirmButtonClick = () => {
+    stopEmailUpdate();
+    if (isSuccess) onChanged('');
+  };
 
   return (
     <Form
@@ -71,7 +81,10 @@ const EditEmail = ({
             </Button>
           </form>
           {isCompleted && (
-            <PopUpNotification message={statusText} onConfirmButtonClick={stopEmailUpdate} />
+            <PopUpNotification
+              message={statusText}
+              onConfirmButtonClick={handleConfirmButtonClick}
+            />
           )}
         </>
       )}
