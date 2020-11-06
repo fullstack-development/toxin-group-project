@@ -11,7 +11,6 @@ import {
   expandableCheckboxesListData,
   richCheckboxesListData,
 } from 'components/CheckboxesList/CheckboxesList.data';
-import Comment from 'components/Comment/Comment';
 import Dropdown from 'components/Dropdown/Dropdown';
 import { guestsGroups, guestsItems, amenitiesItems } from 'components/Dropdown/Dropdown.data';
 import Expander from 'components/Expander/Expander';
@@ -19,6 +18,7 @@ import Input from 'components/Input/Input';
 import LikeButton from 'components/LikeButton/LikeButton';
 import RadioButton from 'components/RadioButton/RadioButton';
 import Slider from 'components/Slider/Slider';
+import Review from 'components/Review/Review';
 import StarRating from 'components/StarRating/StarRating';
 import SubscriptionField from 'components/SubscriptionField/SubscriptionField';
 import TextButton from 'components/TextButton/TextButton';
@@ -265,15 +265,15 @@ class FormElementsPage extends React.Component {
                   ]}
                 />
               </S.BenefitsWrapper>
-              <S.CommentsWrapper>
-                <Comment
+              <S.ReviewsWrapper>
+                <Review
                   avatarUrl="user.jpg"
                   userName="Мурад Сарафанов"
                   date={new Date('2020-09-27 12:03:14')}
                   text="Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей."
                   likesCount={12}
                 />
-              </S.CommentsWrapper>
+              </S.ReviewsWrapper>
             </S.Content>
           )}
         />
