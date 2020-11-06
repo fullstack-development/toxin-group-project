@@ -51,16 +51,13 @@ const getCheckboxProps = (
 const RoomFilter: React.FC<Props> = ({ initialFilters, loadRooms, isPending = false }: Props) => {
   const handleFormSubmit = (values?: Filters) => {
     loadRooms(values);
+    scroll.scrollToTop();
   };
 
   useEffect(() => {
     loadRooms();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const handleButtonClick = () => {
-    scroll.scrollToTop();
-  };
 
   return (
     <Form
@@ -137,7 +134,7 @@ const RoomFilter: React.FC<Props> = ({ initialFilters, loadRooms, isPending = fa
                   />
                 </Expander>
               </S.CheckboxWrapper>
-              <S.SubmitButton disabled={isPending} isFilled onClick={handleButtonClick}>
+              <S.SubmitButton disabled={isPending} isFilled>
                 Применить
               </S.SubmitButton>
             </form>
