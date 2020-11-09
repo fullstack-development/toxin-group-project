@@ -53,6 +53,11 @@ const LanguageDropdown: React.FC<Props> = ({
     return () => document.removeEventListener('mousemove', handleDocumentMouseMove);
   }, [isShownMenu]);
 
+  const availableLanguages = [
+    { lang: 'ru', desc: 'Русский' },
+    { lang: 'en', desc: 'English' },
+  ];
+
   return (
     <S.Container ref={dropdownLink}>
       <S.SelectedLanguage onMouseOver={openMenu} onTouchStart={openMenu}>
@@ -63,12 +68,11 @@ const LanguageDropdown: React.FC<Props> = ({
           {isShownMenu ? <CloseIcon /> : <ExpandMore />}
         </S.IconExpander>
         <S.MenuContainer isShownMenu={isShownMenu}>
-          <S.MenuItem data-language="ru" onClick={setLanguage}>
-            Русский
-          </S.MenuItem>
-          <S.MenuItem data-language="en" onClick={setLanguage}>
-            English
-          </S.MenuItem>
+          {availableLanguages.map((item, index) => (
+            <S.MenuItem key={index.toString()} data-language={item.lang} onClick={setLanguage}>
+              {item.desc}
+            </S.MenuItem>
+          ))}
         </S.MenuContainer>
       </>
     </S.Container>

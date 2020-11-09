@@ -30,7 +30,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
         onSubmit={handleRegistrationFormSubmit}
         render={({ handleSubmit }) => (
           <S.RegistrationForm onSubmit={handleSubmit}>
-            <S.Title>{t('Sign up account')}</S.Title>
+            <S.Title>{t('Create account')}</S.Title>
             <S.Avatar>
               <AvatarLoader name="avatar" />
             </S.Avatar>

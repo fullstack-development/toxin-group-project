@@ -60,7 +60,7 @@ const AccountEntry: React.FC<Props> = (props: Props): JSX.Element => {
                 name="password"
                 type="password"
                 render={({ input, meta }) => (
-                  <Input {...input} {...meta} placeholder={t('AccountEntry:Password')} required />
+                  <Input {...input} {...meta} placeholder={t('Shared:Password')} required />
                 )}
               />
             </S.FieldsWrapper>

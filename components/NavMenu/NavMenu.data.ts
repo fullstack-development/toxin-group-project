@@ -11,7 +11,7 @@ const NavLinks: NavMenuLink[] = [
       { name: 'sub-услуги-three', path: '/mock-sub-services-three' },
     ],
   },
-  { name: 'Vacancies', path: '/mock-vacancies' },
+  { name: 'Careers', path: '/mock-Careers' },
   { name: 'News', path: '/mock-news' },
   {
     name: 'Agreements',

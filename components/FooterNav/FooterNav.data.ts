@@ -36,7 +36,7 @@ const data: Required<NavProps> = {
         },
         {
           href: '/mock',
-          text: 'Vacancies',
+          text: 'Careers',
         },
         {
           href: '/mock',

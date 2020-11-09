@@ -14,7 +14,7 @@ export const ru = {
     'No Toxin account?': 'Нет аккаунта на Toxin?',
   },
   RegistrationForm: {
-    'Sign up account': 'Регистрация аккаунта',
+    'Create account': 'Регистрация аккаунта',
     'Date mask': 'ДД.ММ.ГГГГ',
     'Birthday date': 'Дата рождения',
     'Service login details': 'Данные для входа в сервис',
@@ -103,7 +103,7 @@ export const ru = {
     Services: 'Услуги',
     'About service': 'О сервисе',
     'Our team': 'Наша команда',
-    Vacancies: 'Вакансии',
+    Careers: 'Вакансии',
     Investors: 'Инвесторы',
     Agreements: 'Соглашения',
     Communities: 'Сообщества',
