@@ -44,7 +44,7 @@ function* subscriptionUpdate({ payload: { email, subscriptions } }: Subscription
   } catch (err) {
     yield put({
       type: SUBSCRIPTION_UPDATE_FAILED,
-      payload: 'Произошла ошибка повторите попытку позже',
+      payload: 'Произошла ошибка, повторите попытку позже',
     });
   }
 }
