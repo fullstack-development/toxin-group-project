@@ -37,9 +37,14 @@ function* subscriptionUpdate({ payload: { email, subscriptions } }: Subscription
     } else {
       yield call(api.subscriptions.add, email, subscriptions);
     }
+
+    const userAuthInfo = yield call(api.auth.fetchSignInMethodsForEmail, email);
+
     yield put({
       type: SUBSCRIPTION_UPDATE_SUCCESS,
-      payload: 'Вы успешно подписаны на рассылку спецпредложений',
+      payload: userAuthInfo.length
+        ? 'Настройки уведомлений изменены'
+        : 'Вы успешно подписаны на рассылку спецпредложений',
     });
   } catch (err) {
     yield put({
