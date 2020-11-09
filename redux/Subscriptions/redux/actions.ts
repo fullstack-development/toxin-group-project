@@ -20,8 +20,8 @@ const subscriptionUpdate = (data: SubscriptionUpdate): SubscriptionUpdateRequest
   payload: data,
 });
 
-const subscriptionUpdateCompleted = (): SubscriptionUpdateCompleted => ({
+const completionSubscriptionUpdate = (): SubscriptionUpdateCompleted => ({
   type: SUBSCRIPTION_UPDATE_COMPLETED,
 });
 
-export { getSubscriptionData, subscriptionUpdate, subscriptionUpdateCompleted };
+export { getSubscriptionData, subscriptionUpdate, completionSubscriptionUpdate };

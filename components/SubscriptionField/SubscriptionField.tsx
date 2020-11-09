@@ -3,7 +3,10 @@ import { connect } from 'react-redux';
 
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
 import { AppState } from 'redux/store.types';
-import { subscriptionUpdate, subscriptionUpdateCompleted } from 'redux/Subscriptions/redux/actions';
+import {
+  subscriptionUpdate,
+  completionSubscriptionUpdate,
+} from 'redux/Subscriptions/redux/actions';
 import { emailValidator } from 'shared/helpers/validators';
 
 import { InputProps } from '../Input/Input';
@@ -15,13 +18,13 @@ type StateProps = {
 };
 
 const mapState = (state: AppState): StateProps => ({
-  isCompleted: state.subscriptions.isSubscriptionUpdateCompleted,
-  statusText: state.subscriptions.subscriptionUpdateStatusText,
+  isCompleted: state.subscriptions.isUpdateCompleted,
+  statusText: state.subscriptions.updateStatusText,
 });
 
 const mapDispatch = {
   startSubscriptionUpdate: subscriptionUpdate,
-  stopSubscriptionUpdate: subscriptionUpdateCompleted,
+  stopSubscriptionUpdate: completionSubscriptionUpdate,
 };
 
 type Props = InputProps & StateProps & typeof mapDispatch;

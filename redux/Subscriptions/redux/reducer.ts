@@ -11,9 +11,9 @@ import { SubscriptionState, SubscriptionActions } from '../types';
 
 const initialState: SubscriptionState = {
   subscriptionData: null,
-  isSubscriptionUpdatePending: false,
-  isSubscriptionUpdateCompleted: false,
-  subscriptionUpdateStatusText: '',
+  isUpdatePending: false,
+  isUpdateCompleted: false,
+  updateStatusText: '',
 };
 
 const subscriptions = (
@@ -39,30 +39,30 @@ const subscriptions = (
     case SUBSCRIPTION_UPDATE_PROCESS:
       return {
         ...state,
-        isSubscriptionUpdatePending: true,
-        isSubscriptionUpdateCompleted: false,
-        subscriptionUpdateStatusText: '',
+        isUpdatePending: true,
+        isUpdateCompleted: false,
+        updateStatusText: '',
       };
     case SUBSCRIPTION_UPDATE_SUCCESS:
       return {
         ...state,
-        isSubscriptionUpdatePending: false,
-        isSubscriptionUpdateCompleted: true,
-        subscriptionUpdateStatusText: action.payload,
+        isUpdatePending: false,
+        isUpdateCompleted: true,
+        updateStatusText: action.payload,
       };
     case SUBSCRIPTION_UPDATE_FAILED:
       return {
         ...state,
-        isSubscriptionUpdatePending: false,
-        isSubscriptionUpdateCompleted: true,
-        subscriptionUpdateStatusText: action.payload,
+        isUpdatePending: false,
+        isUpdateCompleted: true,
+        updateStatusText: action.payload,
       };
     case SUBSCRIPTION_UPDATE_COMPLETED:
       return {
         ...state,
-        isSubscriptionUpdatePending: false,
-        isSubscriptionUpdateCompleted: false,
-        subscriptionUpdateStatusText: '',
+        isUpdatePending: false,
+        isUpdateCompleted: false,
+        updateStatusText: '',
       };
     default:
       return state;

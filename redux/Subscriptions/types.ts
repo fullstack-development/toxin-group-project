@@ -26,9 +26,9 @@ type SubscriptionUpdate = {
 
 type SubscriptionState = {
   subscriptionData: null | SubscriptionData;
-  isSubscriptionUpdatePending: boolean;
-  isSubscriptionUpdateCompleted: boolean;
-  subscriptionUpdateStatusText: string;
+  isUpdatePending: boolean;
+  isUpdateCompleted: boolean;
+  updateStatusText: string;
 };
 
 type GetSubscriptionDataRequest = Action<typeof GET_SUBSCRIPTION_DATA_PROCESS, string>;
