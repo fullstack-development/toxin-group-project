@@ -7,9 +7,10 @@ export const ru = {
     Male: 'Мужчина',
     Female: 'Женщина',
     Entry: 'Войти',
+    Save: 'Сохранить',
   },
   AccountEntry: {
-    'SignIn with account google': 'Вход через аккаунт google',
+    'Sign In with account google': 'Вход через аккаунт google',
     'No Toxin account?': 'Нет аккаунта на Toxin?',
   },
   RegistrationForm: {
@@ -89,6 +90,8 @@ export const ru = {
     'Copyright © 2018 Toxin Hotel': 'Copyright © 2018 Toxin Hotel',
     'Copyright © 2018 Toxin Hotel. All rights reserved.':
       'Copyright © 2018 Toxin отель. Все права защищены',
+  },
+  Banner: {
     'The best rooms for your work, relaxation and just inspiration':
       'Лучшие номера для вашей работы, отдыха и просто вдохновения',
   },
@@ -148,5 +151,9 @@ export const ru = {
     'The selected thumbnail will be used in the comments you leave.':
       'Выбранная миниатюра будет использоваться в оставленных вами комментариях.',
     'Failed to set avatar': 'Не удалось установить аватар',
+  },
+  HeaderProfile: {
+    'To profile': 'Перейти в профиль',
+    Logout: 'Выход',
   },
 };

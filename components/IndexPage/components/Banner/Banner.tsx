@@ -16,7 +16,7 @@ const Banner: React.ComponentType<WithTranslation & Props> = ({
 }: Props): JSX.Element => (
   <S.Banner>
     <SearchRoomForm />
-    <S.Message>{t(message)}</S.Message>
+    <S.Message>{t(`Banner:${message}`)}</S.Message>
   </S.Banner>
 );
 

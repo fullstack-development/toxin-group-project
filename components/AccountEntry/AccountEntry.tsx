@@ -67,7 +67,7 @@ const AccountEntry: React.FC<Props> = (props: Props): JSX.Element => {
             <ArrowButton isFilled>{t('Buttons:Sign In')}</ArrowButton>
             <S.TwoCols>
               <S.CenteredButton type="button" onClick={requestToAuthWithGoogle}>
-                {t('AccountEntry:SignIn with account google')}
+                {t('AccountEntry:Sign In with account google')}
                 <S.GoogleIcon icon="google" />
               </S.CenteredButton>
             </S.TwoCols>

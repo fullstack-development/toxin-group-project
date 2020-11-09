@@ -1,3 +1,5 @@
+import CloseIcon from '@material-ui/icons/Close';
+import ExpandMore from '@material-ui/icons/ExpandMore';
 import { useState, useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 
@@ -52,16 +54,23 @@ const LanguageDropdown: React.FC<Props> = ({
   }, [isShownMenu]);
 
   return (
-    <S.Container ref={dropdownLink} onMouseOver={openMenu} onTouchStart={openMenu}>
-      {formatLanguage(currentLanguage)}
-      <S.MenuContainer isShownMenu={isShownMenu}>
-        <S.MenuItem data-language="ru" onClick={setLanguage}>
-          Русский
-        </S.MenuItem>
-        <S.MenuItem data-language="en" onClick={setLanguage}>
-          English
-        </S.MenuItem>
-      </S.MenuContainer>
+    <S.Container ref={dropdownLink}>
+      <S.SelectedLanguage onMouseOver={openMenu} onTouchStart={openMenu}>
+        {formatLanguage(currentLanguage)}
+      </S.SelectedLanguage>
+      <>
+        <S.IconExpander onClick={openMenu} onTouchStart={openMenu}>
+          {isShownMenu ? <CloseIcon /> : <ExpandMore />}
+        </S.IconExpander>
+        <S.MenuContainer isShownMenu={isShownMenu}>
+          <S.MenuItem data-language="ru" onClick={setLanguage}>
+            Русский
+          </S.MenuItem>
+          <S.MenuItem data-language="en" onClick={setLanguage}>
+            English
+          </S.MenuItem>
+        </S.MenuContainer>
+      </>
     </S.Container>
   );
 };

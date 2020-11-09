@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+import { breakpointDown } from 'shared/styles/break-points';
+
 type Container = {
   isShownMenu: boolean;
 };
@@ -7,6 +9,8 @@ type Container = {
 type MenuItem = {
   isActive?: boolean;
 };
+
+const SelectedLanguage = styled.div``;
 
 const Container = styled.div`
   ${(props) => {
@@ -19,8 +23,40 @@ const Container = styled.div`
       padding: 0 1rem;
       border-left: 1px solid ${colors.basicLight};
       border-right: 1px solid ${colors.basicLight};
+
+      @media ${breakpointDown('md')} {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 0.0714rem solid gainsboro;
+        padding: 0.6rem;
+        border-radius: 0.5714rem;
+        flex-direction: column;
+        width: 100%;
+        margin: 0 0 2rem;
+      }
     `;
   }}
+`;
+
+const IconExpander = styled.span`
+  width: 1.5rem;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+  display: none;
+
+  & > svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  @media ${breakpointDown('md')} {
+    display: block;
+    top: 0;
+    width: 3.5rem;
+  }
 `;
 
 const MenuContainer = styled.div<Container>`
@@ -35,6 +71,13 @@ const MenuContainer = styled.div<Container>`
       z-index: 10;
       background: white;
       display: ${isShownMenu ? 'block' : 'none'};
+
+      @media ${breakpointDown('md')} {
+        position: relative;
+        transform: translate(0);
+        left: 0;
+        padding: 0;
+      }
     `;
   }}
 `;
@@ -59,4 +102,4 @@ const MenuItem = styled.div<MenuItem>`
   }}
 `;
 
-export { Container, MenuContainer, MenuItem };
+export { SelectedLanguage, Container, IconExpander, MenuContainer, MenuItem };

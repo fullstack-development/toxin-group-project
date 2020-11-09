@@ -25,7 +25,7 @@ const AvatarLoader: React.FC<Props> = ({ name }: Props) => {
   });
   let canvas: AvatarEditor;
 
-  const { t } = useTranslation('AvatarLoader');
+  const { t } = useTranslation(['AvatarLoader', 'Shared']);
 
   const setEditorRef = (editor: AvatarEditor) => {
     canvas = editor;
@@ -125,7 +125,7 @@ const AvatarLoader: React.FC<Props> = ({ name }: Props) => {
                       style={{ width: 200 }}
                     />
                     <Button isFilled isFlat onClick={handleSaveButtonClick}>
-                      {t('Save')}
+                      {t('Shared:Save')}
                     </Button>
                   </S.Controls>
                 </S.CropperWrapper>
