@@ -7,7 +7,7 @@ import {
   SUBSCRIPTION_UPDATE_FAILED,
   SUBSCRIPTION_UPDATE_COMPLETED,
 } from './constants';
-
+// TODO Нехобходимо вынести тип Action, так как он повторяется
 type Action<Z, T> = {
   type: Z;
   payload?: T;
