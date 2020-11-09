@@ -39,12 +39,12 @@ function* subscriptionUpdate({ payload: { email, subscriptions } }: Subscription
     }
     yield put({
       type: SUBSCRIPTION_UPDATE_SUCCESS,
-      payload: 'Вы успешно подписаны',
+      payload: 'Вы успешно подписаны на рассылку спецпредложений',
     });
   } catch (err) {
     yield put({
       type: SUBSCRIPTION_UPDATE_FAILED,
-      payload: 'Произошла ошибка, повторите попытку позже',
+      payload: 'Произошла ошибка повторите попытку позже',
     });
   }
 }
