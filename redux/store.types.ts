@@ -5,7 +5,7 @@ import { AuthActions, AuthState } from './Auth/types';
 import { BookingActions, BookingState } from './Booking/types';
 import { ProfileActions, ProfileState } from './Profile/types';
 import { RegistrationActions, RegistrationState } from './Registration/types';
-import { SubscriptionActions, SubscriptionState } from './Subscriptions/types';
+import { SubscriptionActions, SubscriptionState } from './Subscriptions/model';
 
 export type AvailableStates =
   | ApartmentState

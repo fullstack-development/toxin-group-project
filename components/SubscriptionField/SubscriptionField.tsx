@@ -41,7 +41,7 @@ const SubscriptionField = ({
   ...rest
 }: Props): JSX.Element => {
   const onSubmit = ({ email }: FormData) => {
-    startSubscriptionUpdate({ email, subscriptions: { specialOffers: true } });
+    startSubscriptionUpdate({ email, subscriptions: { hasSpecialOffers: true } });
   };
 
   return (

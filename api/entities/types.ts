@@ -103,7 +103,7 @@ export type BookedRoom = {
 };
 
 export type SubscriptionData = {
-  specialOffers: boolean;
+  hasSpecialOffers: boolean;
 };
 
 export type BookedRoomsHistory = Record<string, BookedRoom[]>;

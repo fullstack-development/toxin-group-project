@@ -8,13 +8,13 @@ type ActionPayload<Z, T> = Action<Z> & {
 };
 
 type SubscriptionData = {
-  specialOffers: boolean;
+  hasSpecialOffers: boolean;
 };
 
 type SubscriptionUpdate = {
   email: string;
   subscriptions: {
-    specialOffers: boolean;
+    hasSpecialOffers: boolean;
   };
 };
 

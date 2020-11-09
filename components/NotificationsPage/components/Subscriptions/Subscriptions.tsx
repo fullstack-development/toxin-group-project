@@ -31,40 +31,40 @@ const mapDispatch = {
 
 type OwnProps = {
   email: string;
-  specialOffers: boolean;
+  hasSpecialOffers: boolean;
 };
 
 type Props = OwnProps & StateProps & typeof mapDispatch;
 
 type FormData = {
-  specialOffers: boolean;
+  hasSpecialOffers: boolean;
 };
 
 const Subscriptions = ({
   email,
-  specialOffers,
+  hasSpecialOffers,
   isPending,
   isCompleted,
   statusText,
   startSubscriptionUpdate,
   stopSubscriptionUpdate,
 }: Props): JSX.Element => {
-  const onSubmit = ({ specialOffers: newValue }: FormData) => {
-    startSubscriptionUpdate({ email, subscriptions: { specialOffers: newValue } });
+  const onSubmit = ({ hasSpecialOffers: newValue }: FormData) => {
+    startSubscriptionUpdate({ email, subscriptions: { hasSpecialOffers: newValue } });
   };
 
   return (
     <S.Subscriptions>
       <S.Title>Новостные рассылки</S.Title>
       <Form
-        initialValues={{ specialOffers }}
+        initialValues={{ hasSpecialOffers }}
         onSubmit={onSubmit}
         render={({ handleSubmit }) => (
           <>
             <form onSubmit={handleSubmit}>
               <S.List>
                 <S.Item>
-                  <Toggle name="specialOffers" label="Получать спецпредложения" />
+                  <Toggle name="hasSpecialOffers" label="Получать спецпредложения" />
                 </S.Item>
               </S.List>
               <Button disabled={isPending} isFlat isFilled>

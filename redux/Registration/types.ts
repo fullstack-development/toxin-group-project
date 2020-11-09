@@ -15,7 +15,7 @@ export type ProfileData = {
   birthDate: string;
   gender: 'male' | 'female';
   avatar: ArrayBuffer | Blob | Uint8Array;
-  specialOffers: boolean;
+  hasSpecialOffers: boolean;
 };
 
 export type RegistrationState = {

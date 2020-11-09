@@ -44,7 +44,7 @@ const MainContent = ({ user, subscriptionData, loadSubscriptionData }: Props): J
       <S.Title>Уведомления</S.Title>
       <Subscriptions
         email={user ? user.email : null}
-        specialOffers={subscriptionData ? subscriptionData.specialOffers : false}
+        hashasSpecialOffers={subscriptionData ? subscriptionData.hasSpecialOffers : false}
       />
     </S.MainContent>
   );

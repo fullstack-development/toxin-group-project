@@ -13,7 +13,16 @@ function* startRegistrationProcess(data: {
 }):
   | Generator
   | Generator<PutEffect<RegistrationStatusSuccess | RegistrationStatusFailed>, void, never> {
-  const { email, password, name, surname, birthDate, gender, avatar, specialOffers } = data.payload;
+  const {
+    email,
+    password,
+    name,
+    surname,
+    birthDate,
+    gender,
+    avatar,
+    hasSpecialOffers,
+  } = data.payload;
 
   try {
     const result: UserCredential = yield call(Api.auth.signUp, {
@@ -26,7 +35,7 @@ function* startRegistrationProcess(data: {
       avatar,
     });
 
-    yield call(Api.subscriptions.add, email, { specialOffers });
+    yield call(Api.subscriptions.add, email, { hasSpecialOffers });
 
     yield put({
       type: REGISTRATION_SUCCESS,
