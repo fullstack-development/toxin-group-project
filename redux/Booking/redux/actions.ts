@@ -1,10 +1,10 @@
 import { Filters } from 'api/entities/types';
 
-import { LOAD_ROOMS, LOAD_BOOKED_HISTORY, CONFIRM_BOOKED_ROOM } from '../constants';
+import { LOAD_ROOMS, LOAD_BOOKED_HISTORY, BOOK_ROOM } from '../constants';
 import { RoomsRequest, LoadBookedHistory, BookCurrentRoom, SelectedBookedRoom } from '../types';
 
-const setBookedRoom = (data: SelectedBookedRoom): BookCurrentRoom => ({
-  type: CONFIRM_BOOKED_ROOM,
+const bookRoom = (data: SelectedBookedRoom): BookCurrentRoom => ({
+  type: BOOK_ROOM,
   payload: data,
 });
 
@@ -18,4 +18,4 @@ const loadBookedHistoryRooms = (email: string): LoadBookedHistory => ({
   payload: email,
 });
 
-export { requestRooms, loadBookedHistoryRooms, setBookedRoom };
+export { requestRooms, loadBookedHistoryRooms, bookRoom };

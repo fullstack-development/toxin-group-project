@@ -9,7 +9,7 @@ import {
   LOAD_ROOMS,
   LOAD_BOOKED_HISTORY,
   UPDATE_BOOKED_HISTORY,
-  CONFIRM_BOOKED_ROOM,
+  BOOK_ROOM,
 } from './constants';
 
 type Action<Z, T> = {
@@ -31,7 +31,7 @@ export type SetRooms = Action<typeof ROOMS_REQUEST_SUCCESS, Apartment[]>;
 export type SetFailedStatus = Action<typeof ROOMS_REQUEST_FAILED, Error>;
 export type LoadBookedHistory = Action<typeof LOAD_BOOKED_HISTORY, string>;
 export type UpdateBookedHistory = Action<typeof UPDATE_BOOKED_HISTORY, BookedHistoryList>;
-export type BookCurrentRoom = Action<typeof CONFIRM_BOOKED_ROOM, SelectedBookedRoom>;
+export type BookCurrentRoom = Action<typeof BOOK_ROOM, SelectedBookedRoom>;
 
 export type BookingState = {
   isPending: boolean;

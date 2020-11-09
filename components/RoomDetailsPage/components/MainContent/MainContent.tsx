@@ -11,7 +11,7 @@ import Reviews from 'components/Reviews/Reviews';
 import RoomImpression from 'components/RoomImpression/RoomImpression';
 import { getRoomDetails as getRoomDetailsRequest } from 'redux/Apartment/redux/actions';
 import { preloadAuthData } from 'redux/Auth/redux/actions';
-import { setBookedRoom } from 'redux/Booking/redux/actions';
+import { bookRoom } from 'redux/Booking/redux/actions';
 import { AppState } from 'redux/store.types';
 
 import { roomImagesPreview, benefitsData, rulesData } from './MainContent.data';
@@ -34,7 +34,7 @@ const mapState = (state: AppState): StateProps => ({
 const mapDispatch = {
   startGetRoomDetails: getRoomDetailsRequest,
   checkAuthBeforePageLoaded: preloadAuthData,
-  confirmBookedRoom: setBookedRoom,
+  confirmBookedRoom: bookRoom,
 };
 
 type Props = StateProps & typeof mapDispatch;

@@ -18,7 +18,7 @@ import {
   LOAD_ROOMS,
   LOAD_BOOKED_HISTORY,
   UPDATE_BOOKED_HISTORY,
-  CONFIRM_BOOKED_ROOM,
+  BOOK_ROOM,
 } from '../../constants';
 
 function* loadRooms(
@@ -76,5 +76,5 @@ function* confirmBookedRoom({
 export function* rootSaga(): SagaIterator {
   yield takeLeading(LOAD_ROOMS, loadRooms);
   yield takeLatest(LOAD_BOOKED_HISTORY, loadRoomsHistory);
-  yield takeLatest(CONFIRM_BOOKED_ROOM, confirmBookedRoom);
+  yield takeLatest(BOOK_ROOM, confirmBookedRoom);
 }
