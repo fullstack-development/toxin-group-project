@@ -58,7 +58,7 @@ const SelectedRoomsPage: React.FC<Props> = ({
             (bookedRooms.history.length ? (
               <RoomsList rooms={bookedRooms.history} />
             ) : (
-              <S.Text>Пусто... возможно это будет ваша первая бронь ?</S.Text>
+              <S.Text>Пусто... Возможно, это будет ваша первая бронь ?</S.Text>
             ))}
         </S.RoomsListContainer>
       </S.Container>
