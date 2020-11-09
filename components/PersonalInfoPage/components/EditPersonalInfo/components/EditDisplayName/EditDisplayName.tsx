@@ -31,7 +31,7 @@ const mapDispatch = {
 type OwnProps = {
   user: User;
   displayName: string;
-  onChanged: (title: string) => void;
+  onChange: (title: string) => void;
 };
 
 type Props = OwnProps & StateProps & typeof mapDispatch;
@@ -48,7 +48,7 @@ const EditDisplayName = ({
   isSuccess,
   isCompleted,
   statusText,
-  onChanged,
+  onChange,
   startUsernameUpdate,
   stopUsernameUpdate,
 }: Props): JSX.Element => {
@@ -64,7 +64,7 @@ const EditDisplayName = ({
 
   const handleConfirmButtonClick = () => {
     stopUsernameUpdate();
-    if (isSuccess) onChanged('');
+    if (isSuccess) onChange('');
   };
 
   return (

@@ -32,7 +32,7 @@ const mapDispatch = {
 };
 
 type OwnProps = {
-  onChanged: () => void;
+  onChange: () => void;
 };
 
 type Props = StateProps & OwnProps & typeof mapDispatch;
@@ -49,7 +49,7 @@ const PasswordUpdate = ({
   isSuccess,
   isCompleted,
   statusText,
-  onChanged,
+  onChange,
   startPasswordUpdate,
   stopPasswordUpdate,
 }: Props): JSX.Element => {
@@ -65,7 +65,7 @@ const PasswordUpdate = ({
 
   const handleConfirmButtonClick = () => {
     stopPasswordUpdate();
-    if (isSuccess) onChanged();
+    if (isSuccess) onChange();
   };
 
   return (

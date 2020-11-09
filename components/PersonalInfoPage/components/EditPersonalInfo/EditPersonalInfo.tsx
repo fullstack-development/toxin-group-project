@@ -27,10 +27,10 @@ const EditPersonalInfo = ({
   description,
 }: Props): JSX.Element => {
   const mapEditingComponents = {
-    displayName: <EditDisplayName user={user} displayName={value} onChanged={onEditButtonClick} />,
-    gender: <EditGender user={user} gender={value} onChanged={onEditButtonClick} />,
-    birthday: <EditBirthday user={user} birthday={value} onChanged={onEditButtonClick} />,
-    email: <EditEmail user={user} email={value} oonChanged={onEditButtonClick} />,
+    displayName: <EditDisplayName user={user} displayName={value} onChange={onEditButtonClick} />,
+    gender: <EditGender user={user} gender={value} onChange={onEditButtonClick} />,
+    birthday: <EditBirthday user={user} birthday={value} onChange={onEditButtonClick} />,
+    email: <EditEmail user={user} email={value} oonChange={onEditButtonClick} />,
   };
 
   const isEdit = currentEditing === title;

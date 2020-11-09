@@ -32,7 +32,7 @@ const mapDispatch = {
 type OwnProps = {
   user: User;
   email: string;
-  onChanged: (title: string) => void;
+  onChange: (title: string) => void;
 };
 
 type Props = OwnProps & StateProps & typeof mapDispatch;
@@ -44,7 +44,7 @@ const EditEmail = ({
   isSuccess,
   isCompleted,
   statusText,
-  onChanged,
+  onChange,
   startEmailUpdate,
   stopEmailUpdate,
 }: Props): JSX.Element => {
@@ -58,7 +58,7 @@ const EditEmail = ({
 
   const handleConfirmButtonClick = () => {
     stopEmailUpdate();
-    if (isSuccess) onChanged('');
+    if (isSuccess) onChange('');
   };
 
   return (

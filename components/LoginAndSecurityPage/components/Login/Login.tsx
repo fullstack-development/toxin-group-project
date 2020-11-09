@@ -21,7 +21,7 @@ const Login = (): JSX.Element => {
       </S.Header>
       <S.Content>
         {isEdit ? (
-          <PasswordUpdate onChanged={handleEditButtonClick} />
+          <PasswordUpdate onChange={handleEditButtonClick} />
         ) : (
           <S.Description>Изменение текущего пароля</S.Description>
         )}

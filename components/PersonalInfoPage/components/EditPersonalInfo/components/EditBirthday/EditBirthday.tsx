@@ -35,7 +35,7 @@ const mapDispatch = {
 type OwnProps = {
   user: User;
   birthday: string;
-  onChanged: (title: string) => void;
+  onChange: (title: string) => void;
 };
 
 type Props = OwnProps & StateProps & typeof mapDispatch;
@@ -51,7 +51,7 @@ const EditBirthday = ({
   isSuccess,
   isCompleted,
   statusText,
-  onChanged,
+  onChange,
   startUpdateAdditionalUserData,
   stopUpdateAdditionalUserData,
 }: Props): JSX.Element => {
@@ -65,7 +65,7 @@ const EditBirthday = ({
 
   const handleConfirmButtonClick = () => {
     stopUpdateAdditionalUserData();
-    if (isSuccess) onChanged('');
+    if (isSuccess) onChange('');
   };
 
   return (
