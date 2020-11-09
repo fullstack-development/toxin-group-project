@@ -54,7 +54,7 @@ const Header = styled.header`
       min-height: 5rem;
       box-shadow: 0 0.7143rem 1.4286rem ${colors.basicLightest};
 
-      @media ${breakpointDown('lg')} {
+      @media ${breakpointDown('xl')} {
         padding-left: 4.2857rem;
         padding-right: 4.2857rem;
       }
