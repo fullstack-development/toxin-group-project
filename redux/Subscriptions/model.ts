@@ -1,16 +1,10 @@
-import {
-  GET_SUBSCRIPTION_DATA_PROCESS,
-  GET_SUBSCRIPTION_DATA_SUCCESS,
-  GET_SUBSCRIPTION_DATA_FAILED,
-  SUBSCRIPTION_UPDATE_PROCESS,
-  SUBSCRIPTION_UPDATE_SUCCESS,
-  SUBSCRIPTION_UPDATE_FAILED,
-  SUBSCRIPTION_UPDATE_COMPLETED,
-} from './constants';
 // TODO Нехобходимо вынести тип Action, так как он повторяется
-type Action<Z, T> = {
+type Action<Z> = {
   type: Z;
-  payload?: T;
+};
+
+type ActionPayload<Z, T> = Action<Z> & {
+  payload: T;
 };
 
 type SubscriptionData = {
@@ -31,14 +25,14 @@ type SubscriptionState = {
   updateStatusText: string;
 };
 
-type GetSubscriptionDataRequest = Action<typeof GET_SUBSCRIPTION_DATA_PROCESS, string>;
-type GetSubscriptionDataSuccess = Action<typeof GET_SUBSCRIPTION_DATA_SUCCESS, SubscriptionData>;
-type GetSubscriptionDataFailed = Action<typeof GET_SUBSCRIPTION_DATA_FAILED, null>;
+type GetSubscriptionDataRequest = ActionPayload<'GET_SUBSCRIPTION_DATA_PROCESS', string>;
+type GetSubscriptionDataSuccess = ActionPayload<'GET_SUBSCRIPTION_DATA_SUCCESS', SubscriptionData>;
+type GetSubscriptionDataFailed = Action<'GET_SUBSCRIPTION_DATA_FAILED'>;
 
-type SubscriptionUpdateRequest = Action<typeof SUBSCRIPTION_UPDATE_PROCESS, SubscriptionUpdate>;
-type SubscriptionUpdateSuccess = Action<typeof SUBSCRIPTION_UPDATE_SUCCESS, string>;
-type SubscriptionUpdateFailed = Action<typeof SUBSCRIPTION_UPDATE_FAILED, string>;
-type SubscriptionUpdateCompleted = Action<typeof SUBSCRIPTION_UPDATE_COMPLETED, string>;
+type SubscriptionUpdateRequest = ActionPayload<'SUBSCRIPTION_UPDATE_PROCESS', SubscriptionUpdate>;
+type SubscriptionUpdateSuccess = ActionPayload<'SUBSCRIPTION_UPDATE_SUCCESS', string>;
+type SubscriptionUpdateFailed = ActionPayload<'SUBSCRIPTION_UPDATE_FAILED', string>;
+type SubscriptionUpdateCompleted = Action<'SUBSCRIPTION_UPDATE_COMPLETED'>;
 
 type SubscriptionActions =
   | GetSubscriptionDataRequest
@@ -50,6 +44,7 @@ type SubscriptionActions =
   | SubscriptionUpdateCompleted;
 
 export type {
+  Action,
   SubscriptionData,
   SubscriptionUpdate,
   SubscriptionState,

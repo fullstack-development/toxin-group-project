@@ -1,8 +1,7 @@
 import { boundMethod } from 'autobind-decorator';
 
-import { SubscriptionData } from 'redux/Subscriptions/types';
-
 import { Database, CollectionReference } from '../Firebase/modules/Database';
+import { SubscriptionData } from './types';
 
 class Subscriptions {
   private readonly actions: Database;

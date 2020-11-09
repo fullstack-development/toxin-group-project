@@ -1,13 +1,4 @@
-import {
-  GET_SUBSCRIPTION_DATA_PROCESS,
-  GET_SUBSCRIPTION_DATA_SUCCESS,
-  GET_SUBSCRIPTION_DATA_FAILED,
-  SUBSCRIPTION_UPDATE_PROCESS,
-  SUBSCRIPTION_UPDATE_SUCCESS,
-  SUBSCRIPTION_UPDATE_FAILED,
-  SUBSCRIPTION_UPDATE_COMPLETED,
-} from '../constants';
-import { SubscriptionState, SubscriptionActions } from '../types';
+import { SubscriptionState, SubscriptionActions } from '../model';
 
 const initialState: SubscriptionState = {
   subscriptionData: null,
@@ -21,43 +12,43 @@ const subscriptions = (
   action: SubscriptionActions,
 ): SubscriptionState => {
   switch (action.type) {
-    case GET_SUBSCRIPTION_DATA_PROCESS:
+    case 'GET_SUBSCRIPTION_DATA_PROCESS':
       return {
         ...state,
         subscriptionData: null,
       };
-    case GET_SUBSCRIPTION_DATA_SUCCESS:
+    case 'GET_SUBSCRIPTION_DATA_SUCCESS':
       return {
         ...state,
         subscriptionData: action.payload,
       };
-    case GET_SUBSCRIPTION_DATA_FAILED:
+    case 'GET_SUBSCRIPTION_DATA_FAILED':
       return {
         ...state,
-        subscriptionData: action.payload,
+        subscriptionData: null,
       };
-    case SUBSCRIPTION_UPDATE_PROCESS:
+    case 'SUBSCRIPTION_UPDATE_PROCESS':
       return {
         ...state,
         isUpdatePending: true,
         isUpdateCompleted: false,
         updateStatusText: '',
       };
-    case SUBSCRIPTION_UPDATE_SUCCESS:
+    case 'SUBSCRIPTION_UPDATE_SUCCESS':
       return {
         ...state,
         isUpdatePending: false,
         isUpdateCompleted: true,
         updateStatusText: action.payload,
       };
-    case SUBSCRIPTION_UPDATE_FAILED:
+    case 'SUBSCRIPTION_UPDATE_FAILED':
       return {
         ...state,
         isUpdatePending: false,
         isUpdateCompleted: true,
         updateStatusText: action.payload,
       };
-    case SUBSCRIPTION_UPDATE_COMPLETED:
+    case 'SUBSCRIPTION_UPDATE_COMPLETED':
       return {
         ...state,
         isUpdatePending: false,
