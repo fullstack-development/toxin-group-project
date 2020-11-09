@@ -21,17 +21,17 @@ const mapState = (state: AppState): StateProps => ({
 });
 
 const mapDispatch = {
-  startGetSubscriptionData: getSubscriptionDataRequest,
+  loadSubscriptionData: getSubscriptionDataRequest,
 };
 
 type Props = StateProps & typeof mapDispatch;
 
-const MainContent = ({ user, subscriptionData, startGetSubscriptionData }: Props): JSX.Element => {
+const MainContent = ({ user, subscriptionData, loadSubscriptionData }: Props): JSX.Element => {
   const getSubscriptionData = useCallback(
     (currentUser) => {
-      if (currentUser) startGetSubscriptionData(currentUser.email);
+      if (currentUser) loadSubscriptionData(currentUser.email);
     },
-    [startGetSubscriptionData],
+    [loadSubscriptionData],
   );
 
   useEffect(() => {
