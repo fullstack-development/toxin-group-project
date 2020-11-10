@@ -87,8 +87,7 @@ export type ProfileData = {
 
 export type AdditionalUserInformation = {
   birthDate?: string;
-  gender?: 'female' | 'male';
-  receiveOffers?: boolean;
+  gender?: 'male' | 'female';
 };
 
 export type BookingData = {
@@ -101,6 +100,10 @@ export type BookingData = {
 export type BookedRoom = {
   room: Apartment;
   bookedData: { from: string; to: string };
+};
+
+export type SubscriptionData = {
+  hasSpecialOffers: boolean;
 };
 
 export type BookedRoomsHistory = Record<string, BookedRoom[]>;

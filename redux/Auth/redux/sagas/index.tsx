@@ -107,7 +107,7 @@ function* passwordReset({ payload: email }: PasswordResetRequest) {
       payload:
         err.message === 'Пользователь с указанным электронным адресом не зарегистрирован'
           ? err.message
-          : 'Произошла ошибка повторите попытку позже',
+          : 'Произошла ошибка, повторите попытку позже',
     });
   }
 }

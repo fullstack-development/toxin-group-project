@@ -17,7 +17,19 @@ function* registration({
   | Generator
   | Generator<PutEffect<RegistrationStatusSuccess | RegistrationStatusFailed>, void, never> {
   try {
-    const result: UserCredential = yield call(Api.auth.signUp, { ...payload });
+    const { email, password, name, surname, birthDate, gender, avatar, hasSpecialOffers } = payload;
+
+    const result: UserCredential = yield call(Api.auth.signUp, {
+      email,
+      password,
+      name,
+      surname,
+      birthDate,
+      gender,
+      avatar,
+    });
+
+    yield call(Api.subscriptions.add, email, { hasSpecialOffers });
 
     yield put({
       type: 'REGISTRATION_SUCCESS',

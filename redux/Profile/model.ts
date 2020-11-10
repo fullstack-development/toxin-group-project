@@ -19,7 +19,6 @@ export type UpdateAdditionalUserData = {
   data: {
     birthDate?: string;
     gender?: 'female' | 'male';
-    receiveOffers?: boolean;
   };
 };
 

@@ -86,7 +86,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
               />
             </S.AccountEntryWrapper>
             <S.SpecialOfferWrapper>
-              <Toggle name="receiveOffers" label="Получать спецпредложения" />
+              <Toggle name="hasSpecialOffers" label="Получать спецпредложения" />
             </S.SpecialOfferWrapper>
             <S.RegisterButton isFlat isFilled>
               Перейти к оплате

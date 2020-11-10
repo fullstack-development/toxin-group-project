@@ -9,7 +9,7 @@ export type ProfileData = {
   birthDate: string;
   gender: 'male' | 'female';
   avatar: ArrayBuffer | Blob | Uint8Array;
-  receiveOffers: boolean;
+  hasSpecialOffers: boolean;
 };
 
 export type RegistrationState = {

@@ -82,7 +82,7 @@ function* updateAdditionalUserData({ payload: { user, data } }: UpdateAdditional
   } catch (err) {
     yield put({
       type: 'UPDATE_ADDITIONAL_USER_DATA_FAILED',
-      payload: 'Произошла ошибка повторите попытку позже',
+      payload: 'Произошла ошибка, повторите попытку позже',
     });
   }
 }
@@ -99,8 +99,8 @@ function* usernameUpdate({ payload }: UsernameUpdateRequest) {
     });
   } catch (err) {
     yield put({
-      type: 'USERNAME_UPDATE_FAILE',
-      payload: 'Произошла ошибка повторите попытку позже',
+      type: 'USERNAME_UPDATE_FAILED',
+      payload: 'Произошла ошибка, повторите попытку позже',
     });
   }
 }
@@ -120,7 +120,7 @@ function* getAdditionalUserData({ payload: user }: GetAdditionalUserDataRequest)
   }
 }
 
-function* rootSaga(): SagaIterator {
+export function* rootSaga(): SagaIterator {
   yield takeLeadingAction<EmailUpdateRequest['type']>('EMAIL_UPDATE_PROCESS', emailUpdate);
   yield takeLeadingAction<GetAdditionalUserDataRequest['type']>(
     'GET_ADDITIONAL_USER_DATA_PROCESS',
@@ -133,5 +133,3 @@ function* rootSaga(): SagaIterator {
   );
   yield takeLeadingAction<UsernameUpdateRequest['type']>('USERNAME_UPDATE_PROCESS', usernameUpdate);
 }
-
-export { rootSaga };
