@@ -1,8 +1,6 @@
 import { SagaIterator } from 'redux-saga';
 import { put, takeLatest, call, PutEffect, takeLeading, CallEffect } from 'redux-saga/effects';
 
-import Api from 'api/api';
-import { Apartment, BookingData } from 'api/entities/types';
 import {
   RoomsRequest,
   LoadBookedHistory,
@@ -10,6 +8,8 @@ import {
   UpdateBookedHistory,
   BookCurrentRoom,
 } from 'redux/Booking/types';
+import Api from 'services/api/api';
+import { Apartment, BookingData } from 'services/api/entities/types';
 
 import {
   ROOMS_REQUEST_PENDING,

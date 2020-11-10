@@ -1,7 +1,7 @@
 import { SagaIterator } from 'redux-saga';
 import { call, ForkEffect, put, takeLeading } from 'redux-saga/effects';
 
-import api from 'api/api';
+import api from 'services/api/api';
 
 import { Action, GetSubscriptionDataRequest, SubscriptionUpdateRequest } from '../../model';
 

@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import { BookedRoomsHistory } from 'api/entities/types';
 import MainLayout from 'components/MainLayout/MainLayout';
 import Preloader from 'components/Preloader/Preloader';
 import { loadBookedHistoryRooms } from 'redux/Booking/redux/actions';
 import { AppState } from 'redux/store.types';
+import { BookedRoomsHistory } from 'services/api/entities/types';
 
 import RoomsList from './components/RoomsList/RoomsList';
 import * as S from './SelectedRoomsPage.style';

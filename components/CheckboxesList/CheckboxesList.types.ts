@@ -1,3 +1,5 @@
+import { TFunction } from 'i18next';
+
 export type Option = {
   name: string;
   label: string;
@@ -5,6 +7,7 @@ export type Option = {
   isChecked?: boolean;
 };
 
-export type CheckboxesListProps = {
+export type Props = {
   roomOptions: Option[];
+  t: TFunction;
 };

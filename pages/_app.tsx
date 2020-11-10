@@ -6,6 +6,7 @@ import Favicon from 'components/Favicon/Favicon';
 import { store } from 'redux/store';
 import GlobalStyle from 'shared/styles/global.styles';
 import purpleThemePalette from 'shared/styles/theme';
+import 'services/i18next';
 import 'shared/styles/fonts.css';
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {

@@ -1,3 +1,3 @@
-const BannerMessage = 'Лучшие номера для вашей работы, отдыха и просто вдохновения';
+const BannerMessage = 'The best rooms for your work, relaxation and just inspiration';
 
 export { BannerMessage };

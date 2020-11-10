@@ -6,10 +6,10 @@ type RatingValues = {
 };
 
 const ratingValues: RatingValues = {
-  excellent: 'Великолепно',
-  good: 'Хорошо',
-  normal: 'Удовлетворительно',
-  bad: 'Разочарован',
+  excellent: 'Excellent',
+  good: 'Good',
+  normal: 'Normal',
+  bad: 'Bad',
 };
 
 export default ratingValues;
