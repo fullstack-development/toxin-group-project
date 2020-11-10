@@ -1,9 +1,10 @@
 import { SagaIterator } from 'redux-saga';
-import { call, ForkEffect, put, takeLeading } from 'redux-saga/effects';
+import { call, put } from 'redux-saga/effects';
 
 import api from 'api/api';
+import { takeLeadingAction } from 'redux/types';
 
-import { Action, GetSubscriptionDataRequest, SubscriptionUpdateRequest } from '../../model';
+import { GetSubscriptionDataRequest, SubscriptionUpdateRequest } from '../../model';
 
 function* getSubscriptionsData({ payload: email }: GetSubscriptionDataRequest) {
   try {
@@ -44,13 +45,8 @@ function* subscriptionUpdate({ payload: { email, subscriptions } }: Subscription
     });
   }
 }
-// TODO Вынести в отдельный файл, так как предполгается неоднократное использование
-const takeLeadingAction = <T extends string>(
-  type: T,
-  worker: (action: Action<T>) => unknown,
-): ForkEffect<unknown> => takeLeading(type, worker);
 
-function* rootSaga(): SagaIterator {
+export function* rootSaga(): SagaIterator {
   yield takeLeadingAction<GetSubscriptionDataRequest['type']>(
     'GET_SUBSCRIPTION_DATA_PROCESS',
     getSubscriptionsData,
@@ -60,5 +56,3 @@ function* rootSaga(): SagaIterator {
     subscriptionUpdate,
   );
 }
-
-export { rootSaga };

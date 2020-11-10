@@ -1,40 +1,39 @@
-// TODO Нехобходимо вынести тип Action, так как он повторяется
-type Action<Z> = {
-  type: Z;
-};
+import { Action, ActionPayload } from 'redux/types';
 
-type ActionPayload<Z, T> = Action<Z> & {
-  payload: T;
-};
-
-type SubscriptionData = {
+export type SubscriptionData = {
   hasSpecialOffers: boolean;
 };
 
-type SubscriptionUpdate = {
+export type SubscriptionUpdate = {
   email: string;
   subscriptions: {
     hasSpecialOffers: boolean;
   };
 };
 
-type SubscriptionState = {
+export type SubscriptionState = {
   subscriptionData: null | SubscriptionData;
   isUpdatePending: boolean;
   isUpdateCompleted: boolean;
   updateStatusText: string;
 };
 
-type GetSubscriptionDataRequest = ActionPayload<'GET_SUBSCRIPTION_DATA_PROCESS', string>;
-type GetSubscriptionDataSuccess = ActionPayload<'GET_SUBSCRIPTION_DATA_SUCCESS', SubscriptionData>;
-type GetSubscriptionDataFailed = Action<'GET_SUBSCRIPTION_DATA_FAILED'>;
+export type GetSubscriptionDataRequest = ActionPayload<'GET_SUBSCRIPTION_DATA_PROCESS', string>;
+export type GetSubscriptionDataSuccess = ActionPayload<
+  'GET_SUBSCRIPTION_DATA_SUCCESS',
+  SubscriptionData
+>;
+export type GetSubscriptionDataFailed = Action<'GET_SUBSCRIPTION_DATA_FAILED'>;
 
-type SubscriptionUpdateRequest = ActionPayload<'SUBSCRIPTION_UPDATE_PROCESS', SubscriptionUpdate>;
-type SubscriptionUpdateSuccess = ActionPayload<'SUBSCRIPTION_UPDATE_SUCCESS', string>;
-type SubscriptionUpdateFailed = ActionPayload<'SUBSCRIPTION_UPDATE_FAILED', string>;
-type SubscriptionUpdateCompleted = Action<'SUBSCRIPTION_UPDATE_COMPLETED'>;
+export type SubscriptionUpdateRequest = ActionPayload<
+  'SUBSCRIPTION_UPDATE_PROCESS',
+  SubscriptionUpdate
+>;
+export type SubscriptionUpdateSuccess = ActionPayload<'SUBSCRIPTION_UPDATE_SUCCESS', string>;
+export type SubscriptionUpdateFailed = ActionPayload<'SUBSCRIPTION_UPDATE_FAILED', string>;
+export type SubscriptionUpdateCompleted = Action<'SUBSCRIPTION_UPDATE_COMPLETED'>;
 
-type SubscriptionActions =
+export type SubscriptionActions =
   | GetSubscriptionDataRequest
   | GetSubscriptionDataSuccess
   | GetSubscriptionDataFailed
@@ -42,18 +41,3 @@ type SubscriptionActions =
   | SubscriptionUpdateSuccess
   | SubscriptionUpdateFailed
   | SubscriptionUpdateCompleted;
-
-export type {
-  Action,
-  SubscriptionData,
-  SubscriptionUpdate,
-  SubscriptionState,
-  GetSubscriptionDataRequest,
-  GetSubscriptionDataSuccess,
-  GetSubscriptionDataFailed,
-  SubscriptionUpdateRequest,
-  SubscriptionUpdateSuccess,
-  SubscriptionUpdateFailed,
-  SubscriptionUpdateCompleted,
-  SubscriptionActions,
-};

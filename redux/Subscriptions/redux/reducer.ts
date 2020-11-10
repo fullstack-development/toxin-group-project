@@ -7,7 +7,7 @@ const initialState: SubscriptionState = {
   updateStatusText: '',
 };
 
-const subscriptions = (
+export const subscriptions = (
   state: SubscriptionState = initialState,
   action: SubscriptionActions,
 ): SubscriptionState => {
@@ -59,5 +59,3 @@ const subscriptions = (
       return state;
   }
 };
-
-export { subscriptions };
