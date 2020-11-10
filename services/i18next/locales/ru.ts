@@ -179,6 +179,7 @@ export const ru = {
     'Room details': 'Сведения о номере',
     'Impressions of the room': 'Впечатления от номера',
     'Failed to load room information': 'Не удалось загрузить информацию о номере',
-    'Free cancellation within 48 hours. Thereafter, if canceled no later than 5 days in advance. you will receive a full refund before arrival minus the service fee.': 'Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.',
+    'Free cancellation within 48 hours. Thereafter, if canceled no later than 5 days in advance. you will receive a full refund before arrival minus the service fee.':
+      'Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.',
   },
 };
