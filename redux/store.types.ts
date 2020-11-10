@@ -5,20 +5,23 @@ import { AuthActions, AuthState } from './Auth/types';
 import { BookingActions, BookingState } from './Booking/types';
 import { ProfileActions, ProfileState } from './Profile/types';
 import { RegistrationActions, RegistrationState } from './Registration/types';
+import { SubscriptionActions, SubscriptionState } from './Subscriptions/model';
 
 export type AvailableStates =
   | ApartmentState
   | AuthState
   | BookingState
   | ProfileState
-  | RegistrationState;
+  | RegistrationState
+  | SubscriptionState;
 
 export type AvailableActions =
   | ApartmentActions
   | AuthActions
   | BookingActions
   | ProfileActions
-  | RegistrationActions;
+  | RegistrationActions
+  | SubscriptionActions;
 
 export type AppState = {
   apartment: ApartmentState;
@@ -26,6 +29,7 @@ export type AppState = {
   booking: BookingState;
   profile: ProfileState;
   registration: RegistrationState;
+  subscriptions: SubscriptionState;
 };
 
 export type AvailableReducers = (

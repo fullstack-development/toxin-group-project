@@ -8,6 +8,7 @@ import { reduxEntry as BookingReduxEntry } from './Booking';
 import { profileReduxEntry } from './Profile';
 import { reduxEntry as RegistrationReduxEntry } from './Registration';
 import { SharedReduxEntries, AvailableReducers } from './store.types';
+import { subscriptionsReduxEntry } from './Subscriptions';
 
 const bindMiddleware = (middleware) => {
   if (process.env.NODE_ENV !== 'production') {
@@ -22,6 +23,7 @@ const sharedReduxEntries: SharedReduxEntries = [
   BookingReduxEntry,
   profileReduxEntry,
   RegistrationReduxEntry,
+  subscriptionsReduxEntry,
 ];
 
 let preparedReducers: Record<string, AvailableReducers> = {};
