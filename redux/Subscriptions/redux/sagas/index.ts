@@ -2,7 +2,7 @@ import { SagaIterator } from 'redux-saga';
 import { call, put } from 'redux-saga/effects';
 
 import api from 'api/api';
-import { takeLeadingAction } from 'redux/types';
+import { takeLeadingAction } from 'redux/action.model';
 
 import { GetSubscriptionDataRequest, SubscriptionUpdateRequest } from '../../model';
 

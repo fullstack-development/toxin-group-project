@@ -1,4 +1,4 @@
-import { Action, ActionPayload } from 'redux/types';
+import { Action, ActionPayload } from 'redux/action.model';
 
 export type SubscriptionData = {
   hasSpecialOffers: boolean;

@@ -3,6 +3,7 @@ import { put, call, PutEffect, CallEffect } from 'redux-saga/effects';
 
 import Api from 'api/api';
 import { Apartment, BookingData } from 'api/entities/types';
+import { takeLatestAction, takeLeadingAction } from 'redux/action.model';
 import {
   RoomsRequest,
   LoadBookedHistory,
@@ -10,7 +11,6 @@ import {
   UpdateBookedHistory,
   BookCurrentRoom,
 } from 'redux/Booking/model';
-import { takeLatestAction, takeLeadingAction } from 'redux/types';
 
 function* loadRooms(
   action: RoomsRequest,

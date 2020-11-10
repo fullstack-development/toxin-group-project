@@ -3,7 +3,7 @@ import { put, call, PutEffect } from 'redux-saga/effects';
 
 import Api from 'api/api';
 import { UserCredential } from 'api/Firebase/modules/Authentication/types';
-import { takeLatestAction } from 'redux/types';
+import { takeLatestAction } from 'redux/action.model';
 
 import {
   RegistrationStatusSuccess,

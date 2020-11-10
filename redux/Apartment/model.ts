@@ -1,5 +1,5 @@
 import { Apartment } from 'api/entities/types';
-import { Action, ActionPayload } from 'redux/types';
+import { Action, ActionPayload } from 'redux/action.model';
 
 export type ApartmentState = {
   isGetRoomDetailsPending: boolean;
