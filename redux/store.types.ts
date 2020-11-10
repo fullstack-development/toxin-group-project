@@ -6,6 +6,7 @@ import { BookingActions, BookingState } from './Booking/types';
 import { LanguageState, LanguageActions } from './Language/types';
 import { ProfileActions, ProfileState } from './Profile/types';
 import { RegistrationState, RegistrationActions } from './Registration/types';
+import { SubscriptionActions, SubscriptionState } from './Subscriptions/model';
 
 export type AvailableStates =
   | ApartmentState
@@ -13,7 +14,8 @@ export type AvailableStates =
   | BookingState
   | ProfileState
   | RegistrationState
-  | LanguageState;
+  | LanguageState
+  | SubscriptionState;
 
 export type AvailableActions =
   | ApartmentActions
@@ -21,7 +23,8 @@ export type AvailableActions =
   | BookingActions
   | ProfileActions
   | RegistrationActions
-  | LanguageActions;
+  | LanguageActions
+  | SubscriptionActions;
 
 export type AppState = {
   apartment: ApartmentState;
@@ -30,6 +33,7 @@ export type AppState = {
   language: LanguageState;
   profile: ProfileState;
   registration: RegistrationState;
+  subscriptions: SubscriptionState;
 };
 
 export type AvailableReducers = (

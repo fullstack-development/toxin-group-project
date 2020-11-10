@@ -1,39 +1,74 @@
-import { FormHTMLAttributes } from 'react';
 import { Field, Form } from 'react-final-form';
 import { useTranslation } from 'react-i18next';
+import { connect } from 'react-redux';
 
+import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
+import { AppState } from 'redux/store.types';
+import {
+  subscriptionUpdate,
+  completionSubscriptionUpdate,
+} from 'redux/Subscriptions/redux/actions';
 import { emailValidator } from 'shared/helpers/validators';
 
 import { InputProps } from '../Input/Input';
 import * as S from './SubscriptionField.styles';
 
-type SubscriptionProps = InputProps & FormHTMLAttributes<HTMLFormElement>;
+type StateProps = {
+  isCompleted: boolean;
+  statusText: string;
+};
 
-// eslint-disable-next-line no-console
-const handleSubmitClick = (values) => console.log(values);
+const mapState = (state: AppState): StateProps => ({
+  isCompleted: state.subscriptions.isUpdateCompleted,
+  statusText: state.subscriptions.updateStatusText,
+});
 
-const SubscriptionField: React.FC<InputProps> = ({ action, ...rest }: SubscriptionProps) => {
+const mapDispatch = {
+  startSubscriptionUpdate: subscriptionUpdate,
+  stopSubscriptionUpdate: completionSubscriptionUpdate,
+};
+
+type Props = InputProps & StateProps & typeof mapDispatch;
+
+type FormData = {
+  email: string;
+};
+
+const SubscriptionField = ({
+  isCompleted,
+  statusText,
+  startSubscriptionUpdate,
+  stopSubscriptionUpdate,
+  ...rest
+}: Props): JSX.Element => {
+  const onSubmit = ({ email }: FormData) => {
+    startSubscriptionUpdate({ email, subscriptions: { hasSpecialOffers: true } });
+  };
   const { t } = useTranslation('SubscriptionField');
-
   return (
     <Form
-      onSubmit={handleSubmitClick}
+      onSubmit={onSubmit}
       render={({ handleSubmit }) => (
-        <form onSubmit={handleSubmit}>
-          <Field
-            name="email"
-            type="email"
-            render={(props) => (
-              <S.Container>
-                <S.Input {...props.input} {...props.meta} {...rest} validators={[emailValidator]} />
-                <S.SubmitButton aria-label={t('Send')} />
-              </S.Container>
-            )}
-          />
-        </form>
+        <>
+          <form onSubmit={handleSubmit}>
+            <Field
+              name="email"
+              type="email"
+              render={({ input }) => (
+                <S.Container>
+                  <S.Input {...input} {...rest} validators={[emailValidator]} />
+                  <S.SubmitButton aria-label={t('Send')} />
+                </S.Container>
+              )}
+            />
+          </form>
+          {isCompleted && (
+            <PopUpNotification message={statusText} onConfirmButtonClick={stopSubscriptionUpdate} />
+          )}
+        </>
       )}
     />
   );
 };
 
-export default SubscriptionField;
+export default connect(mapState, mapDispatch)(SubscriptionField);
