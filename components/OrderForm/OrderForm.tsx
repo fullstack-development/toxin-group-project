@@ -29,15 +29,6 @@ type Props = {
 
 const oneDay = 24 * 60 * 60 * 1000;
 
-const defaultPrices: PriceItem[] = [
-  {
-    label: `Сбор за услуги: скидка 2${'\u00A0'}179₽`,
-    price: -2179,
-    tooltip: 'Подсказка Подсказка Подсказка Подсказка 2',
-  },
-  { label: 'Сбор за дополнительные услуги', price: 300, tooltip: 'Подсказка 2' },
-];
-
 const defaultMaxGuests: MaxGuests = {
   adults: 3,
   babies: 2,
@@ -100,8 +91,24 @@ const OrderForm: React.FC<Props> = ({
   userEmail,
   confirmBookedRoom,
 }: Props) => {
+  const { t } = useTranslation([
+    'OrderForm',
+    'WordForms',
+    'SearchRoomForm',
+    'Shared',
+    'OrderFormPrices',
+  ]);
+
+  const defaultPrices: PriceItem[] = [
+    {
+      label: `${t(`OrderFormPrices:Service fee_discount`)} 2${'\u00A0'}179₽`,
+      price: -2179,
+      tooltip: 'Подсказка Подсказка Подсказка Подсказка 2',
+    },
+    { label: t('OrderFormPrices:Additional service fee'), price: 300, tooltip: 'Подсказка 2' },
+  ];
+
   const router = useRouter();
-  const { t } = useTranslation(['OrderForm', 'WordForms', 'SearchRoomForm', 'Shared']);
 
   const handleFormSubmit = (values) => {
     if (!isAuthSuccess) return router.push('/auth');

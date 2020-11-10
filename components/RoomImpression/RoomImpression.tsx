@@ -17,7 +17,7 @@ type Props = {
 };
 
 const RoomImpression: React.FC<Props> = ({ title, numberOfRatings }: Props) => {
-  const { t } = useTranslation('WordForms');
+  const { t } = useTranslation(['WordForms', 'Rating']);
   const declensions = ['Vote', 'VotesSecondary', 'Votes'];
   const ratingsSum = Object.values(numberOfRatings).reduce(
     (accumulator, currentValue) => accumulator + currentValue,
@@ -39,7 +39,7 @@ const RoomImpression: React.FC<Props> = ({ title, numberOfRatings }: Props) => {
         <S.FigureCaption>
           <S.List>
             {Object.values(ratingValues).map((value) => (
-              <S.Item key={value}>{value}</S.Item>
+              <S.Item key={value}>{t(`Rating:${value}`)}</S.Item>
             ))}
           </S.List>
         </S.FigureCaption>

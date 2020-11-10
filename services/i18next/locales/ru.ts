@@ -182,4 +182,31 @@ export const ru = {
     'Free cancellation within 48 hours. Thereafter, if canceled no later than 5 days in advance. you will receive a full refund before arrival minus the service fee.':
       'Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.',
   },
+  Benefits: {
+    Comfort: 'Комфорт',
+    Convenience: 'Удобство',
+    Cosiness: 'Уют',
+    'The room is equipped with a fireplace': 'Номер оснащён камином',
+    'Window in each of the bedrooms': 'Окно в каждой из спален',
+    'Sound absorbing walls': 'Шумопоглощающие стены',
+  },
+  Bullets: {
+    'Not allowed with pets': 'Нельзя с питомцами',
+    'No parties and events': 'Без вечеринок и мероприятий',
+    'Arrival time - after 1 00 PM, and departure before 12 00 AM':
+      'Время прибытия — после 13:00, а выезд до 12:00',
+  },
+  Rating: {
+    Excellent: 'Великолепно',
+    Good: 'Хорошо',
+    Normal: 'Удовлетворительно',
+    Bad: 'Разочарован',
+  },
+  translations: {
+    Ago: 'Назад',
+  },
+  OrderFormPrices: {
+    'Service fee_discount': 'Сбор за услуги: скидка',
+    'Additional service fee': 'Сбор за дополнительные услуги',
+  },
 };

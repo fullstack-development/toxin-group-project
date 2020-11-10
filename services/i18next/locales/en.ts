@@ -7,4 +7,7 @@ export const en = {
     BathroomsSecondary: 'Bathrooms',
     ReviewsSecondary: 'Reviews',
   },
+  OrderFormPrices: {
+    'Service fee_discount': 'Service fee: discount',
+  },
 };
