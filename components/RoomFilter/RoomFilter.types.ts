@@ -3,6 +3,7 @@ import { Accessibility, AdditionalAmenities, Opportunities } from 'services/api/
 import { Filters } from '../../services/api/entities/types';
 
 export type Props = {
+  isPending?: boolean;
   loadRooms: (options?: Filters) => void;
   initialFilters?: Filters;
 };

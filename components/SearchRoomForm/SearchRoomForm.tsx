@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { Form } from 'react-final-form';
 import { useTranslation } from 'react-i18next';
+import ClipLoader from 'react-spinners/ClipLoader';
 
 import ArrowButton from 'components/ArrowButton/ArrowButton';
 import Dropdown from 'components/Dropdown/Dropdown';
@@ -16,8 +18,10 @@ type SearchRoomFormProps = {
 const defaultBookingDates = defaultFilters.booked;
 
 const SearchRoomForm: React.FC<SearchRoomFormProps> = ({ onSubmit }: SearchRoomFormProps) => {
-  const handleFormSubmit = (values) => {
-    // console.log(values);
+  const [isFormSubmission, setFormSubmission] = useState(false);
+
+  const handleFormSubmit = () => {
+    setFormSubmission(true);
   };
   const { t } = useTranslation(['SearchRoomForm', 'RoomFilter']);
 
@@ -59,13 +63,23 @@ const SearchRoomForm: React.FC<SearchRoomFormProps> = ({ onSubmit }: SearchRoomF
                 items={guestsItems}
               />
             </S.DropdownWrapper>
-            <ArrowButton
-              href={`/search-room?values=${JSON.stringify(values)}`}
-              isFilled
-              type="button"
-            >
-              {t('Search for a room')}
-            </ArrowButton>
+            {isFormSubmission ? (
+              <S.ProcessButton isFilled isDisabled={isFormSubmission} type="button">
+                {t('RoomFilter:Loading rooms ...')}
+                <S.PreloaderWrapper>
+                  <ClipLoader size={22} color="#FFF" />
+                </S.PreloaderWrapper>
+              </S.ProcessButton>
+            ) : (
+              <ArrowButton
+                href={`/search-room?values=${JSON.stringify(values)}`}
+                isFilled
+                type="button"
+                onClick={handleFormSubmit}
+              >
+                {t('Search for a room')}
+              </ArrowButton>
+            )}
           </form>
         )}
       />

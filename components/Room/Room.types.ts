@@ -1,12 +1,11 @@
+import { Review } from 'services/api/entities/types';
+import { Props } from 'components/Comment/Comment.types';
 import { TFunction } from 'i18next';
-
-import { Props as ReviewProps } from 'components/Comment/Comment.types';
 
 export type Props = {
   price: number;
   number: number;
-  reviews: ReviewProps[];
-  href: string;
+  reviews: Review[];
   imagePaths?: string[];
   reviewMeasure?: string;
   roomType?: string;

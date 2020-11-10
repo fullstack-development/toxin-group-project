@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import { Field, Form } from 'react-final-form';
 import { useTranslation } from 'react-i18next';
 
@@ -5,6 +6,7 @@ import ArrowButton from 'components/ArrowButton/ArrowButton';
 import Dropdown from 'components/Dropdown/Dropdown';
 import { DropdownProps } from 'components/Dropdown/Dropdown.types';
 import TimePicker from 'components/TimePicker/TimePicker';
+import { SelectedBookedRoom } from 'redux/Booking/types';
 import { formatNumber } from 'shared/helpers';
 
 import PriceList from './components/PriceList/PriceList';
@@ -16,15 +18,13 @@ type Props = {
   roomPrice: number;
   breakfastPricePerGuest: number;
   overcrowdingPrice: number;
+  isAuthSuccess: boolean;
   priceItems?: PriceItem[];
   roomType?: string;
   currency?: string;
   measure?: string;
-};
-
-const handleFormSubmit = (values) => {
-  // eslint-disable-next-line
-  console.log(values)
+  userEmail?: string;
+  confirmBookedRoom: (data: SelectedBookedRoom) => void;
 };
 
 const oneDay = 24 * 60 * 60 * 1000;
@@ -48,32 +48,32 @@ const possibleExtraGuestsCount = 1;
 const noFeeGuestsCount = 1;
 
 const dropdownOptions: DropdownProps = {
-  placeholder: 'How many guests',
-  name: 'guests',
+  placeholder: 'RoomFilter:How many guests',
+  name: 'Guests',
   enableControls: true,
   groups: [
     {
-      name: 'guests',
+      name: 'Guests',
       max: defaultMaxGuests.adults + possibleExtraGuestsCount,
-      wordForms: ['a guest', 'guest', 'guests'],
+      wordForms: ['Guest', 'GuestsSecondary', 'Guests'],
     },
   ],
   items: [
     {
-      title: 'adults',
-      inputName: 'adults',
-      groupName: 'guests',
+      title: 'Adults',
+      inputName: 'Adults',
+      groupName: 'Guests',
     },
     {
-      title: 'childrens',
-      inputName: 'children',
-      groupName: 'guests',
+      title: 'Children',
+      inputName: 'Children',
+      groupName: 'Guests',
     },
     {
-      title: 'babies',
-      inputName: 'babies',
+      title: 'Babies',
+      inputName: 'Babies',
       max: defaultMaxGuests.babies,
-      wordForms: ['a baby', 'baby', 'babies'],
+      wordForms: ['Baby', 'Babies', 'BabiesSecondary'],
     },
   ],
 };
@@ -94,10 +94,26 @@ const OrderForm: React.FC<Props> = ({
   priceItems,
   overcrowdingPrice,
   breakfastPricePerGuest,
+  isAuthSuccess,
   currency = 'RUB',
-  measure = 'per day',
+  measure = 'Per day',
+  userEmail,
+  confirmBookedRoom,
 }: Props) => {
-  const { t } = useTranslation('OrderForm');
+  const router = useRouter();
+  const { t } = useTranslation(['OrderForm', 'WordForms', 'SearchRoomForm', 'Shared']);
+
+  const handleFormSubmit = (values) => {
+    if (!isAuthSuccess) return router.push('/auth');
+
+    confirmBookedRoom({
+      ...values,
+      user: userEmail,
+      apartmentId: roomNumber,
+    });
+
+    return router.push('/selected-rooms');
+  };
 
   return (
     <S.Container>
@@ -149,26 +165,26 @@ const OrderForm: React.FC<Props> = ({
                 </S.RoomNumber>
                 <S.Price>
                   {formatNumber(roomPrice, currency)}
-                  <S.Measure>{measure}</S.Measure>
+                  <S.Measure>{t(`WordForms:${measure}`)}</S.Measure>
                 </S.Price>
               </S.RoomInfo>
               <S.Datepicker>
                 <TimePicker
                   type="double"
-                  dateFromLabelText={t('Arrival')}
-                  dateToLabelText={t('Departure')}
+                  dateFromLabelText={t('SearchRoomForm:Arrival')}
+                  dateToLabelText={t('SearchRoomForm:Departure')}
                   name="booked"
                 />
               </S.Datepicker>
               <S.Dropdown>
-                <S.DropdownLabel>{t('guests')}</S.DropdownLabel>
+                <S.DropdownLabel>{t('WordForms:Guests')}</S.DropdownLabel>
                 <Dropdown {...dropdownOptions} />
               </S.Dropdown>
               <S.PriceList>
                 <PriceList items={prices} />
               </S.PriceList>
               <S.ResultWrapper>
-                {t('Total')}
+                {t('Shared:Total')}
                 <S.Dots />
                 <S.ResultPrice>
                   <Field
@@ -182,7 +198,7 @@ const OrderForm: React.FC<Props> = ({
                   {formatNumber(getResultPrice(prices), currency)}
                 </S.ResultPrice>
               </S.ResultWrapper>
-              <ArrowButton type="submit">{t('Book now')}</ArrowButton>
+              <ArrowButton type="submit">{t('OrderForm:Book now')}</ArrowButton>
             </form>
           );
         }}

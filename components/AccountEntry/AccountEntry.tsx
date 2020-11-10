@@ -52,9 +52,7 @@ const AccountEntry: React.FC<Props> = (props: Props): JSX.Element => {
               <Field
                 name="email"
                 type="email"
-                render={({ input, meta }) => (
-                  <Input {...input} {...meta} placeholder="Email" required />
-                )}
+                render={({ input }) => <Input {...input} placeholder="Email" required />}
               />
               <Field
                 name="password"

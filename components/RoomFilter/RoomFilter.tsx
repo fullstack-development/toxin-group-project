@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Form } from 'react-final-form';
 import { useTranslation } from 'react-i18next';
+import { animateScroll as scroll } from 'react-scroll';
 
 import CheckboxesList from 'components/CheckboxesList/CheckboxesList';
 import {
@@ -13,7 +14,7 @@ import Dropdown from 'components/Dropdown/Dropdown';
 import { guestsGroups, guestsItems, amenitiesItems } from 'components/Dropdown/Dropdown.data';
 import { Item } from 'components/Dropdown/Dropdown.types';
 import Expander from 'components/Expander/Expander';
-import RangeSlider from 'components/RangeSlider/RangeSlider';
+import Slider from 'components/Slider/Slider';
 import TimePicker from 'components/TimePicker/TimePicker';
 import {
   Accessibility,
@@ -48,9 +49,10 @@ const getCheckboxProps = (
   }));
 };
 
-const RoomFilter: React.FC<Props> = ({ initialFilters, loadRooms }: Props) => {
+const RoomFilter: React.FC<Props> = ({ initialFilters, loadRooms, isPending = false }: Props) => {
   const handleFormSubmit = (values?: Filters) => {
     loadRooms(values);
+    scroll.scrollToTop();
   };
 
   const { t } = useTranslation(['RoomFilter', 'Buttons']);
@@ -94,10 +96,11 @@ const RoomFilter: React.FC<Props> = ({ initialFilters, loadRooms }: Props) => {
                 />
               </S.DropdownWrapper>
               <S.SliderWrapper>
-                <RangeSlider
+                <Slider
                   name="price"
                   title={t('Price range')}
                   initialValue={[initialValues.price.from, initialValues.price.to]}
+                  showValue
                 />
                 <S.SliderDescription>{t('Cost per day of stay in the room')}</S.SliderDescription>
               </S.SliderWrapper>
@@ -135,7 +138,9 @@ const RoomFilter: React.FC<Props> = ({ initialFilters, loadRooms }: Props) => {
                   />
                 </Expander>
               </S.CheckboxWrapper>
-              <S.SubmitButton isFilled>{t('Buttons:Apply')}</S.SubmitButton>
+              <S.SubmitButton disabled={isPending} isFilled>
+                {t('Buttons:Apply')}
+              </S.SubmitButton>
             </form>
           </S.RoomFilter>
         );

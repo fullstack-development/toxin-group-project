@@ -25,7 +25,7 @@ const TimePicker = ({
 }: Props): JSX.Element => {
   const [isCalendarVisible, setCalendarVisibility] = useState(false);
   const [selectedDateRange, setSelectedDateRange] = useState({ from: dateFrom, to: dateTo });
-  const { t, i18n } = useTranslation('TimePicker');
+  const { t, i18n } = useTranslation(['TimePicker', 'Shared']);
 
   const { from, to } = selectedDateRange;
 
@@ -49,7 +49,8 @@ const TimePicker = ({
       : from.toLocaleDateString(i18n.language);
   };
 
-  const getMaskedDate = (): string => (type === 'single' ? t('Select Date') : t('Date mask'));
+  const getMaskedDate = (): string =>
+    type === 'single' ? t('TimePicker:Select Date') : t('Shared:Date mask');
 
   const openCalendar = (): void => {
     setCalendarVisibility(true);

@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import { useState, Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
@@ -13,6 +14,7 @@ import { AppState } from 'redux/store.types';
 import { Filters } from 'services/api/entities/types';
 
 import * as S from './SearchRoomPage.styles';
+import { SortOrder, SortData, SortParam } from './SearchRoomPage.types';
 import getPassedFilters from './utils/getPassedFilters';
 
 type StateProps = {
@@ -30,6 +32,27 @@ const mapDispatch = {
 };
 
 type Props = StateProps & typeof mapDispatch;
+
+const separator = ' ';
+
+const sortData: SortData[] = [
+  {
+    parameter: 'price',
+    name: 'цена',
+    sortFunction: (a: RoomProps, b: RoomProps) => a.price - b.price,
+  },
+  {
+    parameter: 'rating',
+    name: 'рейтинг',
+    sortFunction: (a: RoomProps, b: RoomProps) => a.rating - b.rating,
+  },
+  {
+    parameter: 'reviews',
+    name: 'количество отзывов',
+    sortFunction: (a: RoomProps, b: RoomProps) => a.reviews.length - b.reviews.length,
+  },
+];
+const [descKey, ascKey] = ['desc', 'asc'] as SortOrder[];
 
 const SearchRoomPage: React.FC<Props> = ({ rooms, getRooms, isPending }: Props) => {
   const router = useRouter();
@@ -51,25 +74,63 @@ const SearchRoomPage: React.FC<Props> = ({ rooms, getRooms, isPending }: Props) 
     getRooms(currentFilters);
   };
 
+  const [sortParam, setSortParam] = useState<SortParam>('price');
+  const [isAscendingSort, setIsAscendingSort] = useState(true);
+
+  const ascSortedRooms = [...rooms].sort(
+    sortData.find((obj) => obj.parameter === sortParam).sortFunction,
+  );
+
+  const handleSelectChange = (e: React.FormEvent<HTMLSelectElement>) => {
+    const target = e.target as HTMLSelectElement;
+    const [param, sortOrder] = target.value.split(separator) as [SortParam, SortOrder];
+    setSortParam(param);
+    setIsAscendingSort(sortOrder === ascKey);
+  };
+
+  const sortedRooms =
+    rooms.length && (isAscendingSort ? [...ascSortedRooms] : [...ascSortedRooms.reverse()]);
+
   return (
     <MainLayout>
       <S.Container>
         <S.FilterContainer>
-          <RoomFilter initialFilters={filters} loadRooms={loadRooms} />
+          <RoomFilter initialFilters={filters} loadRooms={loadRooms} isPending={isPending} />
         </S.FilterContainer>
         <S.RoomsContainer>
-          <S.RoomsTitle>{t('The rooms we have selected for you')}</S.RoomsTitle>
-          {rooms.length ? (
-            <Rooms rooms={rooms} />
-          ) : (
+          <S.TitleContainer>
+            <S.RoomsTitle>{t('The rooms we have selected for you')}</S.RoomsTitle>
+            <S.Sort>
+              {t('Sort by parameter')}:
+              <S.Select onChange={handleSelectChange}>
+                {sortData.map((paramData) => (
+                  <Fragment key={paramData.parameter}>
+                    <option
+                      value={`${paramData.parameter}${separator}${ascKey}`}
+                      key={`${paramData.parameter}${separator}${ascKey}`}
+                    >
+                      {paramData.name} ↑
+                    </option>
+                    <option
+                      value={`${paramData.parameter}${separator}${descKey}`}
+                      key={`${paramData.parameter}${separator}${descKey}`}
+                    >
+                      {paramData.name} ↓
+                    </option>
+                  </Fragment>
+                ))}
+              </S.Select>
+            </S.Sort>
+          </S.TitleContainer>
+          {isPending && (
             <S.PreloaderWrapper>
               <Preloader />
             </S.PreloaderWrapper>
           )}
           {rooms.length ? (
-            <Rooms rooms={rooms} />
+            <Rooms rooms={sortedRooms} />
           ) : (
-            !isPending && <span>{t('No results were found for your request :(')}</span>
+            !isPending && <span>{t('No results were found for your request =(')}</span>
           )}
         </S.RoomsContainer>
       </S.Container>

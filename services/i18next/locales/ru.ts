@@ -8,10 +8,17 @@ export const ru = {
     Female: 'Женщина',
     Entry: 'Войти',
     Save: 'Сохранить',
+    Rules: 'Правила',
+    Cancel: 'Отмена',
+    Total: 'Итого',
+    'Date mask': 'ДД.ММ.ГГГГ',
   },
   AccountEntry: {
     'Sign In with account google': 'Вход через аккаунт google',
     'No Toxin account?': 'Нет аккаунта на Toxin?',
+  },
+  TimePicker: {
+    'Select Date': 'Выберите дату',
   },
   RegistrationForm: {
     'Create account': 'Регистрация аккаунта',
@@ -41,6 +48,10 @@ export const ru = {
     'Additional amenities': 'Дополнительные удобства',
     'Loading rooms ...': 'Загружаем номера ...',
   },
+  OrderForm: {
+    'How many guests': 'Сколько гостей',
+    'Book now': 'Забронировать',
+  },
   CheckboxesList: {
     'Smoking is allowed': 'Можно курить',
     'Pets are allowed': 'Можно с питомцами',
@@ -57,6 +68,9 @@ export const ru = {
     Crib: 'Детская кроватка',
     TV: 'Телевизор',
     Shampoo: 'Шампунь',
+  },
+  ReviewsPage: {
+    'Guest reviews': 'Отзывы посетителей номера',
   },
   WordForms: {
     Guest: 'гость',
@@ -80,6 +94,9 @@ export const ru = {
     Reviews: 'отзывов',
     ReviewsSecondary: 'отзыва',
     'Per day': 'в сутки',
+    Vote: 'Голос',
+    Votes: 'Голосов',
+    VotesSecondary: 'Голоса',
   },
   Footer: {
     Subscription: 'Подписка',
@@ -120,8 +137,9 @@ export const ru = {
     'Email address': 'Адрес электронной почты',
   },
   SearchRoomPage: {
+    'Sort by parameter': 'Сортировать по параметру',
     'The rooms we have selected for you': 'Номера, которые мы для вас подобрали',
-    'No results were found for your request :(': 'К сожалению, мы не смогли ничего подобрать :(',
+    'No results were found for your request =(': 'К сожалению, мы не смогли ничего подобрать =(',
   },
   Months: {
     January: 'Январь',
@@ -155,5 +173,12 @@ export const ru = {
   HeaderProfile: {
     'To profile': 'Перейти в профиль',
     Logout: 'Выход',
+  },
+  RoomDetailsPage: {
+    'Loading Room Information ...': 'Загрузка информации о номере ...',
+    'Room details': 'Сведения о номере',
+    'Impressions of the room': 'Впечатления от номера',
+    'Failed to load room information': 'Не удалось загрузить информацию о номере',
+    'Free cancellation within 48 hours. Thereafter, if canceled no later than 5 days in advance. you will receive a full refund before arrival minus the service fee.': 'Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.',
   },
 };

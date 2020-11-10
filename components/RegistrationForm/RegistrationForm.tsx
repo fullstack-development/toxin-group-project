@@ -27,6 +27,10 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
   return (
     <>
       <Form
+        initialValues={{
+          receiveOffers: false,
+          gender: 'male',
+        }}
         onSubmit={handleRegistrationFormSubmit}
         render={({ handleSubmit }) => (
           <S.RegistrationForm onSubmit={handleSubmit}>
@@ -36,14 +40,12 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
             </S.Avatar>
             <Field
               name="name"
-              render={({ input, meta }) => (
-                <S.InputWrapper {...input} {...meta} placeholder={t('Shared:Name')} />
-              )}
+              render={({ input }) => <S.InputWrapper {...input} placeholder={t('Shared:Name')} />}
             />
             <Field
               name="surname"
               render={({ input, meta }) => (
-                <S.InputWrapper {...input} {...meta} placeholder={t('Shared:Surname')} />
+                <S.InputWrapper {...input} placeholder={t('Shared:Surname')} />
               )}
             />
             <S.RadioButtonsWrapper>
@@ -61,6 +63,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
                   label={t('Birthday date')}
                   validators={[dateValidator]}
                   mask={dateFormatMask}
+                  required
                 />
               )}
             />
@@ -68,10 +71,9 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
               <Field
                 name="email"
                 type="email"
-                render={({ input, meta }) => (
+                render={({ input }) => (
                   <S.InputWrapper
                     {...input}
-                    {...meta}
                     required
                     label={t('Service login details')}
                     placeholder={t('Email')}
@@ -83,12 +85,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
                 name="password"
                 type="password"
                 render={({ input, meta }) => (
-                  <S.InputWrapper
-                    {...input}
-                    {...meta}
-                    required
-                    placeholder={t('Shared:Password')}
-                  />
+                  <S.InputWrapper {...input} required placeholder={t('Shared:Password')} />
                 )}
               />
             </S.AccountEntryWrapper>
@@ -111,7 +108,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
           vertical: 'bottom',
           horizontal: 'left',
         }}
-        open={!isSuccess && isProcess}
+        open={!isSuccess && isProcess && Boolean(statusText)}
         autoHideDuration={3000}
         onClose={stopRegistration}
         message={statusText}

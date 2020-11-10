@@ -1,25 +1,33 @@
 import { useTranslation } from 'react-i18next';
 
-import Comment from 'components/Comment/Comment';
+import Review from 'components/Review/Review';
+import { Review as ReviewProps } from 'services/api/entities/types';
 import getNounInDeclension from 'shared/helpers/getNounInDeclension';
 
-import { reviews } from './Reviews.data';
 import * as S from './Reviews.style';
 
-const Reviews = (): JSX.Element => {
-  const { t } = useTranslation('Reviews');
+type Props = {
+  reviews: ReviewProps[];
+};
+
+const NUMBER_OF_REVIEWS = 2;
+
+const Reviews = ({ reviews }: Props): JSX.Element => {
+  const { t } = useTranslation(['WordForms', 'ReviewsPage']);
   const declensions = [t('Review'), t('ReviewsSecondary'), t('Reviews')];
+  const sortedReviews = reviews.slice().sort((a, b) => b.likesCount - a.likesCount);
+  const mostPopularReviews = sortedReviews.slice(0, NUMBER_OF_REVIEWS);
 
   return (
     <S.Reviews>
-      <S.Title>{t('Guest reviews')}</S.Title>
+      <S.Title>{t('ReviewsPage:Guest reviews')}</S.Title>
       <S.Counter>
         {reviews.length} {getNounInDeclension(reviews.length, declensions)}
       </S.Counter>
       <S.List>
-        {reviews.map((review) => (
+        {mostPopularReviews.map((review) => (
           <S.Item key={review.userName}>
-            <Comment {...review} />
+            <Review {...review} />
           </S.Item>
         ))}
       </S.List>
