@@ -1,4 +1,3 @@
-import { Props } from 'components/Comment/Comment.types';
 import { TFunction } from 'i18next';
 
 import { Review } from 'services/api/entities/types';
