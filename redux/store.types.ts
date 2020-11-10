@@ -1,10 +1,10 @@
 import { SagaIterator } from 'redux-saga';
 
-import { ApartmentActions, ApartmentState } from './Apartment/types';
-import { AuthActions, AuthState } from './Auth/types';
-import { BookingActions, BookingState } from './Booking/types';
-import { ProfileActions, ProfileState } from './Profile/types';
-import { RegistrationActions, RegistrationState } from './Registration/types';
+import { ApartmentActions, ApartmentState } from './Apartment/model';
+import { AuthActions, AuthState } from './Auth/model';
+import { BookingActions, BookingState } from './Booking/model';
+import { ProfileActions, ProfileState } from './Profile/model';
+import { RegistrationActions, RegistrationState } from './Registration/model';
 
 export type AvailableStates =
   | ApartmentState

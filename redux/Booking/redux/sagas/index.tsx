@@ -1,5 +1,5 @@
 import { SagaIterator } from 'redux-saga';
-import { put, takeLatest, call, PutEffect, takeLeading, CallEffect } from 'redux-saga/effects';
+import { put, call, PutEffect, CallEffect } from 'redux-saga/effects';
 
 import Api from 'api/api';
 import { Apartment, BookingData } from 'api/entities/types';
@@ -9,40 +9,31 @@ import {
   BookedHistoryList,
   UpdateBookedHistory,
   BookCurrentRoom,
-} from 'redux/Booking/types';
-
-import {
-  ROOMS_REQUEST_PENDING,
-  ROOMS_REQUEST_SUCCESS,
-  ROOMS_REQUEST_FAILED,
-  LOAD_ROOMS,
-  LOAD_BOOKED_HISTORY,
-  UPDATE_BOOKED_HISTORY,
-  BOOK_ROOM,
-} from '../../constants';
+} from 'redux/Booking/model';
+import { takeLatestAction, takeLeadingAction } from 'redux/types';
 
 function* loadRooms(
   action: RoomsRequest,
 ): Generator | Generator<PutEffect<RoomsRequest>, void, never> {
   try {
     yield put({
-      type: ROOMS_REQUEST_PENDING,
+      type: 'ROOMS_REQUEST_PENDING',
       payload: true,
     });
 
     const rooms: Apartment[] = yield call(Api.booking.filterRooms, action.payload);
     yield put({
-      type: ROOMS_REQUEST_SUCCESS,
+      type: 'ROOMS_REQUEST_SUCCESS',
       payload: rooms,
     });
   } catch (error) {
     yield put({
-      type: ROOMS_REQUEST_FAILED,
+      type: 'ROOMS_REQUEST_FAILED',
       payload: error,
     });
   } finally {
     yield put({
-      type: ROOMS_REQUEST_PENDING,
+      type: 'ROOMS_REQUEST_PENDING',
       payload: false,
     });
   }
@@ -54,7 +45,7 @@ function* loadRoomsHistory({
   const result: BookedHistoryList = yield call(Api.booking.getBookedHistory, payload);
 
   yield put({
-    type: UPDATE_BOOKED_HISTORY,
+    type: 'UPDATE_BOOKED_HISTORY',
     payload: result,
   });
 }
@@ -74,7 +65,7 @@ function* confirmBookedRoom({
 }
 
 export function* rootSaga(): SagaIterator {
-  yield takeLeading(LOAD_ROOMS, loadRooms);
-  yield takeLatest(LOAD_BOOKED_HISTORY, loadRoomsHistory);
-  yield takeLatest(BOOK_ROOM, confirmBookedRoom);
+  yield takeLeadingAction<RoomsRequest['type']>('LOAD_ROOMS', loadRooms);
+  yield takeLatestAction<LoadBookedHistory['type']>('LOAD_BOOKED_HISTORY', loadRoomsHistory);
+  yield takeLatestAction<BookCurrentRoom['type']>('BOOK_ROOM', confirmBookedRoom);
 }

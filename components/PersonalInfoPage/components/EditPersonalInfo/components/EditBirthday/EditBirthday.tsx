@@ -8,7 +8,7 @@ import Input from 'components/Input/Input';
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
 import {
   updateAdditionalUserData,
-  updateAdditionalUserDataCompleted,
+  completionUpdateAdditionalUserData,
 } from 'redux/Profile/redux/actions';
 import { AppState } from 'redux/store.types';
 import { dateValidator, dateFormatMask } from 'shared/helpers/validators';
@@ -27,7 +27,7 @@ const mapState = (state: AppState): StateProps => ({
 
 const mapDispatch = {
   startUpdateAdditionalUserData: updateAdditionalUserData,
-  stopUpdateAdditionalUserData: updateAdditionalUserDataCompleted,
+  stopUpdateAdditionalUserData: completionUpdateAdditionalUserData,
 };
 
 type OwnProps = {

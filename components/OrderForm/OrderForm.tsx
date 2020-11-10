@@ -5,7 +5,7 @@ import ArrowButton from 'components/ArrowButton/ArrowButton';
 import Dropdown from 'components/Dropdown/Dropdown';
 import { DropdownProps } from 'components/Dropdown/Dropdown.types';
 import TimePicker from 'components/TimePicker/TimePicker';
-import { SelectedBookedRoom } from 'redux/Booking/types';
+import { SelectedBookedRoom } from 'redux/Booking/model';
 import { formatNumber } from 'shared/helpers';
 
 import PriceList from './components/PriceList/PriceList';

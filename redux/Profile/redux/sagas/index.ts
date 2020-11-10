@@ -1,37 +1,21 @@
 import firebase from 'firebase';
 import { SagaIterator } from 'redux-saga';
-import { call, put, takeLeading } from 'redux-saga/effects';
+import { call, put } from 'redux-saga/effects';
 
 import api from 'api/api';
+import { takeLeadingAction } from 'redux/types';
 import {
   getEmailUpdateErrorMessage,
   getPasswordUpdateErrorMessage,
 } from 'shared/helpers/errorMessages';
 
 import {
-  EMAIL_UPDATE_PROCESS,
-  EMAIL_UPDATE_SUCCESS,
-  EMAIL_UPDATE_FAILED,
-  GET_ADDITIONAL_USER_DATA_PROCESS,
-  GET_ADDITIONAL_USER_DATA_SUCCESS,
-  GET_ADDITIONAL_USER_DATA_FAILED,
-  PASSWORD_UPDATE_PROCESS,
-  PASSWORD_UPDATE_SUCCESS,
-  PASSWORD_UPDATE_FAILED,
-  UPDATE_ADDITIONAL_USER_DATA_PROCESS,
-  UPDATE_ADDITIONAL_USER_DATA_SUCCESS,
-  UPDATE_ADDITIONAL_USER_DATA_FAILED,
-  USERNAME_UPDATE_PROCESS,
-  USERNAME_UPDATE_SUCCESS,
-  USERNAME_UPDATE_FAILED,
-} from '../../constants';
-import {
   EmailUpdateRequest,
   PasswordUpdateRequest,
   UpdateAdditionalUserDataRequest,
   UsernameUpdateRequest,
   GetAdditionalUserDataRequest,
-} from '../../types';
+} from '../../model';
 
 function* emailUpdate({ payload }: EmailUpdateRequest) {
   try {
@@ -40,12 +24,12 @@ function* emailUpdate({ payload }: EmailUpdateRequest) {
     yield user.verifyBeforeUpdateEmail(email);
 
     yield put({
-      type: EMAIL_UPDATE_SUCCESS,
+      type: 'EMAIL_UPDATE_SUCCESS',
       payload: `Подтверждение адреса электронной почты было отправлено на ${email}`,
     });
   } catch (err) {
     yield put({
-      type: EMAIL_UPDATE_FAILED,
+      type: 'EMAIL_UPDATE_FAILED',
       payload: getEmailUpdateErrorMessage(err),
     });
   }
@@ -72,12 +56,12 @@ function* passwordUpdate({
     yield user.updatePassword(newPassword);
 
     yield put({
-      type: PASSWORD_UPDATE_SUCCESS,
+      type: 'PASSWORD_UPDATE_SUCCESS',
       payload: 'Пароль успешно изменен',
     });
   } catch (err) {
     yield put({
-      type: PASSWORD_UPDATE_FAILED,
+      type: 'PASSWORD_UPDATE_FAILED',
       payload: getPasswordUpdateErrorMessage(err),
     });
   }
@@ -92,12 +76,12 @@ function* updateAdditionalUserData({ payload: { user, data } }: UpdateAdditional
       yield call(api.auth.addAdditionalUserInformation, user.uid, data);
     }
     yield put({
-      type: UPDATE_ADDITIONAL_USER_DATA_SUCCESS,
+      type: 'UPDATE_ADDITIONAL_USER_DATA_SUCCESS',
       payload: 'Данные были успешно обновлены',
     });
   } catch (err) {
     yield put({
-      type: UPDATE_ADDITIONAL_USER_DATA_FAILED,
+      type: 'UPDATE_ADDITIONAL_USER_DATA_FAILED',
       payload: 'Произошла ошибка повторите попытку позже',
     });
   }
@@ -110,12 +94,12 @@ function* usernameUpdate({ payload }: UsernameUpdateRequest) {
     yield user.updateProfile({ displayName });
 
     yield put({
-      type: USERNAME_UPDATE_SUCCESS,
+      type: 'USERNAME_UPDATE_SUCCESS',
       payload: 'Данные были успешно обновлены',
     });
   } catch (err) {
     yield put({
-      type: USERNAME_UPDATE_FAILED,
+      type: 'USERNAME_UPDATE_FAILE',
       payload: 'Произошла ошибка повторите попытку позже',
     });
   }
@@ -125,23 +109,29 @@ function* getAdditionalUserData({ payload: user }: GetAdditionalUserDataRequest)
   try {
     const additionalUserData = yield call(api.auth.getAdditionalUserInformation, user.uid);
     yield put({
-      type: GET_ADDITIONAL_USER_DATA_SUCCESS,
+      type: 'GET_ADDITIONAL_USER_DATA_SUCCESS',
       payload: additionalUserData,
     });
   } catch (err) {
     yield put({
-      type: GET_ADDITIONAL_USER_DATA_FAILED,
+      type: 'GET_ADDITIONAL_USER_DATA_FAILED',
       payload: null,
     });
   }
 }
 
 function* rootSaga(): SagaIterator {
-  yield takeLeading(EMAIL_UPDATE_PROCESS, emailUpdate);
-  yield takeLeading(GET_ADDITIONAL_USER_DATA_PROCESS, getAdditionalUserData);
-  yield takeLeading(PASSWORD_UPDATE_PROCESS, passwordUpdate);
-  yield takeLeading(UPDATE_ADDITIONAL_USER_DATA_PROCESS, updateAdditionalUserData);
-  yield takeLeading(USERNAME_UPDATE_PROCESS, usernameUpdate);
+  yield takeLeadingAction<EmailUpdateRequest['type']>('EMAIL_UPDATE_PROCESS', emailUpdate);
+  yield takeLeadingAction<GetAdditionalUserDataRequest['type']>(
+    'GET_ADDITIONAL_USER_DATA_PROCESS',
+    getAdditionalUserData,
+  );
+  yield takeLeadingAction<PasswordUpdateRequest['type']>('PASSWORD_UPDATE_PROCESS', passwordUpdate);
+  yield takeLeadingAction<UpdateAdditionalUserDataRequest['type']>(
+    'UPDATE_ADDITIONAL_USER_DATA_PROCESS',
+    updateAdditionalUserData,
+  );
+  yield takeLeadingAction<UsernameUpdateRequest['type']>('USERNAME_UPDATE_PROCESS', usernameUpdate);
 }
 
 export { rootSaga };

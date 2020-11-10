@@ -2,7 +2,7 @@ import { Form, Field } from 'react-final-form';
 import { connect } from 'react-redux';
 
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
-import { passwordReset, passwordResetCompleted } from 'redux/Auth/redux/actions';
+import { passwordReset, completionPasswordReset } from 'redux/Auth/redux/actions';
 import { AppState } from 'redux/store.types';
 import { emailValidator } from 'shared/helpers/validators/emailValidator';
 
@@ -20,7 +20,7 @@ const mapState = (state: AppState): StateProps => ({
 
 const mapDispatch = {
   startPasswordReset: passwordReset,
-  stopPasswordReset: passwordResetCompleted,
+  stopPasswordReset: completionPasswordReset,
 };
 
 type FormData = {

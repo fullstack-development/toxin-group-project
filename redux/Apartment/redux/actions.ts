@@ -1,9 +1,6 @@
-import { GET_ROOM_DETAILS_PROCESS } from '../constants';
-import { GetRoomDetailsRequest } from '../types';
+import { GetRoomDetailsRequest } from '../model';
 
-const getRoomDetails = (id: number): GetRoomDetailsRequest => ({
-  type: GET_ROOM_DETAILS_PROCESS,
+export const getRoomDetails = (id: number): GetRoomDetailsRequest => ({
+  type: 'GET_ROOM_DETAILS_PROCESS',
   payload: id,
 });
-
-export { getRoomDetails };

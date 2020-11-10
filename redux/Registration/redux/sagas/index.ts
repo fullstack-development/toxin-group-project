@@ -1,44 +1,36 @@
 import { SagaIterator } from 'redux-saga';
-import { put, takeLatest, call, PutEffect } from 'redux-saga/effects';
+import { put, call, PutEffect } from 'redux-saga/effects';
 
 import Api from 'api/api';
 import { UserCredential } from 'api/Firebase/modules/Authentication/types';
+import { takeLatestAction } from 'redux/types';
 
-import { REGISTRATION_REQUEST, REGISTRATION_SUCCESS, REGISTRATION_FAILED } from '../../constants';
-import { ProfileData, RegistrationStatusSuccess, RegistrationStatusFailed } from '../../types';
+import {
+  RegistrationStatusSuccess,
+  RegistrationStatusFailed,
+  RegistrationRequest,
+} from '../../model';
 
-function* startRegistrationProcess(data: {
-  type: typeof REGISTRATION_REQUEST;
-  payload: ProfileData;
-}):
+function* registration({
+  payload,
+}: RegistrationRequest):
   | Generator
   | Generator<PutEffect<RegistrationStatusSuccess | RegistrationStatusFailed>, void, never> {
-  const { email, password, name, surname, birthDate, gender, avatar, receiveOffers } = data.payload;
-
   try {
-    const result: UserCredential = yield call(Api.auth.signUp, {
-      email,
-      password,
-      name,
-      surname,
-      birthDate,
-      gender,
-      avatar,
-      receiveOffers,
-    });
+    const result: UserCredential = yield call(Api.auth.signUp, { ...payload });
 
     yield put({
-      type: REGISTRATION_SUCCESS,
+      type: 'REGISTRATION_SUCCESS',
       payload: result,
     });
   } catch (error) {
     yield put({
-      type: REGISTRATION_FAILED,
+      type: 'REGISTRATION_FAILED',
       payload: error.message,
     });
   }
 }
 
 export function* rootSaga(): SagaIterator {
-  yield takeLatest(REGISTRATION_REQUEST, startRegistrationProcess);
+  yield takeLatestAction<RegistrationRequest['type']>('REGISTRATION_REQUEST', registration);
 }

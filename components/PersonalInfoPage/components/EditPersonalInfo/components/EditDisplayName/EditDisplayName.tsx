@@ -6,7 +6,7 @@ import { User } from 'api/Firebase/modules/Authentication/types';
 import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
-import { usernameUpdate, usernameUpdateCompleted } from 'redux/Profile/redux/actions';
+import { usernameUpdate, completionUsernameUpdate } from 'redux/Profile/redux/actions';
 import { AppState } from 'redux/store.types';
 
 type StateProps = {
@@ -23,7 +23,7 @@ const mapState = (state: AppState): StateProps => ({
 
 const mapDispatch = {
   startUsernameUpdate: usernameUpdate,
-  stopUsernameUpdate: usernameUpdateCompleted,
+  stopUsernameUpdate: completionUsernameUpdate,
 };
 
 type OwnProps = {

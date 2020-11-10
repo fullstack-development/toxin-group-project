@@ -1,15 +1,12 @@
-import { DispatchEvent } from 'react-redux';
-
-import { store } from '../../store';
-import { REGISTRATION_REQUEST, BREAK_REGISTRATION_PROCESS } from '../constants';
-import { ProfileData, RegistrationRequest } from '../types';
+import { BreakRegistrationProcess, ProfileData, RegistrationRequest } from '../model';
 
 const startRegistration = (data: ProfileData): RegistrationRequest => ({
-  type: REGISTRATION_REQUEST,
+  type: 'REGISTRATION_REQUEST',
   payload: data,
 });
 
-const cancelRegistration = (): DispatchEvent =>
-  store.dispatch({ type: BREAK_REGISTRATION_PROCESS });
+const cancelRegistration = (): BreakRegistrationProcess => ({
+  type: 'BREAK_REGISTRATION_PROCESS',
+});
 
 export { startRegistration, cancelRegistration };
