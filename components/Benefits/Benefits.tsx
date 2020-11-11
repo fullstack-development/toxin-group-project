@@ -1,4 +1,6 @@
-import { memo } from 'react';
+import { TFunction } from 'i18next';
+import { ComponentType, memo } from 'react';
+import { withTranslation, WithTranslation } from 'react-i18next';
 
 import * as S from './Benefits.style';
 
@@ -10,16 +12,17 @@ type Props = {
       icon: string;
     } & S.Icon
   >;
+  t: TFunction;
 };
 
-const Benefits = memo(({ items }: Props) => (
+const Benefits: ComponentType<WithTranslation & Props> = memo(({ items, t }: Props) => (
   <S.Benefits>
     {items.map(({ term, icon, definition }) => (
       <S.Item key={term}>
         <S.Icon icon={icon} />
         <S.List>
-          <S.Term>{term}</S.Term>
-          <dd>{definition}</dd>
+          <S.Term>{t(term)}</S.Term>
+          <dd>{t(definition)}</dd>
         </S.List>
       </S.Item>
     ))}
@@ -28,4 +31,4 @@ const Benefits = memo(({ items }: Props) => (
 
 Benefits.displayName = 'Benefits';
 
-export default Benefits;
+export default withTranslation('Benefits')(Benefits);

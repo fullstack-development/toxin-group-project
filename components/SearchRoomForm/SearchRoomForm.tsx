@@ -1,5 +1,6 @@
 import { memo, useState } from 'react';
 import { Form } from 'react-final-form';
+import { useTranslation } from 'react-i18next';
 import ClipLoader from 'react-spinners/ClipLoader';
 
 import ArrowButton from 'components/ArrowButton/ArrowButton';
@@ -18,10 +19,11 @@ const SearchRoomForm = memo(() => {
   const handleFormSubmit = () => {
     setFormSubmission(true);
   };
+  const { t } = useTranslation(['SearchRoomForm', 'RoomFilter']);
 
   return (
     <S.SearchRoomForm>
-      <S.Title>Найдём номера под ваши пожелания</S.Title>
+      <S.Title>{t('We will find rooms according to your wishes')}</S.Title>
       <Form
         initialValues={{
           booked: {
@@ -41,16 +43,16 @@ const SearchRoomForm = memo(() => {
               <TimePicker
                 type="double"
                 name="booked"
-                dateFromLabelText="прибытие"
-                dateToLabelText="выезд"
+                dateFromLabelText={t('Arrival')}
+                dateToLabelText={t('Departure')}
                 dateFrom={new Date(defaultBookingDates.from)}
                 dateTo={new Date(defaultBookingDates.to)}
               />
             </S.TimePickerWrapper>
             <S.DropdownWrapper>
-              <S.DropdownTitle>гости</S.DropdownTitle>
+              <S.DropdownTitle>{t('RoomFilter:Guests')}</S.DropdownTitle>
               <Dropdown
-                placeholder="Сколько гостей"
+                placeholder={t('How many guests')}
                 name="guests"
                 enableControls
                 groups={guestsGroups}
@@ -59,7 +61,7 @@ const SearchRoomForm = memo(() => {
             </S.DropdownWrapper>
             {isFormSubmission ? (
               <S.ProcessButton isFilled isDisabled={isFormSubmission} type="button">
-                Загружаем номера...
+                {t('RoomFilter:Loading rooms ...')}
                 <S.PreloaderWrapper>
                   <ClipLoader size={22} color="#FFF" />
                 </S.PreloaderWrapper>
@@ -71,7 +73,7 @@ const SearchRoomForm = memo(() => {
                 type="button"
                 onClick={handleFormSubmit}
               >
-                Подобрать номер
+                {t('Search for a room')}
               </ArrowButton>
             )}
           </form>

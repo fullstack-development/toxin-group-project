@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef, memo } from 'react';
 import { DateUtils, DayModifiers } from 'react-day-picker';
+import { useTranslation } from 'react-i18next';
 
 import TextButton from 'components/TextButton/TextButton';
-import { months, weekdaysShort } from 'shared/helpers/validators';
 
 import * as S from './Calendar.styles';
 import NavBar from './components/NavBar/NavBar';
@@ -30,6 +30,7 @@ const Calendar = memo(
       enteredTo: null,
     });
     const htmlContainer = useRef(null);
+    const { t } = useTranslation(['Months', 'WeekdaysShort', 'Buttons']);
 
     useEffect(() => {
       const handleDocumentClick = (e: Event) => {
@@ -71,6 +72,31 @@ const Calendar = memo(
     const { from, to } = selectedDays;
     const modifiers = { start: from, end: selectedDays.to };
 
+    const months = [
+      t('Months:January'),
+      t('Months:February'),
+      t('Months:March'),
+      t('Months:April'),
+      t('Months:May'),
+      t('Months:June'),
+      t('Months:July'),
+      t('Months:August'),
+      t('Months:September'),
+      t('Months:October'),
+      t('Months:November'),
+      t('Months:December'),
+    ];
+
+    const weekdaysShort = [
+      t('WeekdaysShort:Mon'),
+      t('WeekdaysShort:Tue'),
+      t('WeekdaysShort:Wed'),
+      t('WeekdaysShort:Thu'),
+      t('WeekdaysShort:Fri'),
+      t('WeekdaysShort:Sat'),
+      t('WeekdaysShort:Sun'),
+    ];
+
     return (
       <S.CalendarContainer isVisible={isVisible} ref={htmlContainer}>
         <S.Calendar
@@ -85,10 +111,10 @@ const Calendar = memo(
         />
         <S.CalendarControls>
           <TextButton type="button" isSecondary onClick={clearSelectedDate}>
-            Очистить
+            {t('Buttons:Clear')}
           </TextButton>
           <TextButton type="button" onClick={handleApplyButtonClick}>
-            Применить
+            {t('Buttons:Apply')}
           </TextButton>
         </S.CalendarControls>
       </S.CalendarContainer>

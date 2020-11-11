@@ -6,9 +6,10 @@ import { memo, useState } from 'react';
 import NavMenu from 'components/NavMenu/NavMenu';
 import { NavLinks } from 'components/NavMenu/NavMenu.data';
 
+import HeaderUserLogin from './components/HeaderUserLogin/HeaderUserLogin';
+import HeaderUserProfile from './components/HeaderUserProfile/HeaderUserProfile';
+import LanguageDropdown from './components/LanguageDropdown/LanguageDropdown';
 import * as S from './Header.styles';
-import HeaderUserLogin from './HeaderUserLogin/HeaderUserLogin';
-import HeaderUserProfile from './HeaderUserProfile/HeaderUserProfile';
 
 export type Props = {
   displayName?: string;
@@ -29,6 +30,7 @@ const Header = memo(({ displayName, wasFinishedAuthChecking }: Props) => {
         </S.HamburgerButtonWrapper>
       </S.HeaderLogoWrapper>
       <S.MobileMenu isShown={isOpenMobileMenu}>
+        <LanguageDropdown />
         <NavMenu menu={NavLinks} />
         {wasFinishedAuthChecking ? (
           <S.AccountPanel>

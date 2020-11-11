@@ -1,4 +1,4 @@
-import { Filters } from 'api/entities/types';
+import { Filters } from 'services/api/entities/types';
 
 import { LOAD_ROOMS, LOAD_BOOKED_HISTORY, BOOK_ROOM } from '../constants';
 import { RoomsRequest, LoadBookedHistory, BookCurrentRoom, SelectedBookedRoom } from '../types';

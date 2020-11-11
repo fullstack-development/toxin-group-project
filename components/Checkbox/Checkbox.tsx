@@ -1,4 +1,5 @@
 import { ChangeEvent, memo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import * as S from './Checkbox.styles';
 
@@ -15,6 +16,8 @@ const Checkbox = memo(({ name, isChecked, label, title, onChange }: Props) => {
     onChange(e);
   };
 
+  const { t } = useTranslation('CheckboxesList');
+
   return (
     <S.Checkbox>
       <S.HiddenCheckbox
@@ -25,8 +28,8 @@ const Checkbox = memo(({ name, isChecked, label, title, onChange }: Props) => {
       />
       <S.Checkmark />
       <S.Label title={title}>
-        {title && <S.Title>{title}</S.Title>}
-        <span>{label}</span>
+        {title && <S.Title>{t(title)}</S.Title>}
+        <span>{t(label)}</span>
       </S.Label>
     </S.Checkbox>
   );

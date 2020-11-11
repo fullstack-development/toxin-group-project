@@ -1,7 +1,7 @@
 import { memo } from 'react';
 
-import { User } from 'api/Firebase/modules/Authentication/types';
 import TextButton from 'components/TextButton/TextButton';
+import { User } from 'services/api/Firebase/modules/Authentication/types';
 
 import EditBirthday from './components/EditBirthday/EditBirthday';
 import EditDisplayName from './components/EditDisplayName/EditDisplayName';

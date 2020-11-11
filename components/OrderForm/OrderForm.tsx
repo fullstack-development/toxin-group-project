@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { memo } from 'react';
 import { Field, Form } from 'react-final-form';
+import { useTranslation } from 'react-i18next';
 
 import ArrowButton from 'components/ArrowButton/ArrowButton';
 import Dropdown from 'components/Dropdown/Dropdown';
@@ -29,15 +30,6 @@ type Props = {
 
 const oneDay = 24 * 60 * 60 * 1000;
 
-const defaultPrices: PriceItem[] = [
-  {
-    label: `Сбор за услуги: скидка 2${'\u00A0'}179₽`,
-    price: -2179,
-    tooltip: 'Подсказка Подсказка Подсказка Подсказка 2',
-  },
-  { label: 'Сбор за дополнительные услуги', price: 300, tooltip: 'Подсказка 2' },
-];
-
 const defaultMaxGuests: MaxGuests = {
   adults: 3,
   babies: 2,
@@ -48,32 +40,32 @@ const possibleExtraGuestsCount = 1;
 const noFeeGuestsCount = 1;
 
 const dropdownOptions: DropdownProps = {
-  placeholder: 'Сколько гостей',
-  name: 'guests',
+  placeholder: 'RoomFilter:How many guests',
+  name: 'Guests',
   enableControls: true,
   groups: [
     {
-      name: 'guests',
+      name: 'Guests',
       max: defaultMaxGuests.adults + possibleExtraGuestsCount,
-      wordForms: ['гость', 'гостя', 'гостей'],
+      wordForms: ['Guest', 'GuestsSecondary', 'Guests'],
     },
   ],
   items: [
     {
-      title: 'взрослые',
-      inputName: 'adults',
-      groupName: 'guests',
+      title: 'Adults',
+      inputName: 'Adults',
+      groupName: 'Guests',
     },
     {
-      title: 'дети',
-      inputName: 'children',
-      groupName: 'guests',
+      title: 'Children',
+      inputName: 'Children',
+      groupName: 'Guests',
     },
     {
-      title: 'младенцы',
-      inputName: 'babies',
+      title: 'Babies',
+      inputName: 'Babies',
       max: defaultMaxGuests.babies,
-      wordForms: ['младенец', 'младенца', 'младенцев'],
+      wordForms: ['Baby', 'Babies', 'BabiesSecondary'],
     },
   ],
 };
@@ -97,10 +89,27 @@ const OrderForm = memo(
     breakfastPricePerGuest,
     isAuthSuccess,
     currency = 'RUB',
-    measure = 'в сутки',
+    measure = 'Per day',
     userEmail,
     confirmBookedRoom,
   }: Props) => {
+    const { t } = useTranslation([
+      'OrderForm',
+      'WordForms',
+      'SearchRoomForm',
+      'Shared',
+      'OrderFormPrices',
+    ]);
+
+    const defaultPrices: PriceItem[] = [
+      {
+        label: `${t(`OrderFormPrices:Service fee_discount`)} 2${'\u00A0'}179₽`,
+        price: -2179,
+        tooltip: 'Подсказка Подсказка Подсказка Подсказка 2',
+      },
+      { label: t('OrderFormPrices:Additional service fee'), price: 300, tooltip: 'Подсказка 2' },
+    ];
+
     const router = useRouter();
 
     const handleFormSubmit = (values) => {
@@ -117,7 +126,7 @@ const OrderForm = memo(
 
     return (
       <S.Container>
-        <S.Title>Бронирование номера №{roomNumber}</S.Title>
+        <S.Title>{`${t('Room reservation')}#${roomNumber}`}</S.Title>
         <Form
           onSubmit={handleFormSubmit}
           render={({ handleSubmit, values }) => {
@@ -136,18 +145,18 @@ const OrderForm = memo(
 
             const prices = [
               {
-                label: `${formatNumber(roomPrice, currency)} х ${daysDifference} суток`,
+                label: `${formatNumber(roomPrice, currency)} х ${daysDifference + t('days')}`,
                 price: roomPrice * daysDifference,
               },
               {
-                label: 'Сбор за гостей, начиная со второго',
+                label: t('Fee for guests from the second'),
                 price: breakfastPricePerGuest * billableGuests,
               },
               ...(priceItems || defaultPrices),
             ];
 
             const extraGuestFee = {
-              label: 'Оплата за дополнительного гостя',
+              label: t('Payment for an additional guest'),
               price: overcrowdingPrice,
             };
 
@@ -165,26 +174,26 @@ const OrderForm = memo(
                   </S.RoomNumber>
                   <S.Price>
                     {formatNumber(roomPrice, currency)}
-                    <S.Measure>{measure}</S.Measure>
+                    <S.Measure>{t(`WordForms:${measure}`)}</S.Measure>
                   </S.Price>
                 </S.RoomInfo>
                 <S.Datepicker>
                   <TimePicker
                     type="double"
-                    dateFromLabelText="Прибытие"
-                    dateToLabelText="Выезд"
+                    dateFromLabelText={t('SearchRoomForm:Arrival')}
+                    dateToLabelText={t('SearchRoomForm:Departure')}
                     name="booked"
                   />
                 </S.Datepicker>
                 <S.Dropdown>
-                  <S.DropdownLabel>гости</S.DropdownLabel>
+                  <S.DropdownLabel>{t('WordForms:Guests')}</S.DropdownLabel>
                   <Dropdown {...dropdownOptions} />
                 </S.Dropdown>
                 <S.PriceList>
                   <PriceList items={prices} />
                 </S.PriceList>
                 <S.ResultWrapper>
-                  Итого
+                  {t('Shared:Total')}
                   <S.Dots />
                   <S.ResultPrice>
                     <Field
@@ -198,7 +207,7 @@ const OrderForm = memo(
                     {formatNumber(getResultPrice(prices), currency)}
                   </S.ResultPrice>
                 </S.ResultWrapper>
-                <ArrowButton type="submit">Забронировать</ArrowButton>
+                <ArrowButton type="submit">{t('OrderForm:Book now')}</ArrowButton>
               </form>
             );
           }}

@@ -1,4 +1,5 @@
 import { memo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import AccountEntry from 'components/AccountEntry/AccountEntry';
 import ForgotPasswordForm from 'components/ForgotPasswordForm/ForgotPasswordForm';
@@ -19,6 +20,8 @@ const CardsPage = memo(() => {
   // eslint-disable-next-line no-console
   const mockAuthFunction = () => console.log('Auth is done!');
 
+  const { t } = useTranslation('CardsPage');
+
   return (
     <S.Container>
       <SearchRoomForm />
@@ -27,7 +30,7 @@ const CardsPage = memo(() => {
         overcrowdingPrice={700}
         breakfastPricePerGuest={300}
         roomNumber={888}
-        roomType="люкс"
+        roomType={t('Luxury')}
         roomPrice={9990}
         userEmail="cardsPage@mail.ru"
         confirmBookedRoom={() => true}
@@ -36,7 +39,7 @@ const CardsPage = memo(() => {
         <Rooms rooms={rooms} />
       </S.RoomsWrapper>
       <Room price={9900} number={888} reviews={[]} />
-      <Room price={9900} number={888} reviews={[]} roomType="люкс" />
+      <Room price={9900} number={888} reviews={[]} roomType={t('Luxury')} />
       <S.SearchRoomFormWrapper>
         <SearchRoomForm />
       </S.SearchRoomFormWrapper>

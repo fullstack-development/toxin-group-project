@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import SocialMedia from 'components/SocialMedia/SocialMedia';
 
@@ -15,20 +16,24 @@ const Footer = memo(
     subscription = footerData.subscription,
     description = footerData.description,
     copyrightText = footerData.copyrightText,
-  }: FooterProps) => (
-    <S.Wrapper>
-      <S.Title>Карта сайта</S.Title>
-      <S.MainContainer>
-        <Logo description={description} />
-        <Nav />
-        <Subscription {...subscription} />
-      </S.MainContainer>
-      <S.BottomContainer>
-        <Copyright copyrightText={copyrightText} />
-        <SocialMedia />
-      </S.BottomContainer>
-    </S.Wrapper>
-  ),
+  }: FooterProps) => {
+    const { t } = useTranslation('Footer');
+
+    return (
+      <S.Wrapper>
+        <S.Title>{t('Site map')}</S.Title>
+        <S.MainContainer>
+          <Logo description={description} />
+          <Nav />
+          <Subscription {...subscription} />
+        </S.MainContainer>
+        <S.BottomContainer>
+          <Copyright copyrightText={copyrightText} />
+          <SocialMedia />
+        </S.BottomContainer>
+      </S.Wrapper>
+    );
+  },
 );
 
 Footer.displayName = 'Footer';

@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import { Form, Field } from 'react-final-form';
+import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
@@ -35,10 +36,11 @@ const ForgotPasswordForm = memo(
     const onFormSubmit = ({ email }: FormData) => {
       startPasswordReset(email);
     };
+    const { t } = useTranslation(['ForgotPasswordForm', 'Buttons']);
 
     return (
       <S.ForgotPasswordForm>
-        <S.Title>Восстановление аккаунта</S.Title>
+        <S.Title>{t('Account recovery')}</S.Title>
         <Form
           onSubmit={onFormSubmit}
           render={({ handleSubmit }) => (
@@ -49,14 +51,14 @@ const ForgotPasswordForm = memo(
                 render={({ input }) => (
                   <S.InputWrapper
                     {...input}
-                    label="Адрес электронной почты"
+                    label={t('Email address')}
                     placeholder="Email"
                     validators={[emailValidator]}
                   />
                 )}
               />
               <S.NextButton isFlat isFilled>
-                Далее
+                {t('Buttons:Next')}
               </S.NextButton>
             </form>
           )}

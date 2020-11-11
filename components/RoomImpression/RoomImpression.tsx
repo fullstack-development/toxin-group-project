@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import getNounInDeclension from 'shared/helpers/getNounInDeclension';
 
@@ -17,7 +18,8 @@ type Props = {
 };
 
 const RoomImpression = memo(({ title, numberOfRatings }: Props) => {
-  const declensions = ['голос', 'голоса', 'голосов'];
+  const { t } = useTranslation(['WordForms', 'Rating']);
+  const declensions = ['Vote', 'VotesSecondary', 'Votes'];
   const ratingsSum = Object.values(numberOfRatings).reduce(
     (accumulator, currentValue) => accumulator + currentValue,
   );
@@ -30,7 +32,7 @@ const RoomImpression = memo(({ title, numberOfRatings }: Props) => {
           <S.ReviewsCounter>
             {ratingsSum}
             <S.ReviewsCounterText>
-              {getNounInDeclension(ratingsSum, declensions)}
+              {t(getNounInDeclension(ratingsSum, declensions))}
             </S.ReviewsCounterText>
           </S.ReviewsCounter>
           <Chart {...numberOfRatings} />
@@ -38,7 +40,7 @@ const RoomImpression = memo(({ title, numberOfRatings }: Props) => {
         <S.FigureCaption>
           <S.List>
             {Object.values(ratingValues).map((value) => (
-              <S.Item key={value}>{value}</S.Item>
+              <S.Item key={value}>{t(`Rating:${value}`)}</S.Item>
             ))}
           </S.List>
         </S.FigureCaption>

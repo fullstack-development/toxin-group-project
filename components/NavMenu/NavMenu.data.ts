@@ -1,9 +1,9 @@
 import { NavMenuLink } from './NavMenu.types';
 
 const NavLinks: NavMenuLink[] = [
-  { name: 'О нас', path: '/mock-about-us', isActive: true },
+  { name: 'About us', path: '/mock-about-us', isActive: true },
   {
-    name: 'Услуги',
+    name: 'Services',
     path: '/mock-services',
     subMenu: [
       { name: 'sub-услуги-one', path: '/mock-sub-services-one' },
@@ -11,10 +11,10 @@ const NavLinks: NavMenuLink[] = [
       { name: 'sub-услуги-three', path: '/mock-sub-services-three' },
     ],
   },
-  { name: 'Вакансии', path: '/mock-vacancies' },
-  { name: 'Новости', path: '/mock-news' },
+  { name: 'Careers', path: '/mock-Careers' },
+  { name: 'News', path: '/mock-news' },
   {
-    name: 'Соглашения',
+    name: 'Agreements',
     path: '/mock-agreements',
     subMenu: [
       { name: 'sub-соглашения-one', path: '/mock-sub-agreements-one' },

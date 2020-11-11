@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router';
 import { memo, useCallback, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
-import { Apartment } from 'api/entities/types';
 import Benefits from 'components/Benefits/Benefits';
 import BulletList from 'components/BulletList/BulletList';
 import OrderForm from 'components/OrderForm/OrderForm';
@@ -13,6 +13,7 @@ import { getRoomDetails as getRoomDetailsRequest } from 'redux/Apartment/redux/a
 import { preloadAuthData } from 'redux/Auth/redux/actions';
 import { bookRoom } from 'redux/Booking/redux/actions';
 import { AppState } from 'redux/store.types';
+import { Apartment } from 'services/api/entities/types';
 
 import { roomImagesPreview, benefitsData, rulesData } from './MainContent.data';
 import * as S from './MainContent.styles';
@@ -49,6 +50,7 @@ const MainContent = memo(
     checkAuthBeforePageLoaded,
     confirmBookedRoom,
   }: Props) => {
+    const { t } = useTranslation(['RoomDetailsPage', 'Shared']);
     const router = useRouter();
     const roomNumber = Number(router.asPath.split('=')[1]);
 
@@ -68,7 +70,7 @@ const MainContent = memo(
       <>
         {isPending && (
           <S.Loading>
-            <Preloader label="Загрузка информации о номере..." />
+            <Preloader label={t('RoomDetailsPage:Loading Room Information ...')} />
           </S.Loading>
         )}
         {roomDetails ? (
@@ -80,12 +82,12 @@ const MainContent = memo(
             </S.RoomImages>
             <S.Details>
               <S.Benefits>
-                <S.Title>Сведения о номере</S.Title>
+                <S.Title>{t('RoomDetailsPage:Room details')}</S.Title>
                 <Benefits items={benefitsData} />
               </S.Benefits>
               <S.RoomImpressionWrapper>
                 <RoomImpression
-                  title="Впечатления от номера"
+                  title={t('RoomDetailsPage:Impressions of the room')}
                   numberOfRatings={roomDetails.numberOfRatings}
                 />
               </S.RoomImpressionWrapper>
@@ -93,14 +95,15 @@ const MainContent = memo(
                 <Reviews reviews={roomDetails.reviews} />
               </S.ReviewsWrapper>
               <S.BulletList>
-                <S.Title>Правила</S.Title>
+                <S.Title>{t('Shared:Rules')}</S.Title>
                 <BulletList items={rulesData} />
               </S.BulletList>
               <S.CancellationTerms>
-                <S.Title>Отмена</S.Title>
+                <S.Title>{t('Shared:Cancel')}</S.Title>
                 <S.CancellationTermsText>
-                  Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн.
-                  до прибытия вы получите полный возврат за вычетом сбора за услуги.
+                  {t(
+                    'RoomDetailsPage:Free cancellation within 48 hours. Thereafter, if canceled no later than 5 days in advance. you will receive a full refund before arrival minus the service fee.',
+                  )}
                 </S.CancellationTermsText>
               </S.CancellationTerms>
               <S.OrderFormWrapper>
@@ -118,7 +121,9 @@ const MainContent = memo(
             </S.Details>
           </S.MainContent>
         ) : (
-          !isPending && <S.Loading>Не удалось загрузить информацию о номере</S.Loading>
+          !isPending && (
+            <S.Loading>{t('RoomDetailsPage:Failed to load room information')}</S.Loading>
+          )
         )}
       </>
     );

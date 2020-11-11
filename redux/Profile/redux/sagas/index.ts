@@ -2,7 +2,7 @@ import firebase from 'firebase';
 import { SagaIterator } from 'redux-saga';
 import { call, put, takeLeading } from 'redux-saga/effects';
 
-import api from 'api/api';
+import api from 'services/api/api';
 import {
   getEmailUpdateErrorMessage,
   getPasswordUpdateErrorMessage,

@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import UIType from 'components/UI-Type/UI-Type';
 
@@ -14,18 +15,22 @@ type Props = {
   types: Array<Type>;
 };
 
-const UITypes = memo(({ types }: Props) => (
-  <section>
-    <S.Title>Вариации текста</S.Title>
-    <S.List lang="en">
-      {types.map((type) => (
-        <li key={type.type}>
-          <UIType type={type.type} example={type.example} fontSize={type.fontSize} />
-        </li>
-      ))}
-    </S.List>
-  </section>
-));
+const UITypes = memo(({ types }: Props) => {
+  const { t } = useTranslation('Ui-TypesList');
+
+  return (
+    <section>
+      <S.Title>{t('Text variations')}</S.Title>
+      <S.List lang="en">
+        {types.map((type) => (
+          <li key={type.type}>
+            <UIType type={type.type} example={type.example} fontSize={type.fontSize} />
+          </li>
+        ))}
+      </S.List>
+    </section>
+  );
+});
 
 UITypes.displayName = 'UITypes';
 

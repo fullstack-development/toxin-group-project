@@ -2,7 +2,6 @@ import { memo, useEffect } from 'react';
 import { Form, Field } from 'react-final-form';
 import { connect } from 'react-redux';
 
-import { User } from 'api/Firebase/modules/Authentication/types';
 import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
@@ -11,6 +10,7 @@ import {
   updateAdditionalUserDataCompleted,
 } from 'redux/Profile/redux/actions';
 import { AppState } from 'redux/store.types';
+import { User } from 'services/api/Firebase/modules/Authentication/types';
 import { dateValidator, dateFormatMask } from 'shared/helpers/validators';
 
 type StateProps = {

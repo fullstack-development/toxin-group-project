@@ -4,6 +4,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import { ChangeEvent, memo, useState } from 'react';
 import AvatarEditor from 'react-avatar-editor';
 import { Field } from 'react-final-form';
+import { useTranslation } from 'react-i18next';
 
 import Avatar from 'components/Avatar/Avatar';
 import Button from 'components/Button/Button';
@@ -26,6 +27,8 @@ const AvatarLoader = memo(({ name }: Props) => {
   });
   let canvas: AvatarEditor;
 
+  const { t } = useTranslation(['AvatarLoader', 'Shared']);
+
   const setEditorRef = (editor: AvatarEditor) => {
     canvas = editor;
   };
@@ -44,7 +47,7 @@ const AvatarLoader = memo(({ name }: Props) => {
     } catch (error) {
       setSnackBarSettings({
         isOpen: true,
-        text: 'Не удалось установить аватар',
+        text: t('Failed to set avatar'),
       });
     }
 
@@ -104,9 +107,9 @@ const AvatarLoader = memo(({ name }: Props) => {
               {isEditorVisible && (
                 <S.CropperWrapper>
                   <S.CancelButton onClick={handleCancelButtonClick} />
-                  <S.CropperTitle>Выберите область отображения</S.CropperTitle>
+                  <S.CropperTitle>{t('Select display area')}</S.CropperTitle>
                   <S.Description>
-                    Выбранная миниатюра будет использоваться в оставленных вами комментариях.
+                    {t('The selected thumbnail will be used in the comments you leave.')}
                   </S.Description>
                   <AvatarEditor
                     ref={setEditorRef}
@@ -131,7 +134,7 @@ const AvatarLoader = memo(({ name }: Props) => {
                       />
                     </S.SliderWrapper>
                     <Button isFilled isFlat onClick={handleSaveButtonClick}>
-                      Сохранить
+                      {t('Shared:Save')}
                     </Button>
                   </S.Controls>
                 </S.CropperWrapper>

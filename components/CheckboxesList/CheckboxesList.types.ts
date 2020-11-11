@@ -1,3 +1,5 @@
+import { TFunction } from 'i18next';
+
 export type Option = {
   name: string;
   label: string;
@@ -7,4 +9,5 @@ export type Option = {
 
 export type Props = {
   roomOptions: Option[];
+  t: TFunction;
 };

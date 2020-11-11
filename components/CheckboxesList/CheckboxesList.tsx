@@ -1,12 +1,13 @@
-import { memo } from 'react';
+import { ComponentType, memo } from 'react';
 import { Field } from 'react-final-form';
+import { withTranslation, WithTranslation } from 'react-i18next';
 
 import Checkbox from 'components/Checkbox/Checkbox';
 
 import * as S from './CheckboxesList.styles';
 import { Props } from './CheckboxesList.types';
 
-const CheckboxesList = memo(({ roomOptions }: Props) => (
+const CheckboxesList: ComponentType<WithTranslation & Props> = memo(({ roomOptions }: Props) => (
   <S.List>
     {roomOptions.map((option) => {
       const { title, label, name, isChecked } = option;
@@ -27,4 +28,4 @@ const CheckboxesList = memo(({ roomOptions }: Props) => (
 
 CheckboxesList.displayName = 'CheckboxesList';
 
-export default CheckboxesList;
+export default withTranslation()(CheckboxesList);

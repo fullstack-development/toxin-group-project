@@ -1,5 +1,6 @@
 import { ChangeEvent, memo, useState } from 'react';
 import { Field } from 'react-final-form';
+import { useTranslation } from 'react-i18next';
 
 import Calendar from '../Calendar/Calendar';
 import Input from '../Input/Input';
@@ -18,6 +19,7 @@ const TimePicker = memo(
   ({ type, dateFrom, dateTo, name, dateFromLabelText, dateToLabelText }: Props) => {
     const [isCalendarVisible, setCalendarVisibility] = useState(false);
     const [selectedDateRange, setSelectedDateRange] = useState({ from: dateFrom, to: dateTo });
+    const { t, i18n } = useTranslation(['TimePicker', 'Shared']);
 
     const { from, to } = selectedDateRange;
 
@@ -28,20 +30,21 @@ const TimePicker = memo(
       };
 
       const selectedDateFrom: string = from
-        .toLocaleDateString('ru-RU', dateOptions)
+        .toLocaleDateString(i18n.language, dateOptions)
         .replace('.', '');
       let selectedDateTo: string;
 
       if (to) {
-        selectedDateTo = to.toLocaleDateString('ru-RU', dateOptions).replace('.', '');
+        selectedDateTo = to.toLocaleDateString(i18n.language, dateOptions).replace('.', '');
       }
 
       return type === 'single'
         ? `${`${selectedDateFrom}`} ${to ? `- ${selectedDateTo}` : ''}`
-        : from.toLocaleDateString('ru-RU');
+        : from.toLocaleDateString(i18n.language);
     };
 
-    const getMaskedDate = (): string => (type === 'single' ? 'Выберите дату' : 'ДД.ММ.ГГГГ');
+    const getMaskedDate = (): string =>
+      type === 'single' ? t('TimePicker:Select Date') : t('Shared:Date mask');
 
     const openCalendar = (): void => {
       setCalendarVisibility(true);
@@ -77,7 +80,7 @@ const TimePicker = memo(
                 {type === 'double' && (
                   <S.ContainerElement onClick={openCalendar}>
                     <Input
-                      value={to ? to.toLocaleDateString('ru-RU') : getMaskedDate()}
+                      value={to ? to.toLocaleDateString(i18n.language) : getMaskedDate()}
                       label={dateToLabelText}
                       placeholder="date to"
                       readOnly

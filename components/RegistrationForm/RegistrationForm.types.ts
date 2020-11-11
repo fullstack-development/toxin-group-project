@@ -1,4 +1,4 @@
-import { ProfileData } from 'api/entities/types';
+import { ProfileData } from 'services/api/entities/types';
 
 export type FormData = ProfileData;
 

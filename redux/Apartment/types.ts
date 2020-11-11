@@ -1,4 +1,4 @@
-import { Apartment } from 'api/entities/types';
+import { Apartment } from 'services/api/entities/types';
 
 import {
   GET_ROOM_DETAILS_PROCESS,

@@ -3,61 +3,61 @@ import { NavProps } from './FooterNav.types';
 const data: Required<NavProps> = {
   items: [
     {
-      title: 'навигация',
+      title: 'Navigation',
       items: [
         {
           href: '/mock',
-          text: 'О нас',
+          text: 'About us',
         },
         {
           href: '/mock',
-          text: 'Новости',
+          text: 'News',
         },
         {
           href: '/mock',
-          text: 'Служба поддержки',
+          text: 'Support',
         },
         {
           href: '/mock',
-          text: 'Услуги',
+          text: 'Services',
         },
       ],
     },
     {
-      title: 'о нас',
+      title: 'About us',
       items: [
         {
           href: '/mock',
-          text: 'О сервисе',
+          text: 'About service',
         },
         {
           href: '/mock',
-          text: 'Наша команда',
+          text: 'Our team',
         },
         {
           href: '/mock',
-          text: 'Вакансии',
+          text: 'Careers',
         },
         {
           href: '/mock',
-          text: 'Инвесторы',
+          text: 'Investors',
         },
       ],
     },
     {
-      title: 'Служба поддержки',
+      title: 'Support',
       items: [
         {
           href: '/mock',
-          text: 'Соглашения',
+          text: 'Agreements',
         },
         {
           href: '/mock',
-          text: 'Сообщества',
+          text: 'Communities',
         },
         {
           href: '/mock',
-          text: 'Связь с нами',
+          text: 'Contact us',
         },
       ],
     },

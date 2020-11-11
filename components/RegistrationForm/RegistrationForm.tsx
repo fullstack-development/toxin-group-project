@@ -2,6 +2,7 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import { memo } from 'react';
 import { Field, Form } from 'react-final-form';
+import { useTranslation } from 'react-i18next';
 
 import AvatarLoader from 'components/AvatarLoader/AvatarLoader';
 import Input from 'components/Input/Input';
@@ -23,32 +24,35 @@ const RegistrationForm = memo(
     const handleRegistrationFormSubmit = (formData: FormData): void => {
       requestRegistration(formData);
     };
+    const { t } = useTranslation(['RegistrationForm', 'Shared']);
 
     return (
       <>
         <Form
           initialValues={{
-            receiveOffers: false,
+            hasSpecialOffers: false,
             gender: 'male',
           }}
           onSubmit={handleRegistrationFormSubmit}
           render={({ handleSubmit }) => (
             <S.RegistrationForm onSubmit={handleSubmit}>
-              <S.Title>Регистрация аккаунта</S.Title>
+              <S.Title>{t('Create account')}</S.Title>
               <S.Avatar>
                 <AvatarLoader name="avatar" />
               </S.Avatar>
               <Field
                 name="name"
-                render={({ input }) => <S.InputWrapper {...input} placeholder="Имя" required />}
+                render={({ input }) => <S.InputWrapper {...input} placeholder={t('Shared:Name')} />}
               />
               <Field
                 name="surname"
-                render={({ input }) => <S.InputWrapper {...input} placeholder="Фамилия" required />}
+                render={({ input }) => (
+                  <S.InputWrapper {...input} placeholder={t('Shared:Surname')} />
+                )}
               />
               <S.RadioButtonsWrapper>
-                <RadioButton value="male" name="gender" label="Мужчина" />
-                <RadioButton value="female" name="gender" label="Женщина" />
+                <RadioButton value="male" name="gender" label={t('Shared:Male')} />
+                <RadioButton value="female" name="gender" label={t('Shared:Female')} />
               </S.RadioButtonsWrapper>
               <Field
                 name="birthDate"
@@ -57,8 +61,8 @@ const RegistrationForm = memo(
                   <Input
                     {...rest}
                     {...input}
-                    placeholder="ДД.ММ.ГГГГ"
-                    label="Дата рождения"
+                    placeholder={t('Date mask')}
+                    label={t('Birthday date')}
                     validators={[dateValidator]}
                     mask={dateFormatMask}
                     required
@@ -73,8 +77,8 @@ const RegistrationForm = memo(
                     <S.InputWrapper
                       {...input}
                       required
-                      label="Данные для входа в сервис"
-                      placeholder="Email"
+                      label={t('Service login details')}
+                      placeholder={t('Email')}
                       validators={[emailValidator]}
                     />
                   )}
@@ -83,19 +87,19 @@ const RegistrationForm = memo(
                   name="password"
                   type="password"
                   render={({ input }) => (
-                    <S.InputWrapper {...input} required placeholder="Пароль" />
+                    <S.InputWrapper {...input} required placeholder={t('Shared:Password')} />
                   )}
                 />
               </S.AccountEntryWrapper>
               <S.SpecialOfferWrapper>
-                <Toggle name="hasSpecialOffers" label="Получать спецпредложения" />
+                <Toggle name="hasSpecialOffers" label={t('Receive special offers')} />
               </S.SpecialOfferWrapper>
               <S.RegisterButton isFlat isFilled>
-                Перейти к оплате
+                {t('Proceed to checkout')}
               </S.RegisterButton>
               <S.AlreadyRegisterWrapper>
-                <span>Уже есть аккаунт на Toxin</span>
-                <S.EntryButton href="/auth">Войти</S.EntryButton>
+                <span>{t('Already have an account on Toxin')}</span>
+                <S.EntryButton href="/auth">{t('Shared:Entry')}</S.EntryButton>
               </S.AlreadyRegisterWrapper>
             </S.RegistrationForm>
           )}

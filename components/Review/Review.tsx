@@ -1,9 +1,9 @@
 import { makeStyles } from '@material-ui/core/styles';
 import { memo } from 'react';
 
-import { Timestamp } from 'api/Firebase/modules/Database/types';
 import Avatar from 'components/Avatar/Avatar';
 import LikeButton from 'components/LikeButton/LikeButton';
+import { Timestamp } from 'services/api/Firebase/modules/Database/types';
 
 import * as S from './Review.style';
 import getReviewDate from './utils/getReviewDate';

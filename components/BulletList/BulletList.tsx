@@ -1,19 +1,24 @@
-import { memo } from 'react';
+import { TFunction } from 'i18next';
+import { ComponentType, memo } from 'react';
+import { withTranslation, WithTranslation } from 'react-i18next';
 
 import * as S from './BulletList.styles';
 
 type Props = {
   items: string[];
+  t: TFunction;
 };
 
-const BulletList = memo(({ items = ['No items passed'] }: Props) => (
-  <S.List>
-    {items.map((el) => (
-      <S.Item key={el}>{el}</S.Item>
-    ))}
-  </S.List>
-));
+const BulletList: ComponentType<WithTranslation & Props> = memo(
+  ({ items = ['No items passed'], t }: Props) => (
+    <S.List>
+      {items.map((el) => (
+        <S.Item key={el}>{t(el)}</S.Item>
+      ))}
+    </S.List>
+  ),
+);
 
 BulletList.displayName = 'BulletList';
 
-export default BulletList;
+export default withTranslation('Bullets')(BulletList);
