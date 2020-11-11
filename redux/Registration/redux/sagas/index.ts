@@ -1,16 +1,19 @@
 import { SagaIterator } from 'redux-saga';
 import { put, takeLatest, call, PutEffect } from 'redux-saga/effects';
 
-import Api from 'services/api/api';
 import { UserCredential } from 'services/api/Firebase/modules/Authentication/types';
 
+import { Dependencies } from '../../../store.types';
 import { REGISTRATION_REQUEST, REGISTRATION_SUCCESS, REGISTRATION_FAILED } from '../../constants';
 import { ProfileData, RegistrationStatusSuccess, RegistrationStatusFailed } from '../../types';
 
-function* startRegistrationProcess(data: {
-  type: typeof REGISTRATION_REQUEST;
-  payload: ProfileData;
-}):
+function* startRegistrationProcess(
+  { api }: Dependencies,
+  data: {
+    type: typeof REGISTRATION_REQUEST;
+    payload: ProfileData;
+  },
+):
   | Generator
   | Generator<PutEffect<RegistrationStatusSuccess | RegistrationStatusFailed>, void, never> {
   const {
@@ -25,7 +28,7 @@ function* startRegistrationProcess(data: {
   } = data.payload;
 
   try {
-    const result: UserCredential = yield call(Api.auth.signUp, {
+    const result: UserCredential = yield call(api.auth.signUp, {
       email,
       password,
       name,
@@ -35,7 +38,7 @@ function* startRegistrationProcess(data: {
       avatar,
     });
 
-    yield call(Api.subscriptions.add, email, { hasSpecialOffers });
+    yield call(api.subscriptions.add, email, { hasSpecialOffers });
 
     yield put({
       type: REGISTRATION_SUCCESS,
@@ -49,6 +52,6 @@ function* startRegistrationProcess(data: {
   }
 }
 
-export function* rootSaga(): SagaIterator {
-  yield takeLatest(REGISTRATION_REQUEST, startRegistrationProcess);
+export function* rootSaga(deps: Dependencies): SagaIterator {
+  yield takeLatest(REGISTRATION_REQUEST, startRegistrationProcess, deps);
 }
