@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { Form } from 'react-final-form';
 import { connect } from 'react-redux';
 
@@ -42,53 +42,57 @@ type FormData = {
   gender: 'female' | 'male';
 };
 
-const EditGender = ({
-  user,
-  gender,
-  isPending,
-  isCompleted,
-  statusText,
-  startUpdateAdditionalUserData,
-  stopUpdateAdditionalUserData,
-}: Props): JSX.Element => {
-  const onSubmit = ({ gender: newGender }: FormData) => {
-    startUpdateAdditionalUserData({ user, data: { gender: newGender } });
-  };
+const EditGender = memo(
+  ({
+    user,
+    gender,
+    isPending,
+    isCompleted,
+    statusText,
+    startUpdateAdditionalUserData,
+    stopUpdateAdditionalUserData,
+  }: Props) => {
+    const onSubmit = ({ gender: newGender }: FormData) => {
+      startUpdateAdditionalUserData({ user, data: { gender: newGender } });
+    };
 
-  useEffect(() => {
-    stopUpdateAdditionalUserData();
-  }, [stopUpdateAdditionalUserData]);
+    useEffect(() => {
+      stopUpdateAdditionalUserData();
+    }, [stopUpdateAdditionalUserData]);
 
-  const mapGender = {
-    Мужчина: 'male',
-    Женщина: 'female',
-  };
+    const mapGender = {
+      Мужчина: 'male',
+      Женщина: 'female',
+    };
 
-  return (
-    <Form
-      initialValues={{ gender: mapGender[gender] }}
-      onSubmit={onSubmit}
-      render={({ handleSubmit }) => (
-        <>
-          <form onSubmit={handleSubmit}>
-            <S.Gender>
-              <RadioButton name="gender" value="male" label="Мужчина" />
-              <RadioButton name="gender" value="female" label="Женщина" />
-            </S.Gender>
-            <Button disabled={isPending} isFlat isFilled>
-              Сохранить
-            </Button>
-          </form>
-          {isCompleted && (
-            <PopUpNotification
-              message={statusText}
-              onConfirmButtonClick={stopUpdateAdditionalUserData}
-            />
-          )}
-        </>
-      )}
-    />
-  );
-};
+    return (
+      <Form
+        initialValues={{ gender: mapGender[gender] }}
+        onSubmit={onSubmit}
+        render={({ handleSubmit }) => (
+          <>
+            <form onSubmit={handleSubmit}>
+              <S.Gender>
+                <RadioButton name="gender" value="male" label="Мужчина" />
+                <RadioButton name="gender" value="female" label="Женщина" />
+              </S.Gender>
+              <Button disabled={isPending} isFlat isFilled>
+                Сохранить
+              </Button>
+            </form>
+            {isCompleted && (
+              <PopUpNotification
+                message={statusText}
+                onConfirmButtonClick={stopUpdateAdditionalUserData}
+              />
+            )}
+          </>
+        )}
+      />
+    );
+  },
+);
+
+EditGender.displayName = 'EditGender';
 
 export default connect(mapState, mapDispatch)(EditGender);

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { Form, Field } from 'react-final-form';
 import { connect } from 'react-redux';
 
@@ -37,67 +37,71 @@ type FormData = {
   confirmPassword: string;
 };
 
-const PasswordUpdate = ({
-  user,
-  isPending,
-  isCompleted,
-  statusText,
-  startPasswordUpdate,
-  stopPasswordUpdate,
-}: Props): JSX.Element => {
-  const onSubmit = ({ currentPassword, newPassword, confirmPassword }: FormData) => {
-    startPasswordUpdate({ user, currentPassword, newPassword, confirmPassword });
-  };
+const PasswordUpdate = memo(
+  ({
+    user,
+    isPending,
+    isCompleted,
+    statusText,
+    startPasswordUpdate,
+    stopPasswordUpdate,
+  }: Props) => {
+    const onSubmit = ({ currentPassword, newPassword, confirmPassword }: FormData) => {
+      startPasswordUpdate({ user, currentPassword, newPassword, confirmPassword });
+    };
 
-  const isUserRegistered = user.providerData.some((value) => value.providerId === 'password');
+    const isUserRegistered = user.providerData.some((value) => value.providerId === 'password');
 
-  useEffect(() => {
-    stopPasswordUpdate();
-  }, [stopPasswordUpdate]);
+    useEffect(() => {
+      stopPasswordUpdate();
+    }, [stopPasswordUpdate]);
 
-  return (
-    <Form
-      onSubmit={onSubmit}
-      render={({ handleSubmit }) => (
-        <>
-          <form onSubmit={handleSubmit}>
-            {isUserRegistered && (
-              <Field
-                name="currentPassword"
-                type="password"
-                render={({ input }) => <Input {...input} label="Текущий пароль" required />}
-              />
-            )}
-            <Field
-              name="newPassword"
-              type="password"
-              validate={passwordValidator}
-              render={({ input }) => (
-                <Input
-                  {...input}
-                  validators={[passwordValidator]}
-                  minLength={8}
-                  label="Новый пароль"
-                  required
+    return (
+      <Form
+        onSubmit={onSubmit}
+        render={({ handleSubmit }) => (
+          <>
+            <form onSubmit={handleSubmit}>
+              {isUserRegistered && (
+                <Field
+                  name="currentPassword"
+                  type="password"
+                  render={({ input }) => <Input {...input} label="Текущий пароль" required />}
                 />
               )}
-            />
-            <Field
-              name="confirmPassword"
-              type="password"
-              render={({ input }) => <Input {...input} label="Подтвердите пароль" />}
-            />
-            <Button disabled={isPending} isFlat isFilled>
-              Обновить пароль
-            </Button>
-          </form>
-          {isCompleted && (
-            <PopUpNotification message={statusText} onConfirmButtonClick={stopPasswordUpdate} />
-          )}
-        </>
-      )}
-    />
-  );
-};
+              <Field
+                name="newPassword"
+                type="password"
+                validate={passwordValidator}
+                render={({ input }) => (
+                  <Input
+                    {...input}
+                    validators={[passwordValidator]}
+                    minLength={8}
+                    label="Новый пароль"
+                    required
+                  />
+                )}
+              />
+              <Field
+                name="confirmPassword"
+                type="password"
+                render={({ input }) => <Input {...input} label="Подтвердите пароль" />}
+              />
+              <Button disabled={isPending} isFlat isFilled>
+                Обновить пароль
+              </Button>
+            </form>
+            {isCompleted && (
+              <PopUpNotification message={statusText} onConfirmButtonClick={stopPasswordUpdate} />
+            )}
+          </>
+        )}
+      />
+    );
+  },
+);
+
+PasswordUpdate.displayName = 'PasswordUpdate';
 
 export default connect(mapState, mapDispatch)(PasswordUpdate);

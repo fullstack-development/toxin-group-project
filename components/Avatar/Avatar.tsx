@@ -1,12 +1,15 @@
 import { Avatar as MaterialAvatar } from '@material-ui/core';
+import { memo } from 'react';
 
 type Props = {
   photoURL: string;
   className?: string;
 };
 
-const Avatar: React.FC<Props> = ({ photoURL, className }: Props) => {
+const Avatar = memo(({ photoURL, className }: Props) => {
   return <MaterialAvatar src={photoURL} className={className} component="div" />;
-};
+});
+
+Avatar.displayName = 'Avatar';
 
 export default Avatar;

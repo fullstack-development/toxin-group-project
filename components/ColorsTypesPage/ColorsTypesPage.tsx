@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import UIColorsList from 'components/UI-ColorsList/UI-ColorsList';
 import UILogo from 'components/UI-Logo/UI-Logo';
 import UITypesList from 'components/UI-TypesList/UI-TypesList';
@@ -5,7 +7,7 @@ import UITypesList from 'components/UI-TypesList/UI-TypesList';
 import { colors, types } from './ColorsTypesPage.data';
 import * as S from './ColorsTypesPage.styles';
 
-const ColorsTypesPage: React.FC = () => (
+const ColorsTypesPage = memo(() => (
   <S.ColorsTypesLayout>
     <S.Logo>
       <UILogo />
@@ -18,6 +20,8 @@ const ColorsTypesPage: React.FC = () => (
       </S.Wrapper>
     </S.Content>
   </S.ColorsTypesLayout>
-);
+));
+
+ColorsTypesPage.displayName = 'ColorsTypesPage';
 
 export default ColorsTypesPage;

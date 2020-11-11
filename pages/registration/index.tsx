@@ -1,8 +1,9 @@
 import Head from 'next/head';
+import { memo } from 'react';
 
 import RegistrationPage from 'components/RegistrationPage/RegistrationPage';
 
-const Registration: React.FC = (): JSX.Element => (
+const Registration = memo(() => (
   <>
     <Head>
       <title>Toxin | Регистрация</title>
@@ -14,6 +15,8 @@ const Registration: React.FC = (): JSX.Element => (
     </Head>
     <RegistrationPage />
   </>
-);
+));
+
+Registration.displayName = 'Registration';
 
 export default Registration;

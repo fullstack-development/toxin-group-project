@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, memo } from 'react';
 import { DateUtils, DayModifiers } from 'react-day-picker';
 
 import TextButton from 'components/TextButton/TextButton';
@@ -22,82 +22,80 @@ type Props = {
   onClose?: () => void;
 } & S.CalendarContainer;
 
-const Calendar = ({
-  onChangeVisible,
-  onApply,
-  onClose,
-  onSelectDate,
-  isVisible = false,
-}: Props): JSX.Element => {
-  const [selectedDays, handleSelectDays] = useState<DaysSelection>({
-    from: null,
-    to: null,
-    enteredTo: null,
-  });
-  const htmlContainer = useRef(null);
+const Calendar = memo(
+  ({ onChangeVisible, onApply, onClose, onSelectDate, isVisible = false }: Props) => {
+    const [selectedDays, handleSelectDays] = useState<DaysSelection>({
+      from: null,
+      to: null,
+      enteredTo: null,
+    });
+    const htmlContainer = useRef(null);
 
-  useEffect(() => {
-    const handleDocumentClick = (e: Event) => {
-      if (isVisible && !htmlContainer.current.contains(e.target)) {
-        onChangeVisible(false);
-        if (onClose) onClose();
-      }
+    useEffect(() => {
+      const handleDocumentClick = (e: Event) => {
+        if (isVisible && !htmlContainer.current.contains(e.target)) {
+          onChangeVisible(false);
+          if (onClose) onClose();
+        }
+      };
+
+      document.addEventListener('click', handleDocumentClick);
+      return () => document.removeEventListener('click', handleDocumentClick);
+    }, [isVisible, onChangeVisible, onClose]);
+
+    const applySelectingDays = (newRange: DaysSelection) => {
+      handleSelectDays(newRange);
+      if (onSelectDate) onSelectDate(newRange);
     };
 
-    document.addEventListener('click', handleDocumentClick);
-    return () => document.removeEventListener('click', handleDocumentClick);
-  }, [isVisible, onChangeVisible, onClose]);
+    const handleDayClick = (day: SelectedDate, modifiers: DayModifiers): void => {
+      if (modifiers.disabled) return;
 
-  const applySelectingDays = (newRange: DaysSelection) => {
-    handleSelectDays(newRange);
-    if (onSelectDate) onSelectDate(newRange);
-  };
+      const range: DaysSelection = DateUtils.addDayToRange(day, selectedDays);
 
-  const handleDayClick = (day: SelectedDate, modifiers: DayModifiers): void => {
-    if (modifiers.disabled) return;
+      applySelectingDays(range);
+    };
 
-    const range: DaysSelection = DateUtils.addDayToRange(day, selectedDays);
+    const handleApplyButtonClick = (): void => {
+      onChangeVisible(false);
 
-    applySelectingDays(range);
-  };
+      if (onApply) onApply();
+    };
 
-  const handleApplyButtonClick = (): void => {
-    onChangeVisible(false);
+    const clearSelectedDate = (): void => {
+      const clearedData = { from: undefined, to: undefined };
 
-    if (onApply) onApply();
-  };
+      applySelectingDays(clearedData);
+    };
 
-  const clearSelectedDate = (): void => {
-    const clearedData = { from: undefined, to: undefined };
+    const { from, to } = selectedDays;
+    const modifiers = { start: from, end: selectedDays.to };
 
-    applySelectingDays(clearedData);
-  };
+    return (
+      <S.CalendarContainer isVisible={isVisible} ref={htmlContainer}>
+        <S.Calendar
+          showOutsideDays
+          modifiers={modifiers}
+          months={months}
+          weekdaysShort={weekdaysShort}
+          selectedDays={[from, { from, to }]}
+          disabledDays={{ before: new Date() }}
+          onDayClick={handleDayClick}
+          navbarElement={<NavBar />}
+        />
+        <S.CalendarControls>
+          <TextButton type="button" isSecondary onClick={clearSelectedDate}>
+            Очистить
+          </TextButton>
+          <TextButton type="button" onClick={handleApplyButtonClick}>
+            Применить
+          </TextButton>
+        </S.CalendarControls>
+      </S.CalendarContainer>
+    );
+  },
+);
 
-  const { from, to } = selectedDays;
-  const modifiers = { start: from, end: selectedDays.to };
-
-  return (
-    <S.CalendarContainer isVisible={isVisible} ref={htmlContainer}>
-      <S.Calendar
-        showOutsideDays
-        modifiers={modifiers}
-        months={months}
-        weekdaysShort={weekdaysShort}
-        selectedDays={[from, { from, to }]}
-        disabledDays={{ before: new Date() }}
-        onDayClick={handleDayClick}
-        navbarElement={<NavBar />}
-      />
-      <S.CalendarControls>
-        <TextButton type="button" isSecondary onClick={clearSelectedDate}>
-          Очистить
-        </TextButton>
-        <TextButton type="button" onClick={handleApplyButtonClick}>
-          Применить
-        </TextButton>
-      </S.CalendarControls>
-    </S.CalendarContainer>
-  );
-};
+Calendar.displayName = 'Calendar';
 
 export default Calendar;

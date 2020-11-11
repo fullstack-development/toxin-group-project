@@ -1,8 +1,9 @@
 import Head from 'next/head';
+import { memo } from 'react';
 
 import SearchRoomPage from 'components/SearchRoomPage/SearchRoomPage';
 
-const SearchRoom: React.FC = () => (
+const SearchRoom = memo(() => (
   <>
     <Head>
       <title>Toxin | Найти номер</title>
@@ -11,6 +12,8 @@ const SearchRoom: React.FC = () => (
     </Head>
     <SearchRoomPage />
   </>
-);
+));
+
+SearchRoom.displayName = 'SeacrhRoom';
 
 export default SearchRoom;

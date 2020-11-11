@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import MainLayout from 'components/MainLayout/MainLayout';
@@ -22,7 +22,7 @@ const mapDispatch = {
 
 type Props = StateProps & typeof mapDispatch;
 
-const AccountSettingsPage = ({ isAuthSuccess, checkAuthBeforePageLoaded }: Props): JSX.Element => {
+const AccountSettingsPage = memo(({ isAuthSuccess, checkAuthBeforePageLoaded }: Props) => {
   const router = useRouter();
 
   useEffect(() => {
@@ -38,6 +38,8 @@ const AccountSettingsPage = ({ isAuthSuccess, checkAuthBeforePageLoaded }: Props
       <MainContent />
     </MainLayout>
   );
-};
+});
+
+AccountSettingsPage.displayName = 'AccountSettingsPage';
 
 export default connect(mapState, mapDispatch)(AccountSettingsPage);

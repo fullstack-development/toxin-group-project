@@ -1,8 +1,9 @@
 import Head from 'next/head';
+import { memo } from 'react';
 
 import PersonalInfoPage from 'components/PersonalInfoPage/PersonalInfoPage';
 
-const PersonalInfo = (): JSX.Element => (
+const PersonalInfo = memo(() => (
   <>
     <Head>
       <title>Toxin | Персональная информация</title>
@@ -14,6 +15,8 @@ const PersonalInfo = (): JSX.Element => (
     </Head>
     <PersonalInfoPage />
   </>
-);
+));
+
+PersonalInfo.displayName = 'PersonalInfo';
 
 export default PersonalInfo;

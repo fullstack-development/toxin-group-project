@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { PieChart } from 'react-minimal-pie-chart';
 
 import ratingValues from '../../RoomImpression.data';
@@ -9,7 +10,7 @@ type Props = {
   bad: number;
 };
 
-const Chart = (numberOfRatings: Props): JSX.Element => (
+const Chart = memo((numberOfRatings: Props) => (
   <PieChart
     data={[
       {
@@ -56,6 +57,8 @@ const Chart = (numberOfRatings: Props): JSX.Element => (
       </linearGradient>
     </defs>
   </PieChart>
-);
+));
+
+Chart.displayName = 'Chart';
 
 export default Chart;

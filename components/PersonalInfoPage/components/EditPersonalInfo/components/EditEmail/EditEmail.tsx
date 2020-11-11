@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { Form, Field } from 'react-final-form';
 import { connect } from 'react-redux';
 
@@ -34,49 +34,53 @@ type OwnProps = {
 
 type Props = OwnProps & StateProps & typeof mapDispatch;
 
-const EditEmail = ({
-  user,
-  email,
-  isPending,
-  isCompleted,
-  statusText,
-  startEmailUpdate,
-  stopEmailUpdate,
-}: Props): JSX.Element => {
-  const onSubmit = ({ email: emailForUpdate }: { email: string }) => {
-    startEmailUpdate({ user, email: emailForUpdate });
-  };
+const EditEmail = memo(
+  ({
+    user,
+    email,
+    isPending,
+    isCompleted,
+    statusText,
+    startEmailUpdate,
+    stopEmailUpdate,
+  }: Props) => {
+    const onSubmit = ({ email: emailForUpdate }: { email: string }) => {
+      startEmailUpdate({ user, email: emailForUpdate });
+    };
 
-  useEffect(() => {
-    stopEmailUpdate();
-  }, [stopEmailUpdate]);
+    useEffect(() => {
+      stopEmailUpdate();
+    }, [stopEmailUpdate]);
 
-  return (
-    <Form
-      initialValues={{ email }}
-      onSubmit={onSubmit}
-      render={({ handleSubmit }) => (
-        <>
-          <form onSubmit={handleSubmit}>
-            <Field
-              name="email"
-              type="email"
-              validate={emailValidator}
-              render={({ input }) => (
-                <Input {...input} placeholder="Email" validators={[emailValidator]} />
-              )}
-            />
-            <Button disabled={isPending} isFlat isFilled>
-              Сохранить
-            </Button>
-          </form>
-          {isCompleted && (
-            <PopUpNotification message={statusText} onConfirmButtonClick={stopEmailUpdate} />
-          )}
-        </>
-      )}
-    />
-  );
-};
+    return (
+      <Form
+        initialValues={{ email }}
+        onSubmit={onSubmit}
+        render={({ handleSubmit }) => (
+          <>
+            <form onSubmit={handleSubmit}>
+              <Field
+                name="email"
+                type="email"
+                validate={emailValidator}
+                render={({ input }) => (
+                  <Input {...input} placeholder="Email" validators={[emailValidator]} />
+                )}
+              />
+              <Button disabled={isPending} isFlat isFilled>
+                Сохранить
+              </Button>
+            </form>
+            {isCompleted && (
+              <PopUpNotification message={statusText} onConfirmButtonClick={stopEmailUpdate} />
+            )}
+          </>
+        )}
+      />
+    );
+  },
+);
+
+EditEmail.displayName = 'EditEmail';
 
 export default connect(mapState, mapDispatch)(EditEmail);

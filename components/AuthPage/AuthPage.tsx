@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import AccountEntry from 'components/AccountEntry/AccountEntry';
@@ -36,42 +36,46 @@ const mapDispatch = {
 };
 export type Props = StateProps & typeof mapDispatch;
 
-const AuthPage: React.FC<Props> = ({
-  isAuthSuccess,
-  isAuthProcessNow,
-  authStatusText,
-  wasFinishedAuthChecking,
-  checkAuthBeforePageLoaded,
-  startAuthProcess,
-  startGoogleAuthProcess,
-  stopAuthProcess,
-}: Props): JSX.Element => {
-  const router = useRouter();
+const AuthPage = memo(
+  ({
+    isAuthSuccess,
+    isAuthProcessNow,
+    authStatusText,
+    wasFinishedAuthChecking,
+    checkAuthBeforePageLoaded,
+    startAuthProcess,
+    startGoogleAuthProcess,
+    stopAuthProcess,
+  }: Props) => {
+    const router = useRouter();
 
-  useEffect(() => {
-    checkAuthBeforePageLoaded();
-    if (isAuthSuccess) {
-      document.referrer ? router.back() : router.push('/');
-    }
-  });
+    useEffect(() => {
+      checkAuthBeforePageLoaded();
+      if (isAuthSuccess) {
+        document.referrer ? router.back() : router.push('/');
+      }
+    });
 
-  const isAuthRequired: boolean = wasFinishedAuthChecking && !isAuthSuccess;
-  return (
-    isAuthRequired && (
-      <MainLayout>
-        <S.Container>
-          <AccountEntry
-            isAuthSuccess={isAuthSuccess}
-            isAuthProcessNow={isAuthProcessNow}
-            authStatusText={authStatusText}
-            requestToAuth={startAuthProcess}
-            requestToAuthWithGoogle={startGoogleAuthProcess}
-            breakAuthProcess={stopAuthProcess}
-          />
-        </S.Container>
-      </MainLayout>
-    )
-  );
-};
+    const isAuthRequired: boolean = wasFinishedAuthChecking && !isAuthSuccess;
+    return (
+      isAuthRequired && (
+        <MainLayout>
+          <S.Container>
+            <AccountEntry
+              isAuthSuccess={isAuthSuccess}
+              isAuthProcessNow={isAuthProcessNow}
+              authStatusText={authStatusText}
+              requestToAuth={startAuthProcess}
+              requestToAuthWithGoogle={startGoogleAuthProcess}
+              breakAuthProcess={stopAuthProcess}
+            />
+          </S.Container>
+        </MainLayout>
+      )
+    );
+  },
+);
+
+AuthPage.displayName = 'AuthPage';
 
 export default connect(mapState, mapDispatch)(AuthPage);

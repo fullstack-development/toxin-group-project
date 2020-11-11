@@ -1,9 +1,10 @@
 import Link from 'next/link';
+import { memo } from 'react';
 
 import { NavItemProps } from '../FooterNav.types';
 import * as S from './NavItem.styles';
 
-const NavItem: React.FC<NavItemProps> = ({ title, items }: NavItemProps) => (
+const NavItem = memo(({ title, items }: NavItemProps) => (
   <S.Container>
     {title && <S.Title>{title}</S.Title>}
     <S.List>
@@ -17,6 +18,8 @@ const NavItem: React.FC<NavItemProps> = ({ title, items }: NavItemProps) => (
         ))}
     </S.List>
   </S.Container>
-);
+));
+
+NavItem.displayName = 'NavItem';
 
 export default NavItem;

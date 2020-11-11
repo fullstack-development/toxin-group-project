@@ -1,37 +1,17 @@
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import Footer from 'components/Footer/Footer';
 import Header from 'components/Header/Header';
 import { preloadAuthData } from 'redux/Auth/redux/actions';
-
-import { State, Props } from './MainLayout.types';
+import { AppState } from 'redux/store.types';
 
 type StateProps = {
   displayName: string;
   wasFinishedAuthChecking: boolean;
 };
 
-const MainLayout: React.FC<Props> = ({
-  children,
-  displayName,
-  wasFinishedAuthChecking,
-  preloadAuth,
-}: Props): JSX.Element => {
-  useEffect(() => {
-    preloadAuth();
-  }, [preloadAuth]);
-
-  return (
-    <>
-      <Header displayName={displayName} wasFinishedAuthChecking={wasFinishedAuthChecking} />
-      {children}
-      <Footer />
-    </>
-  );
-};
-
-const mapState = (state: State): StateProps => ({
+const mapState = (state: AppState): StateProps => ({
   displayName: state.auth.displayName,
   wasFinishedAuthChecking: state.auth.wasFinishedAuthChecking,
 });
@@ -39,5 +19,31 @@ const mapState = (state: State): StateProps => ({
 const mapDispatch = {
   preloadAuth: preloadAuthData,
 };
+
+type OwnProps = {
+  children?: JSX.Element;
+  authStatusText: string;
+  isAuthSuccess: boolean;
+};
+
+type Props = OwnProps & StateProps & typeof mapDispatch;
+
+const MainLayout = memo(
+  ({ children, displayName, wasFinishedAuthChecking, preloadAuth }: Props) => {
+    useEffect(() => {
+      preloadAuth();
+    }, [preloadAuth]);
+
+    return (
+      <>
+        <Header displayName={displayName} wasFinishedAuthChecking={wasFinishedAuthChecking} />
+        {children}
+        <Footer />
+      </>
+    );
+  },
+);
+
+MainLayout.displayName = 'MainLayout';
 
 export default connect(mapState, mapDispatch)(MainLayout);

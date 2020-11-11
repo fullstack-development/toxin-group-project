@@ -1,7 +1,9 @@
+import { memo } from 'react';
+
 import { cardsData } from './Cards.data';
 import * as S from './Cards.styles';
 
-const Cards = (): JSX.Element => (
+const Cards = memo(() => (
   <S.Cards>
     {cardsData.map(({ title, description, href }) => (
       <S.Item key={title}>
@@ -12,6 +14,8 @@ const Cards = (): JSX.Element => (
       </S.Item>
     ))}
   </S.Cards>
-);
+));
+
+Cards.displayName = 'Cards';
 
 export default Cards;

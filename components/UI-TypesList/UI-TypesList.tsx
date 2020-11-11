@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import UIType from 'components/UI-Type/UI-Type';
 
 import * as S from './UI-TypesList.styles';
@@ -12,7 +14,7 @@ type Props = {
   types: Array<Type>;
 };
 
-const UITypes: React.FC<Props> = ({ types }: Props) => (
+const UITypes = memo(({ types }: Props) => (
   <section>
     <S.Title>Вариации текста</S.Title>
     <S.List lang="en">
@@ -23,6 +25,8 @@ const UITypes: React.FC<Props> = ({ types }: Props) => (
       ))}
     </S.List>
   </section>
-);
+));
+
+UITypes.displayName = 'UITypes';
 
 export default UITypes;

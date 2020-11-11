@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Form } from 'react-final-form';
 import { connect } from 'react-redux';
 
@@ -40,48 +41,52 @@ type FormData = {
   hasSpecialOffers: boolean;
 };
 
-const Subscriptions = ({
-  email,
-  hasSpecialOffers,
-  isPending,
-  isCompleted,
-  statusText,
-  startSubscriptionUpdate,
-  stopSubscriptionUpdate,
-}: Props): JSX.Element => {
-  const onSubmit = ({ hasSpecialOffers: newValue }: FormData) => {
-    startSubscriptionUpdate({ email, subscriptions: { hasSpecialOffers: newValue } });
-  };
+const Subscriptions = memo(
+  ({
+    email,
+    hasSpecialOffers,
+    isPending,
+    isCompleted,
+    statusText,
+    startSubscriptionUpdate,
+    stopSubscriptionUpdate,
+  }: Props) => {
+    const onSubmit = ({ hasSpecialOffers: newValue }: FormData) => {
+      startSubscriptionUpdate({ email, subscriptions: { hasSpecialOffers: newValue } });
+    };
 
-  return (
-    <S.Subscriptions>
-      <S.Title>Новостные рассылки</S.Title>
-      <Form
-        initialValues={{ hasSpecialOffers }}
-        onSubmit={onSubmit}
-        render={({ handleSubmit }) => (
-          <>
-            <form onSubmit={handleSubmit}>
-              <S.List>
-                <S.Item>
-                  <Toggle name="hasSpecialOffers" label="Получать спецпредложения" />
-                </S.Item>
-              </S.List>
-              <Button disabled={isPending} isFlat isFilled>
-                Сохранить
-              </Button>
-            </form>
-            {isCompleted && (
-              <PopUpNotification
-                message={statusText}
-                onConfirmButtonClick={stopSubscriptionUpdate}
-              />
-            )}
-          </>
-        )}
-      />
-    </S.Subscriptions>
-  );
-};
+    return (
+      <S.Subscriptions>
+        <S.Title>Новостные рассылки</S.Title>
+        <Form
+          initialValues={{ hasSpecialOffers }}
+          onSubmit={onSubmit}
+          render={({ handleSubmit }) => (
+            <>
+              <form onSubmit={handleSubmit}>
+                <S.List>
+                  <S.Item>
+                    <Toggle name="hasSpecialOffers" label="Получать спецпредложения" />
+                  </S.Item>
+                </S.List>
+                <Button disabled={isPending} isFlat isFilled>
+                  Сохранить
+                </Button>
+              </form>
+              {isCompleted && (
+                <PopUpNotification
+                  message={statusText}
+                  onConfirmButtonClick={stopSubscriptionUpdate}
+                />
+              )}
+            </>
+          )}
+        />
+      </S.Subscriptions>
+    );
+  },
+);
+
+Subscriptions.displayName = 'Subscriptions';
 
 export default connect(mapState, mapDispatch)(Subscriptions);

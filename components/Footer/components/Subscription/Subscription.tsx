@@ -1,9 +1,11 @@
+import { memo } from 'react';
+
 import SubscriptionField from 'components/SubscriptionField/SubscriptionField';
 
 import { SubscriptionProps } from '../../Footer.types';
 import * as S from './Subscription.styles';
 
-const Subscription: React.FC<SubscriptionProps> = ({ title, text }: SubscriptionProps) => (
+const Subscription = memo(({ title, text }: SubscriptionProps) => (
   <S.Container>
     <S.Title>{title}</S.Title>
     <S.Description>{text}</S.Description>
@@ -11,6 +13,8 @@ const Subscription: React.FC<SubscriptionProps> = ({ title, text }: Subscription
       <SubscriptionField placeholder="Email" />
     </S.FieldContainer>
   </S.Container>
-);
+));
+
+Subscription.displayName = 'Subscription';
 
 export default Subscription;

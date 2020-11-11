@@ -2,7 +2,7 @@ import Head from 'next/head';
 
 import SelectedRoomsPage from 'components/SelectedRoomsPage/SelectedRoomsPage';
 
-const SelectedRooms: React.FC = (): JSX.Element => (
+const SelectedRooms = memo(() => (
   <>
     <Head>
       <title>Toxin | Забронированные номера</title>
@@ -17,6 +17,8 @@ const SelectedRooms: React.FC = (): JSX.Element => (
     </Head>
     <SelectedRoomsPage />
   </>
-);
+));
+
+SelectedRooms.displayName = 'SelectedRooms';
 
 export default SelectedRooms;

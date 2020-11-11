@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Form, Field } from 'react-final-form';
 import { connect } from 'react-redux';
 
@@ -29,46 +30,45 @@ type FormData = {
 
 type Props = StateProps & typeof mapDispatch;
 
-const ForgotPasswordForm = ({
-  isCompleted,
-  statusText,
-  startPasswordReset,
-  stopPasswordReset,
-}: Props): JSX.Element => {
-  const onFormSubmit = ({ email }: FormData) => {
-    startPasswordReset(email);
-  };
+const ForgotPasswordForm = memo(
+  ({ isCompleted, statusText, startPasswordReset, stopPasswordReset }: Props) => {
+    const onFormSubmit = ({ email }: FormData) => {
+      startPasswordReset(email);
+    };
 
-  return (
-    <S.ForgotPasswordForm>
-      <S.Title>Восстановление аккаунта</S.Title>
-      <Form
-        onSubmit={onFormSubmit}
-        render={({ handleSubmit }) => (
-          <form onSubmit={handleSubmit}>
-            <Field
-              name="email"
-              type="email"
-              render={({ input }) => (
-                <S.InputWrapper
-                  {...input}
-                  label="Адрес электронной почты"
-                  placeholder="Email"
-                  validators={[emailValidator]}
-                />
-              )}
-            />
-            <S.NextButton isFlat isFilled>
-              Далее
-            </S.NextButton>
-          </form>
+    return (
+      <S.ForgotPasswordForm>
+        <S.Title>Восстановление аккаунта</S.Title>
+        <Form
+          onSubmit={onFormSubmit}
+          render={({ handleSubmit }) => (
+            <form onSubmit={handleSubmit}>
+              <Field
+                name="email"
+                type="email"
+                render={({ input }) => (
+                  <S.InputWrapper
+                    {...input}
+                    label="Адрес электронной почты"
+                    placeholder="Email"
+                    validators={[emailValidator]}
+                  />
+                )}
+              />
+              <S.NextButton isFlat isFilled>
+                Далее
+              </S.NextButton>
+            </form>
+          )}
+        />
+        {isCompleted && (
+          <PopUpNotification message={statusText} onConfirmButtonClick={stopPasswordReset} />
         )}
-      />
-      {isCompleted && (
-        <PopUpNotification message={statusText} onConfirmButtonClick={stopPasswordReset} />
-      )}
-    </S.ForgotPasswordForm>
-  );
-};
+      </S.ForgotPasswordForm>
+    );
+  },
+);
+
+ForgotPasswordForm.displayName = 'ForgotPasswordForm';
 
 export default connect(mapState, mapDispatch)(ForgotPasswordForm);

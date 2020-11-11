@@ -19,7 +19,7 @@ const options = {
 
 function getReviewDate(date: Date): string {
   const currentDate = Date.now();
-  const timeHasPassed = currentDate - date.valueOf();
+  const timeHasPassed = currentDate - date.getTime();
 
   const seconds = timeHasPassed / 1000;
   if (seconds < 60) {

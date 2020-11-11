@@ -1,13 +1,13 @@
-import React from 'react';
+import { memo } from 'react';
 
 import * as S from './NavBar.styles';
 
-type NavBar = {
+type Props = {
   onPreviousClick?(callback?: () => void): void;
   onNextClick?(callback?: () => void): void;
 };
 
-const NavBar = ({ onPreviousClick, onNextClick }: NavBar): JSX.Element => {
+const NavBar = memo(({ onPreviousClick, onNextClick }: Props) => {
   const handlePreviousButtonClick = () => onPreviousClick();
   const handleNextButtonClick = () => onNextClick();
 
@@ -21,6 +21,8 @@ const NavBar = ({ onPreviousClick, onNextClick }: NavBar): JSX.Element => {
       </S.NavBarButton>
     </S.Container>
   );
-};
+});
+
+NavBar.displayName = 'NavBar';
 
 export default NavBar;

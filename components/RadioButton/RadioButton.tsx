@@ -1,4 +1,4 @@
-import { InputHTMLAttributes } from 'react';
+import { ChangeEvent, InputHTMLAttributes, memo } from 'react';
 import { Field } from 'react-final-form';
 
 import * as S from './RadioButton.styles';
@@ -7,11 +7,11 @@ type Props = {
   name: string;
   label: string;
   value: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 } & InputHTMLAttributes<HTMLInputElement>;
 
-const RadioButton: React.FC<Props> = ({ name, label, value, onChange }: Props) => {
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+const RadioButton = memo(({ name, label, value, onChange }: Props) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     onChange(e);
   };
 
@@ -21,15 +21,17 @@ const RadioButton: React.FC<Props> = ({ name, label, value, onChange }: Props) =
       value={value}
       onChange={handleChange}
       type="radio"
-      render={(props) => (
+      render={({ input }) => (
         <S.RadioButton>
-          <S.HiddenInput {...props.input} />
+          <S.HiddenInput {...input} />
           <S.Checkmark />
           <S.Label>{label}</S.Label>
         </S.RadioButton>
       )}
     />
   );
-};
+});
+
+RadioButton.displayName = 'RadioButton';
 
 export default RadioButton;

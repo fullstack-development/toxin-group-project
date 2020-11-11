@@ -1,8 +1,9 @@
 import Head from 'next/head';
+import { memo } from 'react';
 
 import RoomDetailsPage from 'components/RoomDetailsPage/RoomDetailsPage';
 
-const RoomDetails: React.FC = () => (
+const RoomDetails = memo(() => (
   <>
     <Head>
       <title>Toxin | Подробнее о номере</title>
@@ -14,6 +15,8 @@ const RoomDetails: React.FC = () => (
     </Head>
     <RoomDetailsPage />
   </>
-);
+));
+
+RoomDetails.displayName = 'RoomDetails';
 
 export default RoomDetails;

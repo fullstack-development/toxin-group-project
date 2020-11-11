@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import { memo } from 'react';
 import { Field, Form } from 'react-final-form';
 
 import ArrowButton from 'components/ArrowButton/ArrowButton';
@@ -86,123 +87,127 @@ const getResultPrice = (prices: PriceItem[]): number =>
 const getDaysDifference = (dates: { from: number; to: number }) =>
   Math.round(Math.abs((dates.to - dates.from) / oneDay));
 
-const OrderForm: React.FC<Props> = ({
-  roomNumber,
-  roomType,
-  roomPrice,
-  priceItems,
-  overcrowdingPrice,
-  breakfastPricePerGuest,
-  isAuthSuccess,
-  currency = 'RUB',
-  measure = 'в сутки',
-  userEmail,
-  confirmBookedRoom,
-}: Props) => {
-  const router = useRouter();
+const OrderForm = memo(
+  ({
+    roomNumber,
+    roomType,
+    roomPrice,
+    priceItems,
+    overcrowdingPrice,
+    breakfastPricePerGuest,
+    isAuthSuccess,
+    currency = 'RUB',
+    measure = 'в сутки',
+    userEmail,
+    confirmBookedRoom,
+  }: Props) => {
+    const router = useRouter();
 
-  const handleFormSubmit = (values) => {
-    if (!isAuthSuccess) return router.push('/auth');
+    const handleFormSubmit = (values) => {
+      if (!isAuthSuccess) return router.push('/auth');
 
-    confirmBookedRoom({
-      ...values,
-      user: userEmail,
-      apartmentId: roomNumber,
-    });
+      confirmBookedRoom({
+        ...values,
+        user: userEmail,
+        apartmentId: roomNumber,
+      });
 
-    return router.push('/selected-rooms');
-  };
+      return router.push('/selected-rooms');
+    };
 
-  return (
-    <S.Container>
-      <S.Title>Бронирование номера №{roomNumber}</S.Title>
-      <Form
-        onSubmit={handleFormSubmit}
-        render={({ handleSubmit, values }) => {
-          const dates: { from: number; to: number } = values.booked;
-          const daysDifference = (dates && getDaysDifference(dates)) || 0;
-          const guests: {
-            adults: number;
-            babies: number;
-          } = values.guests && {
-            adults: values.guests.adults + values.guests.children,
-            babies: values.guests.babies,
-          };
+    return (
+      <S.Container>
+        <S.Title>Бронирование номера №{roomNumber}</S.Title>
+        <Form
+          onSubmit={handleFormSubmit}
+          render={({ handleSubmit, values }) => {
+            const dates: { from: number; to: number } = values.booked;
+            const daysDifference = (dates && getDaysDifference(dates)) || 0;
+            const guests: {
+              adults: number;
+              babies: number;
+            } = values.guests && {
+              adults: values.guests.adults + values.guests.children,
+              babies: values.guests.babies,
+            };
 
-          const totalGuestsCount = guests ? guests.adults : 0;
-          const billableGuests = Math.max(totalGuestsCount - noFeeGuestsCount, 0);
+            const totalGuestsCount = guests ? guests.adults : 0;
+            const billableGuests = Math.max(totalGuestsCount - noFeeGuestsCount, 0);
 
-          const prices = [
-            {
-              label: `${formatNumber(roomPrice, currency)} х ${daysDifference} суток`,
-              price: roomPrice * daysDifference,
-            },
-            {
-              label: 'Сбор за гостей, начиная со второго',
-              price: breakfastPricePerGuest * billableGuests,
-            },
-            ...(priceItems || defaultPrices),
-          ];
+            const prices = [
+              {
+                label: `${formatNumber(roomPrice, currency)} х ${daysDifference} суток`,
+                price: roomPrice * daysDifference,
+              },
+              {
+                label: 'Сбор за гостей, начиная со второго',
+                price: breakfastPricePerGuest * billableGuests,
+              },
+              ...(priceItems || defaultPrices),
+            ];
 
-          const extraGuestFee = {
-            label: 'Оплата за дополнительного гостя',
-            price: overcrowdingPrice,
-          };
+            const extraGuestFee = {
+              label: 'Оплата за дополнительного гостя',
+              price: overcrowdingPrice,
+            };
 
-          if (totalGuestsCount > defaultMaxGuests.adults) {
-            prices.push(extraGuestFee);
-          }
+            if (totalGuestsCount > defaultMaxGuests.adults) {
+              prices.push(extraGuestFee);
+            }
 
-          return (
-            <form onSubmit={handleSubmit}>
-              <S.RoomInfo>
-                <S.RoomNumber>
-                  <S.NumberSign>№</S.NumberSign>
-                  {roomNumber}
-                  {roomType && <S.RoomType>{roomType}</S.RoomType>}
-                </S.RoomNumber>
-                <S.Price>
-                  {formatNumber(roomPrice, currency)}
-                  <S.Measure>{measure}</S.Measure>
-                </S.Price>
-              </S.RoomInfo>
-              <S.Datepicker>
-                <TimePicker
-                  type="double"
-                  dateFromLabelText="Прибытие"
-                  dateToLabelText="Выезд"
-                  name="booked"
-                />
-              </S.Datepicker>
-              <S.Dropdown>
-                <S.DropdownLabel>гости</S.DropdownLabel>
-                <Dropdown {...dropdownOptions} />
-              </S.Dropdown>
-              <S.PriceList>
-                <PriceList items={prices} />
-              </S.PriceList>
-              <S.ResultWrapper>
-                Итого
-                <S.Dots />
-                <S.ResultPrice>
-                  <Field
-                    type="hidden"
-                    render={({ input }) => {
-                      setTimeout(() => input.onChange(getResultPrice(prices)));
-                      return <input {...input} />;
-                    }}
-                    name="totalPrice"
+            return (
+              <form onSubmit={handleSubmit}>
+                <S.RoomInfo>
+                  <S.RoomNumber>
+                    <S.NumberSign>№</S.NumberSign>
+                    {roomNumber}
+                    {roomType && <S.RoomType>{roomType}</S.RoomType>}
+                  </S.RoomNumber>
+                  <S.Price>
+                    {formatNumber(roomPrice, currency)}
+                    <S.Measure>{measure}</S.Measure>
+                  </S.Price>
+                </S.RoomInfo>
+                <S.Datepicker>
+                  <TimePicker
+                    type="double"
+                    dateFromLabelText="Прибытие"
+                    dateToLabelText="Выезд"
+                    name="booked"
                   />
-                  {formatNumber(getResultPrice(prices), currency)}
-                </S.ResultPrice>
-              </S.ResultWrapper>
-              <ArrowButton type="submit">Забронировать</ArrowButton>
-            </form>
-          );
-        }}
-      />
-    </S.Container>
-  );
-};
+                </S.Datepicker>
+                <S.Dropdown>
+                  <S.DropdownLabel>гости</S.DropdownLabel>
+                  <Dropdown {...dropdownOptions} />
+                </S.Dropdown>
+                <S.PriceList>
+                  <PriceList items={prices} />
+                </S.PriceList>
+                <S.ResultWrapper>
+                  Итого
+                  <S.Dots />
+                  <S.ResultPrice>
+                    <Field
+                      type="hidden"
+                      render={({ input }) => {
+                        setTimeout(() => input.onChange(getResultPrice(prices)));
+                        return <input {...input} />;
+                      }}
+                      name="totalPrice"
+                    />
+                    {formatNumber(getResultPrice(prices), currency)}
+                  </S.ResultPrice>
+                </S.ResultWrapper>
+                <ArrowButton type="submit">Забронировать</ArrowButton>
+              </form>
+            );
+          }}
+        />
+      </S.Container>
+    );
+  },
+);
+
+OrderForm.displayName = 'OrderForm';
 
 export default OrderForm;

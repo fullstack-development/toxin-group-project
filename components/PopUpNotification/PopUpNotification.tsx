@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import TextButton from 'components/TextButton/TextButton';
 
 import * as S from './PopUpNotification.styles';
@@ -7,13 +9,15 @@ type Props = {
   onConfirmButtonClick: () => void;
 };
 
-const PopUpNotification = ({ message, onConfirmButtonClick }: Props): JSX.Element => (
+const PopUpNotification = memo(({ message, onConfirmButtonClick }: Props) => (
   <S.PopUpNotification>
     <S.Message>{message}</S.Message>
     <TextButton type="button" onClick={onConfirmButtonClick}>
       ОК
     </TextButton>
   </S.PopUpNotification>
-);
+));
+
+PopUpNotification.displayName = 'PopUpNotification';
 
 export default PopUpNotification;

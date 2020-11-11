@@ -1,8 +1,9 @@
 import Head from 'next/head';
+import { memo } from 'react';
 
 import AccountSettingsPage from 'components/AccountSettingsPage/AccountSettingsPage';
 
-const AccountSettings = (): JSX.Element => (
+const AccountSettings = memo(() => (
   <>
     <Head>
       <title>Toxin | Настройки аккаунта</title>
@@ -11,6 +12,8 @@ const AccountSettings = (): JSX.Element => (
     </Head>
     <AccountSettingsPage />
   </>
-);
+));
+
+AccountSettings.displayName = 'AccountSettings';
 
 export default AccountSettings;

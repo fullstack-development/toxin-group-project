@@ -1,6 +1,8 @@
+import { memo } from 'react';
+
 import * as S from './HeaderUserLogin.styles';
 
-const HeaderUserLogin: React.FC = (): JSX.Element => (
+const HeaderUserLogin = memo(() => (
   <S.HeaderUserLogin>
     <S.HeaderLoginButton href="/auth" isFlat>
       Войти
@@ -9,6 +11,8 @@ const HeaderUserLogin: React.FC = (): JSX.Element => (
       Зарегистрироваться
     </S.HeaderLoginButton>
   </S.HeaderUserLogin>
-);
+));
+
+HeaderUserLogin.displayName = 'HeaderUserLogin';
 
 export default HeaderUserLogin;

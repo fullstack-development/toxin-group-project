@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import UIColor from 'components/UI-Color/UI-Color';
 
 import * as S from './UI-ColorsList.styles';
@@ -12,7 +14,7 @@ type Props = {
   colors: Array<Color>;
 };
 
-const UIColorsList: React.FC<Props> = ({ colors }: Props) => (
+const UIColorsList = memo(({ colors }: Props) => (
   <section>
     <S.Title>Цветовая палитра</S.Title>
     <S.List lang="en">
@@ -23,6 +25,8 @@ const UIColorsList: React.FC<Props> = ({ colors }: Props) => (
       ))}
     </S.List>
   </section>
-);
+));
+
+UIColorsList.displayName = 'UIColorsList';
 
 export default UIColorsList;

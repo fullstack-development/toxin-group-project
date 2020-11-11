@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import { BookedRoom } from 'api/entities/types';
 import Room from 'components/Room/Room';
 
@@ -7,7 +9,7 @@ type Props = {
   rooms: BookedRoom[];
 };
 
-const RoomsList: React.FC<Props> = ({ rooms }: Props): JSX.Element => {
+const RoomsList = memo(({ rooms }: Props) => {
   return (
     <S.Container>
       {rooms &&
@@ -29,6 +31,8 @@ const RoomsList: React.FC<Props> = ({ rooms }: Props): JSX.Element => {
         })}
     </S.Container>
   );
-};
+});
+
+RoomsList.displayName = 'RoomList';
 
 export default RoomsList;

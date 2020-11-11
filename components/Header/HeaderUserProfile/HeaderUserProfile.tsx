@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import NavMenu from 'components/NavMenu/NavMenu';
 
 import * as S from './HeaderUserProfile.styles';
@@ -6,7 +8,7 @@ type Props = {
   displayName?: string;
 };
 
-const HeaderUserProfile: React.FC<Props> = ({ displayName }: Props): JSX.Element => {
+const HeaderUserProfile = memo(({ displayName }: Props) => {
   const ProfileLink = [
     {
       name: displayName,
@@ -23,6 +25,8 @@ const HeaderUserProfile: React.FC<Props> = ({ displayName }: Props): JSX.Element
       <NavMenu menu={ProfileLink} />
     </S.HeaderUserProfile>
   );
-};
+});
+
+HeaderUserProfile.displayName = 'HeaderUserProfile';
 
 export default HeaderUserProfile;

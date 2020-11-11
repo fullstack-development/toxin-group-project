@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import { Review as ReviewProps } from 'api/entities/types';
 import Review from 'components/Review/Review';
 import getNounInDeclension from 'shared/helpers/getNounInDeclension';
@@ -12,7 +14,7 @@ const NUMBER_OF_REVIEWS = 2;
 
 const declensions = ['отзыв', 'отзыва', 'отзывов'];
 
-const Reviews = ({ reviews }: Props): JSX.Element => {
+const Reviews = memo(({ reviews }: Props) => {
   const sortedReviews = reviews.slice().sort((a, b) => b.likesCount - a.likesCount);
   const mostPopularReviews = sortedReviews.slice(0, NUMBER_OF_REVIEWS);
 
@@ -31,6 +33,8 @@ const Reviews = ({ reviews }: Props): JSX.Element => {
       </S.List>
     </S.Reviews>
   );
-};
+});
+
+Reviews.displayName = 'Reviews';
 
 export default Reviews;

@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import getNounInDeclension from 'shared/helpers/getNounInDeclension';
 
 import Chart from './components/Chart/Chart';
@@ -14,7 +16,7 @@ type Props = {
   };
 };
 
-const RoomImpression: React.FC<Props> = ({ title, numberOfRatings }: Props) => {
+const RoomImpression = memo(({ title, numberOfRatings }: Props) => {
   const declensions = ['голос', 'голоса', 'голосов'];
   const ratingsSum = Object.values(numberOfRatings).reduce(
     (accumulator, currentValue) => accumulator + currentValue,
@@ -43,6 +45,8 @@ const RoomImpression: React.FC<Props> = ({ title, numberOfRatings }: Props) => {
       </S.Figure>
     </S.RoomImpression>
   );
-};
+});
+
+RoomImpression.displayName = 'RoomImpression';
 
 export default RoomImpression;

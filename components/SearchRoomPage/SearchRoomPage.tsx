@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useState, Fragment } from 'react';
+import { useState, Fragment, FormEvent, memo } from 'react';
 import { connect } from 'react-redux';
 
 import { Filters } from 'api/entities/types';
@@ -53,7 +53,7 @@ const sortData: SortData[] = [
 ];
 const [descKey, ascKey] = ['desc', 'asc'] as SortOrder[];
 
-const SearchRoomPage: React.FC<Props> = ({ rooms, getRooms, isPending }: Props) => {
+const SearchRoomPage = memo(({ rooms, getRooms, isPending }: Props) => {
   const router = useRouter();
 
   const passedParams = getPassedFilters(router.asPath);
@@ -78,7 +78,7 @@ const SearchRoomPage: React.FC<Props> = ({ rooms, getRooms, isPending }: Props) 
     sortData.find((obj) => obj.parameter === sortParam).sortFunction,
   );
 
-  const handleSelectChange = (e: React.FormEvent<HTMLSelectElement>) => {
+  const handleSelectChange = (e: FormEvent<HTMLSelectElement>) => {
     const target = e.target as HTMLSelectElement;
     const [param, sortOrder] = target.value.split(separator) as [SortParam, SortOrder];
     setSortParam(param);
@@ -133,6 +133,8 @@ const SearchRoomPage: React.FC<Props> = ({ rooms, getRooms, isPending }: Props) 
       </S.Container>
     </MainLayout>
   );
-};
+});
+
+SearchRoomPage.displayName = 'SearchRoomPage';
 
 export default connect(mapState, mapDispatch)(SearchRoomPage);

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { Form, Field } from 'react-final-form';
 import { connect } from 'react-redux';
 
@@ -41,55 +41,60 @@ type FormData = {
   birthday: string;
 };
 
-const EditBirthday = ({
-  user,
-  birthday,
-  isPending,
-  isCompleted,
-  statusText,
-  startUpdateAdditionalUserData,
-  stopUpdateAdditionalUserData,
-}: Props): JSX.Element => {
-  const onSubmit = ({ birthday: newBirthday }: FormData) => {
-    startUpdateAdditionalUserData({ user, data: { birthDate: newBirthday } });
-  };
+const EditBirthday = memo(
+  ({
+    user,
+    birthday,
+    isPending,
+    isCompleted,
+    statusText,
+    startUpdateAdditionalUserData,
+    stopUpdateAdditionalUserData,
+  }: Props) => {
+    const onSubmit = ({ birthday: newBirthday }: FormData) => {
+      startUpdateAdditionalUserData({ user, data: { birthDate: newBirthday } });
+    };
 
-  useEffect(() => {
-    stopUpdateAdditionalUserData();
-  }, [stopUpdateAdditionalUserData]);
+    useEffect(() => {
+      stopUpdateAdditionalUserData();
+    }, [stopUpdateAdditionalUserData]);
 
-  return (
-    <Form
-      initialValues={{ birthday }}
-      onSubmit={onSubmit}
-      render={({ handleSubmit }) => (
-        <>
-          <form onSubmit={handleSubmit}>
-            <Field
-              name="birthday"
-              validate={dateValidator}
-              render={({ input }) => (
-                <Input
-                  {...input}
-                  validators={[dateValidator]}
-                  placeholder="ДД.ММ.ГГГГ"
-                  mask={dateFormatMask}
-                />
-              )}
-            />
-            <Button disabled={isPending} isFlat isFilled>
-              Сохранить
-            </Button>
-          </form>
-          {isCompleted && (
-            <PopUpNotification
-              message={statusText}
-              onConfirmButtonClick={stopUpdateAdditionalUserData}
-            />
-          )}
-        </>
-      )}
-    />
-  );
-};
+    return (
+      <Form
+        initialValues={{ birthday }}
+        onSubmit={onSubmit}
+        render={({ handleSubmit }) => (
+          <>
+            <form onSubmit={handleSubmit}>
+              <Field
+                name="birthday"
+                validate={dateValidator}
+                render={({ input }) => (
+                  <Input
+                    {...input}
+                    validators={[dateValidator]}
+                    placeholder="ДД.ММ.ГГГГ"
+                    mask={dateFormatMask}
+                  />
+                )}
+              />
+              <Button disabled={isPending} isFlat isFilled>
+                Сохранить
+              </Button>
+            </form>
+            {isCompleted && (
+              <PopUpNotification
+                message={statusText}
+                onConfirmButtonClick={stopUpdateAdditionalUserData}
+              />
+            )}
+          </>
+        )}
+      />
+    );
+  },
+);
+
+EditBirthday.displayName = 'EditBirthday';
+
 export default connect(mapState, mapDispatch)(EditBirthday);

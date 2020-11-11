@@ -1,9 +1,11 @@
+import { memo } from 'react';
+
 import { formatNumber } from 'shared/helpers';
 
 import { Props } from '../../OrderForm.types';
 import * as S from './PriceList.styles';
 
-const PriceList: React.FC<Props> = ({ items }: Props) => (
+const PriceList = memo(({ items }: Props) => (
   <S.List>
     {items.map((item) => {
       const { label, tooltip, price, currency = 'RUB' } = item;
@@ -24,5 +26,8 @@ const PriceList: React.FC<Props> = ({ items }: Props) => (
       );
     })}
   </S.List>
-);
+));
+
+PriceList.displayName = 'PriceList';
+
 export default PriceList;

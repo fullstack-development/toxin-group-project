@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { BookedRoomsHistory } from 'api/entities/types';
@@ -28,42 +28,41 @@ const mapDispatch = {
 
 type Props = StateProps & typeof mapDispatch;
 
-const SelectedRoomsPage: React.FC<Props> = ({
-  bookedRooms,
-  userEmail,
-  isLoadingData,
-  getBookedRooms,
-}: Props): JSX.Element => {
-  useEffect(() => {
-    getBookedRooms(userEmail);
-  }, [getBookedRooms, userEmail]);
+const SelectedRoomsPage = memo(
+  ({ bookedRooms, userEmail, isLoadingData, getBookedRooms }: Props) => {
+    useEffect(() => {
+      getBookedRooms(userEmail);
+    }, [getBookedRooms, userEmail]);
 
-  return (
-    <MainLayout>
-      <S.Container>
-        <S.Title>Ваши забронированные номера:</S.Title>
-        <S.RoomsListContainer>
-          {isLoadingData && <Preloader />}
-          {bookedRooms &&
-            (bookedRooms.current.length ? (
-              <RoomsList rooms={bookedRooms.current} />
-            ) : (
-              <S.Text>Нет забронированных номеров</S.Text>
-            ))}
-        </S.RoomsListContainer>
-        <S.SubTitle>История забронированных номеров:</S.SubTitle>
-        <S.RoomsListContainer>
-          {isLoadingData && <Preloader />}
-          {bookedRooms &&
-            (bookedRooms.history.length ? (
-              <RoomsList rooms={bookedRooms.history} />
-            ) : (
-              <S.Text>Пусто... Возможно, это будет ваша первая бронь ?</S.Text>
-            ))}
-        </S.RoomsListContainer>
-      </S.Container>
-    </MainLayout>
-  );
-};
+    return (
+      <MainLayout>
+        <S.Container>
+          <S.Title>Ваши забронированные номера:</S.Title>
+          <S.RoomsListContainer>
+            {isLoadingData && <Preloader />}
+            {bookedRooms &&
+              (bookedRooms.current.length ? (
+                <RoomsList rooms={bookedRooms.current} />
+              ) : (
+                <S.Text>Нет забронированных номеров</S.Text>
+              ))}
+          </S.RoomsListContainer>
+          <S.SubTitle>История забронированных номеров:</S.SubTitle>
+          <S.RoomsListContainer>
+            {isLoadingData && <Preloader />}
+            {bookedRooms &&
+              (bookedRooms.history.length ? (
+                <RoomsList rooms={bookedRooms.history} />
+              ) : (
+                <S.Text>Пусто... Возможно, это будет ваша первая бронь ?</S.Text>
+              ))}
+          </S.RoomsListContainer>
+        </S.Container>
+      </MainLayout>
+    );
+  },
+);
+
+SelectedRoomsPage.displayName = 'SelectedRoomsPage';
 
 export default connect(mapState, mapDispatch)(SelectedRoomsPage);

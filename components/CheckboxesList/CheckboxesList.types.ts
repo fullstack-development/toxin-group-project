@@ -5,6 +5,6 @@ export type Option = {
   isChecked?: boolean;
 };
 
-export type CheckboxesListProps = {
+export type Props = {
   roomOptions: Option[];
 };

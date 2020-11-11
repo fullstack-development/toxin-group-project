@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import * as S from './Benefits.style';
 
 type Props = {
@@ -10,7 +12,7 @@ type Props = {
   >;
 };
 
-const Benefits = ({ items }: Props): JSX.Element => (
+const Benefits = memo(({ items }: Props) => (
   <S.Benefits>
     {items.map(({ term, icon, definition }) => (
       <S.Item key={term}>
@@ -22,6 +24,8 @@ const Benefits = ({ items }: Props): JSX.Element => (
       </S.Item>
     ))}
   </S.Benefits>
-);
+));
+
+Benefits.displayName = 'Benefits';
 
 export default Benefits;

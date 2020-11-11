@@ -1,8 +1,10 @@
+import { memo } from 'react';
+
 import { keywords } from './StarRating.data';
 import * as S from './StarRating.styles';
 import { StarRatingProps } from './StarRating.types';
 
-const StarRating: React.FC<StarRatingProps> = ({ rating = 0 }: StarRatingProps) => {
+const StarRating = memo(({ rating = 0 }: StarRatingProps) => {
   const ratingTextKey = Object.values(keywords)[rating];
   const title = `Оценка номера - ${ratingTextKey}`;
 
@@ -18,6 +20,8 @@ const StarRating: React.FC<StarRatingProps> = ({ rating = 0 }: StarRatingProps) 
       })}
     </S.StarRating>
   );
-};
+});
+
+StarRating.displayName = 'StarRating';
 
 export default StarRating;

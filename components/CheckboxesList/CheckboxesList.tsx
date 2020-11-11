@@ -1,12 +1,12 @@
-import React from 'react';
+import { memo } from 'react';
 import { Field } from 'react-final-form';
 
 import Checkbox from 'components/Checkbox/Checkbox';
 
 import * as S from './CheckboxesList.styles';
-import { CheckboxesListProps } from './CheckboxesList.types';
+import { Props } from './CheckboxesList.types';
 
-const CheckboxesList: React.FC<CheckboxesListProps> = ({ roomOptions }: CheckboxesListProps) => (
+const CheckboxesList = memo(({ roomOptions }: Props) => (
   <S.List>
     {roomOptions.map((option) => {
       const { title, label, name, isChecked } = option;
@@ -15,20 +15,16 @@ const CheckboxesList: React.FC<CheckboxesListProps> = ({ roomOptions }: Checkbox
           <Field
             type="checkbox"
             name={name}
-            render={(props) => (
-              <Checkbox
-                title={title}
-                label={label}
-                {...props.input}
-                {...props.meta}
-                isChecked={isChecked}
-              />
+            render={({ input }) => (
+              <Checkbox title={title} label={label} {...input} isChecked={isChecked} />
             )}
           />
         </S.ListItem>
       );
     })}
   </S.List>
-);
+));
+
+CheckboxesList.displayName = 'CheckboxesList';
 
 export default CheckboxesList;

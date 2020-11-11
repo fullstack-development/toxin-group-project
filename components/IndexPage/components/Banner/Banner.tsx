@@ -1,16 +1,20 @@
+import { memo } from 'react';
+
 import SearchRoomForm from 'components/SearchRoomForm/SearchRoomForm';
 
 import * as S from './Banner.styles';
 
-type BannerProps = {
+type Props = {
   message: string;
 };
 
-const Banner: React.FC<BannerProps> = ({ message }: BannerProps): JSX.Element => (
+const Banner = memo(({ message }: Props) => (
   <S.Banner>
     <SearchRoomForm />
     <S.Message>{message}</S.Message>
   </S.Banner>
-);
+));
+
+Banner.displayName = 'Banner';
 
 export default Banner;

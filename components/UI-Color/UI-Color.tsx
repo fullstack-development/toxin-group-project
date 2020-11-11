@@ -6,7 +6,7 @@ type Props = {
   opacity: number;
 };
 
-const UIColor: React.FC<Props> = ({ color, title, opacity }: Props) => (
+const UIColor = memo(({ color, title, opacity }: Props) => (
   <S.Color>
     <S.Palette paletteColor={color} paletteOpacity={opacity} />
     <S.Description>
@@ -14,6 +14,8 @@ const UIColor: React.FC<Props> = ({ color, title, opacity }: Props) => (
       <div>{color}</div>
     </S.Description>
   </S.Color>
-);
+));
+
+UIColor.displayName = 'UIColor';
 
 export default UIColor;
