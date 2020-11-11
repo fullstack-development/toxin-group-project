@@ -1,3 +1,4 @@
+import i18next from 'services/i18next';
 import getNounInDeclension from 'shared/helpers/getNounInDeclension';
 
 const DECLENSION = {
@@ -25,31 +26,41 @@ function getReviewDate(date: Date): string {
   if (seconds < 60) {
     const roundedSeconds = Math.floor(seconds);
 
-    return `${roundedSeconds} ${getNounInDeclension(roundedSeconds, DECLENSION.seconds)} назад`;
+    return `${roundedSeconds} ${getNounInDeclension(
+      roundedSeconds,
+      DECLENSION.seconds,
+    )} ${i18next.t('Ago')}`;
   }
 
   const minutes = seconds / 60;
   if (minutes < 60) {
     const roundedMinutes = Math.floor(minutes);
 
-    return `${roundedMinutes} ${getNounInDeclension(roundedMinutes, DECLENSION.minutes)} назад`;
+    return `${roundedMinutes} ${getNounInDeclension(
+      roundedMinutes,
+      DECLENSION.minutes,
+    )} ${i18next.t('Ago')}`;
   }
 
   const hours = minutes / 60;
   if (hours < 24) {
     const roundedHours = Math.floor(hours);
 
-    return `${roundedHours} ${getNounInDeclension(roundedHours, DECLENSION.hours)} назад`;
+    return `${roundedHours} ${getNounInDeclension(roundedHours, DECLENSION.hours)} ${i18next.t(
+      'Ago',
+    )}`;
   }
 
   const days = hours / 24;
   if (days < 30) {
     const roundedDays = Math.floor(days);
 
-    return `${roundedDays} ${getNounInDeclension(roundedDays, DECLENSION.days)} назад`;
+    return `${roundedDays} ${getNounInDeclension(roundedDays, DECLENSION.days)} ${i18next.t(
+      'Ago',
+    )}`;
   }
 
-  return date.toLocaleDateString('ru-RU', options);
+  return date.toLocaleDateString(i18next.language, options);
 }
 
 export default getReviewDate;

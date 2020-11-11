@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import UIColor from 'components/UI-Color/UI-Color';
 
 import * as S from './UI-ColorsList.styles';
@@ -12,17 +14,21 @@ type Props = {
   colors: Array<Color>;
 };
 
-const UIColorsList: React.FC<Props> = ({ colors }: Props) => (
-  <section>
-    <S.Title>Цветовая палитра</S.Title>
-    <S.List lang="en">
-      {colors.map((color) => (
-        <li key={color.title}>
-          <UIColor color={color.color} title={color.title} opacity={color.opacity} />
-        </li>
-      ))}
-    </S.List>
-  </section>
-);
+const UIColorsList: React.FC<Props> = ({ colors }: Props) => {
+  const { t } = useTranslation('Ui-ColorsList');
+
+  return (
+    <section>
+      <S.Title>{t('Color palette')}</S.Title>
+      <S.List lang="en">
+        {colors.map((color) => (
+          <li key={color.title}>
+            <UIColor color={color.color} title={color.title} opacity={color.opacity} />
+          </li>
+        ))}
+      </S.List>
+    </section>
+  );
+};
 
 export default UIColorsList;

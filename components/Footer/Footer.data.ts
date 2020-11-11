@@ -1,13 +1,13 @@
 import { FooterProps } from './Footer.types';
 
-const data: Required<FooterProps> = {
+const data: FooterProps = {
   subscription: {
-    title: 'Подписка',
-    text: 'Получайте специальные предложения и новости сервиса',
+    title: 'Subscription',
+    text: 'Receive special offers and service news',
   },
   description:
-    'Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»',
-  copyrightText: 'Copyright © 2018 Toxin отель. Все права зачищены.',
+    'Reservation of rooms in the best hotel of 2019 according to the "Hotel Views" association',
+  copyrightText: 'Copyright © 2018 Toxin Hotel. All rights reserved.',
 };
 
 export default data;

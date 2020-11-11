@@ -25,8 +25,6 @@ const ListItem = styled.li<ListItem>`
 `;
 
 const NavContainer = styled.nav`
-  width: 100%;
-
   @media ${breakpointDown('md')} {
     margin-right: 0;
   }

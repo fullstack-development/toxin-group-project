@@ -1,3 +1,5 @@
+import { withTranslation, WithTranslation } from 'react-i18next';
+
 import StarRating from 'components/StarRating/StarRating';
 import formatNumber from 'shared/helpers/formatNumber';
 
@@ -5,16 +7,17 @@ import ImageGallery from './components/ImageGallery/ImageGallery';
 import * as S from './Room.styles';
 import { Props } from './Room.types';
 
-const Room: React.FC<Props> = ({
+const Room: React.ComponentType<WithTranslation & Props> = ({
   price,
   number,
   reviews,
   imagePaths,
   roomType,
-  measure = 'в сутки',
-  reviewMeasure = 'отзывов',
+  measure = 'Per day',
+  reviewMeasure = 'Reviews',
   currency,
   rating = 5,
+  t,
 }: Props) => (
   <S.Room>
     <ImageGallery imagePaths={imagePaths} />
@@ -27,18 +30,18 @@ const Room: React.FC<Props> = ({
         </S.RoomNumber>
         <S.Price>
           {formatNumber(price, currency)}
-          <S.Measure>{measure}</S.Measure>
+          <S.Measure>{t(`WordForms:${measure}`)}</S.Measure>
         </S.Price>
       </S.Container>
       <S.RatingContainer>
         <StarRating rating={rating} />
         <S.Reviews>
           <S.ReviewCount>{reviews.length}</S.ReviewCount>
-          <S.ReviewMeasure>{reviewMeasure}</S.ReviewMeasure>
+          <S.ReviewMeasure>{t(`WordForms:${reviewMeasure}`)}</S.ReviewMeasure>
         </S.Reviews>
       </S.RatingContainer>
     </S.Info>
   </S.Room>
 );
 
-export default Room;
+export default withTranslation('WordForms')(Room);

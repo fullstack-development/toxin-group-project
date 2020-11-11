@@ -1,4 +1,5 @@
 import { Field, Form } from 'react-final-form';
+import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
@@ -43,7 +44,7 @@ const SubscriptionField = ({
   const onSubmit = ({ email }: FormData) => {
     startSubscriptionUpdate({ email, subscriptions: { hasSpecialOffers: true } });
   };
-
+  const { t } = useTranslation('SubscriptionField');
   return (
     <Form
       onSubmit={onSubmit}
@@ -56,7 +57,7 @@ const SubscriptionField = ({
               render={({ input }) => (
                 <S.Container>
                   <S.Input {...input} {...rest} validators={[emailValidator]} />
-                  <S.SubmitButton aria-label="Отправить" />
+                  <S.SubmitButton aria-label={t('Send')} />
                 </S.Container>
               )}
             />

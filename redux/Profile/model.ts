@@ -1,6 +1,6 @@
-import { AdditionalUserInformation } from 'api/entities/types';
-import { User } from 'api/Firebase/modules/Authentication/types';
 import { Action, ActionPayload } from 'redux/action.model';
+import { AdditionalUserInformation } from 'services/api/entities/types';
+import { User } from 'services/api/Firebase/modules/Authentication/types';
 
 export type EmailUpdate = {
   user: User;

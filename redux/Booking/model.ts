@@ -1,8 +1,6 @@
-import { Filters, BookedRoom } from 'api/entities/types';
 import { Props as RoomProps } from 'components/Room/Room.types';
 import { ActionPayload } from 'redux/action.model';
-
-import { Apartment } from '../../api/entities/types';
+import { Filters, BookedRoom, Apartment } from 'services/api/entities/types';
 
 export type SelectedBookedRoom = {
   apartmentId: number;

@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { Form } from 'react-final-form';
 import { connect } from 'react-redux';
 
-import { User } from 'api/Firebase/modules/Authentication/types';
 import Button from 'components/Button/Button';
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
 import RadioButton from 'components/RadioButton/RadioButton';
@@ -11,6 +10,7 @@ import {
   completionUpdateAdditionalUserData,
 } from 'redux/Profile/redux/actions';
 import { AppState } from 'redux/store.types';
+import { User } from 'services/api/Firebase/modules/Authentication/types';
 
 import * as S from './EditGender.styles';
 
