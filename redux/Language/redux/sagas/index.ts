@@ -1,17 +1,17 @@
 import { SagaIterator } from 'redux-saga';
-import { put, takeLatest } from 'redux-saga/effects';
+import { put } from 'redux-saga/effects';
 
+import { takeLatestAction } from 'redux/action.model';
 import i18next from 'services/i18next';
-import { Lang } from 'services/i18next/types';
 
-import { CHANGE_LANGUAGE_REQUEST, CHANGE_LANGUAGE_SUCCESS } from '../../constants';
+import { ChangeLanguageRequest } from '../../model';
 
-function* changeLanguage(data: { type: typeof CHANGE_LANGUAGE_REQUEST; payload: Lang }): Generator {
+function* changeLanguage(data: ChangeLanguageRequest) {
   i18next.changeLanguage(data.payload);
 
-  yield put({ type: CHANGE_LANGUAGE_SUCCESS, payload: data.payload });
+  yield put({ type: 'CHANGE_LANGUAGE_SUCCESS', payload: data.payload });
 }
 
 export function* rootSaga(): SagaIterator {
-  yield takeLatest<never>(CHANGE_LANGUAGE_REQUEST, changeLanguage);
+  yield takeLatestAction<ChangeLanguageRequest['type']>('CHANGE_LANGUAGE_REQUEST', changeLanguage);
 }

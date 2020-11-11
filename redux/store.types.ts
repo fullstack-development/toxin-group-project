@@ -3,7 +3,7 @@ import { SagaIterator } from 'redux-saga';
 import { ApartmentActions, ApartmentState } from './Apartment/model';
 import { AuthActions, AuthState } from './Auth/model';
 import { BookingActions, BookingState } from './Booking/model';
-import { LanguageState, LanguageActions } from './Language/types';
+import { LanguageState, LanguageActions } from './Language/model';
 import { ProfileActions, ProfileState } from './Profile/model';
 import { RegistrationActions, RegistrationState } from './Registration/model';
 import { SubscriptionActions, SubscriptionState } from './Subscriptions/model';
