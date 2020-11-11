@@ -14,9 +14,9 @@ const HeaderUserProfile: React.FC<Props> = ({ displayName }: Props): JSX.Element
   const ProfileLink = [
     {
       name: displayName,
-      path: '/profile',
+      path: '/account-settings',
       subMenu: [
-        { name: t('HeaderProfile:To profile'), path: '/profile' },
+        { name: t('HeaderProfile:To profile'), path: '/account-settings' },
         { name: t('HeaderProfile:Logout'), path: '/logout' },
       ],
     },
