@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { ComponentType, memo } from 'react';
 import { withTranslation, WithTranslation } from 'react-i18next';
 
 import StarRating from 'components/StarRating/StarRating';

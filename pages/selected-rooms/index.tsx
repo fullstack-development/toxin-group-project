@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { memo } from 'react';
 
 import SelectedRoomsPage from 'components/SelectedRoomsPage/SelectedRoomsPage';
 

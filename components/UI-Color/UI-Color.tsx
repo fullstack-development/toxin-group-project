@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import * as S from './UI-Color.styles';
 
 type Props = {
