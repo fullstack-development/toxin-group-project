@@ -1,4 +1,4 @@
-import { Props } from 'components/Button/Button.types';
+import { Props } from 'components/Button/Button.model';
 
 import * as S from './ArrowButton.styles';
 

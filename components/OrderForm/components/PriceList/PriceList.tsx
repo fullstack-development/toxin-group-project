@@ -1,6 +1,6 @@
 import { formatNumber } from 'shared/helpers';
 
-import { Props } from '../../OrderForm.types';
+import { Props } from '../../OrderForm.model';
 import * as S from './PriceList.styles';
 
 const PriceList: React.FC<Props> = ({ items }: Props) => (

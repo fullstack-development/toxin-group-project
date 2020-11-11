@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
-import { AppState } from 'redux/store.types';
+import { AppState } from 'redux/store.model';
 import {
   subscriptionUpdate,
   completionSubscriptionUpdate,

@@ -3,7 +3,7 @@ import {
   GET_ROOM_DETAILS_SUCCESS,
   GET_ROOM_DETAILS_FAILED,
 } from '../constants';
-import { ApartmentState, ApartmentActions } from '../types';
+import { ApartmentState, ApartmentActions } from '../model';
 
 const initialState: ApartmentState = {
   isGetRoomDetailsPending: false,

@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
 
-import { keywords } from './StarRating.data';
+import { keywords } from './StarRating.fuxure';
+import { StarRatingProps } from './StarRating.model';
 import * as S from './StarRating.styles';
-import { StarRatingProps } from './StarRating.types';
 
 const StarRating: React.FC<StarRatingProps> = ({ rating = 0 }: StarRatingProps) => {
   const { t } = useTranslation('StarRating');

@@ -9,7 +9,7 @@ import {
   updateAdditionalUserData,
   updateAdditionalUserDataCompleted,
 } from 'redux/Profile/redux/actions';
-import { AppState } from 'redux/store.types';
+import { AppState } from 'redux/store.model';
 import { User } from 'services/api/Firebase/modules/Authentication/types';
 
 import * as S from './EditGender.styles';

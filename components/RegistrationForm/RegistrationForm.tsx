@@ -10,7 +10,7 @@ import Toggle from 'components/Toggle/Toggle';
 import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators';
 
 import * as S from './RegistrationForm.styles';
-import { RegistrationFormProps, FormData } from './RegistrationForm.types';
+import { RegistrationFormProps, FormData } from './RegistrationForm.model';
 
 const RegistrationForm: React.FC<RegistrationFormProps> = ({
   isSuccess,

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { withTranslation, WithTranslation } from 'react-i18next';
 
-import { NavItemProps } from '../FooterNav.types';
+import { NavItemProps } from '../FooterNav.model';
 import * as S from './NavItem.styles';
 
 const NavItem: React.ComponentType<WithTranslation & NavItemProps> = ({

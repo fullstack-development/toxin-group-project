@@ -1,6 +1,6 @@
 import NavLink from './components/NavLink';
 import * as S from './NavMenu.styles';
-import { NavMain, NavMenuLink } from './NavMenu.types';
+import { NavMain, NavMenuLink } from './NavMenu.model';
 
 const NavMenu: React.FC<NavMain> = ({ menu }: NavMain): JSX.Element => (
   <S.NavContainer>

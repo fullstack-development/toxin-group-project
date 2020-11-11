@@ -1,7 +1,7 @@
 import SocialMediaLink from './components/SocialMediaLink';
-import defaultProps from './defaultProps';
+import defaultProps from './SocialMedia.fuxure';
+import { SocialMediaProps } from './SocialMedia.model';
 import * as S from './SocialMedia.style';
-import { SocialMediaProps } from './SocialMedia.types';
 
 const SocialMedia: React.FC<SocialMediaProps> = ({ items = defaultProps }: SocialMediaProps) => (
   <S.List>

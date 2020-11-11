@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { visuallyHidden, materialIcons } from 'shared/styles/mixins';
 
-import { StarProps } from './StarRating.types';
+import { StarProps } from './StarRating.model';
 
 const StarRating = styled.div`
   display: flex;

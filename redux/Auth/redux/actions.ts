@@ -15,7 +15,7 @@ import {
   PasswordResetRequest,
   PreloadAuthData,
   RequestToAuth,
-} from '../types';
+} from '../model';
 
 const logout = (): LogoutProcess => ({
   type: AUTH_LOGOUT_PROCESS,

@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { logout, preloadAuthData } from 'redux/Auth/redux/actions';
-import { AppState } from 'redux/store.types';
+import { AppState } from 'redux/store.model';
 
 type StateProps = {
   isAuthSuccess: boolean;

@@ -31,7 +31,7 @@ import {
   UpdateAdditionalUserDataRequest,
   UsernameUpdateRequest,
   GetAdditionalUserDataRequest,
-} from '../../types';
+} from '../../model';
 
 function* emailUpdate({ payload }: EmailUpdateRequest) {
   try {

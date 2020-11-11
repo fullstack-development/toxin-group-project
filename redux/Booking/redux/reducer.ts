@@ -6,7 +6,7 @@ import {
   UPDATE_BOOKED_HISTORY,
   LOAD_BOOKED_HISTORY,
 } from '../constants';
-import { BookingActions, BookingState } from '../types';
+import { BookingActions, BookingState } from '../model';
 
 const initialState: BookingState = {
   isRequestSuccessful: true,

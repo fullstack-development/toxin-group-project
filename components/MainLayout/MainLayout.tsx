@@ -5,7 +5,7 @@ import Footer from 'components/Footer/Footer';
 import Header from 'components/Header/Header';
 import { preloadAuthData } from 'redux/Auth/redux/actions';
 
-import { State, Props } from './MainLayout.types';
+import { State, Props } from './MainLayout.model';
 
 type StateProps = {
   displayName: string;

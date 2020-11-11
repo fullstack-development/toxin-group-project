@@ -19,7 +19,7 @@ import {
   USERNAME_UPDATE_FAILED,
   USERNAME_UPDATE_COMPLETED,
 } from '../constants';
-import { ProfileState, ProfileActions } from '../types';
+import { ProfileState, ProfileActions } from '../model';
 
 const initialState: ProfileState = {
   isEmailUpdatePending: false,

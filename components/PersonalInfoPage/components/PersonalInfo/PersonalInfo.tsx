@@ -2,12 +2,12 @@ import { useState, useEffect, useCallback, useMemo } from 'react';
 import { connect } from 'react-redux';
 
 import { getAdditionalUserData as getAdditionalUserDataRequest } from 'redux/Profile/redux/actions';
-import { AppState } from 'redux/store.types';
+import { AppState } from 'redux/store.model';
 import { AdditionalUserInformation } from 'services/api/entities/types';
 import { User } from 'services/api/Firebase/modules/Authentication/types';
 
 import EditPersonalInfo from '../EditPersonalInfo/EditPersonalInfo';
-import { data } from './PersonalInfo.data';
+import { data } from './PersonalInfo.fuxure';
 import * as S from './PersonalInfo.styles';
 
 type StateProps = {

@@ -7,7 +7,7 @@ import {
   BookedHistoryList,
   UpdateBookedHistory,
   BookCurrentRoom,
-} from 'redux/Booking/types';
+} from 'redux/Booking/model';
 import Api from 'services/api/api';
 import { Apartment, BookingData } from 'services/api/entities/types';
 

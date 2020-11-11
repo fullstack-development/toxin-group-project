@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import DotButton from '../DotButton/DotButton';
 import * as S from './ImageGallery.styles';
-import { GalleryProps } from './ImageGallery.types';
+import { GalleryProps } from './ImageGallery.model';
 
 const defaultState = [false, false, false, false];
 

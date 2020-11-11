@@ -9,7 +9,7 @@ import {
   GET_ROOM_DETAILS_SUCCESS,
   GET_ROOM_DETAILS_FAILED,
 } from '../../constants';
-import { GetRoomDetailsRequest } from '../../types';
+import { GetRoomDetailsRequest } from '../../model';
 
 function* getRoomDetails({ payload: id }: GetRoomDetailsRequest) {
   try {

@@ -10,9 +10,9 @@ import {
   checkboxesListData,
   expandableCheckboxesListData,
   richCheckboxesListData,
-} from 'components/CheckboxesList/CheckboxesList.data';
+} from 'components/CheckboxesList/CheckboxesList.fuxure';
 import Dropdown from 'components/Dropdown/Dropdown';
-import { guestsGroups, guestsItems, amenitiesItems } from 'components/Dropdown/Dropdown.data';
+import { guestsGroups, guestsItems, amenitiesItems } from 'components/Dropdown/Dropdown.fuxure';
 import Expander from 'components/Expander/Expander';
 import Input from 'components/Input/Input';
 import LikeButton from 'components/LikeButton/LikeButton';

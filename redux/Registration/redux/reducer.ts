@@ -4,7 +4,7 @@ import {
   REGISTRATION_SUCCESS,
   BREAK_REGISTRATION_PROCESS,
 } from '../constants';
-import { RegistrationState, RegistrationActions } from '../types';
+import { RegistrationState, RegistrationActions } from '../model';
 
 const initialState: RegistrationState = {
   isSuccess: false,

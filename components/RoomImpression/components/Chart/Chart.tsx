@@ -1,6 +1,6 @@
 import { PieChart } from 'react-minimal-pie-chart';
 
-import ratingValues from '../../RoomImpression.data';
+import ratingValues from '../../RoomImpression.fuxure';
 
 type Props = {
   excellent: number;

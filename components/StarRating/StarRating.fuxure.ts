@@ -1,4 +1,4 @@
-import { StarRatingKeywords } from './StarRating.types';
+import { StarRatingKeywords } from './StarRating.model';
 
 export const keywords: Required<StarRatingKeywords> = {
   default: 'этот номер ещё никто не оценил',

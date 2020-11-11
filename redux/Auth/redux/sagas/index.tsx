@@ -23,7 +23,7 @@ import {
   SetAuthStatusFailed,
   SetAuthRequired,
   PasswordResetRequest,
-} from '../../types';
+} from '../../model';
 
 function* startAuthProcess(data: {
   type: typeof AUTH_PROCESS | typeof GOOGLE_AUTH_PROCESS;

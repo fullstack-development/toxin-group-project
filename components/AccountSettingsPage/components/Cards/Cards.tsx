@@ -1,4 +1,4 @@
-import { cardsData } from './Cards.data';
+import { cardsData } from './Cards.fuxure';
 import * as S from './Cards.styles';
 
 const Cards = (): JSX.Element => (

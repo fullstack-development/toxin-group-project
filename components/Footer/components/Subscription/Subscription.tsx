@@ -2,7 +2,7 @@ import { withTranslation, WithTranslation } from 'react-i18next';
 
 import SubscriptionField from 'components/SubscriptionField/SubscriptionField';
 
-import { SubscriptionProps } from '../../Footer.types';
+import { SubscriptionProps } from '../../Footer.model';
 import * as S from './Subscription.styles';
 
 const Subscription: React.ComponentType<WithTranslation & SubscriptionProps> = ({

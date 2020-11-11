@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { breakpointDown } from 'shared/styles/break-points';
 import { materialIcons } from 'shared/styles/mixins';
 
-import { ImageProps } from './ImageGallery.types';
+import { ImageProps } from './ImageGallery.model';
 
 const Img = styled.img<ImageProps>`
   ${(props) => {

@@ -1,4 +1,4 @@
-import { SocialMediaItem } from '../SocialMedia.types';
+import { SocialMediaItem } from '../SocialMedia.model';
 import * as S from './SocialMediaLink.styles';
 
 const SocialMediaLink: React.FC<SocialMediaItem> = ({ href, icon, text }: SocialMediaItem) => (

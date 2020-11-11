@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
 import { passwordReset, passwordResetCompleted } from 'redux/Auth/redux/actions';
-import { AppState } from 'redux/store.types';
+import { AppState } from 'redux/store.model';
 import { emailValidator } from 'shared/helpers/validators/emailValidator';
 
 import * as S from './ForgotPasswordForm.style';

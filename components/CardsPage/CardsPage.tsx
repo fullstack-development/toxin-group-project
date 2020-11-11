@@ -7,7 +7,7 @@ import OrderForm from 'components/OrderForm/OrderForm';
 import RegistrationForm from 'components/RegistrationForm/RegistrationForm';
 import Room from 'components/Room/Room';
 import Rooms from 'components/Rooms/Rooms';
-import roomsList from 'components/Rooms/Rooms.data';
+import roomsList from 'components/Rooms/Rooms.fuxure';
 import SearchRoomForm from 'components/SearchRoomForm/SearchRoomForm';
 
 import * as S from './CardsPage.styles';

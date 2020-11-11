@@ -4,9 +4,9 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import Preloader from 'components/Preloader/Preloader';
 import Room from 'components/Room/Room';
 
-import { Props as RoomProps } from '../Room/Room.types';
+import { Props as RoomProps } from '../Room/Room.model';
 import * as S from './Rooms.styles';
-import { Props } from './Rooms.types';
+import { Props } from './Rooms.model';
 
 const DEFAULT_INCREMENT = 12;
 

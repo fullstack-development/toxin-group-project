@@ -2,7 +2,7 @@ import { withTranslation, WithTranslation } from 'react-i18next';
 
 import LogoImg from 'components/Logo/Logo';
 
-import { LogoProps } from '../../Footer.types';
+import { LogoProps } from '../../Footer.model';
 import * as S from './Logo.styles';
 
 const Logo: React.ComponentType<WithTranslation & LogoProps> = ({ description, t }: LogoProps) => (

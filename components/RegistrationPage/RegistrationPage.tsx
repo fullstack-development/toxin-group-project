@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import MainLayout from 'components/MainLayout/MainLayout';
 import { preloadAuthData } from 'redux/Auth/redux/actions';
 import { startRegistration, cancelRegistration } from 'redux/Registration/redux/actions';
-import { AppState } from 'redux/store.types';
+import { AppState } from 'redux/store.model';
 
 import MainContent from './components/MainContent/MainContent';
 

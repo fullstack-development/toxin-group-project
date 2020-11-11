@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 import * as S from './Button.styles';
-import { Props } from './Button.types';
+import { Props } from './Button.model';
 
 const Button: React.FC<Props> = ({
   isFilled = false,

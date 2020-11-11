@@ -4,8 +4,8 @@ import StarRating from 'components/StarRating/StarRating';
 import formatNumber from 'shared/helpers/formatNumber';
 
 import ImageGallery from './components/ImageGallery/ImageGallery';
+import { Props } from './Room.model';
 import * as S from './Room.styles';
-import { Props } from './Room.types';
 
 const Room: React.ComponentType<WithTranslation & Props> = ({
   price,

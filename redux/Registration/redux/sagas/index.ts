@@ -5,7 +5,7 @@ import Api from 'services/api/api';
 import { UserCredential } from 'services/api/Firebase/modules/Authentication/types';
 
 import { REGISTRATION_REQUEST, REGISTRATION_SUCCESS, REGISTRATION_FAILED } from '../../constants';
-import { ProfileData, RegistrationStatusSuccess, RegistrationStatusFailed } from '../../types';
+import { ProfileData, RegistrationStatusSuccess, RegistrationStatusFailed } from '../../model';
 
 function* startRegistrationProcess(data: {
   type: typeof REGISTRATION_REQUEST;

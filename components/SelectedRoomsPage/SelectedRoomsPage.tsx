@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import MainLayout from 'components/MainLayout/MainLayout';
 import Preloader from 'components/Preloader/Preloader';
 import { loadBookedHistoryRooms } from 'redux/Booking/redux/actions';
-import { AppState } from 'redux/store.types';
+import { AppState } from 'redux/store.model';
 import { BookedRoomsHistory } from 'services/api/entities/types';
 
 import RoomsList from './components/RoomsList/RoomsList';

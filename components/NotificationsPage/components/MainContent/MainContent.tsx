@@ -2,7 +2,7 @@ import { useCallback, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import NavAccountSettings from 'components/NavAccountSettings/NavAccountSettings';
-import { AppState } from 'redux/store.types';
+import { AppState } from 'redux/store.model';
 import { getSubscriptionData as getSubscriptionDataRequest } from 'redux/Subscriptions/redux/actions';
 import { SubscriptionData } from 'services/api/entities/types';
 import { User } from 'services/api/Firebase/modules/Authentication/types';

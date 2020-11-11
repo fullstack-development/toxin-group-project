@@ -1,5 +1,5 @@
 import RegistrationForm from 'components/RegistrationForm/RegistrationForm';
-import { RegistrationFormProps } from 'components/RegistrationForm/RegistrationForm.types';
+import { RegistrationFormProps } from 'components/RegistrationForm/RegistrationForm.model';
 
 import * as S from './MainContent.styles';
 

@@ -11,7 +11,7 @@ import {
   PASSWORD_RESET_SUCCESS,
   PRELOAD_AUTH_DATA,
 } from '../constants';
-import { AuthActions, AuthState } from '../types';
+import { AuthActions, AuthState } from '../model';
 
 const initialState: AuthState = {
   isAuthSuccess: null,

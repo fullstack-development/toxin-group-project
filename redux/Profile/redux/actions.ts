@@ -25,7 +25,7 @@ import {
   UpdateAdditionalUserDataCompleted,
   UsernameUpdateRequest,
   UsernameUpdateCompleted,
-} from '../types';
+} from '../model';
 
 const emailUpdate = (data: EmailUpdate): EmailUpdateRequest => ({
   type: EMAIL_UPDATE_PROCESS,
