@@ -11,7 +11,7 @@ import {
 } from 'redux/Profile/redux/actions';
 import { AppState } from 'redux/store.types';
 import { User } from 'services/api/Firebase/modules/Authentication/types';
-import { dateValidator, dateFormatMask } from 'shared/helpers/validators';
+import { dateValidator, dateFormatMask } from 'validators';
 
 type StateProps = {
   isPending: boolean;

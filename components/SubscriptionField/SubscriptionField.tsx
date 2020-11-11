@@ -8,7 +8,7 @@ import {
   subscriptionUpdate,
   completionSubscriptionUpdate,
 } from 'redux/Subscriptions/redux/actions';
-import { emailValidator } from 'shared/helpers/validators';
+import { emailValidator } from 'validators';
 
 import { InputProps } from '../Input/Input';
 import * as S from './SubscriptionField.styles';

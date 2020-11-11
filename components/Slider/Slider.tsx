@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Field } from 'react-final-form';
 
-import { formatNumber } from 'shared/helpers';
+import { formatNumber } from 'utils/number.utils';
 
 import * as S from './Slider.styles';
 

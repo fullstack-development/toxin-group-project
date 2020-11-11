@@ -7,7 +7,7 @@ import Dropdown from 'components/Dropdown/Dropdown';
 import { DropdownProps } from 'components/Dropdown/Dropdown.types';
 import TimePicker from 'components/TimePicker/TimePicker';
 import { SelectedBookedRoom } from 'redux/Booking/types';
-import { formatNumber } from 'shared/helpers';
+import { formatNumber } from 'utils/number.utils';
 
 import PriceList from './components/PriceList/PriceList';
 import * as S from './OrderForm.styles';

@@ -1,4 +1,4 @@
-import { formatNumber } from 'shared/helpers';
+import { formatNumber } from 'utils/number.utils';
 
 import { Props } from '../../OrderForm.types';
 import * as S from './PriceList.styles';

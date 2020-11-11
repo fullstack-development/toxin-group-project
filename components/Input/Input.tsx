@@ -1,6 +1,6 @@
 import { useState, InputHTMLAttributes } from 'react';
 
-import { composeValidators, makeRequired, Validator } from 'shared/helpers/validators';
+import { composeValidators, makeRequired, Validator } from 'validators';
 
 import * as S from './Input.styles';
 

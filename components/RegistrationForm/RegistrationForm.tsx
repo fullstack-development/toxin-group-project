@@ -7,7 +7,7 @@ import AvatarLoader from 'components/AvatarLoader/AvatarLoader';
 import Input from 'components/Input/Input';
 import RadioButton from 'components/RadioButton/RadioButton';
 import Toggle from 'components/Toggle/Toggle';
-import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators';
+import { emailValidator, dateValidator, dateFormatMask } from 'validators';
 
 import * as S from './RegistrationForm.styles';
 import { RegistrationFormProps, FormData } from './RegistrationForm.types';
