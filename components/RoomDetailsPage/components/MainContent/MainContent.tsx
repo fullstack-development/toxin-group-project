@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router';
 import { useCallback, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
-import { Apartment } from 'api/entities/types';
 import Benefits from 'components/Benefits/Benefits';
 import BulletList from 'components/BulletList/BulletList';
 import OrderForm from 'components/OrderForm/OrderForm';
@@ -10,7 +10,10 @@ import Preloader from 'components/Preloader/Preloader';
 import Reviews from 'components/Reviews/Reviews';
 import RoomImpression from 'components/RoomImpression/RoomImpression';
 import { getRoomDetails as getRoomDetailsRequest } from 'redux/Apartment/redux/actions';
+import { preloadAuthData } from 'redux/Auth/redux/actions';
+import { bookRoom } from 'redux/Booking/redux/actions';
 import { AppState } from 'redux/store.types';
+import { Apartment } from 'services/api/entities/types';
 
 import { roomImagesPreview, benefitsData, rulesData } from './MainContent.data';
 import * as S from './MainContent.styles';
@@ -18,20 +21,35 @@ import * as S from './MainContent.styles';
 type StateProps = {
   isPending: boolean;
   roomDetails: Apartment;
+  isAuthSuccess: boolean;
+  userEmail: string;
 };
 
 const mapState = (state: AppState): StateProps => ({
   isPending: state.apartment.isGetRoomDetailsPending,
   roomDetails: state.apartment.roomDetails,
+  isAuthSuccess: state.auth.isAuthSuccess,
+  userEmail: state.auth.userEmail,
 });
 
 const mapDispatch = {
   startGetRoomDetails: getRoomDetailsRequest,
+  checkAuthBeforePageLoaded: preloadAuthData,
+  confirmBookedRoom: bookRoom,
 };
 
 type Props = StateProps & typeof mapDispatch;
 
-const MainContent = ({ isPending, roomDetails, startGetRoomDetails }: Props): JSX.Element => {
+const MainContent = ({
+  isPending,
+  roomDetails,
+  isAuthSuccess,
+  userEmail,
+  startGetRoomDetails,
+  checkAuthBeforePageLoaded,
+  confirmBookedRoom,
+}: Props): JSX.Element => {
+  const { t } = useTranslation(['RoomDetailsPage', 'Shared']);
   const router = useRouter();
   const roomNumber = Number(router.asPath.split('=')[1]);
 
@@ -43,14 +61,15 @@ const MainContent = ({ isPending, roomDetails, startGetRoomDetails }: Props): JS
   );
 
   useEffect(() => {
+    checkAuthBeforePageLoaded();
     getRoomDetails(roomNumber);
-  }, [getRoomDetails, roomNumber]);
+  }, [checkAuthBeforePageLoaded, getRoomDetails, roomNumber]);
 
   return (
     <>
       {isPending && (
         <S.Loading>
-          <Preloader label="Загрузка информации о номере..." />
+          <Preloader label={t('RoomDetailsPage:Loading Room Information ...')} />
         </S.Loading>
       )}
       {roomDetails ? (
@@ -62,12 +81,12 @@ const MainContent = ({ isPending, roomDetails, startGetRoomDetails }: Props): JS
           </S.RoomImages>
           <S.Details>
             <S.Benefits>
-              <S.Title>Сведения о номере</S.Title>
+              <S.Title>{t('RoomDetailsPage:Room details')}</S.Title>
               <Benefits items={benefitsData} />
             </S.Benefits>
             <S.RoomImpressionWrapper>
               <RoomImpression
-                title="Впечатления от номера"
+                title={t('RoomDetailsPage:Impressions of the room')}
                 numberOfRatings={roomDetails.numberOfRatings}
               />
             </S.RoomImpressionWrapper>
@@ -75,14 +94,15 @@ const MainContent = ({ isPending, roomDetails, startGetRoomDetails }: Props): JS
               <Reviews reviews={roomDetails.reviews} />
             </S.ReviewsWrapper>
             <S.BulletList>
-              <S.Title>Правила</S.Title>
+              <S.Title>{t('Shared:Rules')}</S.Title>
               <BulletList items={rulesData} />
             </S.BulletList>
             <S.CancellationTerms>
-              <S.Title>Отмена</S.Title>
+              <S.Title>{t('Shared:Cancel')}</S.Title>
               <S.CancellationTermsText>
-                Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до
-                прибытия вы получите полный возврат за вычетом сбора за услуги.
+                {t(
+                  'RoomDetailsPage:Free cancellation within 48 hours. Thereafter, if canceled no later than 5 days in advance. you will receive a full refund before arrival minus the service fee.',
+                )}
               </S.CancellationTermsText>
             </S.CancellationTerms>
             <S.OrderFormWrapper>
@@ -92,12 +112,15 @@ const MainContent = ({ isPending, roomDetails, startGetRoomDetails }: Props): JS
                 roomNumber={roomDetails.id}
                 roomType={roomDetails.class}
                 roomPrice={roomDetails.price}
+                isAuthSuccess={isAuthSuccess}
+                userEmail={userEmail}
+                confirmBookedRoom={confirmBookedRoom}
               />
             </S.OrderFormWrapper>
           </S.Details>
         </S.MainContent>
       ) : (
-        !isPending && <S.Loading>Не удалось загрузить информацию о номере</S.Loading>
+        !isPending && <S.Loading>{t('RoomDetailsPage:Failed to load room information')}</S.Loading>
       )}
     </>
   );

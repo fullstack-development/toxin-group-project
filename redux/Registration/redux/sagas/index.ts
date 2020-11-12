@@ -1,8 +1,8 @@
 import { SagaIterator } from 'redux-saga';
 import { put, takeLatest, call, PutEffect } from 'redux-saga/effects';
 
-import Api from 'api/api';
-import { UserCredential } from 'api/Firebase/modules/Authentication/types';
+import Api from 'services/api/api';
+import { UserCredential } from 'services/api/Firebase/modules/Authentication/types';
 
 import { REGISTRATION_REQUEST, REGISTRATION_SUCCESS, REGISTRATION_FAILED } from '../../constants';
 import { ProfileData, RegistrationStatusSuccess, RegistrationStatusFailed } from '../../types';
@@ -13,7 +13,16 @@ function* startRegistrationProcess(data: {
 }):
   | Generator
   | Generator<PutEffect<RegistrationStatusSuccess | RegistrationStatusFailed>, void, never> {
-  const { email, password, name, surname, birthDate, gender, avatar, receiveOffers } = data.payload;
+  const {
+    email,
+    password,
+    name,
+    surname,
+    birthDate,
+    gender,
+    avatar,
+    hasSpecialOffers,
+  } = data.payload;
 
   try {
     const result: UserCredential = yield call(Api.auth.signUp, {
@@ -24,8 +33,9 @@ function* startRegistrationProcess(data: {
       birthDate,
       gender,
       avatar,
-      receiveOffers,
     });
+
+    yield call(Api.subscriptions.add, email, { hasSpecialOffers });
 
     yield put({
       type: REGISTRATION_SUCCESS,

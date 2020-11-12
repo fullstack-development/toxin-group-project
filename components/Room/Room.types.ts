@@ -1,4 +1,6 @@
-import { Review } from 'api/entities/types';
+import { TFunction } from 'i18next';
+
+import { Review } from 'services/api/entities/types';
 
 export type Props = {
   price: number;
@@ -10,4 +12,5 @@ export type Props = {
   measure?: string;
   currency?: string;
   rating?: number;
+  t?: TFunction;
 };

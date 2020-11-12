@@ -1,5 +1,5 @@
-import { AdditionalUserInformation } from 'api/entities/types';
-import { User } from 'api/Firebase/modules/Authentication/types';
+import { AdditionalUserInformation } from 'services/api/entities/types';
+import { User } from 'services/api/Firebase/modules/Authentication/types';
 
 import {
   EMAIL_UPDATE_PROCESS,
@@ -44,8 +44,7 @@ type UpdateAdditionalUserData = {
   user: User;
   data: {
     birthDate?: string;
-    gender?: 'female' | 'male';
-    receiveOffers?: boolean;
+    gender?: 'male' | 'female';
   };
 };
 

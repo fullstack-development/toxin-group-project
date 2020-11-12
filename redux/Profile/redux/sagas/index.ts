@@ -2,7 +2,7 @@ import firebase from 'firebase';
 import { SagaIterator } from 'redux-saga';
 import { call, put, takeLeading } from 'redux-saga/effects';
 
-import api from 'api/api';
+import api from 'services/api/api';
 import {
   getEmailUpdateErrorMessage,
   getPasswordUpdateErrorMessage,
@@ -98,7 +98,7 @@ function* updateAdditionalUserData({ payload: { user, data } }: UpdateAdditional
   } catch (err) {
     yield put({
       type: UPDATE_ADDITIONAL_USER_DATA_FAILED,
-      payload: 'Произошла ошибка повторите попытку позже',
+      payload: 'Произошла ошибка, повторите попытку позже',
     });
   }
 }
@@ -116,7 +116,7 @@ function* usernameUpdate({ payload }: UsernameUpdateRequest) {
   } catch (err) {
     yield put({
       type: USERNAME_UPDATE_FAILED,
-      payload: 'Произошла ошибка повторите попытку позже',
+      payload: 'Произошла ошибка,, повторите попытку позже',
     });
   }
 }

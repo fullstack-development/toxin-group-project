@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import { BookedRoomsHistory } from 'api/entities/types';
 import MainLayout from 'components/MainLayout/MainLayout';
 import Preloader from 'components/Preloader/Preloader';
 import { loadBookedHistoryRooms } from 'redux/Booking/redux/actions';
 import { AppState } from 'redux/store.types';
+import { BookedRoomsHistory } from 'services/api/entities/types';
 
 import RoomsList from './components/RoomsList/RoomsList';
 import * as S from './SelectedRoomsPage.style';
@@ -43,11 +43,23 @@ const SelectedRoomsPage: React.FC<Props> = ({
       <S.Container>
         <S.Title>Ваши забронированные номера:</S.Title>
         <S.RoomsListContainer>
-          {isLoadingData ? <Preloader /> : bookedRooms && <RoomsList rooms={bookedRooms.current} />}
+          {isLoadingData && <Preloader />}
+          {bookedRooms &&
+            (bookedRooms.current.length ? (
+              <RoomsList rooms={bookedRooms.current} />
+            ) : (
+              <S.Text>Нет забронированных номеров</S.Text>
+            ))}
         </S.RoomsListContainer>
         <S.SubTitle>История забронированных номеров:</S.SubTitle>
         <S.RoomsListContainer>
-          {isLoadingData ? <Preloader /> : bookedRooms && <RoomsList rooms={bookedRooms.history} />}
+          {isLoadingData && <Preloader />}
+          {bookedRooms &&
+            (bookedRooms.history.length ? (
+              <RoomsList rooms={bookedRooms.history} />
+            ) : (
+              <S.Text>Пусто... Возможно, это будет ваша первая бронь ?</S.Text>
+            ))}
         </S.RoomsListContainer>
       </S.Container>
     </MainLayout>

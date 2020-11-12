@@ -2,6 +2,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import Link from 'next/link';
 import { useState, useRef, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { NavMenuLink, NavSubMenu } from '../NavMenu.types';
 import * as S from './NavLink.styles';
@@ -27,6 +28,8 @@ const NavLink: React.FC<NavMenuLink> = ({
     return () => document.removeEventListener('mousemove', handleDocumentMouseMove);
   }, [isShownSubMenu]);
 
+  const { t } = useTranslation();
+
   return (
     <S.NavLink ref={LinkMenuRef}>
       <Link href={path} passHref>
@@ -36,7 +39,7 @@ const NavLink: React.FC<NavMenuLink> = ({
           onMouseOver={expandSubMenu}
           onTouchStart={expandSubMenu}
         >
-          {name}
+          {t(`Links:${name}`)}
         </S.Link>
       </Link>
       {subMenu && (

@@ -1,4 +1,4 @@
-import { Timestamp } from 'api/Firebase/modules/Database/types';
+import { Timestamp } from 'services/api/Firebase/modules/Database/types';
 
 export type AdditionalAmenities = {
   breakfast: boolean;
@@ -87,20 +87,23 @@ export type ProfileData = {
 
 export type AdditionalUserInformation = {
   birthDate?: string;
-  gender?: 'female' | 'male';
-  receiveOffers?: boolean;
+  gender?: 'male' | 'female';
 };
 
 export type BookingData = {
   apartmentId: number;
-  from: { seconds: number };
-  to: { seconds: number };
+  from: { seconds: number } | Date;
+  to: { seconds: number } | Date;
   reservationBy?: string;
 };
 
 export type BookedRoom = {
   room: Apartment;
   bookedData: { from: string; to: string };
+};
+
+export type SubscriptionData = {
+  hasSpecialOffers: boolean;
 };
 
 export type BookedRoomsHistory = Record<string, BookedRoom[]>;

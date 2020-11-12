@@ -1,12 +1,16 @@
 import React from 'react';
 import { Field } from 'react-final-form';
+import { withTranslation, WithTranslation } from 'react-i18next';
 
 import Checkbox from 'components/Checkbox/Checkbox';
 
 import * as S from './CheckboxesList.styles';
-import { CheckboxesListProps } from './CheckboxesList.types';
+import { Props } from './CheckboxesList.types';
 
-const CheckboxesList: React.FC<CheckboxesListProps> = ({ roomOptions }: CheckboxesListProps) => (
+const CheckboxesList: React.ComponentType<WithTranslation & Props> = ({
+  roomOptions,
+  t,
+}: Props): JSX.Element => (
   <S.List>
     {roomOptions.map((option) => {
       const { title, label, name, isChecked } = option;
@@ -31,4 +35,4 @@ const CheckboxesList: React.FC<CheckboxesListProps> = ({ roomOptions }: Checkbox
   </S.List>
 );
 
-export default CheckboxesList;
+export default withTranslation()(CheckboxesList);

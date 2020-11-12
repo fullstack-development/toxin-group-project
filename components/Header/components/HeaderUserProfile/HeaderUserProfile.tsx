@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import NavMenu from 'components/NavMenu/NavMenu';
 
 import * as S from './HeaderUserProfile.styles';
@@ -7,13 +9,15 @@ type Props = {
 };
 
 const HeaderUserProfile: React.FC<Props> = ({ displayName }: Props): JSX.Element => {
+  const { t } = useTranslation('HeaderUserProfile');
+
   const ProfileLink = [
     {
       name: displayName,
-      path: '/profile',
+      path: '/account-settings',
       subMenu: [
-        { name: 'Перейти в профиль', path: '/account-settings' },
-        { name: 'Выход', path: '/logout' },
+        { name: t('HeaderProfile:To profile'), path: '/account-settings' },
+        { name: t('HeaderProfile:Logout'), path: '/logout' },
       ],
     },
   ];

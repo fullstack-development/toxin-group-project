@@ -1,10 +1,11 @@
 import { useState, useRef, useEffect, MouseEvent, useCallback } from 'react';
 import { Field } from 'react-final-form';
+import { useTranslation } from 'react-i18next';
 
 import NumberInput from '../NumberInput/NumberInput';
 import ApplyButton from '../TextButton/TextButton';
 import * as S from './Dropdown.styles';
-import { DropdownProps } from './Dropdown.types';
+import { DropdownProps, WordForms } from './Dropdown.types';
 import getResultStringPart from './utils/getResultStringPart';
 
 const DEFAULT_SETTINGS = {
@@ -34,6 +35,7 @@ const Dropdown: React.FC<DropdownProps> = ({
     };
   });
 
+  const { t } = useTranslation(['WordForms']);
   const [dropdownState, setDropdownState] = useState(initialState);
   const [isOpen, setIsOpen] = useState(false);
   const [resultString, setResultString] = useState(placeholder);
@@ -44,22 +46,33 @@ const Dropdown: React.FC<DropdownProps> = ({
       const resultStrings: string[] = Array.from(
         new Set(
           currentState.map((item, _, state) => {
-            const { groupName, currentValue, wordForms } = item;
+            const { groupName, currentValue } = item;
 
-            if (!groupName) return getResultStringPart(currentValue, wordForms);
+            if (!groupName) {
+              const wordForms: WordForms = item.wordForms.map((wordForm) =>
+                t(`WordForms:${wordForm}`),
+              ) as WordForms;
+
+              return getResultStringPart(currentValue, wordForms);
+            }
 
             const { wordForms: groupWordForms } = groups.find((group) => group.name === groupName);
             const groupCount = state
               .filter((stateItem) => stateItem.groupName === groupName)
               .reduce((sum, element) => sum + element.currentValue, 0);
-            return getResultStringPart(groupCount, groupWordForms);
+
+            const languageParsedGroupForms: WordForms = groupWordForms.map((wordForm) =>
+              t(`WordForms:${wordForm}`),
+            ) as WordForms;
+
+            return getResultStringPart(groupCount, languageParsedGroupForms);
           }),
         ),
       ).filter((el) => el);
 
-      setResultString(resultStrings.join(', ') || placeholder);
+      setResultString(resultStrings.join(', ') || t(placeholder));
     },
-    [placeholder, groups],
+    [placeholder, groups, t],
   );
 
   const resetResult = () => {
@@ -160,7 +173,7 @@ const Dropdown: React.FC<DropdownProps> = ({
 
                   return (
                     <S.Item key={title}>
-                      <S.ItemTitle>{title}</S.ItemTitle>
+                      <S.ItemTitle>{t(title)}</S.ItemTitle>
                       <NumberInput
                         currentValue={currentValue}
                         min={min}
@@ -181,10 +194,10 @@ const Dropdown: React.FC<DropdownProps> = ({
                     isHidden={isResetHidden}
                     onClick={handleResetClick}
                   >
-                    Очистить
+                    {t('Buttons:Clear')}
                   </S.ResetButton>
                   <ApplyButton type="button" onClick={apply}>
-                    Применить
+                    {t('Buttons:Apply')}
                   </ApplyButton>
                 </S.Controls>
               )}

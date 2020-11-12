@@ -1,6 +1,7 @@
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import { Field, Form } from 'react-final-form';
+import { useTranslation } from 'react-i18next';
 
 import AvatarLoader from 'components/AvatarLoader/AvatarLoader';
 import Input from 'components/Input/Input';
@@ -21,32 +22,35 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
   const handleRegistrationFormSubmit = (formData: FormData): void => {
     requestRegistration(formData);
   };
+  const { t } = useTranslation(['RegistrationForm', 'Shared']);
 
   return (
     <>
       <Form
+        initialValues={{
+          receiveOffers: false,
+          gender: 'male',
+        }}
         onSubmit={handleRegistrationFormSubmit}
         render={({ handleSubmit }) => (
           <S.RegistrationForm onSubmit={handleSubmit}>
-            <S.Title>Регистрация аккаунта</S.Title>
+            <S.Title>{t('Create account')}</S.Title>
             <S.Avatar>
               <AvatarLoader name="avatar" />
             </S.Avatar>
             <Field
               name="name"
-              render={({ input, meta }) => (
-                <S.InputWrapper {...input} {...meta} placeholder="Имя" />
-              )}
+              render={({ input }) => <S.InputWrapper {...input} placeholder={t('Shared:Name')} />}
             />
             <Field
               name="surname"
               render={({ input, meta }) => (
-                <S.InputWrapper {...input} {...meta} placeholder="Фамилия" />
+                <S.InputWrapper {...input} placeholder={t('Shared:Surname')} />
               )}
             />
             <S.RadioButtonsWrapper>
-              <RadioButton value="male" name="gender" label="Мужчина" />
-              <RadioButton value="female" name="gender" label="Женщина" />
+              <RadioButton value="male" name="gender" label={t('Shared:Male')} />
+              <RadioButton value="female" name="gender" label={t('Shared:Female')} />
             </S.RadioButtonsWrapper>
             <Field
               name="birthDate"
@@ -55,10 +59,11 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
                 <Input
                   {...rest}
                   {...input}
-                  placeholder="ДД.ММ.ГГГГ"
-                  label="Дата рождения"
+                  placeholder={t('Date mask')}
+                  label={t('Birthday date')}
                   validators={[dateValidator]}
                   mask={dateFormatMask}
+                  required
                 />
               )}
             />
@@ -66,13 +71,12 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
               <Field
                 name="email"
                 type="email"
-                render={({ input, meta }) => (
+                render={({ input }) => (
                   <S.InputWrapper
                     {...input}
-                    {...meta}
                     required
-                    label="Данные для входа в сервис"
-                    placeholder="Email"
+                    label={t('Service login details')}
+                    placeholder={t('Email')}
                     validators={[emailValidator]}
                   />
                 )}
@@ -81,19 +85,19 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
                 name="password"
                 type="password"
                 render={({ input, meta }) => (
-                  <S.InputWrapper {...input} {...meta} required placeholder="Пароль" />
+                  <S.InputWrapper {...input} required placeholder={t('Shared:Password')} />
                 )}
               />
             </S.AccountEntryWrapper>
             <S.SpecialOfferWrapper>
-              <Toggle name="receiveOffers" label="Получать спецпредложения" />
+              <Toggle name="receiveOffers" label={t('Receive special offers')} />
             </S.SpecialOfferWrapper>
             <S.RegisterButton isFlat isFilled>
-              Перейти к оплате
+              {t('Proceed to checkout')}
             </S.RegisterButton>
             <S.AlreadyRegisterWrapper>
-              <span>Уже есть аккаунт на Toxin</span>
-              <S.EntryButton href="/auth">Войти</S.EntryButton>
+              <span>{t('Already have an account on Toxin')}</span>
+              <S.EntryButton href="/auth">{t('Shared:Entry')}</S.EntryButton>
             </S.AlreadyRegisterWrapper>
           </S.RegistrationForm>
         )}
@@ -104,7 +108,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
           vertical: 'bottom',
           horizontal: 'left',
         }}
-        open={!isSuccess && isProcess}
+        open={!isSuccess && isProcess && Boolean(statusText)}
         autoHideDuration={3000}
         onClose={stopRegistration}
         message={statusText}

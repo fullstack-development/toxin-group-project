@@ -1,54 +1,50 @@
 import { useCallback, useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import { AdditionalUserInformation } from 'api/entities/types';
-import { User } from 'api/Firebase/modules/Authentication/types';
 import NavAccountSettings from 'components/NavAccountSettings/NavAccountSettings';
-import { getAdditionalUserData as getAdditionalUserDataRequest } from 'redux/Profile/redux/actions';
 import { AppState } from 'redux/store.types';
+import { getSubscriptionData as getSubscriptionDataRequest } from 'redux/Subscriptions/redux/actions';
+import { SubscriptionData } from 'services/api/entities/types';
+import { User } from 'services/api/Firebase/modules/Authentication/types';
 
 import Subscriptions from '../Subscriptions/Subscriptions';
 import * as S from './MainContent.styles';
 
 type StateProps = {
   user: User;
-  additionalUserData: AdditionalUserInformation;
+  subscriptionData: SubscriptionData;
 };
 
 const mapState = (state: AppState): StateProps => ({
   user: state.auth.user,
-  additionalUserData: state.profile.additionalUserData,
+  subscriptionData: state.subscriptions.subscriptionData,
 });
 
 const mapDispatch = {
-  startGetAdditionalUserData: getAdditionalUserDataRequest,
+  loadSubscriptionData: getSubscriptionDataRequest,
 };
 
 type Props = StateProps & typeof mapDispatch;
 
-const MainContent = ({
-  user,
-  additionalUserData,
-  startGetAdditionalUserData,
-}: Props): JSX.Element => {
-  const getAdditionalUserData = useCallback(
+const MainContent = ({ user, subscriptionData, loadSubscriptionData }: Props): JSX.Element => {
+  const getSubscriptionData = useCallback(
     (currentUser) => {
-      startGetAdditionalUserData(currentUser);
+      if (currentUser) loadSubscriptionData(currentUser.email);
     },
-    [startGetAdditionalUserData],
+    [loadSubscriptionData],
   );
 
   useEffect(() => {
-    getAdditionalUserData(user);
-  }, [getAdditionalUserData, user]);
+    getSubscriptionData(user);
+  }, [getSubscriptionData, user]);
 
   return (
     <S.MainContent>
       <NavAccountSettings title="Уведомления" />
       <S.Title>Уведомления</S.Title>
       <Subscriptions
-        user={user}
-        receiveOffers={additionalUserData ? additionalUserData.receiveOffers : false}
+        email={user ? user.email : null}
+        hashasSpecialOffers={subscriptionData ? subscriptionData.hasSpecialOffers : false}
       />
     </S.MainContent>
   );

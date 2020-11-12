@@ -5,7 +5,7 @@ const PopUpNotification = styled.div`
     const { colors } = props.theme;
 
     return css`
-      position: absolute;
+      position: fixed;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);

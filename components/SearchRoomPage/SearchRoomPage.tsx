@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router';
 import { useState, Fragment } from 'react';
+import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
-import { Filters } from 'api/entities/types';
 import MainLayout from 'components/MainLayout/MainLayout';
 import Preloader from 'components/Preloader/Preloader';
 import { Props as RoomProps } from 'components/Room/Room.types';
@@ -11,6 +11,7 @@ import Rooms from 'components/Rooms/Rooms';
 import defaultFilters from 'components/SearchRoomForm/defaultFilters';
 import { requestRooms } from 'redux/Booking/redux/actions';
 import { AppState } from 'redux/store.types';
+import { Filters } from 'services/api/entities/types';
 
 import * as S from './SearchRoomPage.styles';
 import { SortOrder, SortData, SortParam } from './SearchRoomPage.types';
@@ -56,6 +57,8 @@ const [descKey, ascKey] = ['desc', 'asc'] as SortOrder[];
 const SearchRoomPage: React.FC<Props> = ({ rooms, getRooms, isPending }: Props) => {
   const router = useRouter();
 
+  const { t } = useTranslation('SearchRoomPage');
+
   const passedParams = getPassedFilters(router.asPath);
 
   const initialFilters: Filters = passedParams && {
@@ -96,9 +99,9 @@ const SearchRoomPage: React.FC<Props> = ({ rooms, getRooms, isPending }: Props) 
         </S.FilterContainer>
         <S.RoomsContainer>
           <S.TitleContainer>
-            <S.RoomsTitle>Номера, которые мы для вас подобрали</S.RoomsTitle>
+            <S.RoomsTitle>{t('The rooms we have selected for you')}</S.RoomsTitle>
             <S.Sort>
-              Сортировать по параметру:
+              {t('Sort by parameter')}:
               <S.Select onChange={handleSelectChange}>
                 {sortData.map((paramData) => (
                   <Fragment key={paramData.parameter}>
@@ -127,7 +130,7 @@ const SearchRoomPage: React.FC<Props> = ({ rooms, getRooms, isPending }: Props) 
           {rooms.length ? (
             <Rooms rooms={sortedRooms} />
           ) : (
-            !isPending && <span>По вашему запросу не найдено результатов :(</span>
+            !isPending && <span>{t('No results were found for your request =(')}</span>
           )}
         </S.RoomsContainer>
       </S.Container>

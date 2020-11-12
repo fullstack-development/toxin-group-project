@@ -1,8 +1,8 @@
 import { SagaIterator } from 'redux-saga';
 import { call, put, takeLeading } from 'redux-saga/effects';
 
-import api from 'api/api';
-import { Apartment } from 'api/entities/types';
+import api from 'services/api/api';
+import { Apartment } from 'services/api/entities/types';
 
 import {
   GET_ROOM_DETAILS_PROCESS,

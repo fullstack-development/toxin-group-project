@@ -11,7 +11,7 @@ const getEmailUpdateErrorMessage = ({ code }: Error): string => {
     case 'auth/requires-recent-login':
       return 'Для изменения адреса электронной почты пройдите повторную аутентификацию';
     default:
-      return 'Произошла ошибка повторите попытку позже';
+      return 'Произошла ошибка, повторите попытку позже';
   }
 };
 

@@ -1,6 +1,7 @@
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import { Field, Form } from 'react-final-form';
+import { useTranslation } from 'react-i18next';
 
 import ArrowButton from 'components/ArrowButton/ArrowButton';
 import Button from 'components/Button/Button';
@@ -38,9 +39,11 @@ const AccountEntry: React.FC<Props> = (props: Props): JSX.Element => {
     requestToAuth({ email, password });
   };
 
+  const { t } = useTranslation(['AccountEntry', 'Buttons']);
+
   return (
     <S.AccountEntry>
-      <S.Title>Войти</S.Title>
+      <S.Title>{t('Buttons:Sign In')}</S.Title>
       <Form
         onSubmit={handleFormSubmit}
         render={({ handleSubmit }) => (
@@ -49,28 +52,26 @@ const AccountEntry: React.FC<Props> = (props: Props): JSX.Element => {
               <Field
                 name="email"
                 type="email"
-                render={({ input, meta }) => (
-                  <Input {...input} {...meta} placeholder="Email" required />
-                )}
+                render={({ input }) => <Input {...input} placeholder="Email" required />}
               />
               <Field
                 name="password"
                 type="password"
                 render={({ input, meta }) => (
-                  <Input {...input} {...meta} placeholder="Пароль" required />
+                  <Input {...input} {...meta} placeholder={t('Shared:Password')} required />
                 )}
               />
             </S.FieldsWrapper>
-            <ArrowButton isFilled>Войти</ArrowButton>
+            <ArrowButton isFilled>{t('Buttons:Sign In')}</ArrowButton>
             <S.TwoCols>
               <S.CenteredButton type="button" onClick={requestToAuthWithGoogle}>
-                Вход через аккаунт Google
+                {t('AccountEntry:Sign In with account google')}
                 <S.GoogleIcon icon="google" />
               </S.CenteredButton>
             </S.TwoCols>
             <S.TwoCols>
-              <span>Нет аккаунта на Toxin?</span>
-              <Button href="/registration">Создать</Button>
+              <span>{t('AccountEntry:No Toxin account?')}</span>
+              <Button href="/registration">{t('Buttons:Sign up')}</Button>
             </S.TwoCols>
           </form>
         )}

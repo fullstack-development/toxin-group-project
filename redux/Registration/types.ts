@@ -1,4 +1,4 @@
-import { UserCredential } from 'api/Firebase/modules/Authentication/types';
+import { UserCredential } from 'services/api/Firebase/modules/Authentication/types';
 
 import {
   REGISTRATION_FAILED,
@@ -15,7 +15,7 @@ export type ProfileData = {
   birthDate: string;
   gender: 'male' | 'female';
   avatar: ArrayBuffer | Blob | Uint8Array;
-  receiveOffers: boolean;
+  hasSpecialOffers: boolean;
 };
 
 export type RegistrationState = {
