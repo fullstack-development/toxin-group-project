@@ -5,10 +5,7 @@ import Button from 'components/Button/Button';
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
 import Toggle from 'components/Toggle/Toggle';
 import { AppState } from 'redux/store.types';
-import {
-  subscriptionUpdate,
-  completionSubscriptionUpdate,
-} from 'redux/Subscriptions/redux/actions';
+import { subscriptionUpdate, completeSubscriptionUpdate } from 'redux/Subscriptions/redux/actions';
 
 import * as S from './Subscriptions.styles';
 
@@ -26,7 +23,7 @@ const mapState = (state: AppState): StateProps => ({
 
 const mapDispatch = {
   startSubscriptionUpdate: subscriptionUpdate,
-  stopSubscriptionUpdate: completionSubscriptionUpdate,
+  stopSubscriptionUpdate: completeSubscriptionUpdate,
 };
 
 type OwnProps = {

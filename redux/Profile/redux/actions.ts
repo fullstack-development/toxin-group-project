@@ -21,7 +21,7 @@ export const emailUpdate = (data: EmailUpdate): EmailUpdateRequest => ({
   payload: data,
 });
 
-export const completionEmailUpdate = (): EmailUpdateCompleted => ({
+export const completeEmailUpdate = (): EmailUpdateCompleted => ({
   type: 'EMAIL_UPDATE_COMPLETED',
 });
 
@@ -35,7 +35,7 @@ export const passwordUpdate = (data: PasswordUpdate): PasswordUpdateRequest => (
   payload: data,
 });
 
-export const completionPasswordUpdate = (): PasswordUpdateCompleted => ({
+export const completePasswordUpdate = (): PasswordUpdateCompleted => ({
   type: 'PASSWORD_UPDATE_COMPLETED',
 });
 
@@ -46,7 +46,7 @@ export const updateAdditionalUserData = (
   payload: data,
 });
 
-export const completionUpdateAdditionalUserData = (): UpdateAdditionalUserDataCompleted => ({
+export const completeUpdateAdditionalUserData = (): UpdateAdditionalUserDataCompleted => ({
   type: 'UPDATE_ADDITIONAL_USER_DATA_COMPLETED',
 });
 
@@ -55,6 +55,6 @@ export const usernameUpdate = (data: UsernameUpdate): UsernameUpdateRequest => (
   payload: data,
 });
 
-export const completionUsernameUpdate = (): UsernameUpdateCompleted => ({
+export const completeUsernameUpdate = (): UsernameUpdateCompleted => ({
   type: 'USERNAME_UPDATE_COMPLETED',
 });

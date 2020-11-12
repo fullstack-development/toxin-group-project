@@ -35,6 +35,6 @@ export const passwordReset = (email: string): PasswordResetRequest => ({
   payload: email,
 });
 
-export const completionPasswordReset = (): PasswordResetCompleted => ({
+export const completePasswordReset = (): PasswordResetCompleted => ({
   type: 'PASSWORD_RESET_COMPLETED',
 });

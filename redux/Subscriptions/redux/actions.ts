@@ -15,6 +15,6 @@ export const subscriptionUpdate = (data: SubscriptionUpdate): SubscriptionUpdate
   payload: data,
 });
 
-export const completionSubscriptionUpdate = (): SubscriptionUpdateCompleted => ({
+export const completeSubscriptionUpdate = (): SubscriptionUpdateCompleted => ({
   type: 'SUBSCRIPTION_UPDATE_COMPLETED',
 });

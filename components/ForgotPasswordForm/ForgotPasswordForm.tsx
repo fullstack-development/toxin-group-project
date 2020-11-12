@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
-import { passwordReset, completionPasswordReset } from 'redux/Auth/redux/actions';
+import { passwordReset, completePasswordReset } from 'redux/Auth/redux/actions';
 import { AppState } from 'redux/store.types';
 import { emailValidator } from 'shared/helpers/validators/emailValidator';
 
@@ -21,7 +21,7 @@ const mapState = (state: AppState): StateProps => ({
 
 const mapDispatch = {
   startPasswordReset: passwordReset,
-  stopPasswordReset: completionPasswordReset,
+  stopPasswordReset: completePasswordReset,
 };
 
 type FormData = {
