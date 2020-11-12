@@ -40,12 +40,14 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
             </S.Avatar>
             <Field
               name="name"
-              render={({ input }) => <S.InputWrapper {...input} placeholder={t('Shared:Name')} />}
+              render={({ input }) => (
+                <S.InputWrapper {...input} placeholder={t('Shared:Name')} required />
+              )}
             />
             <Field
               name="surname"
-              render={({ input, meta }) => (
-                <S.InputWrapper {...input} placeholder={t('Shared:Surname')} />
+              render={({ input }) => (
+                <S.InputWrapper {...input} placeholder={t('Shared:Surname')} required />
               )}
             />
             <S.RadioButtonsWrapper>
@@ -84,7 +86,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
               <Field
                 name="password"
                 type="password"
-                render={({ input, meta }) => (
+                render={({ input }) => (
                   <S.InputWrapper {...input} required placeholder={t('Shared:Password')} />
                 )}
               />
