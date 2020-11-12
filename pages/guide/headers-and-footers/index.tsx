@@ -1,4 +1,4 @@
-import HeadersAndFootersPage from 'components/HeadersAndFootersPage/HeadersAndFootersPage';
+import { HeadersAndFootersPage } from 'modules/Guide';
 
 const HeadersAndFooters: React.FC = (): JSX.Element => <HeadersAndFootersPage />;
 

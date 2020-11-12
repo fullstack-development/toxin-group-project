@@ -1,4 +1,4 @@
-import ColorsTypesPage from 'components/ColorsTypesPage/ColorsTypesPage';
+import { ColorsTypesPage } from 'modules/Guide';
 
 const ColorsAndTypes: React.FC = () => <ColorsTypesPage />;
 

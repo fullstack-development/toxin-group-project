@@ -1,4 +1,4 @@
-import FormElementsPage from 'components/FormElementsPage/FormElementsPage';
+import { FormElementsPage } from 'modules/Guide';
 
 const FormElements: React.FC = () => <FormElementsPage />;
 

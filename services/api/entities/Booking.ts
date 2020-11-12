@@ -1,7 +1,7 @@
 import { boundMethod } from 'autobind-decorator';
 import { nanoid } from 'nanoid';
 
-import defaultFilters from 'components/SearchRoomForm/defaultFilters';
+import defaultFilters from 'features/Rooms/SearchRoomForm/defaultFilters';
 import { matchObjects } from 'shared/helpers';
 
 import { Database, CollectionReference, QuerySnapshot } from '../Firebase/modules/Database';

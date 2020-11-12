@@ -1,4 +1,4 @@
-import CardsPage from 'components/CardsPage/CardsPage';
+import { CardsPage } from 'modules/Guide';
 
 const Cards: React.FC = (): JSX.Element => <CardsPage />;
 
