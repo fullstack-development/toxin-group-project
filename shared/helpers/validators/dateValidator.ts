@@ -14,8 +14,8 @@ const isCorrectDate = (value: string): boolean => {
   return month === date.getMonth() + 1 && day === date.getDate() && year === date.getFullYear();
 };
 
-const dateValidator = (date: string): string | boolean =>
-  date && isCorrectDate(date) ? false : 'Invalid date';
+const dateValidator = (date: string): string | null =>
+  date && isCorrectDate(date) ? null : 'Invalid date';
 const dateFormatMask = [/\d/, /\d/, '.', /\d/, /\d/, '.', /\d/, /\d/, /\d/, /\d/];
 
 export { dateValidator, dateFormatMask };
