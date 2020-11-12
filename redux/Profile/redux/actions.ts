@@ -46,7 +46,7 @@ export const updateAdditionalUserData = (
   payload: data,
 });
 
-export const completeUpdateAdditionalUserData = (): UpdateAdditionalUserDataCompleted => ({
+export const completeAdditionalUserDataUpdate = (): UpdateAdditionalUserDataCompleted => ({
   type: 'UPDATE_ADDITIONAL_USER_DATA_COMPLETED',
 });
 
