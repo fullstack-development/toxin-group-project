@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Form, Field } from 'react-final-form';
+import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
 import Button from 'components/Button/Button';
@@ -67,6 +68,8 @@ const EditDisplayName = ({
     if (isSuccess) onChange('');
   };
 
+  const { t } = useTranslation('PersonalInfo');
+
   return (
     <Form
       initialValues={{ name, surname }}
@@ -76,21 +79,23 @@ const EditDisplayName = ({
           <form onSubmit={handleSubmit}>
             <Field
               name="name"
-              render={({ input }) => <Input {...input} label="Имя" placeholder="Имя" required />}
+              render={({ input }) => (
+                <Input {...input} label={t('First name')} placeholder={t('First name')} required />
+              )}
             />
             <Field
               name="surname"
               render={({ input }) => (
-                <Input {...input} label="Фамилия" placeholder="Фамилия" required />
+                <Input {...input} label={t('Last name')} placeholder={t('Last name')} required />
               )}
             />
             <Button disabled={isPending} isFlat isFilled>
-              Сохранить
+              {t('Save')}
             </Button>
           </form>
           {isCompleted && (
             <PopUpNotification
-              message={statusText}
+              message={t(statusText)}
               onConfirmButtonClick={handleConfirmButtonClick}
             />
           )}

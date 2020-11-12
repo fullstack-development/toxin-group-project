@@ -209,4 +209,71 @@ export const ru = {
     'Service fee_discount': 'Сбор за услуги: скидка',
     'Additional service fee': 'Сбор за дополнительные услуги',
   },
+  AccountSettings: {
+    Account: 'Аккаунт',
+    'Personal info': 'Личная информация',
+    'Provide personal details and how we can reach you': 'Предоставьте личные и контактные данные',
+    'Login & security': 'Вход и безопасность',
+    'Update your password and secure your account':
+      'Обновите пароль и обеспечьте безопасность аккаунта',
+    Notifications: 'Уведомления',
+    'Choose notification preferences and how you want to be contacted':
+      'Выберите настройки уведомлений и способы связи',
+    'Booked rooms': 'Забронированные номера',
+    'View all rooms that have been booked by you':
+      'Просмотрите все номера которые были забронированы вами',
+  },
+  PersonalInfo: {
+    Edit: 'Редактировать',
+    Cancel: 'Отменить',
+    Save: 'Сохранить',
+    'Legal name': 'Имя по документам',
+    'This is the name on your travel document, which could be a license or a passport.':
+      'Имя, указанное в загранпаспорте, водительском удостоверении или другом выездном документе.',
+    'First name': 'Имя',
+    'Last name': 'Фамилия',
+    Gender: 'Пол',
+    Male: 'Мужчина',
+    Female: 'Женщина',
+    'Date of birth': 'Дата рождения',
+    'DD.MM.YYYY': 'ДД.ММ.ГГГГ',
+    'Email address': 'Электронный адрес',
+    'Use an address you’ll always have access to.':
+      'Укажите адрес, к которому у вас есть постоянный доступ.',
+    'Data has been successfully updated': 'Данные были успешно обновлены',
+    'An error occured, please try again later': 'Произошла ошибка, повторите попытку позже',
+    'A confirmation email has been sent to the specified email address':
+      'Письмо с подтверждением было отправлено на указанный электронный адрес',
+    'Invalid email address': 'Указан недействительный адрес электронной почты',
+    'The specified email address is already in use':
+      'Указанный адрес электронной почты уже используется',
+    'Re-authenticate to change your email address':
+      'Для изменения адреса электронной почты пройдите повторную аутентификацию',
+  },
+  LoginAndSecurity: {
+    Login: 'Вход',
+    Password: 'Пароль',
+    'Changing the current password': 'Изменение текущего пароля',
+    Update: 'Обновить',
+    Cancel: 'Отменить',
+    'Current password': 'Текущий пароль',
+    'New password': 'Новый пароль',
+    'Confirm password': 'Подтвердите пароль',
+    'Update password': 'Обновить пароль',
+    'Wrong password': 'Неверный пароль',
+    'Received credentials do not match the current user':
+      'Полученные учетные данные не соответствуют текущему пользователю',
+    'Passwords do not match': 'Пароли не совпадают',
+    'An error has occurred': 'Произошла ошибка',
+    'Password changed successfully': 'Пароль успешно изменен',
+  },
+  Notifications: {
+    Newsletters: 'Новостные рассылки',
+    'Receive special offers': 'Получать спецпредложения',
+    Save: 'Сохранить',
+    'Notification settings changed': 'Настройки уведомлений изменены',
+    'You have successfully subscribed to the special offers':
+      'Вы успешно подписаны на рассылку спецпредложений',
+    'An error occured, please try again later': 'Произошла ошибка, повторите попытку позже',
+  },
 };

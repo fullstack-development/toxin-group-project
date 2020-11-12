@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Form, Field } from 'react-final-form';
+import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
 import Button from 'components/Button/Button';
@@ -68,6 +69,8 @@ const EditBirthday = ({
     if (isSuccess) onChange('');
   };
 
+  const { t } = useTranslation('PersonalInfo');
+
   return (
     <Form
       initialValues={{ birthday }}
@@ -82,18 +85,18 @@ const EditBirthday = ({
                 <Input
                   {...input}
                   validators={[dateValidator]}
-                  placeholder="ДД.ММ.ГГГГ"
+                  placeholder={t('DD.MM.YYYY')}
                   mask={dateFormatMask}
                 />
               )}
             />
             <Button disabled={isPending} isFlat isFilled>
-              Сохранить
+              {t('Save')}
             </Button>
           </form>
           {isCompleted && (
             <PopUpNotification
-              message={statusText}
+              message={t(statusText)}
               onConfirmButtonClick={handleConfirmButtonClick}
             />
           )}

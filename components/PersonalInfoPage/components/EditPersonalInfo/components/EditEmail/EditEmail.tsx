@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Form, Field } from 'react-final-form';
+import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
 import Button from 'components/Button/Button';
@@ -61,6 +62,8 @@ const EditEmail = ({
     if (isSuccess) onChange('');
   };
 
+  const { t } = useTranslation('PersonalInfo');
+
   return (
     <Form
       initialValues={{ email }}
@@ -77,12 +80,12 @@ const EditEmail = ({
               )}
             />
             <Button disabled={isPending} isFlat isFilled>
-              Сохранить
+              {t('Save')}
             </Button>
           </form>
           {isCompleted && (
             <PopUpNotification
-              message={statusText}
+              message={t(statusText)}
               onConfirmButtonClick={handleConfirmButtonClick}
             />
           )}

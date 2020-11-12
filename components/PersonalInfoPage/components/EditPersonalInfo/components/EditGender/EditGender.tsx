@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Form } from 'react-final-form';
+import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
 import Button from 'components/Button/Button';
@@ -65,6 +66,8 @@ const EditGender = ({
   }, [stopUpdateAdditionalUserData]);
 
   const mapGender = {
+    Male: 'male',
+    Female: 'female',
     Мужчина: 'male',
     Женщина: 'female',
   };
@@ -74,6 +77,8 @@ const EditGender = ({
     if (isSuccess) onChange('');
   };
 
+  const { t } = useTranslation('PersonalInfo');
+
   return (
     <Form
       initialValues={{ gender: mapGender[gender] }}
@@ -82,16 +87,16 @@ const EditGender = ({
         <>
           <form onSubmit={handleSubmit}>
             <S.Gender>
-              <RadioButton name="gender" value="male" label="Мужчина" />
-              <RadioButton name="gender" value="female" label="Женщина" />
+              <RadioButton name="gender" value="male" label={t('Male')} />
+              <RadioButton name="gender" value="female" label={t('Female')} />
             </S.Gender>
             <Button disabled={isPending} isFlat isFilled>
-              Сохранить
+              {t('Save')}
             </Button>
           </form>
           {isCompleted && (
             <PopUpNotification
-              message={statusText}
+              message={t(statusText)}
               onConfirmButtonClick={handleConfirmButtonClick}
             />
           )}

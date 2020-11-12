@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Form, Field } from 'react-final-form';
+import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
 import Button from 'components/Button/Button';
@@ -68,6 +69,8 @@ const PasswordUpdate = ({
     if (isSuccess) onChange();
   };
 
+  const { t } = useTranslation('LoginAndSecurity');
+
   return (
     <Form
       onSubmit={onSubmit}
@@ -78,7 +81,7 @@ const PasswordUpdate = ({
               <Field
                 name="currentPassword"
                 type="password"
-                render={({ input }) => <Input {...input} label="Текущий пароль" required />}
+                render={({ input }) => <Input {...input} label={t('Current password')} required />}
               />
             )}
             <Field
@@ -90,7 +93,7 @@ const PasswordUpdate = ({
                   {...input}
                   validators={[passwordValidator]}
                   minLength={8}
-                  label="Новый пароль"
+                  label={t('New password')}
                   required
                 />
               )}
@@ -98,15 +101,15 @@ const PasswordUpdate = ({
             <Field
               name="confirmPassword"
               type="password"
-              render={({ input }) => <Input {...input} label="Подтвердите пароль" />}
+              render={({ input }) => <Input {...input} label={t('Confirm password')} />}
             />
             <Button disabled={isPending} isFlat isFilled>
-              Обновить пароль
+              {t('Update password')}
             </Button>
           </form>
           {isCompleted && (
             <PopUpNotification
-              message={statusText}
+              message={t(statusText)}
               onConfirmButtonClick={handleConfirmButtonClick}
             />
           )}
