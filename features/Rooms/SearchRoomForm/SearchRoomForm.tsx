@@ -7,7 +7,7 @@ import { Dropdown, TimePicker } from 'shared/view/components';
 import { guestsGroups, guestsItems } from 'shared/view/components/Dropdown/Dropdown.data';
 import { ArrowButton } from 'shared/view/elements';
 
-import defaultFilters from './defaultFilters';
+import { defaultFilters } from './defaultFilters';
 import * as S from './SearchRoomForm.styles';
 
 type SearchRoomFormProps = {
@@ -86,4 +86,4 @@ const SearchRoomForm: React.FC<SearchRoomFormProps> = ({ onSubmit }: SearchRoomF
   );
 };
 
-export default SearchRoomForm;
+export { SearchRoomForm };

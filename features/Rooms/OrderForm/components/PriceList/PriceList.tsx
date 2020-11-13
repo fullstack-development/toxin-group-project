@@ -25,4 +25,5 @@ const PriceList: React.FC<Props> = ({ items }: Props) => (
     })}
   </S.List>
 );
-export default PriceList;
+
+export { PriceList };

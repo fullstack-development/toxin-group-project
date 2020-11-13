@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import DotButton from '../DotButton/DotButton';
+import { DotButton } from '../DotButton/DotButton';
 import * as S from './ImageGallery.styles';
 import { GalleryProps } from './ImageGallery.types';
 
@@ -61,4 +61,4 @@ const ImageGallery: React.FC<GalleryProps> = ({
   );
 };
 
-export default ImageGallery;
+export { ImageGallery };

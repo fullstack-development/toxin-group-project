@@ -36,4 +36,4 @@ const purpleThemePalette: Theme = {
   },
 };
 
-export default purpleThemePalette;
+export { purpleThemePalette };

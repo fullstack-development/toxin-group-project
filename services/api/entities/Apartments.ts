@@ -33,4 +33,4 @@ class Apartments {
   }
 }
 
-export default Apartments;
+export { Apartments };

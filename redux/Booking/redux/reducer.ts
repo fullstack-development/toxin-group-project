@@ -56,4 +56,4 @@ const booking = (state: BookingState = initialState, action: BookingActions): Bo
   }
 };
 
-export default booking;
+export { booking };

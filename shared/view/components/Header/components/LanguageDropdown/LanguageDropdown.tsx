@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import { changeLanguage } from 'redux/Language/redux/actions';
 import { AppState } from 'redux/store.types';
-import formatLanguage from 'shared/helpers/formatLanguage';
+import { formatLanguage } from 'shared/helpers/formatLanguage';
 
 import * as S from './LanguageDropdown.styles';
 
@@ -79,4 +79,5 @@ const LanguageDropdown: React.FC<Props> = ({
   );
 };
 
-export default connect(mapState, mapDispatch)(LanguageDropdown);
+const ConnectedComponent = connect(mapState, mapDispatch)(LanguageDropdown);
+export { ConnectedComponent as LanguageDropdown };

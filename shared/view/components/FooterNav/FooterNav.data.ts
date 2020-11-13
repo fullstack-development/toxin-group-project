@@ -64,4 +64,4 @@ const data: Required<NavProps> = {
   ],
 };
 
-export default data;
+export { data };

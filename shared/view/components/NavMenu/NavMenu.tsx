@@ -1,4 +1,4 @@
-import NavLink from './components/NavLink';
+import { NavLink } from './components/NavLink';
 import * as S from './NavMenu.styles';
 import { NavMain, NavMenuLink } from './NavMenu.types';
 

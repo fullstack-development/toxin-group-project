@@ -17,4 +17,4 @@ const HeaderUserLogin: React.FC = (): JSX.Element => {
   );
 };
 
-export default HeaderUserLogin;
+export { HeaderUserLogin };

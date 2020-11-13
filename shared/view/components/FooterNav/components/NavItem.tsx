@@ -24,4 +24,5 @@ const NavItem: React.ComponentType<WithTranslation & NavItemProps> = ({
   </S.Container>
 );
 
-export default withTranslation('Links')(NavItem);
+const TranslatedComponent = withTranslation('Links')(NavItem);
+export { TranslatedComponent as NavItem };

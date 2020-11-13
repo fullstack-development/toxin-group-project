@@ -1,8 +1,4 @@
-export default function formatNumber(
-  target: number,
-  currencyCode = 'RUB',
-  separator = '\u00A0',
-): string {
+function formatNumber(target: number, currencyCode = 'RUB', separator = '\u00A0'): string {
   const initialParts = new Intl.NumberFormat('ru', {
     style: 'currency',
     currency: currencyCode,
@@ -21,3 +17,5 @@ export default function formatNumber(
   });
   return formattedParts.reduce((acc, part) => acc + part, '');
 }
+
+export { formatNumber };

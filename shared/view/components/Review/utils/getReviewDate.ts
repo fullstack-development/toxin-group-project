@@ -1,5 +1,5 @@
-import i18next from 'services/i18next';
-import getNounInDeclension from 'shared/helpers/getNounInDeclension';
+import { i18next } from 'services/i18next';
+import { getNounInDeclension } from 'shared/helpers/getNounInDeclension';
 
 const DECLENSION = {
   seconds: ['секунда', 'секунды', 'секунд'],
@@ -63,4 +63,4 @@ function getReviewDate(date: Date): string {
   return date.toLocaleDateString(i18next.language, options);
 }
 
-export default getReviewDate;
+export { getReviewDate };

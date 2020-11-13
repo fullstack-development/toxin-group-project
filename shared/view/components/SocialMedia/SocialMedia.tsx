@@ -1,5 +1,5 @@
-import SocialMediaLink from './components/SocialMediaLink';
-import defaultProps from './defaultProps';
+import { SocialMediaLink } from './components/SocialMediaLink';
+import { defaultProps } from './defaultProps';
 import * as S from './SocialMedia.style';
 import { SocialMediaProps } from './SocialMedia.types';
 

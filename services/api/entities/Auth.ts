@@ -8,7 +8,7 @@ import {
 } from '../Firebase/modules/Authentication';
 import { Database, CollectionReference } from '../Firebase/modules/Database';
 import apiErrors from './errors/apiErrors';
-import AuthError from './errors/AuthError';
+import { AuthError } from './errors/AuthError';
 import { ProfileData, AdditionalUserInformation } from './types';
 
 class Auth {
@@ -158,4 +158,4 @@ class Auth {
   }
 }
 
-export default Auth;
+export { Auth };

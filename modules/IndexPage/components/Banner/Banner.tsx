@@ -1,7 +1,7 @@
 import { TFunction } from 'i18next';
 import { withTranslation, WithTranslation } from 'react-i18next';
 
-import SearchRoomForm from 'features/Rooms/SearchRoomForm/SearchRoomForm';
+import { SearchRoomForm } from 'features/Rooms/SearchRoomForm/SearchRoomForm';
 
 import * as S from './Banner.styles';
 
@@ -20,4 +20,5 @@ const Banner: React.ComponentType<WithTranslation & Props> = ({
   </S.Banner>
 );
 
-export default withTranslation()(Banner);
+const TranslatedComponent = withTranslation()(Banner);
+export { TranslatedComponent as Banner };

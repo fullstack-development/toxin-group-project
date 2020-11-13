@@ -1,4 +1,4 @@
-import isObject from './isObject';
+import { isObject } from './isObject';
 
 function matchObjects<T extends { [k: string]: unknown }>(main: T, comparable: T): boolean {
   return Object.keys(comparable).every((prop) => {
@@ -15,4 +15,4 @@ function matchObjects<T extends { [k: string]: unknown }>(main: T, comparable: T
   });
 }
 
-export default matchObjects;
+export { matchObjects };

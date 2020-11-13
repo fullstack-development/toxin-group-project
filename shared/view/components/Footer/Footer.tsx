@@ -2,11 +2,11 @@ import { useTranslation } from 'react-i18next';
 
 import { SocialMedia } from 'shared/view/components';
 
-import Copyright from './components/Copyright/Copyright';
-import Logo from './components/Logo/Logo';
-import Nav from './components/Nav/Nav';
-import Subscription from './components/Subscription/Subscription';
-import footerData from './Footer.data';
+import { Copyright } from './components/Copyright/Copyright';
+import { Logo } from './components/Logo/Logo';
+import { Nav } from './components/Nav/Nav';
+import { Subscription } from './components/Subscription/Subscription';
+import { data as footerData } from './Footer.data';
 import * as S from './Footer.styles';
 import { FooterProps } from './Footer.types';
 

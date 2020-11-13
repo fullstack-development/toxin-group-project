@@ -5,4 +5,4 @@ function getType(param: unknown): string {
   return readableType.toLowerCase();
 }
 
-export default getType;
+export { getType };

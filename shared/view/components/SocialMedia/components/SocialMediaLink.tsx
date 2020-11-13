@@ -7,4 +7,4 @@ const SocialMediaLink: React.FC<SocialMediaItem> = ({ href, icon, text }: Social
   </S.Link>
 );
 
-export default SocialMediaLink;
+export { SocialMediaLink };

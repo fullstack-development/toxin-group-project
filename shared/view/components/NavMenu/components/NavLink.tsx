@@ -61,4 +61,4 @@ const NavLink: React.FC<NavMenuLink> = ({
   );
 };
 
-export default NavLink;
+export { NavLink };

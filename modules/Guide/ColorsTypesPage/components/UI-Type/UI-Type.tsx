@@ -15,4 +15,4 @@ const UIType: React.FC<Props> = ({ type, example, fontSize }: Props) => (
   </S.Type>
 );
 
-export default UIType;
+export { UIType };

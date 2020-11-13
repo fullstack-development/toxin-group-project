@@ -1,6 +1,6 @@
 import { NavAccountSettings } from 'shared/view/elements';
 
-import Login from '../Login/Login';
+import { Login } from '../Login/Login';
 import * as S from './MainContent.styles';
 
 const MainContent = (): JSX.Element => (
@@ -11,4 +11,4 @@ const MainContent = (): JSX.Element => (
   </S.MainContent>
 );
 
-export default MainContent;
+export { MainContent };

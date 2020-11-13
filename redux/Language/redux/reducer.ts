@@ -1,4 +1,4 @@
-import i18next from 'services/i18next';
+import { i18next } from 'services/i18next';
 
 import { CHANGE_LANGUAGE_SUCCESS } from '../constants';
 import { LanguageState, LanguageActions } from '../types';
@@ -19,4 +19,4 @@ const language = (state: LanguageState = initialState, action: LanguageActions):
   }
 };
 
-export default language;
+export { language };

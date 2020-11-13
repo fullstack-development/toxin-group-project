@@ -86,4 +86,5 @@ const EditDisplayName = ({
   );
 };
 
-export default connect(mapState, mapDispatch)(EditDisplayName);
+const ConnectedComponent = connect(mapState, mapDispatch)(EditDisplayName);
+export { ConnectedComponent as EditDisplayName };

@@ -4,10 +4,10 @@ import { useTranslation } from 'react-i18next';
 
 import { TextButton as ApplyButton } from 'shared/view/elements';
 
-import NumberInput from './components/NumberInput/NumberInput';
+import { NumberInput } from './components/NumberInput/NumberInput';
 import * as S from './Dropdown.styles';
 import { DropdownProps, WordForms } from './Dropdown.types';
-import getResultStringPart from './utils/getResultStringPart';
+import { getResultStringPart } from './utils/getResultStringPart';
 
 const DEFAULT_SETTINGS = {
   min: 0,

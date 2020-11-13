@@ -100,4 +100,4 @@ const auth = (state: AuthState = initialState, action: AuthActions): AuthState =
   }
 };
 
-export default auth;
+export { auth };

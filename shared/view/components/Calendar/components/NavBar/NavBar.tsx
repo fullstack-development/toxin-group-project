@@ -23,4 +23,4 @@ const NavBar = ({ onPreviousClick, onNextClick }: NavBar): JSX.Element => {
   );
 };
 
-export default NavBar;
+export { NavBar };

@@ -3,7 +3,7 @@ import { useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
-import OrderForm from 'features/Rooms/OrderForm/OrderForm';
+import { OrderForm } from 'features/Rooms/OrderForm/OrderForm';
 import { getRoomDetails as getRoomDetailsRequest } from 'redux/Apartment/redux/actions';
 import { preloadAuthData } from 'redux/Auth/redux/actions';
 import { bookRoom } from 'redux/Booking/redux/actions';
@@ -123,4 +123,5 @@ const MainContent = ({
   );
 };
 
-export default connect(mapState, mapDispatch)(MainContent);
+const ConnectedComponent = connect(mapState, mapDispatch)(MainContent);
+export { ConnectedComponent as MainContent };

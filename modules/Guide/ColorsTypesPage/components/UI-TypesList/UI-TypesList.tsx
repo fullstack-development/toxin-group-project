@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import UIType from '../UI-Type/UI-Type';
+import { UIType } from '../UI-Type/UI-Type';
 import * as S from './UI-TypesList.styles';
 
 type Type = {
@@ -13,7 +13,7 @@ type Props = {
   types: Array<Type>;
 };
 
-const UITypes: React.FC<Props> = ({ types }: Props) => {
+const UITypesList: React.FC<Props> = ({ types }: Props) => {
   const { t } = useTranslation('Ui-TypesList');
 
   return (
@@ -30,4 +30,4 @@ const UITypes: React.FC<Props> = ({ types }: Props) => {
   );
 };
 
-export default UITypes;
+export { UITypesList };

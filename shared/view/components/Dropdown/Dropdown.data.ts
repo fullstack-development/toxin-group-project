@@ -1,4 +1,4 @@
-import defaultFilters from 'features/Rooms/SearchRoomForm/defaultFilters';
+import { defaultFilters } from 'features/Rooms/SearchRoomForm/defaultFilters';
 
 import { Item, Group } from './Dropdown.types';
 

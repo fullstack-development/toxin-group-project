@@ -31,4 +31,4 @@ const RoomsList: React.FC<Props> = ({ rooms }: Props): JSX.Element => {
   );
 };
 
-export default RoomsList;
+export { RoomsList };

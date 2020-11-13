@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { TextButton } from 'shared/view/elements';
 
 import * as S from './Calendar.styles';
-import NavBar from './components/NavBar/NavBar';
+import { NavBar } from './components/NavBar/NavBar';
 
 type SelectedDate = null | Date;
 

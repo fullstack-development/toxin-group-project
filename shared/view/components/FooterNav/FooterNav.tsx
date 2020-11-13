@@ -1,5 +1,5 @@
-import NavItem from './components/NavItem';
-import footerNavData from './FooterNav.data';
+import { NavItem } from './components/NavItem';
+import { data as footerNavData } from './FooterNav.data';
 import * as S from './FooterNav.styles';
 import { NavProps } from './FooterNav.types';
 

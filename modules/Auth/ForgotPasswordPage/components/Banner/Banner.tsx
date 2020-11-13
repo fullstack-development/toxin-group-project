@@ -1,4 +1,4 @@
-import ForgotPasswordForm from 'features/Auth/ForgotPasswordForm/ForgotPasswordForm';
+import { ForgotPasswordForm } from 'features/Auth/ForgotPasswordForm/ForgotPasswordForm';
 
 import * as S from './Banner.styles';
 
@@ -8,4 +8,4 @@ const Banner = (): JSX.Element => (
   </S.Banner>
 );
 
-export default Banner;
+export { Banner };

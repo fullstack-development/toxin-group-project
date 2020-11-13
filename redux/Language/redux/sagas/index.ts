@@ -1,7 +1,7 @@
 import { SagaIterator } from 'redux-saga';
 import { put, takeLatest } from 'redux-saga/effects';
 
-import i18next from 'services/i18next';
+import { i18next } from 'services/i18next';
 import { Lang } from 'services/i18next/types';
 
 import { CHANGE_LANGUAGE_REQUEST, CHANGE_LANGUAGE_SUCCESS } from '../../constants';

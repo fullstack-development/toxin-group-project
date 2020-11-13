@@ -1,10 +1,10 @@
 import { User } from 'services/api/Firebase/modules/Authentication/types';
 import { TextButton } from 'shared/view/elements';
 
-import EditBirthday from './components/EditBirthday/EditBirthday';
-import EditDisplayName from './components/EditDisplayName/EditDisplayName';
-import EditEmail from './components/EditEmail/EditEmail';
-import EditGender from './components/EditGender/EditGender';
+import { EditBirthday } from './components/EditBirthday/EditBirthday';
+import { EditDisplayName } from './components/EditDisplayName/EditDisplayName';
+import { EditEmail } from './components/EditEmail/EditEmail';
+import { EditGender } from './components/EditGender/EditGender';
 import * as S from './EditPersonalInfo.styles';
 
 type Props = {
@@ -61,4 +61,4 @@ EditPersonalInfo.defaultProps = {
   description: '',
 };
 
-export default EditPersonalInfo;
+export { EditPersonalInfo };

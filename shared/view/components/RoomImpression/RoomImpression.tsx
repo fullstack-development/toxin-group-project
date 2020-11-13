@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
 
-import getNounInDeclension from 'shared/helpers/getNounInDeclension';
+import { getNounInDeclension } from 'shared/helpers/getNounInDeclension';
 
-import Chart from './components/Chart/Chart';
-import ratingValues from './RoomImpression.data';
+import { Chart } from './components/Chart/Chart';
+import { ratingValues } from './RoomImpression.data';
 import * as S from './RoomImpression.styles';
 
 type Props = {

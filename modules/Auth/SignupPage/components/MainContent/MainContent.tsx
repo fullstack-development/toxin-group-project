@@ -1,4 +1,4 @@
-import RegistrationForm from 'features/Auth/RegistrationForm/RegistrationForm';
+import { RegistrationForm } from 'features/Auth/RegistrationForm/RegistrationForm';
 import { RegistrationFormProps } from 'features/Auth/RegistrationForm/RegistrationForm.types';
 
 import * as S from './MainContent.styles';
@@ -23,4 +23,4 @@ const MainContent: React.FC<Props> = ({
   </S.Container>
 );
 
-export default MainContent;
+export { MainContent };

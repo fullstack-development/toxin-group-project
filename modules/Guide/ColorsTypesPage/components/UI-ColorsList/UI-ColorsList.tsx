@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import UIColor from '../UI-Color/UI-Color';
+import { UIColor } from '../UI-Color/UI-Color';
 import * as S from './UI-ColorsList.styles';
 
 type Color = {
@@ -30,4 +30,4 @@ const UIColorsList: React.FC<Props> = ({ colors }: Props) => {
   );
 };
 
-export default UIColorsList;
+export { UIColorsList };

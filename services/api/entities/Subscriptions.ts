@@ -33,4 +33,4 @@ class Subscriptions {
   }
 }
 
-export default Subscriptions;
+export { Subscriptions };

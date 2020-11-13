@@ -122,4 +122,4 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
   );
 };
 
-export default RegistrationForm;
+export { RegistrationForm };

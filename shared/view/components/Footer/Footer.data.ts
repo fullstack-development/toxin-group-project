@@ -10,4 +10,4 @@ const data: FooterProps = {
   copyrightText: 'Copyright © 2018 Toxin Hotel. All rights reserved.',
 };
 
-export default data;
+export { data };

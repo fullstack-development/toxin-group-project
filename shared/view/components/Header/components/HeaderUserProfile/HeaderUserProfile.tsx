@@ -29,4 +29,4 @@ const HeaderUserProfile: React.FC<Props> = ({ displayName }: Props): JSX.Element
   );
 };
 
-export default HeaderUserProfile;
+export { HeaderUserProfile };

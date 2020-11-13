@@ -5,4 +5,4 @@ const DotButton: React.FC<DotButtonProps> = (props: DotButtonProps) => {
   return <S.DotButton {...props} type="button" />;
 };
 
-export default DotButton;
+export { DotButton };

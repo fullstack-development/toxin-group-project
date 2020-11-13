@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
 
-import SubscriptionField from 'features/Auth/SubscriptionField/SubscriptionField';
+import { SubscriptionField } from 'features/Auth/SubscriptionField/SubscriptionField';
 import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators';
 import { CheckboxesList, Dropdown, Review, TimePicker } from 'shared/view/components';
 import {

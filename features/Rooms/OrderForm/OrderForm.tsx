@@ -8,7 +8,7 @@ import { Dropdown, TimePicker } from 'shared/view/components';
 import { DropdownProps } from 'shared/view/components/Dropdown/Dropdown.types';
 import { ArrowButton } from 'shared/view/elements';
 
-import PriceList from './components/PriceList/PriceList';
+import { PriceList } from './components/PriceList/PriceList';
 import * as S from './OrderForm.styles';
 import { Item as PriceItem, MaxGuests } from './OrderForm.types';
 
@@ -213,4 +213,4 @@ const OrderForm: React.FC<Props> = ({
   );
 };
 
-export default OrderForm;
+export { OrderForm };

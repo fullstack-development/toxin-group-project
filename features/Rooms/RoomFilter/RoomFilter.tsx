@@ -150,4 +150,4 @@ const RoomFilter: React.FC<Props> = ({ initialFilters, loadRooms, isPending = fa
   );
 };
 
-export default RoomFilter;
+export { RoomFilter };

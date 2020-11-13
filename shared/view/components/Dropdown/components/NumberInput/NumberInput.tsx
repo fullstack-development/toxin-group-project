@@ -30,4 +30,4 @@ const NumberInput: React.FC<NumberInputProps> = ({
   </S.InputContainer>
 );
 
-export default NumberInput;
+export { NumberInput };

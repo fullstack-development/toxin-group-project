@@ -14,4 +14,5 @@ const Logo: React.ComponentType<WithTranslation & LogoProps> = ({ description, t
   </S.Container>
 );
 
-export default withTranslation()(Logo);
+const TranslatedComponent = withTranslation()(Logo);
+export { TranslatedComponent as Logo };

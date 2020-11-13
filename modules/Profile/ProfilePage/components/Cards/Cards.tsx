@@ -14,4 +14,4 @@ const Cards = (): JSX.Element => (
   </S.Cards>
 );
 
-export default Cards;
+export { Cards };

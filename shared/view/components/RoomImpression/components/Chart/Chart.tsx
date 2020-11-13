@@ -1,6 +1,6 @@
 import { PieChart } from 'react-minimal-pie-chart';
 
-import ratingValues from '../../RoomImpression.data';
+import { ratingValues } from '../../RoomImpression.data';
 
 type Props = {
   excellent: number;
@@ -58,4 +58,4 @@ const Chart = (numberOfRatings: Props): JSX.Element => (
   </PieChart>
 );
 
-export default Chart;
+export { Chart };

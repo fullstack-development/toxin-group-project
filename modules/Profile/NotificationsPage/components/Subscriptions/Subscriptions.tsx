@@ -83,4 +83,5 @@ const Subscriptions = ({
   );
 };
 
-export default connect(mapState, mapDispatch)(Subscriptions);
+const ConnectedComponent = connect(mapState, mapDispatch)(Subscriptions);
+export { ConnectedComponent as Subscriptions };

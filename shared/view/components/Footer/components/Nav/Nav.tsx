@@ -8,4 +8,4 @@ const Nav: React.FC = () => (
   </S.Nav>
 );
 
-export default Nav;
+export { Nav };

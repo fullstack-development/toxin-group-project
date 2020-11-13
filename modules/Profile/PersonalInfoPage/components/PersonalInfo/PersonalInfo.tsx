@@ -6,7 +6,7 @@ import { AppState } from 'redux/store.types';
 import { AdditionalUserInformation } from 'services/api/entities/types';
 import { User } from 'services/api/Firebase/modules/Authentication/types';
 
-import EditPersonalInfo from '../EditPersonalInfo/EditPersonalInfo';
+import { EditPersonalInfo } from '../EditPersonalInfo/EditPersonalInfo';
 import { data } from './PersonalInfo.data';
 import * as S from './PersonalInfo.styles';
 
@@ -104,4 +104,5 @@ const PersonalInfo = ({
   );
 };
 
-export default connect(mapState, mapDispatch)(PersonalInfo);
+const ConnectedComponent = connect(mapState, mapDispatch)(PersonalInfo);
+export { ConnectedComponent as PersonalInfo };

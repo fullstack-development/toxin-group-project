@@ -26,4 +26,4 @@ const GlobalStyle = createGlobalStyle<Props>`
   }}
 `;
 
-export default GlobalStyle;
+export { GlobalStyle };

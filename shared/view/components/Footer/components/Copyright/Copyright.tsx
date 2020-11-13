@@ -8,4 +8,5 @@ const Copyright: React.ComponentType<WithTranslation & CopyrightProps> = ({
   t,
 }: CopyrightProps) => <S.Copyright>{t(`Footer:${copyrightText}`)}</S.Copyright>;
 
-export default withTranslation()(Copyright);
+const TranslatedComponent = withTranslation()(Copyright);
+export { TranslatedComponent as Copyright };

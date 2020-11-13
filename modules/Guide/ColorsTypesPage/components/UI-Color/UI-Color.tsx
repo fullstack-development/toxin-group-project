@@ -16,4 +16,4 @@ const UIColor: React.FC<Props> = ({ color, title, opacity }: Props) => (
   </S.Color>
 );
 
-export default UIColor;
+export { UIColor };

@@ -1,6 +1,6 @@
 import { withTranslation, WithTranslation } from 'react-i18next';
 
-import SubscriptionField from 'features/Auth/SubscriptionField/SubscriptionField';
+import { SubscriptionField } from 'features/Auth/SubscriptionField/SubscriptionField';
 
 import { SubscriptionProps } from '../../Footer.types';
 import * as S from './Subscription.styles';
@@ -19,4 +19,5 @@ const Subscription: React.ComponentType<WithTranslation & SubscriptionProps> = (
   </S.Container>
 );
 
-export default withTranslation()(Subscription);
+const TranslatedComponent = withTranslation()(Subscription);
+export { TranslatedComponent as Subscription };

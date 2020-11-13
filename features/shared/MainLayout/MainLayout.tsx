@@ -39,4 +39,5 @@ const mapDispatch = {
   preloadAuth: preloadAuthData,
 };
 
-export default connect(mapState, mapDispatch)(MainLayout);
+const ConnectedComponent = connect(mapState, mapDispatch)(MainLayout);
+export { ConnectedComponent as MainLayout };

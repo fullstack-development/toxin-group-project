@@ -96,4 +96,4 @@ const AccountEntry: React.FC<Props> = (props: Props): JSX.Element => {
   );
 };
 
-export default AccountEntry;
+export { AccountEntry };

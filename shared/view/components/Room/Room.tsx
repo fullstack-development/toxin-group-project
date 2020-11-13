@@ -1,9 +1,9 @@
 import { withTranslation, WithTranslation } from 'react-i18next';
 
-import formatNumber from 'shared/helpers/formatNumber';
+import { formatNumber } from 'shared/helpers/formatNumber';
 import { StarRating } from 'shared/view/elements';
 
-import ImageGallery from './components/ImageGallery/ImageGallery';
+import { ImageGallery } from './components/ImageGallery/ImageGallery';
 import * as S from './Room.styles';
 import { Props } from './Room.types';
 

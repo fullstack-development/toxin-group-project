@@ -10,4 +10,4 @@ const config: Config = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-export default config;
+export { config };

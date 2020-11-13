@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { TextButton } from 'shared/view/elements';
 
-import PasswordUpdate from '../PasswordUpdate/PasswordUpdate';
+import { PasswordUpdate } from '../PasswordUpdate/PasswordUpdate';
 import * as S from './Login.styles';
 
 const Login = (): JSX.Element => {
@@ -26,4 +26,4 @@ const Login = (): JSX.Element => {
   );
 };
 
-export default Login;
+export { Login };

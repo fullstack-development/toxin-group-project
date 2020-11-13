@@ -2,12 +2,12 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import MainLayout from 'features/shared/MainLayout/MainLayout';
+import { MainLayout } from 'features/shared/MainLayout/MainLayout';
 import { preloadAuthData } from 'redux/Auth/redux/actions';
 import { startRegistration, cancelRegistration } from 'redux/Registration/redux/actions';
 import { AppState } from 'redux/store.types';
 
-import MainContent from './components/MainContent/MainContent';
+import { MainContent } from './components/MainContent/MainContent';
 
 type StateProps = {
   isSuccess: boolean;
