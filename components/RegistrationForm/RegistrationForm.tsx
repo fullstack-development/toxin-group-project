@@ -44,7 +44,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
             />
             <Field
               name="surname"
-              render={({ input, meta }) => (
+              render={({ input }) => (
                 <S.InputWrapper {...input} placeholder={t('Shared:Surname')} />
               )}
             />
@@ -84,7 +84,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
               <Field
                 name="password"
                 type="password"
-                render={({ input, meta }) => (
+                render={({ input }) => (
                   <S.InputWrapper {...input} required placeholder={t('Shared:Password')} />
                 )}
               />
@@ -111,7 +111,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
         open={!isSuccess && isProcess && Boolean(statusText)}
         autoHideDuration={3000}
         onClose={stopRegistration}
-        message={statusText}
+        message={t(`Auth:${statusText}`)}
         action={
           <>
             <IconButton size="medium" aria-label="close" color="inherit" onClick={stopRegistration}>

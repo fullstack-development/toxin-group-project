@@ -85,7 +85,7 @@ const AccountEntry: React.FC<Props> = (props: Props): JSX.Element => {
         open={isAuthProcessNow}
         autoHideDuration={3000}
         onClose={breakAuthProcess}
-        message={authStatusText}
+        message={t(`Auth:${authStatusText}`)}
         action={
           <>
             <IconButton size="medium" aria-label="close" color="inherit" onClick={breakAuthProcess}>
