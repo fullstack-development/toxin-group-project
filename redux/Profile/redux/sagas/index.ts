@@ -25,7 +25,7 @@ function* emailUpdate({ payload }: EmailUpdateRequest) {
 
     yield put({
       type: 'EMAIL_UPDATE_SUCCESS',
-      payload: `Подтверждение адреса электронной почты было отправлено на ${email}`,
+      payload: `A confirmation email has been sent to the specified email address`,
     });
   } catch (err) {
     yield put({
@@ -39,7 +39,7 @@ function* passwordUpdate({
   payload: { user, currentPassword, newPassword, confirmPassword },
 }: PasswordUpdateRequest) {
   try {
-    if (newPassword !== confirmPassword) throw new Error('Пароли не совпадают');
+    if (newPassword !== confirmPassword) throw new Error('Passwords do not match');
 
     const { email } = user;
     const userAuthInfo: string[] = yield call(api.auth.fetchSignInMethodsForEmail, email);
@@ -57,7 +57,7 @@ function* passwordUpdate({
 
     yield put({
       type: 'PASSWORD_UPDATE_SUCCESS',
-      payload: 'Пароль успешно изменен',
+      payload: 'Password changed successfully',
     });
   } catch (err) {
     yield put({
@@ -77,12 +77,12 @@ function* updateAdditionalUserData({ payload: { user, data } }: UpdateAdditional
     }
     yield put({
       type: 'UPDATE_ADDITIONAL_USER_DATA_SUCCESS',
-      payload: 'Данные были успешно обновлены',
+      payload: 'Data has been successfully updated',
     });
   } catch (err) {
     yield put({
       type: 'UPDATE_ADDITIONAL_USER_DATA_FAILED',
-      payload: 'Произошла ошибка, повторите попытку позже',
+      payload: 'An error occured, please try again later',
     });
   }
 }
@@ -95,12 +95,12 @@ function* usernameUpdate({ payload }: UsernameUpdateRequest) {
 
     yield put({
       type: 'USERNAME_UPDATE_SUCCESS',
-      payload: 'Данные были успешно обновлены',
+      payload: 'Data has been successfully updated',
     });
   } catch (err) {
     yield put({
       type: 'USERNAME_UPDATE_FAILED',
-      payload: 'Произошла ошибка, повторите попытку позже',
+      payload: 'An error occured, please try again later',
     });
   }
 }

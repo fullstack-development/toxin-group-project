@@ -35,13 +35,13 @@ function* subscriptionUpdate({ payload: { email, subscriptions } }: Subscription
     yield put({
       type: 'SUBSCRIPTION_UPDATE_SUCCESS',
       payload: userAuthInfo.length
-        ? 'Настройки уведомлений изменены'
-        : 'Вы успешно подписаны на рассылку спецпредложений',
+        ? 'Notification settings changed'
+        : 'You have successfully subscribed to the special offers',
     });
   } catch (err) {
     yield put({
       type: 'SUBSCRIPTION_UPDATE_FAILED',
-      payload: 'Произошла ошибка повторите попытку позже',
+      payload: 'An error occured, please try again later',
     });
   }
 }

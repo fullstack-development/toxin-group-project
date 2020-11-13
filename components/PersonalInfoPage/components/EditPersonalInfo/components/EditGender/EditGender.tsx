@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Form } from 'react-final-form';
+import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
 import Button from 'components/Button/Button';
@@ -16,12 +17,14 @@ import * as S from './EditGender.styles';
 
 type StateProps = {
   isPending: boolean;
+  isSuccess: boolean;
   isCompleted: boolean;
   statusText: string;
 };
 
 const mapState = (state: AppState): StateProps => ({
   isPending: state.profile.isUpdateAdditionalUserDataPending,
+  isSuccess: state.profile.isUpdateAdditionalUserDataSuccess,
   isCompleted: state.profile.isUpdateAdditionalUserDataCompleted,
   statusText: state.profile.updateAdditionalUserDataStatusText,
 });
@@ -34,6 +37,7 @@ const mapDispatch = {
 type OwnProps = {
   user: User;
   gender: string;
+  onChange: (title: string) => void;
 };
 
 type Props = OwnProps & StateProps & typeof mapDispatch;
@@ -46,8 +50,10 @@ const EditGender = ({
   user,
   gender,
   isPending,
+  isSuccess,
   isCompleted,
   statusText,
+  onChange,
   startUpdateAdditionalUserData,
   stopUpdateAdditionalUserData,
 }: Props): JSX.Element => {
@@ -60,9 +66,18 @@ const EditGender = ({
   }, [stopUpdateAdditionalUserData]);
 
   const mapGender = {
+    Male: 'male',
+    Female: 'female',
     Мужчина: 'male',
     Женщина: 'female',
   };
+
+  const handleConfirmButtonClick = () => {
+    stopUpdateAdditionalUserData();
+    if (isSuccess) onChange('');
+  };
+
+  const { t } = useTranslation('PersonalInfo');
 
   return (
     <Form
@@ -72,17 +87,17 @@ const EditGender = ({
         <>
           <form onSubmit={handleSubmit}>
             <S.Gender>
-              <RadioButton name="gender" value="male" label="Мужчина" />
-              <RadioButton name="gender" value="female" label="Женщина" />
+              <RadioButton name="gender" value="male" label={t('Male')} />
+              <RadioButton name="gender" value="female" label={t('Female')} />
             </S.Gender>
             <Button disabled={isPending} isFlat isFilled>
-              Сохранить
+              {t('Save')}
             </Button>
           </form>
           {isCompleted && (
             <PopUpNotification
-              message={statusText}
-              onConfirmButtonClick={stopUpdateAdditionalUserData}
+              message={t(statusText)}
+              onConfirmButtonClick={handleConfirmButtonClick}
             />
           )}
         </>
