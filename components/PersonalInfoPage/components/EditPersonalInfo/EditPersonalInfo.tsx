@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import TextButton from 'components/TextButton/TextButton';
 import { User } from 'services/api/Firebase/modules/Authentication/types';
@@ -28,23 +29,25 @@ const EditPersonalInfo = memo(
       email: <EditEmail user={user} email={value} />,
     };
 
+    const { t } = useTranslation('PersonalInfo');
+
     const isEdit = currentEditing === title;
     const isButtonDisabled = currentEditing ? !isEdit : false;
 
     return (
       <>
         <S.Header>
-          <S.Title>{title}</S.Title>
+          <S.Title>{t(title)}</S.Title>
           <TextButton
             type="button"
             disabled={isButtonDisabled}
             onClick={() => onEditButtonClick(title)}
           >
-            {isEdit ? 'Отменить' : 'Редактировать'}
+            {isEdit ? t('Cancel') : t('Edit')}
           </TextButton>
         </S.Header>
         <S.Content>
-          <S.Description>{isEdit ? description : value}</S.Description>
+          <S.Description>{isEdit ? t(description) : t(value)}</S.Description>
           {isEdit && mapEditingComponents[component]}
         </S.Content>
       </>

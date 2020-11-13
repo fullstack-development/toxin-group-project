@@ -1,5 +1,6 @@
 import { memo, useEffect } from 'react';
 import { Form, Field } from 'react-final-form';
+import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
 import Button from 'components/Button/Button';
@@ -13,6 +14,7 @@ import { passwordValidator } from 'shared/helpers/validators/passwordValidator';
 type StateProps = {
   user: User;
   isPending: boolean;
+  isSuccess: boolean;
   isCompleted: boolean;
   statusText: string;
 };
@@ -20,6 +22,7 @@ type StateProps = {
 const mapState = (state: AppState): StateProps => ({
   user: state.auth.user,
   isPending: state.profile.isPasswordUpdatePending,
+  isSuccess: state.profile.isPasswordUpdateSuccess,
   isCompleted: state.profile.isPasswordUpdateCompleted,
   statusText: state.profile.passwordUpdateStatusText,
 });
@@ -29,7 +32,11 @@ const mapDispatch = {
   stopPasswordUpdate: passwordUpdateCompleted,
 };
 
-type Props = StateProps & typeof mapDispatch;
+type OwnProps = {
+  onChange: () => void;
+};
+
+type Props = StateProps & OwnProps & typeof mapDispatch;
 
 type FormData = {
   currentPassword: string;
@@ -41,8 +48,10 @@ const PasswordUpdate = memo(
   ({
     user,
     isPending,
+    isSuccess,
     isCompleted,
     statusText,
+    onChange,
     startPasswordUpdate,
     stopPasswordUpdate,
   }: Props) => {
@@ -56,6 +65,13 @@ const PasswordUpdate = memo(
       stopPasswordUpdate();
     }, [stopPasswordUpdate]);
 
+    const handleConfirmButtonClick = () => {
+      stopPasswordUpdate();
+      if (isSuccess) onChange();
+    };
+
+    const { t } = useTranslation('LoginAndSecurity');
+
     return (
       <Form
         onSubmit={onSubmit}
@@ -66,7 +82,9 @@ const PasswordUpdate = memo(
                 <Field
                   name="currentPassword"
                   type="password"
-                  render={({ input }) => <Input {...input} label="Текущий пароль" required />}
+                  render={({ input }) => (
+                    <Input {...input} label={t('Current password')} required />
+                  )}
                 />
               )}
               <Field
@@ -78,7 +96,7 @@ const PasswordUpdate = memo(
                     {...input}
                     validators={[passwordValidator]}
                     minLength={8}
-                    label="Новый пароль"
+                    label={t('New password')}
                     required
                   />
                 )}
@@ -86,14 +104,17 @@ const PasswordUpdate = memo(
               <Field
                 name="confirmPassword"
                 type="password"
-                render={({ input }) => <Input {...input} label="Подтвердите пароль" />}
+                render={({ input }) => <Input {...input} label={t('Confirm password')} />}
               />
               <Button disabled={isPending} isFlat isFilled>
-                Обновить пароль
+                {t('Update password')}
               </Button>
             </form>
             {isCompleted && (
-              <PopUpNotification message={statusText} onConfirmButtonClick={stopPasswordUpdate} />
+              <PopUpNotification
+                message={t(statusText)}
+                onConfirmButtonClick={handleConfirmButtonClick}
+              />
             )}
           </>
         )}

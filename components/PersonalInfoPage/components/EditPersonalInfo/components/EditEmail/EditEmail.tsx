@@ -1,5 +1,6 @@
 import { memo, useEffect } from 'react';
 import { Form, Field } from 'react-final-form';
+import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
 import Button from 'components/Button/Button';
@@ -12,12 +13,14 @@ import { emailValidator } from 'shared/helpers/validators';
 
 type StateProps = {
   isPending: boolean;
+  isSuccess: boolean;
   isCompleted: boolean;
   statusText: string;
 };
 
 const mapState = (state: AppState): StateProps => ({
   isPending: state.profile.isEmailUpdatePending,
+  isSuccess: state.profile.isEmailUpdateSuccess,
   isCompleted: state.profile.isEmailUpdateCompleted,
   statusText: state.profile.emailUpdateStatusText,
 });
@@ -30,6 +33,7 @@ const mapDispatch = {
 type OwnProps = {
   user: User;
   email: string;
+  onChange: (title: string) => void;
 };
 
 type Props = OwnProps & StateProps & typeof mapDispatch;
@@ -39,8 +43,10 @@ const EditEmail = memo(
     user,
     email,
     isPending,
+    isSuccess,
     isCompleted,
     statusText,
+    onChange,
     startEmailUpdate,
     stopEmailUpdate,
   }: Props) => {
@@ -51,6 +57,13 @@ const EditEmail = memo(
     useEffect(() => {
       stopEmailUpdate();
     }, [stopEmailUpdate]);
+
+    const handleConfirmButtonClick = () => {
+      stopEmailUpdate();
+      if (isSuccess) onChange('');
+    };
+
+    const { t } = useTranslation('PersonalInfo');
 
     return (
       <Form
@@ -68,11 +81,14 @@ const EditEmail = memo(
                 )}
               />
               <Button disabled={isPending} isFlat isFilled>
-                Сохранить
+                {t('Save')}
               </Button>
             </form>
             {isCompleted && (
-              <PopUpNotification message={statusText} onConfirmButtonClick={stopEmailUpdate} />
+              <PopUpNotification
+                message={t(statusText)}
+                onConfirmButtonClick={handleConfirmButtonClick}
+              />
             )}
           </>
         )}

@@ -1,5 +1,6 @@
 import { memo, useEffect } from 'react';
 import { Form, Field } from 'react-final-form';
+import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
 import Button from 'components/Button/Button';
@@ -15,12 +16,14 @@ import { dateValidator, dateFormatMask } from 'shared/helpers/validators';
 
 type StateProps = {
   isPending: boolean;
+  isSuccess: boolean;
   isCompleted: boolean;
   statusText: string;
 };
 
 const mapState = (state: AppState): StateProps => ({
   isPending: state.profile.isUpdateAdditionalUserDataPending,
+  isSuccess: state.profile.isUpdateAdditionalUserDataSuccess,
   isCompleted: state.profile.isUpdateAdditionalUserDataCompleted,
   statusText: state.profile.updateAdditionalUserDataStatusText,
 });
@@ -33,6 +36,7 @@ const mapDispatch = {
 type OwnProps = {
   user: User;
   birthday: string;
+  onChange: (title: string) => void;
 };
 
 type Props = OwnProps & StateProps & typeof mapDispatch;
@@ -46,8 +50,10 @@ const EditBirthday = memo(
     user,
     birthday,
     isPending,
+    isSuccess,
     isCompleted,
     statusText,
+    onChange,
     startUpdateAdditionalUserData,
     stopUpdateAdditionalUserData,
   }: Props) => {
@@ -58,6 +64,13 @@ const EditBirthday = memo(
     useEffect(() => {
       stopUpdateAdditionalUserData();
     }, [stopUpdateAdditionalUserData]);
+
+    const handleConfirmButtonClick = () => {
+      stopUpdateAdditionalUserData();
+      if (isSuccess) onChange('');
+    };
+
+    const { t } = useTranslation('PersonalInfo');
 
     return (
       <Form
@@ -73,19 +86,19 @@ const EditBirthday = memo(
                   <Input
                     {...input}
                     validators={[dateValidator]}
-                    placeholder="ДД.ММ.ГГГГ"
+                    placeholder={t('DD.MM.YYYY')}
                     mask={dateFormatMask}
                   />
                 )}
               />
               <Button disabled={isPending} isFlat isFilled>
-                Сохранить
+                {t('Save')}
               </Button>
             </form>
             {isCompleted && (
               <PopUpNotification
-                message={statusText}
-                onConfirmButtonClick={stopUpdateAdditionalUserData}
+                message={t(statusText)}
+                onConfirmButtonClick={handleConfirmButtonClick}
               />
             )}
           </>

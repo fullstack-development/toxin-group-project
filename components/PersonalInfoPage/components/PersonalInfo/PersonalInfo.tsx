@@ -1,4 +1,5 @@
-import { useState, useEffect, useCallback, useMemo, memo } from 'react';
+import { useState, useEffect, useCallback, memo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
 import { getAdditionalUserData as getAdditionalUserDataRequest } from 'redux/Profile/redux/actions';
@@ -49,13 +50,11 @@ const PersonalInfo = memo(
       if (user) getAdditionalUserData(user);
     }, [getAdditionalUserData, user, currentEditing]);
 
-    const mapGender = useMemo(
-      () => ({
-        female: 'Женщина',
-        male: 'Мужчина',
-      }),
-      [],
-    );
+    const capitalize = (string: string): string => {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    };
+
+    const { t } = useTranslation('PersonalInfo');
 
     const setAdditionalUserData = useCallback(() => {
       const { displayName, email } = user;
@@ -63,10 +62,10 @@ const PersonalInfo = memo(
       setUserData({
         displayName,
         email,
-        gender: additionalUserData ? mapGender[additionalUserData.gender] : '',
+        gender: additionalUserData ? t(capitalize(additionalUserData.gender)) : '',
         birthday: additionalUserData ? additionalUserData.birthDate : '',
       });
-    }, [additionalUserData, mapGender, user]);
+    }, [additionalUserData, t, user]);
 
     useEffect(() => {
       if (isSuccess) setAdditionalUserData();

@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import { Form } from 'react-final-form';
+import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
 import Button from 'components/Button/Button';
@@ -55,9 +56,11 @@ const Subscriptions = memo(
       startSubscriptionUpdate({ email, subscriptions: { hasSpecialOffers: newValue } });
     };
 
+    const { t } = useTranslation('Notifications');
+
     return (
       <S.Subscriptions>
-        <S.Title>Новостные рассылки</S.Title>
+        <S.Title>{t('Newsletters')}</S.Title>
         <Form
           initialValues={{ hasSpecialOffers }}
           onSubmit={onSubmit}
@@ -66,16 +69,16 @@ const Subscriptions = memo(
               <form onSubmit={handleSubmit}>
                 <S.List>
                   <S.Item>
-                    <Toggle name="hasSpecialOffers" label="Получать спецпредложения" />
+                    <Toggle name="hasSpecialOffers" label={t('Receive special offers')} />
                   </S.Item>
                 </S.List>
                 <Button disabled={isPending} isFlat isFilled>
-                  Сохранить
+                  {t('Save')}
                 </Button>
               </form>
               {isCompleted && (
                 <PopUpNotification
-                  message={statusText}
+                  message={t(statusText)}
                   onConfirmButtonClick={stopSubscriptionUpdate}
                 />
               )}

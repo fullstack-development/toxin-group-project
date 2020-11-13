@@ -1,5 +1,6 @@
 import { memo, useEffect } from 'react';
 import { Form, Field } from 'react-final-form';
+import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
 import Button from 'components/Button/Button';
@@ -11,12 +12,14 @@ import { User } from 'services/api/Firebase/modules/Authentication/types';
 
 type StateProps = {
   isPending: boolean;
+  isSuccess: boolean;
   isCompleted: boolean;
   statusText: string;
 };
 
 const mapState = (state: AppState): StateProps => ({
   isPending: state.profile.isUsernameUpdatePending,
+  isSuccess: state.profile.isUsernameUpdateSuccess,
   isCompleted: state.profile.isUsernameUpdateCompleted,
   statusText: state.profile.usernameUpdateStatusText,
 });
@@ -29,6 +32,7 @@ const mapDispatch = {
 type OwnProps = {
   user: User;
   displayName: string;
+  onChange: (title: string) => void;
 };
 
 type Props = OwnProps & StateProps & typeof mapDispatch;
@@ -43,8 +47,10 @@ const EditDisplayName = memo(
     user,
     displayName,
     isPending,
+    isSuccess,
     isCompleted,
     statusText,
+    onChange,
     startUsernameUpdate,
     stopUsernameUpdate,
   }: Props) => {
@@ -58,6 +64,13 @@ const EditDisplayName = memo(
       stopUsernameUpdate();
     }, [stopUsernameUpdate]);
 
+    const handleConfirmButtonClick = () => {
+      stopUsernameUpdate();
+      if (isSuccess) onChange('');
+    };
+
+    const { t } = useTranslation('PersonalInfo');
+
     return (
       <Form
         initialValues={{ name, surname }}
@@ -67,20 +80,30 @@ const EditDisplayName = memo(
             <form onSubmit={handleSubmit}>
               <Field
                 name="name"
-                render={({ input }) => <Input {...input} label="Имя" placeholder="Имя" required />}
+                render={({ input }) => (
+                  <Input
+                    {...input}
+                    label={t('First name')}
+                    placeholder={t('First name')}
+                    required
+                  />
+                )}
               />
               <Field
                 name="surname"
                 render={({ input }) => (
-                  <Input {...input} label="Фамилия" placeholder="Фамилия" required />
+                  <Input {...input} label={t('Last name')} placeholder={t('Last name')} required />
                 )}
               />
               <Button disabled={isPending} isFlat isFilled>
-                Сохранить
+                {t('Save')}
               </Button>
             </form>
             {isCompleted && (
-              <PopUpNotification message={statusText} onConfirmButtonClick={stopUsernameUpdate} />
+              <PopUpNotification
+                message={t(statusText)}
+                onConfirmButtonClick={handleConfirmButtonClick}
+              />
             )}
           </>
         )}
