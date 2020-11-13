@@ -1,14 +1,16 @@
-import { ComponentType, memo } from 'react';
-import { withTranslation, WithTranslation } from 'react-i18next';
+import { memo } from 'react';
+import { WithTranslation, withTranslation } from 'react-i18next';
 
 import StarRating from 'components/StarRating/StarRating';
 import formatNumber from 'shared/helpers/formatNumber';
 
 import ImageGallery from './components/ImageGallery/ImageGallery';
 import * as S from './Room.styles';
-import { Props } from './Room.types';
+import { RoomProps } from './Room.types';
 
-const Room: ComponentType<WithTranslation & Props> = memo(
+type Props = WithTranslation & RoomProps;
+
+const Room = memo(
   ({
     price,
     number,

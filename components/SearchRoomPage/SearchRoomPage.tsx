@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import MainLayout from 'components/MainLayout/MainLayout';
 import Preloader from 'components/Preloader/Preloader';
-import { Props as RoomProps } from 'components/Room/Room.types';
+import { RoomProps } from 'components/Room/Room.types';
 import RoomFilter from 'components/RoomFilter/RoomFilter';
 import Rooms from 'components/Rooms/Rooms';
 import defaultFilters from 'components/SearchRoomForm/defaultFilters';

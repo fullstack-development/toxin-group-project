@@ -1,12 +1,14 @@
-import { ComponentType, memo } from 'react';
-import { withTranslation, WithTranslation } from 'react-i18next';
+import { memo } from 'react';
+import { WithTranslation, withTranslation } from 'react-i18next';
 
 import LogoImg from 'components/Logo/Logo';
 
 import { LogoProps } from '../../Footer.types';
 import * as S from './Logo.styles';
 
-const Logo: ComponentType<WithTranslation & LogoProps> = memo(({ description, t }: LogoProps) => (
+type Props = WithTranslation & LogoProps;
+
+const Logo = memo(({ description, t }: Props) => (
   <S.Container>
     <S.ImgContainer>
       <LogoImg />
