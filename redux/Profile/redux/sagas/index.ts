@@ -120,7 +120,7 @@ function* getAdditionalUserData({ payload: user }: GetAdditionalUserDataRequest)
   }
 }
 
-export function* rootSaga(): SagaIterator {
+function* rootSaga(): SagaIterator {
   yield takeLeadingAction<EmailUpdateRequest['type']>('EMAIL_UPDATE_PROCESS', emailUpdate);
   yield takeLeadingAction<GetAdditionalUserDataRequest['type']>(
     'GET_ADDITIONAL_USER_DATA_PROCESS',
@@ -133,3 +133,5 @@ export function* rootSaga(): SagaIterator {
   );
   yield takeLeadingAction<UsernameUpdateRequest['type']>('USERNAME_UPDATE_PROCESS', usernameUpdate);
 }
+
+export { rootSaga };

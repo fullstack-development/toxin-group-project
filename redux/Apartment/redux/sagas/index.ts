@@ -22,9 +22,11 @@ function* getRoomDetails({ payload: id }: GetRoomDetailsRequest) {
   }
 }
 
-export function* rootSaga(): SagaIterator {
+function* rootSaga(): SagaIterator {
   yield takeLeadingAction<GetRoomDetailsRequest['type']>(
     'GET_ROOM_DETAILS_PROCESS',
     getRoomDetails,
   );
 }
+
+export { rootSaga };

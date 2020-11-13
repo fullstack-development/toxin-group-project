@@ -43,6 +43,8 @@ function* registration({
   }
 }
 
-export function* rootSaga(): SagaIterator {
+function* rootSaga(): SagaIterator {
   yield takeLatestAction<RegistrationRequest['type']>('REGISTRATION_REQUEST', registration);
 }
+
+export { rootSaga };

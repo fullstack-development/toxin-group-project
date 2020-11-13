@@ -1,39 +1,33 @@
 import { Action, ActionPayload } from 'redux/action.model';
 
-export type SubscriptionData = {
+type SubscriptionData = {
   hasSpecialOffers: boolean;
 };
 
-export type SubscriptionUpdate = {
+type SubscriptionUpdate = {
   email: string;
   subscriptions: {
     hasSpecialOffers: boolean;
   };
 };
 
-export type SubscriptionState = {
+type SubscriptionState = {
   subscriptionData: null | SubscriptionData;
   isUpdatePending: boolean;
   isUpdateCompleted: boolean;
   updateStatusText: string;
 };
 
-export type GetSubscriptionDataRequest = ActionPayload<'GET_SUBSCRIPTION_DATA_PROCESS', string>;
-export type GetSubscriptionDataSuccess = ActionPayload<
-  'GET_SUBSCRIPTION_DATA_SUCCESS',
-  SubscriptionData
->;
-export type GetSubscriptionDataFailed = Action<'GET_SUBSCRIPTION_DATA_FAILED'>;
+type GetSubscriptionDataRequest = ActionPayload<'GET_SUBSCRIPTION_DATA_PROCESS', string>;
+type GetSubscriptionDataSuccess = ActionPayload<'GET_SUBSCRIPTION_DATA_SUCCESS', SubscriptionData>;
+type GetSubscriptionDataFailed = Action<'GET_SUBSCRIPTION_DATA_FAILED'>;
 
-export type SubscriptionUpdateRequest = ActionPayload<
-  'SUBSCRIPTION_UPDATE_PROCESS',
-  SubscriptionUpdate
->;
-export type SubscriptionUpdateSuccess = ActionPayload<'SUBSCRIPTION_UPDATE_SUCCESS', string>;
-export type SubscriptionUpdateFailed = ActionPayload<'SUBSCRIPTION_UPDATE_FAILED', string>;
-export type SubscriptionUpdateCompleted = Action<'SUBSCRIPTION_UPDATE_COMPLETED'>;
+type SubscriptionUpdateRequest = ActionPayload<'SUBSCRIPTION_UPDATE_PROCESS', SubscriptionUpdate>;
+type SubscriptionUpdateSuccess = ActionPayload<'SUBSCRIPTION_UPDATE_SUCCESS', string>;
+type SubscriptionUpdateFailed = ActionPayload<'SUBSCRIPTION_UPDATE_FAILED', string>;
+type SubscriptionUpdateCompleted = Action<'SUBSCRIPTION_UPDATE_COMPLETED'>;
 
-export type SubscriptionActions =
+type SubscriptionActions =
   | GetSubscriptionDataRequest
   | GetSubscriptionDataSuccess
   | GetSubscriptionDataFailed
@@ -41,3 +35,17 @@ export type SubscriptionActions =
   | SubscriptionUpdateSuccess
   | SubscriptionUpdateFailed
   | SubscriptionUpdateCompleted;
+
+export type {
+  SubscriptionData,
+  SubscriptionUpdate,
+  SubscriptionState,
+  GetSubscriptionDataRequest,
+  GetSubscriptionDataSuccess,
+  GetSubscriptionDataFailed,
+  SubscriptionUpdateRequest,
+  SubscriptionUpdateSuccess,
+  SubscriptionUpdateFailed,
+  SubscriptionUpdateCompleted,
+  SubscriptionActions,
+};

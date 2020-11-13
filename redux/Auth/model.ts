@@ -1,12 +1,12 @@
 import { Action, ActionPayload } from 'redux/action.model';
 import { User } from 'services/api/Firebase/modules/Authentication/types';
 
-export type AuthData = {
+type AuthData = {
   email: string;
   password: string;
 };
 
-export type AuthState = {
+type AuthState = {
   isAuthSuccess: boolean;
   isAuthProcessNow: boolean;
   authStatusText: string;
@@ -18,23 +18,23 @@ export type AuthState = {
   passwordResetStatusText: string;
 };
 
-export type RequestToAuth = ActionPayload<'AUTH_PROCESS', AuthData>;
-export type RequestToAuthWithGoogle = Action<'GOOGLE_AUTH_PROCESS'>;
-export type SetAuthRequired = Action<'AUTH_REQUIRED'>;
-export type SetAuthStatusSuccess = ActionPayload<'AUTH_SUCCESS', User>;
-export type SetAuthStatusFailed = ActionPayload<'AUTH_FAILED', string>;
-export type BreakAuthProcess = Action<'BREAK_AUTH_PROCESS'>;
-export type PreloadAuthData = Action<'PRELOAD_AUTH_DATA'>;
+type RequestToAuth = ActionPayload<'AUTH_PROCESS', AuthData>;
+type RequestToAuthWithGoogle = Action<'GOOGLE_AUTH_PROCESS'>;
+type SetAuthRequired = Action<'AUTH_REQUIRED'>;
+type SetAuthStatusSuccess = ActionPayload<'AUTH_SUCCESS', User>;
+type SetAuthStatusFailed = ActionPayload<'AUTH_FAILED', string>;
+type BreakAuthProcess = Action<'BREAK_AUTH_PROCESS'>;
+type PreloadAuthData = Action<'PRELOAD_AUTH_DATA'>;
 
-export type LogoutProcess = Action<'AUTH_LOGOUT_PROCESS'>;
-export type LogoutDone = Action<'AUTH_LOGOUT_DONE'>;
+type LogoutProcess = Action<'AUTH_LOGOUT_PROCESS'>;
+type LogoutDone = Action<'AUTH_LOGOUT_DONE'>;
 
-export type PasswordResetRequest = ActionPayload<'PASSWORD_RESET_PROCESS', string>;
-export type PasswordResetSuccess = ActionPayload<'PASSWORD_RESET_SUCCESS', string>;
-export type PasswordResetFailed = ActionPayload<'PASSWORD_RESET_FAILED', string>;
-export type PasswordResetCompleted = Action<'PASSWORD_RESET_COMPLETED'>;
+type PasswordResetRequest = ActionPayload<'PASSWORD_RESET_PROCESS', string>;
+type PasswordResetSuccess = ActionPayload<'PASSWORD_RESET_SUCCESS', string>;
+type PasswordResetFailed = ActionPayload<'PASSWORD_RESET_FAILED', string>;
+type PasswordResetCompleted = Action<'PASSWORD_RESET_COMPLETED'>;
 
-export type AuthActions =
+type AuthActions =
   | RequestToAuth
   | RequestToAuthWithGoogle
   | SetAuthRequired
@@ -47,3 +47,22 @@ export type AuthActions =
   | PasswordResetFailed
   | PasswordResetRequest
   | PasswordResetSuccess;
+
+export type {
+  AuthData,
+  AuthState,
+  RequestToAuth,
+  RequestToAuthWithGoogle,
+  SetAuthRequired,
+  SetAuthStatusSuccess,
+  SetAuthStatusFailed,
+  BreakAuthProcess,
+  PreloadAuthData,
+  LogoutProcess,
+  LogoutDone,
+  PasswordResetRequest,
+  PasswordResetSuccess,
+  PasswordResetFailed,
+  PasswordResetCompleted,
+  AuthActions,
+};

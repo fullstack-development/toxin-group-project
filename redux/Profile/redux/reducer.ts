@@ -17,10 +17,7 @@ const initialState: ProfileState = {
   usernameUpdateStatusText: '',
 };
 
-export const profile = (
-  state: ProfileState = initialState,
-  action: ProfileActions,
-): ProfileState => {
+const profile = (state: ProfileState = initialState, action: ProfileActions): ProfileState => {
   switch (action.type) {
     case 'EMAIL_UPDATE_PROCESS':
       return {
@@ -156,3 +153,5 @@ export const profile = (
       return state;
   }
 };
+
+export { profile };

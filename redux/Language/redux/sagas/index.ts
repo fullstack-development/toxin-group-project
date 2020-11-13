@@ -12,6 +12,8 @@ function* changeLanguage(data: ChangeLanguageRequest) {
   yield put({ type: 'CHANGE_LANGUAGE_SUCCESS', payload: data.payload });
 }
 
-export function* rootSaga(): SagaIterator {
+function* rootSaga(): SagaIterator {
   yield takeLatestAction<ChangeLanguageRequest['type']>('CHANGE_LANGUAGE_REQUEST', changeLanguage);
 }
+
+export { rootSaga };

@@ -12,7 +12,7 @@ const initialState: AuthState = {
   passwordResetStatusText: '',
 };
 
-export const auth = (state: AuthState = initialState, action: AuthActions): AuthState => {
+const auth = (state: AuthState = initialState, action: AuthActions): AuthState => {
   switch (action.type) {
     case 'AUTH_PROCESS':
       return {
@@ -86,3 +86,5 @@ export const auth = (state: AuthState = initialState, action: AuthActions): Auth
       return state;
   }
 };
+
+export { auth };

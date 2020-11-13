@@ -64,8 +64,10 @@ function* confirmBookedRoom({
   yield call(Api.booking.setBookedByUser, data);
 }
 
-export function* rootSaga(): SagaIterator {
+function* rootSaga(): SagaIterator {
   yield takeLeadingAction<RoomsRequest['type']>('LOAD_ROOMS', loadRooms);
   yield takeLatestAction<LoadBookedHistory['type']>('LOAD_BOOKED_HISTORY', loadRoomsHistory);
   yield takeLatestAction<BookCurrentRoom['type']>('BOOK_ROOM', confirmBookedRoom);
 }
+
+export { rootSaga };

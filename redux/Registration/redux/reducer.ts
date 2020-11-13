@@ -6,7 +6,7 @@ const initialState: RegistrationState = {
   statusText: '',
 };
 
-export const registration = (
+const registration = (
   state: RegistrationState = initialState,
   action: RegistrationActions,
 ): RegistrationState => {
@@ -36,3 +36,5 @@ export const registration = (
       return state;
   }
 };
+
+export { registration };

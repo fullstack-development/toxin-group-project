@@ -46,7 +46,7 @@ function* subscriptionUpdate({ payload: { email, subscriptions } }: Subscription
   }
 }
 
-export function* rootSaga(): SagaIterator {
+function* rootSaga(): SagaIterator {
   yield takeLeadingAction<GetSubscriptionDataRequest['type']>(
     'GET_SUBSCRIPTION_DATA_PROCESS',
     getSubscriptionsData,
@@ -56,3 +56,5 @@ export function* rootSaga(): SagaIterator {
     subscriptionUpdate,
   );
 }
+
+export { rootSaga };

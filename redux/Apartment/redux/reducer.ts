@@ -5,7 +5,7 @@ const initialState: ApartmentState = {
   roomDetails: null,
 };
 
-export const apartment = (
+const apartment = (
   state: ApartmentState = initialState,
   actions: ApartmentActions,
 ): ApartmentState => {
@@ -32,3 +32,5 @@ export const apartment = (
       return state;
   }
 };
+
+export { apartment };

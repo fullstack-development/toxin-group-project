@@ -6,10 +6,7 @@ const initialState: LanguageState = {
   currentLanguage: i18next.language,
 };
 
-export const language = (
-  state: LanguageState = initialState,
-  action: LanguageActions,
-): LanguageState => {
+const language = (state: LanguageState = initialState, action: LanguageActions): LanguageState => {
   switch (action.type) {
     case 'CHANGE_LANGUAGE_SUCCESS':
       return {
@@ -20,3 +17,5 @@ export const language = (
       return state;
   }
 };
+
+export { language };

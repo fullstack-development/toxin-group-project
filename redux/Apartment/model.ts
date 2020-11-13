@@ -1,13 +1,21 @@
 import { Action, ActionPayload } from 'redux/action.model';
 import { Apartment } from 'services/api/entities/types';
 
-export type ApartmentState = {
+type ApartmentState = {
   isGetRoomDetailsPending: boolean;
   roomDetails: Apartment | null;
 };
 
-export type GetRoomDetailsRequest = ActionPayload<'GET_ROOM_DETAILS_PROCESS', number>;
-export type GetRoomDetailsSuccess = ActionPayload<'GET_ROOM_DETAILS_SUCCESS', Apartment>;
-export type GetRoomDetailsFailed = Action<'GET_ROOM_DETAILS_FAILED'>;
+type GetRoomDetailsRequest = ActionPayload<'GET_ROOM_DETAILS_PROCESS', number>;
+type GetRoomDetailsSuccess = ActionPayload<'GET_ROOM_DETAILS_SUCCESS', Apartment>;
+type GetRoomDetailsFailed = Action<'GET_ROOM_DETAILS_FAILED'>;
 
-export type ApartmentActions = GetRoomDetailsRequest | GetRoomDetailsSuccess | GetRoomDetailsFailed;
+type ApartmentActions = GetRoomDetailsRequest | GetRoomDetailsSuccess | GetRoomDetailsFailed;
+
+export type {
+  ApartmentState,
+  GetRoomDetailsRequest,
+  GetRoomDetailsSuccess,
+  GetRoomDetailsFailed,
+  ApartmentActions,
+};

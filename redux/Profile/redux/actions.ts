@@ -16,45 +16,57 @@ import {
   UsernameUpdateCompleted,
 } from '../model';
 
-export const emailUpdate = (data: EmailUpdate): EmailUpdateRequest => ({
+const emailUpdate = (data: EmailUpdate): EmailUpdateRequest => ({
   type: 'EMAIL_UPDATE_PROCESS',
   payload: data,
 });
 
-export const completeEmailUpdate = (): EmailUpdateCompleted => ({
+const completeEmailUpdate = (): EmailUpdateCompleted => ({
   type: 'EMAIL_UPDATE_COMPLETED',
 });
 
-export const getAdditionalUserData = (user: User): GetAdditionalUserDataRequest => ({
+const getAdditionalUserData = (user: User): GetAdditionalUserDataRequest => ({
   type: 'GET_ADDITIONAL_USER_DATA_PROCESS',
   payload: user,
 });
 
-export const passwordUpdate = (data: PasswordUpdate): PasswordUpdateRequest => ({
+const passwordUpdate = (data: PasswordUpdate): PasswordUpdateRequest => ({
   type: 'PASSWORD_UPDATE_PROCESS',
   payload: data,
 });
 
-export const completePasswordUpdate = (): PasswordUpdateCompleted => ({
+const completePasswordUpdate = (): PasswordUpdateCompleted => ({
   type: 'PASSWORD_UPDATE_COMPLETED',
 });
 
-export const updateAdditionalUserData = (
+const updateAdditionalUserData = (
   data: UpdateAdditionalUserData,
 ): UpdateAdditionalUserDataRequest => ({
   type: 'UPDATE_ADDITIONAL_USER_DATA_PROCESS',
   payload: data,
 });
 
-export const completeAdditionalUserDataUpdate = (): UpdateAdditionalUserDataCompleted => ({
+const completeAdditionalUserDataUpdate = (): UpdateAdditionalUserDataCompleted => ({
   type: 'UPDATE_ADDITIONAL_USER_DATA_COMPLETED',
 });
 
-export const usernameUpdate = (data: UsernameUpdate): UsernameUpdateRequest => ({
+const usernameUpdate = (data: UsernameUpdate): UsernameUpdateRequest => ({
   type: 'USERNAME_UPDATE_PROCESS',
   payload: data,
 });
 
-export const completeUsernameUpdate = (): UsernameUpdateCompleted => ({
+const completeUsernameUpdate = (): UsernameUpdateCompleted => ({
   type: 'USERNAME_UPDATE_COMPLETED',
 });
+
+export {
+  emailUpdate,
+  completeEmailUpdate,
+  getAdditionalUserData,
+  passwordUpdate,
+  completePasswordUpdate,
+  updateAdditionalUserData,
+  completeAdditionalUserDataUpdate,
+  usernameUpdate,
+  completeUsernameUpdate,
+};

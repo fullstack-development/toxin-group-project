@@ -9,32 +9,42 @@ import {
   PasswordResetCompleted,
 } from '../model';
 
-export const requestToAuth = (data: AuthData): RequestToAuth => ({
+const requestToAuth = (data: AuthData): RequestToAuth => ({
   type: 'AUTH_PROCESS',
   payload: data,
 });
 
-export const requestToAuthWithGoogle = (): RequestToAuthWithGoogle => ({
+const requestToAuthWithGoogle = (): RequestToAuthWithGoogle => ({
   type: 'GOOGLE_AUTH_PROCESS',
 });
 
-export const preloadAuthData = (): PreloadAuthData => ({
+const preloadAuthData = (): PreloadAuthData => ({
   type: 'PRELOAD_AUTH_DATA',
 });
 
-export const breakAuthProcess = (): BreakAuthProcess => ({
+const breakAuthProcess = (): BreakAuthProcess => ({
   type: 'BREAK_AUTH_PROCESS',
 });
 
-export const logout = (): LogoutProcess => ({
+const logout = (): LogoutProcess => ({
   type: 'AUTH_LOGOUT_PROCESS',
 });
 
-export const passwordReset = (email: string): PasswordResetRequest => ({
+const passwordReset = (email: string): PasswordResetRequest => ({
   type: 'PASSWORD_RESET_PROCESS',
   payload: email,
 });
 
-export const completePasswordReset = (): PasswordResetCompleted => ({
+const completePasswordReset = (): PasswordResetCompleted => ({
   type: 'PASSWORD_RESET_COMPLETED',
 });
+
+export {
+  requestToAuth,
+  requestToAuthWithGoogle,
+  preloadAuthData,
+  breakAuthProcess,
+  logout,
+  passwordReset,
+  completePasswordReset,
+};

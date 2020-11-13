@@ -8,10 +8,7 @@ const initialState: BookingState = {
   bookedRooms: null,
 };
 
-export const booking = (
-  state: BookingState = initialState,
-  action: BookingActions,
-): BookingState => {
+const booking = (state: BookingState = initialState, action: BookingActions): BookingState => {
   switch (action.type) {
     case 'LOAD_ROOMS':
       return { ...state, rooms: [] };
@@ -50,3 +47,5 @@ export const booking = (
       return state;
   }
 };
+
+export { booking };

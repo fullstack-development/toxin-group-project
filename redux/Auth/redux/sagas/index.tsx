@@ -112,10 +112,12 @@ function* passwordReset({ payload: email }: PasswordResetRequest) {
   }
 }
 
-export function* rootSaga(): SagaIterator {
+function* rootSaga(): SagaIterator {
   yield takeLatestAction<RequestToAuth['type']>('AUTH_PROCESS', auth);
   yield takeLatestAction<RequestToAuthWithGoogle['type']>('GOOGLE_AUTH_PROCESS', authWithGoogle);
   yield takeLatestAction<PreloadAuthData['type']>('PRELOAD_AUTH_DATA', prepareAuthData);
   yield takeLatestAction<LogoutProcess['type']>('AUTH_LOGOUT_PROCESS', logoutUser);
   yield takeLeadingAction<PasswordResetRequest['type']>('PASSWORD_RESET_PROCESS', passwordReset);
 }
+
+export { rootSaga };
