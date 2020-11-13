@@ -51,6 +51,9 @@ const Link = styled.a<Link>`
       text-decoration: none;
       margin-right: 1.5rem;
       position: relative;
+      display: inline-block;
+      max-width: 16rem;
+      word-break: break-word;
 
       &:hover {
         color: ${colors.basicDarkest};

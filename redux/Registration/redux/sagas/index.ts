@@ -1,6 +1,7 @@
 import { SagaIterator } from 'redux-saga';
 import { put, takeLatest, call, PutEffect } from 'redux-saga/effects';
 
+import { requestToAuth } from 'redux/Auth/redux/actions';
 import Api from 'services/api/api';
 import { UserCredential } from 'services/api/Firebase/modules/Authentication/types';
 
@@ -41,6 +42,8 @@ function* startRegistrationProcess(data: {
       type: REGISTRATION_SUCCESS,
       payload: result,
     });
+
+    yield requestToAuth({ email, password });
   } catch (error) {
     yield put({
       type: REGISTRATION_FAILED,
