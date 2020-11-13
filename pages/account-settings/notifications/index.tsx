@@ -17,6 +17,4 @@ const Notifications = memo(() => (
   </>
 ));
 
-Notifications.displayName = 'Notifications';
-
 export default Notifications;

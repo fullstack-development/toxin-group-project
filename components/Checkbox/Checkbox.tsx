@@ -35,6 +35,4 @@ const Checkbox = memo(({ name, isChecked, label, title, onChange }: Props) => {
   );
 });
 
-Checkbox.displayName = 'Checkbox';
-
 export default Checkbox;

@@ -213,6 +213,4 @@ const Dropdown = memo(
   },
 );
 
-Dropdown.displayName = 'Dropdown';
-
 export default Dropdown;

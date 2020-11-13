@@ -17,6 +17,4 @@ const LoginAndSecurity = memo(() => (
   </>
 ));
 
-LoginAndSecurity.displayName = 'LoginAndSecurity';
-
 export default LoginAndSecurity;

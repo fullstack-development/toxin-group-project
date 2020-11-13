@@ -23,6 +23,4 @@ const NavItem = memo(({ title, items, t }: Props) => (
   </S.Container>
 ));
 
-NavItem.displayName = 'NavItem';
-
 export default withTranslation('Links')(NavItem);

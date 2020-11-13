@@ -23,6 +23,4 @@ const NavAccountSettings = memo(({ title }: Props) => {
   );
 });
 
-NavAccountSettings.displayName = 'NavAccountSettings';
-
 export default NavAccountSettings;

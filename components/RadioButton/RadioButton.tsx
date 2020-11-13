@@ -32,6 +32,4 @@ const RadioButton = memo(({ name, label, value, onChange }: Props) => {
   );
 });
 
-RadioButton.displayName = 'RadioButton';
-
 export default RadioButton;

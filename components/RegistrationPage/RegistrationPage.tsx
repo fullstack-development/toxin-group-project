@@ -71,6 +71,4 @@ const RegistrationPage = memo(
   },
 );
 
-RegistrationPage.displayName = 'RegistrationPage';
-
 export default connect(mapState, mapDispatch)(RegistrationPage);

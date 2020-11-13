@@ -78,6 +78,4 @@ const SubscriptionField = memo(
   },
 );
 
-SubscriptionField.displayName = 'SubscriptionField';
-
 export default connect(mapState, mapDispatch)(SubscriptionField);

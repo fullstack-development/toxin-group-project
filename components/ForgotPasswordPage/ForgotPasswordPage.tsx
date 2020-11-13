@@ -10,6 +10,4 @@ const ForgotPasswordPage = memo(() => (
   </MainLayout>
 ));
 
-ForgotPasswordPage.displayName = 'ForgotPasswordPage';
-
 export default ForgotPasswordPage;

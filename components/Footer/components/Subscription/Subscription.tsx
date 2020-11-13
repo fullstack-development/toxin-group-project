@@ -18,6 +18,4 @@ const Subscription = memo(({ title, text, t }: Props) => (
   </S.Container>
 ));
 
-Subscription.displayName = 'Subscription';
-
 export default withTranslation()(Subscription);

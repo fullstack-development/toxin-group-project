@@ -23,6 +23,4 @@ const NavBar = memo(({ onPreviousClick, onNextClick }: Props) => {
   );
 });
 
-NavBar.displayName = 'NavBar';
-
 export default NavBar;

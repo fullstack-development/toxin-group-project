@@ -83,6 +83,4 @@ const SearchRoomForm = memo(() => {
   );
 });
 
-SearchRoomForm.displayName = 'SeacrhRoomForm';
-
 export default SearchRoomForm;

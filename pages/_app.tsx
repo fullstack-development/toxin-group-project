@@ -21,6 +21,4 @@ const MyApp = memo(({ Component, pageProps }: AppProps) => (
   </ThemeProvider>
 ));
 
-MyApp.displayName = 'MyApp';
-
 export default MyApp;

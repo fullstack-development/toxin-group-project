@@ -26,6 +26,4 @@ const CheckboxesList = memo(({ roomOptions }: Props) => (
   </S.List>
 ));
 
-CheckboxesList.displayName = 'CheckboxesList';
-
 export default withTranslation()(CheckboxesList);

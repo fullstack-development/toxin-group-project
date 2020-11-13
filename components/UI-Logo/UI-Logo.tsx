@@ -20,6 +20,4 @@ const UILogo = memo(() => (
   </svg>
 ));
 
-UILogo.displayName = 'UILogo';
-
 export default UILogo;

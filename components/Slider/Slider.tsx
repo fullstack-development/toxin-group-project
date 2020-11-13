@@ -73,6 +73,4 @@ const Slider = memo(
   },
 );
 
-Slider.displayName = 'Slider';
-
 export default Slider;

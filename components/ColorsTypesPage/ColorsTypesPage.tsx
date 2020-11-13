@@ -27,6 +27,4 @@ const ColorsTypesPage = memo(() => {
   );
 });
 
-ColorsTypesPage.displayName = 'ColorsTypesPage';
-
 export default ColorsTypesPage;

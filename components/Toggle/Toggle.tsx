@@ -26,6 +26,4 @@ const Toggle = memo(({ name, label, value, onChange }: Props) => (
   />
 ));
 
-Toggle.displayName = 'Toggle';
-
 export default Toggle;

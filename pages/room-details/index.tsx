@@ -17,6 +17,4 @@ const RoomDetails = memo(() => (
   </>
 ));
 
-RoomDetails.displayName = 'RoomDetails';
-
 export default RoomDetails;

@@ -11,6 +11,4 @@ const IndexPage = memo(() => (
   </MainLayout>
 ));
 
-IndexPage.displayName = 'IndexPage';
-
 export default IndexPage;

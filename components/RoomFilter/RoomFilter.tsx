@@ -149,6 +149,4 @@ const RoomFilter = memo(({ initialFilters, loadRooms, isPending = false }: Props
   );
 });
 
-RoomFilter.displayName = 'RoomFilter';
-
 export default RoomFilter;

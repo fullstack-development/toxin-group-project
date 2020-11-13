@@ -44,6 +44,4 @@ const Header = memo(({ displayName, wasFinishedAuthChecking }: Props) => {
   );
 });
 
-Header.displayName = 'Header';
-
 export default Header;

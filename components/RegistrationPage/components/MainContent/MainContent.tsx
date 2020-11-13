@@ -21,6 +21,4 @@ const MainContent = memo(
   ),
 );
 
-MainContent.displayName = 'MainContent';
-
 export default MainContent;

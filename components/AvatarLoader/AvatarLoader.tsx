@@ -169,6 +169,4 @@ const AvatarLoader = memo(({ name }: Props) => {
   );
 });
 
-AvatarLoader.displayName = 'AvatarLoader';
-
 export default AvatarLoader;

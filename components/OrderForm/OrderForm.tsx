@@ -217,6 +217,4 @@ const OrderForm = memo(
   },
 );
 
-OrderForm.displayName = 'OrderForm';
-
 export default OrderForm;

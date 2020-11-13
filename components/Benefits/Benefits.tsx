@@ -27,6 +27,4 @@ const Benefits = memo(({ items, t }: Props) => (
   </S.Benefits>
 ));
 
-Benefits.displayName = 'Benefits';
-
 export default withTranslation('Benefits')(Benefits);

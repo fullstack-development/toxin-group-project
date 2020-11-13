@@ -13,6 +13,4 @@ const ArrowButton = memo((props: Props) => (
   </S.ArrowButton>
 ));
 
-ArrowButton.displayName = 'ArrowButton';
-
 export default ArrowButton;

@@ -59,6 +59,4 @@ const Chart = memo((numberOfRatings: Props) => (
   </PieChart>
 ));
 
-Chart.displayName = 'Chart';
-
 export default Chart;

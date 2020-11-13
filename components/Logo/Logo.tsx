@@ -15,6 +15,4 @@ const Logo = memo((props: Props) => (
   </Link>
 ));
 
-Logo.displayName = 'Logo';
-
 export default Logo;

@@ -130,6 +130,4 @@ const MainContent = memo(
   },
 );
 
-MainContent.displayName = 'MainContent';
-
 export default connect(mapState, mapDispatch)(MainContent);

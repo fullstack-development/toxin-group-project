@@ -17,6 +17,4 @@ const Registration = memo(() => (
   </>
 ));
 
-Registration.displayName = 'Registration';
-
 export default Registration;

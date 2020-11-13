@@ -76,6 +76,4 @@ const AuthPage = memo(
   },
 );
 
-AuthPage.displayName = 'AuthPage';
-
 export default connect(mapState, mapDispatch)(AuthPage);

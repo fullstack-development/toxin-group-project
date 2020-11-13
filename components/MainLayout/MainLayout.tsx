@@ -44,6 +44,4 @@ const MainLayout = memo(
   },
 );
 
-MainLayout.displayName = 'MainLayout';
-
 export default connect(mapState, mapDispatch)(MainLayout);

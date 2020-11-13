@@ -49,6 +49,4 @@ const RoomImpression = memo(({ title, numberOfRatings }: Props) => {
   );
 });
 
-RoomImpression.displayName = 'RoomImpression';
-
 export default RoomImpression;

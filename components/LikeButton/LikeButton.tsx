@@ -31,6 +31,4 @@ const LikeButton = memo((props: Props) => {
   );
 });
 
-LikeButton.displayName = 'LikeButton';
-
 export default LikeButton;

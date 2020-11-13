@@ -36,6 +36,4 @@ const Reviews = memo(({ reviews }: Props) => {
   );
 });
 
-Reviews.displayName = 'Reviews';
-
 export default Reviews;

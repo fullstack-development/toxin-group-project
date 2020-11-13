@@ -51,6 +51,4 @@ const Rooms = memo(({ rooms }: Props) => {
   );
 });
 
-Rooms.displayName = 'Rooms';
-
 export default Rooms;

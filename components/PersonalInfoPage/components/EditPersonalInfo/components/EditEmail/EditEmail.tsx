@@ -97,6 +97,4 @@ const EditEmail = memo(
   },
 );
 
-EditEmail.displayName = 'EditEmail';
-
 export default connect(mapState, mapDispatch)(EditEmail);

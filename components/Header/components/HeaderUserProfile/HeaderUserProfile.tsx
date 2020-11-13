@@ -30,6 +30,4 @@ const HeaderUserProfile = memo(({ displayName }: Props) => {
   );
 });
 
-HeaderUserProfile.displayName = 'HeaderUserProfile';
-
 export default HeaderUserProfile;

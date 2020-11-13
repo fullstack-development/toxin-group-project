@@ -99,6 +99,4 @@ const AccountEntry = memo((props: Props) => {
   );
 });
 
-AccountEntry.displayName = 'AccountEntry';
-
 export default AccountEntry;

@@ -17,6 +17,4 @@ const PersonalInfo = memo(() => (
   </>
 ));
 
-PersonalInfo.displayName = 'PersonalInfo';
-
 export default PersonalInfo;

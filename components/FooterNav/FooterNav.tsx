@@ -9,6 +9,4 @@ const FooterNav = memo(({ items = footerNavData.items }: NavProps) => (
   <S.Container>{items && items.map((item) => <NavItem key={item.title} {...item} />)}</S.Container>
 ));
 
-FooterNav.displayName = 'FooterNav';
-
 export default FooterNav;

@@ -49,6 +49,4 @@ const Room = memo(
   ),
 );
 
-Room.displayName = 'Room';
-
 export default withTranslation('WordForms')(Room);

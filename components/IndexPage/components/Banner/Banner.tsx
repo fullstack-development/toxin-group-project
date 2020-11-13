@@ -16,6 +16,4 @@ const Banner = memo(({ message, t }: Props) => (
   </S.Banner>
 ));
 
-Banner.displayName = 'Banner';
-
 export default withTranslation()(Banner);

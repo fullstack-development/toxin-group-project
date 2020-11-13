@@ -63,6 +63,4 @@ const SelectedRoomsPage = memo(
   },
 );
 
-SelectedRoomsPage.displayName = 'SelectedRoomsPage';
-
 export default connect(mapState, mapDispatch)(SelectedRoomsPage);

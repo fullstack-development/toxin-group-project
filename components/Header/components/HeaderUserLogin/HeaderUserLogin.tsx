@@ -18,6 +18,4 @@ const HeaderUserLogin = memo(() => {
   );
 });
 
-HeaderUserLogin.displayName = 'HeaderUserLogin';
-
 export default HeaderUserLogin;

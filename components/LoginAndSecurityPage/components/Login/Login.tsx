@@ -33,6 +33,4 @@ const Login = memo(() => {
   );
 });
 
-Login.displayName = 'Login';
-
 export default Login;

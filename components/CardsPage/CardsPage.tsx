@@ -69,6 +69,4 @@ const CardsPage = memo(() => {
   );
 });
 
-CardsPage.displayName = 'CardsPage';
-
 export default CardsPage;

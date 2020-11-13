@@ -32,6 +32,4 @@ const UITypes = memo(({ types }: Props) => {
   );
 });
 
-UITypes.displayName = 'UITypes';
-
 export default UITypes;

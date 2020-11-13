@@ -10,6 +10,4 @@ const Banner = memo(() => (
   </S.Banner>
 ));
 
-Banner.displayName = 'Banner';
-
 export default Banner;

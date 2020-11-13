@@ -17,6 +17,4 @@ const Logout = memo(() => (
   </>
 ));
 
-Logout.displayName = 'Logout';
-
 export default Logout;

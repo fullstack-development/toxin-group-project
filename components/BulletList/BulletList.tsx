@@ -15,6 +15,4 @@ const BulletList = memo(({ items = ['No items passed'], t }: Props) => (
   </S.List>
 ));
 
-BulletList.displayName = 'BulletList';
-
 export default withTranslation('Bullets')(BulletList);

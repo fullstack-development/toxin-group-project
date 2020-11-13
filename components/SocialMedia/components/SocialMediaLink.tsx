@@ -9,6 +9,4 @@ const SocialMediaLink = memo(({ href, icon, text }: SocialMediaItem) => (
   </S.Link>
 ));
 
-SocialMediaLink.displayName = 'SocialMediaLink';
-
 export default SocialMediaLink;

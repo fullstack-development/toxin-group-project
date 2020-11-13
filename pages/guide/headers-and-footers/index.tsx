@@ -4,6 +4,4 @@ import HeadersAndFootersPage from 'components/HeadersAndFootersPage/HeadersAndFo
 
 const HeadersAndFooters = memo(() => <HeadersAndFootersPage />);
 
-HeadersAndFooters.displayName = 'HeadersAndFooters';
-
 export default HeadersAndFooters;

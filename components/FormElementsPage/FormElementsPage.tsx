@@ -272,6 +272,4 @@ const FormElementsPage = memo(() => {
   );
 });
 
-FormElementsPage.displayName = 'FormElementsPage';
-
 export default FormElementsPage;

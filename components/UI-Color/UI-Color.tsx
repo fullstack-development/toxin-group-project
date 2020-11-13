@@ -18,6 +18,4 @@ const UIColor = memo(({ color, title, opacity }: Props) => (
   </S.Color>
 ));
 
-UIColor.displayName = 'UIColor';
-
 export default UIColor;

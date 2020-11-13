@@ -43,6 +43,4 @@ const Review = memo(({ avatarUrl, userName, date, text, likesCount }: Props) => 
   );
 });
 
-Review.displayName = 'Review';
-
 export default Review;

@@ -16,6 +16,4 @@ const SocialMedia = memo(({ items = defaultProps }: SocialMediaProps) => (
   </S.List>
 ));
 
-SocialMedia.displayName = 'SocialMedia';
-
 export default SocialMedia;

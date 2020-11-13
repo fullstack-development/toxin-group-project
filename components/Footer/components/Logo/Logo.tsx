@@ -17,6 +17,4 @@ const Logo = memo(({ description, t }: Props) => (
   </S.Container>
 ));
 
-Logo.displayName = 'Logo';
-
 export default withTranslation()(Logo);

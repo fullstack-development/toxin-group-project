@@ -112,6 +112,4 @@ const EditDisplayName = memo(
   },
 );
 
-EditDisplayName.displayName = 'EditDisplayName';
-
 export default connect(mapState, mapDispatch)(EditDisplayName);

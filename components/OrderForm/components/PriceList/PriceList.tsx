@@ -28,6 +28,4 @@ const PriceList = memo(({ items }: Props) => (
   </S.List>
 ));
 
-PriceList.displayName = 'PriceList';
-
 export default PriceList;

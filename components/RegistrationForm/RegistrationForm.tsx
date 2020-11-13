@@ -132,6 +132,4 @@ const RegistrationForm = memo(
   },
 );
 
-RegistrationForm.displayName = 'RegistrationForm';
-
 export default RegistrationForm;

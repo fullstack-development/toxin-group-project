@@ -100,6 +100,4 @@ const PersonalInfo = memo(
   },
 );
 
-PersonalInfo.displayName = 'PersonalInfo';
-
 export default connect(mapState, mapDispatch)(PersonalInfo);

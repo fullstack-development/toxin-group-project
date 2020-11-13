@@ -15,6 +15,4 @@ const Preloader = memo(({ label = 'Loading rooms ...', t }: Props) => (
   </S.Container>
 ));
 
-Preloader.displayName = 'Preloader';
-
 export default withTranslation('RoomFilter')(Preloader);

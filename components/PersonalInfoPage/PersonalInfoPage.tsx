@@ -40,6 +40,4 @@ const PersonalInfoPage = memo(({ isAuthSuccess, checkAuthBeforePageLoaded }: Pro
   );
 });
 
-PersonalInfoPage.displayName = 'PersonalInfoPage';
-
 export default connect(mapState, mapDispatch)(PersonalInfoPage);

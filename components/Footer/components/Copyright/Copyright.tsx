@@ -10,6 +10,4 @@ const Copyright = memo(({ copyrightText, t }: Props) => (
   <S.Copyright>{t(`Footer:${copyrightText}`)}</S.Copyright>
 ));
 
-Copyright.displayName = 'Copyright';
-
 export default withTranslation()(Copyright);

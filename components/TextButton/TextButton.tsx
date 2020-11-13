@@ -14,6 +14,4 @@ const TextButton = memo(({ isSecondary = false, href, disabled, ...rest }: TextB
   ),
 );
 
-TextButton.displayName = 'TextButton';
-
 export default TextButton;

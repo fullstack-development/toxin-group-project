@@ -76,6 +76,4 @@ const LanguageDropdown = memo(({ currentLanguage, setNewLanguage }: Props) => {
   );
 });
 
-LanguageDropdown.displayName = 'LanguageDropdown';
-
 export default connect(mapState, mapDispatch)(LanguageDropdown);

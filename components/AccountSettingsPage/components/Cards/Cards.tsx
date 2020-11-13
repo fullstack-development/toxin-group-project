@@ -21,6 +21,4 @@ const Cards = memo(() => {
   );
 });
 
-Cards.displayName = 'Cards';
-
 export default Cards;

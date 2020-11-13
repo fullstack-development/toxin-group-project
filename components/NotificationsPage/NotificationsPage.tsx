@@ -40,6 +40,4 @@ const NotificationsPage = memo(({ isAuthSuccess, checkAuthBeforePageLoaded }: Pr
   );
 });
 
-NotificationsPage.displayName = 'NotificationsPage';
-
 export default connect(mapState, mapDispatch)(NotificationsPage);

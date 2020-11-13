@@ -61,6 +61,4 @@ const ImageGallery = memo(
   },
 );
 
-ImageGallery.displayName = 'ImageGallery';
-
 export default ImageGallery;

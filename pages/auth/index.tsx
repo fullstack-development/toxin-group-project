@@ -20,6 +20,4 @@ const Auth = memo(() => (
   </>
 ));
 
-Auth.displayName = 'Auth';
-
 export default Auth;

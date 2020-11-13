@@ -55,6 +55,4 @@ const EditPersonalInfo = memo(
   },
 );
 
-EditPersonalInfo.displayName = 'EditPersonalInfo';
-
 export default EditPersonalInfo;

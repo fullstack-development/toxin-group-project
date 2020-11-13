@@ -10,6 +10,4 @@ const Nav = memo(() => (
   </S.Nav>
 ));
 
-Nav.displayName = 'Nav';
-
 export default Nav;

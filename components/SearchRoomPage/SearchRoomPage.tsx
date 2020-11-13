@@ -138,6 +138,4 @@ const SearchRoomPage = memo(({ rooms, getRooms, isPending }: Props) => {
   );
 });
 
-SearchRoomPage.displayName = 'SearchRoomPage';
-
 export default connect(mapState, mapDispatch)(SearchRoomPage);

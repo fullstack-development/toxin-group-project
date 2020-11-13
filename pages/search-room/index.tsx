@@ -14,6 +14,4 @@ const SearchRoom = memo(() => (
   </>
 ));
 
-SearchRoom.displayName = 'SeacrhRoom';
-
 export default SearchRoom;

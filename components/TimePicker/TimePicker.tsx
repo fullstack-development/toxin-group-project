@@ -104,6 +104,4 @@ const TimePicker = memo(
   },
 );
 
-TimePicker.displayName = 'TimePicker';
-
 export default TimePicker;

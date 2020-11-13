@@ -17,6 +17,4 @@ const ForgotPassword = memo(() => (
   </>
 ));
 
-ForgotPassword.displayName = 'ForgotPassword';
-
 export default ForgotPassword;

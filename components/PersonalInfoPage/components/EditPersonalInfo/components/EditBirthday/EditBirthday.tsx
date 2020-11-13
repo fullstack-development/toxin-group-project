@@ -108,6 +108,4 @@ const EditBirthday = memo(
   },
 );
 
-EditBirthday.displayName = 'EditBirthday';
-
 export default connect(mapState, mapDispatch)(EditBirthday);

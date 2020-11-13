@@ -53,6 +53,4 @@ const MainContent = memo(({ user, subscriptionData, loadSubscriptionData }: Prop
   );
 });
 
-MainContent.displayName = 'MainContent';
-
 export default connect(mapState, mapDispatch)(MainContent);

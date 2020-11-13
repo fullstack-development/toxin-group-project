@@ -20,6 +20,4 @@ const SelectedRooms = memo(() => (
   </>
 ));
 
-SelectedRooms.displayName = 'SelectedRooms';
-
 export default SelectedRooms;

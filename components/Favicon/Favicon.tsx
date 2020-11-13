@@ -13,6 +13,4 @@ const Favicon = memo(() => (
   </Head>
 ));
 
-Favicon.displayName = 'Favicon';
-
 export default Favicon;

@@ -71,6 +71,4 @@ const ForgotPasswordForm = memo(
   },
 );
 
-ForgotPasswordForm.displayName = 'ForgotPasswordForm';
-
 export default connect(mapState, mapDispatch)(ForgotPasswordForm);

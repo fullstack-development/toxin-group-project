@@ -10,6 +10,4 @@ const Avatar = memo(({ photoURL, className }: Props) => {
   return <MaterialAvatar src={photoURL} className={className} component="div" />;
 });
 
-Avatar.displayName = 'Avatar';
-
 export default Avatar;

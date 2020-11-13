@@ -40,6 +40,4 @@ const AccountSettingsPage = memo(({ isAuthSuccess, checkAuthBeforePageLoaded }: 
   );
 });
 
-AccountSettingsPage.displayName = 'AccountSettingsPage';
-
 export default connect(mapState, mapDispatch)(AccountSettingsPage);

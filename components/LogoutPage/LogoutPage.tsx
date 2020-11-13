@@ -37,6 +37,4 @@ const LogoutPage = memo(
   },
 );
 
-LogoutPage.displayName = 'LogoutPage';
-
 export default connect(mapState, mapDispatch)(LogoutPage);

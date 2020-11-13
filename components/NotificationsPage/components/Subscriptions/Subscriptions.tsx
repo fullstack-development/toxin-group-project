@@ -90,6 +90,4 @@ const Subscriptions = memo(
   },
 );
 
-Subscriptions.displayName = 'Subscriptions';
-
 export default connect(mapState, mapDispatch)(Subscriptions);

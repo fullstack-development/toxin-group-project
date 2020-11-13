@@ -40,6 +40,4 @@ const LoginAndSecurityPage = memo(({ isAuthSuccess, checkAuthBeforePageLoaded }:
   );
 });
 
-LoginAndSecurityPage.displayName = 'LoginAndSecurityPage';
-
 export default connect(mapState, mapDispatch)(LoginAndSecurityPage);

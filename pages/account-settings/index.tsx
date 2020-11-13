@@ -14,6 +14,4 @@ const AccountSettings = memo(() => (
   </>
 ));
 
-AccountSettings.displayName = 'AccountSettings';
-
 export default AccountSettings;

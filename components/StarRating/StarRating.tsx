@@ -24,6 +24,4 @@ const StarRating = memo(({ rating = 0 }: StarRatingProps) => {
   );
 });
 
-StarRating.displayName = 'StarRating';
-
 export default StarRating;

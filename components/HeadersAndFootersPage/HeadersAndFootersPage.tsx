@@ -13,6 +13,4 @@ const HeadersAndFootersPage = memo(() => (
   </S.Container>
 ));
 
-HeadersAndFootersPage.displayName = 'HeadersAndFootersPage';
-
 export default HeadersAndFootersPage;

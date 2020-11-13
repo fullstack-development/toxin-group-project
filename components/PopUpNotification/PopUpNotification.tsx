@@ -18,6 +18,4 @@ const PopUpNotification = memo(({ message, onConfirmButtonClick }: Props) => (
   </S.PopUpNotification>
 ));
 
-PopUpNotification.displayName = 'PopUpNotification';
-
 export default PopUpNotification;

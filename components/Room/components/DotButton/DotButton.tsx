@@ -7,6 +7,4 @@ const DotButton = memo((props: DotButtonProps) => {
   return <S.DotButton {...props} type="button" />;
 });
 
-DotButton.displayName = 'DotButton';
-
 export default DotButton;

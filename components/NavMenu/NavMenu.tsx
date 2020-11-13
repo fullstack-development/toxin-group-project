@@ -17,6 +17,4 @@ const NavMenu = memo(({ menu }: NavMain) => (
   </S.NavContainer>
 ));
 
-NavMenu.displayName = 'NavMenu';
-
 export default NavMenu;

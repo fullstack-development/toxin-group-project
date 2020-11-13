@@ -39,6 +39,4 @@ const Expander = memo(({ title, isDefaultOpen, children }: Props) => {
   );
 });
 
-Expander.displayName = 'Expander';
-
 export default Expander;

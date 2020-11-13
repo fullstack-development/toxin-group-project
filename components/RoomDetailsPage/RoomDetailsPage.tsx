@@ -10,6 +10,4 @@ const RoomDetailsPage = memo(() => (
   </MainLayout>
 ));
 
-RoomDetailsPage.displayName = 'RoomDetailsPage';
-
 export default RoomDetailsPage;

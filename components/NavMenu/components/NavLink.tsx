@@ -56,6 +56,4 @@ const NavLink = memo(({ isActive, name, path, subMenu }: NavMenuLink) => {
   );
 });
 
-NavLink.displayName = 'NavLink';
-
 export default NavLink;

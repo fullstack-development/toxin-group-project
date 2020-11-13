@@ -108,6 +108,4 @@ const EditGender = memo(
   },
 );
 
-EditGender.displayName = 'EditGender';
-
 export default connect(mapState, mapDispatch)(EditGender);

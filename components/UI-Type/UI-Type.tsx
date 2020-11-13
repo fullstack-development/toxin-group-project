@@ -17,6 +17,4 @@ const UIType = memo(({ type, example, fontSize }: Props) => (
   </S.Type>
 ));
 
-UIType.displayName = 'UIType';
-
 export default UIType;

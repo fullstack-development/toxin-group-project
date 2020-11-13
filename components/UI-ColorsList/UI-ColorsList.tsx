@@ -32,6 +32,4 @@ const UIColorsList = memo(({ colors }: Props) => {
   );
 });
 
-UIColorsList.displayName = 'UIColorsList';
-
 export default UIColorsList;

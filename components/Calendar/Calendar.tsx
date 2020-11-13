@@ -122,6 +122,4 @@ const Calendar = memo(
   },
 );
 
-Calendar.displayName = 'Calendar';
-
 export default Calendar;

@@ -123,6 +123,4 @@ const PasswordUpdate = memo(
   },
 );
 
-PasswordUpdate.displayName = 'PasswordUpdate';
-
 export default connect(mapState, mapDispatch)(PasswordUpdate);
