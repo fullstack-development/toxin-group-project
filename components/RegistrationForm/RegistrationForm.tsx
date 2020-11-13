@@ -84,7 +84,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
               <Field
                 name="password"
                 type="password"
-                render={({ input, meta }) => (
+                render={({ input }) => (
                   <S.InputWrapper {...input} required placeholder={t('Shared:Password')} />
                 )}
               />
@@ -93,7 +93,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
               <Toggle name="receiveOffers" label={t('Receive special offers')} />
             </S.SpecialOfferWrapper>
             <S.RegisterButton isFlat isFilled>
-              {t('Proceed to checkout')}
+              {t('Sign up')}
             </S.RegisterButton>
             <S.AlreadyRegisterWrapper>
               <span>{t('Already have an account on Toxin')}</span>
