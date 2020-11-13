@@ -41,10 +41,10 @@ function* startRegistrationProcess(data: {
       type: REGISTRATION_SUCCESS,
       payload: result,
     });
-  } catch (error) {
+  } catch ({ message }) {
     yield put({
       type: REGISTRATION_FAILED,
-      payload: error.message,
+      payload: message,
     });
   }
 }

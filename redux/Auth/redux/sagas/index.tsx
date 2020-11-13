@@ -48,10 +48,10 @@ function* startAuthProcess(data: {
         payload: user,
       });
     }
-  } catch (error) {
+  } catch ({ message }) {
     yield put({
       type: AUTH_FAILED,
-      payload: error.message,
+      payload: message,
     });
   }
 }
@@ -94,18 +94,15 @@ function* passwordReset({ payload: email }: PasswordResetRequest) {
       yield call(Api.auth.resetPassword, email);
       yield put({
         type: PASSWORD_RESET_SUCCESS,
-        payload: `Ссылка для восстановления пароля была отправлена на ${email}`,
+        payload: `A link to reset your password has been sent to the specified email`,
       });
     } else {
-      throw new Error('Пользователь с указанным электронным адресом не зарегистрирован');
+      throw new Error('The user with the specified email address is not registered');
     }
-  } catch (err) {
+  } catch ({ message }) {
     yield put({
       type: PASSWORD_RESET_FAILED,
-      payload:
-        err.message === 'Пользователь с указанным электронным адресом не зарегистрирован'
-          ? err.message
-          : 'Произошла ошибка, повторите попытку позже',
+      payload: message,
     });
   }
 }
