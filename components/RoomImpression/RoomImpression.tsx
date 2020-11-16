@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import getNounInDeclension from 'shared/helpers/getNounInDeclension';
@@ -16,7 +17,7 @@ type Props = {
   };
 };
 
-const RoomImpression: React.FC<Props> = ({ title, numberOfRatings }: Props) => {
+const RoomImpression = memo(({ title, numberOfRatings }: Props) => {
   const { t } = useTranslation(['WordForms', 'Rating']);
   const declensions = ['Vote', 'VotesSecondary', 'Votes'];
   const ratingsSum = Object.values(numberOfRatings).reduce(
@@ -46,6 +47,6 @@ const RoomImpression: React.FC<Props> = ({ title, numberOfRatings }: Props) => {
       </S.Figure>
     </S.RoomImpression>
   );
-};
+});
 
 export default RoomImpression;

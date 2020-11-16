@@ -1,11 +1,11 @@
 import { useRouter } from 'next/router';
-import { useState, Fragment } from 'react';
+import { useState, Fragment, FormEvent, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
 import MainLayout from 'components/MainLayout/MainLayout';
 import Preloader from 'components/Preloader/Preloader';
-import { Props as RoomProps } from 'components/Room/Room.types';
+import { RoomProps } from 'components/Room/Room.types';
 import RoomFilter from 'components/RoomFilter/RoomFilter';
 import Rooms from 'components/Rooms/Rooms';
 import defaultFilters from 'components/SearchRoomForm/defaultFilters';
@@ -54,7 +54,7 @@ const sortData: SortData[] = [
 ];
 const [descKey, ascKey] = ['desc', 'asc'] as SortOrder[];
 
-const SearchRoomPage: React.FC<Props> = ({ rooms, getRooms, isPending }: Props) => {
+const SearchRoomPage = memo(({ rooms, getRooms, isPending }: Props) => {
   const router = useRouter();
 
   const { t } = useTranslation('SearchRoomPage');
@@ -81,7 +81,7 @@ const SearchRoomPage: React.FC<Props> = ({ rooms, getRooms, isPending }: Props) 
     sortData.find((obj) => obj.parameter === sortParam).sortFunction,
   );
 
-  const handleSelectChange = (e: React.FormEvent<HTMLSelectElement>) => {
+  const handleSelectChange = (e: FormEvent<HTMLSelectElement>) => {
     const target = e.target as HTMLSelectElement;
     const [param, sortOrder] = target.value.split(separator) as [SortParam, SortOrder];
     setSortParam(param);
@@ -136,6 +136,6 @@ const SearchRoomPage: React.FC<Props> = ({ rooms, getRooms, isPending }: Props) 
       </S.Container>
     </MainLayout>
   );
-};
+});
 
 export default connect(mapState, mapDispatch)(SearchRoomPage);

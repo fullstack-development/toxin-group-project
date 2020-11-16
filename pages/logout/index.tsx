@@ -1,8 +1,9 @@
 import Head from 'next/head';
+import { memo } from 'react';
 
 import LogoutPage from 'components/LogoutPage/LogoutPage';
 
-const Logout: React.FC = (): JSX.Element => (
+const Logout = memo(() => (
   <>
     <Head>
       <title>Toxin | Выход</title>
@@ -14,6 +15,6 @@ const Logout: React.FC = (): JSX.Element => (
     </Head>
     <LogoutPage />
   </>
-);
+));
 
 export default Logout;

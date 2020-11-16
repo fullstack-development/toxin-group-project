@@ -1,29 +1,36 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import TextButton from 'components/TextButton/TextButton';
 
 import PasswordUpdate from '../PasswordUpdate/PasswordUpdate';
 import * as S from './Login.styles';
 
-const Login = (): JSX.Element => {
+const Login = memo(() => {
   const [isEdit, setEdit] = useState(false);
 
   const handleEditButtonClick = () => setEdit((prevValue) => !prevValue);
 
+  const { t } = useTranslation('LoginAndSecurity');
+
   return (
     <S.Login>
-      <S.Title>Вход</S.Title>
+      <S.Title>{t('Login')}</S.Title>
       <S.Header>
-        <S.Subtitle>Пароль</S.Subtitle>
+        <S.Subtitle>{t('Password')}</S.Subtitle>
         <TextButton type="button" onClick={handleEditButtonClick}>
-          {isEdit ? 'Отменить' : 'Изменить'}
+          {isEdit ? t('Cancel') : t('Update')}
         </TextButton>
       </S.Header>
       <S.Content>
-        {isEdit ? <PasswordUpdate /> : <S.Description>Изменение текущего пароля</S.Description>}
+        {isEdit ? (
+          <PasswordUpdate onChange={handleEditButtonClick} />
+        ) : (
+          <S.Description>{t('Changing the current password')}</S.Description>
+        )}
       </S.Content>
     </S.Login>
   );
-};
+});
 
 export default Login;
