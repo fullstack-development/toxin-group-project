@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { Form } from 'react-final-form';
 import { useTranslation } from 'react-i18next';
 import { animateScroll as scroll } from 'react-scroll';
@@ -49,7 +49,7 @@ const getCheckboxProps = (
   }));
 };
 
-const RoomFilter: React.FC<Props> = ({ initialFilters, loadRooms, isPending = false }: Props) => {
+const RoomFilter = memo(({ initialFilters, loadRooms, isPending = false }: Props) => {
   const handleFormSubmit = (values?: Filters) => {
     loadRooms(values);
     scroll.scrollToTop();
@@ -147,6 +147,6 @@ const RoomFilter: React.FC<Props> = ({ initialFilters, loadRooms, isPending = fa
       }}
     />
   );
-};
+});
 
 export default RoomFilter;

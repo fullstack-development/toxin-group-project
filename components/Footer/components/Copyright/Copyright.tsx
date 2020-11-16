@@ -1,11 +1,13 @@
-import { withTranslation, WithTranslation } from 'react-i18next';
+import { memo } from 'react';
+import { WithTranslation, withTranslation } from 'react-i18next';
 
 import { CopyrightProps } from '../../Footer.model';
 import * as S from './Copyright.styles';
 
-const Copyright: React.ComponentType<WithTranslation & CopyrightProps> = ({
-  copyrightText,
-  t,
-}: CopyrightProps) => <S.Copyright>{t(`Footer:${copyrightText}`)}</S.Copyright>;
+type Props = WithTranslation & CopyrightProps;
+
+const Copyright = memo(({ copyrightText, t }: Props) => (
+  <S.Copyright>{t(`Footer:${copyrightText}`)}</S.Copyright>
+));
 
 export default withTranslation()(Copyright);

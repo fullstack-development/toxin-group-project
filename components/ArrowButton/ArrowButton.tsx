@@ -1,14 +1,16 @@
+import { memo } from 'react';
+
 import { Props } from 'components/Button/Button.model';
 
 import * as S from './ArrowButton.styles';
 
-const ArrowButton: React.FC<Props> = ({ ...rest }: Props) => (
+const ArrowButton = memo((props: Props) => (
   <S.ArrowButton>
-    <S.BasicButton {...rest} isFilled>
-      {rest.children}
+    <S.BasicButton {...props} isFilled>
+      {props.children}
     </S.BasicButton>
     <S.ArrowIcon />
   </S.ArrowButton>
-);
+));
 
 export default ArrowButton;

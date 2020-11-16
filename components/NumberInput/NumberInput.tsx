@@ -1,8 +1,8 @@
-import { MouseEvent } from 'react';
+import { memo, MouseEvent } from 'react';
 
 import * as S from './NumberInput.styles';
 
-type NumberInputProps = {
+type Props = {
   min: number;
   max: number;
   currentValue: number;
@@ -11,14 +11,7 @@ type NumberInputProps = {
   onDecrement: (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => void;
 };
 
-const NumberInput: React.FC<NumberInputProps> = ({
-  min,
-  max,
-  currentValue,
-  onDecrement,
-  onIncrement,
-  name,
-}: NumberInputProps) => (
+const NumberInput = memo(({ min, max, currentValue, onDecrement, onIncrement, name }: Props) => (
   <S.InputContainer>
     <S.Button disabled={currentValue === min} onClick={onDecrement} type="button">
       -
@@ -28,6 +21,6 @@ const NumberInput: React.FC<NumberInputProps> = ({
       +
     </S.Button>
   </S.InputContainer>
-);
+));
 
 export default NumberInput;

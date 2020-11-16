@@ -1,7 +1,6 @@
-import { Props as RoomProps } from 'components/Room/Room.model';
-import { Filters, BookedRoom } from 'services/api/entities/types';
+import { RoomProps } from 'components/Room/Room.model';
+import { Filters, BookedRoom, Apartment } from 'services/api/entities/types';
 
-import { Apartment } from '../../services/api/entities/types';
 import {
   ROOMS_REQUEST_PENDING,
   ROOMS_REQUEST_SUCCESS,

@@ -1,5 +1,6 @@
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { Form, Field } from 'react-final-form';
+import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
 import Button from 'components/Button/Button';
@@ -11,12 +12,14 @@ import { User } from 'services/api/Firebase/modules/Authentication/types';
 
 type StateProps = {
   isPending: boolean;
+  isSuccess: boolean;
   isCompleted: boolean;
   statusText: string;
 };
 
 const mapState = (state: AppState): StateProps => ({
   isPending: state.profile.isUsernameUpdatePending,
+  isSuccess: state.profile.isUsernameUpdateSuccess,
   isCompleted: state.profile.isUsernameUpdateCompleted,
   statusText: state.profile.usernameUpdateStatusText,
 });
@@ -29,6 +32,7 @@ const mapDispatch = {
 type OwnProps = {
   user: User;
   displayName: string;
+  onChange: (title: string) => void;
 };
 
 type Props = OwnProps & StateProps & typeof mapDispatch;
@@ -38,53 +42,74 @@ type FormData = {
   surname: string;
 };
 
-const EditDisplayName = ({
-  user,
-  displayName,
-  isPending,
-  isCompleted,
-  statusText,
-  startUsernameUpdate,
-  stopUsernameUpdate,
-}: Props): JSX.Element => {
-  const onSubmit = ({ name, surname }: FormData) => {
-    startUsernameUpdate({ user, displayName: `${name} ${surname}` });
-  };
+const EditDisplayName = memo(
+  ({
+    user,
+    displayName,
+    isPending,
+    isSuccess,
+    isCompleted,
+    statusText,
+    onChange,
+    startUsernameUpdate,
+    stopUsernameUpdate,
+  }: Props) => {
+    const onSubmit = ({ name, surname }: FormData) => {
+      startUsernameUpdate({ user, displayName: `${name} ${surname}` });
+    };
 
-  const [name, surname] = displayName.split(' ');
+    const [name, surname] = displayName.split(' ');
 
-  useEffect(() => {
-    stopUsernameUpdate();
-  }, [stopUsernameUpdate]);
+    useEffect(() => {
+      stopUsernameUpdate();
+    }, [stopUsernameUpdate]);
 
-  return (
-    <Form
-      initialValues={{ name, surname }}
-      onSubmit={onSubmit}
-      render={({ handleSubmit }) => (
-        <>
-          <form onSubmit={handleSubmit}>
-            <Field
-              name="name"
-              render={({ input }) => <Input {...input} label="Имя" placeholder="Имя" required />}
-            />
-            <Field
-              name="surname"
-              render={({ input }) => (
-                <Input {...input} label="Фамилия" placeholder="Фамилия" required />
-              )}
-            />
-            <Button disabled={isPending} isFlat isFilled>
-              Сохранить
-            </Button>
-          </form>
-          {isCompleted && (
-            <PopUpNotification message={statusText} onConfirmButtonClick={stopUsernameUpdate} />
-          )}
-        </>
-      )}
-    />
-  );
-};
+    const handleConfirmButtonClick = () => {
+      stopUsernameUpdate();
+      if (isSuccess) onChange('');
+    };
+
+    const { t } = useTranslation('PersonalInfo');
+
+    return (
+      <Form
+        initialValues={{ name, surname }}
+        onSubmit={onSubmit}
+        render={({ handleSubmit }) => (
+          <>
+            <form onSubmit={handleSubmit}>
+              <Field
+                name="name"
+                render={({ input }) => (
+                  <Input
+                    {...input}
+                    label={t('First name')}
+                    placeholder={t('First name')}
+                    required
+                  />
+                )}
+              />
+              <Field
+                name="surname"
+                render={({ input }) => (
+                  <Input {...input} label={t('Last name')} placeholder={t('Last name')} required />
+                )}
+              />
+              <Button disabled={isPending} isFlat isFilled>
+                {t('Save')}
+              </Button>
+            </form>
+            {isCompleted && (
+              <PopUpNotification
+                message={t(statusText)}
+                onConfirmButtonClick={handleConfirmButtonClick}
+              />
+            )}
+          </>
+        )}
+      />
+    );
+  },
+);
 
 export default connect(mapState, mapDispatch)(EditDisplayName);

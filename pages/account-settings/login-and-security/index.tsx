@@ -1,8 +1,9 @@
 import Head from 'next/head';
+import { memo } from 'react';
 
 import LoginAndSecurityPage from 'components/LoginAndSecurityPage/LoginAndSecurityPage';
 
-const LoginAndSecurity = (): JSX.Element => (
+const LoginAndSecurity = memo(() => (
   <>
     <Head>
       <title>Toxin | Безопасность</title>
@@ -14,6 +15,6 @@ const LoginAndSecurity = (): JSX.Element => (
     </Head>
     <LoginAndSecurityPage />
   </>
-);
+));
 
 export default LoginAndSecurity;

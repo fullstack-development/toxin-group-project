@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import UIColorsList from 'components/UI-ColorsList/UI-ColorsList';
@@ -7,7 +8,7 @@ import UITypesList from 'components/UI-TypesList/UI-TypesList';
 import { colors, types } from './ColorsTypesPage.fuxure';
 import * as S from './ColorsTypesPage.styles';
 
-const ColorsTypesPage: React.FC = () => {
+const ColorsTypesPage = memo(() => {
   const { t } = useTranslation('ColorsTypesPage');
 
   return (
@@ -24,6 +25,6 @@ const ColorsTypesPage: React.FC = () => {
       </S.Content>
     </S.ColorsTypesLayout>
   );
-};
+});
 
 export default ColorsTypesPage;

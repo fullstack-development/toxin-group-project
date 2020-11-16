@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import { Form } from 'react-final-form';
 import { useTranslation } from 'react-i18next';
 import ClipLoader from 'react-spinners/ClipLoader';
@@ -11,13 +11,9 @@ import TimePicker from 'components/TimePicker/TimePicker';
 import defaultFilters from './defaultFilters';
 import * as S from './SearchRoomForm.styles';
 
-type SearchRoomFormProps = {
-  onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
-};
-
 const defaultBookingDates = defaultFilters.booked;
 
-const SearchRoomForm: React.FC<SearchRoomFormProps> = ({ onSubmit }: SearchRoomFormProps) => {
+const SearchRoomForm = memo(() => {
   const [isFormSubmission, setFormSubmission] = useState(false);
 
   const handleFormSubmit = () => {
@@ -85,6 +81,6 @@ const SearchRoomForm: React.FC<SearchRoomFormProps> = ({ onSubmit }: SearchRoomF
       />
     </S.SearchRoomForm>
   );
-};
+});
 
 export default SearchRoomForm;
