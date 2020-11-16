@@ -18,19 +18,16 @@ import {
   PRELOAD_AUTH_DATA,
 } from '../../constants';
 import {
-  AuthData,
   SetAuthStatusSuccess,
   SetAuthStatusFailed,
   SetAuthRequired,
   PasswordResetRequest,
+  RequestToAuth,
 } from '../../types';
 
 function* startAuthProcess(
   { api }: Dependencies,
-  data: {
-    type: typeof AUTH_PROCESS | typeof GOOGLE_AUTH_PROCESS;
-    payload: AuthData;
-  },
+  data: RequestToAuth,
 ): Generator | Generator<PutEffect<SetAuthStatusSuccess | SetAuthStatusFailed>, void, never> {
   const { type } = data;
 

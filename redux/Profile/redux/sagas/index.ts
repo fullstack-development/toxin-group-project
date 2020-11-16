@@ -107,7 +107,7 @@ function* updateAdditionalUserData(
   }
 }
 
-function* usernameUpdate({ api }: Dependencies, { payload }: UsernameUpdateRequest) {
+function* usernameUpdate({ payload }: UsernameUpdateRequest) {
   try {
     const { user, displayName } = payload;
 
@@ -145,10 +145,10 @@ function* getAdditionalUserData(
 
 function* rootSaga(deps: Dependencies): SagaIterator {
   yield takeLeading(EMAIL_UPDATE_PROCESS, emailUpdate);
+  yield takeLeading(USERNAME_UPDATE_PROCESS, usernameUpdate);
   yield takeLeading(GET_ADDITIONAL_USER_DATA_PROCESS, getAdditionalUserData, deps);
   yield takeLeading(PASSWORD_UPDATE_PROCESS, passwordUpdate, deps);
   yield takeLeading(UPDATE_ADDITIONAL_USER_DATA_PROCESS, updateAdditionalUserData, deps);
-  yield takeLeading(USERNAME_UPDATE_PROCESS, usernameUpdate, deps);
 }
 
 export { rootSaga };

@@ -5,14 +5,15 @@ import { UserCredential } from 'services/api/Firebase/modules/Authentication/typ
 
 import { Dependencies } from '../../../store.types';
 import { REGISTRATION_REQUEST, REGISTRATION_SUCCESS, REGISTRATION_FAILED } from '../../constants';
-import { ProfileData, RegistrationStatusSuccess, RegistrationStatusFailed } from '../../types';
+import {
+  RegistrationStatusSuccess,
+  RegistrationStatusFailed,
+  RegistrationRequest,
+} from '../../types';
 
 function* startRegistrationProcess(
   { api }: Dependencies,
-  data: {
-    type: typeof REGISTRATION_REQUEST;
-    payload: ProfileData;
-  },
+  data: RegistrationRequest,
 ):
   | Generator
   | Generator<PutEffect<RegistrationStatusSuccess | RegistrationStatusFailed>, void, never> {
