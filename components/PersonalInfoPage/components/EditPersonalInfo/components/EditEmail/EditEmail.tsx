@@ -9,7 +9,7 @@ import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
 import { emailUpdate, emailUpdateCompleted } from 'redux/Profile/redux/actions';
 import { AppState } from 'redux/store.types';
 import { User } from 'services/api/Firebase/modules/Authentication/types';
-import { emailValidator } from 'validators';
+import { emailValidator } from 'utils/validators';
 
 type StateProps = {
   isPending: boolean;
