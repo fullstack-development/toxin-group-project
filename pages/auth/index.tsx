@@ -1,8 +1,9 @@
 import Head from 'next/head';
+import { memo } from 'react';
 
 import AuthPage from 'components/AuthPage/AuthPage';
 
-const Auth: React.FC = (): JSX.Element => (
+const Auth = memo(() => (
   <>
     <Head>
       <title>Toxin | Войти</title>
@@ -17,6 +18,6 @@ const Auth: React.FC = (): JSX.Element => (
     </Head>
     <AuthPage />
   </>
-);
+));
 
 export default Auth;

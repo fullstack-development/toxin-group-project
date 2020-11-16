@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { memo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import AccountEntry from 'components/AccountEntry/AccountEntry';
@@ -12,7 +12,7 @@ import SearchRoomForm from 'components/SearchRoomForm/SearchRoomForm';
 
 import * as S from './CardsPage.styles';
 
-const CardsPage: React.FC = (): JSX.Element => {
+const CardsPage = memo(() => {
   const [rooms, setRooms] = useState([]);
 
   Promise.resolve(roomsList).then((data) => setRooms(data));
@@ -67,6 +67,6 @@ const CardsPage: React.FC = (): JSX.Element => {
       </S.ForgotPasswordWrapper>
     </S.Container>
   );
-};
+});
 
 export default CardsPage;

@@ -1,4 +1,4 @@
-import { Props as RoomProps } from 'components/Room/Room.types';
+import { RoomProps } from 'components/Room/Room.types';
 import { ActionPayload } from 'redux/action.model';
 import { Filters, BookedRoom, Apartment } from 'services/api/entities/types';
 

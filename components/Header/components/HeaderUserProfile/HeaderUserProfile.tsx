@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import NavMenu from 'components/NavMenu/NavMenu';
@@ -8,7 +9,7 @@ type Props = {
   displayName?: string;
 };
 
-const HeaderUserProfile: React.FC<Props> = ({ displayName }: Props): JSX.Element => {
+const HeaderUserProfile = memo(({ displayName }: Props) => {
   const { t } = useTranslation('HeaderUserProfile');
 
   const ProfileLink = [
@@ -27,6 +28,6 @@ const HeaderUserProfile: React.FC<Props> = ({ displayName }: Props): JSX.Element
       <NavMenu menu={ProfileLink} />
     </S.HeaderUserProfile>
   );
-};
+});
 
 export default HeaderUserProfile;

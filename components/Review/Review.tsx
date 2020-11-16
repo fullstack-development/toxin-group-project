@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
+import { memo } from 'react';
 
 import Avatar from 'components/Avatar/Avatar';
 import LikeButton from 'components/LikeButton/LikeButton';
@@ -15,7 +16,7 @@ type Props = {
   likesCount: number;
 };
 
-const Review = ({ avatarUrl, userName, date, text, likesCount }: Props): JSX.Element => {
+const Review = memo(({ avatarUrl, userName, date, text, likesCount }: Props) => {
   const correctDate = date instanceof Date ? date : date.toDate();
 
   const useStyles = makeStyles(() => ({
@@ -40,6 +41,6 @@ const Review = ({ avatarUrl, userName, date, text, likesCount }: Props): JSX.Ele
       </S.MessageWrapper>
     </S.Review>
   );
-};
+});
 
 export default Review;

@@ -28,6 +28,7 @@ export const ru = {
     'Receive special offers': 'Получать спецпредложения',
     'Proceed to checkout': 'Перейти к оплате',
     'Already have an account on Toxin': 'Уже есть аккаунт на Toxin',
+    'All fields must be filled in correctly!': 'Все поля должны быть заполнены корректно!',
   },
   Buttons: {
     'Sign In': 'Войти',

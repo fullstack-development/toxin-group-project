@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import TextButton from 'components/TextButton/TextButton';
@@ -6,7 +6,7 @@ import TextButton from 'components/TextButton/TextButton';
 import PasswordUpdate from '../PasswordUpdate/PasswordUpdate';
 import * as S from './Login.styles';
 
-const Login = (): JSX.Element => {
+const Login = memo(() => {
   const [isEdit, setEdit] = useState(false);
 
   const handleEditButtonClick = () => setEdit((prevValue) => !prevValue);
@@ -31,6 +31,6 @@ const Login = (): JSX.Element => {
       </S.Content>
     </S.Login>
   );
-};
+});
 
 export default Login;

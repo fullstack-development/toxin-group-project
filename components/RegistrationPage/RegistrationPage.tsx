@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import MainLayout from 'components/MainLayout/MainLayout';
@@ -33,40 +33,42 @@ const mapDispatch = {
 
 export type PropsConnected = StateProps & typeof mapDispatch;
 
-const RegistrationPage: React.FC<PropsConnected> = ({
-  isSuccess,
-  isProcess,
-  statusText,
-  wasFinishedAuthChecking,
-  isAuthSuccess,
-  requestRegistration,
-  stopRegistration,
-  checkAuthBeforePageLoaded,
-}: PropsConnected): JSX.Element => {
-  const router = useRouter();
+const RegistrationPage = memo(
+  ({
+    isSuccess,
+    isProcess,
+    statusText,
+    wasFinishedAuthChecking,
+    isAuthSuccess,
+    requestRegistration,
+    stopRegistration,
+    checkAuthBeforePageLoaded,
+  }: PropsConnected) => {
+    const router = useRouter();
 
-  useEffect(() => {
-    checkAuthBeforePageLoaded();
-    if (isAuthSuccess) {
-      document.referrer ? router.back() : router.push('/');
-    }
-  });
+    useEffect(() => {
+      checkAuthBeforePageLoaded();
+      if (isAuthSuccess) {
+        document.referrer ? router.back() : router.push('/');
+      }
+    });
 
-  const isAuthRequired: boolean = wasFinishedAuthChecking && !isAuthSuccess;
+    const isAuthRequired: boolean = wasFinishedAuthChecking && !isAuthSuccess;
 
-  return (
-    isAuthRequired && (
-      <MainLayout>
-        <MainContent
-          isSuccess={isSuccess}
-          isProcess={isProcess}
-          statusText={statusText}
-          requestRegistration={requestRegistration}
-          stopRegistration={stopRegistration}
-        />
-      </MainLayout>
-    )
-  );
-};
+    return (
+      isAuthRequired && (
+        <MainLayout>
+          <MainContent
+            isSuccess={isSuccess}
+            isProcess={isProcess}
+            statusText={statusText}
+            requestRegistration={requestRegistration}
+            stopRegistration={stopRegistration}
+          />
+        </MainLayout>
+      )
+    );
+  },
+);
 
 export default connect(mapState, mapDispatch)(RegistrationPage);
