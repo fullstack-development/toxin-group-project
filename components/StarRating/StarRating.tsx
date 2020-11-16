@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { keywords } from './StarRating.fuxure';
+import { keywords } from './StarRating.fixture';
 import { StarRatingProps } from './StarRating.model';
 import * as S from './StarRating.styles';
 

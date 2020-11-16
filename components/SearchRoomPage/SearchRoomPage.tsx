@@ -8,7 +8,7 @@ import Preloader from 'components/Preloader/Preloader';
 import { RoomProps } from 'components/Room/Room.model';
 import RoomFilter from 'components/RoomFilter/RoomFilter';
 import Rooms from 'components/Rooms/Rooms';
-import defaultFilters from 'components/SearchRoomForm/defaultFilters';
+import defaultFilters from 'components/SearchRoomForm/SearchRoomForm.fixture';
 import { requestRooms } from 'redux/Booking/redux/actions';
 import { AppState } from 'redux/store.model';
 import { Filters } from 'services/api/entities/types';

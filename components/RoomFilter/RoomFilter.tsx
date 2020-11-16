@@ -8,10 +8,10 @@ import {
   checkboxesListData,
   expandableCheckboxesListData,
   richCheckboxesListData,
-} from 'components/CheckboxesList/CheckboxesList.fuxure';
+} from 'components/CheckboxesList/CheckboxesList.fixture';
 import { Option } from 'components/CheckboxesList/CheckboxesList.model';
 import Dropdown from 'components/Dropdown/Dropdown';
-import { guestsGroups, guestsItems, amenitiesItems } from 'components/Dropdown/Dropdown.fuxure';
+import { guestsGroups, guestsItems, amenitiesItems } from 'components/Dropdown/Dropdown.fixture';
 import { Item } from 'components/Dropdown/Dropdown.model';
 import Expander from 'components/Expander/Expander';
 import Slider from 'components/Slider/Slider';

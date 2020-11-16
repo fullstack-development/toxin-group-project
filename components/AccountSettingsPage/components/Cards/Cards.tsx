@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { cardsData } from './Cards.fuxure';
+import { cardsData } from './Cards.fixture';
 import * as S from './Cards.styles';
 
 const Cards = memo(() => {

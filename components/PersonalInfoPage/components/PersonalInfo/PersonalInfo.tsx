@@ -8,7 +8,7 @@ import { AdditionalUserInformation } from 'services/api/entities/types';
 import { User } from 'services/api/Firebase/modules/Authentication/types';
 
 import EditPersonalInfo from '../EditPersonalInfo/EditPersonalInfo';
-import { data } from './PersonalInfo.fuxure';
+import { data } from './PersonalInfo.fixture';
 import * as S from './PersonalInfo.styles';
 
 type StateProps = {

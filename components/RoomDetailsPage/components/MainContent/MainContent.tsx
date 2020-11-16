@@ -15,7 +15,7 @@ import { bookRoom } from 'redux/Booking/redux/actions';
 import { AppState } from 'redux/store.model';
 import { Apartment } from 'services/api/entities/types';
 
-import { roomImagesPreview, benefitsData, rulesData } from './MainContent.fuxure';
+import { roomImagesPreview, benefitsData, rulesData } from './MainContent.fixture';
 import * as S from './MainContent.styles';
 
 type StateProps = {

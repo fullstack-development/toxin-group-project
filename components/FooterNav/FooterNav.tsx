@@ -1,7 +1,7 @@
 import { memo } from 'react';
 
 import NavItem from './components/NavItem';
-import footerNavData from './FooterNav.fuxure';
+import footerNavData from './FooterNav.fixture';
 import { NavProps } from './FooterNav.model';
 import * as S from './FooterNav.styles';
 
