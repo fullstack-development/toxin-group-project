@@ -1,9 +1,10 @@
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { cardsData } from './Cards.data';
 import * as S from './Cards.styles';
 
-const Cards = (): JSX.Element => {
+const Cards = memo(() => {
   const { t } = useTranslation('AccountSettings');
 
   return (
@@ -18,6 +19,6 @@ const Cards = (): JSX.Element => {
       ))}
     </S.Cards>
   );
-};
+});
 
 export default Cards;

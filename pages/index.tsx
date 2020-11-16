@@ -1,8 +1,9 @@
 import Head from 'next/head';
+import { memo } from 'react';
 
 import IndexPage from 'components/IndexPage/IndexPage';
 
-const Index: React.FC = () => (
+const Index = memo(() => (
   <>
     <Head>
       <title>Toxin | Главная</title>
@@ -11,6 +12,6 @@ const Index: React.FC = () => (
     </Head>
     <IndexPage />
   </>
-);
+));
 
 export default Index;

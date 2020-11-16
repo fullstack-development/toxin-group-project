@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { Form, Field } from 'react-final-form';
 import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
@@ -42,67 +42,74 @@ type FormData = {
   surname: string;
 };
 
-const EditDisplayName = ({
-  user,
-  displayName,
-  isPending,
-  isSuccess,
-  isCompleted,
-  statusText,
-  onChange,
-  startUsernameUpdate,
-  stopUsernameUpdate,
-}: Props): JSX.Element => {
-  const onSubmit = ({ name, surname }: FormData) => {
-    startUsernameUpdate({ user, displayName: `${name} ${surname}` });
-  };
+const EditDisplayName = memo(
+  ({
+    user,
+    displayName,
+    isPending,
+    isSuccess,
+    isCompleted,
+    statusText,
+    onChange,
+    startUsernameUpdate,
+    stopUsernameUpdate,
+  }: Props) => {
+    const onSubmit = ({ name, surname }: FormData) => {
+      startUsernameUpdate({ user, displayName: `${name} ${surname}` });
+    };
 
-  const [name, surname] = displayName.split(' ');
+    const [name, surname] = displayName.split(' ');
 
-  useEffect(() => {
-    stopUsernameUpdate();
-  }, [stopUsernameUpdate]);
+    useEffect(() => {
+      stopUsernameUpdate();
+    }, [stopUsernameUpdate]);
 
-  const handleConfirmButtonClick = () => {
-    stopUsernameUpdate();
-    if (isSuccess) onChange('');
-  };
+    const handleConfirmButtonClick = () => {
+      stopUsernameUpdate();
+      if (isSuccess) onChange('');
+    };
 
-  const { t } = useTranslation('PersonalInfo');
+    const { t } = useTranslation('PersonalInfo');
 
-  return (
-    <Form
-      initialValues={{ name, surname }}
-      onSubmit={onSubmit}
-      render={({ handleSubmit }) => (
-        <>
-          <form onSubmit={handleSubmit}>
-            <Field
-              name="name"
-              render={({ input }) => (
-                <Input {...input} label={t('First name')} placeholder={t('First name')} required />
-              )}
-            />
-            <Field
-              name="surname"
-              render={({ input }) => (
-                <Input {...input} label={t('Last name')} placeholder={t('Last name')} required />
-              )}
-            />
-            <Button disabled={isPending} isFlat isFilled>
-              {t('Save')}
-            </Button>
-          </form>
-          {isCompleted && (
-            <PopUpNotification
-              message={t(statusText)}
-              onConfirmButtonClick={handleConfirmButtonClick}
-            />
-          )}
-        </>
-      )}
-    />
-  );
-};
+    return (
+      <Form
+        initialValues={{ name, surname }}
+        onSubmit={onSubmit}
+        render={({ handleSubmit }) => (
+          <>
+            <form onSubmit={handleSubmit}>
+              <Field
+                name="name"
+                render={({ input }) => (
+                  <Input
+                    {...input}
+                    label={t('First name')}
+                    placeholder={t('First name')}
+                    required
+                  />
+                )}
+              />
+              <Field
+                name="surname"
+                render={({ input }) => (
+                  <Input {...input} label={t('Last name')} placeholder={t('Last name')} required />
+                )}
+              />
+              <Button disabled={isPending} isFlat isFilled>
+                {t('Save')}
+              </Button>
+            </form>
+            {isCompleted && (
+              <PopUpNotification
+                message={t(statusText)}
+                onConfirmButtonClick={handleConfirmButtonClick}
+              />
+            )}
+          </>
+        )}
+      />
+    );
+  },
+);
 
 export default connect(mapState, mapDispatch)(EditDisplayName);

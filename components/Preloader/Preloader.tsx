@@ -1,22 +1,18 @@
-import { TFunction } from 'i18next';
+import { memo } from 'react';
 import { withTranslation, WithTranslation } from 'react-i18next';
 import ClipLoader from 'react-spinners/ClipLoader';
 
 import * as S from './Preloader.styles';
 
-type Props = {
+type Props = WithTranslation & {
   label?: string;
-  t: TFunction;
 };
 
-const Preloader: React.ComponentType<WithTranslation & Props> = ({
-  label = 'Loading rooms ...',
-  t,
-}: Props) => (
+const Preloader = memo(({ label = 'Loading rooms ...', t }: Props) => (
   <S.Container>
     <S.Label>{t(`RoomFilter:${label}`)}</S.Label>
     <ClipLoader />
   </S.Container>
-);
+));
 
 export default withTranslation('RoomFilter')(Preloader);

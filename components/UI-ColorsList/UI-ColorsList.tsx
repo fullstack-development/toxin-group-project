@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import UIColor from 'components/UI-Color/UI-Color';
@@ -14,7 +15,7 @@ type Props = {
   colors: Array<Color>;
 };
 
-const UIColorsList: React.FC<Props> = ({ colors }: Props) => {
+const UIColorsList = memo(({ colors }: Props) => {
   const { t } = useTranslation('Ui-ColorsList');
 
   return (
@@ -29,6 +30,6 @@ const UIColorsList: React.FC<Props> = ({ colors }: Props) => {
       </S.List>
     </section>
   );
-};
+});
 
 export default UIColorsList;
