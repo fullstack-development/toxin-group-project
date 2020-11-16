@@ -1,6 +1,6 @@
 import CloseIcon from '@material-ui/icons/Close';
 import ExpandMore from '@material-ui/icons/ExpandMore';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, memo } from 'react';
 import { connect } from 'react-redux';
 
 import { changeLanguage } from 'redux/Language/redux/actions';
@@ -26,10 +26,7 @@ const mapDispatch = {
   setNewLanguage: changeLanguage,
 };
 
-const LanguageDropdown: React.FC<Props> = ({
-  currentLanguage,
-  setNewLanguage,
-}: Props): JSX.Element => {
+const LanguageDropdown = memo(({ currentLanguage, setNewLanguage }: Props) => {
   const [isShownMenu, setShownMenu] = useState(false);
 
   const openMenu = () => setShownMenu(true);
@@ -77,6 +74,6 @@ const LanguageDropdown: React.FC<Props> = ({
       </>
     </S.Container>
   );
-};
+});
 
 export default connect(mapState, mapDispatch)(LanguageDropdown);

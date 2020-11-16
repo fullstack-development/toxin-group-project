@@ -1,7 +1,7 @@
 import { IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import CloseIcon from '@material-ui/icons/Close';
-import { useState } from 'react';
+import { ChangeEvent, memo, useState } from 'react';
 import AvatarEditor from 'react-avatar-editor';
 import { Field } from 'react-final-form';
 import { useTranslation } from 'react-i18next';
@@ -16,7 +16,7 @@ type Props = {
   name: string;
 };
 
-const AvatarLoader: React.FC<Props> = ({ name }: Props) => {
+const AvatarLoader = memo(({ name }: Props) => {
   const [croppedImage, setCroppedImage] = useState(null);
   const [isEditorVisible, setEditorVisible] = useState(false);
   const [image, setImage] = useState(null);
@@ -33,7 +33,7 @@ const AvatarLoader: React.FC<Props> = ({ name }: Props) => {
     canvas = editor;
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files[0];
     const reader = new FileReader();
 
@@ -167,6 +167,6 @@ const AvatarLoader: React.FC<Props> = ({ name }: Props) => {
       />
     </S.AvatarLoader>
   );
-};
+});
 
 export default AvatarLoader;

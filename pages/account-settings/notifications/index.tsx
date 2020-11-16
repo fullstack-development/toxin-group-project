@@ -1,8 +1,9 @@
 import Head from 'next/head';
+import { memo } from 'react';
 
 import NotificationsPage from 'components/NotificationsPage/NotificationsPage';
 
-const Notifications = (): JSX.Element => (
+const Notifications = memo(() => (
   <>
     <Head>
       <title>Toxin | Уведомления</title>
@@ -14,6 +15,6 @@ const Notifications = (): JSX.Element => (
     </Head>
     <NotificationsPage />
   </>
-);
+));
 
 export default Notifications;

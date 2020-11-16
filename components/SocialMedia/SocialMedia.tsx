@@ -1,9 +1,11 @@
+import { memo } from 'react';
+
 import SocialMediaLink from './components/SocialMediaLink';
 import defaultProps from './defaultProps';
 import * as S from './SocialMedia.style';
 import { SocialMediaProps } from './SocialMedia.types';
 
-const SocialMedia: React.FC<SocialMediaProps> = ({ items = defaultProps }: SocialMediaProps) => (
+const SocialMedia = memo(({ items = defaultProps }: SocialMediaProps) => (
   <S.List>
     {items &&
       items.map((item) => (
@@ -12,6 +14,6 @@ const SocialMedia: React.FC<SocialMediaProps> = ({ items = defaultProps }: Socia
         </S.ListItem>
       ))}
   </S.List>
-);
+));
 
 export default SocialMedia;

@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import NavAccountSettings from 'components/NavAccountSettings/NavAccountSettings';
@@ -5,7 +6,7 @@ import NavAccountSettings from 'components/NavAccountSettings/NavAccountSettings
 import Login from '../Login/Login';
 import * as S from './MainContent.styles';
 
-const MainContent = (): JSX.Element => {
+const MainContent = memo(() => {
   const { t } = useTranslation('AccountSettings');
 
   return (
@@ -15,5 +16,6 @@ const MainContent = (): JSX.Element => {
       <Login />
     </S.MainContent>
   );
-};
+});
+
 export default MainContent;

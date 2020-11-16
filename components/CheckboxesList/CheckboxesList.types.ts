@@ -1,4 +1,4 @@
-import { TFunction } from 'i18next';
+import { WithTranslation } from 'react-i18next';
 
 export type Option = {
   name: string;
@@ -7,7 +7,6 @@ export type Option = {
   isChecked?: boolean;
 };
 
-export type Props = {
+export type Props = WithTranslation & {
   roomOptions: Option[];
-  t: TFunction;
 };

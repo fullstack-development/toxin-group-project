@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { Form, Field } from 'react-final-form';
 import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
@@ -45,64 +45,67 @@ type FormData = {
   birthday: string;
 };
 
-const EditBirthday = ({
-  user,
-  birthday,
-  isPending,
-  isSuccess,
-  isCompleted,
-  statusText,
-  onChange,
-  startUpdateAdditionalUserData,
-  stopUpdateAdditionalUserData,
-}: Props): JSX.Element => {
-  const onSubmit = ({ birthday: newBirthday }: FormData) => {
-    startUpdateAdditionalUserData({ user, data: { birthDate: newBirthday } });
-  };
+const EditBirthday = memo(
+  ({
+    user,
+    birthday,
+    isPending,
+    isSuccess,
+    isCompleted,
+    statusText,
+    onChange,
+    startUpdateAdditionalUserData,
+    stopUpdateAdditionalUserData,
+  }: Props) => {
+    const onSubmit = ({ birthday: newBirthday }: FormData) => {
+      startUpdateAdditionalUserData({ user, data: { birthDate: newBirthday } });
+    };
 
-  useEffect(() => {
-    stopUpdateAdditionalUserData();
-  }, [stopUpdateAdditionalUserData]);
+    useEffect(() => {
+      stopUpdateAdditionalUserData();
+    }, [stopUpdateAdditionalUserData]);
 
-  const handleConfirmButtonClick = () => {
-    stopUpdateAdditionalUserData();
-    if (isSuccess) onChange('');
-  };
+    const handleConfirmButtonClick = () => {
+      stopUpdateAdditionalUserData();
+      if (isSuccess) onChange('');
+    };
 
-  const { t } = useTranslation('PersonalInfo');
+    const { t } = useTranslation('PersonalInfo');
 
-  return (
-    <Form
-      initialValues={{ birthday }}
-      onSubmit={onSubmit}
-      render={({ handleSubmit }) => (
-        <>
-          <form onSubmit={handleSubmit}>
-            <Field
-              name="birthday"
-              validate={dateValidator}
-              render={({ input }) => (
-                <Input
-                  {...input}
-                  validators={[dateValidator]}
-                  placeholder={t('DD.MM.YYYY')}
-                  mask={dateFormatMask}
-                />
-              )}
-            />
-            <Button disabled={isPending} isFlat isFilled>
-              {t('Save')}
-            </Button>
-          </form>
-          {isCompleted && (
-            <PopUpNotification
-              message={t(statusText)}
-              onConfirmButtonClick={handleConfirmButtonClick}
-            />
-          )}
-        </>
-      )}
-    />
-  );
-};
+    return (
+      <Form
+        initialValues={{ birthday }}
+        onSubmit={onSubmit}
+        render={({ handleSubmit }) => (
+          <>
+            <form onSubmit={handleSubmit}>
+              <Field
+                name="birthday"
+                validate={dateValidator}
+                render={({ input }) => (
+                  <Input
+                    {...input}
+                    validators={[dateValidator]}
+                    placeholder={t('DD.MM.YYYY')}
+                    mask={dateFormatMask}
+                  />
+                )}
+              />
+              <Button disabled={isPending} isFlat isFilled>
+                {t('Save')}
+              </Button>
+            </form>
+            {isCompleted && (
+              <PopUpNotification
+                message={t(statusText)}
+                onConfirmButtonClick={handleConfirmButtonClick}
+              />
+            )}
+          </>
+        )}
+      />
+    );
+  },
+);
+
 export default connect(mapState, mapDispatch)(EditBirthday);

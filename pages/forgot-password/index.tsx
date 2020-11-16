@@ -1,8 +1,9 @@
 import Head from 'next/head';
+import { memo } from 'react';
 
 import ForgotPasswordPage from 'components/ForgotPasswordPage/ForgotPasswordPage';
 
-const ForgotPassword: React.FC = (): JSX.Element => (
+const ForgotPassword = memo(() => (
   <>
     <Head>
       <title>Toxin | Восстановить пароль</title>
@@ -14,6 +15,6 @@ const ForgotPassword: React.FC = (): JSX.Element => (
     </Head>
     <ForgotPasswordPage />
   </>
-);
+));
 
 export default ForgotPassword;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, memo } from 'react';
 import { DateUtils, DayModifiers } from 'react-day-picker';
 import { useTranslation } from 'react-i18next';
 
@@ -22,108 +22,104 @@ type Props = {
   onClose?: () => void;
 } & S.CalendarContainer;
 
-const Calendar = ({
-  onChangeVisible,
-  onApply,
-  onClose,
-  onSelectDate,
-  isVisible = false,
-}: Props): JSX.Element => {
-  const [selectedDays, handleSelectDays] = useState<DaysSelection>({
-    from: null,
-    to: null,
-    enteredTo: null,
-  });
-  const htmlContainer = useRef(null);
-  const { t } = useTranslation(['Months', 'WeekdaysShort', 'Buttons']);
+const Calendar = memo(
+  ({ onChangeVisible, onApply, onClose, onSelectDate, isVisible = false }: Props) => {
+    const [selectedDays, handleSelectDays] = useState<DaysSelection>({
+      from: null,
+      to: null,
+      enteredTo: null,
+    });
+    const htmlContainer = useRef(null);
+    const { t } = useTranslation(['Months', 'WeekdaysShort', 'Buttons']);
 
-  useEffect(() => {
-    const handleDocumentClick = (e: Event) => {
-      if (isVisible && !htmlContainer.current.contains(e.target)) {
-        onChangeVisible(false);
-        if (onClose) onClose();
-      }
+    useEffect(() => {
+      const handleDocumentClick = (e: Event) => {
+        if (isVisible && !htmlContainer.current.contains(e.target)) {
+          onChangeVisible(false);
+          if (onClose) onClose();
+        }
+      };
+
+      document.addEventListener('click', handleDocumentClick);
+      return () => document.removeEventListener('click', handleDocumentClick);
+    }, [isVisible, onChangeVisible, onClose]);
+
+    const applySelectingDays = (newRange: DaysSelection) => {
+      handleSelectDays(newRange);
+      if (onSelectDate) onSelectDate(newRange);
     };
 
-    document.addEventListener('click', handleDocumentClick);
-    return () => document.removeEventListener('click', handleDocumentClick);
-  }, [isVisible, onChangeVisible, onClose]);
+    const handleDayClick = (day: SelectedDate, modifiers: DayModifiers): void => {
+      if (modifiers.disabled) return;
 
-  const applySelectingDays = (newRange: DaysSelection) => {
-    handleSelectDays(newRange);
-    if (onSelectDate) onSelectDate(newRange);
-  };
+      const range: DaysSelection = DateUtils.addDayToRange(day, selectedDays);
 
-  const handleDayClick = (day: SelectedDate, modifiers: DayModifiers): void => {
-    if (modifiers.disabled) return;
+      applySelectingDays(range);
+    };
 
-    const range: DaysSelection = DateUtils.addDayToRange(day, selectedDays);
+    const handleApplyButtonClick = (): void => {
+      onChangeVisible(false);
 
-    applySelectingDays(range);
-  };
+      if (onApply) onApply();
+    };
 
-  const handleApplyButtonClick = (): void => {
-    onChangeVisible(false);
+    const clearSelectedDate = (): void => {
+      const clearedData = { from: undefined, to: undefined };
 
-    if (onApply) onApply();
-  };
+      applySelectingDays(clearedData);
+    };
 
-  const clearSelectedDate = (): void => {
-    const clearedData = { from: undefined, to: undefined };
+    const { from, to } = selectedDays;
+    const modifiers = { start: from, end: selectedDays.to };
 
-    applySelectingDays(clearedData);
-  };
+    const months = [
+      t('Months:January'),
+      t('Months:February'),
+      t('Months:March'),
+      t('Months:April'),
+      t('Months:May'),
+      t('Months:June'),
+      t('Months:July'),
+      t('Months:August'),
+      t('Months:September'),
+      t('Months:October'),
+      t('Months:November'),
+      t('Months:December'),
+    ];
 
-  const { from, to } = selectedDays;
-  const modifiers = { start: from, end: selectedDays.to };
+    const weekdaysShort = [
+      t('WeekdaysShort:Mon'),
+      t('WeekdaysShort:Tue'),
+      t('WeekdaysShort:Wed'),
+      t('WeekdaysShort:Thu'),
+      t('WeekdaysShort:Fri'),
+      t('WeekdaysShort:Sat'),
+      t('WeekdaysShort:Sun'),
+    ];
 
-  const months = [
-    t('Months:January'),
-    t('Months:February'),
-    t('Months:March'),
-    t('Months:April'),
-    t('Months:May'),
-    t('Months:June'),
-    t('Months:July'),
-    t('Months:August'),
-    t('Months:September'),
-    t('Months:October'),
-    t('Months:November'),
-    t('Months:December'),
-  ];
-
-  const weekdaysShort = [
-    t('WeekdaysShort:Mon'),
-    t('WeekdaysShort:Tue'),
-    t('WeekdaysShort:Wed'),
-    t('WeekdaysShort:Thu'),
-    t('WeekdaysShort:Fri'),
-    t('WeekdaysShort:Sat'),
-    t('WeekdaysShort:Sun'),
-  ];
-
-  return (
-    <S.CalendarContainer isVisible={isVisible} ref={htmlContainer}>
-      <S.Calendar
-        showOutsideDays
-        modifiers={modifiers}
-        months={months}
-        weekdaysShort={weekdaysShort}
-        selectedDays={[from, { from, to }]}
-        disabledDays={{ before: new Date() }}
-        onDayClick={handleDayClick}
-        navbarElement={<NavBar />}
-      />
-      <S.CalendarControls>
-        <TextButton type="button" isSecondary onClick={clearSelectedDate}>
-          {t('Buttons:Clear')}
-        </TextButton>
-        <TextButton type="button" onClick={handleApplyButtonClick}>
-          {t('Buttons:Apply')}
-        </TextButton>
-      </S.CalendarControls>
-    </S.CalendarContainer>
-  );
-};
+    return (
+      <S.CalendarContainer isVisible={isVisible} ref={htmlContainer}>
+        <S.Calendar
+          showOutsideDays
+          modifiers={modifiers}
+          months={months}
+          weekdaysShort={weekdaysShort}
+          selectedDays={[from, { from, to }]}
+          disabledDays={{ before: new Date() }}
+          onDayClick={handleDayClick}
+          navbarElement={<NavBar />}
+        />
+        <S.CalendarControls>
+          <TextButton type="button" isSecondary onClick={clearSelectedDate}>
+            {t('Buttons:Clear')}
+          </TextButton>
+          <TextButton type="button" onClick={handleApplyButtonClick}>
+            {t('Buttons:Apply')}
+          </TextButton>
+        </S.CalendarControls>
+      </S.CalendarContainer>
+    );
+  },
+);
 
 export default Calendar;
