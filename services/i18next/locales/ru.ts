@@ -51,6 +51,7 @@ export const ru = {
   OrderForm: {
     'How many guests': 'Сколько гостей',
     'Book now': 'Забронировать',
+    'Please select a booking date': 'Пожалуйста, выберите дату бронирования',
   },
   CheckboxesList: {
     'Smoking is allowed': 'Можно курить',

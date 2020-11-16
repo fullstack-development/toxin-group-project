@@ -1,11 +1,12 @@
 import { Filters } from 'services/api/entities/types';
 
-import { RoomsRequest, LoadBookedHistory, BookCurrentRoom, SelectedBookedRoom } from '../model';
-
-const bookRoom = (data: SelectedBookedRoom): BookCurrentRoom => ({
-  type: 'BOOK_ROOM',
-  payload: data,
-});
+import {
+  RoomsRequest,
+  LoadBookedHistory,
+  BookCurrentRoom,
+  SelectedBookedRoom,
+  BookingCanceled,
+} from '../model';
 
 const requestRooms = (options: Filters): RoomsRequest => ({
   type: 'LOAD_ROOMS',
@@ -17,4 +18,13 @@ const loadBookedHistoryRooms = (email: string): LoadBookedHistory => ({
   payload: email,
 });
 
-export { bookRoom, requestRooms, loadBookedHistoryRooms };
+const bookRoom = (data: SelectedBookedRoom): BookCurrentRoom => ({
+  type: 'BOOK_ROOM',
+  payload: data,
+});
+
+const cancelBooking = (): BookingCanceled => ({
+  type: 'BOOKING_CANCELED',
+});
+
+export { requestRooms, loadBookedHistoryRooms, bookRoom, cancelBooking };

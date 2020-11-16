@@ -54,14 +54,26 @@ function* confirmBookedRoom({
   payload,
 }: BookCurrentRoom): Generator | Generator<CallEffect<BookCurrentRoom>, void, never> {
   const { apartmentId, booked, user } = payload;
-  const data: BookingData = {
-    apartmentId,
-    from: new Date(booked.from),
-    to: new Date(booked.to),
-    reservationBy: user,
-  };
+  try {
+    if (!booked) throw new Error('Please select a booking date');
+    const data: BookingData = {
+      apartmentId,
+      from: new Date(booked.from),
+      to: new Date(booked.to),
+      reservationBy: user,
+    };
 
-  yield call(Api.booking.setBookedByUser, data);
+    yield call(Api.booking.setBookedByUser, data);
+
+    yield put({
+      type: 'BOOKING_SUCCESS',
+    });
+  } catch ({ message }) {
+    yield put({
+      type: 'BOOKING_FAILED',
+      payload: message,
+    });
+  }
 }
 
 function* rootSaga(): SagaIterator {

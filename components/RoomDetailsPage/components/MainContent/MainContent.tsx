@@ -11,7 +11,6 @@ import Reviews from 'components/Reviews/Reviews';
 import RoomImpression from 'components/RoomImpression/RoomImpression';
 import { getRoomDetails as getRoomDetailsRequest } from 'redux/Apartment/redux/actions';
 import { preloadAuthData } from 'redux/Auth/redux/actions';
-import { bookRoom } from 'redux/Booking/redux/actions';
 import { AppState } from 'redux/store.types';
 import { Apartment } from 'services/api/entities/types';
 
@@ -35,7 +34,6 @@ const mapState = (state: AppState): StateProps => ({
 const mapDispatch = {
   startGetRoomDetails: getRoomDetailsRequest,
   checkAuthBeforePageLoaded: preloadAuthData,
-  confirmBookedRoom: bookRoom,
 };
 
 type Props = StateProps & typeof mapDispatch;
@@ -48,7 +46,6 @@ const MainContent = memo(
     userEmail,
     startGetRoomDetails,
     checkAuthBeforePageLoaded,
-    confirmBookedRoom,
   }: Props) => {
     const { t } = useTranslation(['RoomDetailsPage', 'Shared']);
     const router = useRouter();
@@ -115,7 +112,6 @@ const MainContent = memo(
                   roomPrice={roomDetails.price}
                   isAuthSuccess={isAuthSuccess}
                   userEmail={userEmail}
-                  confirmBookedRoom={confirmBookedRoom}
                 />
               </S.OrderFormWrapper>
             </S.Details>
