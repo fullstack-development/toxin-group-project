@@ -1,5 +1,6 @@
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import Link from 'next/link';
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import * as S from './NavAccountSettings.styles';
@@ -8,7 +9,7 @@ type Props = {
   title: string;
 };
 
-const NavAccountSettings = ({ title }: Props): JSX.Element => {
+const NavAccountSettings = memo(({ title }: Props) => {
   const { t } = useTranslation('AccountSettings');
 
   return (
@@ -20,6 +21,6 @@ const NavAccountSettings = ({ title }: Props): JSX.Element => {
       {title}
     </S.NavAccountSettings>
   );
-};
+});
 
 export default NavAccountSettings;

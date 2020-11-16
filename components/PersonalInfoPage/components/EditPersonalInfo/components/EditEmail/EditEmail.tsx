@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { Form, Field } from 'react-final-form';
 import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
-import { emailUpdate, emailUpdateCompleted } from 'redux/Profile/redux/actions';
+import { emailUpdate, completeEmailUpdate } from 'redux/Profile/redux/actions';
 import { AppState } from 'redux/store.types';
 import { User } from 'services/api/Firebase/modules/Authentication/types';
 import { emailValidator } from 'shared/helpers/validators';
@@ -27,7 +27,7 @@ const mapState = (state: AppState): StateProps => ({
 
 const mapDispatch = {
   startEmailUpdate: emailUpdate,
-  stopEmailUpdate: emailUpdateCompleted,
+  stopEmailUpdate: completeEmailUpdate,
 };
 
 type OwnProps = {
@@ -38,61 +38,63 @@ type OwnProps = {
 
 type Props = OwnProps & StateProps & typeof mapDispatch;
 
-const EditEmail = ({
-  user,
-  email,
-  isPending,
-  isSuccess,
-  isCompleted,
-  statusText,
-  onChange,
-  startEmailUpdate,
-  stopEmailUpdate,
-}: Props): JSX.Element => {
-  const onSubmit = ({ email: emailForUpdate }: { email: string }) => {
-    startEmailUpdate({ user, email: emailForUpdate });
-  };
+const EditEmail = memo(
+  ({
+    user,
+    email,
+    isPending,
+    isSuccess,
+    isCompleted,
+    statusText,
+    onChange,
+    startEmailUpdate,
+    stopEmailUpdate,
+  }: Props) => {
+    const onSubmit = ({ email: emailForUpdate }: { email: string }) => {
+      startEmailUpdate({ user, email: emailForUpdate });
+    };
 
-  useEffect(() => {
-    stopEmailUpdate();
-  }, [stopEmailUpdate]);
+    useEffect(() => {
+      stopEmailUpdate();
+    }, [stopEmailUpdate]);
 
-  const handleConfirmButtonClick = () => {
-    stopEmailUpdate();
-    if (isSuccess) onChange('');
-  };
+    const handleConfirmButtonClick = () => {
+      stopEmailUpdate();
+      if (isSuccess) onChange('');
+    };
 
-  const { t } = useTranslation('PersonalInfo');
+    const { t } = useTranslation('PersonalInfo');
 
-  return (
-    <Form
-      initialValues={{ email }}
-      onSubmit={onSubmit}
-      render={({ handleSubmit }) => (
-        <>
-          <form onSubmit={handleSubmit}>
-            <Field
-              name="email"
-              type="email"
-              validate={emailValidator}
-              render={({ input }) => (
-                <Input {...input} placeholder="Email" validators={[emailValidator]} />
-              )}
-            />
-            <Button disabled={isPending} isFlat isFilled>
-              {t('Save')}
-            </Button>
-          </form>
-          {isCompleted && (
-            <PopUpNotification
-              message={t(statusText)}
-              onConfirmButtonClick={handleConfirmButtonClick}
-            />
-          )}
-        </>
-      )}
-    />
-  );
-};
+    return (
+      <Form
+        initialValues={{ email }}
+        onSubmit={onSubmit}
+        render={({ handleSubmit }) => (
+          <>
+            <form onSubmit={handleSubmit}>
+              <Field
+                name="email"
+                type="email"
+                validate={emailValidator}
+                render={({ input }) => (
+                  <Input {...input} placeholder="Email" validators={[emailValidator]} />
+                )}
+              />
+              <Button disabled={isPending} isFlat isFilled>
+                {t('Save')}
+              </Button>
+            </form>
+            {isCompleted && (
+              <PopUpNotification
+                message={t(statusText)}
+                onConfirmButtonClick={handleConfirmButtonClick}
+              />
+            )}
+          </>
+        )}
+      />
+    );
+  },
+);
 
 export default connect(mapState, mapDispatch)(EditEmail);

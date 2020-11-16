@@ -1,33 +1,27 @@
 import { SagaIterator } from 'redux-saga';
-import { call, put, takeLeading } from 'redux-saga/effects';
+import { call, put } from 'redux-saga/effects';
 
+import { takeLeadingAction } from 'redux/action.model';
 import api from 'services/api/api';
 import { Apartment } from 'services/api/entities/types';
 
-import {
-  GET_ROOM_DETAILS_PROCESS,
-  GET_ROOM_DETAILS_SUCCESS,
-  GET_ROOM_DETAILS_FAILED,
-} from '../../constants';
-import { GetRoomDetailsRequest } from '../../types';
+import { GetRoomDetailsRequest } from '../../model';
+import { getRoomDetailsFailed, getRoomDetailsSuccess } from '../actions';
 
 function* getRoomDetails({ payload: id }: GetRoomDetailsRequest) {
   try {
     const roomDetails: Apartment = yield call(api.apartments.load, id);
-    yield put({
-      type: GET_ROOM_DETAILS_SUCCESS,
-      payload: roomDetails,
-    });
+    yield put(getRoomDetailsSuccess(roomDetails));
   } catch (err) {
-    yield put({
-      type: GET_ROOM_DETAILS_FAILED,
-      payload: null,
-    });
+    yield put(getRoomDetailsFailed());
   }
 }
 
 function* rootSaga(): SagaIterator {
-  yield takeLeading(GET_ROOM_DETAILS_PROCESS, getRoomDetails);
+  yield takeLeadingAction<GetRoomDetailsRequest['type']>(
+    'GET_ROOM_DETAILS_PROCESS',
+    getRoomDetails,
+  );
 }
 
 export { rootSaga };

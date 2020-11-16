@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import SocialMedia from 'components/SocialMedia/SocialMedia';
@@ -10,27 +11,29 @@ import footerData from './Footer.data';
 import * as S from './Footer.styles';
 import { FooterProps } from './Footer.types';
 
-const Footer: React.FC<FooterProps> = ({
-  subscription = footerData.subscription,
-  description = footerData.description,
-  copyrightText = footerData.copyrightText,
-}: FooterProps) => {
-  const { t } = useTranslation('Footer');
+const Footer = memo(
+  ({
+    subscription = footerData.subscription,
+    description = footerData.description,
+    copyrightText = footerData.copyrightText,
+  }: FooterProps) => {
+    const { t } = useTranslation('Footer');
 
-  return (
-    <S.Wrapper>
-      <S.Title>{t('Site map')}</S.Title>
-      <S.MainContainer>
-        <Logo description={description} />
-        <Nav />
-        <Subscription {...subscription} />
-      </S.MainContainer>
-      <S.BottomContainer>
-        <Copyright copyrightText={copyrightText} />
-        <SocialMedia />
-      </S.BottomContainer>
-    </S.Wrapper>
-  );
-};
+    return (
+      <S.Wrapper>
+        <S.Title>{t('Site map')}</S.Title>
+        <S.MainContainer>
+          <Logo description={description} />
+          <Nav />
+          <Subscription {...subscription} />
+        </S.MainContainer>
+        <S.BottomContainer>
+          <Copyright copyrightText={copyrightText} />
+          <SocialMedia />
+        </S.BottomContainer>
+      </S.Wrapper>
+    );
+  },
+);
 
 export default Footer;

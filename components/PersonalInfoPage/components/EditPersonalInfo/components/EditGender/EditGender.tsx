@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { Form } from 'react-final-form';
 import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
@@ -8,7 +8,7 @@ import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
 import RadioButton from 'components/RadioButton/RadioButton';
 import {
   updateAdditionalUserData,
-  updateAdditionalUserDataCompleted,
+  completeAdditionalUserDataUpdate,
 } from 'redux/Profile/redux/actions';
 import { AppState } from 'redux/store.types';
 import { User } from 'services/api/Firebase/modules/Authentication/types';
@@ -31,7 +31,7 @@ const mapState = (state: AppState): StateProps => ({
 
 const mapDispatch = {
   startUpdateAdditionalUserData: updateAdditionalUserData,
-  stopUpdateAdditionalUserData: updateAdditionalUserDataCompleted,
+  stopUpdateAdditionalUserData: completeAdditionalUserDataUpdate,
 };
 
 type OwnProps = {
@@ -46,64 +46,66 @@ type FormData = {
   gender: 'female' | 'male';
 };
 
-const EditGender = ({
-  user,
-  gender,
-  isPending,
-  isSuccess,
-  isCompleted,
-  statusText,
-  onChange,
-  startUpdateAdditionalUserData,
-  stopUpdateAdditionalUserData,
-}: Props): JSX.Element => {
-  const onSubmit = ({ gender: newGender }: FormData) => {
-    startUpdateAdditionalUserData({ user, data: { gender: newGender } });
-  };
+const EditGender = memo(
+  ({
+    user,
+    gender,
+    isPending,
+    isSuccess,
+    isCompleted,
+    statusText,
+    onChange,
+    startUpdateAdditionalUserData,
+    stopUpdateAdditionalUserData,
+  }: Props) => {
+    const onSubmit = ({ gender: newGender }: FormData) => {
+      startUpdateAdditionalUserData({ user, data: { gender: newGender } });
+    };
 
-  useEffect(() => {
-    stopUpdateAdditionalUserData();
-  }, [stopUpdateAdditionalUserData]);
+    useEffect(() => {
+      stopUpdateAdditionalUserData();
+    }, [stopUpdateAdditionalUserData]);
 
-  const mapGender = {
-    Male: 'male',
-    Female: 'female',
-    Мужчина: 'male',
-    Женщина: 'female',
-  };
+    const mapGender = {
+      Male: 'male',
+      Female: 'female',
+      Мужчина: 'male',
+      Женщина: 'female',
+    };
 
-  const handleConfirmButtonClick = () => {
-    stopUpdateAdditionalUserData();
-    if (isSuccess) onChange('');
-  };
+    const handleConfirmButtonClick = () => {
+      stopUpdateAdditionalUserData();
+      if (isSuccess) onChange('');
+    };
 
-  const { t } = useTranslation('PersonalInfo');
+    const { t } = useTranslation('PersonalInfo');
 
-  return (
-    <Form
-      initialValues={{ gender: mapGender[gender] }}
-      onSubmit={onSubmit}
-      render={({ handleSubmit }) => (
-        <>
-          <form onSubmit={handleSubmit}>
-            <S.Gender>
-              <RadioButton name="gender" value="male" label={t('Male')} />
-              <RadioButton name="gender" value="female" label={t('Female')} />
-            </S.Gender>
-            <Button disabled={isPending} isFlat isFilled>
-              {t('Save')}
-            </Button>
-          </form>
-          {isCompleted && (
-            <PopUpNotification
-              message={t(statusText)}
-              onConfirmButtonClick={handleConfirmButtonClick}
-            />
-          )}
-        </>
-      )}
-    />
-  );
-};
+    return (
+      <Form
+        initialValues={{ gender: mapGender[gender] }}
+        onSubmit={onSubmit}
+        render={({ handleSubmit }) => (
+          <>
+            <form onSubmit={handleSubmit}>
+              <S.Gender>
+                <RadioButton name="gender" value="male" label={t('Male')} />
+                <RadioButton name="gender" value="female" label={t('Female')} />
+              </S.Gender>
+              <Button disabled={isPending} isFlat isFilled>
+                {t('Save')}
+              </Button>
+            </form>
+            {isCompleted && (
+              <PopUpNotification
+                message={t(statusText)}
+                onConfirmButtonClick={handleConfirmButtonClick}
+              />
+            )}
+          </>
+        )}
+      />
+    );
+  },
+);
 
 export default connect(mapState, mapDispatch)(EditGender);

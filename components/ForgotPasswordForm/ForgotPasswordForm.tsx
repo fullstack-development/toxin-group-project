@@ -1,9 +1,10 @@
+import { memo } from 'react';
 import { Form, Field } from 'react-final-form';
 import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
-import { passwordReset, passwordResetCompleted } from 'redux/Auth/redux/actions';
+import { passwordReset, completePasswordReset } from 'redux/Auth/redux/actions';
 import { AppState } from 'redux/store.types';
 import { emailValidator } from 'shared/helpers/validators/emailValidator';
 
@@ -21,7 +22,7 @@ const mapState = (state: AppState): StateProps => ({
 
 const mapDispatch = {
   startPasswordReset: passwordReset,
-  stopPasswordReset: passwordResetCompleted,
+  stopPasswordReset: completePasswordReset,
 };
 
 type FormData = {
@@ -30,51 +31,47 @@ type FormData = {
 
 type Props = StateProps & typeof mapDispatch;
 
-const ForgotPasswordForm = ({
-  isCompleted,
-  statusText,
-  startPasswordReset,
-  stopPasswordReset,
-}: Props): JSX.Element => {
-  const onFormSubmit = ({ email }: FormData) => {
-    startPasswordReset(email);
-  };
-  const { t } = useTranslation(['ForgotPasswordForm', 'Buttons']);
+const ForgotPasswordForm = memo(
+  ({ isCompleted, statusText, startPasswordReset, stopPasswordReset }: Props) => {
+    const onFormSubmit = ({ email }: FormData) => {
+      startPasswordReset(email);
+    };
+    const { t } = useTranslation(['ForgotPasswordForm', 'Buttons']);
 
-  return (
-    <S.ForgotPasswordForm>
-      <S.Title>{t('Account recovery')}</S.Title>
-      <Form
-        onSubmit={onFormSubmit}
-        render={({ handleSubmit }) => (
-          <form onSubmit={handleSubmit}>
-            <Field
-              name="email"
-              type="email"
-              render={({ input, meta }) => (
-                <S.InputWrapper
-                  {...input}
-                  {...meta}
-                  label={t('Email address')}
-                  placeholder="Email"
-                  validators={[emailValidator]}
-                />
-              )}
-            />
-            <S.NextButton isFlat isFilled>
-              {t('Buttons:Next')}
-            </S.NextButton>
-          </form>
-        )}
-      />
-      {isCompleted && (
-        <PopUpNotification
-          message={t(`Auth:${statusText}`)}
-          onConfirmButtonClick={stopPasswordReset}
+    return (
+      <S.ForgotPasswordForm>
+        <S.Title>{t('Account recovery')}</S.Title>
+        <Form
+          onSubmit={onFormSubmit}
+          render={({ handleSubmit }) => (
+            <form onSubmit={handleSubmit}>
+              <Field
+                name="email"
+                type="email"
+                render={({ input }) => (
+                  <S.InputWrapper
+                    {...input}
+                    label={t('Email address')}
+                    placeholder="Email"
+                    validators={[emailValidator]}
+                  />
+                )}
+              />
+              <S.NextButton isFlat isFilled>
+                {t('Buttons:Next')}
+              </S.NextButton>
+            </form>
+          )}
         />
-      )}
-    </S.ForgotPasswordForm>
-  );
-};
+        {isCompleted && (
+          <PopUpNotification
+            message={t(`Auth:${statusText}`)}
+            onConfirmButtonClick={stopPasswordReset}
+          />
+        )}
+      </S.ForgotPasswordForm>
+    );
+  },
+);
 
 export default connect(mapState, mapDispatch)(ForgotPasswordForm);

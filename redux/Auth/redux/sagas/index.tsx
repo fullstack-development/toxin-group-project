@@ -1,58 +1,44 @@
 import { SagaIterator } from 'redux-saga';
-import { put, takeLatest, takeLeading, call, PutEffect } from 'redux-saga/effects';
+import { put, call } from 'redux-saga/effects';
 
+import { takeLatestAction, takeLeadingAction } from 'redux/action.model';
 import Api from 'services/api/api';
 import { User, UserCredential } from 'services/api/Firebase/modules/Authentication/types';
 
 import {
-  AUTH_FAILED,
-  AUTH_LOGOUT_DONE,
-  AUTH_LOGOUT_PROCESS,
-  AUTH_PROCESS,
-  AUTH_REQUIRED,
-  AUTH_SUCCESS,
-  GOOGLE_AUTH_PROCESS,
-  PASSWORD_RESET_FAILED,
-  PASSWORD_RESET_PROCESS,
-  PASSWORD_RESET_SUCCESS,
-  PRELOAD_AUTH_DATA,
-} from '../../constants';
-import {
-  AuthData,
-  SetAuthStatusSuccess,
-  SetAuthStatusFailed,
-  SetAuthRequired,
+  RequestToAuth,
+  RequestToAuthWithGoogle,
+  LogoutProcess,
+  PreloadAuthData,
   PasswordResetRequest,
-} from '../../types';
+} from '../../model';
+import {
+  setAuthRequired,
+  setAuthStatusSuccess,
+  setAuthStatusFailed,
+  logoutDone,
+  passwordResetFailed,
+  passwordResetSuccess,
+} from '../actions';
 
-function* startAuthProcess(data: {
-  type: typeof AUTH_PROCESS | typeof GOOGLE_AUTH_PROCESS;
-  payload: AuthData;
-}): Generator | Generator<PutEffect<SetAuthStatusSuccess | SetAuthStatusFailed>, void, never> {
-  const { type } = data;
-
+function* auth(data: RequestToAuth) {
   try {
-    if (type === AUTH_PROCESS) {
-      const { email, password } = data.payload;
-      const { user }: UserCredential = yield call(Api.auth.signIn, email, password);
+    const { email, password } = data.payload;
+    const { user }: UserCredential = yield call(Api.auth.signIn, email, password);
 
-      yield put({
-        type: AUTH_SUCCESS,
-        payload: user,
-      });
-    } else if (type === GOOGLE_AUTH_PROCESS) {
-      const { user }: UserCredential = yield call(Api.auth.signInWithGoogle);
-
-      yield put({
-        type: AUTH_SUCCESS,
-        payload: user,
-      });
-    }
+    yield put(setAuthStatusSuccess(user));
   } catch ({ message }) {
-    yield put({
-      type: AUTH_FAILED,
-      payload: message,
-    });
+    yield put(setAuthStatusFailed(message));
+  }
+}
+
+function* authWithGoogle() {
+  try {
+    const { user }: UserCredential = yield call(Api.auth.signInWithGoogle);
+
+    yield put(setAuthStatusSuccess(user));
+  } catch ({ message }) {
+    yield put(setAuthStatusFailed(message));
   }
 }
 
@@ -65,25 +51,19 @@ const authStateChangedCallback = (): Promise<User> => {
   });
 };
 
-function* prepareAuthData():
-  | Generator
-  | Generator<
-      PutEffect<SetAuthStatusSuccess | SetAuthStatusFailed | SetAuthRequired>,
-      void,
-      never
-    > {
+function* prepareAuthData() {
   try {
-    const result: User = yield call(authStateChangedCallback);
+    const user: User = yield call(authStateChangedCallback);
 
-    yield put({
-      type: AUTH_SUCCESS,
-      payload: result,
-    });
+    yield put(setAuthStatusSuccess(user));
   } catch (error) {
-    yield put({
-      type: AUTH_REQUIRED,
-    });
+    yield put(setAuthRequired());
   }
+}
+
+function* logoutUser() {
+  yield call(Api.auth.signOut);
+  yield put(logoutDone());
 }
 
 function* passwordReset({ payload: email }: PasswordResetRequest) {
@@ -92,30 +72,23 @@ function* passwordReset({ payload: email }: PasswordResetRequest) {
     const isEmailAuth = userAuthInfo.includes('password');
     if (isEmailAuth) {
       yield call(Api.auth.resetPassword, email);
-      yield put({
-        type: PASSWORD_RESET_SUCCESS,
-        payload: `A link to reset your password has been sent to the specified email`,
-      });
+      yield put(
+        passwordResetSuccess('A link to reset your password has been sent to the specified email'),
+      );
     } else {
       throw new Error('The user with the specified email address is not registered');
     }
   } catch ({ message }) {
-    yield put({
-      type: PASSWORD_RESET_FAILED,
-      payload: message,
-    });
+    yield put(passwordResetFailed(message));
   }
 }
 
-function* logoutUser(): Generator {
-  yield call(Api.auth.signOut);
-  yield put({ type: AUTH_LOGOUT_DONE });
+function* rootSaga(): SagaIterator {
+  yield takeLatestAction<RequestToAuth['type']>('AUTH_PROCESS', auth);
+  yield takeLatestAction<RequestToAuthWithGoogle['type']>('GOOGLE_AUTH_PROCESS', authWithGoogle);
+  yield takeLatestAction<PreloadAuthData['type']>('PRELOAD_AUTH_DATA', prepareAuthData);
+  yield takeLatestAction<LogoutProcess['type']>('AUTH_LOGOUT_PROCESS', logoutUser);
+  yield takeLeadingAction<PasswordResetRequest['type']>('PASSWORD_RESET_PROCESS', passwordReset);
 }
 
-export function* rootSaga(): SagaIterator {
-  yield takeLatest(AUTH_LOGOUT_PROCESS, logoutUser);
-  yield takeLatest(AUTH_PROCESS, startAuthProcess);
-  yield takeLatest(GOOGLE_AUTH_PROCESS, startAuthProcess);
-  yield takeLatest(PRELOAD_AUTH_DATA, prepareAuthData);
-  yield takeLeading(PASSWORD_RESET_PROCESS, passwordReset);
-}
+export { rootSaga };

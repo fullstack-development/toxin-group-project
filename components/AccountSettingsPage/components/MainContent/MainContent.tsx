@@ -1,9 +1,10 @@
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import Cards from '../Cards/Cards';
 import * as S from './MainContent.styles';
 
-const MainContent = (): JSX.Element => {
+const MainContent = memo(() => {
   const { t } = useTranslation('AccountSettings');
 
   return (
@@ -12,6 +13,6 @@ const MainContent = (): JSX.Element => {
       <Cards />
     </S.MainContent>
   );
-};
+});
 
 export default MainContent;

@@ -1,67 +1,38 @@
 import { SagaIterator } from 'redux-saga';
-import { put, takeLatest, call, PutEffect, takeLeading, CallEffect } from 'redux-saga/effects';
+import { put, call } from 'redux-saga/effects';
 
+import { takeLatestAction, takeLeadingAction } from 'redux/action.model';
 import {
   RoomsRequest,
   LoadBookedHistory,
   BookedHistoryList,
-  UpdateBookedHistory,
   BookCurrentRoom,
-} from 'redux/Booking/types';
+} from 'redux/Booking/model';
 import Api from 'services/api/api';
 import { Apartment, BookingData } from 'services/api/entities/types';
 
-import {
-  ROOMS_REQUEST_PENDING,
-  ROOMS_REQUEST_SUCCESS,
-  ROOMS_REQUEST_FAILED,
-  LOAD_ROOMS,
-  LOAD_BOOKED_HISTORY,
-  UPDATE_BOOKED_HISTORY,
-  BOOK_ROOM,
-} from '../../constants';
+import { pendingStatusUpdate, setFailedStatus, setRooms, updateBookedHistory } from '../actions';
 
-function* loadRooms(
-  action: RoomsRequest,
-): Generator | Generator<PutEffect<RoomsRequest>, void, never> {
+function* loadRooms(action: RoomsRequest) {
   try {
-    yield put({
-      type: ROOMS_REQUEST_PENDING,
-      payload: true,
-    });
+    yield put(pendingStatusUpdate(true));
 
     const rooms: Apartment[] = yield call(Api.booking.filterRooms, action.payload);
-    yield put({
-      type: ROOMS_REQUEST_SUCCESS,
-      payload: rooms,
-    });
+    yield put(setRooms(rooms));
   } catch (error) {
-    yield put({
-      type: ROOMS_REQUEST_FAILED,
-      payload: error,
-    });
+    yield put(setFailedStatus(error));
   } finally {
-    yield put({
-      type: ROOMS_REQUEST_PENDING,
-      payload: false,
-    });
+    yield put(pendingStatusUpdate(false));
   }
 }
 
-function* loadRoomsHistory({
-  payload,
-}: LoadBookedHistory): Generator | Generator<PutEffect<UpdateBookedHistory>, void, never> {
-  const result: BookedHistoryList = yield call(Api.booking.getBookedHistory, payload);
+function* loadRoomsHistory({ payload }: LoadBookedHistory) {
+  const bookedHistoryList: BookedHistoryList = yield call(Api.booking.getBookedHistory, payload);
 
-  yield put({
-    type: UPDATE_BOOKED_HISTORY,
-    payload: result,
-  });
+  yield put(updateBookedHistory(bookedHistoryList));
 }
 
-function* confirmBookedRoom({
-  payload,
-}: BookCurrentRoom): Generator | Generator<CallEffect<BookCurrentRoom>, void, never> {
+function* confirmBookedRoom({ payload }: BookCurrentRoom) {
   const { apartmentId, booked, user } = payload;
   const data: BookingData = {
     apartmentId,
@@ -73,8 +44,10 @@ function* confirmBookedRoom({
   yield call(Api.booking.setBookedByUser, data);
 }
 
-export function* rootSaga(): SagaIterator {
-  yield takeLeading(LOAD_ROOMS, loadRooms);
-  yield takeLatest(LOAD_BOOKED_HISTORY, loadRoomsHistory);
-  yield takeLatest(BOOK_ROOM, confirmBookedRoom);
+function* rootSaga(): SagaIterator {
+  yield takeLeadingAction<RoomsRequest['type']>('LOAD_ROOMS', loadRooms);
+  yield takeLatestAction<LoadBookedHistory['type']>('LOAD_BOOKED_HISTORY', loadRoomsHistory);
+  yield takeLatestAction<BookCurrentRoom['type']>('BOOK_ROOM', confirmBookedRoom);
 }
+
+export { rootSaga };

@@ -43,10 +43,12 @@ const rootReducer = combineReducers(preparedReducers);
 
 const sagaMiddleware: SagaMiddleware = createSagaMiddleware();
 
-export const store = createStore(rootReducer, bindMiddleware([sagaMiddleware]));
+const store = createStore(rootReducer, bindMiddleware([sagaMiddleware]));
 
 sharedReduxEntries.forEach((module) => {
   const { sagas } = module;
 
   sagas.forEach((saga) => sagaMiddleware.run(saga));
 });
+
+export { store };

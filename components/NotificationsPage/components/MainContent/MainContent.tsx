@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { memo, useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
@@ -27,7 +27,7 @@ const mapDispatch = {
 
 type Props = StateProps & typeof mapDispatch;
 
-const MainContent = ({ user, subscriptionData, loadSubscriptionData }: Props): JSX.Element => {
+const MainContent = memo(({ user, subscriptionData, loadSubscriptionData }: Props) => {
   const getSubscriptionData = useCallback(
     (currentUser) => {
       if (currentUser) loadSubscriptionData(currentUser.email);
@@ -51,5 +51,6 @@ const MainContent = ({ user, subscriptionData, loadSubscriptionData }: Props): J
       />
     </S.MainContent>
   );
-};
+});
+
 export default connect(mapState, mapDispatch)(MainContent);
