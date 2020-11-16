@@ -5,8 +5,6 @@ import Preloader from 'components/Preloader/Preloader';
 import Room from 'components/Room/Room';
 
 import { RoomProps } from '../Room/Room.model';
-import { Props } from './Rooms.model';
-import * as S from './Rooms.styles';
 import * as S from './Rooms.styles';
 
 type Props = {
