@@ -25,7 +25,12 @@ function* startRegistrationProcess(data: {
     hasSpecialOffers,
   } = data.payload;
 
+  const maxSymbolLength = 255;
+
   try {
+    if (name.length > maxSymbolLength || surname.length > maxSymbolLength)
+      throw new Error(`Имя или Фамилия не может иметь более ${maxSymbolLength} символов`);
+
     const result: UserCredential = yield call(Api.auth.signUp, {
       email,
       password,
