@@ -5,11 +5,12 @@ import { takeLatestAction } from 'redux/action.model';
 import i18next from 'services/i18next';
 
 import { ChangeLanguageRequest } from '../../model';
+import { changeLanguageSuccess } from '../actions';
 
-function* changeLanguage(data: ChangeLanguageRequest) {
-  i18next.changeLanguage(data.payload);
+function* changeLanguage({ payload }: ChangeLanguageRequest) {
+  i18next.changeLanguage(payload);
 
-  yield put({ type: 'CHANGE_LANGUAGE_SUCCESS', payload: data.payload });
+  yield put(changeLanguageSuccess(payload));
 }
 
 function* rootSaga(): SagaIterator {

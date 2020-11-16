@@ -4,20 +4,25 @@ import { call, put } from 'redux-saga/effects';
 import { takeLeadingAction } from 'redux/action.model';
 import api from 'services/api/api';
 
-import { GetSubscriptionDataRequest, SubscriptionUpdateRequest } from '../../model';
+import {
+  SubscriptionData,
+  GetSubscriptionDataRequest,
+  SubscriptionUpdateRequest,
+} from '../../model';
+import {
+  getSubscriptionDataFailed,
+  getSubscriptionDataSuccess,
+  subscriptionUpdateFailed,
+  subscriptionUpdateSuccess,
+} from '../actions';
 
 function* getSubscriptionsData({ payload: email }: GetSubscriptionDataRequest) {
   try {
-    const subscriptionData = yield call(api.subscriptions.load, email);
+    const subscriptionData: SubscriptionData = yield call(api.subscriptions.load, email);
 
-    yield put({
-      type: 'GET_SUBSCRIPTION_DATA_SUCCESS',
-      payload: subscriptionData,
-    });
+    yield put(getSubscriptionDataSuccess(subscriptionData));
   } catch (err) {
-    yield put({
-      type: 'GET_SUBSCRIPTION_DATA_FAILED',
-    });
+    yield put(getSubscriptionDataFailed());
   }
 }
 
@@ -31,18 +36,13 @@ function* subscriptionUpdate({ payload: { email, subscriptions } }: Subscription
     }
 
     const userAuthInfo = yield call(api.auth.fetchSignInMethodsForEmail, email);
+    const statusText = userAuthInfo.length
+      ? 'Notification settings changed'
+      : 'You have successfully subscribed to the special offers';
 
-    yield put({
-      type: 'SUBSCRIPTION_UPDATE_SUCCESS',
-      payload: userAuthInfo.length
-        ? 'Notification settings changed'
-        : 'You have successfully subscribed to the special offers',
-    });
+    yield put(subscriptionUpdateSuccess(statusText));
   } catch (err) {
-    yield put({
-      type: 'SUBSCRIPTION_UPDATE_FAILED',
-      payload: 'An error occured, please try again later',
-    });
+    yield put(subscriptionUpdateFailed('An error occured, please try again later'));
   }
 }
 

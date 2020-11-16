@@ -24,6 +24,7 @@ type SelectedBookedRoom = {
 };
 
 type RoomsRequest = ActionPayload<'LOAD_ROOMS', Filters>;
+
 type PendingStatusUpdate = ActionPayload<'ROOMS_REQUEST_PENDING', boolean>;
 type SetRooms = ActionPayload<'ROOMS_REQUEST_SUCCESS', Apartment[]>;
 type SetFailedStatus = ActionPayload<'ROOMS_REQUEST_FAILED', Error>;

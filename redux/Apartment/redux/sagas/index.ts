@@ -6,19 +6,14 @@ import api from 'services/api/api';
 import { Apartment } from 'services/api/entities/types';
 
 import { GetRoomDetailsRequest } from '../../model';
+import { getRoomDetailsFailed, getRoomDetailsSuccess } from '../actions';
 
 function* getRoomDetails({ payload: id }: GetRoomDetailsRequest) {
   try {
     const roomDetails: Apartment = yield call(api.apartments.load, id);
-    yield put({
-      type: 'GET_ROOM_DETAILS_SUCCESS',
-      payload: roomDetails,
-    });
+    yield put(getRoomDetailsSuccess(roomDetails));
   } catch (err) {
-    yield put({
-      type: 'GET_ROOM_DETAILS_FAILED',
-      payload: null,
-    });
+    yield put(getRoomDetailsFailed());
   }
 }
 

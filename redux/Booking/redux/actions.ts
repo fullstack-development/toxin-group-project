@@ -1,8 +1,13 @@
-import { Filters } from 'services/api/entities/types';
+import { Apartment, Filters } from 'services/api/entities/types';
 
 import {
   RoomsRequest,
+  PendingStatusUpdate,
+  SetRooms,
+  SetFailedStatus,
+  BookedHistoryList,
   LoadBookedHistory,
+  UpdateBookedHistory,
   BookCurrentRoom,
   SelectedBookedRoom,
   BookingCanceled,
@@ -13,9 +18,29 @@ const requestRooms = (options: Filters): RoomsRequest => ({
   payload: options,
 });
 
+const pendingStatusUpdate = (value: boolean): PendingStatusUpdate => ({
+  type: 'ROOMS_REQUEST_PENDING',
+  payload: value,
+});
+
+const setRooms = (data: Apartment[]): SetRooms => ({
+  type: 'ROOMS_REQUEST_SUCCESS',
+  payload: data,
+});
+
+const setFailedStatus = (error: Error): SetFailedStatus => ({
+  type: 'ROOMS_REQUEST_FAILED',
+  payload: error,
+});
+
 const loadBookedHistoryRooms = (email: string): LoadBookedHistory => ({
   type: 'LOAD_BOOKED_HISTORY',
   payload: email,
+});
+
+const updateBookedHistory = (data: BookedHistoryList): UpdateBookedHistory => ({
+  type: 'UPDATE_BOOKED_HISTORY',
+  payload: data,
 });
 
 const bookRoom = (data: SelectedBookedRoom): BookCurrentRoom => ({
@@ -27,4 +52,13 @@ const cancelBooking = (): BookingCanceled => ({
   type: 'BOOKING_CANCELED',
 });
 
-export { requestRooms, loadBookedHistoryRooms, bookRoom, cancelBooking };
+export {
+  requestRooms,
+  pendingStatusUpdate,
+  setRooms,
+  setFailedStatus,
+  loadBookedHistoryRooms,
+  updateBookedHistory,
+  bookRoom,
+  cancelBooking,
+};

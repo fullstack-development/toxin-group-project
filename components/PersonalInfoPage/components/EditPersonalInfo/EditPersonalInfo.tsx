@@ -23,10 +23,10 @@ type Props = {
 const EditPersonalInfo = memo(
   ({ user, title, component, currentEditing, onEditButtonClick, value, description }: Props) => {
     const mapEditingComponents = {
-      displayName: <EditDisplayName user={user} displayName={value} />,
-      gender: <EditGender user={user} gender={value} />,
-      birthday: <EditBirthday user={user} birthday={value} />,
-      email: <EditEmail user={user} email={value} />,
+      displayName: <EditDisplayName user={user} displayName={value} onChange={onEditButtonClick} />,
+      gender: <EditGender user={user} gender={value} onChange={onEditButtonClick} />,
+      birthday: <EditBirthday user={user} birthday={value} onChange={onEditButtonClick} />,
+      email: <EditEmail user={user} email={value} onChange={onEditButtonClick} />,
     };
 
     const { t } = useTranslation('PersonalInfo');
