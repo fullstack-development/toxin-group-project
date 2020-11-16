@@ -1,5 +1,5 @@
 import { SagaIterator } from 'redux-saga';
-import { put, call, PutEffect } from 'redux-saga/effects';
+import { put, call } from 'redux-saga/effects';
 
 import { takeLatestAction, takeLeadingAction } from 'redux/action.model';
 import Api from 'services/api/api';
@@ -8,48 +8,37 @@ import { User, UserCredential } from 'services/api/Firebase/modules/Authenticati
 import {
   RequestToAuth,
   RequestToAuthWithGoogle,
-  SetAuthRequired,
-  SetAuthStatusSuccess,
-  SetAuthStatusFailed,
-  PasswordResetRequest,
   LogoutProcess,
   PreloadAuthData,
+  PasswordResetRequest,
 } from '../../model';
+import {
+  setAuthRequired,
+  setAuthStatusSuccess,
+  setAuthStatusFailed,
+  logoutDone,
+  passwordResetFailed,
+  passwordResetSuccess,
+} from '../actions';
 
-function* auth(
-  data: RequestToAuth,
-): Generator | Generator<PutEffect<SetAuthStatusSuccess | SetAuthStatusFailed>, void, never> {
+function* auth(data: RequestToAuth) {
   try {
     const { email, password } = data.payload;
     const { user }: UserCredential = yield call(Api.auth.signIn, email, password);
 
-    yield put({
-      type: 'AUTH_SUCCESS',
-      payload: user,
-    });
-  } catch (error) {
-    yield put({
-      type: 'AUTH_FAILED',
-      payload: error.message,
-    });
+    yield put(setAuthStatusSuccess(user));
+  } catch ({ message }) {
+    yield put(setAuthStatusFailed(message));
   }
 }
 
-function* authWithGoogle():
-  | Generator
-  | Generator<PutEffect<SetAuthStatusSuccess | SetAuthStatusFailed>, void, never> {
+function* authWithGoogle() {
   try {
     const { user }: UserCredential = yield call(Api.auth.signInWithGoogle);
 
-    yield put({
-      type: 'AUTH_SUCCESS',
-      payload: user,
-    });
-  } catch (error) {
-    yield put({
-      type: 'AUTH_FAILED',
-      payload: error.message,
-    });
+    yield put(setAuthStatusSuccess(user));
+  } catch ({ message }) {
+    yield put(setAuthStatusFailed(message));
   }
 }
 
@@ -62,30 +51,19 @@ const authStateChangedCallback = (): Promise<User> => {
   });
 };
 
-function* prepareAuthData():
-  | Generator
-  | Generator<
-      PutEffect<SetAuthStatusSuccess | SetAuthStatusFailed | SetAuthRequired>,
-      void,
-      never
-    > {
+function* prepareAuthData() {
   try {
-    const result: User = yield call(authStateChangedCallback);
+    const user: User = yield call(authStateChangedCallback);
 
-    yield put({
-      type: 'AUTH_SUCCESS',
-      payload: result,
-    });
+    yield put(setAuthStatusSuccess(user));
   } catch (error) {
-    yield put({
-      type: 'AUTH_REQUIRED',
-    });
+    yield put(setAuthRequired());
   }
 }
 
-function* logoutUser(): Generator {
+function* logoutUser() {
   yield call(Api.auth.signOut);
-  yield put({ type: 'AUTH_LOGOUT_DONE' });
+  yield put(logoutDone());
 }
 
 function* passwordReset({ payload: email }: PasswordResetRequest) {
@@ -94,21 +72,18 @@ function* passwordReset({ payload: email }: PasswordResetRequest) {
     const isEmailAuth = userAuthInfo.includes('password');
     if (isEmailAuth) {
       yield call(Api.auth.resetPassword, email);
-      yield put({
-        type: 'PASSWORD_RESET_SUCCESS',
-        payload: `Ссылка для восстановления пароля была отправлена на ${email}`,
-      });
+      yield put(
+        passwordResetSuccess(`Ссылка для восстановления пароля была отправлена на ${email}`),
+      );
     } else {
       throw new Error('Пользователь с указанным электронным адресом не зарегистрирован');
     }
-  } catch (err) {
-    yield put({
-      type: 'PASSWORD_RESET_FAILED',
-      payload:
-        err.message === 'Пользователь с указанным электронным адресом не зарегистрирован'
-          ? err.message
-          : 'Произошла ошибка, повторите попытку позже',
-    });
+  } catch ({ message }) {
+    const statusText =
+      message === 'Пользователь с указанным электронным адресом не зарегистрирован'
+        ? message
+        : 'Произошла ошибка, повторите попытку позже';
+    yield put(passwordResetFailed(statusText));
   }
 }
 

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import MainLayout from 'components/MainLayout/MainLayout';
 import { preloadAuthData } from 'redux/Auth/redux/actions';
-import { startRegistration, cancelRegistration } from 'redux/Registration/redux/actions';
+import { registration, cancelRegistration } from 'redux/Registration/redux/actions';
 import { AppState } from 'redux/store.types';
 
 import MainContent from './components/MainContent/MainContent';
@@ -26,7 +26,7 @@ const mapState = (state: AppState): StateProps => ({
 });
 
 const mapDispatch = {
-  requestRegistration: startRegistration,
+  requestRegistration: registration,
   stopRegistration: cancelRegistration,
   checkAuthBeforePageLoaded: preloadAuthData,
 };

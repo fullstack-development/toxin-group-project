@@ -1,58 +1,38 @@
 import { SagaIterator } from 'redux-saga';
-import { put, call, PutEffect, CallEffect } from 'redux-saga/effects';
+import { put, call } from 'redux-saga/effects';
 
 import { takeLatestAction, takeLeadingAction } from 'redux/action.model';
 import {
   RoomsRequest,
   LoadBookedHistory,
   BookedHistoryList,
-  UpdateBookedHistory,
   BookCurrentRoom,
 } from 'redux/Booking/model';
 import Api from 'services/api/api';
 import { Apartment, BookingData } from 'services/api/entities/types';
 
-function* loadRooms(
-  action: RoomsRequest,
-): Generator | Generator<PutEffect<RoomsRequest>, void, never> {
+import { pendingStatusUpdate, setFailedStatus, setRooms, updateBookedHistory } from '../actions';
+
+function* loadRooms(action: RoomsRequest) {
   try {
-    yield put({
-      type: 'ROOMS_REQUEST_PENDING',
-      payload: true,
-    });
+    yield put(pendingStatusUpdate(true));
 
     const rooms: Apartment[] = yield call(Api.booking.filterRooms, action.payload);
-    yield put({
-      type: 'ROOMS_REQUEST_SUCCESS',
-      payload: rooms,
-    });
+    yield put(setRooms(rooms));
   } catch (error) {
-    yield put({
-      type: 'ROOMS_REQUEST_FAILED',
-      payload: error,
-    });
+    yield put(setFailedStatus(error));
   } finally {
-    yield put({
-      type: 'ROOMS_REQUEST_PENDING',
-      payload: false,
-    });
+    yield put(pendingStatusUpdate(false));
   }
 }
 
-function* loadRoomsHistory({
-  payload,
-}: LoadBookedHistory): Generator | Generator<PutEffect<UpdateBookedHistory>, void, never> {
-  const result: BookedHistoryList = yield call(Api.booking.getBookedHistory, payload);
+function* loadRoomsHistory({ payload }: LoadBookedHistory) {
+  const bookedHistoryList: BookedHistoryList = yield call(Api.booking.getBookedHistory, payload);
 
-  yield put({
-    type: 'UPDATE_BOOKED_HISTORY',
-    payload: result,
-  });
+  yield put(updateBookedHistory(bookedHistoryList));
 }
 
-function* confirmBookedRoom({
-  payload,
-}: BookCurrentRoom): Generator | Generator<CallEffect<BookCurrentRoom>, void, never> {
+function* confirmBookedRoom({ payload }: BookCurrentRoom) {
   const { apartmentId, booked, user } = payload;
   const data: BookingData = {
     apartmentId,
