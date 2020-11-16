@@ -8,8 +8,10 @@ import {
   BookedHistoryList,
   LoadBookedHistory,
   UpdateBookedHistory,
-  BookCurrentRoom,
   SelectedBookedRoom,
+  BookCurrentRoom,
+  BookingSuccess,
+  BookingFailed,
   BookingCanceled,
 } from '../model';
 
@@ -48,6 +50,15 @@ const bookRoom = (data: SelectedBookedRoom): BookCurrentRoom => ({
   payload: data,
 });
 
+const bookingSuccess = (): BookingSuccess => ({
+  type: 'BOOKING_SUCCESS',
+});
+
+const bookingFailed = (statusText: string): BookingFailed => ({
+  type: 'BOOKING_FAILED',
+  payload: statusText,
+});
+
 const cancelBooking = (): BookingCanceled => ({
   type: 'BOOKING_CANCELED',
 });
@@ -60,5 +71,7 @@ export {
   loadBookedHistoryRooms,
   updateBookedHistory,
   bookRoom,
+  bookingSuccess,
+  bookingFailed,
   cancelBooking,
 };

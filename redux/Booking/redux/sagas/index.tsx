@@ -4,14 +4,21 @@ import { put, call } from 'redux-saga/effects';
 import { takeLatestAction, takeLeadingAction } from 'redux/action.model';
 import {
   RoomsRequest,
-  LoadBookedHistory,
   BookedHistoryList,
+  LoadBookedHistory,
   BookCurrentRoom,
 } from 'redux/Booking/model';
 import Api from 'services/api/api';
 import { Apartment, BookingData } from 'services/api/entities/types';
 
-import { pendingStatusUpdate, setFailedStatus, setRooms, updateBookedHistory } from '../actions';
+import {
+  pendingStatusUpdate,
+  setRooms,
+  setFailedStatus,
+  updateBookedHistory,
+  bookingSuccess,
+  bookingFailed,
+} from '../actions';
 
 function* loadRooms(action: RoomsRequest) {
   try {
@@ -45,14 +52,9 @@ function* confirmBookedRoom({ payload }: BookCurrentRoom) {
 
     yield call(Api.booking.setBookedByUser, data);
 
-    yield put({
-      type: 'BOOKING_SUCCESS',
-    });
+    yield put(bookingSuccess());
   } catch ({ message }) {
-    yield put({
-      type: 'BOOKING_FAILED',
-      payload: message,
-    });
+    yield put(bookingFailed(message));
   }
 }
 
