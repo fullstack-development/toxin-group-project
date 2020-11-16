@@ -4,8 +4,8 @@ import { useTranslation } from 'react-i18next';
 
 import NumberInput from '../NumberInput/NumberInput';
 import ApplyButton from '../TextButton/TextButton';
-import * as S from './Dropdown.styles';
 import { DropdownProps, WordForms } from './Dropdown.model';
+import * as S from './Dropdown.styles';
 import getResultStringPart from './utils/getResultStringPart';
 
 const DEFAULT_SETTINGS = {

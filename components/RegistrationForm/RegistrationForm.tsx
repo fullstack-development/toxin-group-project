@@ -9,8 +9,8 @@ import RadioButton from 'components/RadioButton/RadioButton';
 import Toggle from 'components/Toggle/Toggle';
 import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators';
 
-import * as S from './RegistrationForm.styles';
 import { RegistrationFormProps, FormData } from './RegistrationForm.model';
+import * as S from './RegistrationForm.styles';
 
 const RegistrationForm: React.FC<RegistrationFormProps> = ({
   isSuccess,

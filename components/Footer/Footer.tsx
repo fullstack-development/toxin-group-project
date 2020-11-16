@@ -7,8 +7,8 @@ import Logo from './components/Logo/Logo';
 import Nav from './components/Nav/Nav';
 import Subscription from './components/Subscription/Subscription';
 import footerData from './Footer.fuxure';
-import * as S from './Footer.styles';
 import { FooterProps } from './Footer.model';
+import * as S from './Footer.styles';
 
 const Footer: React.FC<FooterProps> = ({
   subscription = footerData.subscription,

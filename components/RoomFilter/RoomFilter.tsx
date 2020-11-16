@@ -24,8 +24,8 @@ import {
   Opportunities,
 } from 'services/api/entities/types';
 
-import * as S from './RoomFilter.styles';
 import { OptionName, Props } from './RoomFilter.model';
+import * as S from './RoomFilter.styles';
 
 const getDropdownProps = (defaultProps: Item[], updatedProps: Amenities) => {
   return defaultProps.map((item) => ({

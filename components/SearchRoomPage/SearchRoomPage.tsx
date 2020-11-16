@@ -13,8 +13,8 @@ import { requestRooms } from 'redux/Booking/redux/actions';
 import { AppState } from 'redux/store.model';
 import { Filters } from 'services/api/entities/types';
 
-import * as S from './SearchRoomPage.styles';
 import { SortOrder, SortData, SortParam } from './SearchRoomPage.model';
+import * as S from './SearchRoomPage.styles';
 import getPassedFilters from './utils/getPassedFilters';
 
 type StateProps = {

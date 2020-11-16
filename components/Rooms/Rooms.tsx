@@ -5,8 +5,8 @@ import Preloader from 'components/Preloader/Preloader';
 import Room from 'components/Room/Room';
 
 import { Props as RoomProps } from '../Room/Room.model';
-import * as S from './Rooms.styles';
 import { Props } from './Rooms.model';
+import * as S from './Rooms.styles';
 
 const DEFAULT_INCREMENT = 12;
 
