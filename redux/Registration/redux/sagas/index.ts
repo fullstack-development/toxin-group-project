@@ -2,14 +2,14 @@ import { SagaIterator } from 'redux-saga';
 import { put, call } from 'redux-saga/effects';
 
 import { takeLatestAction } from 'redux/action.model';
-import Api from 'services/api/api';
+import { Dependencies } from 'redux/store.types';
 import { UserCredential } from 'services/api/Firebase/modules/Authentication/types';
 import { dateValidator } from 'utils/validators';
 
 import { RegistrationRequest } from '../../model';
 import { registrationStatusFailed, registrationStatusSuccess } from '../actions';
 
-function* registration({ payload }: RegistrationRequest) {
+function* registration({ api }: Dependencies, { payload }: RegistrationRequest) {
   const { email, password, name, surname, birthDate, gender, avatar, hasSpecialOffers } = payload;
   try {
     const dateValidationResult = dateValidator(birthDate);
@@ -18,7 +18,13 @@ function* registration({ payload }: RegistrationRequest) {
       throw new Error('All fields must be filled in correctly!');
     }
 
-    const userCredential: UserCredential = yield call(Api.auth.signUp, {
+    const maxSymbolLength = 50;
+
+    if (name.length > maxSymbolLength || surname.length > maxSymbolLength) {
+      throw new Error(`Имя или Фамилия не может иметь более ${maxSymbolLength} символов`);
+    }
+
+    const userCredential: UserCredential = yield call(api.auth.signUp, {
       email,
       password,
       name,
@@ -28,7 +34,7 @@ function* registration({ payload }: RegistrationRequest) {
       avatar,
     });
 
-    yield call(Api.subscriptions.add, email, { hasSpecialOffers });
+    yield call(api.subscriptions.add, email, { hasSpecialOffers });
 
     yield put(registrationStatusSuccess(userCredential));
   } catch ({ message }) {
@@ -36,8 +42,8 @@ function* registration({ payload }: RegistrationRequest) {
   }
 }
 
-function* rootSaga(): SagaIterator {
-  yield takeLatestAction<RegistrationRequest['type']>('REGISTRATION_REQUEST', registration);
+function* rootSaga(deps: Dependencies): SagaIterator {
+  yield takeLatestAction<RegistrationRequest['type']>('REGISTRATION_REQUEST', registration, deps);
 }
 
 export { rootSaga };

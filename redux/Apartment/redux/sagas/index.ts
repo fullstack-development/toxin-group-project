@@ -2,13 +2,13 @@ import { SagaIterator } from 'redux-saga';
 import { call, put } from 'redux-saga/effects';
 
 import { takeLeadingAction } from 'redux/action.model';
-import api from 'services/api/api';
+import { Dependencies } from 'redux/store.types';
 import { Apartment } from 'services/api/entities/types';
 
 import { GetRoomDetailsRequest } from '../../model';
 import { getRoomDetailsFailed, getRoomDetailsSuccess } from '../actions';
 
-function* getRoomDetails({ payload: id }: GetRoomDetailsRequest) {
+function* getRoomDetails({ api }: Dependencies, { payload: id }: GetRoomDetailsRequest) {
   try {
     const roomDetails: Apartment = yield call(api.apartments.load, id);
     yield put(getRoomDetailsSuccess(roomDetails));
@@ -17,10 +17,11 @@ function* getRoomDetails({ payload: id }: GetRoomDetailsRequest) {
   }
 }
 
-function* rootSaga(): SagaIterator {
+function* rootSaga(deps: Dependencies): SagaIterator {
   yield takeLeadingAction<GetRoomDetailsRequest['type']>(
     'GET_ROOM_DETAILS_PROCESS',
     getRoomDetails,
+    deps,
   );
 }
 
