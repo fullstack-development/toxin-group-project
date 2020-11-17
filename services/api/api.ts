@@ -1,7 +1,7 @@
 import { Auth, Apartments, Booking, Subscriptions } from './entities';
 import { Firebase } from './Firebase';
 
-class Api {
+export class Api {
   public readonly auth: Auth;
   public readonly booking: Booking;
   public readonly apartments: Apartments;
@@ -15,5 +15,3 @@ class Api {
     this.subscriptions = new Subscriptions(database);
   }
 }
-
-export default new Api();

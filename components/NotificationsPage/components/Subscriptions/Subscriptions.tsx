@@ -1,4 +1,6 @@
+import { memo } from 'react';
 import { Form } from 'react-final-form';
+import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
 import Button from 'components/Button/Button';
@@ -40,48 +42,52 @@ type FormData = {
   hasSpecialOffers: boolean;
 };
 
-const Subscriptions = ({
-  email,
-  hasSpecialOffers,
-  isPending,
-  isCompleted,
-  statusText,
-  startSubscriptionUpdate,
-  stopSubscriptionUpdate,
-}: Props): JSX.Element => {
-  const onSubmit = ({ hasSpecialOffers: newValue }: FormData) => {
-    startSubscriptionUpdate({ email, subscriptions: { hasSpecialOffers: newValue } });
-  };
+const Subscriptions = memo(
+  ({
+    email,
+    hasSpecialOffers,
+    isPending,
+    isCompleted,
+    statusText,
+    startSubscriptionUpdate,
+    stopSubscriptionUpdate,
+  }: Props) => {
+    const onSubmit = ({ hasSpecialOffers: newValue }: FormData) => {
+      startSubscriptionUpdate({ email, subscriptions: { hasSpecialOffers: newValue } });
+    };
 
-  return (
-    <S.Subscriptions>
-      <S.Title>Новостные рассылки</S.Title>
-      <Form
-        initialValues={{ hasSpecialOffers }}
-        onSubmit={onSubmit}
-        render={({ handleSubmit }) => (
-          <>
-            <form onSubmit={handleSubmit}>
-              <S.List>
-                <S.Item>
-                  <Toggle name="hasSpecialOffers" label="Получать спецпредложения" />
-                </S.Item>
-              </S.List>
-              <Button disabled={isPending} isFlat isFilled>
-                Сохранить
-              </Button>
-            </form>
-            {isCompleted && (
-              <PopUpNotification
-                message={statusText}
-                onConfirmButtonClick={stopSubscriptionUpdate}
-              />
-            )}
-          </>
-        )}
-      />
-    </S.Subscriptions>
-  );
-};
+    const { t } = useTranslation('Notifications');
+
+    return (
+      <S.Subscriptions>
+        <S.Title>{t('Newsletters')}</S.Title>
+        <Form
+          initialValues={{ hasSpecialOffers }}
+          onSubmit={onSubmit}
+          render={({ handleSubmit }) => (
+            <>
+              <form onSubmit={handleSubmit}>
+                <S.List>
+                  <S.Item>
+                    <Toggle name="hasSpecialOffers" label={t('Receive special offers')} />
+                  </S.Item>
+                </S.List>
+                <Button disabled={isPending} isFlat isFilled>
+                  {t('Save')}
+                </Button>
+              </form>
+              {isCompleted && (
+                <PopUpNotification
+                  message={t(statusText)}
+                  onConfirmButtonClick={stopSubscriptionUpdate}
+                />
+              )}
+            </>
+          )}
+        />
+      </S.Subscriptions>
+    );
+  },
+);
 
 export default connect(mapState, mapDispatch)(Subscriptions);
