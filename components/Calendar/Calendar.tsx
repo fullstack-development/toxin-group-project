@@ -1,11 +1,21 @@
 import { useState, useEffect, useRef, memo } from 'react';
 import { DateUtils, DayModifiers } from 'react-day-picker';
 import { useTranslation } from 'react-i18next';
+import { connect } from 'react-redux';
 
 import TextButton from 'components/TextButton/TextButton';
+import { AppState } from 'redux/store.types';
 
 import * as S from './Calendar.styles';
 import NavBar from './components/NavBar/NavBar';
+
+type StateProps = {
+  locale: string;
+};
+
+const mapState = (state: AppState): StateProps => ({
+  locale: state.language.currentLanguage,
+});
 
 type SelectedDate = null | Date;
 
@@ -15,15 +25,17 @@ type DaysSelection = {
   enteredTo?: SelectedDate;
 };
 
-type Props = {
+type OwnProps = {
   onChangeVisible: (isVisible: boolean) => void;
   onApply?: (...args: unknown[]) => unknown;
   onSelectDate?: (data: DaysSelection) => void;
   onClose?: () => void;
 } & S.CalendarContainer;
 
+type Props = OwnProps & StateProps;
+
 const Calendar = memo(
-  ({ onChangeVisible, onApply, onClose, onSelectDate, isVisible = false }: Props) => {
+  ({ onChangeVisible, onApply, onClose, onSelectDate, isVisible = false, locale }: Props) => {
     const [selectedDays, handleSelectDays] = useState<DaysSelection>({
       from: null,
       to: null,
@@ -87,14 +99,24 @@ const Calendar = memo(
       t('Months:December'),
     ];
 
+    const weekdaysLong = [
+      t('WeekdaysLong:Sunday'),
+      t('WeekdaysLong:Monday'),
+      t('WeekdaysLong:Tuesday'),
+      t('WeekdaysLong:Wednesday'),
+      t('WeekdaysLong:Thursday'),
+      t('WeekdaysLong:Friday'),
+      t('WeekdaysLong:Saturday'),
+    ];
+
     const weekdaysShort = [
-      t('WeekdaysShort:Mon'),
-      t('WeekdaysShort:Tue'),
-      t('WeekdaysShort:Wed'),
-      t('WeekdaysShort:Thu'),
-      t('WeekdaysShort:Fri'),
-      t('WeekdaysShort:Sat'),
-      t('WeekdaysShort:Sun'),
+      t('WeekdaysShort:Su'),
+      t('WeekdaysShort:Mo'),
+      t('WeekdaysShort:To'),
+      t('WeekdaysShort:We'),
+      t('WeekdaysShort:Th'),
+      t('WeekdaysShort:Fr'),
+      t('WeekdaysShort:Sa'),
     ];
 
     return (
@@ -102,8 +124,11 @@ const Calendar = memo(
         <S.Calendar
           showOutsideDays
           modifiers={modifiers}
+          locale={locale}
           months={months}
+          weekdaysLong={weekdaysLong}
           weekdaysShort={weekdaysShort}
+          firstDayOfWeek={1}
           selectedDays={[from, { from, to }]}
           disabledDays={{ before: new Date() }}
           onDayClick={handleDayClick}
@@ -122,4 +147,4 @@ const Calendar = memo(
   },
 );
 
-export default Calendar;
+export default connect(mapState)(Calendar);
