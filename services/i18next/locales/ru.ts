@@ -140,6 +140,9 @@ export const ru = {
     'Sort by parameter': 'Сортировать по параметру',
     'The rooms we have selected for you': 'Номера, которые мы для вас подобрали',
     'No results were found for your request =(': 'К сожалению, мы не смогли ничего подобрать =(',
+    price: 'цена',
+    rating: 'рейтинг',
+    'number of reviews': 'количество отзывов',
   },
   Months: {
     January: 'Январь',
