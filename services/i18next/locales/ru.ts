@@ -279,4 +279,10 @@ export const ru = {
       'Вы успешно подписаны на рассылку спецпредложений',
     'An error occured, please try again later': 'Произошла ошибка, повторите попытку позже',
   },
+  Validators: {
+    'Invalid date': 'Некорректная дата',
+    'Invalid email': 'Некорректный email',
+    'Please fill in this field': 'Заполните это поле',
+    'Password must contain at least 8 characters': 'Пароль должен содержать минимум 8 символов',
+  },
 };
