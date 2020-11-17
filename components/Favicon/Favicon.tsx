@@ -1,6 +1,7 @@
 import Head from 'next/head';
+import { memo } from 'react';
 
-const Favicon: React.FC = () => (
+const Favicon = memo(() => (
   <Head>
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
@@ -10,6 +11,6 @@ const Favicon: React.FC = () => (
     <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
     <meta name="theme-color" content="#bc9cff" />
   </Head>
-);
+));
 
 export default Favicon;

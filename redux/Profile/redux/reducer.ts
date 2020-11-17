@@ -23,17 +23,21 @@ import { ProfileState, ProfileActions } from '../types';
 
 const initialState: ProfileState = {
   isEmailUpdatePending: false,
+  isEmailUpdateSuccess: false,
   isEmailUpdateCompleted: false,
   emailUpdateStatusText: '',
   isGetAdditionalUserDataSuccess: false,
   additionalUserData: null,
   isPasswordUpdatePending: false,
+  isPasswordUpdateSuccess: false,
   isPasswordUpdateCompleted: false,
   passwordUpdateStatusText: '',
   isUpdateAdditionalUserDataPending: false,
+  isUpdateAdditionalUserDataSuccess: false,
   isUpdateAdditionalUserDataCompleted: false,
   updateAdditionalUserDataStatusText: '',
   isUsernameUpdatePending: false,
+  isUsernameUpdateSuccess: false,
   isUsernameUpdateCompleted: false,
   usernameUpdateStatusText: '',
 };
@@ -44,6 +48,7 @@ const profile = (state: ProfileState = initialState, action: ProfileActions): Pr
       return {
         ...state,
         isEmailUpdatePending: true,
+        isEmailUpdateSuccess: false,
         isEmailUpdateCompleted: false,
         emailUpdateStatusText: '',
       };
@@ -51,6 +56,7 @@ const profile = (state: ProfileState = initialState, action: ProfileActions): Pr
       return {
         ...state,
         isEmailUpdatePending: false,
+        isEmailUpdateSuccess: true,
         isEmailUpdateCompleted: true,
         emailUpdateStatusText: action.payload,
       };
@@ -58,6 +64,7 @@ const profile = (state: ProfileState = initialState, action: ProfileActions): Pr
       return {
         ...state,
         isEmailUpdatePending: false,
+        isEmailUpdateSuccess: false,
         isEmailUpdateCompleted: true,
         emailUpdateStatusText: action.payload,
       };
@@ -65,6 +72,7 @@ const profile = (state: ProfileState = initialState, action: ProfileActions): Pr
       return {
         ...state,
         isEmailUpdatePending: false,
+        isEmailUpdateSuccess: false,
         isEmailUpdateCompleted: false,
         emailUpdateStatusText: '',
       };
@@ -90,6 +98,7 @@ const profile = (state: ProfileState = initialState, action: ProfileActions): Pr
       return {
         ...state,
         isPasswordUpdatePending: true,
+        isPasswordUpdateSuccess: false,
         isPasswordUpdateCompleted: false,
         passwordUpdateStatusText: '',
       };
@@ -97,6 +106,7 @@ const profile = (state: ProfileState = initialState, action: ProfileActions): Pr
       return {
         ...state,
         isPasswordUpdatePending: false,
+        isPasswordUpdateSuccess: true,
         isPasswordUpdateCompleted: true,
         passwordUpdateStatusText: action.payload,
       };
@@ -104,6 +114,7 @@ const profile = (state: ProfileState = initialState, action: ProfileActions): Pr
       return {
         ...state,
         isPasswordUpdatePending: false,
+        isPasswordUpdateSuccess: false,
         isPasswordUpdateCompleted: true,
         passwordUpdateStatusText: action.payload,
       };
@@ -111,6 +122,7 @@ const profile = (state: ProfileState = initialState, action: ProfileActions): Pr
       return {
         ...state,
         isPasswordUpdatePending: false,
+        isPasswordUpdateSuccess: false,
         isPasswordUpdateCompleted: false,
         passwordUpdateStatusText: '',
       };
@@ -118,6 +130,7 @@ const profile = (state: ProfileState = initialState, action: ProfileActions): Pr
       return {
         ...state,
         isUpdateAdditionalUserDataPending: true,
+        isUpdateAdditionalUserDataSuccess: false,
         isUpdateAdditionalUserDataCompleted: false,
         updateAdditionalUserDataStatusText: '',
       };
@@ -125,6 +138,7 @@ const profile = (state: ProfileState = initialState, action: ProfileActions): Pr
       return {
         ...state,
         isUpdateAdditionalUserDataPending: false,
+        isUpdateAdditionalUserDataSuccess: true,
         isUpdateAdditionalUserDataCompleted: true,
         updateAdditionalUserDataStatusText: action.payload,
       };
@@ -132,6 +146,7 @@ const profile = (state: ProfileState = initialState, action: ProfileActions): Pr
       return {
         ...state,
         isUpdateAdditionalUserDataPending: false,
+        isUpdateAdditionalUserDataSuccess: false,
         isUpdateAdditionalUserDataCompleted: true,
         updateAdditionalUserDataStatusText: action.payload,
       };
@@ -139,6 +154,7 @@ const profile = (state: ProfileState = initialState, action: ProfileActions): Pr
       return {
         ...state,
         isUpdateAdditionalUserDataPending: false,
+        isUpdateAdditionalUserDataSuccess: false,
         isUpdateAdditionalUserDataCompleted: false,
         updateAdditionalUserDataStatusText: '',
       };
@@ -146,6 +162,7 @@ const profile = (state: ProfileState = initialState, action: ProfileActions): Pr
       return {
         ...state,
         isUsernameUpdatePending: true,
+        isUsernameUpdateSuccess: false,
         isUsernameUpdateCompleted: false,
         usernameUpdateStatusText: '',
       };
@@ -153,6 +170,7 @@ const profile = (state: ProfileState = initialState, action: ProfileActions): Pr
       return {
         ...state,
         isUsernameUpdatePending: false,
+        isUsernameUpdateSuccess: true,
         isUsernameUpdateCompleted: true,
         usernameUpdateStatusText: action.payload,
       };
@@ -160,6 +178,7 @@ const profile = (state: ProfileState = initialState, action: ProfileActions): Pr
       return {
         ...state,
         isUsernameUpdatePending: false,
+        isUsernameUpdateSuccess: false,
         isUsernameUpdateCompleted: true,
         usernameUpdateStatusText: action.payload,
       };
@@ -167,6 +186,7 @@ const profile = (state: ProfileState = initialState, action: ProfileActions): Pr
       return {
         ...state,
         isUsernameUpdatePending: false,
+        isUsernameUpdateSuccess: false,
         isUsernameUpdateCompleted: false,
         usernameUpdateStatusText: '',
       };

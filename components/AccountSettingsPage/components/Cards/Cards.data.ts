@@ -6,23 +6,23 @@ type CardsData = {
 
 const cardsData: CardsData[] = [
   {
-    title: 'Личная информация',
-    description: 'Предоставьте личные и контактные данные',
+    title: 'Personal info',
+    description: 'Provide personal details and how we can reach you',
     href: '/account-settings/personal-info',
   },
   {
-    title: 'Вход и безопасность',
-    description: 'Обновите пароль и обеспечьте безопасность аккаунта',
+    title: 'Login & security',
+    description: 'Update your password and secure your account',
     href: './account-settings/login-and-security',
   },
   {
-    title: 'Уведомления',
-    description: 'Выберите настройки уведомлений и способы связи',
+    title: 'Notifications',
+    description: 'Choose notification preferences and how you want to be contacted',
     href: './account-settings/notifications',
   },
   {
-    title: 'Забронированные номера',
-    description: 'Просмотрите все номера которые были забронированы вами',
+    title: 'Booked rooms',
+    description: 'View all rooms that have been booked by you',
     href: './account-settings',
   },
 ];

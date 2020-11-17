@@ -1,4 +1,4 @@
-import { Props as RoomProps } from 'components/Room/Room.types';
+import { RoomProps } from 'components/Room/Room.types';
 import { Filters, BookedRoom } from 'services/api/entities/types';
 
 import { Apartment } from '../../services/api/entities/types';

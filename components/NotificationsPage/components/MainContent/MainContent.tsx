@@ -1,4 +1,5 @@
-import { useCallback, useEffect } from 'react';
+import { memo, useCallback, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
 import NavAccountSettings from 'components/NavAccountSettings/NavAccountSettings';
@@ -26,7 +27,7 @@ const mapDispatch = {
 
 type Props = StateProps & typeof mapDispatch;
 
-const MainContent = ({ user, subscriptionData, loadSubscriptionData }: Props): JSX.Element => {
+const MainContent = memo(({ user, subscriptionData, loadSubscriptionData }: Props) => {
   const getSubscriptionData = useCallback(
     (currentUser) => {
       if (currentUser) loadSubscriptionData(currentUser.email);
@@ -38,15 +39,18 @@ const MainContent = ({ user, subscriptionData, loadSubscriptionData }: Props): J
     getSubscriptionData(user);
   }, [getSubscriptionData, user]);
 
+  const { t } = useTranslation('AccountSettings');
+
   return (
     <S.MainContent>
-      <NavAccountSettings title="Уведомления" />
-      <S.Title>Уведомления</S.Title>
+      <NavAccountSettings title={t('Notifications')} />
+      <S.Title>{t('Notifications')}</S.Title>
       <Subscriptions
         email={user ? user.email : null}
-        hashasSpecialOffers={subscriptionData ? subscriptionData.hasSpecialOffers : false}
+        hasSpecialOffers={subscriptionData ? subscriptionData.hasSpecialOffers : false}
       />
     </S.MainContent>
   );
-};
+});
+
 export default connect(mapState, mapDispatch)(MainContent);

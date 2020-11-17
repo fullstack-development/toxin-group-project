@@ -3,6 +3,7 @@ import { put, takeLatest, call, PutEffect } from 'redux-saga/effects';
 
 import Api from 'services/api/api';
 import { UserCredential } from 'services/api/Firebase/modules/Authentication/types';
+import { dateValidator } from 'utils/validators';
 
 import { REGISTRATION_REQUEST, REGISTRATION_SUCCESS, REGISTRATION_FAILED } from '../../constants';
 import { ProfileData, RegistrationStatusSuccess, RegistrationStatusFailed } from '../../types';
@@ -24,6 +25,16 @@ function* startRegistrationProcess(data: {
     hasSpecialOffers,
   } = data.payload;
 
+  const dateValidationResult = dateValidator(birthDate);
+
+  if (dateValidationResult === 'Invalid date') {
+    yield put({
+      type: REGISTRATION_FAILED,
+      payload: 'Все поля должны быть заполнены корректно!',
+    });
+
+    return;
+  }
   try {
     const result: UserCredential = yield call(Api.auth.signUp, {
       email,
