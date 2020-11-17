@@ -9,7 +9,7 @@ import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
 import { passwordUpdate, passwordUpdateCompleted } from 'redux/Profile/redux/actions';
 import { AppState } from 'redux/store.types';
 import { User } from 'services/api/Firebase/modules/Authentication';
-import { passwordValidator } from 'shared/helpers/validators/passwordValidator';
+import { passwordValidator } from 'utils/validators';
 
 type StateProps = {
   user: User;
