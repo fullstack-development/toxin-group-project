@@ -3,7 +3,6 @@ import { memo } from 'react';
 
 import Avatar from 'components/Avatar/Avatar';
 import LikeButton from 'components/LikeButton/LikeButton';
-import { Timestamp } from 'services/api/Firebase/modules/Database/types';
 
 import * as S from './Review.style';
 import getReviewDate from './utils/getReviewDate';
@@ -11,14 +10,12 @@ import getReviewDate from './utils/getReviewDate';
 type Props = {
   avatarUrl: string;
   userName: string;
-  date: Timestamp | Date;
+  date: Date;
   text: string;
   likesCount: number;
 };
 
 const Review = memo(({ avatarUrl, userName, date, text, likesCount }: Props) => {
-  const correctDate = date instanceof Date ? date : date.toDate();
-
   const useStyles = makeStyles(() => ({
     avatarReviews: { width: '3.42857rem', height: '3.42857rem' },
   }));
@@ -30,7 +27,7 @@ const Review = memo(({ avatarUrl, userName, date, text, likesCount }: Props) => 
         <Avatar photoURL={`${avatarUrl}`} className={classes.avatarReviews} />
         <S.AuthorWrapper>
           <S.User>{userName}</S.User>
-          <S.Date dateTime={correctDate.toISOString()}>{getReviewDate(correctDate)}</S.Date>
+          <S.Date dateTime={date.toISOString()}>{getReviewDate(date)}</S.Date>
         </S.AuthorWrapper>
       </S.Header>
       <S.MessageWrapper>
