@@ -11,7 +11,7 @@ import Rooms from 'components/Rooms/Rooms';
 import defaultFilters from 'components/SearchRoomForm/SearchRoomForm.fixture';
 import { requestRooms } from 'redux/Booking/redux/actions';
 import { AppState } from 'redux/store.model';
-import { Filters } from 'services/api/entities/types';
+import { Filters } from 'services/api/entities/model';
 
 import { SortOrder, SortData, SortParam } from './SearchRoomPage.model';
 import * as S from './SearchRoomPage.styles';

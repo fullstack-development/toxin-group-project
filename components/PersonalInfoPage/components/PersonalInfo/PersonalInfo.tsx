@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 
 import { getAdditionalUserData as getAdditionalUserDataRequest } from 'redux/Profile/redux/actions';
 import { AppState } from 'redux/store.model';
-import { AdditionalUserInformation } from 'services/api/entities/types';
-import { User } from 'services/api/Firebase/modules/Authentication/types';
+import { AdditionalUserInformation } from 'services/api/entities/model';
+import { User } from 'services/api/Firebase/modules/Authentication';
 
 import EditPersonalInfo from '../EditPersonalInfo/EditPersonalInfo';
 import { data } from './PersonalInfo.fixture';

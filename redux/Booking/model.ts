@@ -1,5 +1,5 @@
 import { RoomProps } from 'components/Room/Room.model';
-import { Filters, BookedRoom, Apartment } from 'services/api/entities/types';
+import { Filters, BookedRoom, Apartment } from 'services/api/entities/model';
 
 import {
   ROOMS_REQUEST_PENDING,

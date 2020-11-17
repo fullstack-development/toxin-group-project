@@ -3,7 +3,7 @@ import { memo } from 'react';
 
 import Avatar from 'components/Avatar/Avatar';
 import LikeButton from 'components/LikeButton/LikeButton';
-import { Timestamp } from 'services/api/Firebase/modules/Database/types';
+import { Timestamp } from 'services/api/Firebase/modules/Database/model';
 
 import * as S from './Review.style';
 import getReviewDate from './utils/getReviewDate';

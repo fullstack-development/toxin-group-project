@@ -1,9 +1,9 @@
 import { SagaIterator } from 'redux-saga';
 import { call, put, takeLeading } from 'redux-saga/effects';
 
-import { Apartment } from 'services/api/entities/types';
+import { Dependencies } from 'redux/store.model';
+import { Apartment } from 'services/api/entities/model';
 
-import { Dependencies } from '../../../store.types';
 import {
   GET_ROOM_DETAILS_PROCESS,
   GET_ROOM_DETAILS_SUCCESS,

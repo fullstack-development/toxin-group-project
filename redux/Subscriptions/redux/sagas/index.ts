@@ -1,7 +1,8 @@
 import { SagaIterator } from 'redux-saga';
 import { call, ForkEffect, put, takeLeading } from 'redux-saga/effects';
 
-import { Dependencies } from '../../../store.types';
+import { Dependencies } from 'redux/store.model';
+
 import { Action, GetSubscriptionDataRequest, SubscriptionUpdateRequest } from '../../model';
 
 function* getSubscriptionsData(

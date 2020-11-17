@@ -1,4 +1,4 @@
-import { User } from 'firebase';
+import { User } from 'services/api/Firebase/modules/Authentication';
 
 import {
   EMAIL_UPDATE_PROCESS,

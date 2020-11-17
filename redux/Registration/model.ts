@@ -1,4 +1,4 @@
-import { UserCredential } from 'services/api/Firebase/modules/Authentication/types';
+import { UserCredential } from 'services/api/Firebase/modules/Authentication';
 
 import {
   REGISTRATION_FAILED,

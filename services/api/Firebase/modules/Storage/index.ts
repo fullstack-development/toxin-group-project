@@ -1,2 +1,2 @@
 export { default as Storage } from './Storage';
-export * from './types';
+export * from './model';

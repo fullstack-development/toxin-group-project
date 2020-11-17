@@ -9,7 +9,7 @@ import {
   BookCurrentRoom,
 } from 'redux/Booking/model';
 import { Dependencies } from 'redux/store.model';
-import { Apartment, BookingData } from 'services/api/entities/types';
+import { Apartment, BookingData } from 'services/api/entities/model';
 
 import {
   ROOMS_REQUEST_PENDING,

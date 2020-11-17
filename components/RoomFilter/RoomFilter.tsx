@@ -22,7 +22,7 @@ import {
   Amenities,
   Filters,
   Opportunities,
-} from 'services/api/entities/types';
+} from 'services/api/entities/model';
 
 import { OptionName, Props } from './RoomFilter.model';
 import * as S from './RoomFilter.styles';

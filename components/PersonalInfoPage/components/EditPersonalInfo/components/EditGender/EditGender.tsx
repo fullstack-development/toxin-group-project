@@ -11,7 +11,7 @@ import {
   updateAdditionalUserDataCompleted,
 } from 'redux/Profile/redux/actions';
 import { AppState } from 'redux/store.model';
-import { User } from 'services/api/Firebase/modules/Authentication/types';
+import { User } from 'services/api/Firebase/modules/Authentication';
 
 import * as S from './EditGender.styles';
 

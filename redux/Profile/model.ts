@@ -1,5 +1,5 @@
-import { AdditionalUserInformation } from 'services/api/entities/types';
-import { User } from 'services/api/Firebase/modules/Authentication/types';
+import { AdditionalUserInformation } from 'services/api/entities/model';
+import { User } from 'services/api/Firebase/modules/Authentication';
 
 import {
   EMAIL_UPDATE_PROCESS,

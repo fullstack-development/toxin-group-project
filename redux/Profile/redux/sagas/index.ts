@@ -2,12 +2,12 @@ import firebase from 'firebase';
 import { SagaIterator } from 'redux-saga';
 import { call, put, takeLeading } from 'redux-saga/effects';
 
+import { Dependencies } from 'redux/store.model';
 import {
   getEmailUpdateErrorMessage,
   getPasswordUpdateErrorMessage,
 } from 'shared/helpers/errorMessages';
 
-import { Dependencies } from '../../../store.types';
 import {
   EMAIL_UPDATE_PROCESS,
   EMAIL_UPDATE_SUCCESS,

@@ -8,7 +8,7 @@ import Input from 'components/Input/Input';
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
 import { usernameUpdate, usernameUpdateCompleted } from 'redux/Profile/redux/actions';
 import { AppState } from 'redux/store.model';
-import { User } from 'services/api/Firebase/modules/Authentication/types';
+import { User } from 'services/api/Firebase/modules/Authentication';
 
 type StateProps = {
   isPending: boolean;

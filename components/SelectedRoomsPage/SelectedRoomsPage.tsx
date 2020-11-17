@@ -5,7 +5,7 @@ import MainLayout from 'components/MainLayout/MainLayout';
 import Preloader from 'components/Preloader/Preloader';
 import { loadBookedHistoryRooms } from 'redux/Booking/redux/actions';
 import { AppState } from 'redux/store.model';
-import { BookedRoomsHistory } from 'services/api/entities/types';
+import { BookedRoomsHistory } from 'services/api/entities/model';
 
 import RoomsList from './components/RoomsList/RoomsList';
 import * as S from './SelectedRoomsPage.style';
