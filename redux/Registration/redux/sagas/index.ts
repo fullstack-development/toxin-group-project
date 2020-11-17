@@ -3,7 +3,7 @@ import { put, takeLatest, call, PutEffect } from 'redux-saga/effects';
 
 import Api from 'services/api/api';
 import { UserCredential } from 'services/api/Firebase/modules/Authentication/types';
-import { dateValidator } from 'shared/helpers/validators';
+import { dateValidator } from 'utils/validators';
 
 import { REGISTRATION_REQUEST, REGISTRATION_SUCCESS, REGISTRATION_FAILED } from '../../constants';
 import { ProfileData, RegistrationStatusSuccess, RegistrationStatusFailed } from '../../model';

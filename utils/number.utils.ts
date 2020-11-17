@@ -1,8 +1,4 @@
-export default function formatNumber(
-  target: number,
-  currencyCode = 'RUB',
-  separator = '\u00A0',
-): string {
+export function formatNumber(target: number, currencyCode = 'RUB', separator = '\u00A0'): string {
   const initialParts = new Intl.NumberFormat('ru', {
     style: 'currency',
     currency: currencyCode,

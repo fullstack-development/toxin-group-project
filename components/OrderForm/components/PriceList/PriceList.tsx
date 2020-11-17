@@ -1,6 +1,6 @@
 import { memo } from 'react';
 
-import { formatNumber } from 'shared/helpers';
+import { formatNumber } from 'utils/number.utils';
 
 import { Props } from '../../OrderForm.model';
 import * as S from './PriceList.styles';

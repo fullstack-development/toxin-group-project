@@ -25,7 +25,7 @@ import TextButton from 'components/TextButton/TextButton';
 import TimePicker from 'components/TimePicker/TimePicker';
 import Toggle from 'components/Toggle/Toggle';
 import UILogo from 'components/UI-Logo/UI-Logo';
-import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators';
+import { emailValidator, dateValidator, dateFormatMask } from 'utils/validators';
 
 import * as S from './FormElementsPage.styles';
 
