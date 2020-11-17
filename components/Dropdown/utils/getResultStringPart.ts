@@ -1,6 +1,7 @@
+import getNounInDeclension from 'shared/helpers/getNounInDeclension';
+
 import { WordForms } from '../Dropdown.types';
-import { getCorrectWordForm } from './getCorrectWord';
 
 export default function getResultStringPart(count: number, wordForms: WordForms): string {
-  return count && `${count} ${getCorrectWordForm(count, wordForms)}`;
+  return count && `${count} ${getNounInDeclension(count, wordForms)}`;
 }
