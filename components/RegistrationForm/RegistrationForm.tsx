@@ -93,7 +93,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
               <Toggle name="receiveOffers" label={t('Receive special offers')} />
             </S.SpecialOfferWrapper>
             <S.RegisterButton isFlat isFilled>
-              {t('Sign up')}
+              {t('Shared:Register')}
             </S.RegisterButton>
             <S.AlreadyRegisterWrapper>
               <span>{t('Already have an account on Toxin')}</span>

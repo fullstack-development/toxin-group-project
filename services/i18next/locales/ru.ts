@@ -28,7 +28,6 @@ export const ru = {
     'Receive special offers': 'Получать спецпредложения',
     'Proceed to checkout': 'Перейти к оплате',
     'Already have an account on Toxin': 'Уже есть аккаунт на Toxin',
-    'Sign up': 'Зарегистрироваться',
   },
   Buttons: {
     'Sign In': 'Войти',
