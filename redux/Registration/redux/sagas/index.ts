@@ -1,6 +1,7 @@
 import { SagaIterator } from 'redux-saga';
 import { put, takeLatest, call, PutEffect } from 'redux-saga/effects';
 
+import { requestToAuth } from 'redux/Auth/redux/actions';
 import { UserCredential } from 'services/api/Firebase/modules/Authentication/types';
 import { dateValidator } from 'utils/validators';
 
@@ -29,6 +30,11 @@ function* startRegistrationProcess(
     hasSpecialOffers,
   } = data.payload;
 
+  const maxSymbolLength = 50;
+
+  if (name.length > maxSymbolLength || surname.length > maxSymbolLength)
+    throw new Error(`Имя или Фамилия не может иметь более ${maxSymbolLength} символов`);
+
   const dateValidationResult = dateValidator(birthDate);
 
   if (dateValidationResult === 'Invalid date') {
@@ -56,6 +62,8 @@ function* startRegistrationProcess(
       type: REGISTRATION_SUCCESS,
       payload: result,
     });
+
+    yield requestToAuth({ email, password });
   } catch (error) {
     yield put({
       type: REGISTRATION_FAILED,
