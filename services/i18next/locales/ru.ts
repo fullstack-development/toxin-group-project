@@ -262,6 +262,12 @@ export const ru = {
       'Здесь содержится информация о ранее забронированных Вами номерах',
     'hotel, room, booking, book, information, booking, history, past':
       'отель, номер, бронирование, забронировать, информация, бронь, история, прошлый',
+    'Your booked rooms': 'Ваши забронированные номера',
+    'No rooms booked': 'Нет забронированных номеров',
+    'History of booked rooms': 'История забронированных номеров',
+    'Empty ... Perhaps this will be your first booking?':
+      'Пусто... Возможно, это будет ваша первая бронь?',
+    'Booking Date': 'Дата бронирования',
   },
   AccountSettingsPage: {
     'Account Settings': 'Настройки аккаунта',

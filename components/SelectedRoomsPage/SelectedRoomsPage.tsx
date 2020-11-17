@@ -1,4 +1,5 @@
 import { memo, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
 import MainLayout from 'components/MainLayout/MainLayout';
@@ -34,27 +35,29 @@ const SelectedRoomsPage = memo(
       getBookedRooms(userEmail);
     }, [getBookedRooms, userEmail]);
 
+    const { t } = useTranslation('SelectedRoomsPage');
+
     return (
       <MainLayout>
         <S.Container>
-          <S.Title>Ваши забронированные номера:</S.Title>
+          <S.Title>{`${t('Your booked rooms')}:`}</S.Title>
           <S.RoomsListContainer>
             {isLoadingData && <Preloader />}
             {bookedRooms &&
               (bookedRooms.current.length ? (
                 <RoomsList rooms={bookedRooms.current} />
               ) : (
-                <S.Text>Нет забронированных номеров</S.Text>
+                <S.Text>{t('No rooms booked')}</S.Text>
               ))}
           </S.RoomsListContainer>
-          <S.SubTitle>История забронированных номеров:</S.SubTitle>
+          <S.SubTitle>{`${t('History of booked rooms')}:`}</S.SubTitle>
           <S.RoomsListContainer>
             {isLoadingData && <Preloader />}
             {bookedRooms &&
               (bookedRooms.history.length ? (
                 <RoomsList rooms={bookedRooms.history} />
               ) : (
-                <S.Text>Пусто... Возможно, это будет ваша первая бронь ?</S.Text>
+                <S.Text>{t('Empty ... Perhaps this will be your first booking?')}</S.Text>
               ))}
           </S.RoomsListContainer>
         </S.Container>
