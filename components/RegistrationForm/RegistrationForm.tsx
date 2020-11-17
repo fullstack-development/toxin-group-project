@@ -95,7 +95,7 @@ const RegistrationForm = memo(
                 <Toggle name="hasSpecialOffers" label={t('Receive special offers')} />
               </S.SpecialOfferWrapper>
               <S.RegisterButton isFlat isFilled>
-                {t('Proceed to checkout')}
+                {t('Shared:Register')}
               </S.RegisterButton>
               <S.AlreadyRegisterWrapper>
                 <span>{t('Already have an account on Toxin')}</span>

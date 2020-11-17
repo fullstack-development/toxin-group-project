@@ -8,7 +8,7 @@ import {
   UpdateBookedHistory,
   BookCurrentRoom,
 } from 'redux/Booking/model';
-import Api from 'services/api/api';
+import { Dependencies } from 'redux/store.model';
 import { Apartment, BookingData } from 'services/api/entities/types';
 
 import {
@@ -22,6 +22,7 @@ import {
 } from '../../constants';
 
 function* loadRooms(
+  { api }: Dependencies,
   action: RoomsRequest,
 ): Generator | Generator<PutEffect<RoomsRequest>, void, never> {
   try {
@@ -30,7 +31,7 @@ function* loadRooms(
       payload: true,
     });
 
-    const rooms: Apartment[] = yield call(Api.booking.filterRooms, action.payload);
+    const rooms: Apartment[] = yield call(api.booking.filterRooms, action.payload);
     yield put({
       type: ROOMS_REQUEST_SUCCESS,
       payload: rooms,
@@ -48,10 +49,11 @@ function* loadRooms(
   }
 }
 
-function* loadRoomsHistory({
-  payload,
-}: LoadBookedHistory): Generator | Generator<PutEffect<UpdateBookedHistory>, void, never> {
-  const result: BookedHistoryList = yield call(Api.booking.getBookedHistory, payload);
+function* loadRoomsHistory(
+  { api }: Dependencies,
+  { payload }: LoadBookedHistory,
+): Generator | Generator<PutEffect<UpdateBookedHistory>, void, never> {
+  const result: BookedHistoryList = yield call(api.booking.getBookedHistory, payload);
 
   yield put({
     type: UPDATE_BOOKED_HISTORY,
@@ -59,9 +61,10 @@ function* loadRoomsHistory({
   });
 }
 
-function* confirmBookedRoom({
-  payload,
-}: BookCurrentRoom): Generator | Generator<CallEffect<BookCurrentRoom>, void, never> {
+function* confirmBookedRoom(
+  { api }: Dependencies,
+  { payload }: BookCurrentRoom,
+): Generator | Generator<CallEffect<BookCurrentRoom>, void, never> {
   const { apartmentId, booked, user } = payload;
   const data: BookingData = {
     apartmentId,
@@ -70,11 +73,11 @@ function* confirmBookedRoom({
     reservationBy: user,
   };
 
-  yield call(Api.booking.setBookedByUser, data);
+  yield call(api.booking.setBookedByUser, data);
 }
 
-export function* rootSaga(): SagaIterator {
-  yield takeLeading(LOAD_ROOMS, loadRooms);
-  yield takeLatest(LOAD_BOOKED_HISTORY, loadRoomsHistory);
-  yield takeLatest(BOOK_ROOM, confirmBookedRoom);
+export function* rootSaga(deps: Dependencies): SagaIterator {
+  yield takeLeading(LOAD_ROOMS, loadRooms, deps);
+  yield takeLatest(LOAD_BOOKED_HISTORY, loadRoomsHistory, deps);
+  yield takeLatest(BOOK_ROOM, confirmBookedRoom, deps);
 }

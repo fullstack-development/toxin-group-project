@@ -186,7 +186,7 @@ const OrderForm = memo(
                   />
                 </S.Datepicker>
                 <S.Dropdown>
-                  <S.DropdownLabel>{t('WordForms:Guests')}</S.DropdownLabel>
+                  <S.DropdownLabel>{t('RoomFilter:Guests')}</S.DropdownLabel>
                   <Dropdown {...dropdownOptions} />
                 </S.Dropdown>
                 <S.PriceList>

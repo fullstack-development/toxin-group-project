@@ -53,7 +53,7 @@ const auth = (state: AuthState = initialState, action: AuthActions): AuthState =
         userEmail: action.payload.email,
         authStatusText: 'Вы успешно авторизованы!',
         user: action.payload,
-        displayName: action.payload.displayName || 'Аноним',
+        displayName: action.payload.displayName,
       };
     case AUTH_FAILED:
       return {
