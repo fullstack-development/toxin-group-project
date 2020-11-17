@@ -1,17 +1,22 @@
 import Head from 'next/head';
 import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import SearchRoomPage from 'components/SearchRoomPage/SearchRoomPage';
 
-const SearchRoom = memo(() => (
-  <>
-    <Head>
-      <title>Toxin | Найти номер</title>
-      <meta name="description" content="Подберите и забронируйте номер в нашем отеле" />
-      <meta name="keywords" content="отель, номер, бронирование, забронировать" />
-    </Head>
-    <SearchRoomPage />
-  </>
-));
+const SearchRoom = memo(() => {
+  const { t } = useTranslation('SearchRoomPage');
+
+  return (
+    <>
+      <Head>
+        <title>Toxin | {t('Find a Room')}</title>
+        <meta name="description" content={t('Select and book a room in our hotel')} />
+        <meta name="keywords" content={t('hotel, room, booking, book')} />
+      </Head>
+      <SearchRoomPage />
+    </>
+  );
+});
 
 export default SearchRoom;

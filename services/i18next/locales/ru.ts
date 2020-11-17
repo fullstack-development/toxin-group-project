@@ -202,7 +202,41 @@ export const ru = {
     'Copyright © 2018 Toxin Hotel. All rights reserved.':
       'Copyright © 2018 Toxin отель. Все права защищены',
   },
+  SignInPage: {
+    'Sign In': 'Войти',
+    'Sign in to your account to book rooms at our hotel':
+      'Вход в учетную запись для бронирования номеров в нашем отеле',
+    'hotel, room, registration, authorization, book, sign in':
+      'отель, номер, регистрация, авторизация, забронировать, войти',
+  },
+  RegistrationPage: {
+    Registration: 'Регистрация',
+    'Registration for booking rooms in our hotel':
+      'Регистрация для бронирования номеров в нашем отеле',
+    'hotel, room, registration, authorization, book, sign in':
+      'отель, номер, регистрация, авторизация, забронировать, войти',
+  },
+  IndexPage: {
+    Home: 'Главная',
+    'Select and book a room in our hotel': 'Подберите и забронируйте номер в нашем отеле',
+    'hotel, room, booking, book': 'отель, номер, бронирование, забронировать',
+  },
+  LogoutPage: {
+    'Sign Out': 'Выход',
+    'Sign out of your account': 'Выход из аккаунта',
+    'hotel, room, registration, authorization, book, sign out':
+      'отель, номер, регистрация, авторизация, забронировать, выйти',
+  },
+  ForgotPasswordPage: {
+    'Restore Password': 'Восстановить пароль',
+    'Password recovery from your account': 'Восстановление пароля от вашего аккаунта',
+    'hotel, room, registration, authorization, password, forgot password, restore, reset':
+      'отель, номер, регистрация, авторизация, пароль, забыли пароль, восстановить, сбросить',
+  },
   SearchRoomPage: {
+    'Find a Room': 'Найти номер',
+    'Select and book a room in our hotel': 'Подберите и забронируйте номер в нашем отеле',
+    'hotel, room, booking, book': 'отель, номер, бронирование, забронировать',
     'Sort by parameter': 'Сортировать по параметру',
     'The rooms we have selected for you': 'Номера, которые мы для вас подобрали',
     'No results were found for your request =(': 'К сожалению, мы не смогли ничего подобрать =(',
@@ -211,7 +245,7 @@ export const ru = {
     'number of reviews': 'количество отзывов',
   },
   RoomDetailsPage: {
-    'Room details': 'Сведения о номере',
+    'Room Details': 'Сведения о номере',
     'More detailed information about the room: rules, number of guests, amenities and much more':
       'Более подробная информация о номере: правила, количество гостей, удобства и многое другое',
     'hotel, room, booking, book, information':
@@ -222,7 +256,17 @@ export const ru = {
     'Free cancellation within 48 hours. Thereafter, if canceled no later than 5 days in advance. you will receive a full refund before arrival minus the service fee.':
       'Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.',
   },
+  SelectedRoomsPage: {
+    'Booked Rooms': 'Забронированные номера',
+    'Here you can find information about your previously booked rooms':
+      'Здесь содержится информация о ранее забронированных Вами номерах',
+    'hotel, room, booking, book, information, booking, history, past':
+      'отель, номер, бронирование, забронировать, информация, бронь, история, прошлый',
+  },
   AccountSettingsPage: {
+    'Account Settings': 'Настройки аккаунта',
+    'All available settings for your account': 'Все доступные настройки вашего аккаунта',
+    'hotel, room, account, customize': 'отель, номер, аккаунт, настроить, настройка',
     Account: 'Аккаунт',
     'Personal info': 'Личная информация',
     'Provide personal details and how we can reach you': 'Предоставьте личные и контактные данные',
@@ -237,6 +281,10 @@ export const ru = {
       'Просмотрите все номера которые были забронированы вами',
   },
   PersonalInfoPage: {
+    'Personal Information': 'Персональная информация',
+    'All information about you that is in our system is collected here':
+      'Здесь собрана вся информация о Вас, которая есть в нашей системе',
+    'hotel, room, account, info, information': 'отель, номер, аккаунт, инфо, информация',
     Edit: 'Редактировать',
     Cancel: 'Отменить',
     Save: 'Сохранить',
@@ -264,6 +312,11 @@ export const ru = {
       'Для изменения адреса электронной почты пройдите повторную аутентификацию',
   },
   LoginAndSecurityPage: {
+    Security: 'Безопастность',
+    'Here you can configure the protection settings for your account':
+      'Здесь вы можете настроить параметры защиты вашего аккаунта',
+    'hotel, room, account, security, protection, password':
+      'отель, номер, аккаунт, безопасность, защита, пароль',
     Login: 'Вход',
     Password: 'Пароль',
     'Changing the current password': 'Изменение текущего пароля',
@@ -281,6 +334,11 @@ export const ru = {
     'Password changed successfully': 'Пароль успешно изменен',
   },
   NotificationsPage: {
+    Notifications: 'Уведомления',
+    'On this page you can configure the notifications you need':
+      'На этой странице вы можете настроить нужные Вам уведомления',
+    'hotel, room, account, notifications, information':
+      'отель, номер, аккаунт, уведомления, информация',
     Newsletters: 'Новостные рассылки',
     'Receive special offers': 'Получать спецпредложения',
     Save: 'Сохранить',
