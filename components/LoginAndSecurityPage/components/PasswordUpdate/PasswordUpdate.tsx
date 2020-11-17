@@ -70,7 +70,7 @@ const PasswordUpdate = memo(
       if (isSuccess) onChange();
     };
 
-    const { t } = useTranslation('LoginAndSecurity');
+    const { t } = useTranslation('LoginAndSecurityPage');
 
     return (
       <Form

@@ -7,7 +7,7 @@ import Login from '../Login/Login';
 import * as S from './MainContent.styles';
 
 const MainContent = memo(() => {
-  const { t } = useTranslation('AccountSettings');
+  const { t } = useTranslation('AccountSettingsPage');
 
   return (
     <S.MainContent>

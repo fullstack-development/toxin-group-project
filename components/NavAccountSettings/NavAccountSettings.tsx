@@ -10,7 +10,7 @@ type Props = {
 };
 
 const NavAccountSettings = memo(({ title }: Props) => {
-  const { t } = useTranslation('AccountSettings');
+  const { t } = useTranslation('AccountSettingsPage');
 
   return (
     <S.NavAccountSettings>

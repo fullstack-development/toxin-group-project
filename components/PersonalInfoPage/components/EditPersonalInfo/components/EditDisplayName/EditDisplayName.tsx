@@ -69,7 +69,7 @@ const EditDisplayName = memo(
       if (isSuccess) onChange('');
     };
 
-    const { t } = useTranslation('PersonalInfo');
+    const { t } = useTranslation('PersonalInfoPage');
 
     return (
       <Form

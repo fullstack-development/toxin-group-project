@@ -56,7 +56,7 @@ const Subscriptions = memo(
       startSubscriptionUpdate({ email, subscriptions: { hasSpecialOffers: newValue } });
     };
 
-    const { t } = useTranslation('Notifications');
+    const { t } = useTranslation('NotificationsPage');
 
     return (
       <S.Subscriptions>

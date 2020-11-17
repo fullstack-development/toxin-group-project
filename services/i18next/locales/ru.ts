@@ -13,64 +13,34 @@ export const ru = {
     Total: 'Итого',
     'Date mask': 'ДД.ММ.ГГГГ',
   },
-  AccountEntry: {
-    'Sign In with account google': 'Вход через аккаунт google',
-    'No Toxin account?': 'Нет аккаунта на Toxin?',
+  Validators: {
+    'Invalid date': 'Некорректная дата',
+    'Invalid email': 'Некорректный email',
+    'Please fill in this field': 'Заполните это поле',
+    'Password must contain at least 8 characters': 'Пароль должен содержать минимум 8 символов',
   },
-  TimePicker: {
-    'Select Date': 'Выберите дату',
+  Months: {
+    January: 'Январь',
+    February: 'Февраль',
+    March: 'Март',
+    April: 'Апрель',
+    May: 'Май',
+    June: 'Июнь',
+    July: 'Июль',
+    August: 'Август',
+    September: 'Сентябрь',
+    October: 'Октябрь',
+    November: 'Декабрь',
+    December: 'Январь',
   },
-  RegistrationForm: {
-    'Create account': 'Регистрация аккаунта',
-    'Date mask': 'ДД.ММ.ГГГГ',
-    'Birthday date': 'Дата рождения',
-    'Service login details': 'Данные для входа в сервис',
-    'Receive special offers': 'Получать спецпредложения',
-    'Proceed to checkout': 'Перейти к оплате',
-    'Already have an account on Toxin': 'Уже есть аккаунт на Toxin',
-  },
-  Buttons: {
-    'Sign In': 'Войти',
-    'Sign up': 'Создать',
-    Apply: 'Применить',
-    Clear: 'Очистить',
-    Next: 'Далее',
-  },
-  RoomFilter: {
-    'Dates of stay in hotel': 'Даты пребывания в отеле',
-    Guests: 'гости',
-    'How many guests': 'Сколько гостей',
-    'Price range': 'Диапазон цены',
-    'Cost per day of stay in the room': 'Стоимость за сутки пребывания в номере',
-    'Checkbox buttons': 'Правила дома',
-    Availability: 'Доступность',
-    'Room amenities': 'Удобства номера',
-    'Additional amenities': 'Дополнительные удобства',
-    'Loading rooms ...': 'Загружаем номера ...',
-  },
-  OrderForm: {
-    'How many guests': 'Сколько гостей',
-    'Book now': 'Забронировать',
-  },
-  CheckboxesList: {
-    'Smoking is allowed': 'Можно курить',
-    'Pets are allowed': 'Можно с питомцами',
-    'Guests can be invited (up to 10 people)': 'Можно пригласить гостей (до 10 человек)',
-    'The width of the corridors in the room is at least 91 cm.':
-      'Ширина коридоров в номере не менее 91 см.',
-    'Wide corridor': 'Широкий коридор',
-    'Assistant for disabled people': 'Помощник для инвалидов',
-    'A specialist will meet you on the 1st floor and will escort you to your room.':
-      'На 1 этаже вас встретит специалист и проводит до номера.',
-    Breakfast: 'Завтрак',
-    Desk: 'Письменный стол',
-    'Feeding chair': 'Стул для кормления',
-    Crib: 'Детская кроватка',
-    TV: 'Телевизор',
-    Shampoo: 'Шампунь',
-  },
-  ReviewsPage: {
-    'Guest reviews': 'Отзывы посетителей номера',
+  WeekdaysShort: {
+    Mon: 'Пн',
+    Tue: 'Вт',
+    Wed: 'Ср',
+    Thu: 'Чт',
+    Fri: 'Пт',
+    Sat: 'Сб',
+    Sun: 'Вс',
   },
   WordForms: {
     Guest: 'гость',
@@ -98,92 +68,29 @@ export const ru = {
     Votes: 'Голосов',
     VotesSecondary: 'Голоса',
   },
-  Footer: {
-    Subscription: 'Подписка',
-    'Receive special offers and service news':
-      'Получайте специальные предложения и новости сервиса',
-    'Reservation of rooms in the best hotel of 2019 according to the "Hotel Views" association':
-      'Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»',
-    'Copyright © 2018 Toxin Hotel': 'Copyright © 2018 Toxin Hotel',
-    'Copyright © 2018 Toxin Hotel. All rights reserved.':
-      'Copyright © 2018 Toxin отель. Все права защищены',
+  Buttons: {
+    'Sign In': 'Войти',
+    'Sign up': 'Создать',
+    Apply: 'Применить',
+    Clear: 'Очистить',
+    Next: 'Далее',
   },
-  Banner: {
-    'The best rooms for your work, relaxation and just inspiration':
-      'Лучшие номера для вашей работы, отдыха и просто вдохновения',
-  },
-  Links: {
-    Navigation: 'Навигация',
-    'About us': 'О нас',
-    News: 'Новости',
-    Support: 'Служба поддержки',
-    Services: 'Услуги',
-    'About service': 'О сервисе',
-    'Our team': 'Наша команда',
-    Careers: 'Вакансии',
-    Investors: 'Инвесторы',
-    Agreements: 'Соглашения',
-    Communities: 'Сообщества',
-    'Contact us': 'Связь с нами',
-  },
-  SearchRoomForm: {
-    'We will find rooms according to your wishes': 'Найдём номера под ваши пожелания',
-    Arrival: 'Прибытие',
-    Departure: 'Выезд',
-    'Search for a room': 'Подобрать номер',
-  },
-  ForgotPasswordForm: {
-    'Account recovery': 'Восстановление аккаунта',
-    'Email address': 'Адрес электронной почты',
-  },
-  SearchRoomPage: {
-    'Sort by parameter': 'Сортировать по параметру',
-    'The rooms we have selected for you': 'Номера, которые мы для вас подобрали',
-    'No results were found for your request =(': 'К сожалению, мы не смогли ничего подобрать =(',
-    price: 'цена',
-    rating: 'рейтинг',
-    'number of reviews': 'количество отзывов',
-  },
-  Months: {
-    January: 'Январь',
-    February: 'Февраль',
-    March: 'Март',
-    April: 'Апрель',
-    May: 'Май',
-    June: 'Июнь',
-    July: 'Июль',
-    August: 'Август',
-    September: 'Сентябрь',
-    October: 'Октябрь',
-    November: 'Декабрь',
-    December: 'Январь',
-  },
-  WeekdaysShort: {
-    Mon: 'Пн',
-    Tue: 'Вт',
-    Wed: 'Ср',
-    Thu: 'Чт',
-    Fri: 'Пт',
-    Sat: 'Сб',
-    Sun: 'Вс',
-  },
-  AvatarLoader: {
-    'Select display area': 'Выберите область отображения',
-    'The selected thumbnail will be used in the comments you leave.':
-      'Выбранная миниатюра будет использоваться в оставленных вами комментариях.',
-    'Failed to set avatar': 'Не удалось установить аватар',
-  },
-  HeaderProfile: {
-    'To profile': 'Перейти в профиль',
-    Logout: 'Выход',
-  },
-  RoomDetailsPage: {
-    'Loading Room Information ...': 'Загрузка информации о номере ...',
-    'Room details': 'Сведения о номере',
-    'Impressions of the room': 'Впечатления от номера',
-    'Failed to load room information': 'Не удалось загрузить информацию о номере',
-    'Free cancellation within 48 hours. Thereafter, if canceled no later than 5 days in advance. you will receive a full refund before arrival minus the service fee.':
-      'Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.',
+  CheckboxesList: {
+    'Smoking is allowed': 'Можно курить',
+    'Pets are allowed': 'Можно с питомцами',
+    'Guests can be invited (up to 10 people)': 'Можно пригласить гостей (до 10 человек)',
+    'The width of the corridors in the room is at least 91 cm.':
+      'Ширина коридоров в номере не менее 91 см.',
+    'Wide corridor': 'Широкий коридор',
+    'Assistant for disabled people': 'Помощник для инвалидов',
+    'A specialist will meet you on the 1st floor and will escort you to your room.':
+      'На 1 этаже вас встретит специалист и проводит до номера.',
+    Breakfast: 'Завтрак',
+    Desk: 'Письменный стол',
+    'Feeding chair': 'Стул для кормления',
+    Crib: 'Детская кроватка',
+    TV: 'Телевизор',
+    Shampoo: 'Шампунь',
   },
   Benefits: {
     Comfort: 'Комфорт',
@@ -205,6 +112,40 @@ export const ru = {
     Normal: 'Удовлетворительно',
     Bad: 'Разочарован',
   },
+  Links: {
+    Navigation: 'Навигация',
+    'About us': 'О нас',
+    News: 'Новости',
+    Support: 'Служба поддержки',
+    Services: 'Услуги',
+    'About service': 'О сервисе',
+    'Our team': 'Наша команда',
+    Careers: 'Вакансии',
+    Investors: 'Инвесторы',
+    Agreements: 'Соглашения',
+    Communities: 'Сообщества',
+    'Contact us': 'Связь с нами',
+  },
+  TimePicker: {
+    'Select Date': 'Выберите дату',
+  },
+  Banner: {
+    'The best rooms for your work, relaxation and just inspiration':
+      'Лучшие номера для вашей работы, отдыха и просто вдохновения',
+  },
+  Reviews: {
+    'Guest reviews': 'Отзывы посетителей номера',
+  },
+  AvatarLoader: {
+    'Select display area': 'Выберите область отображения',
+    'The selected thumbnail will be used in the comments you leave.':
+      'Выбранная миниатюра будет использоваться в оставленных вами комментариях.',
+    'Failed to set avatar': 'Не удалось установить аватар',
+  },
+  HeaderProfile: {
+    'To profile': 'Перейти в профиль',
+    Logout: 'Выход',
+  },
   translations: {
     Ago: 'Назад',
   },
@@ -212,7 +153,76 @@ export const ru = {
     'Service fee_discount': 'Сбор за услуги: скидка',
     'Additional service fee': 'Сбор за дополнительные услуги',
   },
-  AccountSettings: {
+  AccountEntry: {
+    'Sign In with account google': 'Вход через аккаунт google',
+    'No Toxin account?': 'Нет аккаунта на Toxin?',
+  },
+  RegistrationForm: {
+    'Create account': 'Регистрация аккаунта',
+    'Date mask': 'ДД.ММ.ГГГГ',
+    'Birthday date': 'Дата рождения',
+    'Service login details': 'Данные для входа в сервис',
+    'Receive special offers': 'Получать спецпредложения',
+    'Proceed to checkout': 'Перейти к оплате',
+    'Already have an account on Toxin': 'Уже есть аккаунт на Toxin',
+  },
+  OrderForm: {
+    'How many guests': 'Сколько гостей',
+    'Book now': 'Забронировать',
+  },
+  SearchRoomForm: {
+    'We will find rooms according to your wishes': 'Найдём номера под ваши пожелания',
+    Arrival: 'Прибытие',
+    Departure: 'Выезд',
+    'Search for a room': 'Подобрать номер',
+  },
+  ForgotPasswordForm: {
+    'Account recovery': 'Восстановление аккаунта',
+    'Email address': 'Адрес электронной почты',
+  },
+  RoomFilter: {
+    'Dates of stay in hotel': 'Даты пребывания в отеле',
+    Guests: 'гости',
+    'How many guests': 'Сколько гостей',
+    'Price range': 'Диапазон цены',
+    'Cost per day of stay in the room': 'Стоимость за сутки пребывания в номере',
+    'Checkbox buttons': 'Правила дома',
+    Availability: 'Доступность',
+    'Room amenities': 'Удобства номера',
+    'Additional amenities': 'Дополнительные удобства',
+    'Loading rooms ...': 'Загружаем номера ...',
+  },
+  Footer: {
+    Subscription: 'Подписка',
+    'Receive special offers and service news':
+      'Получайте специальные предложения и новости сервиса',
+    'Reservation of rooms in the best hotel of 2019 according to the "Hotel Views" association':
+      'Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»',
+    'Copyright © 2018 Toxin Hotel': 'Copyright © 2018 Toxin Hotel',
+    'Copyright © 2018 Toxin Hotel. All rights reserved.':
+      'Copyright © 2018 Toxin отель. Все права защищены',
+  },
+  SearchRoomPage: {
+    'Sort by parameter': 'Сортировать по параметру',
+    'The rooms we have selected for you': 'Номера, которые мы для вас подобрали',
+    'No results were found for your request =(': 'К сожалению, мы не смогли ничего подобрать =(',
+    price: 'цена',
+    rating: 'рейтинг',
+    'number of reviews': 'количество отзывов',
+  },
+  RoomDetailsPage: {
+    'Room details': 'Сведения о номере',
+    'More detailed information about the room: rules, number of guests, amenities and much more':
+      'Более подробная информация о номере: правила, количество гостей, удобства и многое другое',
+    'hotel, room, booking, book, information':
+      'отель, номер, бронирование, забронировать, информация',
+    'Loading Room Information ...': 'Загрузка информации о номере ...',
+    'Impressions of the room': 'Впечатления от номера',
+    'Failed to load room information': 'Не удалось загрузить информацию о номере',
+    'Free cancellation within 48 hours. Thereafter, if canceled no later than 5 days in advance. you will receive a full refund before arrival minus the service fee.':
+      'Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.',
+  },
+  AccountSettingsPage: {
     Account: 'Аккаунт',
     'Personal info': 'Личная информация',
     'Provide personal details and how we can reach you': 'Предоставьте личные и контактные данные',
@@ -226,7 +236,7 @@ export const ru = {
     'View all rooms that have been booked by you':
       'Просмотрите все номера которые были забронированы вами',
   },
-  PersonalInfo: {
+  PersonalInfoPage: {
     Edit: 'Редактировать',
     Cancel: 'Отменить',
     Save: 'Сохранить',
@@ -253,7 +263,7 @@ export const ru = {
     'Re-authenticate to change your email address':
       'Для изменения адреса электронной почты пройдите повторную аутентификацию',
   },
-  LoginAndSecurity: {
+  LoginAndSecurityPage: {
     Login: 'Вход',
     Password: 'Пароль',
     'Changing the current password': 'Изменение текущего пароля',
@@ -270,7 +280,7 @@ export const ru = {
     'An error has occurred': 'Произошла ошибка',
     'Password changed successfully': 'Пароль успешно изменен',
   },
-  Notifications: {
+  NotificationsPage: {
     Newsletters: 'Новостные рассылки',
     'Receive special offers': 'Получать спецпредложения',
     Save: 'Сохранить',
@@ -278,11 +288,5 @@ export const ru = {
     'You have successfully subscribed to the special offers':
       'Вы успешно подписаны на рассылку спецпредложений',
     'An error occured, please try again later': 'Произошла ошибка, повторите попытку позже',
-  },
-  Validators: {
-    'Invalid date': 'Некорректная дата',
-    'Invalid email': 'Некорректный email',
-    'Please fill in this field': 'Заполните это поле',
-    'Password must contain at least 8 characters': 'Пароль должен содержать минимум 8 символов',
   },
 };
