@@ -10,7 +10,7 @@ import { requestRooms } from 'redux/Booking/redux/actions';
 import { AppState } from 'redux/store.types';
 import { Filters } from 'services/api/entities/types';
 import { Rooms } from 'shared/view/components';
-import { Props as RoomProps } from 'shared/view/components/Room/Room.types';
+import { RoomProps } from 'shared/view/components/Room/Room.types';
 import { Preloader } from 'shared/view/elements';
 
 import * as S from './SearchRoomPage.styles';

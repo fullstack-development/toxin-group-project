@@ -4,7 +4,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { Room } from 'shared/view/components';
 import { Preloader } from 'shared/view/elements';
 
-import { Props as RoomProps } from '../Room/Room.types';
+import { RoomProps } from '../Room/Room.types';
 import * as S from './Rooms.styles';
 import { Props } from './Rooms.types';
 

@@ -5,9 +5,9 @@ import { StarRating } from 'shared/view/elements';
 
 import { ImageGallery } from './components/ImageGallery/ImageGallery';
 import * as S from './Room.styles';
-import { Props } from './Room.types';
+import { RoomProps } from './Room.types';
 
-const Room: React.ComponentType<WithTranslation & Props> = ({
+const Room: React.ComponentType<WithTranslation & RoomProps> = ({
   price,
   number,
   reviews,
@@ -18,7 +18,7 @@ const Room: React.ComponentType<WithTranslation & Props> = ({
   currency,
   rating = 5,
   t,
-}: Props) => (
+}: RoomProps) => (
   <S.Room>
     <ImageGallery imagePaths={imagePaths} />
     <S.Info href={`/rooms/room-details?room=${number}`}>

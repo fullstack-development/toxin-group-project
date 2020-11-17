@@ -10,7 +10,7 @@ import { ArrowButton } from 'shared/view/elements';
 
 import { PriceList } from './components/PriceList/PriceList';
 import * as S from './OrderForm.styles';
-import { Item as PriceItem, MaxGuests } from './OrderForm.types';
+import { PriceItem, MaxGuests } from './OrderForm.types';
 
 type Props = {
   roomNumber: number;

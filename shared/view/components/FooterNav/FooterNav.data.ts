@@ -1,6 +1,6 @@
 import { NavProps } from './FooterNav.types';
 
-const data: Required<NavProps> = {
+const footerNavData: Required<NavProps> = {
   items: [
     {
       title: 'Navigation',
@@ -64,4 +64,4 @@ const data: Required<NavProps> = {
   ],
 };
 
-export { data };
+export { footerNavData };

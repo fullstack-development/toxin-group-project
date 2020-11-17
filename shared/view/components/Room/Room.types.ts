@@ -2,7 +2,7 @@ import { TFunction } from 'i18next';
 
 import { Review } from 'services/api/entities/types';
 
-export type Props = {
+export type RoomProps = {
   price: number;
   number: number;
   reviews: Review[];

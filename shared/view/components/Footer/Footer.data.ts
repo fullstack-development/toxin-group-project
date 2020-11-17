@@ -1,6 +1,6 @@
 import { FooterProps } from './Footer.types';
 
-const data: FooterProps = {
+const footerData: FooterProps = {
   subscription: {
     title: 'Subscription',
     text: 'Receive special offers and service news',
@@ -10,4 +10,4 @@ const data: FooterProps = {
   copyrightText: 'Copyright © 2018 Toxin Hotel. All rights reserved.',
 };
 
-export { data };
+export { footerData };
