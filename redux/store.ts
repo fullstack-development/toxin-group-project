@@ -5,12 +5,13 @@ import createSagaMiddleware, { SagaMiddleware } from 'redux-saga';
 import { Api } from 'services/api/api';
 
 import { apartmentReduxEntry } from './Apartment';
+import { Dependencies } from './api.model';
 import { reduxEntry as AuthReduxEntry } from './Auth';
 import { reduxEntry as BookingReduxEntry } from './Booking';
 import { reduxEntry as LanguageReduxEntry } from './Language';
 import { profileReduxEntry } from './Profile';
 import { reduxEntry as RegistrationReduxEntry } from './Registration';
-import { SharedReduxEntries, AvailableReducers, Dependencies } from './store.types';
+import { SharedReduxEntries, AvailableReducers } from './store.types';
 import { subscriptionsReduxEntry } from './Subscriptions';
 
 const bindMiddleware = (middleware) => {

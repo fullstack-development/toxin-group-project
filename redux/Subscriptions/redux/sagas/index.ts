@@ -2,7 +2,7 @@ import { SagaIterator } from 'redux-saga';
 import { call, put } from 'redux-saga/effects';
 
 import { takeLeadingAction } from 'redux/action.model';
-import { Dependencies } from 'redux/store.types';
+import { Dependencies } from 'redux/api.model';
 
 import {
   SubscriptionData,
@@ -18,7 +18,7 @@ import {
 
 function* getSubscriptionsData({ api }: Dependencies, { payload }: GetSubscriptionDataRequest) {
   try {
-    const subscriptionData: SubscriptionData = yield call(api.subscriptions.load, payload.email);
+    const subscriptionData: SubscriptionData = yield call(api.subscriptions.load, payload);
 
     yield put(getSubscriptionDataSuccess(subscriptionData));
   } catch (err) {

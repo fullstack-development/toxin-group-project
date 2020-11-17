@@ -3,12 +3,12 @@ import { SagaIterator } from 'redux-saga';
 import { call, put } from 'redux-saga/effects';
 
 import { takeLeadingAction } from 'redux/action.model';
+import { Dependencies } from 'redux/api.model';
 import {
   getEmailUpdateErrorMessage,
   getPasswordUpdateErrorMessage,
 } from 'shared/helpers/errorMessages';
 
-import { Dependencies } from '../../../store.types';
 import {
   EmailUpdateRequest,
   PasswordUpdateRequest,

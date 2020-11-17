@@ -2,7 +2,7 @@ import { SagaIterator } from 'redux-saga';
 import { put, call } from 'redux-saga/effects';
 
 import { takeLatestAction, takeLeadingAction } from 'redux/action.model';
-import { Dependencies } from 'redux/store.types';
+import { Dependencies } from 'redux/api.model';
 import { User, UserCredential } from 'services/api/Firebase/modules/Authentication/types';
 
 import {

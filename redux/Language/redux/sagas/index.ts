@@ -2,7 +2,7 @@ import { SagaIterator } from 'redux-saga';
 import { put } from 'redux-saga/effects';
 
 import { takeLatestAction } from 'redux/action.model';
-import { Dependencies } from 'redux/store.types';
+import { Dependencies } from 'redux/api.model';
 import i18next from 'services/i18next';
 
 import { ChangeLanguageRequest } from '../../model';

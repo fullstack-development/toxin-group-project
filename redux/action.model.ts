@@ -1,6 +1,6 @@
 import { ForkEffect, takeLatest, takeLeading } from 'redux-saga/effects';
 
-import { Dependencies } from './store.types';
+import { Dependencies } from './api.model';
 
 type Action<Z> = {
   type: Z;
