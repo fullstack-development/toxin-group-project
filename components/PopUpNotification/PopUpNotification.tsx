@@ -4,15 +4,29 @@ import * as S from './PopUpNotification.styles';
 
 type Props = {
   message: string;
+  withCancelButton?: boolean;
   onConfirmButtonClick: () => void;
+  onCancelButtonClick?: () => void;
 };
 
-const PopUpNotification = ({ message, onConfirmButtonClick }: Props): JSX.Element => (
+const PopUpNotification = ({
+  message,
+  withCancelButton,
+  onConfirmButtonClick,
+  onCancelButtonClick,
+}: Props): JSX.Element => (
   <S.PopUpNotification>
     <S.Message>{message}</S.Message>
-    <TextButton type="button" onClick={onConfirmButtonClick}>
-      ОК
-    </TextButton>
+    <S.Buttons withCancelButton={withCancelButton}>
+      <TextButton type="button" onClick={onConfirmButtonClick}>
+        ОК
+      </TextButton>
+      {withCancelButton && (
+        <TextButton type="button" onClick={onCancelButtonClick} isSecondary>
+          Отменить
+        </TextButton>
+    )}
+    </S.Buttons>
   </S.PopUpNotification>
 );
 

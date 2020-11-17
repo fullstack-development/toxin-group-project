@@ -21,6 +21,14 @@ import {
   USERNAME_UPDATE_SUCCESS,
   USERNAME_UPDATE_FAILED,
   USERNAME_UPDATE_COMPLETED,
+  AVATAR_UPDATE_PROCESS,
+  AVATAR_UPDATE_SUCCESS,
+  AVATAR_UPDATE_FAILED,
+  AVATAR_UPDATE_COMPLETED,
+  AVATAR_REMOVE_PROCESS,
+  AVATAR_REMOVE_SUCCESS,
+  AVATAR_REMOVE_FAILED,
+  AVATAR_REMOVE_COMPLETED,
 } from './constants';
 
 type Action<Z, T> = {
@@ -53,6 +61,15 @@ type UsernameUpdate = {
   displayName: string;
 };
 
+type AvatarUpdate = {
+  user: User;
+  avatar: Blob;
+};
+
+type AvatarRemove = {
+  user: User;
+};
+
 type ProfileState = {
   isEmailUpdatePending: boolean;
   isEmailUpdateCompleted: boolean;
@@ -68,6 +85,12 @@ type ProfileState = {
   isUsernameUpdatePending: boolean;
   isUsernameUpdateCompleted: boolean;
   usernameUpdateStatusText: string;
+  isAvatarUpdatePending: boolean;
+  isAvatarUpdateCompleted: boolean;
+  avatarUpdateStatusText: string;
+  isAvatarRemovePending: boolean;
+  isAvatarRemoveCompleted: boolean;
+  avatarRemoveStatusText: string;
 };
 
 type EmailUpdateRequest = Action<typeof EMAIL_UPDATE_PROCESS, EmailUpdate>;
@@ -98,6 +121,14 @@ type UsernameUpdateRequest = Action<typeof USERNAME_UPDATE_PROCESS, UsernameUpda
 type UsernameUpdateSuccess = Action<typeof USERNAME_UPDATE_SUCCESS, string>;
 type UsernameUpdateFailed = Action<typeof USERNAME_UPDATE_FAILED, string>;
 type UsernameUpdateCompleted = Action<typeof USERNAME_UPDATE_COMPLETED, string>;
+type AvatarUpdateRequest = Action<typeof AVATAR_UPDATE_PROCESS, AvatarUpdate>;
+type AvatarUpdateSuccess = Action<typeof AVATAR_UPDATE_SUCCESS, string>;
+type AvatarUpdateFailed = Action<typeof AVATAR_UPDATE_FAILED, string>;
+type AvatarUpdateCompleted = Action<typeof AVATAR_UPDATE_COMPLETED, string>;
+type AvatarRemoveRequest = Action<typeof AVATAR_REMOVE_PROCESS, AvatarRemove>;
+type AvatarRemoveSuccess = Action<typeof AVATAR_REMOVE_SUCCESS, string>;
+type AvatarRemoveFailed = Action<typeof AVATAR_REMOVE_FAILED, string>;
+type AvatarRemoveCompleted = Action<typeof AVATAR_REMOVE_COMPLETED, string>;
 
 type ProfileActions =
   | EmailUpdateRequest
@@ -118,13 +149,22 @@ type ProfileActions =
   | UsernameUpdateRequest
   | UsernameUpdateSuccess
   | UsernameUpdateFailed
-  | UsernameUpdateCompleted;
+  | UsernameUpdateCompleted
+  | AvatarUpdateRequest
+  | AvatarUpdateSuccess
+  | AvatarUpdateFailed
+  | AvatarUpdateCompleted
+  | AvatarRemoveRequest
+  | AvatarRemoveSuccess
+  | AvatarRemoveFailed
+  | AvatarRemoveCompleted;
 
 export type {
   EmailUpdate,
   PasswordUpdate,
   UpdateAdditionalUserData,
   UsernameUpdate,
+  AvatarUpdate,
   ProfileState,
   EmailUpdateRequest,
   EmailUpdateSuccess,
@@ -145,5 +185,14 @@ export type {
   UsernameUpdateSuccess,
   UsernameUpdateFailed,
   UsernameUpdateCompleted,
+  AvatarUpdateRequest,
+  AvatarUpdateSuccess,
+  AvatarUpdateFailed,
+  AvatarUpdateCompleted,
+  AvatarRemoveRequest,
+  AvatarRemoveSuccess,
+  AvatarRemoveFailed,
+  AvatarRemoveCompleted,
+  AvatarRemove,
   ProfileActions,
 };

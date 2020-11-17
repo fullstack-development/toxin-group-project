@@ -1,37 +1,34 @@
 import { IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import CloseIcon from '@material-ui/icons/Close';
-import { useState } from 'react';
-import AvatarEditor from 'react-avatar-editor';
+import { useState, useEffect } from 'react';
 import { Field } from 'react-final-form';
 import { useTranslation } from 'react-i18next';
 
 import Avatar from 'components/Avatar/Avatar';
-import Button from 'components/Button/Button';
-import Slider from 'components/Slider/Slider';
+import AvatarEditor from 'components/AvatarEditor/AvatarEditor';
 
 import * as S from './AvatarLoader.styles';
 
 type Props = {
   name: string;
+  photoURL?: string;
 };
 
-const AvatarLoader: React.FC<Props> = ({ name }: Props) => {
+const AvatarLoader: React.FC<Props> = ({ name, photoURL }: Props) => {
+  const [image, setImage] = useState(null);
   const [croppedImage, setCroppedImage] = useState(null);
   const [isEditorVisible, setEditorVisible] = useState(false);
-  const [image, setImage] = useState(null);
-  const [zoomSize, setZoomSize] = useState(1);
   const [snackBarStatus, setSnackBarSettings] = useState({
     isOpen: false,
     text: '',
   });
-  let canvas: AvatarEditor;
 
   const { t } = useTranslation(['AvatarLoader', 'Shared']);
 
-  const setEditorRef = (editor: AvatarEditor) => {
-    canvas = editor;
-  };
+  useEffect(() => {
+    photoURL && setCroppedImage(photoURL);
+  }, [photoURL]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files[0];
@@ -54,11 +51,7 @@ const AvatarLoader: React.FC<Props> = ({ name }: Props) => {
     e.target.value = '';
   };
 
-  const handleSliderChange = (value: number) => {
-    setZoomSize(value);
-  };
-
-  const handleCancelButtonClick = () => {
+  const handleEditorClose = () => {
     setEditorVisible(false);
   };
 
@@ -79,17 +72,13 @@ const AvatarLoader: React.FC<Props> = ({ name }: Props) => {
       <Field
         name={name}
         render={({ input: { value, onChange, ...input } }) => {
-          const handleSaveButtonClick = () => {
-            if (canvas) {
-              const canvasScaled = canvas.getImageScaledToCanvas();
-
-              setImage(null);
-              setEditorVisible(false);
-              setCroppedImage(canvasScaled.toDataURL());
-              canvasScaled.toBlob((blob) => {
-                onChange(blob);
-              });
-            }
+          const handleEditorSave = (canvasScaled: HTMLCanvasElement) => {
+            setImage(null);
+            setEditorVisible(false);
+            setCroppedImage(canvasScaled.toDataURL());
+            canvasScaled.toBlob((blob: Blob) => {
+              onChange(blob);
+            });
           };
 
           return (
@@ -106,37 +95,11 @@ const AvatarLoader: React.FC<Props> = ({ name }: Props) => {
               </S.AvatarWrapper>
               {isEditorVisible && (
                 <S.CropperWrapper>
-                  <S.CancelButton onClick={handleCancelButtonClick} />
-                  <S.CropperTitle>{t('Select display area')}</S.CropperTitle>
-                  <S.Description>
-                    {t('The selected thumbnail will be used in the comments you leave.')}
-                  </S.Description>
                   <AvatarEditor
-                    ref={setEditorRef}
+                    onClose={handleEditorClose}
                     image={image}
-                    width={300}
-                    height={300}
-                    border={5}
-                    borderRadius={150}
-                    color={[255, 255, 255, 0.6]}
-                    scale={zoomSize}
-                    rotate={0}
+                    onSave={handleEditorSave}
                   />
-                  <S.Controls>
-                    <S.SliderWrapper>
-                      <Slider
-                        name="zoom-size"
-                        min={1}
-                        max={10}
-                        step={0.1}
-                        initialValue={zoomSize}
-                        onChange={handleSliderChange}
-                      />
-                    </S.SliderWrapper>
-                    <Button isFilled isFlat onClick={handleSaveButtonClick}>
-                      {t('Shared:Save')}
-                    </Button>
-                  </S.Controls>
                 </S.CropperWrapper>
               )}
             </>

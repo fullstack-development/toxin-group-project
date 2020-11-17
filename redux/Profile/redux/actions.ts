@@ -10,12 +10,18 @@ import {
   UPDATE_ADDITIONAL_USER_DATA_COMPLETED,
   USERNAME_UPDATE_PROCESS,
   USERNAME_UPDATE_COMPLETED,
+  AVATAR_UPDATE_PROCESS,
+  AVATAR_UPDATE_COMPLETED,
+  AVATAR_REMOVE_PROCESS,
+  AVATAR_REMOVE_COMPLETED,
 } from '../constants';
 import {
   EmailUpdate,
   PasswordUpdate,
   UpdateAdditionalUserData,
   UsernameUpdate,
+  AvatarUpdate,
+  AvatarRemove,
   EmailUpdateRequest,
   EmailUpdateCompleted,
   GetAdditionalUserDataRequest,
@@ -25,6 +31,10 @@ import {
   UpdateAdditionalUserDataCompleted,
   UsernameUpdateRequest,
   UsernameUpdateCompleted,
+  AvatarUpdateRequest,
+  AvatarUpdateCompleted,
+  AvatarRemoveRequest,
+  AvatarRemoveCompleted,
 } from '../types';
 
 const emailUpdate = (data: EmailUpdate): EmailUpdateRequest => ({
@@ -70,6 +80,24 @@ const usernameUpdateCompleted = (): UsernameUpdateCompleted => ({
   type: USERNAME_UPDATE_COMPLETED,
 });
 
+const avatarUpdate = (data: AvatarUpdate): AvatarUpdateRequest => ({
+  type: AVATAR_UPDATE_PROCESS,
+  payload: data,
+});
+
+const avatarUpdateCompleted = (): AvatarUpdateCompleted => ({
+  type: AVATAR_UPDATE_COMPLETED,
+});
+
+const avatarRemove = (data: AvatarRemove): AvatarRemoveRequest => ({
+  type: AVATAR_REMOVE_PROCESS,
+  payload: data,
+});
+
+const avatarRemoveCompleted = (): AvatarRemoveCompleted => ({
+  type: AVATAR_REMOVE_COMPLETED,
+});
+
 export {
   emailUpdate,
   emailUpdateCompleted,
@@ -80,4 +108,8 @@ export {
   updateAdditionalUserDataCompleted,
   usernameUpdate,
   usernameUpdateCompleted,
+  avatarUpdate,
+  avatarUpdateCompleted,
+  avatarRemove,
+  avatarRemoveCompleted,
 };

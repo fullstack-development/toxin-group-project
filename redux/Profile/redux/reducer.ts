@@ -18,6 +18,14 @@ import {
   USERNAME_UPDATE_SUCCESS,
   USERNAME_UPDATE_FAILED,
   USERNAME_UPDATE_COMPLETED,
+  AVATAR_UPDATE_PROCESS,
+  AVATAR_UPDATE_SUCCESS,
+  AVATAR_UPDATE_FAILED,
+  AVATAR_UPDATE_COMPLETED,
+  AVATAR_REMOVE_PROCESS,
+  AVATAR_REMOVE_SUCCESS,
+  AVATAR_REMOVE_FAILED,
+  AVATAR_REMOVE_COMPLETED,
 } from '../constants';
 import { ProfileState, ProfileActions } from '../types';
 
@@ -36,6 +44,12 @@ const initialState: ProfileState = {
   isUsernameUpdatePending: false,
   isUsernameUpdateCompleted: false,
   usernameUpdateStatusText: '',
+  isAvatarUpdatePending: false,
+  isAvatarUpdateCompleted: false,
+  avatarUpdateStatusText: '',
+  isAvatarRemovePending: false,
+  isAvatarRemoveCompleted: false,
+  avatarRemoveStatusText: '',
 };
 
 const profile = (state: ProfileState = initialState, action: ProfileActions): ProfileState => {
@@ -169,6 +183,62 @@ const profile = (state: ProfileState = initialState, action: ProfileActions): Pr
         isUsernameUpdatePending: false,
         isUsernameUpdateCompleted: false,
         usernameUpdateStatusText: '',
+      };
+    case AVATAR_UPDATE_PROCESS:
+      return {
+        ...state,
+        isAvatarUpdatePending: true,
+        isAvatarUpdateCompleted: false,
+        avatarUpdateStatusText: '',
+      };
+    case AVATAR_UPDATE_SUCCESS:
+      return {
+        ...state,
+        isAvatarUpdatePending: false,
+        isAvatarUpdateCompleted: true,
+        avatarUpdateStatusText: action.payload,
+      };
+    case AVATAR_UPDATE_FAILED:
+      return {
+        ...state,
+        isAvatarUpdatePending: false,
+        isAvatarUpdateCompleted: true,
+        avatarUpdateStatusText: action.payload,
+      };
+    case AVATAR_UPDATE_COMPLETED:
+      return {
+        ...state,
+        isAvatarUpdatePending: false,
+        isAvatarUpdateCompleted: false,
+        avatarUpdateStatusText: '',
+      };
+      case AVATAR_REMOVE_PROCESS:
+      return {
+        ...state,
+        isAvatarUpdatePending: true,
+        isAvatarUpdateCompleted: false,
+        avatarUpdateStatusText: '',
+      };
+    case AVATAR_REMOVE_SUCCESS:
+      return {
+        ...state,
+        isAvatarUpdatePending: false,
+        isAvatarUpdateCompleted: true,
+        avatarUpdateStatusText: action.payload,
+      };
+    case AVATAR_REMOVE_FAILED:
+      return {
+        ...state,
+        isAvatarUpdatePending: false,
+        isAvatarUpdateCompleted: true,
+        avatarUpdateStatusText: action.payload,
+      };
+    case AVATAR_REMOVE_COMPLETED:
+      return {
+        ...state,
+        isAvatarUpdatePending: false,
+        isAvatarUpdateCompleted: false,
+        avatarUpdateStatusText: '',
       };
     default:
       return state;

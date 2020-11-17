@@ -6,6 +6,7 @@ import { AppState } from 'redux/store.types';
 import { AdditionalUserInformation } from 'services/api/entities/types';
 import { User } from 'services/api/Firebase/modules/Authentication/types';
 
+import EditAvatar from '../EditAvatar/EditAvatar';
 import EditPersonalInfo from '../EditPersonalInfo/EditPersonalInfo';
 import { data } from './PersonalInfo.data';
 import * as S from './PersonalInfo.styles';
@@ -39,6 +40,7 @@ const PersonalInfo = ({
     gender: '',
     birthday: '',
     email: '',
+    photoURL: '',
   });
   const [currentEditing, setCurrentEditing] = useState('');
 
@@ -62,13 +64,14 @@ const PersonalInfo = ({
   );
 
   const setAdditionalUserData = useCallback(() => {
-    const { displayName, email } = user;
+    const { displayName, email, photoURL } = user;
 
     setUserData({
       displayName,
       email,
       gender: additionalUserData ? mapGender[additionalUserData.gender] : '',
       birthday: additionalUserData ? additionalUserData.birthDate : '',
+      photoURL,
     });
   }, [additionalUserData, mapGender, user]);
 
@@ -90,6 +93,7 @@ const PersonalInfo = ({
 
   return (
     <S.PersonalInfo>
+      <EditAvatar user={user} photoURL={userData.photoURL} />
       {accountData.map((elem) => (
         <S.Item key={elem.title}>
           <EditPersonalInfo

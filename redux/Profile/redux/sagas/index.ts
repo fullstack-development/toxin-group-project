@@ -24,6 +24,12 @@ import {
   USERNAME_UPDATE_PROCESS,
   USERNAME_UPDATE_SUCCESS,
   USERNAME_UPDATE_FAILED,
+  AVATAR_UPDATE_PROCESS,
+  AVATAR_UPDATE_SUCCESS,
+  AVATAR_UPDATE_FAILED,
+  AVATAR_REMOVE_PROCESS,
+  AVATAR_REMOVE_SUCCESS,
+  AVATAR_REMOVE_FAILED,
 } from '../../constants';
 import {
   EmailUpdateRequest,
@@ -31,6 +37,8 @@ import {
   UpdateAdditionalUserDataRequest,
   UsernameUpdateRequest,
   GetAdditionalUserDataRequest,
+  AvatarUpdateRequest,
+  AvatarRemoveRequest,
 } from '../../types';
 
 function* emailUpdate({ payload }: EmailUpdateRequest) {
@@ -121,6 +129,44 @@ function* usernameUpdate({ payload }: UsernameUpdateRequest) {
   }
 }
 
+function* avatarUpdate({ payload }: AvatarUpdateRequest) {
+  try {
+    const { user, avatar } = payload;
+    const photoURL = yield call(api.auth.getPhotoURL, user.uid, avatar);
+
+    yield user.updateProfile({ photoURL });
+
+    yield put({
+      type: AVATAR_UPDATE_SUCCESS,
+      payload: 'Аватар был успешно изменен',
+    });
+  } catch (err) {
+    yield put({
+      type: AVATAR_UPDATE_FAILED,
+      payload: 'Произошла ошибка,, повторите попытку позже',
+    });
+  }
+}
+
+function* avatarRemove({ payload }: AvatarRemoveRequest) {
+  try {
+    const { user } = payload;
+
+    yield user.updateProfile({ photoURL: null });
+    yield api.auth.removeUserAvatar(user.uid);
+
+    yield put({
+      type: AVATAR_REMOVE_SUCCESS,
+      payload: 'Аватар был успешно удален',
+    });
+  } catch (err) {
+    yield put({
+      type: AVATAR_REMOVE_FAILED,
+      payload: 'Произошла ошибка,, повторите попытку позже',
+    });
+  }
+}
+
 function* getAdditionalUserData({ payload: user }: GetAdditionalUserDataRequest) {
   try {
     const additionalUserData = yield call(api.auth.getAdditionalUserInformation, user.uid);
@@ -142,6 +188,8 @@ function* rootSaga(): SagaIterator {
   yield takeLeading(PASSWORD_UPDATE_PROCESS, passwordUpdate);
   yield takeLeading(UPDATE_ADDITIONAL_USER_DATA_PROCESS, updateAdditionalUserData);
   yield takeLeading(USERNAME_UPDATE_PROCESS, usernameUpdate);
+  yield takeLeading(AVATAR_UPDATE_PROCESS, avatarUpdate);
+  yield takeLeading(AVATAR_REMOVE_PROCESS, avatarRemove);
 }
 
 export { rootSaga };
