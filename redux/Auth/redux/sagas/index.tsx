@@ -1,7 +1,7 @@
 import { SagaIterator } from 'redux-saga';
 import { put, takeLatest, takeLeading, call, PutEffect } from 'redux-saga/effects';
 
-import Api from 'services/api/api';
+import { Dependencies } from 'redux/store.types';
 import { User, UserCredential } from 'services/api/Firebase/modules/Authentication/types';
 
 import {
@@ -18,30 +18,30 @@ import {
   PRELOAD_AUTH_DATA,
 } from '../../constants';
 import {
-  AuthData,
   SetAuthStatusSuccess,
   SetAuthStatusFailed,
   SetAuthRequired,
   PasswordResetRequest,
+  RequestToAuth,
 } from '../../types';
 
-function* startAuthProcess(data: {
-  type: typeof AUTH_PROCESS | typeof GOOGLE_AUTH_PROCESS;
-  payload: AuthData;
-}): Generator | Generator<PutEffect<SetAuthStatusSuccess | SetAuthStatusFailed>, void, never> {
+function* startAuthProcess(
+  { api }: Dependencies,
+  data: RequestToAuth,
+): Generator | Generator<PutEffect<SetAuthStatusSuccess | SetAuthStatusFailed>, void, never> {
   const { type } = data;
 
   try {
     if (type === AUTH_PROCESS) {
       const { email, password } = data.payload;
-      const { user }: UserCredential = yield call(Api.auth.signIn, email, password);
+      const { user }: UserCredential = yield call(api.auth.signIn, email, password);
 
       yield put({
         type: AUTH_SUCCESS,
         payload: user,
       });
     } else if (type === GOOGLE_AUTH_PROCESS) {
-      const { user }: UserCredential = yield call(Api.auth.signInWithGoogle);
+      const { user }: UserCredential = yield call(api.auth.signInWithGoogle);
 
       yield put({
         type: AUTH_SUCCESS,
@@ -56,16 +56,18 @@ function* startAuthProcess(data: {
   }
 }
 
-const authStateChangedCallback = (): Promise<User> => {
+const authStateChangedCallback = ({ api }: Dependencies): Promise<User> => {
   return new Promise((resolve, reject) => {
-    Api.auth.onStateChanged((data) => {
+    api.auth.onStateChanged((data) => {
       if (data) resolve(data);
       else reject(new Error('Пользователь не авторизован.'));
     });
   });
 };
 
-function* prepareAuthData():
+function* prepareAuthData({
+  api,
+}: Dependencies):
   | Generator
   | Generator<
       PutEffect<SetAuthStatusSuccess | SetAuthStatusFailed | SetAuthRequired>,
@@ -73,7 +75,7 @@ function* prepareAuthData():
       never
     > {
   try {
-    const result: User = yield call(authStateChangedCallback);
+    const result: User = yield call(authStateChangedCallback, { api });
 
     yield put({
       type: AUTH_SUCCESS,
@@ -86,12 +88,12 @@ function* prepareAuthData():
   }
 }
 
-function* passwordReset({ payload: email }: PasswordResetRequest) {
+function* passwordReset({ api }: Dependencies, { payload: email }: PasswordResetRequest) {
   try {
-    const userAuthInfo: string[] = yield call(Api.auth.fetchSignInMethodsForEmail, email);
+    const userAuthInfo: string[] = yield call(api.auth.fetchSignInMethodsForEmail, email);
     const isEmailAuth = userAuthInfo.includes('password');
     if (isEmailAuth) {
-      yield call(Api.auth.resetPassword, email);
+      yield call(api.auth.resetPassword, email);
       yield put({
         type: PASSWORD_RESET_SUCCESS,
         payload: `Ссылка для восстановления пароля была отправлена на ${email}`,
@@ -110,15 +112,15 @@ function* passwordReset({ payload: email }: PasswordResetRequest) {
   }
 }
 
-function* logoutUser(): Generator {
-  yield call(Api.auth.signOut);
+function* logoutUser({ api }: Dependencies): Generator {
+  yield call(api.auth.signOut);
   yield put({ type: AUTH_LOGOUT_DONE });
 }
 
-export function* rootSaga(): SagaIterator {
-  yield takeLatest(AUTH_LOGOUT_PROCESS, logoutUser);
-  yield takeLatest(AUTH_PROCESS, startAuthProcess);
-  yield takeLatest(GOOGLE_AUTH_PROCESS, startAuthProcess);
-  yield takeLatest(PRELOAD_AUTH_DATA, prepareAuthData);
-  yield takeLeading(PASSWORD_RESET_PROCESS, passwordReset);
+export function* rootSaga(deps: Dependencies): SagaIterator {
+  yield takeLatest(AUTH_LOGOUT_PROCESS, logoutUser, deps);
+  yield takeLatest(AUTH_PROCESS, startAuthProcess, deps);
+  yield takeLatest(GOOGLE_AUTH_PROCESS, startAuthProcess, deps);
+  yield takeLatest(PRELOAD_AUTH_DATA, prepareAuthData, deps);
+  yield takeLeading(PASSWORD_RESET_PROCESS, passwordReset, deps);
 }
