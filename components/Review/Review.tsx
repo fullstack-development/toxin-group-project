@@ -1,5 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import Avatar from 'components/Avatar/Avatar';
 import LikeButton from 'components/LikeButton/LikeButton';
@@ -20,6 +21,8 @@ const Review = memo(({ avatarUrl, userName, date, text, likesCount }: Props) => 
     avatarReviews: { width: '3.42857rem', height: '3.42857rem' },
   }));
   const classes = useStyles();
+
+  useTranslation();
 
   return (
     <S.Review>

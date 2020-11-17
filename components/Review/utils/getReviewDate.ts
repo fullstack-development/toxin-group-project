@@ -26,38 +26,28 @@ function getReviewDate(date: Date): string {
   if (seconds < 60) {
     const roundedSeconds = Math.floor(seconds);
 
-    return `${roundedSeconds} ${getNounInDeclension(
-      roundedSeconds,
-      DECLENSION.seconds,
-    )} ${i18next.t('Ago')}`;
+    return `${roundedSeconds} ${getNounInDeclension(roundedSeconds, DECLENSION.seconds)} Ago`;
   }
 
   const minutes = seconds / 60;
   if (minutes < 60) {
     const roundedMinutes = Math.floor(minutes);
 
-    return `${roundedMinutes} ${getNounInDeclension(
-      roundedMinutes,
-      DECLENSION.minutes,
-    )} ${i18next.t('Ago')}`;
+    return `${roundedMinutes} ${getNounInDeclension(roundedMinutes, DECLENSION.minutes)} Ago`;
   }
 
   const hours = minutes / 60;
   if (hours < 24) {
     const roundedHours = Math.floor(hours);
 
-    return `${roundedHours} ${getNounInDeclension(roundedHours, DECLENSION.hours)} ${i18next.t(
-      'Ago',
-    )}`;
+    return `${roundedHours} ${getNounInDeclension(roundedHours, DECLENSION.hours)} Ago`;
   }
 
   const days = hours / 24;
   if (days < 30) {
     const roundedDays = Math.floor(days);
 
-    return `${roundedDays} ${getNounInDeclension(roundedDays, DECLENSION.days)} ${i18next.t(
-      'Ago',
-    )}`;
+    return `${roundedDays} ${getNounInDeclension(roundedDays, DECLENSION.days)} Ago`;
   }
 
   return date.toLocaleDateString(i18next.language, options);
