@@ -4,7 +4,7 @@ import { put, call } from 'redux-saga/effects';
 import { takeLatestAction } from 'redux/action.model';
 import Api from 'services/api/api';
 import { UserCredential } from 'services/api/Firebase/modules/Authentication/types';
-import { dateValidator } from 'shared/helpers/validators';
+import { dateValidator } from 'utils/validators';
 
 import { RegistrationRequest } from '../../model';
 import { registrationStatusFailed, registrationStatusSuccess } from '../actions';
