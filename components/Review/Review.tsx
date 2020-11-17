@@ -4,9 +4,11 @@ import { useTranslation } from 'react-i18next';
 
 import Avatar from 'components/Avatar/Avatar';
 import LikeButton from 'components/LikeButton/LikeButton';
+import i18next from 'services/i18next';
+import getNounInDeclension from 'shared/helpers/getNounInDeclension';
 
 import * as S from './Review.style';
-import getReviewDate from './utils/getReviewDate';
+import { DECLENSION, options } from './utils/dateOptions';
 
 type Props = {
   avatarUrl: string;
@@ -22,7 +24,50 @@ const Review = memo(({ avatarUrl, userName, date, text, likesCount }: Props) => 
   }));
   const classes = useStyles();
 
-  useTranslation();
+  const { t } = useTranslation(['translations', 'WordForms']);
+
+  const getReviewDate = (unformattedDate: Date): string => {
+    const currentDate = Date.now();
+    const timeHasPassed = currentDate - unformattedDate.getTime();
+
+    const seconds = timeHasPassed / 1000;
+    if (seconds < 60) {
+      const roundedSeconds = Math.floor(seconds);
+
+      return `${roundedSeconds} ${t(
+        `WordForms:${getNounInDeclension(roundedSeconds, DECLENSION.seconds)}`,
+      )} ${t('Ago')}`;
+    }
+
+    const minutes = seconds / 60;
+    if (minutes < 60) {
+      const roundedMinutes = Math.floor(minutes);
+
+      return `${roundedMinutes} ${t(
+        `WordForms:${getNounInDeclension(roundedMinutes, DECLENSION.minutes)}`,
+      )} ${t('Ago')}`;
+    }
+
+    const hours = minutes / 60;
+    if (hours < 24) {
+      const roundedHours = Math.floor(hours);
+
+      return `${roundedHours} ${t(
+        `WordForms:${getNounInDeclension(roundedHours, DECLENSION.hours)}`,
+      )} ${t('Ago')}`;
+    }
+
+    const days = hours / 24;
+    if (days < 30) {
+      const roundedDays = Math.floor(days);
+
+      return `${roundedDays} ${t(
+        `WordForms:${getNounInDeclension(roundedDays, DECLENSION.days)}`,
+      )} ${t('Ago')}`;
+    }
+
+    return unformattedDate.toLocaleDateString(i18next.language, options);
+  };
 
   return (
     <S.Review>

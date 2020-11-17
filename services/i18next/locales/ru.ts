@@ -96,6 +96,18 @@ export const ru = {
     Vote: 'Голос',
     Votes: 'Голосов',
     VotesSecondary: 'Голоса',
+    Second: 'секунда',
+    Seconds: 'секунды',
+    SecondsSecondary: 'секунд',
+    Minute: 'минута',
+    Minutes: 'минуты',
+    MinuteSecondary: 'минут',
+    Hour: 'час',
+    Hours: 'часа',
+    HoursSecondary: 'часов',
+    Day: 'день',
+    Days: 'дня',
+    DaysSecondary: 'дней',
   },
   Footer: {
     Subscription: 'Подписка',
@@ -202,7 +214,7 @@ export const ru = {
     Bad: 'Разочарован',
   },
   translations: {
-    Ago: 'Назад',
+    Ago: 'назад',
   },
   OrderFormPrices: {
     'Service fee_discount': 'Сбор за услуги: скидка',
