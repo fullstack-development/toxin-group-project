@@ -1,4 +1,4 @@
-import { Filters } from '../../services/api/entities/types';
+import { Filters } from 'services/api/entities/model';
 
 const twoWeeks = 60 * 60 * 24 * 7 * 1000 * 2;
 

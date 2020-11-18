@@ -1,4 +1,4 @@
-import { RoomProps } from '../Room/Room.types';
+import { RoomProps } from '../Room/Room.model';
 
 const rooms: RoomProps[] = [
   {

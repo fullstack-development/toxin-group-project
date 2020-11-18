@@ -1,6 +1,6 @@
-import defaultFilters from 'components/SearchRoomForm/defaultFilters';
+import defaultFilters from 'components/SearchRoomForm/SearchRoomForm.fixture';
 
-import { Option } from './CheckboxesList.types';
+import { Option } from './CheckboxesList.model';
 
 const { wideCorridor, invalidHelper } = defaultFilters.accessibility;
 const { smoking, keepPets, largeNumberOfPersons } = defaultFilters.opportunities;

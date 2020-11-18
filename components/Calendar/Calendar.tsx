@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
 import TextButton from 'components/TextButton/TextButton';
-import { AppState } from 'redux/store.types';
+import { AppState } from 'redux/store.model';
 
 import * as S from './Calendar.styles';
 import NavBar from './components/NavBar/NavBar';

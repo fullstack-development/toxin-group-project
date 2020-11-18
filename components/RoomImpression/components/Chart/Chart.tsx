@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { PieChart } from 'react-minimal-pie-chart';
 
-import ratingValues from '../../RoomImpression.data';
+import ratingValues from '../../RoomImpression.fixture';
 
 type Props = {
   excellent: number;

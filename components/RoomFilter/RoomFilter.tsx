@@ -8,11 +8,11 @@ import {
   checkboxesListData,
   expandableCheckboxesListData,
   richCheckboxesListData,
-} from 'components/CheckboxesList/CheckboxesList.data';
-import { Option } from 'components/CheckboxesList/CheckboxesList.types';
+} from 'components/CheckboxesList/CheckboxesList.fixture';
+import { Option } from 'components/CheckboxesList/CheckboxesList.model';
 import Dropdown from 'components/Dropdown/Dropdown';
-import { guestsGroups, guestsItems, amenitiesItems } from 'components/Dropdown/Dropdown.data';
-import { Item } from 'components/Dropdown/Dropdown.types';
+import { guestsGroups, guestsItems, amenitiesItems } from 'components/Dropdown/Dropdown.fixture';
+import { Item } from 'components/Dropdown/Dropdown.model';
 import Expander from 'components/Expander/Expander';
 import Slider from 'components/Slider/Slider';
 import TimePicker from 'components/TimePicker/TimePicker';
@@ -22,10 +22,10 @@ import {
   Amenities,
   Filters,
   Opportunities,
-} from 'services/api/entities/types';
+} from 'services/api/entities/model';
 
+import { OptionName, Props } from './RoomFilter.model';
 import * as S from './RoomFilter.styles';
-import { OptionName, Props } from './RoomFilter.types';
 
 const getDropdownProps = (defaultProps: Item[], updatedProps: Amenities) => {
   return defaultProps.map((item) => ({

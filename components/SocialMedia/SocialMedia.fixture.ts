@@ -1,4 +1,4 @@
-import { SocialMediaItem } from './SocialMedia.types';
+import { SocialMediaItem } from './SocialMedia.model';
 
 const defaultProps: SocialMediaItem[] = [
   {

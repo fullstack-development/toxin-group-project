@@ -5,16 +5,16 @@ import { connect } from 'react-redux';
 
 import MainLayout from 'components/MainLayout/MainLayout';
 import Preloader from 'components/Preloader/Preloader';
-import { RoomProps } from 'components/Room/Room.types';
+import { RoomProps } from 'components/Room/Room.model';
 import RoomFilter from 'components/RoomFilter/RoomFilter';
 import Rooms from 'components/Rooms/Rooms';
-import defaultFilters from 'components/SearchRoomForm/defaultFilters';
+import defaultFilters from 'components/SearchRoomForm/SearchRoomForm.fixture';
 import { requestRooms } from 'redux/Booking/redux/actions';
-import { AppState } from 'redux/store.types';
-import { Filters } from 'services/api/entities/types';
+import { AppState } from 'redux/store.model';
+import { Filters } from 'services/api/entities/model';
 
+import { SortOrder, SortData, SortParam } from './SearchRoomPage.model';
 import * as S from './SearchRoomPage.styles';
-import { SortOrder, SortData, SortParam } from './SearchRoomPage.types';
 import getPassedFilters from './utils/getPassedFilters';
 
 type StateProps = {

@@ -3,7 +3,7 @@ import { WithTranslation, withTranslation } from 'react-i18next';
 
 import LogoImg from 'components/Logo/Logo';
 
-import { LogoProps } from '../../Footer.types';
+import { LogoProps } from '../../Footer.model';
 import * as S from './Logo.styles';
 
 type Props = WithTranslation & LogoProps;

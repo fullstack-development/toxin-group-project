@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import Button from 'components/Button/Button';
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
 import Toggle from 'components/Toggle/Toggle';
-import { AppState } from 'redux/store.types';
+import { AppState } from 'redux/store.model';
 import { subscriptionUpdate, completeSubscriptionUpdate } from 'redux/Subscriptions/redux/actions';
 
 import * as S from './Subscriptions.styles';

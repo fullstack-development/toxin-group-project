@@ -2,7 +2,7 @@ import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import Room from 'components/Room/Room';
-import { BookedRoom } from 'services/api/entities/types';
+import { BookedRoom } from 'services/api/entities/model';
 
 import * as S from './RoomsList.style';
 

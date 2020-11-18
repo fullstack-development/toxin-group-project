@@ -1,6 +1,5 @@
-import { User } from 'firebase';
-
-import { AdditionalUserInformation } from 'services/api/entities/types';
+import { AdditionalUserInformation } from 'services/api/entities/model';
+import { User } from 'services/api/Firebase/modules/Authentication';
 
 import {
   EmailUpdate,

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Footer from 'components/Footer/Footer';
 import Header from 'components/Header/Header';
 import { preloadAuthData } from 'redux/Auth/redux/actions';
-import { AppState } from 'redux/store.types';
+import { AppState } from 'redux/store.model';
 
 type StateProps = {
   displayName: string;

@@ -1,4 +1,4 @@
-import { Review } from 'services/api/entities/types';
+import { Review } from 'services/api/entities/model';
 
 export type RoomProps = {
   price: number;
