@@ -33,7 +33,8 @@ function* emailUpdate(_: Dependencies, { payload }: EmailUpdateRequest) {
   try {
     const { user, email } = payload;
 
-    yield user.verifyBeforeUpdateEmail(email);
+    yield user.updateEmail(email);
+    yield user.sendEmailVerification();
 
     yield put(
       emailUpdateSuccess('A confirmation email has been sent to the specified email address'),
