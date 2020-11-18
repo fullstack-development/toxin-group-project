@@ -8,7 +8,7 @@ import AvatarLoader from 'components/AvatarLoader/AvatarLoader';
 import Input from 'components/Input/Input';
 import RadioButton from 'components/RadioButton/RadioButton';
 import Toggle from 'components/Toggle/Toggle';
-import { emailValidator, dateValidator, dateFormatMask } from 'shared/helpers/validators';
+import { emailValidator, dateValidator, dateFormatMask } from 'utils/validators';
 
 import * as S from './RegistrationForm.styles';
 import { RegistrationFormProps, FormData } from './RegistrationForm.types';
@@ -95,7 +95,7 @@ const RegistrationForm = memo(
                 <Toggle name="hasSpecialOffers" label={t('Receive special offers')} />
               </S.SpecialOfferWrapper>
               <S.RegisterButton isFlat isFilled>
-                {t('Proceed to checkout')}
+                {t('Shared:Register')}
               </S.RegisterButton>
               <S.AlreadyRegisterWrapper>
                 <span>{t('Already have an account on Toxin')}</span>

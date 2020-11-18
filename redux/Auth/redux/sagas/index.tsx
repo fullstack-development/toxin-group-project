@@ -2,7 +2,7 @@ import { SagaIterator } from 'redux-saga';
 import { put, call } from 'redux-saga/effects';
 
 import { takeLatestAction, takeLeadingAction } from 'redux/action.model';
-import Api from 'services/api/api';
+import { Dependencies } from 'redux/api.model';
 import { User, UserCredential } from 'services/api/Firebase/modules/Authentication/types';
 
 import {
@@ -21,10 +21,10 @@ import {
   passwordResetSuccess,
 } from '../actions';
 
-function* auth(data: RequestToAuth) {
+function* auth({ api }: Dependencies, { payload }: RequestToAuth) {
   try {
-    const { email, password } = data.payload;
-    const { user }: UserCredential = yield call(Api.auth.signIn, email, password);
+    const { email, password } = payload;
+    const { user }: UserCredential = yield call(api.auth.signIn, email, password);
 
     yield put(setAuthStatusSuccess(user));
   } catch ({ message }) {
@@ -32,9 +32,9 @@ function* auth(data: RequestToAuth) {
   }
 }
 
-function* authWithGoogle() {
+function* authWithGoogle({ api }: Dependencies) {
   try {
-    const { user }: UserCredential = yield call(Api.auth.signInWithGoogle);
+    const { user }: UserCredential = yield call(api.auth.signInWithGoogle);
 
     yield put(setAuthStatusSuccess(user));
   } catch ({ message }) {
@@ -42,18 +42,18 @@ function* authWithGoogle() {
   }
 }
 
-const authStateChangedCallback = (): Promise<User> => {
+const authStateChangedCallback = ({ api }: Dependencies): Promise<User> => {
   return new Promise((resolve, reject) => {
-    Api.auth.onStateChanged((data) => {
+    api.auth.onStateChanged((data) => {
       if (data) resolve(data);
       else reject(new Error('Пользователь не авторизован.'));
     });
   });
 };
 
-function* prepareAuthData() {
+function* prepareAuthData({ api }) {
   try {
-    const user: User = yield call(authStateChangedCallback);
+    const user: User = yield call(authStateChangedCallback, { api });
 
     yield put(setAuthStatusSuccess(user));
   } catch (error) {
@@ -61,20 +61,21 @@ function* prepareAuthData() {
   }
 }
 
-function* logoutUser() {
-  yield call(Api.auth.signOut);
+function* logoutUser({ api }: Dependencies) {
+  yield call(api.auth.signOut);
   yield put(logoutDone());
 }
 
-function* passwordReset({ payload: email }: PasswordResetRequest) {
+function* passwordReset({ api }: Dependencies, { payload: email }: PasswordResetRequest) {
   try {
-    const userAuthInfo: string[] = yield call(Api.auth.fetchSignInMethodsForEmail, email);
+    const userAuthInfo: string[] = yield call(api.auth.fetchSignInMethodsForEmail, email);
     const isEmailAuth = userAuthInfo.includes('password');
     if (isEmailAuth) {
-      yield call(Api.auth.resetPassword, email);
+      yield call(api.auth.resetPassword, email);
       yield put(
         passwordResetSuccess(`Ссылка для восстановления пароля была отправлена на ${email}`),
       );
+      yield call(api.auth.resetPassword, email);
     } else {
       throw new Error('Пользователь с указанным электронным адресом не зарегистрирован');
     }
@@ -87,12 +88,20 @@ function* passwordReset({ payload: email }: PasswordResetRequest) {
   }
 }
 
-function* rootSaga(): SagaIterator {
-  yield takeLatestAction<RequestToAuth['type']>('AUTH_PROCESS', auth);
-  yield takeLatestAction<RequestToAuthWithGoogle['type']>('GOOGLE_AUTH_PROCESS', authWithGoogle);
-  yield takeLatestAction<PreloadAuthData['type']>('PRELOAD_AUTH_DATA', prepareAuthData);
-  yield takeLatestAction<LogoutProcess['type']>('AUTH_LOGOUT_PROCESS', logoutUser);
-  yield takeLeadingAction<PasswordResetRequest['type']>('PASSWORD_RESET_PROCESS', passwordReset);
+function* rootSaga(deps: Dependencies): SagaIterator {
+  yield takeLatestAction<RequestToAuth['type']>('AUTH_PROCESS', auth, deps);
+  yield takeLatestAction<RequestToAuthWithGoogle['type']>(
+    'GOOGLE_AUTH_PROCESS',
+    authWithGoogle,
+    deps,
+  );
+  yield takeLatestAction<PreloadAuthData['type']>('PRELOAD_AUTH_DATA', prepareAuthData, deps);
+  yield takeLatestAction<LogoutProcess['type']>('AUTH_LOGOUT_PROCESS', logoutUser, deps);
+  yield takeLeadingAction<PasswordResetRequest['type']>(
+    'PASSWORD_RESET_PROCESS',
+    passwordReset,
+    deps,
+  );
 }
 
 export { rootSaga };

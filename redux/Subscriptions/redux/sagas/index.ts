@@ -2,7 +2,7 @@ import { SagaIterator } from 'redux-saga';
 import { call, put } from 'redux-saga/effects';
 
 import { takeLeadingAction } from 'redux/action.model';
-import api from 'services/api/api';
+import { Dependencies } from 'redux/api.model';
 
 import {
   SubscriptionData,
@@ -16,9 +16,9 @@ import {
   subscriptionUpdateSuccess,
 } from '../actions';
 
-function* getSubscriptionsData({ payload: email }: GetSubscriptionDataRequest) {
+function* getSubscriptionsData({ api }: Dependencies, { payload }: GetSubscriptionDataRequest) {
   try {
-    const subscriptionData: SubscriptionData = yield call(api.subscriptions.load, email);
+    const subscriptionData: SubscriptionData = yield call(api.subscriptions.load, payload);
 
     yield put(getSubscriptionDataSuccess(subscriptionData));
   } catch (err) {
@@ -26,7 +26,8 @@ function* getSubscriptionsData({ payload: email }: GetSubscriptionDataRequest) {
   }
 }
 
-function* subscriptionUpdate({ payload: { email, subscriptions } }: SubscriptionUpdateRequest) {
+function* subscriptionUpdate({ api }: Dependencies, { payload }: SubscriptionUpdateRequest) {
+  const { email, subscriptions } = payload;
   try {
     const isDocument = yield call(api.subscriptions.load, email);
     if (isDocument) {
@@ -46,14 +47,16 @@ function* subscriptionUpdate({ payload: { email, subscriptions } }: Subscription
   }
 }
 
-function* rootSaga(): SagaIterator {
+function* rootSaga(deps: Dependencies): SagaIterator {
   yield takeLeadingAction<GetSubscriptionDataRequest['type']>(
     'GET_SUBSCRIPTION_DATA_PROCESS',
     getSubscriptionsData,
+    deps,
   );
   yield takeLeadingAction<SubscriptionUpdateRequest['type']>(
     'SUBSCRIPTION_UPDATE_PROCESS',
     subscriptionUpdate,
+    deps,
   );
 }
 

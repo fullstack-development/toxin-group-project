@@ -1,6 +1,7 @@
 import { SagaIterator } from 'redux-saga';
 
 import { ApartmentActions, ApartmentState } from './Apartment/model';
+import { Dependencies } from './api.model';
 import { AuthActions, AuthState } from './Auth/model';
 import { BookingActions, BookingState } from './Booking/model';
 import { LanguageState, LanguageActions } from './Language/model';
@@ -40,7 +41,7 @@ type AvailableReducers = (state: AvailableStates, action: AvailableActions) => A
 
 type SharedReduxEntries = {
   reducers: Record<string, AvailableReducers>;
-  sagas: Array<() => SagaIterator>;
+  sagas: Array<(deps: Dependencies) => SagaIterator>;
 }[];
 
 export type { AvailableStates, AvailableActions, AppState, AvailableReducers, SharedReduxEntries };

@@ -3,7 +3,7 @@ import { SagaIterator } from 'redux-saga';
 import { call, put } from 'redux-saga/effects';
 
 import { takeLeadingAction } from 'redux/action.model';
-import api from 'services/api/api';
+import { Dependencies } from 'redux/api.model';
 import {
   getEmailUpdateErrorMessage,
   getPasswordUpdateErrorMessage,
@@ -29,7 +29,7 @@ import {
   usernameUpdateSuccess,
 } from '../actions';
 
-function* emailUpdate({ payload }: EmailUpdateRequest) {
+function* emailUpdate(_: Dependencies, { payload }: EmailUpdateRequest) {
   try {
     const { user, email } = payload;
 
@@ -43,9 +43,8 @@ function* emailUpdate({ payload }: EmailUpdateRequest) {
   }
 }
 
-function* passwordUpdate({
-  payload: { user, currentPassword, newPassword, confirmPassword },
-}: PasswordUpdateRequest) {
+function* passwordUpdate({ api }: Dependencies, { payload }: PasswordUpdateRequest) {
+  const { user, currentPassword, newPassword, confirmPassword } = payload;
   try {
     if (newPassword !== confirmPassword) throw new Error('Passwords do not match');
 
@@ -69,7 +68,19 @@ function* passwordUpdate({
   }
 }
 
-function* updateAdditionalUserData({ payload: { user, data } }: UpdateAdditionalUserDataRequest) {
+function* getAdditionalUserData({ api }: Dependencies, { payload }: GetAdditionalUserDataRequest) {
+  try {
+    const additionalUserData = yield call(api.auth.getAdditionalUserInformation, payload.uid);
+    yield put(getAdditionalUserDataSuccess(additionalUserData));
+  } catch (err) {
+    yield put(getAdditionalUserDataFailed());
+  }
+}
+
+function* updateAdditionalUserData(
+  { api }: Dependencies,
+  { payload: { user, data } }: UpdateAdditionalUserDataRequest,
+) {
   try {
     const isDocument = yield call(api.auth.getAdditionalUserInformation, user.uid);
     if (isDocument) {
@@ -83,7 +94,7 @@ function* updateAdditionalUserData({ payload: { user, data } }: UpdateAdditional
   }
 }
 
-function* usernameUpdate({ payload }: UsernameUpdateRequest) {
+function* usernameUpdate(_: Dependencies, { payload }: UsernameUpdateRequest) {
   try {
     const { user, displayName } = payload;
 
@@ -95,27 +106,28 @@ function* usernameUpdate({ payload }: UsernameUpdateRequest) {
   }
 }
 
-function* getAdditionalUserData({ payload: user }: GetAdditionalUserDataRequest) {
-  try {
-    const additionalUserData = yield call(api.auth.getAdditionalUserInformation, user.uid);
-    yield put(getAdditionalUserDataSuccess(additionalUserData));
-  } catch (err) {
-    yield put(getAdditionalUserDataFailed());
-  }
-}
-
-function* rootSaga(): SagaIterator {
-  yield takeLeadingAction<EmailUpdateRequest['type']>('EMAIL_UPDATE_PROCESS', emailUpdate);
+function* rootSaga(deps: Dependencies): SagaIterator {
+  yield takeLeadingAction<EmailUpdateRequest['type']>('EMAIL_UPDATE_PROCESS', emailUpdate, deps);
+  yield takeLeadingAction<PasswordUpdateRequest['type']>(
+    'PASSWORD_UPDATE_PROCESS',
+    passwordUpdate,
+    deps,
+  );
   yield takeLeadingAction<GetAdditionalUserDataRequest['type']>(
     'GET_ADDITIONAL_USER_DATA_PROCESS',
     getAdditionalUserData,
+    deps,
   );
-  yield takeLeadingAction<PasswordUpdateRequest['type']>('PASSWORD_UPDATE_PROCESS', passwordUpdate);
   yield takeLeadingAction<UpdateAdditionalUserDataRequest['type']>(
     'UPDATE_ADDITIONAL_USER_DATA_PROCESS',
     updateAdditionalUserData,
+    deps,
   );
-  yield takeLeadingAction<UsernameUpdateRequest['type']>('USERNAME_UPDATE_PROCESS', usernameUpdate);
+  yield takeLeadingAction<UsernameUpdateRequest['type']>(
+    'USERNAME_UPDATE_PROCESS',
+    usernameUpdate,
+    deps,
+  );
 }
 
 export { rootSaga };

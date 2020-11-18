@@ -2,7 +2,7 @@ import { boundMethod } from 'autobind-decorator';
 import { nanoid } from 'nanoid';
 
 import defaultFilters from 'components/SearchRoomForm/defaultFilters';
-import { matchObjects } from 'shared/helpers';
+import { matchObjects } from 'utils/object.utils';
 
 import { Database, CollectionReference, QuerySnapshot } from '../Firebase/modules/Database';
 import { BookingData, Apartment, Filters, BookedRoom, BookedRoomsHistory } from './types';

@@ -2,7 +2,10 @@ import { applyMiddleware, createStore, combineReducers } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware, { SagaMiddleware } from 'redux-saga';
 
+import { Api } from 'services/api/api';
+
 import { apartmentReduxEntry } from './Apartment';
+import { Dependencies } from './api.model';
 import { reduxEntry as AuthReduxEntry } from './Auth';
 import { reduxEntry as BookingReduxEntry } from './Booking';
 import { reduxEntry as LanguageReduxEntry } from './Language';
@@ -45,10 +48,14 @@ const sagaMiddleware: SagaMiddleware = createSagaMiddleware();
 
 const store = createStore(rootReducer, bindMiddleware([sagaMiddleware]));
 
+const deps: Dependencies = {
+  api: new Api(),
+};
+
 sharedReduxEntries.forEach((module) => {
   const { sagas } = module;
 
-  sagas.forEach((saga) => sagaMiddleware.run(saga));
+  sagas.forEach((saga) => sagaMiddleware.run(saga, deps));
 });
 
 export { store };

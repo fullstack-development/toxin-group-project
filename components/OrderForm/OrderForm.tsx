@@ -11,7 +11,7 @@ import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
 import TimePicker from 'components/TimePicker/TimePicker';
 import { bookRoom, cancelBooking as cancelBookingRequest } from 'redux/Booking/redux/actions';
 import { AppState } from 'redux/store.types';
-import { formatNumber } from 'shared/helpers';
+import { formatNumber } from 'utils/number.utils';
 
 import PriceList from './components/PriceList/PriceList';
 import * as S from './OrderForm.styles';
@@ -217,7 +217,7 @@ const OrderForm = memo(
                     />
                   </S.Datepicker>
                   <S.Dropdown>
-                    <S.DropdownLabel>{t('WordForms:Guests')}</S.DropdownLabel>
+                    <S.DropdownLabel>{t('RoomFilter:Guests')}</S.DropdownLabel>
                     <Dropdown {...dropdownOptions} />
                   </S.Dropdown>
                   <S.PriceList>

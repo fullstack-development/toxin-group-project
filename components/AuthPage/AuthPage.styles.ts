@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Container = styled.div`
-  background: url('./img/auth-register.jpg') bottom / cover no-repeat;
+  background: url('/img/auth-register.jpg') bottom / cover no-repeat;
   min-height: 50.2rem;
   padding: 12.25rem 8rem;
 
