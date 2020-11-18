@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { memo } from 'react';
 import { WithTranslation, withTranslation } from 'react-i18next';
 
-import { NavItemProps } from '../FooterNav.types';
+import { NavItemProps } from '../FooterNav.model';
 import * as S from './NavItem.styles';
 
 type Props = WithTranslation & NavItemProps;

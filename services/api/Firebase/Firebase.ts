@@ -4,10 +4,10 @@ import 'firebase/auth';
 import 'firebase/storage';
 
 import config from './config';
+import { FirebaseApplication } from './model';
 import { Authentication } from './modules/Authentication';
 import { Database } from './modules/Database';
 import { Storage } from './modules/Storage';
-import { FirebaseApplication } from './types';
 
 class Firebase {
   public readonly database: Database;

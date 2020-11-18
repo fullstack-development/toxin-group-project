@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { CustomProps } from './DotButton.types';
+import { CustomProps } from './DotButton.model';
 
 const DotButton = styled.button<CustomProps>`
   ${(props) => {

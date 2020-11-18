@@ -1,4 +1,4 @@
-import { FooterProps } from './Footer.types';
+import { FooterProps } from './Footer.model';
 
 const data: FooterProps = {
   subscription: {

@@ -1,5 +1,5 @@
 import { Action, ActionPayload } from 'redux/action.model';
-import { UserCredential } from 'services/api/Firebase/modules/Authentication/types';
+import { UserCredential } from 'services/api/Firebase/modules/Authentication';
 
 type ProfileData = {
   email: string;

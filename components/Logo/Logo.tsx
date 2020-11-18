@@ -3,8 +3,8 @@ import { memo } from 'react';
 
 import { Toxin } from 'public/img/svg';
 
+import { Props } from './Logo.model';
 import * as S from './Logo.styles';
-import { Props } from './Logo.types';
 
 const Logo = memo((props: Props) => (
   <Link href="/" passHref>

@@ -7,8 +7,8 @@ import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
 import { emailUpdate, completeEmailUpdate } from 'redux/Profile/redux/actions';
-import { AppState } from 'redux/store.types';
-import { User } from 'services/api/Firebase/modules/Authentication/types';
+import { AppState } from 'redux/store.model';
+import { User } from 'services/api/Firebase/modules/Authentication';
 import { emailValidator } from 'utils/validators';
 
 type StateProps = {

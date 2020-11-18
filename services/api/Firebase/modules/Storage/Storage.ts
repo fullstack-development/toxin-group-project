@@ -1,6 +1,6 @@
 import { boundMethod } from 'autobind-decorator';
 
-import { Store, StorageReference } from './types';
+import { Store, StorageReference } from './model';
 
 class Storage {
   private readonly storage: Store;

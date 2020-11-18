@@ -1,6 +1,6 @@
-import { RoomProps } from 'components/Room/Room.types';
+import { RoomProps } from 'components/Room/Room.model';
 import { ActionPayload } from 'redux/action.model';
-import { Filters, BookedRoom, Apartment } from 'services/api/entities/types';
+import { Filters, BookedRoom, Apartment } from 'services/api/entities/model';
 
 type BookedHistoryList = { current: BookedRoom[]; history: BookedRoom[] };
 

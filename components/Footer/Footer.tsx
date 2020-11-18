@@ -7,9 +7,9 @@ import Copyright from './components/Copyright/Copyright';
 import Logo from './components/Logo/Logo';
 import Nav from './components/Nav/Nav';
 import Subscription from './components/Subscription/Subscription';
-import footerData from './Footer.data';
+import footerData from './Footer.fixture';
+import { FooterProps } from './Footer.model';
 import * as S from './Footer.styles';
-import { FooterProps } from './Footer.types';
 
 const Footer = memo(
   ({

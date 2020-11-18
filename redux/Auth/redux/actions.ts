@@ -4,17 +4,17 @@ import {
   AuthData,
   RequestToAuth,
   RequestToAuthWithGoogle,
-  PreloadAuthData,
-  BreakAuthProcess,
-  LogoutProcess,
-  PasswordResetRequest,
-  PasswordResetCompleted,
   SetAuthRequired,
   SetAuthStatusSuccess,
   SetAuthStatusFailed,
+  PreloadAuthData,
+  BreakAuthProcess,
+  LogoutProcess,
   LogoutDone,
+  PasswordResetRequest,
   PasswordResetSuccess,
   PasswordResetFailed,
+  PasswordResetCompleted,
 } from '../model';
 
 const requestToAuth = (data: AuthData): RequestToAuth => ({

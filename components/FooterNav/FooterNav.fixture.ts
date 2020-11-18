@@ -1,4 +1,4 @@
-import { NavProps } from './FooterNav.types';
+import { NavProps } from './FooterNav.model';
 
 const data: Required<NavProps> = {
   items: [

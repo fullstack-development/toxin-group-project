@@ -5,10 +5,10 @@ import ClipLoader from 'react-spinners/ClipLoader';
 
 import ArrowButton from 'components/ArrowButton/ArrowButton';
 import Dropdown from 'components/Dropdown/Dropdown';
-import { guestsGroups, guestsItems } from 'components/Dropdown/Dropdown.data';
+import { guestsGroups, guestsItems } from 'components/Dropdown/Dropdown.fixture';
 import TimePicker from 'components/TimePicker/TimePicker';
 
-import defaultFilters from './defaultFilters';
+import defaultFilters from './SearchRoomForm.fixture';
 import * as S from './SearchRoomForm.styles';
 
 const defaultBookingDates = defaultFilters.booked;

@@ -1,2 +1,2 @@
 export { default as Firebase } from './Firebase';
-export * from './types';
+export * from './model';
