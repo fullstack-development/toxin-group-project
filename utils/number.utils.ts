@@ -1,16 +1,22 @@
+const formattingOptions = {
+  style: 'currency',
+  minimumFractionDigits: 0,
+  maximumFractionDigits: 0,
+};
+
 export function formatNumber(
   target: number,
   currencyCode = 'RUB',
   separator = '\u00A0',
   locale = 'ru',
 ): string {
-  if (new Intl.NumberFormat().formatToParts) {
-    const initialParts = new Intl.NumberFormat(locale, {
-      style: 'currency',
-      currency: currencyCode,
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    }).formatToParts(target);
+  const formatter = new Intl.NumberFormat(locale, {
+    currency: currencyCode,
+    ...formattingOptions,
+  });
+
+  if (formatter.formatToParts) {
+    const initialParts = formatter.formatToParts(target);
     const formattedParts = initialParts.map(({ type, value }) => {
       switch (type) {
         case 'group':
@@ -24,10 +30,5 @@ export function formatNumber(
     return formattedParts.reduce((acc, part) => acc + part, '');
   }
 
-  return target.toLocaleString(locale, {
-    style: 'currency',
-    currency: currencyCode,
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  });
+  return formatter.format(target);
 }
