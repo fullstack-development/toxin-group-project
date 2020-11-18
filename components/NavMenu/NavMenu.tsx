@@ -1,8 +1,8 @@
 import { memo } from 'react';
 
 import NavLink from './components/NavLink';
+import { NavMain, NavMenuLink } from './NavMenu.model';
 import * as S from './NavMenu.styles';
-import { NavMain, NavMenuLink } from './NavMenu.types';
 
 const NavMenu = memo(({ menu }: NavMain) => (
   <S.NavContainer>

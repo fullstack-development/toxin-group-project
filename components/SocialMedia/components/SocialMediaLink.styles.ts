@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 
 import { fontAwesome, fontAwesomeIcons, visuallyHidden } from 'shared/styles/mixins';
 
-import { SocialMediaItem } from '../SocialMedia.types';
+import { SocialMediaItem } from '../SocialMedia.model';
 
 type LinkProps = SocialMediaItem & AnchorHTMLAttributes<HTMLAnchorElement>;
 

@@ -1,4 +1,4 @@
-import { UIColor, UIType } from './ColorsTypesPage.types';
+import { UIColor, UIType } from './ColorsTypesPage.model';
 
 export const colors: Required<UIColor[]> = [
   {

@@ -4,8 +4,8 @@ import { withTranslation } from 'react-i18next';
 
 import Checkbox from 'components/Checkbox/Checkbox';
 
+import { Props } from './CheckboxesList.model';
 import * as S from './CheckboxesList.styles';
-import { Props } from './CheckboxesList.types';
 
 const CheckboxesList = memo(({ roomOptions }: Props) => (
   <S.List>

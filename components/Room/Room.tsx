@@ -5,8 +5,8 @@ import StarRating from 'components/StarRating/StarRating';
 import { formatNumber } from 'utils/number.utils';
 
 import ImageGallery from './components/ImageGallery/ImageGallery';
+import { RoomProps } from './Room.model';
 import * as S from './Room.styles';
-import { RoomProps } from './Room.types';
 
 type Props = WithTranslation & RoomProps;
 

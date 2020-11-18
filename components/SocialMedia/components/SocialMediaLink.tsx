@@ -1,6 +1,6 @@
 import { memo } from 'react';
 
-import { SocialMediaItem } from '../SocialMedia.types';
+import { SocialMediaItem } from '../SocialMedia.model';
 import * as S from './SocialMediaLink.styles';
 
 const SocialMediaLink = memo(({ href, icon, text }: SocialMediaItem) => (

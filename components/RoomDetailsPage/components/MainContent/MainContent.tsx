@@ -12,10 +12,10 @@ import RoomImpression from 'components/RoomImpression/RoomImpression';
 import { getRoomDetails as getRoomDetailsRequest } from 'redux/Apartment/redux/actions';
 import { preloadAuthData } from 'redux/Auth/redux/actions';
 import { bookRoom } from 'redux/Booking/redux/actions';
-import { AppState } from 'redux/store.types';
-import { Apartment } from 'services/api/entities/types';
+import { AppState } from 'redux/store.model';
+import { Apartment } from 'services/api/entities/model';
 
-import { roomImagesPreview, benefitsData, rulesData } from './MainContent.data';
+import { roomImagesPreview, benefitsData, rulesData } from './MainContent.fixture';
 import * as S from './MainContent.styles';
 
 type StateProps = {

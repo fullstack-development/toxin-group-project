@@ -1,9 +1,9 @@
 import { lighten } from 'polished';
 import styled, { css } from 'styled-components';
 
-import { TextButtonProps } from './TextButton.types';
+import { Props } from './TextButton.model';
 
-const TextButton = styled.button<TextButtonProps>`
+const TextButton = styled.button<Props>`
   ${(props) => {
     const { colors, typography } = props.theme;
     const { isSecondary } = props;

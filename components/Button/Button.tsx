@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { memo } from 'react';
 
+import { Props } from './Button.model';
 import * as S from './Button.styles';
-import { Props } from './Button.types';
 
 const Button = memo(
   ({ isFilled = false, isFlat = false, isDisabled = false, href, ...rest }: Props) =>

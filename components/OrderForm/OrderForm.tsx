@@ -5,14 +5,14 @@ import { useTranslation } from 'react-i18next';
 
 import ArrowButton from 'components/ArrowButton/ArrowButton';
 import Dropdown from 'components/Dropdown/Dropdown';
-import { DropdownProps } from 'components/Dropdown/Dropdown.types';
+import { DropdownProps } from 'components/Dropdown/Dropdown.model';
 import TimePicker from 'components/TimePicker/TimePicker';
 import { SelectedBookedRoom } from 'redux/Booking/model';
 import { formatNumber } from 'utils/number.utils';
 
 import PriceList from './components/PriceList/PriceList';
+import { Item as PriceItem, MaxGuests } from './OrderForm.model';
 import * as S from './OrderForm.styles';
-import { Item as PriceItem, MaxGuests } from './OrderForm.types';
 
 type Props = {
   roomNumber: number;

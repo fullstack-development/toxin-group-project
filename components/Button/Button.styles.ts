@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { Props } from './Button.types';
+import { Props } from './Button.model';
 
 const Button = styled.a<Props>`
   ${(props) => {
