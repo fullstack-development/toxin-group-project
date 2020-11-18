@@ -13,6 +13,8 @@ import { emailValidator, dateValidator, dateFormatMask } from 'utils/validators'
 import { RegistrationFormProps, FormData } from './RegistrationForm.model';
 import * as S from './RegistrationForm.styles';
 
+const namePattern = '([A-zА-я0-9À-žs]){2,}';
+
 const RegistrationForm = memo(
   ({
     isSuccess,
@@ -42,16 +44,28 @@ const RegistrationForm = memo(
               </S.Avatar>
               <Field
                 name="name"
-                render={({ input }) => <S.InputWrapper {...input} placeholder={t('Shared:Name')} />}
+                render={({ input }) => (
+                  <S.InputWrapper
+                    {...input}
+                    placeholder={t('Shared:Name')}
+                    required
+                    pattern={namePattern}
+                  />
+                )}
               />
               <Field
                 name="surname"
                 render={({ input }) => (
-                  <S.InputWrapper {...input} placeholder={t('Shared:Surname')} />
+                  <S.InputWrapper
+                    {...input}
+                    placeholder={t('Shared:Surname')}
+                    required
+                    pattern={namePattern}
+                  />
                 )}
               />
               <S.RadioButtonsWrapper>
-                <RadioButton value="male" name="gender" label={t('Shared:Male')} />
+                <RadioButton value="male" name="gender" label={t('Shared:Male')} required />
                 <RadioButton value="female" name="gender" label={t('Shared:Female')} />
               </S.RadioButtonsWrapper>
               <Field
