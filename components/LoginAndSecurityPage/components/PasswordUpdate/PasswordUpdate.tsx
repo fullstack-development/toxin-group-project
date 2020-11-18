@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
 import Button from 'components/Button/Button';
-import Input from 'components/Input/Input';
+import { PasswordField } from 'components/PasswordField/PasswordField';
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
 import { passwordUpdate, passwordUpdateCompleted } from 'redux/Profile/redux/actions';
 import { AppState } from 'redux/store.types';
@@ -83,7 +83,7 @@ const PasswordUpdate = memo(
                   name="currentPassword"
                   type="password"
                   render={({ input }) => (
-                    <Input {...input} label={t('Current password')} required />
+                    <PasswordField {...input} label={t('Current password')} required />
                   )}
                 />
               )}
@@ -92,7 +92,7 @@ const PasswordUpdate = memo(
                 type="password"
                 validate={passwordValidator}
                 render={({ input }) => (
-                  <Input
+                  <PasswordField
                     {...input}
                     validators={[passwordValidator]}
                     minLength={8}
@@ -104,7 +104,7 @@ const PasswordUpdate = memo(
               <Field
                 name="confirmPassword"
                 type="password"
-                render={({ input }) => <Input {...input} label={t('Confirm password')} />}
+                render={({ input }) => <PasswordField {...input} label={t('Confirm password')} />}
               />
               <Button disabled={isPending} isFlat isFilled>
                 {t('Update password')}

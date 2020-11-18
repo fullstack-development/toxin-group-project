@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 
 import AvatarLoader from 'components/AvatarLoader/AvatarLoader';
 import Input from 'components/Input/Input';
+import { PasswordField } from 'components/PasswordField/PasswordField';
 import RadioButton from 'components/RadioButton/RadioButton';
 import Toggle from 'components/Toggle/Toggle';
 import { emailValidator, dateValidator, dateFormatMask } from 'utils/validators';
@@ -87,7 +88,7 @@ const RegistrationForm = memo(
                   name="password"
                   type="password"
                   render={({ input }) => (
-                    <S.InputWrapper {...input} required placeholder={t('Shared:Password')} />
+                    <PasswordField {...input} required placeholder={t('Shared:Password')} />
                   )}
                 />
               </S.AccountEntryWrapper>

@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 import ArrowButton from 'components/ArrowButton/ArrowButton';
 import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';
+import { PasswordField } from 'components/PasswordField/PasswordField';
 
 import * as S from './AccountEntry.styled';
 
@@ -59,7 +60,7 @@ const AccountEntry = memo((props: Props) => {
                 name="password"
                 type="password"
                 render={({ input, meta }) => (
-                  <Input {...input} {...meta} placeholder={t('Shared:Password')} required />
+                  <PasswordField {...input} {...meta} placeholder={t('Shared:Password')} required />
                 )}
               />
             </S.FieldsWrapper>
