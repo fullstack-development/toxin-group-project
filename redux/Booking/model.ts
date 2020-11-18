@@ -1,38 +1,10 @@
 import { RoomProps } from 'components/Room/Room.model';
+import { ActionPayload } from 'redux/action.model';
 import { Filters, BookedRoom, Apartment } from 'services/api/entities/model';
 
-import {
-  ROOMS_REQUEST_PENDING,
-  ROOMS_REQUEST_SUCCESS,
-  ROOMS_REQUEST_FAILED,
-  LOAD_ROOMS,
-  LOAD_BOOKED_HISTORY,
-  UPDATE_BOOKED_HISTORY,
-  BOOK_ROOM,
-} from './constants';
+type BookedHistoryList = { current: BookedRoom[]; history: BookedRoom[] };
 
-type Action<Z, T> = {
-  type: Z;
-  payload?: T;
-};
-
-export type SelectedBookedRoom = {
-  apartmentId: number;
-  booked: { from: Date; to: Date };
-  totalPrice: number;
-  user: string;
-};
-
-export type BookedHistoryList = { current: BookedRoom[]; history: BookedRoom[] };
-export type RoomsRequest = Action<typeof LOAD_ROOMS, Filters>;
-export type PendingStatusUpdate = Action<typeof ROOMS_REQUEST_PENDING, boolean>;
-export type SetRooms = Action<typeof ROOMS_REQUEST_SUCCESS, Apartment[]>;
-export type SetFailedStatus = Action<typeof ROOMS_REQUEST_FAILED, Error>;
-export type LoadBookedHistory = Action<typeof LOAD_BOOKED_HISTORY, string>;
-export type UpdateBookedHistory = Action<typeof UPDATE_BOOKED_HISTORY, BookedHistoryList>;
-export type BookCurrentRoom = Action<typeof BOOK_ROOM, SelectedBookedRoom>;
-
-export type BookingState = {
+type BookingState = {
   isPending: boolean;
   rooms: RoomProps[];
   isRequestSuccessful: boolean;
@@ -40,10 +12,42 @@ export type BookingState = {
   bookedRooms: BookedHistoryList;
 };
 
-export type BookingActions =
+type SelectedBookedRoom = {
+  apartmentId: number;
+  booked: { from: Date; to: Date };
+  totalPrice: number;
+  user: string;
+};
+
+type RoomsRequest = ActionPayload<'LOAD_ROOMS', Filters>;
+
+type PendingStatusUpdate = ActionPayload<'ROOMS_REQUEST_PENDING', boolean>;
+type SetRooms = ActionPayload<'ROOMS_REQUEST_SUCCESS', Apartment[]>;
+type SetFailedStatus = ActionPayload<'ROOMS_REQUEST_FAILED', Error>;
+
+type LoadBookedHistory = ActionPayload<'LOAD_BOOKED_HISTORY', string>;
+type UpdateBookedHistory = ActionPayload<'UPDATE_BOOKED_HISTORY', BookedHistoryList>;
+
+type BookCurrentRoom = ActionPayload<'BOOK_ROOM', SelectedBookedRoom>;
+
+type BookingActions =
   | PendingStatusUpdate
   | SetRooms
   | SetFailedStatus
   | RoomsRequest
   | UpdateBookedHistory
   | LoadBookedHistory;
+
+export type {
+  SelectedBookedRoom,
+  BookedHistoryList,
+  RoomsRequest,
+  PendingStatusUpdate,
+  SetRooms,
+  SetFailedStatus,
+  LoadBookedHistory,
+  UpdateBookedHistory,
+  BookCurrentRoom,
+  BookingState,
+  BookingActions,
+};

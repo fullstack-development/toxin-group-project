@@ -1,32 +1,12 @@
+import { Action, ActionPayload } from 'redux/action.model';
 import { User } from 'services/api/Firebase/modules/Authentication';
 
-import {
-  AUTH_FAILED,
-  AUTH_LOGOUT_DONE,
-  AUTH_LOGOUT_PROCESS,
-  AUTH_PROCESS,
-  AUTH_REQUIRED,
-  AUTH_SUCCESS,
-  BREAK_AUTH_PROCESS,
-  GOOGLE_AUTH_PROCESS,
-  PASSWORD_RESET_COMPLETED,
-  PASSWORD_RESET_FAILED,
-  PASSWORD_RESET_PROCESS,
-  PASSWORD_RESET_SUCCESS,
-  PRELOAD_AUTH_DATA,
-} from './constants';
-
-export type AuthData = {
+type AuthData = {
   email: string;
   password: string;
 };
 
-type Action<Z, T> = {
-  type: Z;
-  payload?: T;
-};
-
-export type AuthState = {
+type AuthState = {
   isAuthSuccess: boolean;
   isAuthProcessNow: boolean;
   authStatusText: string;
@@ -38,28 +18,51 @@ export type AuthState = {
   passwordResetStatusText: string;
 };
 
-export type BreakAuthProcess = Action<typeof BREAK_AUTH_PROCESS, null>;
-export type LogoutDone = Action<typeof AUTH_LOGOUT_DONE, null>;
-export type LogoutProcess = Action<typeof AUTH_LOGOUT_PROCESS, null>;
-export type PasswordResetCompleted = Action<typeof PASSWORD_RESET_COMPLETED, string>;
-export type PasswordResetFailed = Action<typeof PASSWORD_RESET_FAILED, string>;
-export type PasswordResetRequest = Action<typeof PASSWORD_RESET_PROCESS, string>;
-export type PasswordResetSuccess = Action<typeof PASSWORD_RESET_SUCCESS, string>;
-export type PreloadAuthData = Action<typeof PRELOAD_AUTH_DATA, null>;
-export type RequestToAuth = Action<typeof AUTH_PROCESS | typeof GOOGLE_AUTH_PROCESS, AuthData>;
-export type SetAuthRequired = Action<typeof AUTH_REQUIRED, null>;
-export type SetAuthStatusFailed = Action<typeof AUTH_FAILED, string>;
-export type SetAuthStatusSuccess = Action<typeof AUTH_SUCCESS, User>;
+type RequestToAuth = ActionPayload<'AUTH_PROCESS', AuthData>;
+type RequestToAuthWithGoogle = Action<'GOOGLE_AUTH_PROCESS'>;
+type SetAuthRequired = Action<'AUTH_REQUIRED'>;
+type SetAuthStatusSuccess = ActionPayload<'AUTH_SUCCESS', User>;
+type SetAuthStatusFailed = ActionPayload<'AUTH_FAILED', string>;
+type BreakAuthProcess = Action<'BREAK_AUTH_PROCESS'>;
+type PreloadAuthData = Action<'PRELOAD_AUTH_DATA'>;
 
-export type AuthActions =
+type LogoutProcess = Action<'AUTH_LOGOUT_PROCESS'>;
+type LogoutDone = Action<'AUTH_LOGOUT_DONE'>;
+
+type PasswordResetRequest = ActionPayload<'PASSWORD_RESET_PROCESS', string>;
+type PasswordResetSuccess = ActionPayload<'PASSWORD_RESET_SUCCESS', string>;
+type PasswordResetFailed = ActionPayload<'PASSWORD_RESET_FAILED', string>;
+type PasswordResetCompleted = Action<'PASSWORD_RESET_COMPLETED'>;
+
+type AuthActions =
+  | RequestToAuth
+  | RequestToAuthWithGoogle
+  | SetAuthRequired
+  | SetAuthStatusSuccess
+  | SetAuthStatusFailed
   | BreakAuthProcess
+  | PreloadAuthData
   | LogoutDone
   | PasswordResetCompleted
   | PasswordResetFailed
   | PasswordResetRequest
-  | PasswordResetSuccess
-  | PreloadAuthData
-  | RequestToAuth
-  | SetAuthRequired
-  | SetAuthStatusFailed
-  | SetAuthStatusSuccess;
+  | PasswordResetSuccess;
+
+export type {
+  AuthData,
+  AuthState,
+  RequestToAuth,
+  RequestToAuthWithGoogle,
+  SetAuthRequired,
+  SetAuthStatusSuccess,
+  SetAuthStatusFailed,
+  BreakAuthProcess,
+  PreloadAuthData,
+  LogoutProcess,
+  LogoutDone,
+  PasswordResetRequest,
+  PasswordResetSuccess,
+  PasswordResetFailed,
+  PasswordResetCompleted,
+  AuthActions,
+};

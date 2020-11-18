@@ -8,7 +8,7 @@ import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
 import RadioButton from 'components/RadioButton/RadioButton';
 import {
   updateAdditionalUserData,
-  updateAdditionalUserDataCompleted,
+  completeAdditionalUserDataUpdate,
 } from 'redux/Profile/redux/actions';
 import { AppState } from 'redux/store.model';
 import { User } from 'services/api/Firebase/modules/Authentication';
@@ -31,7 +31,7 @@ const mapState = (state: AppState): StateProps => ({
 
 const mapDispatch = {
   startUpdateAdditionalUserData: updateAdditionalUserData,
-  stopUpdateAdditionalUserData: updateAdditionalUserDataCompleted,
+  stopUpdateAdditionalUserData: completeAdditionalUserDataUpdate,
 };
 
 type OwnProps = {

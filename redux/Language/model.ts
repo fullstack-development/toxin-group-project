@@ -1,16 +1,13 @@
+import { ActionPayload } from 'redux/action.model';
 import { Lang } from 'services/i18next/types';
 
-import { CHANGE_LANGUAGE_SUCCESS } from './constants';
-
-export type LanguageState = {
+type LanguageState = {
   currentLanguage: string | null;
 };
 
-export type Action<Z, T> = {
-  type: Z;
-  payload?: T;
-};
+type ChangeLanguageRequest = ActionPayload<'CHANGE_LANGUAGE_REQUEST', Lang>;
+type ChangeLanguageSuccess = ActionPayload<'CHANGE_LANGUAGE_SUCCESS', Lang>;
 
-export type ChangeLanguage = Action<typeof CHANGE_LANGUAGE_SUCCESS, Lang>;
+type LanguageActions = ChangeLanguageRequest | ChangeLanguageSuccess;
 
-export type LanguageActions = ChangeLanguage;
+export type { LanguageState, ChangeLanguageRequest, ChangeLanguageSuccess, LanguageActions };

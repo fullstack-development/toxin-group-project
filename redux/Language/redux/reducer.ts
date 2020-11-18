@@ -1,6 +1,5 @@
 import i18next from 'services/i18next';
 
-import { CHANGE_LANGUAGE_SUCCESS } from '../constants';
 import { LanguageState, LanguageActions } from '../model';
 
 const initialState: LanguageState = {
@@ -9,7 +8,7 @@ const initialState: LanguageState = {
 
 const language = (state: LanguageState = initialState, action: LanguageActions): LanguageState => {
   switch (action.type) {
-    case CHANGE_LANGUAGE_SUCCESS:
+    case 'CHANGE_LANGUAGE_SUCCESS':
       return {
         ...state,
         currentLanguage: action.payload,
@@ -19,4 +18,4 @@ const language = (state: LanguageState = initialState, action: LanguageActions):
   }
 };
 
-export default language;
+export { language };

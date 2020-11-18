@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import Button from 'components/Button/Button';
 import Input from 'components/Input/Input';
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
-import { emailUpdate, emailUpdateCompleted } from 'redux/Profile/redux/actions';
+import { emailUpdate, completeEmailUpdate } from 'redux/Profile/redux/actions';
 import { AppState } from 'redux/store.model';
 import { User } from 'services/api/Firebase/modules/Authentication';
 import { emailValidator } from 'utils/validators';
@@ -27,7 +27,7 @@ const mapState = (state: AppState): StateProps => ({
 
 const mapDispatch = {
   startEmailUpdate: emailUpdate,
-  stopEmailUpdate: emailUpdateCompleted,
+  stopEmailUpdate: completeEmailUpdate,
 };
 
 type OwnProps = {

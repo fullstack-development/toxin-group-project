@@ -1,13 +1,7 @@
+import { Action, ActionPayload } from 'redux/action.model';
 import { UserCredential } from 'services/api/Firebase/modules/Authentication';
 
-import {
-  REGISTRATION_FAILED,
-  REGISTRATION_REQUEST,
-  REGISTRATION_SUCCESS,
-  BREAK_REGISTRATION_PROCESS,
-} from './constants';
-
-export type ProfileData = {
+type ProfileData = {
   email: string;
   password: string;
   name: string;
@@ -18,24 +12,29 @@ export type ProfileData = {
   hasSpecialOffers: boolean;
 };
 
-export type RegistrationState = {
+type RegistrationState = {
   isSuccess: boolean;
   isProcess: boolean;
   statusText: string;
 };
 
-export type Action<Z, T> = {
-  type: Z;
-  payload?: T;
-};
+type RegistrationRequest = ActionPayload<'REGISTRATION_REQUEST', ProfileData>;
+type RegistrationStatusSuccess = ActionPayload<'REGISTRATION_SUCCESS', UserCredential>;
+type RegistrationStatusFailed = ActionPayload<'REGISTRATION_FAILED', string>;
+type BreakRegistrationProcess = Action<'BREAK_REGISTRATION_PROCESS'>;
 
-export type RegistrationRequest = Action<typeof REGISTRATION_REQUEST, ProfileData>;
-export type RegistrationStatusSuccess = Action<typeof REGISTRATION_SUCCESS, UserCredential>;
-export type RegistrationStatusFailed = Action<typeof REGISTRATION_FAILED, string>;
-export type BreakRegistrationProcess = Action<typeof BREAK_REGISTRATION_PROCESS, null>;
-
-export type RegistrationActions =
+type RegistrationActions =
   | RegistrationRequest
   | RegistrationStatusSuccess
   | RegistrationStatusFailed
   | BreakRegistrationProcess;
+
+export type {
+  ProfileData,
+  RegistrationState,
+  RegistrationRequest,
+  RegistrationStatusSuccess,
+  RegistrationStatusFailed,
+  BreakRegistrationProcess,
+  RegistrationActions,
+};

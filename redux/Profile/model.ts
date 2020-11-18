@@ -1,32 +1,6 @@
+import { Action, ActionPayload } from 'redux/action.model';
 import { AdditionalUserInformation } from 'services/api/entities/model';
 import { User } from 'services/api/Firebase/modules/Authentication';
-
-import {
-  EMAIL_UPDATE_PROCESS,
-  EMAIL_UPDATE_SUCCESS,
-  EMAIL_UPDATE_FAILED,
-  EMAIL_UPDATE_COMPLETED,
-  GET_ADDITIONAL_USER_DATA_PROCESS,
-  GET_ADDITIONAL_USER_DATA_SUCCESS,
-  GET_ADDITIONAL_USER_DATA_FAILED,
-  PASSWORD_UPDATE_PROCESS,
-  PASSWORD_UPDATE_SUCCESS,
-  PASSWORD_UPDATE_FAILED,
-  PASSWORD_UPDATE_COMPLETED,
-  UPDATE_ADDITIONAL_USER_DATA_PROCESS,
-  UPDATE_ADDITIONAL_USER_DATA_SUCCESS,
-  UPDATE_ADDITIONAL_USER_DATA_FAILED,
-  UPDATE_ADDITIONAL_USER_DATA_COMPLETED,
-  USERNAME_UPDATE_PROCESS,
-  USERNAME_UPDATE_SUCCESS,
-  USERNAME_UPDATE_FAILED,
-  USERNAME_UPDATE_COMPLETED,
-} from './constants';
-
-type Action<Z, T> = {
-  type: Z;
-  payload?: T;
-};
 
 type EmailUpdate = {
   user: User;
@@ -44,7 +18,7 @@ type UpdateAdditionalUserData = {
   user: User;
   data: {
     birthDate?: string;
-    gender?: 'male' | 'female';
+    gender?: 'female' | 'male';
   };
 };
 
@@ -74,34 +48,35 @@ type ProfileState = {
   usernameUpdateStatusText: string;
 };
 
-type EmailUpdateRequest = Action<typeof EMAIL_UPDATE_PROCESS, EmailUpdate>;
-type EmailUpdateSuccess = Action<typeof EMAIL_UPDATE_SUCCESS, string>;
-type EmailUpdateFailed = Action<typeof EMAIL_UPDATE_FAILED, string>;
-type EmailUpdateCompleted = Action<typeof EMAIL_UPDATE_COMPLETED, string>;
-type GetAdditionalUserDataRequest = Action<typeof GET_ADDITIONAL_USER_DATA_PROCESS, User>;
-type GetAdditionalUserDataSuccess = Action<
-  typeof GET_ADDITIONAL_USER_DATA_SUCCESS,
+type EmailUpdateRequest = ActionPayload<'EMAIL_UPDATE_PROCESS', EmailUpdate>;
+type EmailUpdateSuccess = ActionPayload<'EMAIL_UPDATE_SUCCESS', string>;
+type EmailUpdateFailed = ActionPayload<'EMAIL_UPDATE_FAILED', string>;
+type EmailUpdateCompleted = Action<'EMAIL_UPDATE_COMPLETED'>;
+
+type GetAdditionalUserDataRequest = ActionPayload<'GET_ADDITIONAL_USER_DATA_PROCESS', User>;
+type GetAdditionalUserDataSuccess = ActionPayload<
+  'GET_ADDITIONAL_USER_DATA_SUCCESS',
   AdditionalUserInformation
 >;
-type GetAdditionalUserDataFailed = Action<typeof GET_ADDITIONAL_USER_DATA_FAILED, null>;
-type PasswordUpdateRequest = Action<typeof PASSWORD_UPDATE_PROCESS, PasswordUpdate>;
-type PasswordUpdateSuccess = Action<typeof PASSWORD_UPDATE_SUCCESS, string>;
-type PasswordUpdateFailed = Action<typeof PASSWORD_UPDATE_FAILED, string>;
-type PasswordUpdateCompleted = Action<typeof PASSWORD_UPDATE_COMPLETED, string>;
-type UpdateAdditionalUserDataRequest = Action<
-  typeof UPDATE_ADDITIONAL_USER_DATA_PROCESS,
+type GetAdditionalUserDataFailed = Action<'GET_ADDITIONAL_USER_DATA_FAILED'>;
+
+type PasswordUpdateRequest = ActionPayload<'PASSWORD_UPDATE_PROCESS', PasswordUpdate>;
+type PasswordUpdateSuccess = ActionPayload<'PASSWORD_UPDATE_SUCCESS', string>;
+type PasswordUpdateFailed = ActionPayload<'PASSWORD_UPDATE_FAILED', string>;
+type PasswordUpdateCompleted = Action<'PASSWORD_UPDATE_COMPLETED'>;
+
+type UpdateAdditionalUserDataRequest = ActionPayload<
+  'UPDATE_ADDITIONAL_USER_DATA_PROCESS',
   UpdateAdditionalUserData
 >;
-type UpdateAdditionalUserDataSuccess = Action<typeof UPDATE_ADDITIONAL_USER_DATA_SUCCESS, string>;
-type UpdateAdditionalUserDataFailed = Action<typeof UPDATE_ADDITIONAL_USER_DATA_FAILED, string>;
-type UpdateAdditionalUserDataCompleted = Action<
-  typeof UPDATE_ADDITIONAL_USER_DATA_COMPLETED,
-  string
->;
-type UsernameUpdateRequest = Action<typeof USERNAME_UPDATE_PROCESS, UsernameUpdate>;
-type UsernameUpdateSuccess = Action<typeof USERNAME_UPDATE_SUCCESS, string>;
-type UsernameUpdateFailed = Action<typeof USERNAME_UPDATE_FAILED, string>;
-type UsernameUpdateCompleted = Action<typeof USERNAME_UPDATE_COMPLETED, string>;
+type UpdateAdditionalUserDataSuccess = ActionPayload<'UPDATE_ADDITIONAL_USER_DATA_SUCCESS', string>;
+type UpdateAdditionalUserDataFailed = ActionPayload<'UPDATE_ADDITIONAL_USER_DATA_FAILED', string>;
+type UpdateAdditionalUserDataCompleted = Action<'UPDATE_ADDITIONAL_USER_DATA_COMPLETED'>;
+
+type UsernameUpdateRequest = ActionPayload<'USERNAME_UPDATE_PROCESS', UsernameUpdate>;
+type UsernameUpdateSuccess = ActionPayload<'USERNAME_UPDATE_SUCCESS', string>;
+type UsernameUpdateFailed = ActionPayload<'USERNAME_UPDATE_FAILED', string>;
+type UsernameUpdateCompleted = Action<'USERNAME_UPDATE_COMPLETED'>;
 
 type ProfileActions =
   | EmailUpdateRequest

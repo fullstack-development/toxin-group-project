@@ -5,12 +5,13 @@ import createSagaMiddleware, { SagaMiddleware } from 'redux-saga';
 import { Api } from 'services/api/api';
 
 import { apartmentReduxEntry } from './Apartment';
+import { Dependencies } from './api.model';
 import { reduxEntry as AuthReduxEntry } from './Auth';
 import { reduxEntry as BookingReduxEntry } from './Booking';
 import { reduxEntry as LanguageReduxEntry } from './Language';
 import { profileReduxEntry } from './Profile';
 import { reduxEntry as RegistrationReduxEntry } from './Registration';
-import { SharedReduxEntries, AvailableReducers, Dependencies } from './store.model';
+import { SharedReduxEntries, AvailableReducers } from './store.model';
 import { subscriptionsReduxEntry } from './Subscriptions';
 
 const bindMiddleware = (middleware) => {
@@ -45,7 +46,7 @@ const rootReducer = combineReducers(preparedReducers);
 
 const sagaMiddleware: SagaMiddleware = createSagaMiddleware();
 
-export const store = createStore(rootReducer, bindMiddleware([sagaMiddleware]));
+const store = createStore(rootReducer, bindMiddleware([sagaMiddleware]));
 
 const deps: Dependencies = {
   api: new Api(),
@@ -56,3 +57,5 @@ sharedReduxEntries.forEach((module) => {
 
   sagas.forEach((saga) => sagaMiddleware.run(saga, deps));
 });
+
+export { store };
