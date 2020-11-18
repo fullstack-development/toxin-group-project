@@ -14,13 +14,13 @@ const HeaderUserProfile = styled.div`
       border-left: 0.0714rem solid ${colors.basicLightest};
 
       & ${ListItem} > div > ${Link} {
-        width: 11.5rem;
-        height: 2.5rem;
+        max-width: 11.5rem;
+        max-height: 2.5rem;
         overflow: hidden;
         text-overflow: ellipsis;
       }
 
-      @media ${breakpointDown('md')} {
+      @media ${breakpointDown('lg')} {
         width: 100%;
         border-left: none;
         padding: 1.4286rem 0;

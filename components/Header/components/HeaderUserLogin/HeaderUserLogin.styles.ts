@@ -6,7 +6,7 @@ import { breakpointDown } from 'shared/styles/break-points';
 const HeaderUserLogin = styled.div`
   display: flex;
 
-  @media ${breakpointDown('md')} {
+  @media ${breakpointDown('lg')} {
     padding: 1.4286rem 0;
   }
 
