@@ -1,11 +1,4 @@
-// TODO Нехобходимо вынести тип Action, так как он повторяется
-type Action<Z> = {
-  type: Z;
-};
-
-type ActionPayload<Z, T> = Action<Z> & {
-  payload: T;
-};
+import { Action, ActionPayload } from 'redux/action.model';
 
 type SubscriptionData = {
   hasSpecialOffers: boolean;
@@ -44,7 +37,6 @@ type SubscriptionActions =
   | SubscriptionUpdateCompleted;
 
 export type {
-  Action,
   SubscriptionData,
   SubscriptionUpdate,
   SubscriptionState,

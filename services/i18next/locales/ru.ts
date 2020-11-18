@@ -173,6 +173,7 @@ export const ru = {
     'Service login details': 'Данные для входа в сервис',
     'Receive special offers': 'Получать спецпредложения',
     'Already have an account on Toxin': 'Уже есть аккаунт на Toxin',
+    'All fields must be filled in correctly!': 'Все поля должны быть заполнены корректно!',
   },
   OrderForm: {
     'How many guests': 'Сколько гостей',
