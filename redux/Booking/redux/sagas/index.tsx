@@ -2,22 +2,23 @@ import { SagaIterator } from 'redux-saga';
 import { put, call } from 'redux-saga/effects';
 
 import { takeLatestAction, takeLeadingAction } from 'redux/action.model';
+import { Dependencies } from 'redux/api.model';
 import {
   RoomsRequest,
   LoadBookedHistory,
   BookedHistoryList,
   BookCurrentRoom,
 } from 'redux/Booking/model';
-import Api from 'services/api/api';
 import { Apartment, BookingData } from 'services/api/entities/types';
 
 import { pendingStatusUpdate, setFailedStatus, setRooms, updateBookedHistory } from '../actions';
 
-function* loadRooms(action: RoomsRequest) {
+function* loadRooms({ api }: Dependencies, { payload }: RoomsRequest) {
   try {
     yield put(pendingStatusUpdate(true));
 
-    const rooms: Apartment[] = yield call(Api.booking.filterRooms, action.payload);
+    const rooms: Apartment[] = yield call(api.booking.filterRooms, payload);
+
     yield put(setRooms(rooms));
   } catch (error) {
     yield put(setFailedStatus(error));
@@ -26,13 +27,13 @@ function* loadRooms(action: RoomsRequest) {
   }
 }
 
-function* loadRoomsHistory({ payload }: LoadBookedHistory) {
-  const bookedHistoryList: BookedHistoryList = yield call(Api.booking.getBookedHistory, payload);
+function* loadRoomsHistory({ api }: Dependencies, { payload }: LoadBookedHistory) {
+  const bookedHistoryList: BookedHistoryList = yield call(api.booking.getBookedHistory, payload);
 
   yield put(updateBookedHistory(bookedHistoryList));
 }
 
-function* confirmBookedRoom({ payload }: BookCurrentRoom) {
+function* confirmBookedRoom({ api }: Dependencies, { payload }: BookCurrentRoom) {
   const { apartmentId, booked, user } = payload;
   const data: BookingData = {
     apartmentId,
@@ -41,13 +42,13 @@ function* confirmBookedRoom({ payload }: BookCurrentRoom) {
     reservationBy: user,
   };
 
-  yield call(Api.booking.setBookedByUser, data);
+  yield call(api.booking.setBookedByUser, data);
 }
 
-function* rootSaga(): SagaIterator {
-  yield takeLeadingAction<RoomsRequest['type']>('LOAD_ROOMS', loadRooms);
-  yield takeLatestAction<LoadBookedHistory['type']>('LOAD_BOOKED_HISTORY', loadRoomsHistory);
-  yield takeLatestAction<BookCurrentRoom['type']>('BOOK_ROOM', confirmBookedRoom);
+function* rootSaga(deps: Dependencies): SagaIterator {
+  yield takeLeadingAction<RoomsRequest['type']>('LOAD_ROOMS', loadRooms, deps);
+  yield takeLatestAction<LoadBookedHistory['type']>('LOAD_BOOKED_HISTORY', loadRoomsHistory, deps);
+  yield takeLatestAction<BookCurrentRoom['type']>('BOOK_ROOM', confirmBookedRoom, deps);
 }
 
 export { rootSaga };
