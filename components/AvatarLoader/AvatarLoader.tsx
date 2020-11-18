@@ -51,7 +51,7 @@ const AvatarLoader: React.FC<Props> = ({ name, photoURL }: Props) => {
     e.target.value = '';
   };
 
-  const handleEditorClose = () => {
+  const handleEditorCancel = () => {
     setEditorVisible(false);
   };
 
@@ -96,7 +96,7 @@ const AvatarLoader: React.FC<Props> = ({ name, photoURL }: Props) => {
               {isEditorVisible && (
                 <S.CropperWrapper>
                   <AvatarEditor
-                    onClose={handleEditorClose}
+                    onCancel={handleEditorCancel}
                     image={image}
                     onSave={handleEditorSave}
                   />

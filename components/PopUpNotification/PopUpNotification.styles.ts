@@ -28,6 +28,7 @@ const PopUpNotification = styled.div`
 
 const Message = styled.p`
   margin-bottom: 1.5rem;
+  text-align: center;
 `;
 
 const Buttons = styled.div<ButtonsProps>`

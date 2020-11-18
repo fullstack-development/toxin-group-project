@@ -212,33 +212,33 @@ const profile = (state: ProfileState = initialState, action: ProfileActions): Pr
         isAvatarUpdateCompleted: false,
         avatarUpdateStatusText: '',
       };
-      case AVATAR_REMOVE_PROCESS:
+    case AVATAR_REMOVE_PROCESS:
       return {
         ...state,
-        isAvatarUpdatePending: true,
-        isAvatarUpdateCompleted: false,
-        avatarUpdateStatusText: '',
+        isAvatarRemovePending: true,
+        isAvatarRemoveCompleted: false,
+        avatarRemoveStatusText: '',
       };
     case AVATAR_REMOVE_SUCCESS:
       return {
         ...state,
-        isAvatarUpdatePending: false,
-        isAvatarUpdateCompleted: true,
-        avatarUpdateStatusText: action.payload,
+        isAvatarRemovePending: false,
+        isAvatarRemoveCompleted: true,
+        avatarRemoveStatusText: action.payload,
       };
     case AVATAR_REMOVE_FAILED:
       return {
         ...state,
-        isAvatarUpdatePending: false,
-        isAvatarUpdateCompleted: true,
-        avatarUpdateStatusText: action.payload,
+        isAvatarRemovePending: false,
+        isAvatarRemoveCompleted: true,
+        avatarRemoveStatusText: action.payload,
       };
     case AVATAR_REMOVE_COMPLETED:
       return {
         ...state,
-        isAvatarUpdatePending: false,
-        isAvatarUpdateCompleted: false,
-        avatarUpdateStatusText: '',
+        isAvatarRemovePending: false,
+        isAvatarRemoveCompleted: false,
+        avatarRemoveStatusText: '',
       };
     default:
       return state;

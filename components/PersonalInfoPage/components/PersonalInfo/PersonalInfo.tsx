@@ -6,7 +6,7 @@ import { AppState } from 'redux/store.types';
 import { AdditionalUserInformation } from 'services/api/entities/types';
 import { User } from 'services/api/Firebase/modules/Authentication/types';
 
-import EditAvatar from '../EditAvatar/EditAvatar';
+import { EditAvatar } from '../EditAvatar/EditAvatar';
 import EditPersonalInfo from '../EditPersonalInfo/EditPersonalInfo';
 import { data } from './PersonalInfo.data';
 import * as S from './PersonalInfo.styles';

@@ -10,10 +10,10 @@ import * as S from './AvatarEditor.styes';
 type Props = {
   image: string;
   onSave: (canvasScaled: HTMLCanvasElement) => void;
-  onClose: () => void;
+  onCancel: () => void;
 };
 
-const AvatarEditor: React.FC<Props> = ({ image, onSave, onClose }: Props) => {
+const AvatarEditor: React.FC<Props> = ({ image, onSave, onCancel }: Props) => {
   const [zoomSize, setZoomSize] = useState(1);
   let canvas: Editor;
 
@@ -28,7 +28,7 @@ const AvatarEditor: React.FC<Props> = ({ image, onSave, onClose }: Props) => {
   };
 
   const handleCancelButtonClick = () => {
-    onClose();
+    onCancel();
   };
 
   const handleSaveButtonClick = () => {
