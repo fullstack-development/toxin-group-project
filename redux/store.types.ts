@@ -1,20 +1,15 @@
 import { SagaIterator } from 'redux-saga';
 
-import { Api } from 'services/api/api';
-
-import { ApartmentActions, ApartmentState } from './Apartment/types';
-import { AuthActions, AuthState } from './Auth/types';
-import { BookingActions, BookingState } from './Booking/types';
-import { LanguageState, LanguageActions } from './Language/types';
-import { ProfileActions, ProfileState } from './Profile/types';
-import { RegistrationState, RegistrationActions } from './Registration/types';
+import { ApartmentActions, ApartmentState } from './Apartment/model';
+import { Dependencies } from './api.model';
+import { AuthActions, AuthState } from './Auth/model';
+import { BookingActions, BookingState } from './Booking/model';
+import { LanguageState, LanguageActions } from './Language/model';
+import { ProfileActions, ProfileState } from './Profile/model';
+import { RegistrationActions, RegistrationState } from './Registration/model';
 import { SubscriptionActions, SubscriptionState } from './Subscriptions/model';
 
-export type Dependencies = {
-  api: Api;
-};
-
-export type AvailableStates =
+type AvailableStates =
   | ApartmentState
   | AuthState
   | BookingState
@@ -23,7 +18,7 @@ export type AvailableStates =
   | LanguageState
   | SubscriptionState;
 
-export type AvailableActions =
+type AvailableActions =
   | ApartmentActions
   | AuthActions
   | BookingActions
@@ -32,7 +27,7 @@ export type AvailableActions =
   | LanguageActions
   | SubscriptionActions;
 
-export type AppState = {
+type AppState = {
   apartment: ApartmentState;
   auth: AuthState;
   booking: BookingState;
@@ -42,12 +37,11 @@ export type AppState = {
   subscriptions: SubscriptionState;
 };
 
-export type AvailableReducers = (
-  state: AvailableStates,
-  action: AvailableActions,
-) => AvailableStates;
+type AvailableReducers = (state: AvailableStates, action: AvailableActions) => AvailableStates;
 
-export type SharedReduxEntries = {
+type SharedReduxEntries = {
   reducers: Record<string, AvailableReducers>;
   sagas: Array<(deps: Dependencies) => SagaIterator>;
 }[];
+
+export type { AvailableStates, AvailableActions, AppState, AvailableReducers, SharedReduxEntries };
