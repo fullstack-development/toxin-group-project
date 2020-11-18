@@ -113,7 +113,7 @@ const RegistrationForm = memo(
           open={!isSuccess && isProcess && Boolean(statusText)}
           autoHideDuration={3000}
           onClose={stopRegistration}
-          message={statusText}
+          message={t(statusText)}
           action={
             <>
               <IconButton

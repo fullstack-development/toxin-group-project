@@ -174,6 +174,7 @@ export const ru = {
     'Receive special offers': 'Получать спецпредложения',
     'Already have an account on Toxin': 'Уже есть аккаунт на Toxin',
     'All fields must be filled in correctly!': 'Все поля должны быть заполнены корректно!',
+    'First name or last name is too long': 'Имя или фамилия слишком длинные',
   },
   OrderForm: {
     'How many guests': 'Сколько гостей',

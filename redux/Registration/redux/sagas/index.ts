@@ -21,7 +21,7 @@ function* registration({ api }: Dependencies, { payload }: RegistrationRequest) 
     const maxSymbolLength = 50;
 
     if (name.length > maxSymbolLength || surname.length > maxSymbolLength) {
-      throw new Error(`Имя или Фамилия не может иметь более ${maxSymbolLength} символов`);
+      throw new Error('First name or last name is too long');
     }
 
     const userCredential: UserCredential = yield call(api.auth.signUp, {
