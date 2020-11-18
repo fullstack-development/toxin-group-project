@@ -1,6 +1,6 @@
-import defaultFilters from 'components/SearchRoomForm/defaultFilters';
+import defaultFilters from 'components/SearchRoomForm/SearchRoomForm.fixture';
 
-import { Item, Group } from './Dropdown.types';
+import { Item, Group } from './Dropdown.model';
 
 export const guestsGroups: Required<Group[]> = [
   {

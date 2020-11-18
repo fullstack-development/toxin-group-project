@@ -1,4 +1,4 @@
-import { Apartment } from 'services/api/entities/types';
+import { Apartment } from 'services/api/entities/model';
 
 import { GetRoomDetailsFailed, GetRoomDetailsRequest, GetRoomDetailsSuccess } from '../model';
 

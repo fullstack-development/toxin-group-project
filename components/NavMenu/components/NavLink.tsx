@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useState, useRef, useEffect, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { NavMenuLink, NavSubMenu } from '../NavMenu.types';
+import { NavMenuLink, NavSubMenu } from '../NavMenu.model';
 import * as S from './NavLink.styles';
 
 const NavLink = memo(({ isActive, name, path, subMenu }: NavMenuLink) => {

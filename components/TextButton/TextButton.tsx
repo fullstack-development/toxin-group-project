@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import { memo } from 'react';
 
+import { Props } from './TextButton.model';
 import * as S from './TextButton.styles';
-import { TextButtonProps } from './TextButton.types';
 
-const TextButton = memo(({ isSecondary = false, href, disabled, ...rest }: TextButtonProps) =>
+const TextButton = memo(({ isSecondary = false, href, disabled, ...rest }: Props) =>
   href ? (
     <Link href={href} passHref>
       <S.TextButton as="a" {...rest} isSecondary={isSecondary} />

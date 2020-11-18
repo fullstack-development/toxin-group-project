@@ -6,16 +6,16 @@ import { connect } from 'react-redux';
 
 import ArrowButton from 'components/ArrowButton/ArrowButton';
 import Dropdown from 'components/Dropdown/Dropdown';
-import { DropdownProps } from 'components/Dropdown/Dropdown.types';
+import { DropdownProps } from 'components/Dropdown/Dropdown.model';
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
 import TimePicker from 'components/TimePicker/TimePicker';
 import { bookRoom, cancelBooking as cancelBookingRequest } from 'redux/Booking/redux/actions';
-import { AppState } from 'redux/store.types';
+import { AppState } from 'redux/store.model';
 import { formatNumber } from 'utils/number.utils';
 
 import PriceList from './components/PriceList/PriceList';
+import { Item as PriceItem, MaxGuests } from './OrderForm.model';
 import * as S from './OrderForm.styles';
-import { Item as PriceItem, MaxGuests } from './OrderForm.types';
 
 type StateProps = {
   isPending: boolean;

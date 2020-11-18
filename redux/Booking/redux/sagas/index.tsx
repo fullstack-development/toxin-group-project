@@ -3,7 +3,7 @@ import { put, call } from 'redux-saga/effects';
 
 import { takeLatestAction, takeLeadingAction } from 'redux/action.model';
 import { Dependencies } from 'redux/api.model';
-import { Apartment, BookingData } from 'services/api/entities/types';
+import { Apartment, BookingData } from 'services/api/entities/model';
 
 import { RoomsRequest, BookedHistoryList, LoadBookedHistory, BookCurrentRoom } from '../../model';
 import {

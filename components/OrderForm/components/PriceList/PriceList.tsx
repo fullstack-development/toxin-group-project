@@ -2,7 +2,7 @@ import { memo } from 'react';
 
 import { formatNumber } from 'utils/number.utils';
 
-import { Props } from '../../OrderForm.types';
+import { Props } from '../../OrderForm.model';
 import * as S from './PriceList.styles';
 
 const PriceList = memo(({ items }: Props) => (

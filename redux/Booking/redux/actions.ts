@@ -1,4 +1,4 @@
-import { Apartment, Filters } from 'services/api/entities/types';
+import { Apartment, Filters } from 'services/api/entities/model';
 
 import {
   RoomsRequest,

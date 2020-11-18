@@ -1,6 +1,9 @@
-import { Accessibility, AdditionalAmenities, Opportunities } from 'services/api/entities/types';
-
-import { Filters } from '../../services/api/entities/types';
+import {
+  Accessibility,
+  AdditionalAmenities,
+  Opportunities,
+  Filters,
+} from 'services/api/entities/model';
 
 export type Props = {
   isPending?: boolean;

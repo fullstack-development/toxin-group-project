@@ -1,5 +1,5 @@
 import { Action, ActionPayload } from 'redux/action.model';
-import { User } from 'services/api/Firebase/modules/Authentication/types';
+import { User } from 'services/api/Firebase/modules/Authentication';
 
 type AuthData = {
   email: string;

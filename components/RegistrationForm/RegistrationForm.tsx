@@ -10,8 +10,8 @@ import RadioButton from 'components/RadioButton/RadioButton';
 import Toggle from 'components/Toggle/Toggle';
 import { emailValidator, dateValidator, dateFormatMask } from 'utils/validators';
 
+import { RegistrationFormProps, FormData } from './RegistrationForm.model';
 import * as S from './RegistrationForm.styles';
-import { RegistrationFormProps, FormData } from './RegistrationForm.types';
 
 const RegistrationForm = memo(
   ({

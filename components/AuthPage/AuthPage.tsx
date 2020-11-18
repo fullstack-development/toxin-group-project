@@ -10,7 +10,7 @@ import {
   preloadAuthData,
   requestToAuthWithGoogle,
 } from 'redux/Auth/redux/actions';
-import { AppState } from 'redux/store.types';
+import { AppState } from 'redux/store.model';
 
 import * as S from './AuthPage.styles';
 

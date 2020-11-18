@@ -1,4 +1,4 @@
-import { Config } from './types';
+import { Config } from './model';
 
 const config: Config = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
