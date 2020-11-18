@@ -1,3 +1,4 @@
+import { useEffect, memo } from 'react';
 import { connect } from 'react-redux';
 
 import PopUpNotification from 'components/PopUpNotification/PopUpNotification';
@@ -28,43 +29,49 @@ type OwnProps = {
 
 type Props = OwnProps & StateProps & typeof mapDispatch;
 
-const RemoveAvatar = ({
-  user,
-  onCancel,
-  onConfirm,
-  isCompleted,
-  statusText,
-  startAvatarRemove,
-  stopAvatarRemove,
-}: Props): JSX.Element => {
-  const handleConfirmationCancel = () => {
-    onCancel();
-  };
+const RemoveAvatar = memo(
+  ({
+    user,
+    onCancel,
+    onConfirm,
+    isCompleted,
+    statusText,
+    startAvatarRemove,
+    stopAvatarRemove,
+  }: Props): JSX.Element => {
+    const handleConfirmationCancel = () => {
+      onCancel();
+    };
 
-  const handleNotificationCancel = () => {
-    stopAvatarRemove();
-    onConfirm();
-  };
+    const handleNotificationCancel = () => {
+      stopAvatarRemove();
+      onConfirm();
+    };
 
-  const handleConfirmationSuccess = () => {
-    startAvatarRemove({ user });
-  };
+    const handleConfirmationSuccess = () => {
+      startAvatarRemove({ user });
+    };
 
-  return (
-    <>
-      {isCompleted ? (
-        <PopUpNotification message={statusText} onConfirmButtonClick={handleNotificationCancel} />
-      ) : (
-        <PopUpNotification
-          message="Вы уверены, что хотите удалить аватар?"
-          withCancelButton
-          onConfirmButtonClick={handleConfirmationSuccess}
-          onCancelButtonClick={handleConfirmationCancel}
-        />
-      )}
-    </>
-  );
-};
+    useEffect(() => {
+      stopAvatarRemove();
+    }, [stopAvatarRemove]);
+
+    return (
+      <>
+        {isCompleted ? (
+          <PopUpNotification message={statusText} onConfirmButtonClick={handleNotificationCancel} />
+        ) : (
+          <PopUpNotification
+            message="Вы уверены, что хотите удалить аватар?"
+            withCancelButton
+            onConfirmButtonClick={handleConfirmationSuccess}
+            onCancelButtonClick={handleConfirmationCancel}
+          />
+        )}
+      </>
+    );
+  },
+);
 
 const ConnectedComponent = connect(mapState, mapDispatch)(RemoveAvatar);
 export { ConnectedComponent as RemoveAvatar };

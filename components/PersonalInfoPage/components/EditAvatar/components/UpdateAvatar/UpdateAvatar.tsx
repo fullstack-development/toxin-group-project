@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, memo } from 'react';
 import { Form } from 'react-final-form';
 import { connect } from 'react-redux';
 
@@ -33,51 +33,53 @@ type OwnProps = {
 
 type Props = OwnProps & StateProps & typeof mapDispatch;
 
-const UpdateAvatar = ({
-  user,
-  image,
-  onCancel,
-  isCompleted,
-  statusText,
-  startAvatarUpdate,
-  stopAvatarUpdate,
-}: Props): JSX.Element => {
-  const handleFormSubmit = (): unknown => ({});
+const UpdateAvatar = memo(
+  ({
+    user,
+    image,
+    onCancel,
+    isCompleted,
+    statusText,
+    startAvatarUpdate,
+    stopAvatarUpdate,
+  }: Props): JSX.Element => {
+    const handleFormSubmit = (): unknown => ({});
 
-  const handleNotificationCancel = () => {
-    stopAvatarUpdate();
-    onCancel();
-  };
+    const handleNotificationCancel = () => {
+      stopAvatarUpdate();
+      onCancel();
+    };
 
-  const handleEditorCancel = () => {
-    onCancel();
-  };
+    const handleEditorCancel = () => {
+      onCancel();
+    };
 
-  const handleEditorSave = (canvasScaled: HTMLCanvasElement) => {
-    canvasScaled.toBlob((blob: Blob) => {
-      startAvatarUpdate({ user, avatar: blob });
-    });
-  };
+    const handleEditorSave = (canvasScaled: HTMLCanvasElement) => {
+      canvasScaled.toBlob((blob: Blob) => {
+        startAvatarUpdate({ user, avatar: blob });
+      });
+    };
 
-  useEffect(() => {
-    stopAvatarUpdate();
-  }, [stopAvatarUpdate]);
+    useEffect(() => {
+      stopAvatarUpdate();
+    }, [stopAvatarUpdate]);
 
-  return (
-    <>
-      {isCompleted ? (
-        <PopUpNotification message={statusText} onConfirmButtonClick={handleNotificationCancel} />
-      ) : (
-        <Form
-          onSubmit={handleFormSubmit}
-          render={() => (
-            <AvatarEditor onCancel={handleEditorCancel} image={image} onSave={handleEditorSave} />
-          )}
-        />
-      )}
-    </>
-  );
-};
+    return (
+      <>
+        {isCompleted ? (
+          <PopUpNotification message={statusText} onConfirmButtonClick={handleNotificationCancel} />
+        ) : (
+          <Form
+            onSubmit={handleFormSubmit}
+            render={() => (
+              <AvatarEditor onCancel={handleEditorCancel} image={image} onSave={handleEditorSave} />
+            )}
+          />
+        )}
+      </>
+    );
+  },
+);
 
 const ConnectedComponent = connect(mapState, mapDispatch)(UpdateAvatar);
 export { ConnectedComponent as UpdateAvatar };

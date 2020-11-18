@@ -72,17 +72,21 @@ type AvatarRemove = {
 
 type ProfileState = {
   isEmailUpdatePending: boolean;
+  isEmailUpdateSuccess: boolean;
   isEmailUpdateCompleted: boolean;
   emailUpdateStatusText: string;
   isGetAdditionalUserDataSuccess: boolean;
   additionalUserData: AdditionalUserInformation;
   isPasswordUpdatePending: boolean;
+  isPasswordUpdateSuccess: boolean;
   isPasswordUpdateCompleted: boolean;
   passwordUpdateStatusText: string;
   isUpdateAdditionalUserDataPending: boolean;
+  isUpdateAdditionalUserDataSuccess: boolean;
   isUpdateAdditionalUserDataCompleted: boolean;
   updateAdditionalUserDataStatusText: string;
   isUsernameUpdatePending: boolean;
+  isUsernameUpdateSuccess: boolean;
   isUsernameUpdateCompleted: boolean;
   usernameUpdateStatusText: string;
   isAvatarUpdatePending: boolean;

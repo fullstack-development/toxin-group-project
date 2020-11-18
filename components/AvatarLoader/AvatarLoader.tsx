@@ -1,7 +1,7 @@
 import { IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import CloseIcon from '@material-ui/icons/Close';
-import { useState, useEffect } from 'react';
+import { ChangeEvent, memo, useState, useEffect } from 'react';
 import { Field } from 'react-final-form';
 import { useTranslation } from 'react-i18next';
 
@@ -15,7 +15,7 @@ type Props = {
   photoURL?: string;
 };
 
-const AvatarLoader: React.FC<Props> = ({ name, photoURL }: Props) => {
+const AvatarLoader = memo(({ name, photoURL }: Props) => {
   const [image, setImage] = useState(null);
   const [croppedImage, setCroppedImage] = useState(null);
   const [isEditorVisible, setEditorVisible] = useState(false);
@@ -30,7 +30,7 @@ const AvatarLoader: React.FC<Props> = ({ name, photoURL }: Props) => {
     photoURL && setCroppedImage(photoURL);
   }, [photoURL]);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files[0];
     const reader = new FileReader();
 
@@ -130,6 +130,6 @@ const AvatarLoader: React.FC<Props> = ({ name, photoURL }: Props) => {
       />
     </S.AvatarLoader>
   );
-};
+});
 
 export default AvatarLoader;

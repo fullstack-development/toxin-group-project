@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+import { Link } from 'components/NavMenu/components/NavLink.styles';
+import { ListItem } from 'components/NavMenu/NavMenu.styles';
 import { breakpointDown } from 'shared/styles/break-points';
 
 const HeaderUserProfile = styled.div`
@@ -10,6 +12,13 @@ const HeaderUserProfile = styled.div`
       width: max-content;
       padding-left: 1.4rem;
       border-left: 0.0714rem solid ${colors.basicLightest};
+
+      & ${ListItem} > div > ${Link} {
+        width: 11.5rem;
+        height: 2.5rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
 
       @media ${breakpointDown('md')} {
         width: 100%;

@@ -1,8 +1,10 @@
+import { memo } from 'react';
+
 import NavLink from './components/NavLink';
 import * as S from './NavMenu.styles';
 import { NavMain, NavMenuLink } from './NavMenu.types';
 
-const NavMenu: React.FC<NavMain> = ({ menu }: NavMain): JSX.Element => (
+const NavMenu = memo(({ menu }: NavMain) => (
   <S.NavContainer>
     <ul>
       {menu &&
@@ -13,6 +15,6 @@ const NavMenu: React.FC<NavMain> = ({ menu }: NavMain): JSX.Element => (
         ))}
     </ul>
   </S.NavContainer>
-);
+));
 
 export default NavMenu;

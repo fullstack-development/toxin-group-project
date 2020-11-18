@@ -1,5 +1,5 @@
 import { ExpandLess, ExpandMore } from '@material-ui/icons';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, memo } from 'react';
 
 import * as S from './Expander.styles';
 
@@ -9,11 +9,11 @@ type Props = {
   children: JSX.Element;
 };
 
-const Expander: React.FC<Props> = ({ title, isDefaultOpen, children }: Props) => {
+const Expander = memo(({ title, isDefaultOpen, children }: Props) => {
   const [isOpen, setIsOpen] = useState(isDefaultOpen);
   const expander = useRef(null);
 
-  const handleDocumentClick = (event: globalThis.MouseEvent) => {
+  const handleDocumentClick = (event: MouseEvent) => {
     if (isOpen && !expander.current.contains(event.target)) {
       setIsOpen(false);
     }
@@ -37,6 +37,6 @@ const Expander: React.FC<Props> = ({ title, isDefaultOpen, children }: Props) =>
       <S.Content isOpen={isOpen}>{children}</S.Content>
     </S.Expander>
   );
-};
+});
 
 export default Expander;

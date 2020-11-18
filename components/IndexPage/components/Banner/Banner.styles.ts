@@ -5,7 +5,7 @@ import { container } from 'shared/styles/mixins';
 
 const Banner = styled.div`
   ${container}
-  background: url('./img/main-page-banner.jpg') bottom / cover no-repeat;
+  background: url('/img/main-page-banner.jpg') bottom / cover no-repeat;
   min-height: 59.286rem;
   display: grid;
   grid-template-rows: max-content max-content;

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { breakpointDown } from 'shared/styles/break-points';
 
 const Container = styled.div`
-  background: url('./img/auth-register.jpg') bottom / cover no-repeat;
+  background: url('/img/auth-register.jpg') bottom / cover no-repeat;
   min-height: 40rem;
   padding: 1.25rem;
 

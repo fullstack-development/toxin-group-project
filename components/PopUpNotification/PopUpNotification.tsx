@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import TextButton from 'components/TextButton/TextButton';
 
 import * as S from './PopUpNotification.styles';
@@ -9,25 +11,22 @@ type Props = {
   onCancelButtonClick?: () => void;
 };
 
-const PopUpNotification = ({
-  message,
-  withCancelButton,
-  onConfirmButtonClick,
-  onCancelButtonClick,
-}: Props): JSX.Element => (
-  <S.PopUpNotification>
-    <S.Message>{message}</S.Message>
-    <S.Buttons withCancelButton={withCancelButton}>
-      <TextButton type="button" onClick={onConfirmButtonClick}>
-        ОК
-      </TextButton>
-      {withCancelButton && (
-        <TextButton type="button" onClick={onCancelButtonClick} isSecondary>
-          Отменить
+const PopUpNotification = memo(
+  ({ message, onConfirmButtonClick, withCancelButton, onCancelButtonClick }: Props) => (
+    <S.PopUpNotification>
+      <S.Message>{message}</S.Message>
+      <S.Buttons withCancelButton={withCancelButton}>
+        <TextButton type="button" onClick={onConfirmButtonClick}>
+          ОК
         </TextButton>
-    )}
-    </S.Buttons>
-  </S.PopUpNotification>
+        {withCancelButton && (
+          <TextButton type="button" onClick={onCancelButtonClick} isSecondary>
+            Отменить
+          </TextButton>
+        )}
+      </S.Buttons>
+    </S.PopUpNotification>
+  ),
 );
 
 export default PopUpNotification;

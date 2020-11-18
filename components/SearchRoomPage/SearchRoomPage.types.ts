@@ -1,4 +1,4 @@
-import { Props as RoomProps } from 'components/Room/Room.types';
+import { RoomProps } from 'components/Room/Room.types';
 
 export type SortFunction = (a: RoomProps, b: RoomProps) => number;
 

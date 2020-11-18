@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { useState } from 'react';
+import { useState, memo } from 'react';
 
 import Avatar from 'components/Avatar/Avatar';
 import TextButton from 'components/TextButton/TextButton';
@@ -14,68 +14,70 @@ type Props = {
   photoURL: string;
 };
 
-const EditAvatar = ({ user, photoURL }: Props): JSX.Element => {
-  const [isEditorVisible, setEditorVisible] = useState(false);
-  const [isConfirmationVisible, setConfirmationVisible] = useState(false);
-  const [image, setImage] = useState(null);
+const EditAvatar = memo(
+  ({ user, photoURL }: Props): JSX.Element => {
+    const [isEditorVisible, setEditorVisible] = useState(false);
+    const [isConfirmationVisible, setConfirmationVisible] = useState(false);
+    const [image, setImage] = useState(null);
 
-  const useStyles = makeStyles(() => ({
-    avatarLoader: { width: '7.14285rem', height: '7.14285rem' },
-  }));
-  const classes = useStyles();
+    const useStyles = makeStyles(() => ({
+      avatarLoader: { width: '7.14285rem', height: '7.14285rem' },
+    }));
+    const classes = useStyles();
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEditorVisible(true);
-    setImage(e.target.files[0]);
-    e.target.value = '';
-  };
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setEditorVisible(true);
+      setImage(e.target.files[0]);
+      e.target.value = '';
+    };
 
-  const handleEditorCancel = () => {
-    setEditorVisible(false);
-  };
+    const handleEditorCancel = () => {
+      setEditorVisible(false);
+    };
 
-  const handleRemoveButtonClick = () => {
-    setConfirmationVisible(true);
-  };
+    const handleRemoveButtonClick = () => {
+      setConfirmationVisible(true);
+    };
 
-  const handleConfirmationCancel = () => {
-    setConfirmationVisible(false);
-  };
+    const handleConfirmationCancel = () => {
+      setConfirmationVisible(false);
+    };
 
-  const handleConfirmationConfirm = () => {
-    setConfirmationVisible(false);
-  };
+    const handleConfirmationConfirm = () => {
+      setConfirmationVisible(false);
+    };
 
-  return (
-    <S.EditAvatar>
-      <S.AvatarWrapper>
-        <Avatar photoURL={photoURL} className={classes.avatarLoader} />
-        {isEditorVisible && (
-          <S.CropperWrapper>
-            <UpdateAvatar user={user} onCancel={handleEditorCancel} image={image} />
-          </S.CropperWrapper>
+    return (
+      <S.EditAvatar>
+        <S.AvatarWrapper>
+          <Avatar photoURL={photoURL} className={classes.avatarLoader} />
+          {isEditorVisible && (
+            <S.CropperWrapper>
+              <UpdateAvatar user={user} onCancel={handleEditorCancel} image={image} />
+            </S.CropperWrapper>
+          )}
+        </S.AvatarWrapper>
+        <S.Buttons>
+          <S.EditButtonWrapper>
+            <S.EditButton>Изменить аватар</S.EditButton>
+            <S.HiddenInput type="file" accept="image/*" onChange={handleInputChange} />
+          </S.EditButtonWrapper>
+          {photoURL && (
+            <TextButton isSecondary onClick={handleRemoveButtonClick}>
+              Удалить аватар
+            </TextButton>
+          )}
+        </S.Buttons>
+        {isConfirmationVisible && (
+          <RemoveAvatar
+            user={user}
+            onConfirm={handleConfirmationConfirm}
+            onCancel={handleConfirmationCancel}
+          />
         )}
-      </S.AvatarWrapper>
-      <S.Buttons>
-        <S.EditButtonWrapper>
-          <S.EditButton>Изменить аватар</S.EditButton>
-          <S.HiddenInput type="file" accept="image/*" onChange={handleInputChange} />
-        </S.EditButtonWrapper>
-        {photoURL && (
-          <TextButton isSecondary onClick={handleRemoveButtonClick}>
-            Удалить аватар
-          </TextButton>
-        )}
-      </S.Buttons>
-      {isConfirmationVisible && (
-        <RemoveAvatar
-          user={user}
-          onConfirm={handleConfirmationConfirm}
-          onCancel={handleConfirmationCancel}
-        />
-      )}
-    </S.EditAvatar>
-  );
-};
+      </S.EditAvatar>
+    );
+  },
+);
 
 export { EditAvatar };

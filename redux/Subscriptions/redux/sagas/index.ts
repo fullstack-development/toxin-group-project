@@ -1,11 +1,13 @@
 import { SagaIterator } from 'redux-saga';
 import { call, ForkEffect, put, takeLeading } from 'redux-saga/effects';
 
-import api from 'services/api/api';
-
+import { Dependencies } from '../../../store.types';
 import { Action, GetSubscriptionDataRequest, SubscriptionUpdateRequest } from '../../model';
 
-function* getSubscriptionsData({ payload: email }: GetSubscriptionDataRequest) {
+function* getSubscriptionsData(
+  { api }: Dependencies,
+  { payload: email }: GetSubscriptionDataRequest,
+) {
   try {
     const subscriptionData = yield call(api.subscriptions.load, email);
 
@@ -20,7 +22,10 @@ function* getSubscriptionsData({ payload: email }: GetSubscriptionDataRequest) {
   }
 }
 
-function* subscriptionUpdate({ payload: { email, subscriptions } }: SubscriptionUpdateRequest) {
+function* subscriptionUpdate(
+  { api }: Dependencies,
+  { payload: { email, subscriptions } }: SubscriptionUpdateRequest,
+) {
   try {
     const isDocument = yield call(api.subscriptions.load, email);
     if (isDocument) {
@@ -34,30 +39,33 @@ function* subscriptionUpdate({ payload: { email, subscriptions } }: Subscription
     yield put({
       type: 'SUBSCRIPTION_UPDATE_SUCCESS',
       payload: userAuthInfo.length
-        ? 'Настройки уведомлений изменены'
-        : 'Вы успешно подписаны на рассылку спецпредложений',
+        ? 'Notification settings changed'
+        : 'You have successfully subscribed to the special offers',
     });
   } catch (err) {
     yield put({
       type: 'SUBSCRIPTION_UPDATE_FAILED',
-      payload: 'Произошла ошибка повторите попытку позже',
+      payload: 'An error occured, please try again later',
     });
   }
 }
 // TODO Вынести в отдельный файл, так как предполгается неоднократное использование
 const takeLeadingAction = <T extends string>(
   type: T,
-  worker: (action: Action<T>) => unknown,
-): ForkEffect<unknown> => takeLeading(type, worker);
+  worker: (deps: Dependencies, action: Action<T>) => unknown,
+  deps: Dependencies,
+): ForkEffect<unknown> => takeLeading(type, worker, deps);
 
-function* rootSaga(): SagaIterator {
+function* rootSaga(deps: Dependencies): SagaIterator {
   yield takeLeadingAction<GetSubscriptionDataRequest['type']>(
     'GET_SUBSCRIPTION_DATA_PROCESS',
     getSubscriptionsData,
+    deps,
   );
   yield takeLeadingAction<SubscriptionUpdateRequest['type']>(
     'SUBSCRIPTION_UPDATE_PROCESS',
     subscriptionUpdate,
+    deps,
   );
 }
 

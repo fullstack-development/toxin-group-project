@@ -1,4 +1,5 @@
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect, useCallback, memo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
 import { getAdditionalUserData as getAdditionalUserDataRequest } from 'redux/Profile/redux/actions';
@@ -29,83 +30,78 @@ const mapDispatch = {
 
 type Props = StateProps & typeof mapDispatch;
 
-const PersonalInfo = ({
-  user,
-  isSuccess,
-  additionalUserData,
-  startGetAdditionalUserData,
-}: Props): JSX.Element => {
-  const [userData, setUserData] = useState({
-    displayName: '',
-    gender: '',
-    birthday: '',
-    email: '',
-    photoURL: '',
-  });
-  const [currentEditing, setCurrentEditing] = useState('');
-
-  const getAdditionalUserData = useCallback(
-    (currentUser) => {
-      startGetAdditionalUserData(currentUser);
-    },
-    [startGetAdditionalUserData],
-  );
-
-  useEffect(() => {
-    if (user) getAdditionalUserData(user);
-  }, [getAdditionalUserData, user, currentEditing]);
-
-  const mapGender = useMemo(
-    () => ({
-      female: 'Женщина',
-      male: 'Мужчина',
-    }),
-    [],
-  );
-
-  const setAdditionalUserData = useCallback(() => {
-    const { displayName, email, photoURL } = user;
-
-    setUserData({
-      displayName,
-      email,
-      gender: additionalUserData ? mapGender[additionalUserData.gender] : '',
-      birthday: additionalUserData ? additionalUserData.birthDate : '',
-      photoURL,
+const PersonalInfo = memo(
+  ({ user, isSuccess, additionalUserData, startGetAdditionalUserData }: Props) => {
+    const [userData, setUserData] = useState({
+      displayName: '',
+      gender: '',
+      birthday: '',
+      email: '',
+      photoURL: '',
     });
-  }, [additionalUserData, mapGender, user]);
+    const [currentEditing, setCurrentEditing] = useState('');
 
-  useEffect(() => {
-    if (isSuccess) setAdditionalUserData();
-  }, [setAdditionalUserData, isSuccess]);
+    const getAdditionalUserData = useCallback(
+      (currentUser) => {
+        startGetAdditionalUserData(currentUser);
+      },
+      [startGetAdditionalUserData],
+    );
 
-  const accountData = data.map((elem) => {
-    return { ...elem, value: userData[elem.component] };
-  });
+    useEffect(() => {
+      if (user) getAdditionalUserData(user);
+    }, [getAdditionalUserData, user, currentEditing]);
 
-  const handleEditButtonClick = (title: string) => {
-    if (title === currentEditing) {
-      setCurrentEditing('');
-    } else {
-      setCurrentEditing(title);
-    }
-  };
+    const capitalize = (string: string): string => {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    };
 
-  return (
-    <S.PersonalInfo>
-      <EditAvatar user={user} photoURL={userData.photoURL} />
-      {accountData.map((elem) => (
-        <S.Item key={elem.title}>
-          <EditPersonalInfo
-            user={user}
-            currentEditing={currentEditing}
-            onEditButtonClick={handleEditButtonClick}
-            {...elem}
-          />
-        </S.Item>
-      ))}
-    </S.PersonalInfo>
-  );
-};
+    const { t } = useTranslation('PersonalInfo');
+
+    const setAdditionalUserData = useCallback(() => {
+      const { displayName, email, photoURL } = user;
+
+      setUserData({
+        displayName,
+        email,
+        gender: additionalUserData ? t(capitalize(additionalUserData.gender)) : '',
+        birthday: additionalUserData ? additionalUserData.birthDate : '',
+        photoURL,
+      });
+    }, [additionalUserData, t, user]);
+
+    useEffect(() => {
+      if (isSuccess) setAdditionalUserData();
+    }, [setAdditionalUserData, isSuccess]);
+
+    const accountData = data.map((elem) => {
+      return { ...elem, value: userData[elem.component] };
+    });
+
+    const handleEditButtonClick = (title: string) => {
+      if (title === currentEditing) {
+        setCurrentEditing('');
+      } else {
+        setCurrentEditing(title);
+      }
+    };
+
+    return (
+      <S.PersonalInfo>
+        <EditAvatar user={user} photoURL={userData.photoURL} />
+        {accountData.map((elem) => (
+          <S.Item key={elem.title}>
+            <EditPersonalInfo
+              user={user}
+              currentEditing={currentEditing}
+              onEditButtonClick={handleEditButtonClick}
+              {...elem}
+            />
+          </S.Item>
+        ))}
+      </S.PersonalInfo>
+    );
+  },
+);
 
 export default connect(mapState, mapDispatch)(PersonalInfo);
