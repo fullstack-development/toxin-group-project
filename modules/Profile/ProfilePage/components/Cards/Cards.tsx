@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -11,10 +12,12 @@ const Cards = memo(() => {
     <S.Cards>
       {cardsData.map(({ title, description, href }) => (
         <S.Item key={title}>
-          <S.Card href={href}>
-            <S.Title>{t(title)}</S.Title>
-            <S.Description>{t(description)}</S.Description>
-          </S.Card>
+          <Link href={href} passHref>
+            <S.Card>
+              <S.Title>{t(title)}</S.Title>
+              <S.Description>{t(description)}</S.Description>
+            </S.Card>
+          </Link>
         </S.Item>
       ))}
     </S.Cards>
