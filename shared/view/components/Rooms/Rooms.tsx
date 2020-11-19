@@ -1,16 +1,19 @@
-import { useCallback, useEffect, useState } from 'react';
+import { memo, useCallback, useEffect, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 import { Room } from 'shared/view/components';
 import { Preloader } from 'shared/view/elements';
 
-import { Props as RoomProps } from '../Room/Room.types';
+import { RoomProps } from '../Room/Room.model';
 import * as S from './Rooms.styles';
-import { Props } from './Rooms.types';
+
+type Props = {
+  rooms: RoomProps[];
+};
 
 const DEFAULT_INCREMENT = 12;
 
-const Rooms: React.FC<Props> = ({ rooms }: Props) => {
+const Rooms = memo(({ rooms }: Props) => {
   const [visibleRooms, setVisibleRooms] = useState<RoomProps[]>([]);
   const [hasMore, setHasMore] = useState(true);
 
@@ -46,6 +49,6 @@ const Rooms: React.FC<Props> = ({ rooms }: Props) => {
       </S.Rooms>
     </InfiniteScroll>
   );
-};
+});
 
 export { Rooms };

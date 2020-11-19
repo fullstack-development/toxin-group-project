@@ -1,9 +1,11 @@
-import SocialMediaLink from './components/SocialMediaLink';
-import defaultProps from './defaultProps';
-import * as S from './SocialMedia.style';
-import { SocialMediaProps } from './SocialMedia.types';
+import { memo } from 'react';
 
-const SocialMedia: React.FC<SocialMediaProps> = ({ items = defaultProps }: SocialMediaProps) => (
+import SocialMediaLink from './components/SocialMediaLink';
+import defaultProps from './SocialMedia.fixture';
+import { SocialMediaProps } from './SocialMedia.model';
+import * as S from './SocialMedia.style';
+
+const SocialMedia = memo(({ items = defaultProps }: SocialMediaProps) => (
   <S.List>
     {items &&
       items.map((item) => (
@@ -12,6 +14,6 @@ const SocialMedia: React.FC<SocialMediaProps> = ({ items = defaultProps }: Socia
         </S.ListItem>
       ))}
   </S.List>
-);
+));
 
 export { SocialMedia };

@@ -1,7 +1,9 @@
-import language from './redux/reducer';
+import { language } from './redux/reducer';
 import { rootSaga } from './redux/sagas';
 
-export const reduxEntry = {
+const reduxEntry = {
   reducers: { language },
   sagas: [rootSaga],
 };
+
+export { reduxEntry };

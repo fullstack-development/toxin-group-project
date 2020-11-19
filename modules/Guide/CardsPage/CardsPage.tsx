@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { memo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import AccountEntry from 'features/Auth/AccountEntry/AccountEntry';
@@ -7,11 +7,11 @@ import RegistrationForm from 'features/Auth/RegistrationForm/RegistrationForm';
 import OrderForm from 'features/Rooms/OrderForm/OrderForm';
 import SearchRoomForm from 'features/Rooms/SearchRoomForm/SearchRoomForm';
 import { Room, Rooms } from 'shared/view/components';
-import roomsList from 'shared/view/components/Rooms/Rooms.data';
+import roomsList from 'shared/view/components/Rooms/Rooms.fixture';
 
 import * as S from './CardsPage.styles';
 
-const CardsPage: React.FC = (): JSX.Element => {
+const CardsPage = memo(() => {
   const [rooms, setRooms] = useState([]);
 
   Promise.resolve(roomsList).then((data) => setRooms(data));
@@ -66,6 +66,6 @@ const CardsPage: React.FC = (): JSX.Element => {
       </S.ForgotPasswordWrapper>
     </S.Container>
   );
-};
+});
 
 export { CardsPage };

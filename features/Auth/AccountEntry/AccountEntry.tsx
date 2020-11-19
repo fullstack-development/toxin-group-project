@@ -1,5 +1,6 @@
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+import { memo } from 'react';
 import { Field, Form } from 'react-final-form';
 import { useTranslation } from 'react-i18next';
 
@@ -21,7 +22,7 @@ type Props = {
   breakAuthProcess: () => void;
 };
 
-const AccountEntry: React.FC<Props> = (props: Props): JSX.Element => {
+const AccountEntry = memo((props: Props) => {
   const {
     isAuthSuccess,
     isAuthProcessNow,
@@ -94,6 +95,6 @@ const AccountEntry: React.FC<Props> = (props: Props): JSX.Element => {
       />
     </S.AccountEntry>
   );
-};
+});
 
 export default AccountEntry;

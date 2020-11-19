@@ -51,6 +51,7 @@ const Link = styled.a<Link>`
       text-decoration: none;
       margin-right: 1.5rem;
       position: relative;
+      display: inline-block;
 
       &:hover {
         color: ${colors.basicDarkest};

@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import AccountEntry from 'features/Auth/AccountEntry/AccountEntry';
@@ -10,7 +10,7 @@ import {
   preloadAuthData,
   requestToAuthWithGoogle,
 } from 'redux/Auth/redux/actions';
-import { AppState } from 'redux/store.types';
+import { AppState } from 'redux/store.model';
 
 import * as S from './LoginPage.styles';
 
@@ -36,43 +36,45 @@ const mapDispatch = {
 };
 export type Props = StateProps & typeof mapDispatch;
 
-const LoginPage: React.FC<Props> = ({
-  isAuthSuccess,
-  isAuthProcessNow,
-  authStatusText,
-  wasFinishedAuthChecking,
-  checkAuthBeforePageLoaded,
-  startAuthProcess,
-  startGoogleAuthProcess,
-  stopAuthProcess,
-}: Props): JSX.Element => {
-  const router = useRouter();
+const LoginPage = memo(
+  ({
+    isAuthSuccess,
+    isAuthProcessNow,
+    authStatusText,
+    wasFinishedAuthChecking,
+    checkAuthBeforePageLoaded,
+    startAuthProcess,
+    startGoogleAuthProcess,
+    stopAuthProcess,
+  }: Props) => {
+    const router = useRouter();
 
-  useEffect(() => {
-    checkAuthBeforePageLoaded();
-    if (isAuthSuccess) {
-      document.referrer ? router.back() : router.push('/');
-    }
-  });
+    useEffect(() => {
+      checkAuthBeforePageLoaded();
+      if (isAuthSuccess) {
+        document.referrer ? router.back() : router.push('/');
+      }
+    });
 
-  const isAuthRequired: boolean = wasFinishedAuthChecking && !isAuthSuccess;
-  return (
-    isAuthRequired && (
-      <MainLayout>
-        <S.Container>
-          <AccountEntry
-            isAuthSuccess={isAuthSuccess}
-            isAuthProcessNow={isAuthProcessNow}
-            authStatusText={authStatusText}
-            requestToAuth={startAuthProcess}
-            requestToAuthWithGoogle={startGoogleAuthProcess}
-            breakAuthProcess={stopAuthProcess}
-          />
-        </S.Container>
-      </MainLayout>
-    )
-  );
-};
+    const isAuthRequired: boolean = wasFinishedAuthChecking && !isAuthSuccess;
+    return (
+      isAuthRequired && (
+        <MainLayout>
+          <S.Container>
+            <AccountEntry
+              isAuthSuccess={isAuthSuccess}
+              isAuthProcessNow={isAuthProcessNow}
+              authStatusText={authStatusText}
+              requestToAuth={startAuthProcess}
+              requestToAuthWithGoogle={startGoogleAuthProcess}
+              breakAuthProcess={stopAuthProcess}
+            />
+          </S.Container>
+        </MainLayout>
+      )
+    );
+  },
+);
 
 const ConnectedComponent = connect(mapState, mapDispatch)(LoginPage);
 export { ConnectedComponent as LoginPage };

@@ -1,6 +1,7 @@
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Review as ReviewProps } from 'services/api/entities/types';
+import { Review as ReviewProps } from 'services/api/entities/model';
 import getNounInDeclension from 'shared/helpers/getNounInDeclension';
 import { Review } from 'shared/view/components';
 
@@ -12,7 +13,7 @@ type Props = {
 
 const NUMBER_OF_REVIEWS = 2;
 
-const Reviews = ({ reviews }: Props): JSX.Element => {
+const Reviews = memo(({ reviews }: Props) => {
   const { t } = useTranslation(['WordForms', 'ReviewsPage']);
   const declensions = [t('Review'), t('ReviewsSecondary'), t('Reviews')];
   const sortedReviews = reviews.slice().sort((a, b) => b.likesCount - a.likesCount);
@@ -33,6 +34,6 @@ const Reviews = ({ reviews }: Props): JSX.Element => {
       </S.List>
     </S.Reviews>
   );
-};
+});
 
 export { Reviews };

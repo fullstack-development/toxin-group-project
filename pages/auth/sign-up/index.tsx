@@ -1,8 +1,9 @@
 import Head from 'next/head';
+import { memo } from 'react';
 
 import { SignupPage } from 'modules/Auth';
 
-const Signup: React.FC = (): JSX.Element => (
+const Signup = memo(() => (
   <>
     <Head>
       <title>Toxin | Регистрация</title>
@@ -14,6 +15,6 @@ const Signup: React.FC = (): JSX.Element => (
     </Head>
     <SignupPage />
   </>
-);
+));
 
 export default Signup;

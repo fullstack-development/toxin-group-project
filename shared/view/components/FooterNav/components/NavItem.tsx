@@ -1,14 +1,13 @@
 import Link from 'next/link';
-import { withTranslation, WithTranslation } from 'react-i18next';
+import { memo } from 'react';
+import { WithTranslation, withTranslation } from 'react-i18next';
 
-import { NavItemProps } from '../FooterNav.types';
+import { NavItemProps } from '../FooterNav.model';
 import * as S from './NavItem.styles';
 
-const NavItem: React.ComponentType<WithTranslation & NavItemProps> = ({
-  title,
-  items,
-  t,
-}: NavItemProps) => (
+type Props = WithTranslation & NavItemProps;
+
+const NavItem = memo(({ title, items, t }: Props) => (
   <S.Container>
     {title && <S.Title>{t(`Links:${title}`)}</S.Title>}
     <S.List>
@@ -22,6 +21,6 @@ const NavItem: React.ComponentType<WithTranslation & NavItemProps> = ({
         ))}
     </S.List>
   </S.Container>
-);
+));
 
 export default withTranslation('Links')(NavItem);

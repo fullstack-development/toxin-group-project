@@ -1,7 +1,7 @@
 import { boundMethod } from 'autobind-decorator';
 import * as firebase from 'firebase/app';
 
-import { DB, Post, DocumentReference, CollectionReference } from './types';
+import { DB, Post, DocumentReference, CollectionReference } from './model';
 
 class Database {
   private readonly database: DB;

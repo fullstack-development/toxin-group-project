@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { Form } from 'react-final-form';
 import { useTranslation } from 'react-i18next';
 import { animateScroll as scroll } from 'react-scroll';
@@ -9,24 +9,24 @@ import {
   Amenities,
   Filters,
   Opportunities,
-} from 'services/api/entities/types';
+} from 'services/api/entities/model';
 import { CheckboxesList, Dropdown, TimePicker } from 'shared/view/components';
 import {
   checkboxesListData,
   expandableCheckboxesListData,
   richCheckboxesListData,
-} from 'shared/view/components/CheckboxesList/CheckboxesList.data';
-import { Option } from 'shared/view/components/CheckboxesList/CheckboxesList.types';
+} from 'shared/view/components/CheckboxesList/CheckboxesList.fixture';
+import { Option } from 'shared/view/components/CheckboxesList/CheckboxesList.model';
 import {
   guestsGroups,
   guestsItems,
   amenitiesItems,
-} from 'shared/view/components/Dropdown/Dropdown.data';
-import { Item } from 'shared/view/components/Dropdown/Dropdown.types';
+} from 'shared/view/components/Dropdown/Dropdown.fixture';
+import { Item } from 'shared/view/components/Dropdown/Dropdown.model';
 import { Expander, Slider } from 'shared/view/elements';
 
+import { OptionName, Props } from './RoomFilter.model';
 import * as S from './RoomFilter.styles';
-import { OptionName, Props } from './RoomFilter.types';
 
 const getDropdownProps = (defaultProps: Item[], updatedProps: Amenities) => {
   return defaultProps.map((item) => ({
@@ -50,7 +50,7 @@ const getCheckboxProps = (
   }));
 };
 
-const RoomFilter: React.FC<Props> = ({ initialFilters, loadRooms, isPending = false }: Props) => {
+const RoomFilter = memo(({ initialFilters, loadRooms, isPending = false }: Props) => {
   const handleFormSubmit = (values?: Filters) => {
     loadRooms(values);
     scroll.scrollToTop();
@@ -148,6 +148,6 @@ const RoomFilter: React.FC<Props> = ({ initialFilters, loadRooms, isPending = fa
       }}
     />
   );
-};
+});
 
 export default RoomFilter;

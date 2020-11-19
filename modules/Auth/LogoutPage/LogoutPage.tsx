@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { logout, preloadAuthData } from 'redux/Auth/redux/actions';
-import { AppState } from 'redux/store.types';
+import { AppState } from 'redux/store.model';
 
 type StateProps = {
   isAuthSuccess: boolean;
@@ -20,24 +20,22 @@ const mapDispatch = {
 
 type Props = StateProps & typeof mapDispatch;
 
-const LogoutPage: React.FC<Props> = ({
-  isAuthSuccess,
-  checkAuthBeforePageLoaded,
-  startLogoutProcess,
-}: Props): JSX.Element => {
-  const router = useRouter();
+const LogoutPage = memo(
+  ({ isAuthSuccess, checkAuthBeforePageLoaded, startLogoutProcess }: Props) => {
+    const router = useRouter();
 
-  useEffect(() => {
-    checkAuthBeforePageLoaded();
+    useEffect(() => {
+      checkAuthBeforePageLoaded();
 
-    if (typeof isAuthSuccess === 'boolean') {
-      if (isAuthSuccess) startLogoutProcess();
-      else document.referrer ? router.back() : router.push('/');
-    }
-  });
+      if (typeof isAuthSuccess === 'boolean') {
+        if (isAuthSuccess) startLogoutProcess();
+        else document.referrer ? router.back() : router.push('/');
+      }
+    });
 
-  return null;
-};
+    return null;
+  },
+);
 
 const ConnectedComponent = connect(mapState, mapDispatch)(LogoutPage);
 export { ConnectedComponent as LogoutPage };

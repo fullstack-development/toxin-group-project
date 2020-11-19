@@ -1,18 +1,13 @@
 import CloseIcon from '@material-ui/icons/Close';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import Link from 'next/link';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { NavMenuLink, NavSubMenu } from '../NavMenu.types';
+import { NavMenuLink, NavSubMenu } from '../NavMenu.model';
 import * as S from './NavLink.styles';
 
-const NavLink: React.FC<NavMenuLink> = ({
-  isActive,
-  name,
-  path,
-  subMenu,
-}: NavMenuLink): JSX.Element => {
+const NavLink = memo(({ isActive, name, path, subMenu }: NavMenuLink) => {
   const LinkMenuRef = useRef(null);
   const [isShownSubMenu, setSubMenuShownStatus] = useState(false);
   const expandSubMenu = () => setSubMenuShownStatus(true);
@@ -59,6 +54,6 @@ const NavLink: React.FC<NavMenuLink> = ({
       )}
     </S.NavLink>
   );
-};
+});
 
 export default NavLink;

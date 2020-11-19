@@ -1,26 +1,33 @@
 import { SagaIterator } from 'redux-saga';
-import { call, ForkEffect, put, takeLeading } from 'redux-saga/effects';
+import { call, put } from 'redux-saga/effects';
 
-import api from 'services/api/api';
+import { takeLeadingAction } from 'redux/action.model';
+import { Dependencies } from 'redux/api.model';
 
-import { Action, GetSubscriptionDataRequest, SubscriptionUpdateRequest } from '../../model';
+import {
+  SubscriptionData,
+  GetSubscriptionDataRequest,
+  SubscriptionUpdateRequest,
+} from '../../model';
+import {
+  getSubscriptionDataFailed,
+  getSubscriptionDataSuccess,
+  subscriptionUpdateFailed,
+  subscriptionUpdateSuccess,
+} from '../actions';
 
-function* getSubscriptionsData({ payload: email }: GetSubscriptionDataRequest) {
+function* getSubscriptionsData({ api }: Dependencies, { payload }: GetSubscriptionDataRequest) {
   try {
-    const subscriptionData = yield call(api.subscriptions.load, email);
+    const subscriptionData: SubscriptionData = yield call(api.subscriptions.load, payload);
 
-    yield put({
-      type: 'GET_SUBSCRIPTION_DATA_SUCCESS',
-      payload: subscriptionData,
-    });
+    yield put(getSubscriptionDataSuccess(subscriptionData));
   } catch (err) {
-    yield put({
-      type: 'GET_SUBSCRIPTION_DATA_FAILED',
-    });
+    yield put(getSubscriptionDataFailed());
   }
 }
 
-function* subscriptionUpdate({ payload: { email, subscriptions } }: SubscriptionUpdateRequest) {
+function* subscriptionUpdate({ api }: Dependencies, { payload }: SubscriptionUpdateRequest) {
+  const { email, subscriptions } = payload;
   try {
     const isDocument = yield call(api.subscriptions.load, email);
     if (isDocument) {
@@ -30,34 +37,26 @@ function* subscriptionUpdate({ payload: { email, subscriptions } }: Subscription
     }
 
     const userAuthInfo = yield call(api.auth.fetchSignInMethodsForEmail, email);
+    const statusText = userAuthInfo.length
+      ? 'Notification settings changed'
+      : 'You have successfully subscribed to the special offers';
 
-    yield put({
-      type: 'SUBSCRIPTION_UPDATE_SUCCESS',
-      payload: userAuthInfo.length
-        ? 'Настройки уведомлений изменены'
-        : 'Вы успешно подписаны на рассылку спецпредложений',
-    });
+    yield put(subscriptionUpdateSuccess(statusText));
   } catch (err) {
-    yield put({
-      type: 'SUBSCRIPTION_UPDATE_FAILED',
-      payload: 'Произошла ошибка повторите попытку позже',
-    });
+    yield put(subscriptionUpdateFailed('An error occured, please try again later'));
   }
 }
-// TODO Вынести в отдельный файл, так как предполгается неоднократное использование
-const takeLeadingAction = <T extends string>(
-  type: T,
-  worker: (action: Action<T>) => unknown,
-): ForkEffect<unknown> => takeLeading(type, worker);
 
-function* rootSaga(): SagaIterator {
+function* rootSaga(deps: Dependencies): SagaIterator {
   yield takeLeadingAction<GetSubscriptionDataRequest['type']>(
     'GET_SUBSCRIPTION_DATA_PROCESS',
     getSubscriptionsData,
+    deps,
   );
   yield takeLeadingAction<SubscriptionUpdateRequest['type']>(
     'SUBSCRIPTION_UPDATE_PROCESS',
     subscriptionUpdate,
+    deps,
   );
 }
 
