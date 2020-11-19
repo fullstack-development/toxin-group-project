@@ -8,8 +8,8 @@ import {
 } from '../Firebase/modules/Authentication';
 import { Database, CollectionReference } from '../Firebase/modules/Database';
 import apiErrors from './errors/apiErrors';
-import AuthError from './errors/AuthError';
-import { ProfileData, AdditionalUserInformation } from './types';
+import { AuthError } from './errors/AuthError';
+import { ProfileData, AdditionalUserInformation } from './model';
 
 class Auth {
   private readonly actions: Authentication;
@@ -164,4 +164,4 @@ class Auth {
   }
 }
 
-export default Auth;
+export { Auth };

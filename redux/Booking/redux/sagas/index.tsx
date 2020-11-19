@@ -9,7 +9,7 @@ import {
   BookedHistoryList,
   BookCurrentRoom,
 } from 'redux/Booking/model';
-import { Apartment, BookingData } from 'services/api/entities/types';
+import { Apartment, BookingData } from 'services/api/entities/model';
 
 import { pendingStatusUpdate, setFailedStatus, setRooms, updateBookedHistory } from '../actions';
 

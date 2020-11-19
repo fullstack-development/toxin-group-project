@@ -3,7 +3,7 @@ import { call, put } from 'redux-saga/effects';
 
 import { takeLeadingAction } from 'redux/action.model';
 import { Dependencies } from 'redux/api.model';
-import { Apartment } from 'services/api/entities/types';
+import { Apartment } from 'services/api/entities/model';
 
 import { GetRoomDetailsRequest } from '../../model';
 import { getRoomDetailsFailed, getRoomDetailsSuccess } from '../actions';

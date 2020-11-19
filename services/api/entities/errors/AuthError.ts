@@ -1,4 +1,4 @@
-import ErrorsConstructor from './ErrorsConstructor';
+import { ErrorsConstructor } from './ErrorsConstructor';
 
 type AuthErrorTypes = {
   key?: string;
@@ -11,4 +11,4 @@ class AuthError extends ErrorsConstructor {
   }
 }
 
-export default AuthError;
+export { AuthError };

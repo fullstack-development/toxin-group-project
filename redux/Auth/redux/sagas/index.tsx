@@ -3,7 +3,7 @@ import { put, call } from 'redux-saga/effects';
 
 import { takeLatestAction, takeLeadingAction } from 'redux/action.model';
 import { Dependencies } from 'redux/api.model';
-import { User, UserCredential } from 'services/api/Firebase/modules/Authentication/types';
+import { User, UserCredential } from 'services/api/Firebase/modules/Authentication';
 
 import {
   RequestToAuth,
