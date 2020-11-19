@@ -146,7 +146,7 @@ const OrderForm = memo(
     };
 
     useEffect(() => {
-      if (isSuccess) router.push('/selected-rooms');
+      if (isSuccess) router.push('/profile/selected-rooms');
     }, [isSuccess, router]);
 
     return (
