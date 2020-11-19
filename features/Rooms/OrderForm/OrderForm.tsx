@@ -136,7 +136,7 @@ const OrderForm = memo(
     const router = useRouter();
 
     const handleFormSubmit = (values: FormData) => {
-      if (!isAuthSuccess) router.push('/auth');
+      if (!isAuthSuccess) router.push('/auth/login');
 
       confirmBookedRoom({
         ...values,
