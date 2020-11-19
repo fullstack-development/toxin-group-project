@@ -15,7 +15,7 @@ const HeaderUserProfile = memo(({ displayName }: Props) => {
   const ProfileLink = [
     {
       name: displayName,
-      path: '/account-settings',
+      path: '/profile',
       subMenu: [
         { name: t('HeaderProfile:To profile'), path: '/profile' },
         { name: t('HeaderProfile:Logout'), path: '/auth/logout' },

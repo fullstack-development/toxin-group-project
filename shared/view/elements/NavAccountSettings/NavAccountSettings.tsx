@@ -14,7 +14,7 @@ const NavAccountSettings = memo(({ title }: Props) => {
 
   return (
     <S.NavAccountSettings>
-      <Link href="/account-settings" passHref>
+      <Link href="/profile" passHref>
         <S.Link>{t('Account')}</S.Link>
       </Link>
       <NavigateNextIcon />
