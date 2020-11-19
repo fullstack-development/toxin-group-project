@@ -1,5 +1,5 @@
 import { Apartment } from 'services/api/entities/types';
-import { ApartmentWithTransformedDate } from 'shared/types';
+import { Apartment } from 'shared/types';
 
 import {
   GET_ROOM_DETAILS_PROCESS,
@@ -14,7 +14,7 @@ type Action<Z, T> = {
 
 type ApartmentState = {
   isGetRoomDetailsPending: boolean;
-  roomDetails: ApartmentWithTransformedDate | null;
+  roomDetails: Apartment | null;
 };
 
 type GetRoomDetailsRequest = Action<typeof GET_ROOM_DETAILS_PROCESS, number>;

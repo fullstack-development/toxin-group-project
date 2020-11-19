@@ -13,14 +13,14 @@ import { getRoomDetails as getRoomDetailsRequest } from 'redux/Apartment/redux/a
 import { preloadAuthData } from 'redux/Auth/redux/actions';
 import { bookRoom } from 'redux/Booking/redux/actions';
 import { AppState } from 'redux/store.types';
-import { ApartmentWithTransformedDate } from 'shared/types';
+import { Apartment } from 'shared/types';
 
 import { roomImagesPreview, benefitsData, rulesData } from './MainContent.data';
 import * as S from './MainContent.styles';
 
 type StateProps = {
   isPending: boolean;
-  roomDetails: ApartmentWithTransformedDate;
+  roomDetails: Apartment;
   isAuthSuccess: boolean;
   userEmail: string;
 };
