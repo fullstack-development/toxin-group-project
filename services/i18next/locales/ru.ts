@@ -50,8 +50,13 @@ export const ru = {
   },
   OrderForm: {
     'How many guests': 'Сколько гостей',
+    'Service fee discount': 'Сбор за услуги: скидка',
+    'Additional service fee': 'Сбор за дополнительные услуги',
     'Book now': 'Забронировать',
+    'Fee for guests from the second': 'Плата за гостей со второго',
+    'Payment for an additional guest': 'Оплата дополнительного гостя',
     'Please select a booking date': 'Пожалуйста, выберите дату бронирования',
+    'Please indicate the number of guests': 'Пожалуйста, укажите количество гостей',
   },
   CheckboxesList: {
     'Smoking is allowed': 'Можно курить',
@@ -98,6 +103,9 @@ export const ru = {
     Vote: 'Голос',
     Votes: 'Голосов',
     VotesSecondary: 'Голоса',
+    day: 'день',
+    days: 'дня',
+    daysSecondary: 'дней',
   },
   Footer: {
     Subscription: 'Подписка',
@@ -205,10 +213,6 @@ export const ru = {
   },
   translations: {
     Ago: 'Назад',
-  },
-  OrderFormPrices: {
-    'Service fee_discount': 'Сбор за услуги: скидка',
-    'Additional service fee': 'Сбор за дополнительные услуги',
   },
   AccountSettings: {
     Account: 'Аккаунт',

@@ -122,21 +122,15 @@ const OrderForm = memo(
     confirmBookedRoom,
     cancelBooking,
   }: Props) => {
-    const { t } = useTranslation([
-      'OrderForm',
-      'WordForms',
-      'SearchRoomForm',
-      'Shared',
-      'OrderFormPrices',
-    ]);
+    const { t } = useTranslation(['OrderForm', 'WordForms', 'SearchRoomForm', 'Shared']);
 
     const defaultPrices: PriceItem[] = [
       {
-        label: `${t(`OrderFormPrices:Service fee_discount`)} 2${'\u00A0'}179₽`,
+        label: `${t('Service fee discount')} 2${'\u00A0'}179₽`,
         price: -2179,
         tooltip: 'Подсказка Подсказка Подсказка Подсказка 2',
       },
-      { label: t('OrderFormPrices:Additional service fee'), price: 300, tooltip: 'Подсказка 2' },
+      { label: t('Additional service fee'), price: 300, tooltip: 'Подсказка 2' },
     ];
 
     const router = useRouter();
@@ -175,7 +169,9 @@ const OrderForm = memo(
 
               const prices = [
                 {
-                  label: `${formatNumber(roomPrice, currency)} х ${daysDifference + t('days')}`,
+                  label: `${formatNumber(roomPrice, currency)} х ${daysDifference}  ${t(
+                    'WordForms:days',
+                  )}`,
                   price: roomPrice * daysDifference,
                 },
                 {
