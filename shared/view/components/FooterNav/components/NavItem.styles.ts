@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 
+import { breakpointDown } from 'shared/styles/break-points';
 import { titles } from 'shared/styles/mixins';
 
 const Title = styled.h3`
@@ -34,6 +35,12 @@ const Link = styled.a`
 const Container = styled.div`
   &:not(:last-child) {
     margin-right: 1.4286rem;
+  }
+
+  @media ${breakpointDown('md')} {
+    &:not(:last-child) {
+      margin-right: 0;
+    }
   }
 `;
 
