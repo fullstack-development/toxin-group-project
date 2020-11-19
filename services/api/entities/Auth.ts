@@ -60,7 +60,7 @@ class Auth {
     await this.addAdditionalUserInformation(user.uid, { gender, birthDate });
 
     const actionCodeSettings = {
-      url: 'https://fsd-toxin.netlify.app/',
+      url: 'https://fsd-toxin.netlify.app',
     };
 
     user.sendEmailVerification(actionCodeSettings);
@@ -103,7 +103,7 @@ class Auth {
 
     try {
       const actionCodeSettings = {
-        url: 'https://fsd-toxin.netlify.app/auth/',
+        url: 'hhttps://fsd-toxin.netlify.app/auth/login',
       };
 
       resetPassword = await this.actions.resetPassword(email, actionCodeSettings);

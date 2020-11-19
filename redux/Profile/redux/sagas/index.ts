@@ -36,7 +36,7 @@ function* emailUpdate(_: Dependencies, { payload }: EmailUpdateRequest) {
     yield user.updateEmail(email);
 
     const actionCodeSettings = {
-      url: 'https://fsd-toxin.netlify.app/',
+      url: 'https://fsd-toxin.netlify.app',
     };
     yield user.sendEmailVerification(actionCodeSettings);
 
