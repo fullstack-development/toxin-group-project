@@ -77,4 +77,4 @@ class Authentication {
   }
 }
 
-export default Authentication;
+export { Authentication };
