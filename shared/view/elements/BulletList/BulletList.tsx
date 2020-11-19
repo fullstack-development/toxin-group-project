@@ -15,5 +15,5 @@ const BulletList = memo(({ items = ['No items passed'], t }: Props) => (
   </S.List>
 ));
 
-const TranslatedComponent = withTranslation('Benefits')(BulletList);
+const TranslatedComponent = withTranslation('Bullets')(BulletList);
 export { TranslatedComponent as BulletList };
