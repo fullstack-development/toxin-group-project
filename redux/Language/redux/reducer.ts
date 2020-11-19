@@ -1,4 +1,4 @@
-import i18next from 'services/i18next';
+import { i18next } from 'services/i18next';
 
 import { LanguageState, LanguageActions } from '../model';
 

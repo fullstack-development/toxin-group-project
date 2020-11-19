@@ -13,4 +13,4 @@ const formatLanguage = (language: string): FormattedLanguage => {
   }
 };
 
-export default formatLanguage;
+export { formatLanguage };

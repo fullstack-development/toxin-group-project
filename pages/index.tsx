@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import IndexPage from 'components/IndexPage/IndexPage';
+import { IndexPage } from 'modules/IndexPage/IndexPage';
 
 const Index = memo(() => {
   const { t } = useTranslation('IndexPage');
