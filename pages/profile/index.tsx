@@ -1,8 +1,9 @@
 import Head from 'next/head';
+import { memo } from 'react';
 
 import { ProfilePage } from 'modules/Profile';
 
-const Profile = (): JSX.Element => (
+const Profile = memo(() => (
   <>
     <Head>
       <title>Toxin | Настройки аккаунта</title>
@@ -11,6 +12,6 @@ const Profile = (): JSX.Element => (
     </Head>
     <ProfilePage />
   </>
-);
+));
 
 export default Profile;

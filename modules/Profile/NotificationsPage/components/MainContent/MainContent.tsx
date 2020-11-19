@@ -1,10 +1,11 @@
-import { useCallback, useEffect } from 'react';
+import { memo, useCallback, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
-import { AppState } from 'redux/store.types';
+import { AppState } from 'redux/store.model';
 import { getSubscriptionData as getSubscriptionDataRequest } from 'redux/Subscriptions/redux/actions';
-import { SubscriptionData } from 'services/api/entities/types';
-import { User } from 'services/api/Firebase/modules/Authentication/types';
+import { SubscriptionData } from 'services/api/entities/model';
+import { User } from 'services/api/Firebase/modules/Authentication/model';
 import { NavAccountSettings } from 'shared/view/elements';
 
 import { Subscriptions } from '../Subscriptions/Subscriptions';
@@ -26,7 +27,7 @@ const mapDispatch = {
 
 type Props = StateProps & typeof mapDispatch;
 
-const MainContent = ({ user, subscriptionData, loadSubscriptionData }: Props): JSX.Element => {
+const MainContent = memo(({ user, subscriptionData, loadSubscriptionData }: Props) => {
   const getSubscriptionData = useCallback(
     (currentUser) => {
       if (currentUser) loadSubscriptionData(currentUser.email);
@@ -38,17 +39,19 @@ const MainContent = ({ user, subscriptionData, loadSubscriptionData }: Props): J
     getSubscriptionData(user);
   }, [getSubscriptionData, user]);
 
+  const { t } = useTranslation('AccountSettings');
+
   return (
     <S.MainContent>
-      <NavAccountSettings title="Уведомления" />
-      <S.Title>Уведомления</S.Title>
+      <NavAccountSettings title={t('Notifications')} />
+      <S.Title>{t('Notifications')}</S.Title>
       <Subscriptions
         email={user ? user.email : null}
-        hashasSpecialOffers={subscriptionData ? subscriptionData.hasSpecialOffers : false}
+        hasSpecialOffers={subscriptionData ? subscriptionData.hasSpecialOffers : false}
       />
     </S.MainContent>
   );
-};
+});
 
 const ConnectedComponent = connect(mapState, mapDispatch)(MainContent);
 export { ConnectedComponent as MainContent };

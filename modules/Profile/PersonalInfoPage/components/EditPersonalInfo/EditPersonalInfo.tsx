@@ -1,4 +1,7 @@
-import { User } from 'services/api/Firebase/modules/Authentication/types';
+import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
+
+import { User } from 'services/api/Firebase/modules/Authentication';
 import { TextButton } from 'shared/view/elements';
 
 import { EditBirthday } from './components/EditBirthday/EditBirthday';
@@ -17,48 +20,39 @@ type Props = {
   description?: string;
 };
 
-const EditPersonalInfo = ({
-  user,
-  title,
-  component,
-  currentEditing,
-  onEditButtonClick,
-  value,
-  description,
-}: Props): JSX.Element => {
-  const mapEditingComponents = {
-    displayName: <EditDisplayName user={user} displayName={value} />,
-    gender: <EditGender user={user} gender={value} />,
-    birthday: <EditBirthday user={user} birthday={value} />,
-    email: <EditEmail user={user} email={value} />,
-  };
+const EditPersonalInfo = memo(
+  ({ user, title, component, currentEditing, onEditButtonClick, value, description }: Props) => {
+    const mapEditingComponents = {
+      displayName: <EditDisplayName user={user} displayName={value} onChange={onEditButtonClick} />,
+      gender: <EditGender user={user} gender={value} onChange={onEditButtonClick} />,
+      birthday: <EditBirthday user={user} birthday={value} onChange={onEditButtonClick} />,
+      email: <EditEmail user={user} email={value} onChange={onEditButtonClick} />,
+    };
 
-  const isEdit = currentEditing === title;
-  const isButtonDisabled = currentEditing ? !isEdit : false;
+    const { t } = useTranslation('PersonalInfo');
 
-  return (
-    <>
-      <S.Header>
-        <S.Title>{title}</S.Title>
-        <TextButton
-          type="button"
-          disabled={isButtonDisabled}
-          onClick={() => onEditButtonClick(title)}
-        >
-          {isEdit ? 'Отменить' : 'Редактировать'}
-        </TextButton>
-      </S.Header>
-      <S.Content>
-        <S.Description>{isEdit ? description : value}</S.Description>
-        {isEdit && mapEditingComponents[component]}
-      </S.Content>
-    </>
-  );
-};
+    const isEdit = currentEditing === title;
+    const isButtonDisabled = currentEditing ? !isEdit : false;
 
-EditPersonalInfo.defaultProps = {
-  value: '',
-  description: '',
-};
+    return (
+      <>
+        <S.Header>
+          <S.Title>{t(title)}</S.Title>
+          <TextButton
+            type="button"
+            disabled={isButtonDisabled}
+            onClick={() => onEditButtonClick(title)}
+          >
+            {isEdit ? t('Cancel') : t('Edit')}
+          </TextButton>
+        </S.Header>
+        <S.Content>
+          <S.Description>{isEdit ? t(description) : t(value)}</S.Description>
+          {isEdit && mapEditingComponents[component]}
+        </S.Content>
+      </>
+    );
+  },
+);
 
 export { EditPersonalInfo };

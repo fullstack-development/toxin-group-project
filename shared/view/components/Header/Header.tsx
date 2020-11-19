@@ -1,10 +1,10 @@
 import CircularProgress from '@material-ui/core/CircularProgress';
 import MenuIcon from '@material-ui/icons/Menu';
 import MenuOpenIcon from '@material-ui/icons/MenuOpen';
-import { useState } from 'react';
+import { memo, useState } from 'react';
 
 import { NavMenu } from 'shared/view/components';
-import { NavLinks } from 'shared/view/components/NavMenu/NavMenu.data';
+import { NavLinks } from 'shared/view/components/NavMenu/NavMenu.fixture';
 
 import { HeaderUserLogin } from './components/HeaderUserLogin/HeaderUserLogin';
 import { HeaderUserProfile } from './components/HeaderUserProfile/HeaderUserProfile';
@@ -16,7 +16,7 @@ export type Props = {
   wasFinishedAuthChecking: boolean;
 };
 
-const Header: React.FC<Props> = ({ displayName, wasFinishedAuthChecking }: Props): JSX.Element => {
+const Header = memo(({ displayName, wasFinishedAuthChecking }: Props) => {
   const [isOpenMobileMenu, setMobileMenuStatus] = useState(false);
 
   const changeOpenMenuStatus = () => setMobileMenuStatus(!isOpenMobileMenu);
@@ -42,6 +42,6 @@ const Header: React.FC<Props> = ({ displayName, wasFinishedAuthChecking }: Props
       </S.MobileMenu>
     </S.Header>
   );
-};
+});
 
 export { Header };

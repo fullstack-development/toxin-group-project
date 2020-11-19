@@ -1,23 +1,18 @@
+import { ChangeEvent, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import * as S from './Checkbox.styles';
 
-type CheckboxProps = {
+type Props = {
   name: string;
   isChecked?: boolean;
   label: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   title?: string;
 };
 
-const Checkbox: React.FC<CheckboxProps> = ({
-  name,
-  isChecked,
-  label,
-  title,
-  onChange,
-}: CheckboxProps) => {
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+const Checkbox = memo(({ name, isChecked, label, title, onChange }: Props) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     onChange(e);
   };
 
@@ -38,6 +33,6 @@ const Checkbox: React.FC<CheckboxProps> = ({
       </S.Label>
     </S.Checkbox>
   );
-};
+});
 
 export { Checkbox };

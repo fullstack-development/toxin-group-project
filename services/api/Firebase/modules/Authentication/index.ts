@@ -1,2 +1,2 @@
 export * from './Authentication';
-export * from './types';
+export * from './model';

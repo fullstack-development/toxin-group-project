@@ -1,11 +1,11 @@
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { MainLayout } from 'features/shared/MainLayout/MainLayout';
 import { preloadAuthData } from 'redux/Auth/redux/actions';
-import { startRegistration, cancelRegistration } from 'redux/Registration/redux/actions';
-import { AppState } from 'redux/store.types';
+import { registration, cancelRegistration } from 'redux/Registration/redux/actions';
+import { AppState } from 'redux/store.model';
 
 import { MainContent } from './components/MainContent/MainContent';
 
@@ -26,48 +26,50 @@ const mapState = (state: AppState): StateProps => ({
 });
 
 const mapDispatch = {
-  requestRegistration: startRegistration,
+  requestRegistration: registration,
   stopRegistration: cancelRegistration,
   checkAuthBeforePageLoaded: preloadAuthData,
 };
 
 export type PropsConnected = StateProps & typeof mapDispatch;
 
-const SignupPage: React.FC<PropsConnected> = ({
-  isSuccess,
-  isProcess,
-  statusText,
-  wasFinishedAuthChecking,
-  isAuthSuccess,
-  requestRegistration,
-  stopRegistration,
-  checkAuthBeforePageLoaded,
-}: PropsConnected): JSX.Element => {
-  const router = useRouter();
+const SignupPage = memo(
+  ({
+    isSuccess,
+    isProcess,
+    statusText,
+    wasFinishedAuthChecking,
+    isAuthSuccess,
+    requestRegistration,
+    stopRegistration,
+    checkAuthBeforePageLoaded,
+  }: PropsConnected) => {
+    const router = useRouter();
 
-  useEffect(() => {
-    checkAuthBeforePageLoaded();
-    if (isAuthSuccess) {
-      document.referrer ? router.back() : router.push('/');
-    }
-  });
+    useEffect(() => {
+      checkAuthBeforePageLoaded();
+      if (isAuthSuccess) {
+        document.referrer ? router.back() : router.push('/auth/login');
+      }
+    });
 
-  const isAuthRequired: boolean = wasFinishedAuthChecking && !isAuthSuccess;
+    const isAuthRequired: boolean = wasFinishedAuthChecking && !isAuthSuccess;
 
-  return (
-    isAuthRequired && (
-      <MainLayout>
-        <MainContent
-          isSuccess={isSuccess}
-          isProcess={isProcess}
-          statusText={statusText}
-          requestRegistration={requestRegistration}
-          stopRegistration={stopRegistration}
-        />
-      </MainLayout>
-    )
-  );
-};
+    return (
+      isAuthRequired && (
+        <MainLayout>
+          <MainContent
+            isSuccess={isSuccess}
+            isProcess={isProcess}
+            statusText={statusText}
+            requestRegistration={requestRegistration}
+            stopRegistration={stopRegistration}
+          />
+        </MainLayout>
+      )
+    );
+  },
+);
 
 const ConnectedComponent = connect(mapState, mapDispatch)(SignupPage);
 export { ConnectedComponent as SignupPage };

@@ -1,5 +1,7 @@
+import { memo } from 'react';
+
 import { CardsPage } from 'modules/Guide';
 
-const Cards: React.FC = (): JSX.Element => <CardsPage />;
+const Cards = memo(() => <CardsPage />);
 
 export default Cards;

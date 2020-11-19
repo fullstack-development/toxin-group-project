@@ -1,2 +1,2 @@
 export * from './Firebase';
-export * from './types';
+export * from './model';

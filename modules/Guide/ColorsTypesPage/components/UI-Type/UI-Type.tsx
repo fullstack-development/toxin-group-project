@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import * as S from './UI-Type.styles';
 
 type Props = {
@@ -6,13 +8,13 @@ type Props = {
   fontSize: string;
 };
 
-const UIType: React.FC<Props> = ({ type, example, fontSize }: Props) => (
+const UIType = memo(({ type, example, fontSize }: Props) => (
   <S.Type>
     <S.Title titleFontSize={fontSize}>{type}</S.Title>
     <S.Example exampleFontSize={fontSize} exampleType={type}>
       {example}
     </S.Example>
   </S.Type>
-);
+));
 
 export { UIType };

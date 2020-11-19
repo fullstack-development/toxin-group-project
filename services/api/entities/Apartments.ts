@@ -1,7 +1,7 @@
 import { boundMethod } from 'autobind-decorator';
 
 import { Database, CollectionReference } from '../Firebase/modules/Database';
-import { Apartment } from './types';
+import { Apartment } from './model';
 
 class Apartments {
   private readonly actions: Database;

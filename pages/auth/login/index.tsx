@@ -1,8 +1,9 @@
 import Head from 'next/head';
+import { memo } from 'react';
 
 import { LoginPage } from 'modules/Auth';
 
-const Login: React.FC = (): JSX.Element => (
+const Login = memo(() => (
   <>
     <Head>
       <title>Toxin | Войти</title>
@@ -17,6 +18,6 @@ const Login: React.FC = (): JSX.Element => (
     </Head>
     <LoginPage />
   </>
-);
+));
 
 export default Login;

@@ -1,4 +1,4 @@
-import { WordForms } from '../Dropdown.types';
+import { WordForms } from '../Dropdown.model';
 import { getCorrectWordForm } from './getCorrectWord';
 
 function getResultStringPart(count: number, wordForms: WordForms): string {

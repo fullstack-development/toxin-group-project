@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { UIType } from '../UI-Type/UI-Type';
@@ -13,7 +14,7 @@ type Props = {
   types: Array<Type>;
 };
 
-const UITypesList: React.FC<Props> = ({ types }: Props) => {
+const UITypesList = memo(({ types }: Props) => {
   const { t } = useTranslation('Ui-TypesList');
 
   return (
@@ -28,6 +29,6 @@ const UITypesList: React.FC<Props> = ({ types }: Props) => {
       </S.List>
     </section>
   );
-};
+});
 
 export { UITypesList };

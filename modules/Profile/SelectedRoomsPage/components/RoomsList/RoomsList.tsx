@@ -1,4 +1,6 @@
-import { BookedRoom } from 'services/api/entities/types';
+import { memo } from 'react';
+
+import { BookedRoom } from 'services/api/entities/model';
 import { Room } from 'shared/view/components';
 
 import * as S from './RoomsList.style';
@@ -7,7 +9,7 @@ type Props = {
   rooms: BookedRoom[];
 };
 
-const RoomsList: React.FC<Props> = ({ rooms }: Props): JSX.Element => {
+const RoomsList = memo(({ rooms }: Props) => {
   return (
     <S.Container>
       {rooms &&
@@ -29,6 +31,6 @@ const RoomsList: React.FC<Props> = ({ rooms }: Props): JSX.Element => {
         })}
     </S.Container>
   );
-};
+});
 
 export { RoomsList };

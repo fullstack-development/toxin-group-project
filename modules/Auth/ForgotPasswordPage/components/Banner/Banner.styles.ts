@@ -9,7 +9,7 @@ const Banner = styled.main`
   justify-content: center;
   align-items: center;
   min-height: 59.286rem;
-  background: url('./img/forgot-password-page-banner.jpg') bottom / cover no-repeat;
+  background: url('/img/forgot-password-page-banner.jpg') bottom / cover no-repeat;
 
   @media ${breakpointDown('lg')} {
     min-height: 48rem;

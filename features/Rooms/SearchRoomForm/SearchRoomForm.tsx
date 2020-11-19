@@ -1,22 +1,18 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import { Form } from 'react-final-form';
 import { useTranslation } from 'react-i18next';
 import ClipLoader from 'react-spinners/ClipLoader';
 
 import { Dropdown, TimePicker } from 'shared/view/components';
-import { guestsGroups, guestsItems } from 'shared/view/components/Dropdown/Dropdown.data';
+import { guestsGroups, guestsItems } from 'shared/view/components/Dropdown/Dropdown.fixture';
 import { ArrowButton } from 'shared/view/elements';
 
-import { defaultFilters } from './defaultFilters';
+import { defaultFilters } from './SearchRoomForm.fixture';
 import * as S from './SearchRoomForm.styles';
-
-type SearchRoomFormProps = {
-  onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
-};
 
 const defaultBookingDates = defaultFilters.booked;
 
-const SearchRoomForm: React.FC<SearchRoomFormProps> = ({ onSubmit }: SearchRoomFormProps) => {
+const SearchRoomForm = memo(() => {
   const [isFormSubmission, setFormSubmission] = useState(false);
 
   const handleFormSubmit = () => {
@@ -84,6 +80,6 @@ const SearchRoomForm: React.FC<SearchRoomFormProps> = ({ onSubmit }: SearchRoomF
       />
     </S.SearchRoomForm>
   );
-};
+});
 
 export { SearchRoomForm };

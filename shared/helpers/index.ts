@@ -1,4 +1,2 @@
-export * from './getType';
-export * from './matchObjects';
-export * from './formatNumber';
-export * from './isObject';
+export * from './formatLanguage';
+export * from './getNounInDeclension';

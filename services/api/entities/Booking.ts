@@ -1,11 +1,11 @@
 import { boundMethod } from 'autobind-decorator';
 import { nanoid } from 'nanoid';
 
-import { defaultFilters } from 'features/Rooms/SearchRoomForm/defaultFilters';
-import { matchObjects } from 'shared/helpers';
+import { defaultFilters } from 'features/Rooms/SearchRoomForm/SearchRoomForm.fixture';
+import { matchObjects } from 'utils/object.utils';
 
 import { Database, CollectionReference, QuerySnapshot } from '../Firebase/modules/Database';
-import { BookingData, Apartment, Filters, BookedRoom, BookedRoomsHistory } from './types';
+import { BookingData, Apartment, Filters, BookedRoom, BookedRoomsHistory } from './model';
 
 class Booking {
   private readonly actions: Database;

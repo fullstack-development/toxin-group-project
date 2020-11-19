@@ -1,8 +1,9 @@
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import * as S from './HeaderUserLogin.styles';
 
-const HeaderUserLogin: React.FC = (): JSX.Element => {
+const HeaderUserLogin = memo(() => {
   const { t } = useTranslation(['Buttons', 'Shared']);
 
   return (
@@ -15,6 +16,6 @@ const HeaderUserLogin: React.FC = (): JSX.Element => {
       </S.HeaderLoginButton>
     </S.HeaderUserLogin>
   );
-};
+});
 
 export { HeaderUserLogin };

@@ -1,9 +1,9 @@
-import { TFunction } from 'i18next';
+import { memo } from 'react';
 import { withTranslation, WithTranslation } from 'react-i18next';
 
 import * as S from './Benefits.style';
 
-type Props = {
+type Props = WithTranslation & {
   items: Array<
     {
       term: string;
@@ -11,13 +11,9 @@ type Props = {
       icon: string;
     } & S.Icon
   >;
-  t: TFunction;
 };
 
-const Benefits: React.ComponentType<WithTranslation & Props> = ({
-  items,
-  t,
-}: Props): JSX.Element => (
+const Benefits = memo(({ items, t }: Props) => (
   <S.Benefits>
     {items.map(({ term, icon, definition }) => (
       <S.Item key={term}>
@@ -29,7 +25,7 @@ const Benefits: React.ComponentType<WithTranslation & Props> = ({
       </S.Item>
     ))}
   </S.Benefits>
-);
+));
 
 const TranslatedComponent = withTranslation('Benefits')(Benefits);
 export { TranslatedComponent as Benefits };

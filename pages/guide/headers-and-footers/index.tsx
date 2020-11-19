@@ -1,5 +1,7 @@
+import { memo } from 'react';
+
 import { HeadersAndFootersPage } from 'modules/Guide';
 
-const HeadersAndFooters: React.FC = (): JSX.Element => <HeadersAndFootersPage />;
+const HeadersAndFooters = memo(() => <HeadersAndFootersPage />);
 
 export default HeadersAndFooters;

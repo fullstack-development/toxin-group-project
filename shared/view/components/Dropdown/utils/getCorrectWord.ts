@@ -1,4 +1,4 @@
-import { WordForms } from '../Dropdown.types';
+import { WordForms } from '../Dropdown.model';
 
 function getCorrectWordForm(count: number, wordForms: WordForms): string {
   const num = Math.abs(count) % 100;

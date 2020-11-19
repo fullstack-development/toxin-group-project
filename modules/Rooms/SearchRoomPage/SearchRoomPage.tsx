@@ -1,20 +1,20 @@
 import { useRouter } from 'next/router';
-import { useState, Fragment } from 'react';
+import { useState, Fragment, FormEvent, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
 import { RoomFilter } from 'features/Rooms/RoomFilter/RoomFilter';
-import { defaultFilters } from 'features/Rooms/SearchRoomForm/defaultFilters';
+import { defaultFilters } from 'features/Rooms/SearchRoomForm/SearchRoomForm.fixture';
 import { MainLayout } from 'features/shared/MainLayout/MainLayout';
 import { requestRooms } from 'redux/Booking/redux/actions';
-import { AppState } from 'redux/store.types';
-import { Filters } from 'services/api/entities/types';
+import { AppState } from 'redux/store.model';
+import { Filters } from 'services/api/entities/model';
 import { Rooms } from 'shared/view/components';
-import { RoomProps } from 'shared/view/components/Room/Room.types';
+import { RoomProps } from 'shared/view/components/Room/Room.model';
 import { Preloader } from 'shared/view/elements';
 
+import { SortOrder, SortData, SortParam } from './SearchRoomPage.model';
 import * as S from './SearchRoomPage.styles';
-import { SortOrder, SortData, SortParam } from './SearchRoomPage.types';
 import { getPassedFilters } from './utils/getPassedFilters';
 
 type StateProps = {
@@ -54,7 +54,7 @@ const sortData: SortData[] = [
 ];
 const [descKey, ascKey] = ['desc', 'asc'] as SortOrder[];
 
-const SearchRoomPage: React.FC<Props> = ({ rooms, getRooms, isPending }: Props) => {
+const SearchRoomPage = memo(({ rooms, getRooms, isPending }: Props) => {
   const router = useRouter();
 
   const { t } = useTranslation('SearchRoomPage');
@@ -81,7 +81,7 @@ const SearchRoomPage: React.FC<Props> = ({ rooms, getRooms, isPending }: Props) 
     sortData.find((obj) => obj.parameter === sortParam).sortFunction,
   );
 
-  const handleSelectChange = (e: React.FormEvent<HTMLSelectElement>) => {
+  const handleSelectChange = (e: FormEvent<HTMLSelectElement>) => {
     const target = e.target as HTMLSelectElement;
     const [param, sortOrder] = target.value.split(separator) as [SortParam, SortOrder];
     setSortParam(param);
@@ -136,7 +136,7 @@ const SearchRoomPage: React.FC<Props> = ({ rooms, getRooms, isPending }: Props) 
       </S.Container>
     </MainLayout>
   );
-};
+});
 
 const ConnectedComponent = connect(mapState, mapDispatch)(SearchRoomPage);
 export { ConnectedComponent as SearchRoomPage };

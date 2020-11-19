@@ -1,8 +1,10 @@
-import * as S from './DotButton.styles';
-import { DotButtonProps } from './DotButton.types';
+import { memo } from 'react';
 
-const DotButton: React.FC<DotButtonProps> = (props: DotButtonProps) => {
+import { DotButtonProps } from './DotButton.model';
+import * as S from './DotButton.styles';
+
+const DotButton = memo((props: DotButtonProps) => {
   return <S.DotButton {...props} type="button" />;
-};
+});
 
 export { DotButton };
