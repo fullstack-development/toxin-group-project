@@ -107,4 +107,5 @@ const EditGender = memo(
   },
 );
 
-export default connect(mapState, mapDispatch)(EditGender);
+const ConnectedComponent = connect(mapState, mapDispatch)(EditGender);
+export { ConnectedComponent as EditGender };

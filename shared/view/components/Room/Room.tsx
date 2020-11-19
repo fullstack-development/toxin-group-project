@@ -4,7 +4,7 @@ import { WithTranslation, withTranslation } from 'react-i18next';
 import { StarRating } from 'shared/view/elements';
 import { formatNumber } from 'utils/number.utils';
 
-import ImageGallery from './components/ImageGallery/ImageGallery';
+import { ImageGallery } from './components/ImageGallery/ImageGallery';
 import { RoomProps } from './Room.model';
 import * as S from './Room.styles';
 

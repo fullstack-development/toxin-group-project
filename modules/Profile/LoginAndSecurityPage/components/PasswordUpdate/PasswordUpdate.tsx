@@ -122,4 +122,5 @@ const PasswordUpdate = memo(
   },
 );
 
-export default connect(mapState, mapDispatch)(PasswordUpdate);
+const ConnectedComponent = connect(mapState, mapDispatch)(PasswordUpdate);
+export { ConnectedComponent as PasswordUpdate };

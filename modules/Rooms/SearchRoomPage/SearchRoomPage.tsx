@@ -3,9 +3,9 @@ import { useState, Fragment, FormEvent, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
-import RoomFilter from 'features/Rooms/RoomFilter/RoomFilter';
-import defaultFilters from 'features/Rooms/SearchRoomForm/SearchRoomForm.fixture';
-import MainLayout from 'features/shared/MainLayout/MainLayout';
+import { RoomFilter } from 'features/Rooms/RoomFilter/RoomFilter';
+import { defaultFilters } from 'features/Rooms/SearchRoomForm/SearchRoomForm.fixture';
+import { MainLayout } from 'features/shared/MainLayout/MainLayout';
 import { requestRooms } from 'redux/Booking/redux/actions';
 import { AppState } from 'redux/store.model';
 import { Filters } from 'services/api/entities/model';
@@ -15,7 +15,7 @@ import { Preloader } from 'shared/view/elements';
 
 import { SortOrder, SortData, SortParam } from './SearchRoomPage.model';
 import * as S from './SearchRoomPage.styles';
-import getPassedFilters from './utils/getPassedFilters';
+import { getPassedFilters } from './utils/getPassedFilters';
 
 type StateProps = {
   rooms: RoomProps[];

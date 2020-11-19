@@ -17,4 +17,5 @@ const Logo = memo(({ description, t }: Props) => (
   </S.Container>
 ));
 
-export default withTranslation()(Logo);
+const TranslatedComponent = withTranslation()(Logo);
+export { TranslatedComponent as Logo };

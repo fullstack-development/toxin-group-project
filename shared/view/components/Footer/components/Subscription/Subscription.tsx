@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { WithTranslation, withTranslation } from 'react-i18next';
 
-import SubscriptionField from 'features/Auth/SubscriptionField/SubscriptionField';
+import { SubscriptionField } from 'features/Auth/SubscriptionField/SubscriptionField';
 
 import { SubscriptionProps } from '../../Footer.model';
 import * as S from './Subscription.styles';
@@ -18,4 +18,5 @@ const Subscription = memo(({ title, text, t }: Props) => (
   </S.Container>
 ));
 
-export default withTranslation()(Subscription);
+const TranslatedComponent = withTranslation()(Subscription);
+export { TranslatedComponent as Subscription };

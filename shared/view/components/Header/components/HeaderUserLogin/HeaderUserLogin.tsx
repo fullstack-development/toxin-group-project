@@ -18,4 +18,4 @@ const HeaderUserLogin = memo(() => {
   );
 });
 
-export default HeaderUserLogin;
+export { HeaderUserLogin };

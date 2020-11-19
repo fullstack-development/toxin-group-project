@@ -1,6 +1,6 @@
 import { memo } from 'react';
 
-import RegistrationForm from 'features/Auth/RegistrationForm/RegistrationForm';
+import { RegistrationForm } from 'features/Auth/RegistrationForm/RegistrationForm';
 import { RegistrationFormProps } from 'features/Auth/RegistrationForm/RegistrationForm.model';
 
 import * as S from './MainContent.styles';
@@ -21,4 +21,4 @@ const MainContent = memo(
   ),
 );
 
-export default MainContent;
+export { MainContent };

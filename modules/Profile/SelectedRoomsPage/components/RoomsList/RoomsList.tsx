@@ -33,4 +33,4 @@ const RoomsList = memo(({ rooms }: Props) => {
   );
 });
 
-export default RoomsList;
+export { RoomsList };

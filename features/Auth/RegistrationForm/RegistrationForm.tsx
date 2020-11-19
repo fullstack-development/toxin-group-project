@@ -144,4 +144,4 @@ const RegistrationForm = memo(
   },
 );
 
-export default RegistrationForm;
+export { RegistrationForm };

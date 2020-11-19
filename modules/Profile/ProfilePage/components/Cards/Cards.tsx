@@ -21,4 +21,4 @@ const Cards = memo(() => {
   );
 });
 
-export default Cards;
+export { Cards };

@@ -6,9 +6,9 @@ import { memo, useState } from 'react';
 import { NavMenu } from 'shared/view/components';
 import { NavLinks } from 'shared/view/components/NavMenu/NavMenu.fixture';
 
-import HeaderUserLogin from './components/HeaderUserLogin/HeaderUserLogin';
-import HeaderUserProfile from './components/HeaderUserProfile/HeaderUserProfile';
-import LanguageDropdown from './components/LanguageDropdown/LanguageDropdown';
+import { HeaderUserLogin } from './components/HeaderUserLogin/HeaderUserLogin';
+import { HeaderUserProfile } from './components/HeaderUserProfile/HeaderUserProfile';
+import { LanguageDropdown } from './components/LanguageDropdown/LanguageDropdown';
 import * as S from './Header.styles';
 
 export type Props = {

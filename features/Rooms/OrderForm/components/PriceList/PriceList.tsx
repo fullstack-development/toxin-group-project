@@ -28,4 +28,4 @@ const PriceList = memo(({ items }: Props) => (
   </S.List>
 ));
 
-export default PriceList;
+export { PriceList };

@@ -1,6 +1,6 @@
 import { memo } from 'react';
 
-import NavLink from './components/NavLink';
+import { NavLink } from './components/NavLink';
 import { NavMain, NavMenuLink } from './NavMenu.model';
 import * as S from './NavMenu.styles';
 

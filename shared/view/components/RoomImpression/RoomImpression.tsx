@@ -1,10 +1,10 @@
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import getNounInDeclension from 'shared/helpers/getNounInDeclension';
+import { getNounInDeclension } from 'shared/helpers/getNounInDeclension';
 
-import Chart from './components/Chart/Chart';
-import ratingValues from './RoomImpression.fixture';
+import { Chart } from './components/Chart/Chart';
+import { ratingValues } from './RoomImpression.fixture';
 import * as S from './RoomImpression.styles';
 
 type Props = {

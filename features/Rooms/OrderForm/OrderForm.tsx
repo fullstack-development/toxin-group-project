@@ -9,8 +9,8 @@ import { DropdownProps } from 'shared/view/components/Dropdown/Dropdown.model';
 import { ArrowButton } from 'shared/view/elements';
 import { formatNumber } from 'utils/number.utils';
 
-import PriceList from './components/PriceList/PriceList';
-import { Item as PriceItem, MaxGuests } from './OrderForm.model';
+import { PriceList } from './components/PriceList/PriceList';
+import { PriceItem, MaxGuests } from './OrderForm.model';
 import * as S from './OrderForm.styles';
 
 type Props = {
@@ -216,4 +216,4 @@ const OrderForm = memo(
   },
 );
 
-export default OrderForm;
+export { OrderForm };

@@ -107,4 +107,5 @@ const EditBirthday = memo(
   },
 );
 
-export default connect(mapState, mapDispatch)(EditBirthday);
+const ConnectedComponent = connect(mapState, mapDispatch)(EditBirthday);
+export { ConnectedComponent as EditBirthday };

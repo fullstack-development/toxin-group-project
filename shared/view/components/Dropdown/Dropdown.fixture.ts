@@ -1,4 +1,4 @@
-import defaultFilters from 'features/Rooms/SearchRoomForm/SearchRoomForm.fixture';
+import { defaultFilters } from 'features/Rooms/SearchRoomForm/SearchRoomForm.fixture';
 
 import { Item, Group } from './Dropdown.model';
 

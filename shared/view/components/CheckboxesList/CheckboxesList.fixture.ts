@@ -1,4 +1,4 @@
-import defaultFilters from 'features/Rooms/SearchRoomForm/SearchRoomForm.fixture';
+import { defaultFilters } from 'features/Rooms/SearchRoomForm/SearchRoomForm.fixture';
 
 import { Option } from './CheckboxesList.model';
 

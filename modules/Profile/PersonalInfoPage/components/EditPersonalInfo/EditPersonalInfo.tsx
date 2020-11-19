@@ -4,10 +4,10 @@ import { useTranslation } from 'react-i18next';
 import { User } from 'services/api/Firebase/modules/Authentication';
 import { TextButton } from 'shared/view/elements';
 
-import EditBirthday from './components/EditBirthday/EditBirthday';
-import EditDisplayName from './components/EditDisplayName/EditDisplayName';
-import EditEmail from './components/EditEmail/EditEmail';
-import EditGender from './components/EditGender/EditGender';
+import { EditBirthday } from './components/EditBirthday/EditBirthday';
+import { EditDisplayName } from './components/EditDisplayName/EditDisplayName';
+import { EditEmail } from './components/EditEmail/EditEmail';
+import { EditGender } from './components/EditGender/EditGender';
 import * as S from './EditPersonalInfo.styles';
 
 type Props = {
@@ -55,4 +55,4 @@ const EditPersonalInfo = memo(
   },
 );
 
-export default EditPersonalInfo;
+export { EditPersonalInfo };

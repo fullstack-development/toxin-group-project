@@ -23,4 +23,4 @@ const NavBar = memo(({ onPreviousClick, onNextClick }: Props) => {
   );
 });
 
-export default NavBar;
+export { NavBar };

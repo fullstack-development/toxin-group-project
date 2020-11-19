@@ -3,7 +3,7 @@ import 'firebase/firestore';
 import 'firebase/auth';
 import 'firebase/storage';
 
-import config from './config';
+import { config } from './config';
 import { FirebaseApplication } from './model';
 import { Authentication } from './modules/Authentication';
 import { Database } from './modules/Database';
@@ -23,4 +23,4 @@ class Firebase {
   }
 }
 
-export default Firebase;
+export { Firebase };

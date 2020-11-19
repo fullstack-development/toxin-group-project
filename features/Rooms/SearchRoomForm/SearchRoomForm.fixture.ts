@@ -43,4 +43,4 @@ const defaultFilters: Filters = {
   },
 };
 
-export default defaultFilters;
+export { defaultFilters };

@@ -10,4 +10,5 @@ const Copyright = memo(({ copyrightText, t }: Props) => (
   <S.Copyright>{t(`Footer:${copyrightText}`)}</S.Copyright>
 ));
 
-export default withTranslation()(Copyright);
+const TranslatedComponent = withTranslation()(Copyright);
+export { TranslatedComponent as Copyright };

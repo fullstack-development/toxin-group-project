@@ -1,4 +1,4 @@
-export type Item = {
+export type PriceItem = {
   label: string;
   price: number;
   tooltip?: string;
@@ -6,7 +6,7 @@ export type Item = {
 };
 
 export type Props = {
-  items: Item[];
+  items: PriceItem[];
 };
 
 export type MaxGuests = {

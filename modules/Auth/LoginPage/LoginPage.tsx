@@ -2,8 +2,8 @@ import { useRouter } from 'next/router';
 import { memo, useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import AccountEntry from 'features/Auth/AccountEntry/AccountEntry';
-import MainLayout from 'features/shared/MainLayout/MainLayout';
+import { AccountEntry } from 'features/Auth/AccountEntry/AccountEntry';
+import { MainLayout } from 'features/shared/MainLayout/MainLayout';
 import {
   requestToAuth,
   breakAuthProcess,

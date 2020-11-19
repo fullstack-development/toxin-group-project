@@ -96,4 +96,5 @@ const EditEmail = memo(
   },
 );
 
-export default connect(mapState, mapDispatch)(EditEmail);
+const ConnectedComponent = connect(mapState, mapDispatch)(EditEmail);
+export { ConnectedComponent as EditEmail };

@@ -5,8 +5,8 @@ import { UILogo } from 'shared/view/elements';
 
 import { colors, types } from './ColorsTypesPage.fixture';
 import * as S from './ColorsTypesPage.styles';
-import UIColorsList from './components/UI-ColorsList/UI-ColorsList';
-import UITypesList from './components/UI-TypesList/UI-TypesList';
+import { UIColorsList } from './components/UI-ColorsList/UI-ColorsList';
+import { UITypesList } from './components/UI-TypesList/UI-TypesList';
 
 const ColorsTypesPage = memo(() => {
   const { t } = useTranslation('ColorsTypesPage');

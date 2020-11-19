@@ -4,7 +4,7 @@ export function isObject(value: unknown): value is { [k: string]: unknown } {
   return getType(value) === 'object';
 }
 
-export function matchObjects<T extends { [k: string]: unknown }>(main: T, comparable: T): boolean {
+function matchObjects<T extends { [k: string]: unknown }>(main: T, comparable: T): boolean {
   return Object.keys(comparable).every((prop) => {
     if (!Object.prototype.hasOwnProperty.call(comparable, prop)) return true;
 
@@ -18,3 +18,5 @@ export function matchObjects<T extends { [k: string]: unknown }>(main: T, compar
     return mainValue === comparableValue;
   });
 }
+
+export { matchObjects };

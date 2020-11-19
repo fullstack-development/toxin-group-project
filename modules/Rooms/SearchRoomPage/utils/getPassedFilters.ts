@@ -7,4 +7,4 @@ const getPassedFilters = (path: string): undefined | Filters => {
   return values && JSON.parse(values as string);
 };
 
-export default getPassedFilters;
+export { getPassedFilters };

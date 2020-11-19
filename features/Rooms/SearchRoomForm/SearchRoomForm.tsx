@@ -7,7 +7,7 @@ import { Dropdown, TimePicker } from 'shared/view/components';
 import { guestsGroups, guestsItems } from 'shared/view/components/Dropdown/Dropdown.fixture';
 import { ArrowButton } from 'shared/view/elements';
 
-import defaultFilters from './SearchRoomForm.fixture';
+import { defaultFilters } from './SearchRoomForm.fixture';
 import * as S from './SearchRoomForm.styles';
 
 const defaultBookingDates = defaultFilters.booked;
@@ -82,4 +82,4 @@ const SearchRoomForm = memo(() => {
   );
 });
 
-export default SearchRoomForm;
+export { SearchRoomForm };

@@ -1,6 +1,6 @@
 import { memo, useState } from 'react';
 
-import DotButton from '../DotButton/DotButton';
+import { DotButton } from '../DotButton/DotButton';
 import { GalleryProps } from './ImageGallery.model';
 import * as S from './ImageGallery.styles';
 
@@ -61,4 +61,4 @@ const ImageGallery = memo(
   },
 );
 
-export default ImageGallery;
+export { ImageGallery };

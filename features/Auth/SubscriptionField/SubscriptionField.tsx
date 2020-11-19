@@ -75,4 +75,5 @@ const SubscriptionField = memo(
   },
 );
 
-export default connect(mapState, mapDispatch)(SubscriptionField);
+const ConnectedComponent = connect(mapState, mapDispatch)(SubscriptionField);
+export { ConnectedComponent as SubscriptionField };

@@ -8,7 +8,7 @@ import { SubscriptionData } from 'services/api/entities/model';
 import { User } from 'services/api/Firebase/modules/Authentication/model';
 import { NavAccountSettings } from 'shared/view/elements';
 
-import Subscriptions from '../Subscriptions/Subscriptions';
+import { Subscriptions } from '../Subscriptions/Subscriptions';
 import * as S from './MainContent.styles';
 
 type StateProps = {
@@ -53,4 +53,5 @@ const MainContent = memo(({ user, subscriptionData, loadSubscriptionData }: Prop
   );
 });
 
-export default connect(mapState, mapDispatch)(MainContent);
+const ConnectedComponent = connect(mapState, mapDispatch)(MainContent);
+export { ConnectedComponent as MainContent };

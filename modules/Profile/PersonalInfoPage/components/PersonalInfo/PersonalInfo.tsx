@@ -7,7 +7,7 @@ import { AppState } from 'redux/store.model';
 import { AdditionalUserInformation } from 'services/api/entities/model';
 import { User } from 'services/api/Firebase/modules/Authentication';
 
-import EditPersonalInfo from '../EditPersonalInfo/EditPersonalInfo';
+import { EditPersonalInfo } from '../EditPersonalInfo/EditPersonalInfo';
 import { data } from './PersonalInfo.fixture';
 import * as S from './PersonalInfo.styles';
 
@@ -100,4 +100,5 @@ const PersonalInfo = memo(
   },
 );
 
-export default connect(mapState, mapDispatch)(PersonalInfo);
+const ConnectedComponent = connect(mapState, mapDispatch)(PersonalInfo);
+export { ConnectedComponent as PersonalInfo };

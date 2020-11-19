@@ -1,6 +1,6 @@
 import { memo } from 'react';
 
-import ForgotPasswordForm from 'features/Auth/ForgotPasswordForm/ForgotPasswordForm';
+import { ForgotPasswordForm } from 'features/Auth/ForgotPasswordForm/ForgotPasswordForm';
 
 import * as S from './Banner.styles';
 
@@ -10,4 +10,4 @@ const Banner = memo(() => (
   </S.Banner>
 ));
 
-export default Banner;
+export { Banner };

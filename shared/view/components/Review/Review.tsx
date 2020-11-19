@@ -5,7 +5,7 @@ import { Timestamp } from 'services/api/Firebase/modules/Database/model';
 import { Avatar, LikeButton } from 'shared/view/elements';
 
 import * as S from './Review.style';
-import getReviewDate from './utils/getReviewDate';
+import { getReviewDate } from './utils/getReviewDate';
 
 type Props = {
   avatarUrl: string;

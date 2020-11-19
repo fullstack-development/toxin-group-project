@@ -23,4 +23,4 @@ const NumberInput = memo(({ min, max, currentValue, onDecrement, onIncrement, na
   </S.InputContainer>
 ));
 
-export default NumberInput;
+export { NumberInput };

@@ -12,4 +12,4 @@ const ratingValues: RatingValues = {
   bad: 'Bad',
 };
 
-export default ratingValues;
+export { ratingValues };

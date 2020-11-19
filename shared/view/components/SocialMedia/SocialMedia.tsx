@@ -1,7 +1,7 @@
 import { memo } from 'react';
 
-import SocialMediaLink from './components/SocialMediaLink';
-import defaultProps from './SocialMedia.fixture';
+import { SocialMediaLink } from './components/SocialMediaLink';
+import { defaultProps } from './SocialMedia.fixture';
 import { SocialMediaProps } from './SocialMedia.model';
 import * as S from './SocialMedia.style';
 

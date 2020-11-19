@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import Cards from '../Cards/Cards';
+import { Cards } from '../Cards/Cards';
 import * as S from './MainContent.styles';
 
 const MainContent = memo(() => {
@@ -15,4 +15,4 @@ const MainContent = memo(() => {
   );
 });
 
-export default MainContent;
+export { MainContent };

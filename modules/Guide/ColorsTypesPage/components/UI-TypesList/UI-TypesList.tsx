@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import UIType from '../UI-Type/UI-Type';
+import { UIType } from '../UI-Type/UI-Type';
 import * as S from './UI-TypesList.styles';
 
 type Type = {
@@ -14,7 +14,7 @@ type Props = {
   types: Array<Type>;
 };
 
-const UITypes = memo(({ types }: Props) => {
+const UITypesList = memo(({ types }: Props) => {
   const { t } = useTranslation('Ui-TypesList');
 
   return (
@@ -31,4 +31,4 @@ const UITypes = memo(({ types }: Props) => {
   );
 });
 
-export default UITypes;
+export { UITypesList };

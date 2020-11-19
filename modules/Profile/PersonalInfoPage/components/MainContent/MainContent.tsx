@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { NavAccountSettings } from 'shared/view/elements';
 
-import PersonalInfo from '../PersonalInfo/PersonalInfo';
+import { PersonalInfo } from '../PersonalInfo/PersonalInfo';
 import * as S from './MainContent.styles';
 
 const MainContent = memo(() => {
@@ -18,4 +18,4 @@ const MainContent = memo(() => {
   );
 });
 
-export default MainContent;
+export { MainContent };

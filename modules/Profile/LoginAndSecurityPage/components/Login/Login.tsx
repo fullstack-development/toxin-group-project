@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { TextButton } from 'shared/view/elements';
 
-import PasswordUpdate from '../PasswordUpdate/PasswordUpdate';
+import { PasswordUpdate } from '../PasswordUpdate/PasswordUpdate';
 import * as S from './Login.styles';
 
 const Login = memo(() => {
@@ -33,4 +33,4 @@ const Login = memo(() => {
   );
 });
 
-export default Login;
+export { Login };

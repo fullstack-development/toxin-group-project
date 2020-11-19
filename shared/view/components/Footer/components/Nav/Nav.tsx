@@ -10,4 +10,4 @@ const Nav = memo(() => (
   </S.Nav>
 ));
 
-export default Nav;
+export { Nav };

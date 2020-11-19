@@ -18,4 +18,4 @@ const defaultProps: SocialMediaItem[] = [
   },
 ];
 
-export default defaultProps;
+export { defaultProps };

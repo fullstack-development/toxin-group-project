@@ -71,4 +71,5 @@ const ForgotPasswordForm = memo(
   },
 );
 
-export default connect(mapState, mapDispatch)(ForgotPasswordForm);
+const ConnectedComponent = connect(mapState, mapDispatch)(ForgotPasswordForm);
+export { ConnectedComponent as ForgotPasswordForm };

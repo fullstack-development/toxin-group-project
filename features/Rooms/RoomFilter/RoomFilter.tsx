@@ -150,4 +150,4 @@ const RoomFilter = memo(({ initialFilters, loadRooms, isPending = false }: Props
   );
 });
 
-export default RoomFilter;
+export { RoomFilter };

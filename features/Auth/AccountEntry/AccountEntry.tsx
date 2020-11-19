@@ -97,4 +97,4 @@ const AccountEntry = memo((props: Props) => {
   );
 });
 
-export default AccountEntry;
+export { AccountEntry };

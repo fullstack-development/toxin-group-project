@@ -23,4 +23,5 @@ const NavItem = memo(({ title, items, t }: Props) => (
   </S.Container>
 ));
 
-export default withTranslation('Links')(NavItem);
+const TranslatedComponent = withTranslation('Links')(NavItem);
+export { TranslatedComponent as NavItem };
