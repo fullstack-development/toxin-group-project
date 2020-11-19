@@ -34,7 +34,11 @@ function* emailUpdate(_: Dependencies, { payload }: EmailUpdateRequest) {
     const { user, email } = payload;
 
     yield user.updateEmail(email);
-    yield user.sendEmailVerification();
+
+    const actionCodeSettings = {
+      url: 'https://fsd-toxin.netlify.app/',
+    };
+    yield user.sendEmailVerification(actionCodeSettings);
 
     yield put(
       emailUpdateSuccess('A confirmation email has been sent to the specified email address'),

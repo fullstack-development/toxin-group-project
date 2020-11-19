@@ -2,7 +2,7 @@ import { boundMethod } from 'autobind-decorator';
 import firebase from 'firebase';
 
 import { Storage } from '../Storage';
-import { Auth, UserCredential, User, Unsubscribe } from './model';
+import { Auth, UserCredential, User, Unsubscribe, ActionCodeSettings } from './model';
 
 class Authentication {
   private readonly auth: Auth;
@@ -54,8 +54,11 @@ class Authentication {
   }
 
   @boundMethod
-  public async resetPassword(email: string): Promise<void> {
-    return this.auth.sendPasswordResetEmail(email);
+  public async resetPassword(
+    email: string,
+    actionCodeSettings?: ActionCodeSettings,
+  ): Promise<void> {
+    return this.auth.sendPasswordResetEmail(email, actionCodeSettings);
   }
 
   @boundMethod

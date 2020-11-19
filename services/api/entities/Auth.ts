@@ -49,18 +49,21 @@ class Auth {
       }
     }
 
-    const user = this.actions.getCurrentUser();
+    const { user } = credential;
     const photoURL = avatar && (await this.getPhotoURL(user.uid, avatar));
 
-    user
-      .updateProfile({
-        displayName: `${name} ${surname}`,
-        photoURL,
-      })
-      .then(() => {
-        this.addAdditionalUserInformation(user.uid, { gender, birthDate });
-        user.sendEmailVerification();
-      });
+    user.updateProfile({
+      displayName: `${name} ${surname}`,
+      photoURL,
+    });
+
+    await this.addAdditionalUserInformation(user.uid, { gender, birthDate });
+
+    const actionCodeSettings = {
+      url: 'https://fsd-toxin.netlify.app/',
+    };
+
+    user.sendEmailVerification(actionCodeSettings);
 
     return credential;
   }
@@ -99,7 +102,11 @@ class Auth {
     let resetPassword: void;
 
     try {
-      resetPassword = await this.actions.resetPassword(email);
+      const actionCodeSettings = {
+        url: 'https://fsd-toxin.netlify.app/auth/',
+      };
+
+      resetPassword = await this.actions.resetPassword(email, actionCodeSettings);
     } catch (err) {
       switch (err.code) {
         case 'auth/user-not-found':
