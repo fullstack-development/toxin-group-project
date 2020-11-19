@@ -36,13 +36,16 @@ function* loadRoomsHistory({ api }: Dependencies, { payload }: LoadBookedHistory
 }
 
 function* confirmBookedRoom({ api }: Dependencies, { payload }: BookCurrentRoom) {
-  const { apartmentId, booked, user } = payload;
+  const { apartmentId, booked, guests, user } = payload;
   try {
-    if (!booked) throw new Error('Please select a booking date');
+    if (!booked || !booked.to || !booked.from) throw new Error('Please select a booking date');
+    if (!guests || (!guests.adults && !guests.children && !guests.babies))
+      throw new Error('Please indicate the number of guests');
+
     const data: BookingData = {
       apartmentId,
-      from: new Date(booked.from),
-      to: new Date(booked.to),
+      from: booked.from,
+      to: booked.to,
       reservationBy: user,
     };
 
