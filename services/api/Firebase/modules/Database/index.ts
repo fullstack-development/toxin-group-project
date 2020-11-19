@@ -1,2 +1,2 @@
-export { default as Database } from './Database';
+export * from './Database';
 export * from './model';

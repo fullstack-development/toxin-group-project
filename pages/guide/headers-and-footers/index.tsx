@@ -1,6 +1,6 @@
 import { memo } from 'react';
 
-import HeadersAndFootersPage from 'components/HeadersAndFootersPage/HeadersAndFootersPage';
+import { HeadersAndFootersPage } from 'modules/Guide';
 
 const HeadersAndFooters = memo(() => <HeadersAndFootersPage />);
 

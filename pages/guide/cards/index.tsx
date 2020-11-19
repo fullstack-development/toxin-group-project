@@ -1,6 +1,6 @@
 import { memo } from 'react';
 
-import CardsPage from 'components/CardsPage/CardsPage';
+import { CardsPage } from 'modules/Guide';
 
 const Cards = memo(() => <CardsPage />);
 
