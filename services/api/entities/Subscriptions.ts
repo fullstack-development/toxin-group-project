@@ -1,7 +1,7 @@
 import { boundMethod } from 'autobind-decorator';
 
 import { Database, CollectionReference } from '../Firebase/modules/Database';
-import { SubscriptionData } from './types';
+import { SubscriptionData } from './model';
 
 class Subscriptions {
   private readonly actions: Database;
@@ -33,4 +33,4 @@ class Subscriptions {
   }
 }
 
-export default Subscriptions;
+export { Subscriptions };

@@ -1,6 +1,6 @@
 import { memo } from 'react';
 
-import ColorsTypesPage from 'components/ColorsTypesPage/ColorsTypesPage';
+import { ColorsTypesPage } from 'modules/Guide';
 
 const ColorsAndTypes = memo(() => <ColorsTypesPage />);
 

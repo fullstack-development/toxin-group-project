@@ -1,52 +1,30 @@
 import { SagaIterator } from 'redux-saga';
-import { put, takeLatest, call, PutEffect } from 'redux-saga/effects';
+import { put, call } from 'redux-saga/effects';
 
-import { requestToAuth } from 'redux/Auth/redux/actions';
-import { UserCredential } from 'services/api/Firebase/modules/Authentication/types';
+import { takeLatestAction } from 'redux/action.model';
+import { Dependencies } from 'redux/api.model';
+import { UserCredential } from 'services/api/Firebase/modules/Authentication';
 import { dateValidator } from 'utils/validators';
 
-import { Dependencies } from '../../../store.types';
-import { REGISTRATION_REQUEST, REGISTRATION_SUCCESS, REGISTRATION_FAILED } from '../../constants';
-import {
-  RegistrationStatusSuccess,
-  RegistrationStatusFailed,
-  RegistrationRequest,
-} from '../../types';
+import { RegistrationRequest } from '../../model';
+import { registrationStatusFailed, registrationStatusSuccess } from '../actions';
 
-function* startRegistrationProcess(
-  { api }: Dependencies,
-  data: RegistrationRequest,
-):
-  | Generator
-  | Generator<PutEffect<RegistrationStatusSuccess | RegistrationStatusFailed>, void, never> {
-  const {
-    email,
-    password,
-    name,
-    surname,
-    birthDate,
-    gender,
-    avatar,
-    hasSpecialOffers,
-  } = data.payload;
-
-  const maxSymbolLength = 50;
-
-  if (name.length > maxSymbolLength || surname.length > maxSymbolLength)
-    throw new Error(`Имя или Фамилия не может иметь более ${maxSymbolLength} символов`);
-
-  const dateValidationResult = dateValidator(birthDate);
-
-  if (dateValidationResult === 'Invalid date') {
-    yield put({
-      type: REGISTRATION_FAILED,
-      payload: 'Все поля должны быть заполнены корректно!',
-    });
-
-    return;
-  }
+function* registration({ api }: Dependencies, { payload }: RegistrationRequest) {
+  const { email, password, name, surname, birthDate, gender, avatar, hasSpecialOffers } = payload;
   try {
-    const result: UserCredential = yield call(api.auth.signUp, {
+    const dateValidationResult = dateValidator(birthDate);
+
+    if (dateValidationResult === 'Invalid date') {
+      throw new Error('All fields must be filled in correctly!');
+    }
+
+    const maxSymbolLength = 50;
+
+    if (name.length > maxSymbolLength || surname.length > maxSymbolLength) {
+      throw new Error(`Имя или Фамилия не может иметь более ${maxSymbolLength} символов`);
+    }
+
+    const userCredential: UserCredential = yield call(api.auth.signUp, {
       email,
       password,
       name,
@@ -58,20 +36,14 @@ function* startRegistrationProcess(
 
     yield call(api.subscriptions.add, email, { hasSpecialOffers });
 
-    yield put({
-      type: REGISTRATION_SUCCESS,
-      payload: result,
-    });
-
-    yield requestToAuth({ email, password });
-  } catch (error) {
-    yield put({
-      type: REGISTRATION_FAILED,
-      payload: error.message,
-    });
+    yield put(registrationStatusSuccess(userCredential));
+  } catch ({ message }) {
+    yield put(registrationStatusFailed(message));
   }
 }
 
-export function* rootSaga(deps: Dependencies): SagaIterator {
-  yield takeLatest(REGISTRATION_REQUEST, startRegistrationProcess, deps);
+function* rootSaga(deps: Dependencies): SagaIterator {
+  yield takeLatestAction<RegistrationRequest['type']>('REGISTRATION_REQUEST', registration, deps);
 }
+
+export { rootSaga };
