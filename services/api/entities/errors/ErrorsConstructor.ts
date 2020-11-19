@@ -12,4 +12,4 @@ class ErrorsConstructor extends Error {
   }
 }
 
-export default ErrorsConstructor;
+export { ErrorsConstructor };

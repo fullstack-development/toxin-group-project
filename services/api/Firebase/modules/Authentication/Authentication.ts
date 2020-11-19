@@ -2,7 +2,7 @@ import { boundMethod } from 'autobind-decorator';
 import firebase from 'firebase';
 
 import { Storage } from '../Storage';
-import { Auth, UserCredential, User, Unsubscribe } from './types';
+import { Auth, UserCredential, User, Unsubscribe } from './model';
 
 class Authentication {
   private readonly auth: Auth;
@@ -74,4 +74,4 @@ class Authentication {
   }
 }
 
-export default Authentication;
+export { Authentication };

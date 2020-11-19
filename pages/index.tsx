@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { memo } from 'react';
 
-import IndexPage from 'components/IndexPage/IndexPage';
+import { IndexPage } from 'modules/IndexPage/IndexPage';
 
 const Index = memo(() => (
   <>

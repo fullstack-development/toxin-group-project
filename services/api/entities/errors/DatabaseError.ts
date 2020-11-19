@@ -1,4 +1,4 @@
-import ErrorsConstructor from './ErrorsConstructor';
+import { ErrorsConstructor } from './ErrorsConstructor';
 
 type ApartmentsErrorTypes = {
   key?: string;
@@ -11,4 +11,4 @@ class DatabaseError extends ErrorsConstructor {
   }
 }
 
-export default DatabaseError;
+export { DatabaseError };

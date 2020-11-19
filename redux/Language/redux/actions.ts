@@ -1,12 +1,15 @@
-import { DispatchEvent } from 'react-redux';
-
 import { Lang } from 'services/i18next/types';
 
-import { CHANGE_LANGUAGE_REQUEST } from '../constants';
+import { ChangeLanguageRequest, ChangeLanguageSuccess } from '../model';
 
-const changeLanguage = (newLanguage: Lang): DispatchEvent => ({
-  type: CHANGE_LANGUAGE_REQUEST,
+const changeLanguage = (newLanguage: Lang): ChangeLanguageRequest => ({
+  type: 'CHANGE_LANGUAGE_REQUEST',
   payload: newLanguage,
 });
 
-export { changeLanguage };
+const changeLanguageSuccess = (lang: Lang): ChangeLanguageSuccess => ({
+  type: 'CHANGE_LANGUAGE_SUCCESS',
+  payload: lang,
+});
+
+export { changeLanguage, changeLanguageSuccess };
