@@ -45,9 +45,9 @@ const NavLink = memo(({ isActive, name, path, subMenu }: NavMenuLink) => {
 
           <S.SubMenuContainer isShown={isShownSubMenu}>
             {subMenu.map((subMenuLink: NavSubMenu) => (
-              <S.SubMenuLink key={subMenuLink.path} href={subMenuLink.path}>
-                {subMenuLink.name}
-              </S.SubMenuLink>
+              <Link href={subMenuLink.path} key={subMenuLink.path} passHref>
+                <S.SubMenuLink>{subMenuLink.name}</S.SubMenuLink>
+              </Link>
             ))}
           </S.SubMenuContainer>
         </>
