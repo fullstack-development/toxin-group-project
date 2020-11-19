@@ -19,6 +19,7 @@ type BookingState = {
 type SelectedBookedRoom = {
   apartmentId: number;
   booked: { from: Date; to: Date };
+  guests: { adults: number; children: number; babies: number };
   totalPrice: number;
   user: string;
 };

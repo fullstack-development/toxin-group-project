@@ -62,8 +62,8 @@ const TimePicker = memo(
           render={({ input }) => {
             const applyCalendar = (): void => {
               input.onChange({
-                from: selectedDateRange.from ? selectedDateRange.from.getTime() : '',
-                to: selectedDateRange.to ? selectedDateRange.to.getTime() : '',
+                from: selectedDateRange.from,
+                to: selectedDateRange.to,
               });
               closeCalendar();
             };

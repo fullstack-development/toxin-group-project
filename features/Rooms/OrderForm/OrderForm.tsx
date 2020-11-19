@@ -4,11 +4,11 @@ import { Field, Form } from 'react-final-form';
 import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
+import { SelectedBookedRoom } from 'redux/Booking/model';
 import { bookRoom, cancelBooking as cancelBookingRequest } from 'redux/Booking/redux/actions';
 import { AppState } from 'redux/store.model';
-import { Dropdown, TimePicker } from 'shared/view/components';
+import { Dropdown, TimePicker, PopUpNotification } from 'shared/view/components';
 import { DropdownProps } from 'shared/view/components/Dropdown/Dropdown.model';
-import { PopUpNotification } from 'shared/view/components/PopUpNotification/PopUpNotification';
 import { ArrowButton } from 'shared/view/elements';
 import { formatNumber } from 'utils/number.utils';
 
@@ -50,6 +50,8 @@ type OwnProps = {
 
 type Props = OwnProps & StateProps & typeof mapDispatch;
 
+type FormData = Omit<SelectedBookedRoom, 'apartmentId' | 'user'>;
+
 const oneDay = 24 * 60 * 60 * 1000;
 
 const defaultMaxGuests: MaxGuests = {
@@ -63,7 +65,7 @@ const noFeeGuestsCount = 1;
 
 const dropdownOptions: DropdownProps = {
   placeholder: 'RoomFilter:How many guests',
-  name: 'Guests',
+  name: 'guests',
   enableControls: true,
   groups: [
     {
@@ -75,17 +77,17 @@ const dropdownOptions: DropdownProps = {
   items: [
     {
       title: 'Adults',
-      inputName: 'Adults',
+      inputName: 'adults',
       groupName: 'Guests',
     },
     {
       title: 'Children',
-      inputName: 'Children',
+      inputName: 'children',
       groupName: 'Guests',
     },
     {
       title: 'Babies',
-      inputName: 'Babies',
+      inputName: 'babies',
       max: defaultMaxGuests.babies,
       wordForms: ['Baby', 'Babies', 'BabiesSecondary'],
     },
@@ -98,8 +100,8 @@ const getResultPrice = (prices: PriceItem[]): number =>
     0,
   );
 
-const getDaysDifference = (dates: { from: number; to: number }) =>
-  Math.round(Math.abs((dates.to - dates.from) / oneDay));
+const getDaysDifference = (dates: { from: Date; to: Date }) =>
+  Math.round(Math.abs((dates.to.getTime() - dates.from.getTime()) / oneDay));
 
 const OrderForm = memo(
   ({
@@ -139,7 +141,7 @@ const OrderForm = memo(
 
     const router = useRouter();
 
-    const handleFormSubmit = (values) => {
+    const handleFormSubmit = (values: FormData) => {
       if (!isAuthSuccess) router.push('/auth');
 
       confirmBookedRoom({
@@ -160,12 +162,10 @@ const OrderForm = memo(
           <Form
             onSubmit={handleFormSubmit}
             render={({ handleSubmit, values }) => {
-              const dates: { from: number; to: number } = values.booked;
-              const daysDifference = (dates && getDaysDifference(dates)) || 0;
-              const guests: {
-                adults: number;
-                babies: number;
-              } = values.guests && {
+              const dates = values.booked;
+              const daysDifference =
+                (dates && dates.from && dates.to && getDaysDifference(dates)) || 0;
+              const guests = values.guests && {
                 adults: values.guests.adults + values.guests.children,
                 babies: values.guests.babies,
               };
