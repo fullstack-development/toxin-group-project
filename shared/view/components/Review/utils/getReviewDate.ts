@@ -18,7 +18,7 @@ const options = {
   second: 'numeric',
 };
 
-function getReviewDate(date: Date): string {
+function getReviewDate(date: Date, locales: string | string[]): string {
   const currentDate = Date.now();
   const timeHasPassed = currentDate - date.getTime();
 
@@ -60,7 +60,7 @@ function getReviewDate(date: Date): string {
     )}`;
   }
 
-  return date.toLocaleDateString(i18next.language, options);
+  return date.toLocaleDateString(locales, options);
 }
 
 export { getReviewDate };

@@ -10,11 +10,11 @@ type Props = {
 };
 
 const NavAccountSettings = memo(({ title }: Props) => {
-  const { t } = useTranslation('AccountSettings');
+  const { t } = useTranslation('AccountSettingsPage');
 
   return (
     <S.NavAccountSettings>
-      <Link href="/account-settings" passHref>
+      <Link href="/profile" passHref>
         <S.Link>{t('Account')}</S.Link>
       </Link>
       <NavigateNextIcon />

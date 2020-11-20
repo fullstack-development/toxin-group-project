@@ -11,7 +11,7 @@ type Link = {
 };
 
 const NavLink = styled.div`
-  @media ${breakpointDown('md')} {
+  @media ${breakpointDown('lg')} {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -34,7 +34,7 @@ const IconExpander = styled.span`
     height: 100%;
   }
 
-  @media ${breakpointDown('md')} {
+  @media ${breakpointDown('lg')} {
     top: 0;
     width: 3.5rem;
   }
@@ -57,7 +57,7 @@ const Link = styled.a<Link>`
         color: ${colors.basicDarkest};
       }
 
-      @media ${breakpointDown('md')} {
+      @media ${breakpointDown('lg')} {
         margin-right: 0;
       }
     `;
@@ -100,7 +100,7 @@ const SubMenuContainer = styled.div<SubMenu>`
       padding: 1.5rem;
       border-radius: 0.5rem;
 
-      @media ${breakpointDown('md')} {
+      @media ${breakpointDown('lg')} {
         position: relative;
         transform: translate(0);
         left: 0;

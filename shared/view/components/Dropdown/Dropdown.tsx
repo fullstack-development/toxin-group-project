@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, MouseEvent, useCallback, memo } from 'react';
+import { useState, useRef, useEffect, useCallback, memo } from 'react';
 import { Field } from 'react-final-form';
 import { useTranslation } from 'react-i18next';
 
@@ -101,7 +101,7 @@ const Dropdown = memo(
     useEffect(() => {
       applyChanges(dropdownState);
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [t]);
 
     useEffect(() => {
       document.addEventListener('click', handleDocumentClick);
@@ -149,11 +149,7 @@ const Dropdown = memo(
                           .reduce((acc, element) => acc + element.currentValue, 0)
                       : max;
 
-                    const makeButtonHandler = (
-                      increment: number,
-                    ): ((e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => void) => (
-                      e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>,
-                    ): void => {
+                    const makeButtonHandler = (increment: number): (() => void) => (): void => {
                       setDropdownState((prevState) => {
                         const state = [...prevState];
                         const elementToUpdate = state.find((item) => item.title === title);

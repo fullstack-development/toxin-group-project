@@ -1,5 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { Timestamp } from 'services/api/Firebase/modules/Database/model';
 import { Avatar, LikeButton } from 'shared/view/elements';
@@ -22,6 +23,7 @@ const Review = memo(({ avatarUrl, userName, date, text, likesCount }: Props) => 
     avatarReviews: { width: '3.42857rem', height: '3.42857rem' },
   }));
   const classes = useStyles();
+  const { i18n } = useTranslation();
 
   return (
     <S.Review>
@@ -29,7 +31,9 @@ const Review = memo(({ avatarUrl, userName, date, text, likesCount }: Props) => 
         <Avatar photoURL={`${avatarUrl}`} className={classes.avatarReviews} />
         <S.AuthorWrapper>
           <S.User>{userName}</S.User>
-          <S.Date dateTime={correctDate.toISOString()}>{getReviewDate(correctDate)}</S.Date>
+          <S.Date dateTime={correctDate.toISOString()}>
+            {getReviewDate(correctDate, i18n.language)}
+          </S.Date>
         </S.AuthorWrapper>
       </S.Header>
       <S.MessageWrapper>

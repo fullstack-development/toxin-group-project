@@ -44,7 +44,7 @@ const MainContent = memo(
     startGetRoomDetails,
     checkAuthBeforePageLoaded,
   }: Props) => {
-    const { t } = useTranslation(['RoomDetailsPage', 'Shared']);
+    const { t } = useTranslation('RoomDetailsPage');
     const router = useRouter();
     const roomNumber = Number(router.asPath.split('=')[1]);
 
@@ -64,7 +64,7 @@ const MainContent = memo(
       <>
         {isPending && (
           <S.Loading>
-            <Preloader label={t('RoomDetailsPage:Loading Room Information ...')} />
+            <Preloader label={t('Loading Room Information ...')} />
           </S.Loading>
         )}
         {roomDetails ? (
@@ -76,12 +76,12 @@ const MainContent = memo(
             </S.RoomImages>
             <S.Details>
               <S.Benefits>
-                <S.Title>{t('RoomDetailsPage:Room details')}</S.Title>
+                <S.Title>{t('Room Details')}</S.Title>
                 <Benefits items={benefitsData} />
               </S.Benefits>
               <S.RoomImpressionWrapper>
                 <RoomImpression
-                  title={t('RoomDetailsPage:Impressions of the room')}
+                  title={t('Impressions of the room')}
                   numberOfRatings={roomDetails.numberOfRatings}
                 />
               </S.RoomImpressionWrapper>
@@ -96,7 +96,7 @@ const MainContent = memo(
                 <S.Title>{t('Shared:Cancel')}</S.Title>
                 <S.CancellationTermsText>
                   {t(
-                    'RoomDetailsPage:Free cancellation within 48 hours. Thereafter, if canceled no later than 5 days in advance. you will receive a full refund before arrival minus the service fee.',
+                    'Free cancellation within 48 hours. Thereafter, if canceled no later than 5 days in advance. you will receive a full refund before arrival minus the service fee.',
                   )}
                 </S.CancellationTermsText>
               </S.CancellationTerms>
@@ -114,9 +114,7 @@ const MainContent = memo(
             </S.Details>
           </S.MainContent>
         ) : (
-          !isPending && (
-            <S.Loading>{t('RoomDetailsPage:Failed to load room information')}</S.Loading>
-          )
+          !isPending && <S.Loading>{t('Failed to load room information')}</S.Loading>
         )}
       </>
     );

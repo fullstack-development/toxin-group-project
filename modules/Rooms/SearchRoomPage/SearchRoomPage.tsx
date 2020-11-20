@@ -33,31 +33,8 @@ const mapDispatch = {
 
 type Props = StateProps & typeof mapDispatch;
 
-const separator = ' ';
-
-const sortData: SortData[] = [
-  {
-    parameter: 'price',
-    name: 'цена',
-    sortFunction: (a: RoomProps, b: RoomProps) => a.price - b.price,
-  },
-  {
-    parameter: 'rating',
-    name: 'рейтинг',
-    sortFunction: (a: RoomProps, b: RoomProps) => a.rating - b.rating,
-  },
-  {
-    parameter: 'reviews',
-    name: 'количество отзывов',
-    sortFunction: (a: RoomProps, b: RoomProps) => a.reviews.length - b.reviews.length,
-  },
-];
-const [descKey, ascKey] = ['desc', 'asc'] as SortOrder[];
-
 const SearchRoomPage = memo(({ rooms, getRooms, isPending }: Props) => {
   const router = useRouter();
-
-  const { t } = useTranslation('SearchRoomPage');
 
   const passedParams = getPassedFilters(router.asPath);
 
@@ -73,6 +50,29 @@ const SearchRoomPage = memo(({ rooms, getRooms, isPending }: Props) => {
     router.push(`/rooms/search-room?&values=${JSON.stringify(currentFilters)}`);
     getRooms(currentFilters);
   };
+
+  const { t } = useTranslation('SearchRoomPage');
+
+  const separator = ' ';
+
+  const sortData: SortData[] = [
+    {
+      parameter: 'price',
+      name: t('price'),
+      sortFunction: (a: RoomProps, b: RoomProps) => a.price - b.price,
+    },
+    {
+      parameter: 'rating',
+      name: t('rating'),
+      sortFunction: (a: RoomProps, b: RoomProps) => a.rating - b.rating,
+    },
+    {
+      parameter: 'reviews',
+      name: t('number of reviews'),
+      sortFunction: (a: RoomProps, b: RoomProps) => a.reviews.length - b.reviews.length,
+    },
+  ];
+  const [descKey, ascKey] = ['desc', 'asc'] as SortOrder[];
 
   const [sortParam, setSortParam] = useState<SortParam>('price');
   const [isAscendingSort, setIsAscendingSort] = useState(true);
