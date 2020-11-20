@@ -8,8 +8,8 @@ import {
 } from '../Firebase/modules/Authentication';
 import { Database, CollectionReference } from '../Firebase/modules/Database';
 import apiErrors from './errors/apiErrors';
-import AuthError from './errors/AuthError';
-import { ProfileData, AdditionalUserInformation } from './types';
+import { AuthError } from './errors/AuthError';
+import { ProfileData, AdditionalUserInformation } from './model';
 
 class Auth {
   private readonly actions: Authentication;
@@ -36,14 +36,14 @@ class Auth {
 
     try {
       credential = await this.actions.createUser(email, password);
-    } catch (err) {
-      switch (err.code) {
+    } catch ({ code }) {
+      switch (code) {
         case 'auth/email-already-in-use':
-          throw apiErrors.trigger('auth/email-is-taken', email);
-
+          throw apiErrors.trigger('email-already-in-use');
+        case 'auth/invalid-email':
+          throw apiErrors.trigger('auth/invalid-email');
         case 'auth/weak-password':
           throw apiErrors.trigger('auth/weak-password');
-
         default:
           throw new AuthError();
       }
@@ -71,11 +71,16 @@ class Auth {
 
     try {
       credential = await this.actions.signIn(email, password);
-    } catch (err) {
-      switch (err.code) {
+    } catch ({ code }) {
+      switch (code) {
+        case 'auth/invalid-email':
+          throw apiErrors.trigger('auth/invalid-email');
+        case 'auth/user-disabled':
+          throw apiErrors.trigger('auth/user-disabled');
+        case 'auth/user-not-found':
+          throw apiErrors.trigger('auth/user-not-found');
         case 'auth/wrong-password':
           throw apiErrors.trigger('auth/wrong-password');
-
         default:
           throw new AuthError();
       }
@@ -100,11 +105,12 @@ class Auth {
 
     try {
       resetPassword = await this.actions.resetPassword(email);
-    } catch (err) {
-      switch (err.code) {
+    } catch ({ code }) {
+      switch (code) {
         case 'auth/user-not-found':
           throw apiErrors.trigger('auth/user-not-found');
-
+        case 'auth/invalid-email':
+          throw apiErrors.trigger('auth/invalid-email');
         default:
           throw new AuthError();
       }
@@ -158,4 +164,4 @@ class Auth {
   }
 }
 
-export default Auth;
+export { Auth };

@@ -4,7 +4,7 @@ const formattingOptions = {
   maximumFractionDigits: 0,
 };
 
-export function formatNumber(
+function formatNumber(
   target: number,
   currencyCode = 'RUB',
   separator = '\u00A0',
@@ -32,3 +32,5 @@ export function formatNumber(
 
   return formatter.format(target);
 }
+
+export { formatNumber };

@@ -1,4 +1,4 @@
-import { Config } from './types';
+import { Config } from './model';
 
 const config: Config = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -10,4 +10,4 @@ const config: Config = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-export default config;
+export { config };

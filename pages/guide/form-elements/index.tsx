@@ -1,6 +1,6 @@
 import { memo } from 'react';
 
-import FormElementsPage from 'components/FormElementsPage/FormElementsPage';
+import { FormElementsPage } from 'modules/Guide';
 
 const FormElements = memo(() => <FormElementsPage />);
 
