@@ -8,7 +8,7 @@ import { getRoomDetails as getRoomDetailsRequest } from 'redux/Apartment/redux/a
 import { preloadAuthData } from 'redux/Auth/redux/actions';
 import { bookRoom } from 'redux/Booking/redux/actions';
 import { AppState } from 'redux/store.model';
-import { Apartment } from 'services/api/entities/model';
+import { Apartment } from 'shared/model';
 import { Reviews, RoomImpression } from 'shared/view/components';
 import { Benefits, BulletList, Preloader } from 'shared/view/elements';
 
