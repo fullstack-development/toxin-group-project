@@ -7,7 +7,7 @@ const PasswordField = memo((props: InputProps) => {
   const [isPasswordVisible, setPasswordVisibility] = useState(false);
 
   const handleButtonClick = () => {
-    setPasswordVisibility(!isPasswordVisible);
+    setPasswordVisibility((prevState) => !prevState);
   };
 
   return (
