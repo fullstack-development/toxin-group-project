@@ -2,14 +2,17 @@ import { Apartment, Filters } from 'services/api/entities/model';
 
 import {
   RoomsRequest,
-  LoadBookedHistory,
-  BookCurrentRoom,
-  SelectedBookedRoom,
   PendingStatusUpdate,
   SetRooms,
   SetFailedStatus,
-  UpdateBookedHistory,
   BookedHistoryList,
+  LoadBookedHistory,
+  UpdateBookedHistory,
+  SelectedBookedRoom,
+  BookCurrentRoom,
+  BookingSuccess,
+  BookingFailed,
+  BookingCanceled,
 } from '../model';
 
 const requestRooms = (options: Filters): RoomsRequest => ({
@@ -47,6 +50,19 @@ const bookRoom = (data: SelectedBookedRoom): BookCurrentRoom => ({
   payload: data,
 });
 
+const bookingSuccess = (): BookingSuccess => ({
+  type: 'BOOKING_SUCCESS',
+});
+
+const bookingFailed = (statusText: string): BookingFailed => ({
+  type: 'BOOKING_FAILED',
+  payload: statusText,
+});
+
+const cancelBooking = (): BookingCanceled => ({
+  type: 'BOOKING_CANCELED',
+});
+
 export {
   requestRooms,
   pendingStatusUpdate,
@@ -55,4 +71,7 @@ export {
   loadBookedHistoryRooms,
   updateBookedHistory,
   bookRoom,
+  bookingSuccess,
+  bookingFailed,
+  cancelBooking,
 };

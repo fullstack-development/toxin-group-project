@@ -24,24 +24,15 @@ const TimePicker = memo(
 
     const { from, to } = selectedDateRange;
 
+    const formatter = new Intl.DateTimeFormat(i18n.language);
+
     const getDateFrom = (): string => {
-      const dateOptions: { day: string; month: string } = {
-        day: 'numeric',
-        month: 'short',
-      };
-
-      const selectedDateFrom: string = from
-        .toLocaleDateString(i18n.language, dateOptions)
-        .replace('.', '');
-      let selectedDateTo: string;
-
-      if (to) {
-        selectedDateTo = to.toLocaleDateString(i18n.language, dateOptions).replace('.', '');
-      }
+      const selectedDateFrom = formatter.format(from);
+      const selectedDateTo = to ? formatter.format(to) : '';
 
       return type === 'single'
         ? `${`${selectedDateFrom}`} ${to ? `- ${selectedDateTo}` : ''}`
-        : from.toLocaleDateString(i18n.language);
+        : selectedDateFrom;
     };
 
     const getMaskedDate = (): string =>
@@ -62,8 +53,8 @@ const TimePicker = memo(
           render={({ input }) => {
             const applyCalendar = (): void => {
               input.onChange({
-                from: selectedDateRange.from ? selectedDateRange.from.getTime() : '',
-                to: selectedDateRange.to ? selectedDateRange.to.getTime() : '',
+                from: selectedDateRange.from,
+                to: selectedDateRange.to,
               });
               closeCalendar();
             };
@@ -81,7 +72,7 @@ const TimePicker = memo(
                 {type === 'double' && (
                   <S.ContainerElement onClick={openCalendar}>
                     <Input
-                      value={to ? to.toLocaleDateString(i18n.language) : getMaskedDate()}
+                      value={to ? formatter.format(to) : getMaskedDate()}
                       label={dateToLabelText}
                       placeholder="date to"
                       readOnly

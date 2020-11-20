@@ -3,15 +3,17 @@ import { put, call } from 'redux-saga/effects';
 
 import { takeLatestAction, takeLeadingAction } from 'redux/action.model';
 import { Dependencies } from 'redux/api.model';
-import {
-  RoomsRequest,
-  LoadBookedHistory,
-  BookedHistoryList,
-  BookCurrentRoom,
-} from 'redux/Booking/model';
 import { Apartment, BookingData } from 'services/api/entities/model';
 
-import { pendingStatusUpdate, setFailedStatus, setRooms, updateBookedHistory } from '../actions';
+import { RoomsRequest, BookedHistoryList, LoadBookedHistory, BookCurrentRoom } from '../../model';
+import {
+  pendingStatusUpdate,
+  setRooms,
+  setFailedStatus,
+  updateBookedHistory,
+  bookingSuccess,
+  bookingFailed,
+} from '../actions';
 
 function* loadRooms({ api }: Dependencies, { payload }: RoomsRequest) {
   try {
@@ -34,15 +36,25 @@ function* loadRoomsHistory({ api }: Dependencies, { payload }: LoadBookedHistory
 }
 
 function* confirmBookedRoom({ api }: Dependencies, { payload }: BookCurrentRoom) {
-  const { apartmentId, booked, user } = payload;
-  const data: BookingData = {
-    apartmentId,
-    from: new Date(booked.from),
-    to: new Date(booked.to),
-    reservationBy: user,
-  };
+  const { apartmentId, booked, guests, user } = payload;
+  try {
+    if (!booked || !booked.to || !booked.from) throw new Error('Please select a booking date');
+    if (!guests || (!guests.adults && !guests.children && !guests.babies))
+      throw new Error('Please indicate the number of guests');
 
-  yield call(api.booking.setBookedByUser, data);
+    const data: BookingData = {
+      apartmentId,
+      from: booked.from,
+      to: booked.to,
+      reservationBy: user,
+    };
+
+    yield call(api.booking.setBookedByUser, data);
+
+    yield put(bookingSuccess());
+  } catch ({ message }) {
+    yield put(bookingFailed(message));
+  }
 }
 
 function* rootSaga(deps: Dependencies): SagaIterator {
