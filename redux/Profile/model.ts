@@ -55,10 +55,10 @@ type ProfileState = {
   isUsernameUpdateSuccess: boolean;
   isUsernameUpdateCompleted: boolean;
   usernameUpdateStatusText: string;
-  isAvatarUpdatePending: boolean;
+  isAvatarUpdateSuccess: boolean;
   isAvatarUpdateCompleted: boolean;
   avatarUpdateStatusText: string;
-  isAvatarRemovePending: boolean;
+  isAvatarRemoveSuccess: boolean;
   isAvatarRemoveCompleted: boolean;
   avatarRemoveStatusText: string;
 };

@@ -11,6 +11,7 @@ export const ru = {
     Rules: 'Правила',
     Cancel: 'Отмена',
     Total: 'Итого',
+    Ok: 'Oк',
     'Date mask': 'ДД.ММ.ГГГГ',
   },
   AccountEntry: {
@@ -249,6 +250,11 @@ export const ru = {
       'Указанный адрес электронной почты уже используется',
     'Re-authenticate to change your email address':
       'Для изменения адреса электронной почты пройдите повторную аутентификацию',
+    'Update avatar': 'Изменить аватар',
+    'Delete avatar': 'Удалить аватар',
+    'Avatar has been saccessfully changed': 'Аватар был успешно изменен',
+    'Avatar has been saccessfully deleted': 'Аватар был успешно удален',
+    'Are you sure you want to delete avatar?': 'Вы уверены, что хотите удалить аватар?',
   },
   LoginAndSecurity: {
     Login: 'Вход',

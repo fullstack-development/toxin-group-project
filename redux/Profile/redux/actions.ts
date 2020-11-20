@@ -150,7 +150,7 @@ const completeAvatarUpdate = (): AvatarUpdateCompleted => ({
   type: 'AVATAR_UPDATE_COMPLETED',
 });
 
-const avatarRemove= (data: AvatarRemove): AvatarRemoveRequest => ({
+const avatarRemove = (data: AvatarRemove): AvatarRemoveRequest => ({
   type: 'AVATAR_REMOVE_PROCESS',
   payload: data,
 });

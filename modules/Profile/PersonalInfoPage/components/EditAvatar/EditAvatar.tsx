@@ -1,5 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 import { useState, memo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { User } from 'services/api/Firebase/modules/Authentication/model';
 import { Avatar, TextButton } from 'shared/view/elements';
@@ -11,12 +12,14 @@ import * as S from './EditAvatar.styles';
 type Props = {
   user: User;
   photoURL: string;
+  onChange: () => void;
 };
 
-const EditAvatar = memo(({ user, photoURL }: Props) => {
+const EditAvatar = memo(({ user, photoURL, onChange }: Props) => {
   const [isEditorVisible, setEditorVisible] = useState(false);
   const [isConfirmationVisible, setConfirmationVisible] = useState(false);
   const [image, setImage] = useState(null);
+  const { t } = useTranslation('PersonalInfo');
 
   const useStyles = makeStyles(() => ({
     avatarLoader: { width: '7.14285rem', height: '7.14285rem' },
@@ -45,24 +48,33 @@ const EditAvatar = memo(({ user, photoURL }: Props) => {
     setConfirmationVisible(false);
   };
 
+  const handleChangesSuccess = () => {
+    onChange();
+  };
+
   return (
     <S.EditAvatar>
       <S.AvatarWrapper>
         <Avatar photoURL={photoURL} className={classes.avatarLoader} />
         {isEditorVisible && (
           <S.CropperWrapper>
-            <UpdateAvatar user={user} onCancel={handleEditorCancel} image={image} />
+            <UpdateAvatar
+              user={user}
+              onCancel={handleEditorCancel}
+              onSuccess={handleChangesSuccess}
+              image={image}
+            />
           </S.CropperWrapper>
         )}
       </S.AvatarWrapper>
       <S.Buttons>
         <S.EditButtonWrapper>
-          <S.EditButton>Изменить аватар</S.EditButton>
+          <S.EditButton>{t('Update avatar')}</S.EditButton>
           <S.HiddenInput type="file" accept="image/*" onChange={handleInputChange} />
         </S.EditButtonWrapper>
         {photoURL && (
           <TextButton isSecondary onClick={handleRemoveButtonClick}>
-            Удалить аватар
+            {t('Delete avatar')}
           </TextButton>
         )}
       </S.Buttons>
@@ -71,6 +83,7 @@ const EditAvatar = memo(({ user, photoURL }: Props) => {
           user={user}
           onConfirm={handleConfirmationConfirm}
           onCancel={handleConfirmationCancel}
+          onSuccess={handleChangesSuccess}
         />
       )}
     </S.EditAvatar>

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Editor from 'react-avatar-editor';
 import { useTranslation } from 'react-i18next';
 
@@ -14,13 +14,9 @@ type Props = {
 
 const AvatarEditor: React.FC<Props> = ({ image, onSave, onCancel }: Props) => {
   const [zoomSize, setZoomSize] = useState(1);
-  let canvas: Editor;
+  const canvas = useRef(null);
 
   const { t } = useTranslation(['AvatarLoader', 'Shared']);
-
-  const setEditorRef = (editor: Editor) => {
-    canvas = editor;
-  };
 
   const handleSliderChange = (value: number) => {
     setZoomSize(value);
@@ -33,7 +29,7 @@ const AvatarEditor: React.FC<Props> = ({ image, onSave, onCancel }: Props) => {
   const handleSaveButtonClick = () => {
     let canvasScaled = null;
     if (canvas) {
-      canvasScaled = canvas.getImageScaledToCanvas();
+      canvasScaled = canvas.current.getImageScaledToCanvas();
     }
     onSave(canvasScaled);
   };
@@ -46,7 +42,7 @@ const AvatarEditor: React.FC<Props> = ({ image, onSave, onCancel }: Props) => {
         {t('The selected thumbnail will be used in the comments you leave.')}
       </S.Description>
       <Editor
-        ref={setEditorRef}
+        ref={canvas}
         image={image}
         width={300}
         height={300}
@@ -63,7 +59,7 @@ const AvatarEditor: React.FC<Props> = ({ image, onSave, onCancel }: Props) => {
             min={1}
             max={10}
             step={0.1}
-            initialValue={zoomSize}
+            value={zoomSize}
             onChange={handleSliderChange}
           />
         </S.SliderWrapper>

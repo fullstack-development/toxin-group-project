@@ -40,6 +40,7 @@ const PersonalInfo = memo(
       photoURL: '',
     });
     const [currentEditing, setCurrentEditing] = useState('');
+    const [userAvatar, setUserAvatar] = useState('');
 
     const getAdditionalUserData = useCallback(
       (currentUser) => {
@@ -50,7 +51,7 @@ const PersonalInfo = memo(
 
     useEffect(() => {
       if (user) getAdditionalUserData(user);
-    }, [getAdditionalUserData, user, currentEditing]);
+    }, [getAdditionalUserData, user, currentEditing, userAvatar]);
 
     const capitalize = (string: string): string => {
       return string.charAt(0).toUpperCase() + string.slice(1);
@@ -86,9 +87,14 @@ const PersonalInfo = memo(
       }
     };
 
+    const handleAvatarChange = () => {
+      const { photoURL } = user;
+      setUserAvatar(photoURL);
+    };
+
     return (
       <S.PersonalInfo>
-        <EditAvatar user={user} photoURL={userData.photoURL} />
+        <EditAvatar user={user} photoURL={userData.photoURL} onChange={handleAvatarChange} />
         {accountData.map((elem) => (
           <S.Item key={elem.title}>
             <EditPersonalInfo

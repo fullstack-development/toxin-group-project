@@ -119,9 +119,9 @@ function* avatarUpdate({ api }: Dependencies, { payload }: AvatarUpdateRequest) 
 
     yield user.updateProfile({ photoURL });
 
-    yield put(avatarUpdateSuccess('Аватар был успешно изменен'));
+    yield put(avatarUpdateSuccess('Avatar has been saccessfully changed'));
   } catch (err) {
-    yield put(avatarUpdateFailed('Произошла ошибка,, повторите попытку позже'));
+    yield put(avatarUpdateFailed('An error occured, please try again later'));
   }
 }
 
@@ -132,9 +132,9 @@ function* avatarRemove({ api }: Dependencies, { payload }: AvatarRemoveRequest) 
     yield user.updateProfile({ photoURL: null });
     yield api.auth.removeUserAvatar(user.uid);
 
-    yield put(avatarRemoveSuccess('Аватар был успешно удален'));
+    yield put(avatarRemoveSuccess('Avatar has been saccessfully deleted'));
   } catch (err) {
-    yield put(avatarRemoveFailed('Произошла ошибка, повторите попытку позже'));
+    yield put(avatarRemoveFailed('An error occured, please try again later'));
   }
 }
 

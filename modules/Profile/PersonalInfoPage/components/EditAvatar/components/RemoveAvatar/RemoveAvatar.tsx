@@ -1,4 +1,5 @@
 import { useEffect, memo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
 import { avatarRemove, completeAvatarRemove } from 'redux/Profile/redux/actions';
@@ -8,12 +9,14 @@ import { PopUpNotification } from 'shared/view/components';
 
 type StateProps = {
   isCompleted: boolean;
+  isSuccess: boolean;
   statusText: string;
 };
 
 const mapState = (state: AppState): StateProps => ({
   isCompleted: state.profile.isAvatarRemoveCompleted,
   statusText: state.profile.avatarRemoveStatusText,
+  isSuccess: state.profile.isAvatarRemoveSuccess,
 });
 
 const mapDispatch = {
@@ -25,6 +28,7 @@ type OwnProps = {
   user: User;
   onConfirm: () => void;
   onCancel: () => void;
+  onSuccess: () => void;
 };
 
 type Props = OwnProps & StateProps & typeof mapDispatch;
@@ -36,9 +40,13 @@ const RemoveAvatar = memo(
     onConfirm,
     isCompleted,
     statusText,
+    isSuccess,
+    onSuccess,
     startAvatarRemove,
     stopAvatarRemove,
   }: Props) => {
+    const { t } = useTranslation('PersonalInfo');
+
     const handleConfirmationCancel = () => {
       onCancel();
     };
@@ -46,6 +54,7 @@ const RemoveAvatar = memo(
     const handleNotificationCancel = () => {
       stopAvatarRemove();
       onConfirm();
+      isSuccess && onSuccess();
     };
 
     const handleConfirmationSuccess = () => {
@@ -59,10 +68,13 @@ const RemoveAvatar = memo(
     return (
       <>
         {isCompleted ? (
-          <PopUpNotification message={statusText} onConfirmButtonClick={handleNotificationCancel} />
+          <PopUpNotification
+            message={t(statusText)}
+            onConfirmButtonClick={handleNotificationCancel}
+          />
         ) : (
           <PopUpNotification
-            message="Вы уверены, что хотите удалить аватар?"
+            message={t('Are you sure you want to delete avatar?')}
             withCancelButton
             onConfirmButtonClick={handleConfirmationSuccess}
             onCancelButtonClick={handleConfirmationCancel}

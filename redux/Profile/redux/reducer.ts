@@ -19,10 +19,10 @@ const initialState: ProfileState = {
   isUsernameUpdateSuccess: false,
   isUsernameUpdateCompleted: false,
   usernameUpdateStatusText: '',
-  isAvatarUpdatePending: false,
+  isAvatarUpdateSuccess: false,
   isAvatarUpdateCompleted: false,
   avatarUpdateStatusText: '',
-  isAvatarRemovePending: false,
+  isAvatarRemoveSuccess: false,
   isAvatarRemoveCompleted: false,
   avatarRemoveStatusText: '',
 };
@@ -178,56 +178,56 @@ const profile = (state: ProfileState = initialState, action: ProfileActions): Pr
     case 'AVATAR_UPDATE_PROCESS':
       return {
         ...state,
-        isAvatarUpdatePending: true,
+        isAvatarUpdateSuccess: false,
         isAvatarUpdateCompleted: false,
         avatarUpdateStatusText: '',
       };
     case 'AVATAR_UPDATE_SUCCESS':
       return {
         ...state,
-        isAvatarUpdatePending: false,
+        isAvatarUpdateSuccess: true,
         isAvatarUpdateCompleted: true,
         avatarUpdateStatusText: action.payload,
       };
     case 'AVATAR_UPDATE_FAILED':
       return {
         ...state,
-        isAvatarUpdatePending: false,
+        isAvatarUpdateSuccess: false,
         isAvatarUpdateCompleted: true,
         avatarUpdateStatusText: action.payload,
       };
     case 'AVATAR_UPDATE_COMPLETED':
       return {
         ...state,
-        isAvatarUpdatePending: false,
+        isAvatarUpdateSuccess: false,
         isAvatarUpdateCompleted: false,
         avatarUpdateStatusText: '',
       };
     case 'AVATAR_REMOVE_PROCESS':
       return {
         ...state,
-        isAvatarRemovePending: true,
+        isAvatarRemoveSuccess: false,
         isAvatarRemoveCompleted: false,
         avatarRemoveStatusText: '',
       };
     case 'AVATAR_REMOVE_SUCCESS':
       return {
         ...state,
-        isAvatarRemovePending: false,
+        isAvatarRemoveSuccess: true,
         isAvatarRemoveCompleted: true,
         avatarRemoveStatusText: action.payload,
       };
     case 'AVATAR_REMOVE_FAILED':
       return {
         ...state,
-        isAvatarRemovePending: false,
+        isAvatarRemoveSuccess: false,
         isAvatarRemoveCompleted: true,
         avatarRemoveStatusText: action.payload,
       };
     case 'AVATAR_REMOVE_COMPLETED':
       return {
         ...state,
-        isAvatarRemovePending: false,
+        isAvatarRemoveSuccess: false,
         isAvatarRemoveCompleted: false,
         avatarRemoveStatusText: '',
       };

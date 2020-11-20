@@ -10,7 +10,7 @@ import {
   Filters,
   Opportunities,
 } from 'services/api/entities/model';
-import { CheckboxesList, Dropdown, TimePicker } from 'shared/view/components';
+import { CheckboxesList, Dropdown, TimePicker, PriceSlider } from 'shared/view/components';
 import {
   checkboxesListData,
   expandableCheckboxesListData,
@@ -23,7 +23,7 @@ import {
   amenitiesItems,
 } from 'shared/view/components/Dropdown/Dropdown.fixture';
 import { Item } from 'shared/view/components/Dropdown/Dropdown.model';
-import { Expander, Slider } from 'shared/view/elements';
+import { Expander } from 'shared/view/elements';
 
 import { OptionName, Props } from './RoomFilter.model';
 import * as S from './RoomFilter.styles';
@@ -97,10 +97,10 @@ const RoomFilter = memo(({ initialFilters, loadRooms, isPending = false }: Props
                 />
               </S.DropdownWrapper>
               <S.SliderWrapper>
-                <Slider
+                <PriceSlider
                   name="price"
                   title={t('Price range')}
-                  initialValue={[initialValues.price.from, initialValues.price.to]}
+                  value={[initialValues.price.from, initialValues.price.to]}
                   showValue
                 />
                 <S.SliderDescription>{t('Cost per day of stay in the room')}</S.SliderDescription>

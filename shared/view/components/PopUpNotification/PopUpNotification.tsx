@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { TextButton } from 'shared/view/elements';
 
@@ -12,21 +13,25 @@ type Props = {
 };
 
 const PopUpNotification = memo(
-  ({ message, onConfirmButtonClick, withCancelButton, onCancelButtonClick }: Props) => (
-    <S.PopUpNotification>
-      <S.Message>{message}</S.Message>
-      <S.Buttons withCancelButton={withCancelButton}>
-        <TextButton type="button" onClick={onConfirmButtonClick}>
-          ОК
-        </TextButton>
-        {withCancelButton && (
-          <TextButton type="button" onClick={onCancelButtonClick} isSecondary>
-            Отменить
+  ({ message, onConfirmButtonClick, withCancelButton, onCancelButtonClick }: Props) => {
+    const { t } = useTranslation('shared');
+
+    return (
+      <S.PopUpNotification>
+        <S.Message>{message}</S.Message>
+        <S.Buttons withCancelButton={withCancelButton}>
+          <TextButton type="button" onClick={onConfirmButtonClick}>
+            {t('Ok')}
           </TextButton>
-        )}
-      </S.Buttons>
-    </S.PopUpNotification>
-  ),
+          {withCancelButton && (
+            <TextButton type="button" onClick={onCancelButtonClick} isSecondary>
+              {t('Cancel')}
+            </TextButton>
+          )}
+        </S.Buttons>
+      </S.PopUpNotification>
+    );
+  },
 );
 
 export { PopUpNotification };

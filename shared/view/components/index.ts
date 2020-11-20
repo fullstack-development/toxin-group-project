@@ -15,3 +15,4 @@ export { Rooms } from './Rooms/Rooms';
 export { RoomImpression } from './RoomImpression/RoomImpression';
 export { SocialMedia } from './SocialMedia/SocialMedia';
 export { TimePicker } from './TimePicker/TimePicker';
+export { PriceSlider } from './PriceSlider/PriceSlider';
