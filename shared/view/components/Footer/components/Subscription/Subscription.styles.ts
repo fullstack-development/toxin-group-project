@@ -8,7 +8,7 @@ const Container = styled.div`
   flex-direction: column;
 
   @media ${breakpointDown('md')} {
-    display: none;
+    width: 100%;
   }
 `;
 

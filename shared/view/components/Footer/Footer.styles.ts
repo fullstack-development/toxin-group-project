@@ -28,7 +28,9 @@ const MainContainer = styled(Container)`
       @media ${breakpointDown('md')} {
         display: flex;
         justify-content: center;
-        padding-bottom: 0;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 2.1428rem;
         padding-top: 8.5714rem;
         border-bottom: 0;
       }
