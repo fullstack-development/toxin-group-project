@@ -125,7 +125,7 @@ const RegistrationForm = memo(
           open={!isSuccess && isProcess && Boolean(statusText)}
           autoHideDuration={3000}
           onClose={stopRegistration}
-          message={t(statusText)}
+          message={t(`Auth:${statusText}`)}
           action={
             <>
               <IconButton

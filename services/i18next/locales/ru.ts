@@ -19,6 +19,20 @@ export const ru = {
     'Please fill in this field': 'Заполните это поле',
     'Password must contain at least 8 characters': 'Пароль должен содержать минимум 8 символов',
   },
+  Auth: {
+    'Invalid email address': 'Указан недействительный адрес электронной почты',
+    'The user is blocked': 'Пользователь заблокирован',
+    'The user with the specified email address is not registered':
+      'Пользователь с указанным электронным адресом не зарегистрирован',
+    'Wrong password': 'Неверный пароль',
+    'A link to reset your password has been sent to the specified email':
+      'Ссылка для восстановления пароля была отправлена на указанный емейл',
+    'The password should be 6 characters long or more':
+      'Пароль должен состоять из 6 или более символов',
+    'All fields must be filled in correctly!': 'Все поля должны быть заполнены корректно!',
+    'First name or last name is too long': 'Имя или фамилия слишком длинные',
+    'Unknown error': 'Неизвестная ошибка',
+  },
   Months: {
     January: 'Январь',
     February: 'Февраль',
@@ -173,8 +187,6 @@ export const ru = {
     'Service login details': 'Данные для входа в сервис',
     'Receive special offers': 'Получать спецпредложения',
     'Already have an account on Toxin': 'Уже есть аккаунт на Toxin',
-    'All fields must be filled in correctly!': 'Все поля должны быть заполнены корректно!',
-    'First name or last name is too long': 'Имя или фамилия слишком длинные',
   },
   OrderForm: {
     'How many guests': 'Сколько гостей',

@@ -1,21 +1,11 @@
 import { useState, useEffect, useRef, memo } from 'react';
 import { DateUtils, DayModifiers } from 'react-day-picker';
 import { useTranslation } from 'react-i18next';
-import { connect } from 'react-redux';
 
-import { AppState } from 'redux/store.model';
 import { TextButton } from 'shared/view/elements';
 
 import * as S from './Calendar.styles';
 import { NavBar } from './components/NavBar/NavBar';
-
-type StateProps = {
-  locale: string;
-};
-
-const mapState = (state: AppState): StateProps => ({
-  locale: state.language.currentLanguage,
-});
 
 type SelectedDate = null | Date;
 
@@ -25,24 +15,22 @@ type DaysSelection = {
   enteredTo?: SelectedDate;
 };
 
-type OwnProps = {
+type Props = {
   onChangeVisible: (isVisible: boolean) => void;
   onApply?: (...args: unknown[]) => unknown;
   onSelectDate?: (data: DaysSelection) => void;
   onClose?: () => void;
 } & S.CalendarContainer;
 
-type Props = OwnProps & StateProps;
-
 const Calendar = memo(
-  ({ onChangeVisible, onApply, onClose, onSelectDate, isVisible = false, locale }: Props) => {
+  ({ onChangeVisible, onApply, onClose, onSelectDate, isVisible = false }: Props) => {
     const [selectedDays, handleSelectDays] = useState<DaysSelection>({
       from: null,
       to: null,
       enteredTo: null,
     });
     const htmlContainer = useRef(null);
-    const { t } = useTranslation(['Months', 'WeekdaysShort', 'Buttons']);
+    const { t, i18n } = useTranslation(['Months', 'WeekdaysShort', 'Buttons']);
 
     useEffect(() => {
       const handleDocumentClick = (e: Event) => {
@@ -124,7 +112,7 @@ const Calendar = memo(
         <S.Calendar
           showOutsideDays
           modifiers={modifiers}
-          locale={locale}
+          locale={i18n.language}
           months={months}
           weekdaysLong={weekdaysLong}
           weekdaysShort={weekdaysShort}
@@ -147,5 +135,4 @@ const Calendar = memo(
   },
 );
 
-const ConnectedComponent = connect(mapState)(Calendar);
-export { ConnectedComponent as Calendar };
+export { Calendar };
