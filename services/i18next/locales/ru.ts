@@ -276,4 +276,16 @@ export const ru = {
       'Вы успешно подписаны на рассылку спецпредложений',
     'An error occured, please try again later': 'Произошла ошибка, повторите попытку позже',
   },
+  Auth: {
+    'Invalid email address': 'Указан недействительный адрес электронной почты',
+    'The user is blocked': 'Пользователь заблокирован',
+    'The user with the specified email address is not registered':
+      'Пользователь с указанным электронным адресом не зарегистрирован',
+    'Wrong password': 'Неверный пароль',
+    'A link to reset your password has been sent to the specified email':
+      'Ссылка для восстановления пароля была отправлена на указанный емейл',
+    'The password should be 6 characters long or more':
+      'Пароль должен состоять из 6 или более символов',
+    'Unknown error': 'Неизвестная ошибка',
+  },
 };

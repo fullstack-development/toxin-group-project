@@ -64,7 +64,10 @@ const ForgotPasswordForm = memo(
           )}
         />
         {isCompleted && (
-          <PopUpNotification message={statusText} onConfirmButtonClick={stopPasswordReset} />
+          <PopUpNotification
+            message={t(`Auth:${statusText}`)}
+            onConfirmButtonClick={stopPasswordReset}
+          />
         )}
       </S.ForgotPasswordForm>
     );
