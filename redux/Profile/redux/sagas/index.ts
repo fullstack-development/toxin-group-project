@@ -4,6 +4,7 @@ import { call, put } from 'redux-saga/effects';
 
 import { takeLeadingAction } from 'redux/action.model';
 import { Dependencies } from 'redux/api.model';
+import { HOME_PAGE } from 'shared/constants';
 import {
   getEmailUpdateErrorMessage,
   getPasswordUpdateErrorMessage,
@@ -35,10 +36,7 @@ function* emailUpdate(_: Dependencies, { payload }: EmailUpdateRequest) {
 
     yield user.updateEmail(email);
 
-    const actionCodeSettings = {
-      url: 'https://fsd-toxin.netlify.app',
-    };
-    yield user.sendEmailVerification(actionCodeSettings);
+    yield user.sendEmailVerification({ url: HOME_PAGE });
 
     yield put(
       emailUpdateSuccess('A confirmation email has been sent to the specified email address'),

@@ -1,5 +1,7 @@
 import { boundMethod } from 'autobind-decorator';
 
+import { HOME_PAGE } from 'shared/constants';
+
 import {
   Authentication,
   UserCredential,
@@ -59,11 +61,7 @@ class Auth {
 
     await this.addAdditionalUserInformation(user.uid, { gender, birthDate });
 
-    const actionCodeSettings = {
-      url: 'https://fsd-toxin.netlify.app',
-    };
-
-    user.sendEmailVerification(actionCodeSettings);
+    user.sendEmailVerification({ url: HOME_PAGE });
 
     return credential;
   }
@@ -107,11 +105,7 @@ class Auth {
     let resetPassword: void;
 
     try {
-      const actionCodeSettings = {
-        url: 'hhttps://fsd-toxin.netlify.app/auth/login',
-      };
-
-      resetPassword = await this.actions.resetPassword(email, actionCodeSettings);
+      resetPassword = await this.actions.resetPassword(email, { url: `${HOME_PAGE}/auth/login` });
     } catch ({ code }) {
       switch (code) {
         case 'auth/user-not-found':
