@@ -7,6 +7,8 @@ import { AppState } from 'redux/store.model';
 import { User } from 'services/api/Firebase/modules/Authentication/model';
 import { AvatarEditor, PopUpNotification } from 'shared/view/components';
 
+import * as S from './UpdateAvatar.styles';
+
 type StateProps = {
   isSuccess: boolean;
   isCompleted: boolean;
@@ -75,7 +77,9 @@ const UpdateAvatar = memo(
             onConfirmButtonClick={handleNotificationCancel}
           />
         ) : (
-          <AvatarEditor onCancel={handleEditorCancel} image={image} onSave={handleEditorSave} />
+          <S.EditorWrapper>
+            <AvatarEditor onCancel={handleEditorCancel} image={image} onSave={handleEditorSave} />
+          </S.EditorWrapper>
         )}
       </>
     );

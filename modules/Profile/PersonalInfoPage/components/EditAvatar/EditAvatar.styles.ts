@@ -15,15 +15,6 @@ const AvatarWrapper = styled.div`
   width: max-content;
 `;
 
-const CropperWrapper = styled.div`
-  max-width: max-content;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 20;
-`;
-
 const Title = styled.h3`
   margin: 0 0.5rem 0.5rem 0;
 `;
@@ -64,13 +55,4 @@ const EditButton = styled.span`
   }}
 `;
 
-export {
-  EditAvatar,
-  AvatarWrapper,
-  CropperWrapper,
-  Title,
-  Buttons,
-  EditButtonWrapper,
-  EditButton,
-  HiddenInput,
-};
+export { EditAvatar, AvatarWrapper, Title, Buttons, EditButtonWrapper, EditButton, HiddenInput };

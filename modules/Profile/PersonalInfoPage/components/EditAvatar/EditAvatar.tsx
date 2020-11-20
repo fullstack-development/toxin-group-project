@@ -57,14 +57,12 @@ const EditAvatar = memo(({ user, photoURL, onChange }: Props) => {
       <S.AvatarWrapper>
         <Avatar photoURL={photoURL} className={classes.avatarLoader} />
         {isEditorVisible && (
-          <S.CropperWrapper>
-            <UpdateAvatar
-              user={user}
-              onCancel={handleEditorCancel}
-              onSuccess={handleChangesSuccess}
-              image={image}
-            />
-          </S.CropperWrapper>
+          <UpdateAvatar
+            user={user}
+            onCancel={handleEditorCancel}
+            onSuccess={handleChangesSuccess}
+            image={image}
+          />
         )}
       </S.AvatarWrapper>
       <S.Buttons>
