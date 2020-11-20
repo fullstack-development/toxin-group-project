@@ -43,7 +43,7 @@ const MainContent = memo(({ user, subscriptionData, loadSubscriptionData }: Prop
 
   return (
     <S.MainContent>
-      <NavAccountSettings title={t('NotificationsPage')} />
+      <NavAccountSettings title={t('Notifications')} />
       <S.Title>{t('Notifications')}</S.Title>
       <Subscriptions
         email={user ? user.email : null}
