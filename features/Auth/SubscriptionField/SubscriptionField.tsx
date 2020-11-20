@@ -64,7 +64,7 @@ const SubscriptionField = memo(
             </form>
             {isCompleted && (
               <PopUpNotification
-                message={statusText}
+                message={t(`NotificationsPage:${statusText}`)}
                 onConfirmButtonClick={stopSubscriptionUpdate}
               />
             )}

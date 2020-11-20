@@ -1,20 +1,24 @@
 import Head from 'next/head';
 import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { LogoutPage } from 'modules/Auth';
 
-const Logout = memo(() => (
-  <>
-    <Head>
-      <title>Toxin | Выход</title>
-      <meta name="description" content="Выход из аккаунта" />
-      <meta
-        name="keywords"
-        content="отель, номер, регистрация, авторизация, забронировать, выйти"
-      />
-    </Head>
-    <LogoutPage />
-  </>
-));
+const Logout = memo(() => {
+  const { t } = useTranslation('LogoutPage');
+  return (
+    <>
+      <Head>
+        <title>Toxin | {t('Sign Out')}</title>
+        <meta name="description" content="Sign out of your account" />
+        <meta
+          name="keywords"
+          content={t('hotel, room, registration, authorization, book, sign out')}
+        />
+      </Head>
+      <LogoutPage />
+    </>
+  );
+});
 
 export default Logout;

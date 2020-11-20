@@ -11,7 +11,7 @@ const Login = memo(() => {
 
   const handleEditButtonClick = () => setEdit((prevValue) => !prevValue);
 
-  const { t } = useTranslation('LoginAndSecurity');
+  const { t } = useTranslation('LoginAndSecurityPage');
 
   return (
     <S.Login>

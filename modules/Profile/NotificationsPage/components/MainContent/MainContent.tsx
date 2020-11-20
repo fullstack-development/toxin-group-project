@@ -39,11 +39,11 @@ const MainContent = memo(({ user, subscriptionData, loadSubscriptionData }: Prop
     getSubscriptionData(user);
   }, [getSubscriptionData, user]);
 
-  const { t } = useTranslation('AccountSettings');
+  const { t } = useTranslation('AccountSettingsPage');
 
   return (
     <S.MainContent>
-      <NavAccountSettings title={t('Notifications')} />
+      <NavAccountSettings title={t('NotificationsPage')} />
       <S.Title>{t('Notifications')}</S.Title>
       <Subscriptions
         email={user ? user.email : null}

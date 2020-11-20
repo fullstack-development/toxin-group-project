@@ -6,7 +6,7 @@ import { cardsData } from './Cards.fixture';
 import * as S from './Cards.styles';
 
 const Cards = memo(() => {
-  const { t } = useTranslation('AccountSettings');
+  const { t } = useTranslation('AccountSettingsPage');
 
   return (
     <S.Cards>
