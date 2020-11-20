@@ -39,7 +39,7 @@ const MainContent = memo(({ user, subscriptionData, loadSubscriptionData }: Prop
     getSubscriptionData(user);
   }, [getSubscriptionData, user]);
 
-  const { t } = useTranslation('AccountSettings');
+  const { t } = useTranslation('AccountSettingsPage');
 
   return (
     <S.MainContent>
