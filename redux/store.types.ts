@@ -2,12 +2,12 @@ import { SagaIterator } from 'redux-saga';
 
 import { Api } from 'services/api/api';
 
-import { ApartmentActions, ApartmentState } from './Apartment/types';
-import { AuthActions, AuthState } from './Auth/types';
-import { BookingActions, BookingState } from './Booking/types';
-import { LanguageState, LanguageActions } from './Language/types';
-import { ProfileActions, ProfileState } from './Profile/types';
-import { RegistrationState, RegistrationActions } from './Registration/types';
+import { ApartmentActions, ApartmentState } from './Apartment/model';
+import { AuthActions, AuthState } from './Auth/model';
+import { BookingActions, BookingState } from './Booking/model';
+import { LanguageState, LanguageActions } from './Language/model';
+import { ProfileActions, ProfileState } from './Profile/model';
+import { RegistrationState, RegistrationActions } from './Registration/model';
 import { SubscriptionActions, SubscriptionState } from './Subscriptions/model';
 
 export type Dependencies = {
