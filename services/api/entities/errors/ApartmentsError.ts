@@ -1,4 +1,4 @@
-import ErrorsConstructor from './ErrorsConstructor';
+import { ErrorsConstructor } from './ErrorsConstructor';
 
 type ApartmentsErrorTypes = {
   key?: string;
@@ -15,4 +15,4 @@ class ApartmentsError extends ErrorsConstructor {
   }
 }
 
-export default ApartmentsError;
+export { ApartmentsError };

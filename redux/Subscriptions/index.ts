@@ -1,7 +1,9 @@
 import { subscriptions } from './redux/reducer';
 import { rootSaga } from './redux/sagas';
 
-export const subscriptionsReduxEntry = {
+const subscriptionsReduxEntry = {
   reducers: { subscriptions },
   sagas: [rootSaga],
 };
+
+export { subscriptionsReduxEntry };

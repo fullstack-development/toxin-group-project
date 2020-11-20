@@ -1,8 +1,8 @@
 import { boundMethod } from 'autobind-decorator';
 
-import ApartmentsError from './ApartmentsError';
-import AuthError from './AuthError';
-import DatabaseError from './DatabaseError';
+import { ApartmentsError } from './ApartmentsError';
+import { AuthError } from './AuthError';
+import { DatabaseError } from './DatabaseError';
 
 type ErrorConstructor = ApartmentsError | AuthError | DatabaseError;
 
@@ -20,19 +20,24 @@ class ApiErrors {
   }
 
   private init(): void {
-    this.add(AuthError, 'auth/email-is-taken', (email) => `${email} already is taken. Try another`);
+    this.add(
+      AuthError,
+      'email-already-in-use',
+      () => 'The user with the specified email address is already registered',
+    );
+    this.add(AuthError, 'auth/invalid-email', () => 'Invalid email address');
+    this.add(AuthError, 'auth/user-disabled', () => 'The user is blocked');
     this.add(
       AuthError,
       'auth/weak-password',
       () => 'The password should be 6 characters long or more',
     );
-    this.add(AuthError, 'auth/wrong-password', () => 'The password is invalid');
+    this.add(AuthError, 'auth/wrong-password', () => 'Wrong password');
     this.add(
       AuthError,
       'auth/user-not-found',
-      () => 'There is no user record corresponding to this identifier',
+      () => 'The user with the specified email address is not registered',
     );
-
     this.add(
       ApartmentsError,
       'apartments/nothing-found',
