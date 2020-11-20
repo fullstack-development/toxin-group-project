@@ -29,13 +29,13 @@ class Booking {
   }
 
   @boundMethod
-  public remove(id: string): void {
+  public remove(id: number): void {
     this.actions.removeDocument(this.booked.doc(String(id)));
   }
 
   @boundMethod
-  public update(id: string, data: Partial<BookingData>): void {
-    this.actions.update(this.booked.doc(id), data);
+  public update(id: number, data: Partial<BookingData>): void {
+    this.actions.update(this.booked.doc(String(id)), data);
   }
 
   @boundMethod

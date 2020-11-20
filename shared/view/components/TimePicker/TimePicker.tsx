@@ -13,11 +13,20 @@ type Props = {
   dateTo?: Date;
   dateFromLabelText?: string;
   dateToLabelText?: string;
+  disabled?: boolean;
   onChange?: (e: ChangeEvent) => void;
 } & S.ContainerElement;
 
 const TimePicker = memo(
-  ({ type, dateFrom, dateTo, name, dateFromLabelText, dateToLabelText }: Props) => {
+  ({
+    type,
+    dateFrom,
+    dateTo,
+    name,
+    dateFromLabelText,
+    dateToLabelText,
+    disabled = false,
+  }: Props) => {
     const [isCalendarVisible, setCalendarVisibility] = useState(false);
     const [selectedDateRange, setSelectedDateRange] = useState({ from: dateFrom, to: dateTo });
     const { t, i18n } = useTranslation(['TimePicker', 'Shared']);
@@ -39,7 +48,7 @@ const TimePicker = memo(
       type === 'single' ? t('TimePicker:Select Date') : t('Shared:Date mask');
 
     const openCalendar = (): void => {
-      setCalendarVisibility(true);
+      if (!disabled) setCalendarVisibility(true);
     };
 
     const closeCalendar = (): void => {
@@ -66,6 +75,7 @@ const TimePicker = memo(
                     label={dateFromLabelText}
                     placeholder="date from"
                     readOnly
+                    disabled={disabled}
                   />
                   <S.ExpandIcon />
                 </S.ContainerElement>
@@ -76,6 +86,7 @@ const TimePicker = memo(
                       label={dateToLabelText}
                       placeholder="date to"
                       readOnly
+                      disabled={disabled}
                     />
                     <S.ExpandIcon />
                   </S.ContainerElement>

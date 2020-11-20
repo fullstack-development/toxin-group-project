@@ -53,10 +53,13 @@ export const ru = {
     'Service fee discount': 'Сбор за услуги: скидка',
     'Additional service fee': 'Сбор за дополнительные услуги',
     'Book now': 'Забронировать',
+    'Сancel booking': 'Отменить бронирование',
     'Fee for guests from the second': 'Плата за гостей со второго',
     'Payment for an additional guest': 'Оплата дополнительного гостя',
     'Please select a booking date': 'Пожалуйста, выберите дату бронирования',
     'Please indicate the number of guests': 'Пожалуйста, укажите количество гостей',
+    'Failed to book a room': 'Не удалось забронировать номер',
+    'Failed to cancel booking': 'Не удалось отменить бронирование',
   },
   CheckboxesList: {
     'Smoking is allowed': 'Можно курить',

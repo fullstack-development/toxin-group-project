@@ -14,6 +14,10 @@ type BookingState = {
   isBookingSuccess: boolean;
   isBookingFailed: boolean;
   bookingStatusText: string;
+  isCancelBookingPending: boolean;
+  isCancelBookingSuccess: boolean;
+  isCancelBookingFailed: boolean;
+  cancelBookingStatusText: string;
 };
 
 type SelectedBookedRoom = {
@@ -33,10 +37,15 @@ type SetFailedStatus = ActionPayload<'ROOMS_REQUEST_FAILED', Error>;
 type LoadBookedHistory = ActionPayload<'LOAD_BOOKED_HISTORY', string>;
 type UpdateBookedHistory = ActionPayload<'UPDATE_BOOKED_HISTORY', BookedHistoryList>;
 
-type BookCurrentRoom = ActionPayload<'BOOK_ROOM', SelectedBookedRoom>;
+type Booking = ActionPayload<'BOOKING', SelectedBookedRoom>;
 type BookingSuccess = Action<'BOOKING_SUCCESS'>;
 type BookingFailed = ActionPayload<'BOOKING_FAILED', string>;
-type BookingCanceled = Action<'BOOKING_CANCELED'>;
+type BookingCompleted = Action<'BOOKING_COMPLETED'>;
+
+type CancelBooking = ActionPayload<'CANCEL_BOOKING', number>;
+type CancelBookingSuccess = Action<'CANCEL_BOOKING_SUCCESS'>;
+type CancelBookingFailed = ActionPayload<'CANCEL_BOOKING_FAILED', string>;
+type CancelBookingCompleted = Action<'CANCEL_BOOKING_COMPLETED'>;
 
 type BookingActions =
   | PendingStatusUpdate
@@ -45,10 +54,14 @@ type BookingActions =
   | RoomsRequest
   | UpdateBookedHistory
   | LoadBookedHistory
-  | BookCurrentRoom
+  | Booking
   | BookingSuccess
   | BookingFailed
-  | BookingCanceled;
+  | BookingCompleted
+  | CancelBooking
+  | CancelBookingSuccess
+  | CancelBookingFailed
+  | CancelBookingCompleted;
 
 export type {
   BookedHistoryList,
@@ -60,9 +73,13 @@ export type {
   SetFailedStatus,
   LoadBookedHistory,
   UpdateBookedHistory,
-  BookCurrentRoom,
+  Booking,
   BookingSuccess,
   BookingFailed,
-  BookingCanceled,
+  BookingCompleted,
+  CancelBooking,
+  CancelBookingSuccess,
+  CancelBookingFailed,
+  CancelBookingCompleted,
   BookingActions,
 };

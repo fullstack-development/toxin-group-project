@@ -5,7 +5,12 @@ import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
 import { SelectedBookedRoom } from 'redux/Booking/model';
-import { bookRoom, cancelBooking as cancelBookingRequest } from 'redux/Booking/redux/actions';
+import {
+  booking,
+  cancelBooking,
+  completeBooking,
+  completeCancelBooking,
+} from 'redux/Booking/redux/actions';
 import { AppState } from 'redux/store.model';
 import { Dropdown, TimePicker, PopUpNotification } from 'shared/view/components';
 import { DropdownProps } from 'shared/view/components/Dropdown/Dropdown.model';
@@ -17,22 +22,32 @@ import { PriceItem, MaxGuests } from './OrderForm.model';
 import * as S from './OrderForm.styles';
 
 type StateProps = {
-  isPending: boolean;
-  isSuccess: boolean;
-  isFailed: boolean;
-  statusText: string;
+  isBookingPending: boolean;
+  isBookingSuccess: boolean;
+  isBookingFailed: boolean;
+  bookingStatusText: string;
+  isCancelBookingPending: boolean;
+  isCancelBookingSuccess: boolean;
+  isCancelBookingFailed: boolean;
+  cancelBookingStatusText: string;
 };
 
 const mapState = (state: AppState): StateProps => ({
-  isPending: state.booking.isBookingPending,
-  isSuccess: state.booking.isBookingSuccess,
-  isFailed: state.booking.isBookingFailed,
-  statusText: state.booking.bookingStatusText,
+  isBookingPending: state.booking.isBookingPending,
+  isBookingSuccess: state.booking.isBookingSuccess,
+  isBookingFailed: state.booking.isBookingFailed,
+  bookingStatusText: state.booking.bookingStatusText,
+  isCancelBookingPending: state.booking.isCancelBookingPending,
+  isCancelBookingSuccess: state.booking.isCancelBookingSuccess,
+  isCancelBookingFailed: state.booking.isCancelBookingFailed,
+  cancelBookingStatusText: state.booking.cancelBookingStatusText,
 });
 
 const mapDispatch = {
-  confirmBookedRoom: bookRoom,
-  cancelBooking: cancelBookingRequest,
+  startBooking: booking,
+  stopBooking: completeBooking,
+  startCancelBooking: cancelBooking,
+  stopCancelBooking: completeCancelBooking,
 };
 
 type OwnProps = {
@@ -46,6 +61,7 @@ type OwnProps = {
   currency?: string;
   measure?: string;
   userEmail?: string;
+  isСancellationForm?: boolean;
 };
 
 type Props = OwnProps & StateProps & typeof mapDispatch;
@@ -103,8 +119,8 @@ const getResultPrice = (prices: PriceItem[]): number =>
 const getDaysDifference = (dates: { from: Date; to: Date }) =>
   Math.round(Math.abs((dates.to.getTime() - dates.from.getTime()) / oneDay));
 
-const OrderForm = memo(
-  ({
+const OrderForm = memo((props: Props) => {
+  const {
     roomNumber,
     roomType,
     roomPrice,
@@ -115,142 +131,167 @@ const OrderForm = memo(
     currency = 'RUB',
     measure = 'Per day',
     userEmail,
-    isPending,
-    isSuccess,
-    isFailed,
-    statusText,
-    confirmBookedRoom,
-    cancelBooking,
-  }: Props) => {
-    const { t } = useTranslation(['OrderForm', 'WordForms', 'SearchRoomForm', 'Shared']);
+    isBookingPending,
+    isBookingSuccess,
+    isBookingFailed,
+    bookingStatusText,
+    isCancelBookingPending,
+    isCancelBookingSuccess,
+    isCancelBookingFailed,
+    cancelBookingStatusText,
+    isСancellationForm = false,
+    startBooking,
+    stopBooking,
+    startCancelBooking,
+    stopCancelBooking,
+  } = props;
 
-    const defaultPrices: PriceItem[] = [
-      {
-        label: `${t('Service fee discount')} 2${'\u00A0'}179₽`,
-        price: -2179,
-        tooltip: 'Подсказка Подсказка Подсказка Подсказка 2',
-      },
-      { label: t('Additional service fee'), price: 300, tooltip: 'Подсказка 2' },
-    ];
+  const { t } = useTranslation(['OrderForm', 'WordForms', 'SearchRoomForm', 'Shared']);
 
-    const router = useRouter();
+  const defaultPrices: PriceItem[] = [
+    {
+      label: `${t('Service fee discount')} 2${'\u00A0'}179₽`,
+      price: -2179,
+      tooltip: 'Подсказка Подсказка Подсказка Подсказка 2',
+    },
+    { label: t('Additional service fee'), price: 300, tooltip: 'Подсказка 2' },
+  ];
 
-    const handleFormSubmit = (values: FormData) => {
-      if (!isAuthSuccess) router.push('/auth/login');
+  const router = useRouter();
 
-      confirmBookedRoom({
+  const handleFormSubmit = (values: FormData) => {
+    if (!isAuthSuccess) router.push('/auth/login');
+
+    if (isСancellationForm) {
+      startCancelBooking(roomNumber);
+    } else {
+      startBooking({
         ...values,
         user: userEmail,
         apartmentId: roomNumber,
       });
-    };
+    }
+  };
 
-    useEffect(() => {
-      if (isSuccess) router.push('/profile/selected-rooms');
-    }, [isSuccess, router]);
+  useEffect(() => {
+    if (isBookingSuccess) {
+      stopBooking();
+      router.push('/profile/selected-rooms');
+    }
+    if (isCancelBookingSuccess) {
+      stopCancelBooking();
+      router.push('/profile/selected-rooms');
+    }
+  }, [isBookingSuccess, stopBooking, isCancelBookingSuccess, stopCancelBooking, router]);
 
-    return (
-      <>
-        <S.Container>
-          <S.Title>{`${t('Room reservation')}#${roomNumber}`}</S.Title>
-          <Form
-            onSubmit={handleFormSubmit}
-            render={({ handleSubmit, values }) => {
-              const dates = values.booked;
-              const daysDifference =
-                (dates && dates.from && dates.to && getDaysDifference(dates)) || 0;
-              const guests = values.guests && {
-                adults: values.guests.adults + values.guests.children,
-                babies: values.guests.babies,
-              };
+  return (
+    <>
+      <S.Container>
+        <S.Title>{`${t('Room reservation')}#${roomNumber}`}</S.Title>
+        <Form
+          onSubmit={handleFormSubmit}
+          render={({ handleSubmit, values }) => {
+            const dates = values.booked;
+            const daysDifference =
+              (dates && dates.from && dates.to && getDaysDifference(dates)) || 0;
+            const guests = values.guests && {
+              adults: values.guests.adults + values.guests.children,
+              babies: values.guests.babies,
+            };
 
-              const totalGuestsCount = guests ? guests.adults : 0;
-              const billableGuests = Math.max(totalGuestsCount - noFeeGuestsCount, 0);
+            const totalGuestsCount = guests ? guests.adults : 0;
+            const billableGuests = Math.max(totalGuestsCount - noFeeGuestsCount, 0);
 
-              const prices = [
-                {
-                  label: `${formatNumber(roomPrice, currency)} х ${daysDifference}  ${t(
-                    'WordForms:days',
-                  )}`,
-                  price: roomPrice * daysDifference,
-                },
-                {
-                  label: t('Fee for guests from the second'),
-                  price: breakfastPricePerGuest * billableGuests,
-                },
-                ...(priceItems || defaultPrices),
-              ];
+            const prices = [
+              {
+                label: `${formatNumber(roomPrice, currency)} х ${daysDifference}  ${t(
+                  'WordForms:days',
+                )}`,
+                price: roomPrice * daysDifference,
+              },
+              {
+                label: t('Fee for guests from the second'),
+                price: breakfastPricePerGuest * billableGuests,
+              },
+              ...(priceItems || defaultPrices),
+            ];
 
-              const extraGuestFee = {
-                label: t('Payment for an additional guest'),
-                price: overcrowdingPrice,
-              };
+            const extraGuestFee = {
+              label: t('Payment for an additional guest'),
+              price: overcrowdingPrice,
+            };
 
-              if (totalGuestsCount > defaultMaxGuests.adults) {
-                prices.push(extraGuestFee);
-              }
+            if (totalGuestsCount > defaultMaxGuests.adults) {
+              prices.push(extraGuestFee);
+            }
 
-              return (
-                <form onSubmit={handleSubmit}>
-                  <S.RoomInfo>
-                    <S.RoomNumber>
-                      <S.NumberSign>№</S.NumberSign>
-                      {roomNumber}
-                      {roomType && <S.RoomType>{roomType}</S.RoomType>}
-                    </S.RoomNumber>
-                    <S.Price>
-                      {formatNumber(roomPrice, currency)}
-                      <S.Measure>{t(`WordForms:${measure}`)}</S.Measure>
-                    </S.Price>
-                  </S.RoomInfo>
-                  <S.Datepicker>
-                    <TimePicker
-                      type="double"
-                      dateFromLabelText={t('SearchRoomForm:Arrival')}
-                      dateToLabelText={t('SearchRoomForm:Departure')}
-                      name="booked"
+            return (
+              <form onSubmit={handleSubmit}>
+                <S.RoomInfo>
+                  <S.RoomNumber>
+                    <S.NumberSign>№</S.NumberSign>
+                    {roomNumber}
+                    {roomType && <S.RoomType>{roomType}</S.RoomType>}
+                  </S.RoomNumber>
+                  <S.Price>
+                    {formatNumber(roomPrice, currency)}
+                    <S.Measure>{t(`WordForms:${measure}`)}</S.Measure>
+                  </S.Price>
+                </S.RoomInfo>
+                <S.Datepicker>
+                  <TimePicker
+                    type="double"
+                    dateFromLabelText={t('SearchRoomForm:Arrival')}
+                    dateToLabelText={t('SearchRoomForm:Departure')}
+                    name="booked"
+                    disabled={isСancellationForm}
+                  />
+                </S.Datepicker>
+                <S.Dropdown>
+                  <S.DropdownLabel>{t('RoomFilter:Guests')}</S.DropdownLabel>
+                  <Dropdown {...dropdownOptions} disabled={isСancellationForm} />
+                </S.Dropdown>
+                <S.PriceList>
+                  <PriceList items={prices} />
+                </S.PriceList>
+                <S.ResultWrapper>
+                  {t('Shared:Total')}
+                  <S.Dots />
+                  <S.ResultPrice>
+                    <Field
+                      type="hidden"
+                      render={({ input }) => {
+                        setTimeout(() => input.onChange(getResultPrice(prices)));
+                        return <input {...input} />;
+                      }}
+                      name="totalPrice"
                     />
-                  </S.Datepicker>
-                  <S.Dropdown>
-                    <S.DropdownLabel>{t('RoomFilter:Guests')}</S.DropdownLabel>
-                    <Dropdown {...dropdownOptions} />
-                  </S.Dropdown>
-                  <S.PriceList>
-                    <PriceList items={prices} />
-                  </S.PriceList>
-                  <S.ResultWrapper>
-                    {t('Shared:Total')}
-                    <S.Dots />
-                    <S.ResultPrice>
-                      <Field
-                        type="hidden"
-                        render={({ input }) => {
-                          setTimeout(() => input.onChange(getResultPrice(prices)));
-                          return <input {...input} />;
-                        }}
-                        name="totalPrice"
-                      />
-                      {formatNumber(getResultPrice(prices), currency)}
-                    </S.ResultPrice>
-                  </S.ResultWrapper>
-                  <ArrowButton disabled={isPending} type="submit">
-                    {t('OrderForm:Book now')}
-                  </ArrowButton>
-                </form>
-              );
-            }}
-          />
-        </S.Container>
-        {isFailed && (
-          <PopUpNotification
-            message={t(`OrderForm:${statusText}`)}
-            onConfirmButtonClick={cancelBooking}
-          />
-        )}
-      </>
-    );
-  },
-);
+                    {formatNumber(getResultPrice(prices), currency)}
+                  </S.ResultPrice>
+                </S.ResultWrapper>
+                <ArrowButton disabled={isBookingPending || isCancelBookingPending} type="submit">
+                  {isСancellationForm ? t('OrderForm:Сancel booking') : t('OrderForm:Book now')}
+                </ArrowButton>
+              </form>
+            );
+          }}
+        />
+      </S.Container>
+      {isBookingFailed && (
+        <PopUpNotification
+          message={t(`OrderForm:${bookingStatusText}`)}
+          onConfirmButtonClick={stopBooking}
+        />
+      )}
+      {isCancelBookingFailed && (
+        <PopUpNotification
+          message={t(`OrderForm:${cancelBookingStatusText}`)}
+          onConfirmButtonClick={stopCancelBooking}
+        />
+      )}
+    </>
+  );
+});
 
 const ConnectedComponent = connect(mapState, mapDispatch)(OrderForm);
 export { ConnectedComponent as OrderForm };
