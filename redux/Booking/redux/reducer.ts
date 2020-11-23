@@ -10,7 +10,7 @@ const initialState: BookingState = {
   isBookingSuccess: false,
   isBookingFailed: false,
   bookingStatusText: '',
-  isCancelBookingPending: true,
+  isCancelBookingPending: false,
   isCancelBookingSuccess: false,
   isCancelBookingFailed: false,
   cancelBookingStatusText: '',
