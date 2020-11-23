@@ -184,6 +184,13 @@ export const ru = {
   translations: {
     Ago: 'Назад',
   },
+  ImageGallery: {
+    'Previous image': 'Предыдущее изображение',
+    'Next image': 'Следующее изображение',
+    'Zoom in': 'Увеличить',
+    'Zoom out': 'Уменьшить',
+    Close: 'Закрыть',
+  },
   OrderFormPrices: {
     'Service fee_discount': 'Сбор за услуги: скидка',
     'Additional service fee': 'Сбор за дополнительные услуги',

@@ -1,4 +1,5 @@
 import { memo, useState, MouseEvent } from 'react';
+import { useTranslation } from 'react-i18next';
 import Lightbox from 'react-image-lightbox';
 
 import { DotButton } from '../DotButton/DotButton';
@@ -47,10 +48,12 @@ const ImageGallery = memo(
       setOpen(true);
     };
 
+    const { t } = useTranslation('ImageGallery');
+
     return (
       <S.Container>
         <S.ArrowPrevContainer>
-          <S.ArrowButtonPrev aria-label="Назад" onClick={handleArrowPrevClick} />
+          <S.ArrowButtonPrev aria-label={t('Previous image')} onClick={handleArrowPrevClick} />
         </S.ArrowPrevContainer>
         {thumbnails.map((path, index) => (
           <S.Img
@@ -77,6 +80,11 @@ const ImageGallery = memo(
               setCurrentImage((currentImage + 1) % images.length);
               handleArrowNextClick();
             }}
+            prevLabel={t('Previous image')}
+            nextLabel={t('Next image')}
+            zoomInLabel={t('Zoom in')}
+            zoomOutLabel={t('Zoom out')}
+            closeLabel={t('Close')}
           />
         )}
         <S.Dots>
@@ -93,7 +101,7 @@ const ImageGallery = memo(
           ))}
         </S.Dots>
         <S.ArrowNextContainer>
-          <S.ArrowButtonNext aria-label="Вперед" onClick={handleArrowNextClick} />
+          <S.ArrowButtonNext aria-label={t('Next image')} onClick={handleArrowNextClick} />
         </S.ArrowNextContainer>
       </S.Container>
     );
