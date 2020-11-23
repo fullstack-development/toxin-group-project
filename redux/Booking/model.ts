@@ -28,6 +28,8 @@ type SelectedBookedRoom = {
   user: string;
 };
 
+type CancelBookingData = Omit<SelectedBookedRoom, 'guests' | 'totalPrice'>;
+
 type RoomsRequest = ActionPayload<'LOAD_ROOMS', Filters>;
 
 type PendingStatusUpdate = ActionPayload<'ROOMS_REQUEST_PENDING', boolean>;
@@ -42,7 +44,7 @@ type BookingSuccess = Action<'BOOKING_SUCCESS'>;
 type BookingFailed = ActionPayload<'BOOKING_FAILED', string>;
 type BookingCompleted = Action<'BOOKING_COMPLETED'>;
 
-type CancelBooking = ActionPayload<'CANCEL_BOOKING', number>;
+type CancelBooking = ActionPayload<'CANCEL_BOOKING', CancelBookingData>;
 type CancelBookingSuccess = Action<'CANCEL_BOOKING_SUCCESS'>;
 type CancelBookingFailed = ActionPayload<'CANCEL_BOOKING_FAILED', string>;
 type CancelBookingCompleted = Action<'CANCEL_BOOKING_COMPLETED'>;
@@ -67,6 +69,7 @@ export type {
   BookedHistoryList,
   BookingState,
   SelectedBookedRoom,
+  CancelBookingData,
   RoomsRequest,
   PendingStatusUpdate,
   SetRooms,

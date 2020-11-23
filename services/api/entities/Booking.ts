@@ -118,6 +118,21 @@ class Booking {
   }
 
   @boundMethod
+  public async cancelBooking({ apartmentId, from, to, reservationBy }: BookingData): Promise<void> {
+    this.booked
+      .where('reservationBy', '==', reservationBy)
+      .where('apartmentId', '==', apartmentId)
+      .where('from', '==', from)
+      .where('to', '==', to)
+      .get()
+      .then((snapshot) => {
+        snapshot.docs.forEach((doc) => {
+          this.actions.removeDocument(this.booked.doc(doc.id));
+        });
+      });
+  }
+
+  @boundMethod
   public setBookedByUser(selectedBooking: BookingData): void {
     this.booked.doc(String(Date.now())).set(selectedBooking);
   }

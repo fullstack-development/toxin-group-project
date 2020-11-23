@@ -13,6 +13,7 @@ import {
   BookingSuccess,
   BookingFailed,
   BookingCompleted,
+  CancelBookingData,
   CancelBooking,
   CancelBookingSuccess,
   CancelBookingFailed,
@@ -67,9 +68,9 @@ const completeBooking = (): BookingCompleted => ({
   type: 'BOOKING_COMPLETED',
 });
 
-const cancelBooking = (roomNumber: number): CancelBooking => ({
+const cancelBooking = (data: CancelBookingData): CancelBooking => ({
   type: 'CANCEL_BOOKING',
-  payload: roomNumber,
+  payload: data,
 });
 
 const cancelBookingSuccess = (): CancelBookingSuccess => ({

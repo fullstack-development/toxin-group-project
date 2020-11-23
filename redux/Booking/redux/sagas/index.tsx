@@ -67,10 +67,18 @@ function* bookRoom({ api }: Dependencies, { payload }: Booking) {
 }
 
 function* cancelBooking({ api }: Dependencies, { payload }: CancelBooking) {
+  const { apartmentId, booked, user } = payload;
   try {
-    if (!payload) throw new Error('Failed to cancel booking');
+    if (!apartmentId || booked || user) throw new Error('Failed to cancel booking');
 
-    yield call(api.booking.remove, payload);
+    const data = {
+      apartmentId,
+      from: booked.from,
+      to: booked.to,
+      reservationBy: user,
+    };
+
+    yield call(api.booking.cancelBooking, data);
     yield put(cancelBookingSuccess());
   } catch ({ message }) {
     yield put(cancelBookingFailed(message));

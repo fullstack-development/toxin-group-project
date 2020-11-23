@@ -163,7 +163,11 @@ const OrderForm = memo((props: Props) => {
     if (!isAuthSuccess) router.push('/auth/login');
 
     if (isСancellationForm) {
-      startCancelBooking(roomNumber);
+      startCancelBooking({
+        apartmentId: roomNumber,
+        booked: values.booked,
+        user: userEmail,
+      });
     } else {
       startBooking({
         ...values,
