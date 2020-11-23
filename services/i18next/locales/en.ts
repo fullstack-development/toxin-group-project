@@ -6,6 +6,10 @@ export const en = {
     BedsSecondary: 'Beds',
     BathroomsSecondary: 'Bathrooms',
     ReviewsSecondary: 'Reviews',
+    SecondsSecondary: 'seconds',
+    MinuteSecondary: 'minutes',
+    HoursSecondary: 'hours',
+    DaysSecondary: 'days',
   },
   OrderFormPrices: {
     'Service fee_discount': 'Service fee: discount',

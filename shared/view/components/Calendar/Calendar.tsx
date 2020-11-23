@@ -30,7 +30,7 @@ const Calendar = memo(
       enteredTo: null,
     });
     const htmlContainer = useRef(null);
-    const { t } = useTranslation(['Months', 'WeekdaysShort', 'Buttons']);
+    const { t, i18n } = useTranslation(['Months', 'WeekdaysShort', 'Buttons']);
 
     useEffect(() => {
       const handleDocumentClick = (e: Event) => {
@@ -87,14 +87,24 @@ const Calendar = memo(
       t('Months:December'),
     ];
 
+    const weekdaysLong = [
+      t('WeekdaysLong:Sunday'),
+      t('WeekdaysLong:Monday'),
+      t('WeekdaysLong:Tuesday'),
+      t('WeekdaysLong:Wednesday'),
+      t('WeekdaysLong:Thursday'),
+      t('WeekdaysLong:Friday'),
+      t('WeekdaysLong:Saturday'),
+    ];
+
     const weekdaysShort = [
-      t('WeekdaysShort:Mon'),
-      t('WeekdaysShort:Tue'),
-      t('WeekdaysShort:Wed'),
-      t('WeekdaysShort:Thu'),
-      t('WeekdaysShort:Fri'),
-      t('WeekdaysShort:Sat'),
-      t('WeekdaysShort:Sun'),
+      t('WeekdaysShort:Su'),
+      t('WeekdaysShort:Mo'),
+      t('WeekdaysShort:To'),
+      t('WeekdaysShort:We'),
+      t('WeekdaysShort:Th'),
+      t('WeekdaysShort:Fr'),
+      t('WeekdaysShort:Sa'),
     ];
 
     return (
@@ -102,8 +112,11 @@ const Calendar = memo(
         <S.Calendar
           showOutsideDays
           modifiers={modifiers}
+          locale={i18n.language}
           months={months}
+          weekdaysLong={weekdaysLong}
           weekdaysShort={weekdaysShort}
+          firstDayOfWeek={1}
           selectedDays={[from, { from, to }]}
           disabledDays={{ before: new Date() }}
           onDayClick={handleDayClick}

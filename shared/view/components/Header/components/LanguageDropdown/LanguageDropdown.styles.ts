@@ -24,7 +24,7 @@ const Container = styled.div`
       border-left: 1px solid ${colors.basicLight};
       border-right: 1px solid ${colors.basicLight};
 
-      @media ${breakpointDown('md')} {
+      @media ${breakpointDown('lg')} {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -52,7 +52,7 @@ const IconExpander = styled.span`
     height: 100%;
   }
 
-  @media ${breakpointDown('md')} {
+  @media ${breakpointDown('lg')} {
     display: block;
     top: 0;
     width: 3.5rem;
@@ -72,7 +72,7 @@ const MenuContainer = styled.div<Container>`
       background: white;
       display: ${isShownMenu ? 'block' : 'none'};
 
-      @media ${breakpointDown('md')} {
+      @media ${breakpointDown('lg')} {
         position: relative;
         transform: translate(0);
         left: 0;

@@ -84,7 +84,7 @@ const AccountEntry = memo((props: Props) => {
         open={isAuthProcessNow}
         autoHideDuration={3000}
         onClose={breakAuthProcess}
-        message={authStatusText}
+        message={t(`Auth:${authStatusText}`)}
         action={
           <>
             <IconButton size="medium" aria-label="close" color="inherit" onClick={breakAuthProcess}>

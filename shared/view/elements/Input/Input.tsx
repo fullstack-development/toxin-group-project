@@ -1,4 +1,5 @@
 import { useState, InputHTMLAttributes, memo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { composeValidators, makeRequired, Validator } from 'utils/validators';
 
@@ -25,6 +26,8 @@ const Input = memo(
         validate(value);
       }
     };
+
+    const { t } = useTranslation('Validators');
 
     return (
       <S.Input>
@@ -53,7 +56,7 @@ const Input = memo(
             />
           )}
         </label>
-        <S.ErrorMessage>{error}</S.ErrorMessage>
+        <S.ErrorMessage>{t(error)}</S.ErrorMessage>
       </S.Input>
     );
   },

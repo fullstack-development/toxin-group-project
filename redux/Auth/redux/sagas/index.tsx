@@ -73,18 +73,14 @@ function* passwordReset({ api }: Dependencies, { payload: email }: PasswordReset
     if (isEmailAuth) {
       yield call(api.auth.resetPassword, email);
       yield put(
-        passwordResetSuccess(`Ссылка для восстановления пароля была отправлена на ${email}`),
+        passwordResetSuccess('A link to reset your password has been sent to the specified email'),
       );
       yield call(api.auth.resetPassword, email);
     } else {
-      throw new Error('Пользователь с указанным электронным адресом не зарегистрирован');
+      throw new Error('The user with the specified email address is not registered');
     }
   } catch ({ message }) {
-    const statusText =
-      message === 'Пользователь с указанным электронным адресом не зарегистрирован'
-        ? message
-        : 'Произошла ошибка, повторите попытку позже';
-    yield put(passwordResetFailed(statusText));
+    yield put(passwordResetFailed(message));
   }
 }
 

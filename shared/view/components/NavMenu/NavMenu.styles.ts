@@ -16,7 +16,7 @@ const ListItem = styled.li<ListItem>`
 
       margin-right: ${withSubMenu ? '1.7rem' : '0'};
 
-      @media ${breakpointDown('md')} {
+      @media ${breakpointDown('lg')} {
         margin: 0.5rem 0;
         width: 100%;
       }
@@ -25,27 +25,22 @@ const ListItem = styled.li<ListItem>`
 `;
 
 const NavContainer = styled.nav`
-  @media ${breakpointDown('md')} {
+  @media ${breakpointDown('lg')} {
     margin-right: 0;
   }
 
   ul {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
 
-    @media ${breakpointDown('md')} {
+    @media ${breakpointDown('lg')} {
       justify-content: end;
+      flex-direction: column;
+      align-items: center;
+      min-width: 20rem;
 
       & > li {
         padding: 0.3rem 0;
       }
-    }
-
-    @media ${breakpointDown('md')} {
-      flex-direction: column;
-      align-items: center;
-      min-width: 20rem;
     }
   }
 `;
