@@ -1,8 +1,8 @@
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Review as ReviewProps } from 'services/api/entities/model';
 import { getNounInDeclension } from 'shared/helpers/getNounInDeclension';
+import { Review as ReviewProps } from 'shared/model';
 import { Review } from 'shared/view/components';
 
 import * as S from './Reviews.style';

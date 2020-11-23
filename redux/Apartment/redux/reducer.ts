@@ -20,7 +20,13 @@ const apartment = (
       return {
         ...state,
         isGetRoomDetailsPending: false,
-        roomDetails: actions.payload,
+        roomDetails: {
+          ...actions.payload,
+          reviews: actions.payload.reviews.map((review) => ({
+            ...review,
+            date: review.date.toDate(),
+          })),
+        },
       };
     case 'GET_ROOM_DETAILS_FAILED':
       return {
