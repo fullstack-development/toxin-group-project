@@ -38,7 +38,7 @@ const Example = styled.div<ExampleProps>`
       font-size: ${exampleFontSize};
       font-family: ${exampleType === 'H3' || exampleType === 'Body'
         ? typography.fontName
-        : typography.secondaryFontName};
+        : 'Quicksand, "Open Sans", Arial, sans-serif'};
       text-transform: ${exampleType === 'H3' ? 'uppercase' : 'none'};
       color: ${colors.basicDarkest};
     `;
