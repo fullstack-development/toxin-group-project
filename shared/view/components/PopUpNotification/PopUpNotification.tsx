@@ -14,7 +14,7 @@ type Props = {
 
 const PopUpNotification = memo(
   ({ message, onConfirmButtonClick, withCancelButton, onCancelButtonClick }: Props) => {
-    const { t } = useTranslation('shared');
+    const { t } = useTranslation('Shared');
 
     return (
       <S.PopUpNotification>
