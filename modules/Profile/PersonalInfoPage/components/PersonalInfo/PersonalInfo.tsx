@@ -94,7 +94,12 @@ const PersonalInfo = memo(
 
     return (
       <S.PersonalInfo>
-        <EditAvatar user={user} photoURL={userData.photoURL} onChange={handleAvatarChange} />
+        <EditAvatar
+          user={user}
+          photoURL={userData.photoURL}
+          gender={userData.gender}
+          onChange={handleAvatarChange}
+        />
         {accountData.map((elem) => (
           <S.Item key={elem.title}>
             <EditPersonalInfo
