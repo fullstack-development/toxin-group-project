@@ -106,6 +106,7 @@ export const ru = {
   Buttons: {
     'Sign In': 'Войти',
     'Sign up': 'Создать',
+    'Restore password': 'Восстановить пароль',
     Apply: 'Применить',
     Clear: 'Очистить',
     Next: 'Далее',
@@ -191,6 +192,7 @@ export const ru = {
   AccountEntry: {
     'Sign In with account google': 'Вход через аккаунт google',
     'No Toxin account?': 'Нет аккаунта на Toxin?',
+    'Forgot password?': 'Забыли пароль?',
   },
   RegistrationForm: {
     'Create account': 'Регистрация аккаунта',

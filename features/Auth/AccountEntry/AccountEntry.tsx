@@ -72,6 +72,10 @@ const AccountEntry = memo((props: Props) => {
               <span>{t('AccountEntry:No Toxin account?')}</span>
               <Button href="/auth/sign-up">{t('Buttons:Sign up')}</Button>
             </S.TwoCols>
+            <S.TwoCols>
+              <span>{t('AccountEntry:Forgot password?')}</span>
+              <Button href="/auth/forgot-password">{t('Buttons:Restore password')}</Button>
+            </S.TwoCols>
           </form>
         )}
       />
