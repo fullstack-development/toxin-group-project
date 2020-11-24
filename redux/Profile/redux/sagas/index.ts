@@ -4,6 +4,7 @@ import { call, put } from 'redux-saga/effects';
 
 import { takeLeadingAction } from 'redux/action.model';
 import { Dependencies } from 'redux/api.model';
+import { HOME_PAGE } from 'shared/constants';
 import {
   getEmailUpdateErrorMessage,
   getPasswordUpdateErrorMessage,
@@ -33,7 +34,9 @@ function* emailUpdate(_: Dependencies, { payload }: EmailUpdateRequest) {
   try {
     const { user, email } = payload;
 
-    yield user.verifyBeforeUpdateEmail(email);
+    yield user.updateEmail(email);
+
+    yield user.sendEmailVerification({ url: HOME_PAGE });
 
     yield put(
       emailUpdateSuccess('A confirmation email has been sent to the specified email address'),

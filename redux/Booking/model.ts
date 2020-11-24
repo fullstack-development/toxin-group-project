@@ -1,4 +1,4 @@
-import { ActionPayload } from 'redux/action.model';
+import { Action, ActionPayload } from 'redux/action.model';
 import { Filters, BookedRoom, Apartment } from 'services/api/entities/model';
 import { RoomProps } from 'shared/view/components/Room/Room.model';
 
@@ -10,11 +10,16 @@ type BookingState = {
   isRequestSuccessful: boolean;
   error: Error;
   bookedRooms: BookedHistoryList;
+  isBookingPending: boolean;
+  isBookingSuccess: boolean;
+  isBookingFailed: boolean;
+  bookingStatusText: string;
 };
 
 type SelectedBookedRoom = {
   apartmentId: number;
   booked: { from: Date; to: Date };
+  guests: { adults: number; children: number; babies: number };
   totalPrice: number;
   user: string;
 };
@@ -29,6 +34,9 @@ type LoadBookedHistory = ActionPayload<'LOAD_BOOKED_HISTORY', string>;
 type UpdateBookedHistory = ActionPayload<'UPDATE_BOOKED_HISTORY', BookedHistoryList>;
 
 type BookCurrentRoom = ActionPayload<'BOOK_ROOM', SelectedBookedRoom>;
+type BookingSuccess = Action<'BOOKING_SUCCESS'>;
+type BookingFailed = ActionPayload<'BOOKING_FAILED', string>;
+type BookingCanceled = Action<'BOOKING_CANCELED'>;
 
 type BookingActions =
   | PendingStatusUpdate
@@ -36,11 +44,16 @@ type BookingActions =
   | SetFailedStatus
   | RoomsRequest
   | UpdateBookedHistory
-  | LoadBookedHistory;
+  | LoadBookedHistory
+  | BookCurrentRoom
+  | BookingSuccess
+  | BookingFailed
+  | BookingCanceled;
 
 export type {
-  SelectedBookedRoom,
   BookedHistoryList,
+  BookingState,
+  SelectedBookedRoom,
   RoomsRequest,
   PendingStatusUpdate,
   SetRooms,
@@ -48,6 +61,8 @@ export type {
   LoadBookedHistory,
   UpdateBookedHistory,
   BookCurrentRoom,
-  BookingState,
+  BookingSuccess,
+  BookingFailed,
+  BookingCanceled,
   BookingActions,
 };
