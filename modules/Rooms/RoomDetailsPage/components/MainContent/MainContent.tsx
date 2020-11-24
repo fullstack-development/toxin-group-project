@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import { OrderForm } from 'features/Rooms/OrderForm/OrderForm';
 import { getRoomDetails as getRoomDetailsRequest } from 'redux/Apartment/redux/actions';
 import { preloadAuthData } from 'redux/Auth/redux/actions';
-import { bookRoom } from 'redux/Booking/redux/actions';
 import { AppState } from 'redux/store.model';
 import { Apartment } from 'shared/model';
 import { Reviews, RoomImpression } from 'shared/view/components';
@@ -32,7 +31,6 @@ const mapState = (state: AppState): StateProps => ({
 const mapDispatch = {
   startGetRoomDetails: getRoomDetailsRequest,
   checkAuthBeforePageLoaded: preloadAuthData,
-  confirmBookedRoom: bookRoom,
 };
 
 type Props = StateProps & typeof mapDispatch;
@@ -45,7 +43,6 @@ const MainContent = memo(
     userEmail,
     startGetRoomDetails,
     checkAuthBeforePageLoaded,
-    confirmBookedRoom,
   }: Props) => {
     const { t } = useTranslation('RoomDetailsPage');
     const router = useRouter();
@@ -112,7 +109,6 @@ const MainContent = memo(
                   roomPrice={roomDetails.price}
                   isAuthSuccess={isAuthSuccess}
                   userEmail={userEmail}
-                  confirmBookedRoom={confirmBookedRoom}
                 />
               </S.OrderFormWrapper>
             </S.Details>

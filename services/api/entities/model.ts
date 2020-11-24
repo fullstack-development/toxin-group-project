@@ -65,8 +65,8 @@ export type Filters = {
     to: number;
   };
   booked: {
-    from: number;
-    to: number;
+    from: Date;
+    to: Date;
   };
   guests: {
     adults: number;

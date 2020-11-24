@@ -90,6 +90,9 @@ export const ru = {
     Vote: 'Голос',
     Votes: 'Голосов',
     VotesSecondary: 'Голоса',
+    day: 'день',
+    days: 'дня',
+    daysSecondary: 'дней',
     Second: 'секунда',
     Seconds: 'секунды',
     SecondsSecondary: 'секунд',
@@ -185,10 +188,7 @@ export const ru = {
   translations: {
     Ago: 'Назад',
   },
-  OrderFormPrices: {
-    'Service fee_discount': 'Сбор за услуги: скидка',
-    'Additional service fee': 'Сбор за дополнительные услуги',
-  },
+
   AccountEntry: {
     'Sign In with account google': 'Вход через аккаунт google',
     'No Toxin account?': 'Нет аккаунта на Toxin?',
@@ -204,7 +204,13 @@ export const ru = {
   },
   OrderForm: {
     'How many guests': 'Сколько гостей',
+    'Service fee discount': 'Сбор за услуги: скидка',
+    'Additional service fee': 'Сбор за дополнительные услуги',
     'Book now': 'Забронировать',
+    'Fee for guests from the second': 'Плата за гостей со второго',
+    'Payment for an additional guest': 'Оплата дополнительного гостя',
+    'Please select a booking date': 'Пожалуйста, выберите дату бронирования',
+    'Please indicate the number of guests': 'Пожалуйста, укажите количество гостей',
   },
   SearchRoomForm: {
     'We will find rooms according to your wishes': 'Найдём номера под ваши пожелания',

@@ -79,23 +79,8 @@ const Dropdown = memo(
       [placeholder, groups, t],
     );
 
-    const resetResult = () => {
-      applyChanges(initialState);
-    };
-
     const handleResultBarClick = (): void => {
       setIsOpen((open) => !open);
-    };
-
-    const handleApplyClick = (): void => {
-      applyChanges(dropdownState);
-      handleResultBarClick();
-    };
-
-    const handleResetClick = (): void => {
-      setDropdownState(initialState);
-      resetResult();
-      handleResultBarClick();
     };
 
     const handleDocumentClick = useCallback(
@@ -135,9 +120,16 @@ const Dropdown = memo(
             });
             setTimeout(() => input.onChange(result));
           };
-          const apply = () => {
-            handleApplyClick();
+          const handleApplyClick = () => {
             updateFieldValue(dropdownState);
+            applyChanges(dropdownState);
+            handleResultBarClick();
+          };
+          const handleResetClick = () => {
+            setDropdownState(initialState);
+            applyChanges(initialState);
+            updateFieldValue(initialState);
+            handleResultBarClick();
           };
           return (
             <S.Dropdown ref={dropdown}>
@@ -196,7 +188,7 @@ const Dropdown = memo(
                     >
                       {t('Buttons:Clear')}
                     </S.ResetButton>
-                    <ApplyButton type="button" onClick={apply}>
+                    <ApplyButton type="button" onClick={handleApplyClick}>
                       {t('Buttons:Apply')}
                     </ApplyButton>
                   </S.Controls>

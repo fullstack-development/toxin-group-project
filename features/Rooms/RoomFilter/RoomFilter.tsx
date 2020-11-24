@@ -82,8 +82,8 @@ const RoomFilter = memo(({ initialFilters, loadRooms, isPending = false }: Props
                   type="single"
                   name="booked"
                   dateFromLabelText={t('Dates of stay in hotel')}
-                  dateFrom={new Date(initialValues.booked.from)}
-                  dateTo={new Date(initialValues.booked.to)}
+                  dateFrom={initialValues.booked.from}
+                  dateTo={initialValues.booked.to}
                 />
               </S.TimePickerWrapper>
               <S.DropdownWrapper>
