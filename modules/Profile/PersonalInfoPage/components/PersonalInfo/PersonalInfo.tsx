@@ -57,7 +57,7 @@ const PersonalInfo = memo(
       return string.charAt(0).toUpperCase() + string.slice(1);
     };
 
-    const { t } = useTranslation('PersonalInfo');
+    const { t } = useTranslation('PersonalInfoPage');
 
     const setAdditionalUserData = useCallback(() => {
       const { displayName, email, photoURL } = user;

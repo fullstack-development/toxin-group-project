@@ -29,7 +29,7 @@ const EditPersonalInfo = memo(
       email: <EditEmail user={user} email={value} onChange={onEditButtonClick} />,
     };
 
-    const { t } = useTranslation('PersonalInfo');
+    const { t } = useTranslation('PersonalInfoPage');
 
     const isEdit = currentEditing === title;
     const isButtonDisabled = currentEditing ? !isEdit : false;

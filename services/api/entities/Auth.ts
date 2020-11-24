@@ -1,5 +1,7 @@
 import { boundMethod } from 'autobind-decorator';
 
+import { HOME_PAGE } from 'shared/constants';
+
 import {
   Authentication,
   UserCredential,
@@ -36,31 +38,30 @@ class Auth {
 
     try {
       credential = await this.actions.createUser(email, password);
-    } catch (err) {
-      switch (err.code) {
+    } catch ({ code }) {
+      switch (code) {
         case 'auth/email-already-in-use':
-          throw apiErrors.trigger('auth/email-is-taken', email);
-
+          throw apiErrors.trigger('email-already-in-use');
+        case 'auth/invalid-email':
+          throw apiErrors.trigger('auth/invalid-email');
         case 'auth/weak-password':
           throw apiErrors.trigger('auth/weak-password');
-
         default:
           throw new AuthError();
       }
     }
 
-    const user = this.actions.getCurrentUser();
+    const { user } = credential;
     const photoURL = avatar && (await this.getPhotoURL(user.uid, avatar));
 
-    user
-      .updateProfile({
-        displayName: `${name} ${surname}`,
-        photoURL,
-      })
-      .then(() => {
-        this.addAdditionalUserInformation(user.uid, { gender, birthDate });
-        user.sendEmailVerification();
-      });
+    user.updateProfile({
+      displayName: `${name} ${surname}`,
+      photoURL,
+    });
+
+    await this.addAdditionalUserInformation(user.uid, { gender, birthDate });
+
+    user.sendEmailVerification({ url: HOME_PAGE });
 
     return credential;
   }
@@ -71,11 +72,16 @@ class Auth {
 
     try {
       credential = await this.actions.signIn(email, password);
-    } catch (err) {
-      switch (err.code) {
+    } catch ({ code }) {
+      switch (code) {
+        case 'auth/invalid-email':
+          throw apiErrors.trigger('auth/invalid-email');
+        case 'auth/user-disabled':
+          throw apiErrors.trigger('auth/user-disabled');
+        case 'auth/user-not-found':
+          throw apiErrors.trigger('auth/user-not-found');
         case 'auth/wrong-password':
           throw apiErrors.trigger('auth/wrong-password');
-
         default:
           throw new AuthError();
       }
@@ -99,12 +105,13 @@ class Auth {
     let resetPassword: void;
 
     try {
-      resetPassword = await this.actions.resetPassword(email);
-    } catch (err) {
-      switch (err.code) {
+      resetPassword = await this.actions.resetPassword(email, { url: `${HOME_PAGE}/auth/login` });
+    } catch ({ code }) {
+      switch (code) {
         case 'auth/user-not-found':
           throw apiErrors.trigger('auth/user-not-found');
-
+        case 'auth/invalid-email':
+          throw apiErrors.trigger('auth/invalid-email');
         default:
           throw new AuthError();
       }

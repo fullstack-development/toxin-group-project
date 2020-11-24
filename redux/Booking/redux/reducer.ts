@@ -6,6 +6,10 @@ const initialState: BookingState = {
   rooms: [],
   error: null,
   bookedRooms: null,
+  isBookingPending: false,
+  isBookingSuccess: false,
+  isBookingFailed: false,
+  bookingStatusText: '',
 };
 
 const booking = (state: BookingState = initialState, action: BookingActions): BookingState => {
@@ -43,6 +47,42 @@ const booking = (state: BookingState = initialState, action: BookingActions): Bo
         isPending: false,
         bookedRooms: { ...action.payload },
       };
+    case 'BOOK_ROOM': {
+      return {
+        ...state,
+        isBookingPending: true,
+        isBookingSuccess: false,
+        isBookingFailed: false,
+        bookingStatusText: '',
+      };
+    }
+    case 'BOOKING_SUCCESS': {
+      return {
+        ...state,
+        isBookingPending: false,
+        isBookingSuccess: true,
+        isBookingFailed: false,
+        bookingStatusText: '',
+      };
+    }
+    case 'BOOKING_FAILED': {
+      return {
+        ...state,
+        isBookingPending: false,
+        isBookingSuccess: false,
+        isBookingFailed: true,
+        bookingStatusText: action.payload,
+      };
+    }
+    case 'BOOKING_CANCELED': {
+      return {
+        ...state,
+        isBookingPending: false,
+        isBookingSuccess: false,
+        isBookingFailed: false,
+        bookingStatusText: '',
+      };
+    }
     default:
       return state;
   }

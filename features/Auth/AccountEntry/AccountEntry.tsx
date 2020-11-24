@@ -72,6 +72,10 @@ const AccountEntry = memo((props: Props) => {
               <span>{t('AccountEntry:No Toxin account?')}</span>
               <Button href="/auth/sign-up">{t('Buttons:Sign up')}</Button>
             </S.TwoCols>
+            <S.TwoCols>
+              <span>{t('AccountEntry:Forgot password?')}</span>
+              <Button href="/auth/forgot-password">{t('Buttons:Restore password')}</Button>
+            </S.TwoCols>
           </form>
         )}
       />
@@ -84,7 +88,7 @@ const AccountEntry = memo((props: Props) => {
         open={isAuthProcessNow}
         autoHideDuration={3000}
         onClose={breakAuthProcess}
-        message={authStatusText}
+        message={t(`Auth:${authStatusText}`)}
         action={
           <>
             <IconButton size="medium" aria-label="close" color="inherit" onClick={breakAuthProcess}>

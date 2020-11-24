@@ -16,12 +16,12 @@ const MobileMenu = styled.div<MobileMenu>`
       align-items: center;
       justify-content: flex-end;
 
-      @media ${breakpointUp('lg')} {
+      @media ${breakpointUp('xl')} {
         display: flex;
         width: 100%;
       }
 
-      @media ${breakpointDown('md')} {
+      @media ${breakpointDown('lg')} {
         flex-direction: column;
       }
     `;
@@ -37,7 +37,7 @@ const HamburgerButtonWrapper = styled.button`
     cursor: pointer;
   }
 
-  @media ${breakpointDown('md')} {
+  @media ${breakpointDown('lg')} {
     display: block;
   }
 `;
@@ -59,7 +59,7 @@ const Header = styled.header`
         padding-right: 4.2857rem;
       }
 
-      @media ${breakpointDown('md')} {
+      @media ${breakpointDown('lg')} {
         flex-direction: column;
         min-height: 100%;
       }
@@ -68,8 +68,8 @@ const Header = styled.header`
 `;
 
 const HeaderLogo = styled(Logo)`
-  @media ${breakpointDown('md')} {
-    margin: 0.5rem 1.5rem;
+  @media ${breakpointDown('lg')} {
+    margin: 1rem 1.5rem;
   }
 `;
 
@@ -78,14 +78,14 @@ const HeaderLogoWrapper = styled.div`
   align-items: center;
   margin-right: 1.4286rem;
 
-  @media ${breakpointDown('md')} {
+  @media ${breakpointDown('lg')} {
     width: 100%;
     justify-content: space-between;
   }
 `;
 
 const AccountPanel = styled.div`
-  @media ${breakpointDown('md')} {
+  @media ${breakpointDown('lg')} {
     width: 100%;
     text-align: center;
   }

@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, MouseEvent, useCallback, memo } from 'react';
+import { useState, useRef, useEffect, useCallback, memo } from 'react';
 import { Field } from 'react-final-form';
 import { useTranslation } from 'react-i18next';
 
@@ -79,23 +79,8 @@ const Dropdown = memo(
       [placeholder, groups, t],
     );
 
-    const resetResult = () => {
-      applyChanges(initialState);
-    };
-
     const handleResultBarClick = (): void => {
       setIsOpen((open) => !open);
-    };
-
-    const handleApplyClick = (): void => {
-      applyChanges(dropdownState);
-      handleResultBarClick();
-    };
-
-    const handleResetClick = (): void => {
-      setDropdownState(initialState);
-      resetResult();
-      handleResultBarClick();
     };
 
     const handleDocumentClick = useCallback(
@@ -116,7 +101,7 @@ const Dropdown = memo(
     useEffect(() => {
       applyChanges(dropdownState);
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [t]);
 
     useEffect(() => {
       document.addEventListener('click', handleDocumentClick);
@@ -135,9 +120,16 @@ const Dropdown = memo(
             });
             setTimeout(() => input.onChange(result));
           };
-          const apply = () => {
-            handleApplyClick();
+          const handleApplyClick = () => {
             updateFieldValue(dropdownState);
+            applyChanges(dropdownState);
+            handleResultBarClick();
+          };
+          const handleResetClick = () => {
+            setDropdownState(initialState);
+            applyChanges(initialState);
+            updateFieldValue(initialState);
+            handleResultBarClick();
           };
           return (
             <S.Dropdown ref={dropdown}>
@@ -157,11 +149,7 @@ const Dropdown = memo(
                           .reduce((acc, element) => acc + element.currentValue, 0)
                       : max;
 
-                    const makeButtonHandler = (
-                      increment: number,
-                    ): ((e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => void) => (
-                      e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>,
-                    ): void => {
+                    const makeButtonHandler = (increment: number): (() => void) => (): void => {
                       setDropdownState((prevState) => {
                         const state = [...prevState];
                         const elementToUpdate = state.find((item) => item.title === title);
@@ -200,7 +188,7 @@ const Dropdown = memo(
                     >
                       {t('Buttons:Clear')}
                     </S.ResetButton>
-                    <ApplyButton type="button" onClick={apply}>
+                    <ApplyButton type="button" onClick={handleApplyClick}>
                       {t('Buttons:Apply')}
                     </ApplyButton>
                   </S.Controls>

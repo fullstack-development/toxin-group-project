@@ -1,10 +1,13 @@
 import { useRouter } from 'next/router';
-import { memo } from 'react';
+import { memo, useEffect } from 'react';
 import { Field, Form } from 'react-final-form';
 import { useTranslation } from 'react-i18next';
+import { connect } from 'react-redux';
 
 import { SelectedBookedRoom } from 'redux/Booking/model';
-import { Dropdown, TimePicker } from 'shared/view/components';
+import { bookRoom, cancelBooking as cancelBookingRequest } from 'redux/Booking/redux/actions';
+import { AppState } from 'redux/store.model';
+import { Dropdown, TimePicker, PopUpNotification } from 'shared/view/components';
 import { DropdownProps } from 'shared/view/components/Dropdown/Dropdown.model';
 import { ArrowButton } from 'shared/view/elements';
 import { formatNumber } from 'utils/number.utils';
@@ -13,7 +16,26 @@ import { PriceList } from './components/PriceList/PriceList';
 import { PriceItem, MaxGuests } from './OrderForm.model';
 import * as S from './OrderForm.styles';
 
-type Props = {
+type StateProps = {
+  isPending: boolean;
+  isSuccess: boolean;
+  isFailed: boolean;
+  statusText: string;
+};
+
+const mapState = (state: AppState): StateProps => ({
+  isPending: state.booking.isBookingPending,
+  isSuccess: state.booking.isBookingSuccess,
+  isFailed: state.booking.isBookingFailed,
+  statusText: state.booking.bookingStatusText,
+});
+
+const mapDispatch = {
+  confirmBookedRoom: bookRoom,
+  cancelBooking: cancelBookingRequest,
+};
+
+type OwnProps = {
   roomNumber: number;
   roomPrice: number;
   breakfastPricePerGuest: number;
@@ -24,8 +46,11 @@ type Props = {
   currency?: string;
   measure?: string;
   userEmail?: string;
-  confirmBookedRoom: (data: SelectedBookedRoom) => void;
 };
+
+type Props = OwnProps & StateProps & typeof mapDispatch;
+
+type FormData = Omit<SelectedBookedRoom, 'apartmentId' | 'user'>;
 
 const oneDay = 24 * 60 * 60 * 1000;
 
@@ -40,7 +65,7 @@ const noFeeGuestsCount = 1;
 
 const dropdownOptions: DropdownProps = {
   placeholder: 'RoomFilter:How many guests',
-  name: 'Guests',
+  name: 'guests',
   enableControls: true,
   groups: [
     {
@@ -52,17 +77,17 @@ const dropdownOptions: DropdownProps = {
   items: [
     {
       title: 'Adults',
-      inputName: 'Adults',
+      inputName: 'adults',
       groupName: 'Guests',
     },
     {
       title: 'Children',
-      inputName: 'Children',
+      inputName: 'children',
       groupName: 'Guests',
     },
     {
       title: 'Babies',
-      inputName: 'Babies',
+      inputName: 'babies',
       max: defaultMaxGuests.babies,
       wordForms: ['Baby', 'Babies', 'BabiesSecondary'],
     },
@@ -75,8 +100,8 @@ const getResultPrice = (prices: PriceItem[]): number =>
     0,
   );
 
-const getDaysDifference = (dates: { from: number; to: number }) =>
-  Math.round(Math.abs((dates.to - dates.from) / oneDay));
+const getDaysDifference = (dates: { from: Date; to: Date }) =>
+  Math.round(Math.abs((dates.to.getTime() - dates.from.getTime()) / oneDay));
 
 const OrderForm = memo(
   ({
@@ -90,130 +115,142 @@ const OrderForm = memo(
     currency = 'RUB',
     measure = 'Per day',
     userEmail,
+    isPending,
+    isSuccess,
+    isFailed,
+    statusText,
     confirmBookedRoom,
+    cancelBooking,
   }: Props) => {
-    const { t } = useTranslation([
-      'OrderForm',
-      'WordForms',
-      'SearchRoomForm',
-      'Shared',
-      'OrderFormPrices',
-    ]);
+    const { t } = useTranslation(['OrderForm', 'WordForms', 'SearchRoomForm', 'Shared']);
 
     const defaultPrices: PriceItem[] = [
       {
-        label: `${t(`OrderFormPrices:Service fee_discount`)} 2${'\u00A0'}179₽`,
+        label: `${t('Service fee discount')} 2${'\u00A0'}179₽`,
         price: -2179,
         tooltip: 'Подсказка Подсказка Подсказка Подсказка 2',
       },
-      { label: t('OrderFormPrices:Additional service fee'), price: 300, tooltip: 'Подсказка 2' },
+      { label: t('Additional service fee'), price: 300, tooltip: 'Подсказка 2' },
     ];
 
     const router = useRouter();
 
-    const handleFormSubmit = (values) => {
-      if (!isAuthSuccess) return router.push('/auth/login');
+    const handleFormSubmit = (values: FormData) => {
+      if (!isAuthSuccess) router.push('/auth/login');
 
       confirmBookedRoom({
         ...values,
         user: userEmail,
         apartmentId: roomNumber,
       });
-
-      return router.push('/profile/selected-rooms');
     };
 
+    useEffect(() => {
+      if (isSuccess) router.push('/profile/selected-rooms');
+    }, [isSuccess, router]);
+
     return (
-      <S.Container>
-        <S.Title>{`${t('Room reservation')}#${roomNumber}`}</S.Title>
-        <Form
-          onSubmit={handleFormSubmit}
-          render={({ handleSubmit, values }) => {
-            const dates: { from: number; to: number } = values.booked;
-            const daysDifference = (dates && getDaysDifference(dates)) || 0;
-            const guests: {
-              adults: number;
-              babies: number;
-            } = values.guests && {
-              adults: values.guests.adults + values.guests.children,
-              babies: values.guests.babies,
-            };
+      <>
+        <S.Container>
+          <S.Title>{`${t('Room reservation')}#${roomNumber}`}</S.Title>
+          <Form
+            onSubmit={handleFormSubmit}
+            render={({ handleSubmit, values }) => {
+              const dates = values.booked;
+              const daysDifference =
+                (dates && dates.from && dates.to && getDaysDifference(dates)) || 0;
+              const guests = values.guests && {
+                adults: values.guests.adults + values.guests.children,
+                babies: values.guests.babies,
+              };
 
-            const totalGuestsCount = guests ? guests.adults : 0;
-            const billableGuests = Math.max(totalGuestsCount - noFeeGuestsCount, 0);
+              const totalGuestsCount = guests ? guests.adults : 0;
+              const billableGuests = Math.max(totalGuestsCount - noFeeGuestsCount, 0);
 
-            const prices = [
-              {
-                label: `${formatNumber(roomPrice, currency)} х ${daysDifference + t('days')}`,
-                price: roomPrice * daysDifference,
-              },
-              {
-                label: t('Fee for guests from the second'),
-                price: breakfastPricePerGuest * billableGuests,
-              },
-              ...(priceItems || defaultPrices),
-            ];
+              const prices = [
+                {
+                  label: `${formatNumber(roomPrice, currency)} х ${daysDifference}  ${t(
+                    'WordForms:days',
+                  )}`,
+                  price: roomPrice * daysDifference,
+                },
+                {
+                  label: t('Fee for guests from the second'),
+                  price: breakfastPricePerGuest * billableGuests,
+                },
+                ...(priceItems || defaultPrices),
+              ];
 
-            const extraGuestFee = {
-              label: t('Payment for an additional guest'),
-              price: overcrowdingPrice,
-            };
+              const extraGuestFee = {
+                label: t('Payment for an additional guest'),
+                price: overcrowdingPrice,
+              };
 
-            if (totalGuestsCount > defaultMaxGuests.adults) {
-              prices.push(extraGuestFee);
-            }
+              if (totalGuestsCount > defaultMaxGuests.adults) {
+                prices.push(extraGuestFee);
+              }
 
-            return (
-              <form onSubmit={handleSubmit}>
-                <S.RoomInfo>
-                  <S.RoomNumber>
-                    <S.NumberSign>№</S.NumberSign>
-                    {roomNumber}
-                    {roomType && <S.RoomType>{roomType}</S.RoomType>}
-                  </S.RoomNumber>
-                  <S.Price>
-                    {formatNumber(roomPrice, currency)}
-                    <S.Measure>{t(`WordForms:${measure}`)}</S.Measure>
-                  </S.Price>
-                </S.RoomInfo>
-                <S.Datepicker>
-                  <TimePicker
-                    type="double"
-                    dateFromLabelText={t('SearchRoomForm:Arrival')}
-                    dateToLabelText={t('SearchRoomForm:Departure')}
-                    name="booked"
-                  />
-                </S.Datepicker>
-                <S.Dropdown>
-                  <S.DropdownLabel>{t('RoomFilter:Guests')}</S.DropdownLabel>
-                  <Dropdown {...dropdownOptions} />
-                </S.Dropdown>
-                <S.PriceList>
-                  <PriceList items={prices} />
-                </S.PriceList>
-                <S.ResultWrapper>
-                  {t('Shared:Total')}
-                  <S.Dots />
-                  <S.ResultPrice>
-                    <Field
-                      type="hidden"
-                      render={({ input }) => {
-                        setTimeout(() => input.onChange(getResultPrice(prices)));
-                        return <input {...input} />;
-                      }}
-                      name="totalPrice"
+              return (
+                <form onSubmit={handleSubmit}>
+                  <S.RoomInfo>
+                    <S.RoomNumber>
+                      <S.NumberSign>№</S.NumberSign>
+                      {roomNumber}
+                      {roomType && <S.RoomType>{roomType}</S.RoomType>}
+                    </S.RoomNumber>
+                    <S.Price>
+                      {formatNumber(roomPrice, currency)}
+                      <S.Measure>{t(`WordForms:${measure}`)}</S.Measure>
+                    </S.Price>
+                  </S.RoomInfo>
+                  <S.Datepicker>
+                    <TimePicker
+                      type="double"
+                      dateFromLabelText={t('SearchRoomForm:Arrival')}
+                      dateToLabelText={t('SearchRoomForm:Departure')}
+                      name="booked"
                     />
-                    {formatNumber(getResultPrice(prices), currency)}
-                  </S.ResultPrice>
-                </S.ResultWrapper>
-                <ArrowButton type="submit">{t('OrderForm:Book now')}</ArrowButton>
-              </form>
-            );
-          }}
-        />
-      </S.Container>
+                  </S.Datepicker>
+                  <S.Dropdown>
+                    <S.DropdownLabel>{t('RoomFilter:Guests')}</S.DropdownLabel>
+                    <Dropdown {...dropdownOptions} />
+                  </S.Dropdown>
+                  <S.PriceList>
+                    <PriceList items={prices} />
+                  </S.PriceList>
+                  <S.ResultWrapper>
+                    {t('Shared:Total')}
+                    <S.Dots />
+                    <S.ResultPrice>
+                      <Field
+                        type="hidden"
+                        render={({ input }) => {
+                          setTimeout(() => input.onChange(getResultPrice(prices)));
+                          return <input {...input} />;
+                        }}
+                        name="totalPrice"
+                      />
+                      {formatNumber(getResultPrice(prices), currency)}
+                    </S.ResultPrice>
+                  </S.ResultWrapper>
+                  <ArrowButton disabled={isPending} type="submit">
+                    {t('OrderForm:Book now')}
+                  </ArrowButton>
+                </form>
+              );
+            }}
+          />
+        </S.Container>
+        {isFailed && (
+          <PopUpNotification
+            message={t(`OrderForm:${statusText}`)}
+            onConfirmButtonClick={cancelBooking}
+          />
+        )}
+      </>
     );
   },
 );
 
-export { OrderForm };
+const ConnectedComponent = connect(mapState, mapDispatch)(OrderForm);
+export { ConnectedComponent as OrderForm };

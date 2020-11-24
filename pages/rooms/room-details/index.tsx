@@ -1,20 +1,27 @@
 import Head from 'next/head';
 import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { RoomDetailsPage } from 'modules/Rooms';
 
-const RoomDetails = memo(() => (
-  <>
-    <Head>
-      <title>Toxin | Подробнее о номере</title>
-      <meta
-        name="description"
-        content="Более подробная информация о номере: правила, количество гостей, удобства и многое другое"
-      />
-      <meta name="keywords" content="отель, номер, бронирование, забронировать, информация" />
-    </Head>
-    <RoomDetailsPage />
-  </>
-));
+const RoomDetails = memo(() => {
+  const { t } = useTranslation('RoomDetailsPage');
+
+  return (
+    <>
+      <Head>
+        <title>Toxin | {t('Room Details')}</title>
+        <meta
+          name="description"
+          content={t(
+            'More detailed information about the room: rules, number of guests, amenities and much more',
+          )}
+        />
+        <meta name="keywords" content={t('hotel, room, booking, book, information')} />
+      </Head>
+      <RoomDetailsPage />
+    </>
+  );
+});
 
 export default RoomDetails;

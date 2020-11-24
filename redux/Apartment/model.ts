@@ -1,9 +1,10 @@
 import { Action, ActionPayload } from 'redux/action.model';
 import { Apartment } from 'services/api/entities/model';
+import { Apartment as ClientApartment } from 'shared/model';
 
 type ApartmentState = {
   isGetRoomDetailsPending: boolean;
-  roomDetails: Apartment | null;
+  roomDetails: ClientApartment | null;
 };
 
 type GetRoomDetailsRequest = ActionPayload<'GET_ROOM_DETAILS_PROCESS', number>;
