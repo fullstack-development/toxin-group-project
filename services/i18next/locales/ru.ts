@@ -215,6 +215,9 @@ export const ru = {
     'Please indicate the number of guests': 'Пожалуйста, укажите количество гостей',
     'Failed to book a room': 'Не удалось забронировать номер',
     'Failed to cancel booking': 'Не удалось отменить бронирование',
+    'Are you sure you want to book this room?': 'Вы действительно хотите забронировать этот номер?',
+    'Are you sure you want to cancel this room reservation?':
+      'Вы действительно хотите отменить бронь этого номера?',
   },
   SearchRoomForm: {
     'We will find rooms according to your wishes': 'Найдём номера под ваши пожелания',

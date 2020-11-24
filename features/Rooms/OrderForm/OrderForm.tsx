@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { memo, useEffect } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { Field, Form } from 'react-final-form';
 import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
@@ -146,6 +146,8 @@ const OrderForm = memo((props: Props) => {
     stopCancelBooking,
   } = props;
 
+  const [isVisibleConfirm, setVisibleConfirm] = useState(false);
+
   const { t } = useTranslation(['OrderForm', 'WordForms', 'SearchRoomForm', 'Shared']);
 
   const defaultPrices: PriceItem[] = [
@@ -175,6 +177,18 @@ const OrderForm = memo((props: Props) => {
         apartmentId: roomNumber,
       });
     }
+  };
+
+  const handleBookButtonClick = () => {
+    setVisibleConfirm(true);
+  };
+
+  const handleConfirmButtonClick = () => {
+    setTimeout(() => setVisibleConfirm(false));
+  };
+
+  const handleCancelButtonClick = () => {
+    setVisibleConfirm(false);
   };
 
   useEffect(() => {
@@ -273,26 +287,43 @@ const OrderForm = memo((props: Props) => {
                     {formatNumber(getResultPrice(prices), currency)}
                   </S.ResultPrice>
                 </S.ResultWrapper>
-                <ArrowButton disabled={isBookingPending || isCancelBookingPending} type="submit">
+                <ArrowButton
+                  type="button"
+                  disabled={isVisibleConfirm || isBookingPending || isCancelBookingPending}
+                  onClick={handleBookButtonClick}
+                >
                   {isСancellationForm ? t('OrderForm:Сancel booking') : t('OrderForm:Book now')}
                 </ArrowButton>
+                {isVisibleConfirm && (
+                  <PopUpNotification
+                    message={
+                      isСancellationForm
+                        ? t('Are you sure you want to cancel this room reservation?')
+                        : t('Are you sure you want to book this room?')
+                    }
+                    typeConfirmButton="submit"
+                    withCancelButton
+                    onConfirmButtonClick={handleConfirmButtonClick}
+                    onCancelButtonClick={handleCancelButtonClick}
+                  />
+                )}
+                {isBookingFailed && (
+                  <PopUpNotification
+                    message={t(`OrderForm:${bookingStatusText}`)}
+                    onConfirmButtonClick={stopBooking}
+                  />
+                )}
+                {isCancelBookingFailed && (
+                  <PopUpNotification
+                    message={t(`OrderForm:${cancelBookingStatusText}`)}
+                    onConfirmButtonClick={stopCancelBooking}
+                  />
+                )}
               </form>
             );
           }}
         />
       </S.Container>
-      {isBookingFailed && (
-        <PopUpNotification
-          message={t(`OrderForm:${bookingStatusText}`)}
-          onConfirmButtonClick={stopBooking}
-        />
-      )}
-      {isCancelBookingFailed && (
-        <PopUpNotification
-          message={t(`OrderForm:${cancelBookingStatusText}`)}
-          onConfirmButtonClick={stopCancelBooking}
-        />
-      )}
     </>
   );
 });
