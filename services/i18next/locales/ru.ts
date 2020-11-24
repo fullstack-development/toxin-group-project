@@ -109,6 +109,7 @@ export const ru = {
   Buttons: {
     'Sign In': 'Войти',
     'Sign up': 'Создать',
+    'Restore password': 'Восстановить пароль',
     Apply: 'Применить',
     Clear: 'Очистить',
     Next: 'Далее',
@@ -187,13 +188,11 @@ export const ru = {
   translations: {
     Ago: 'Назад',
   },
-  OrderFormPrices: {
-    'Service fee_discount': 'Сбор за услуги: скидка',
-    'Additional service fee': 'Сбор за дополнительные услуги',
-  },
+
   AccountEntry: {
     'Sign In with account google': 'Вход через аккаунт google',
     'No Toxin account?': 'Нет аккаунта на Toxin?',
+    'Forgot password?': 'Забыли пароль?',
   },
   RegistrationForm: {
     'Create account': 'Регистрация аккаунта',

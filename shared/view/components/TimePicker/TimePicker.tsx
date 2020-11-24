@@ -33,15 +33,19 @@ const TimePicker = memo(
 
     const { from, to } = selectedDateRange;
 
-    const formatter = new Intl.DateTimeFormat(i18n.language);
+    const formatterForSingle = new Intl.DateTimeFormat(i18n.language, {
+      day: 'numeric',
+      month: 'short',
+    });
+    const formatterForDouble = new Intl.DateTimeFormat(i18n.language);
 
     const getDateFrom = (): string => {
-      const selectedDateFrom = formatter.format(from);
-      const selectedDateTo = to ? formatter.format(to) : '';
+      const selectedDateFrom = formatterForSingle.format(from);
+      const selectedDateTo = to ? formatterForSingle.format(to) : '';
 
       return type === 'single'
         ? `${`${selectedDateFrom}`} ${to ? `- ${selectedDateTo}` : ''}`
-        : selectedDateFrom;
+        : formatterForDouble.format(from);
     };
 
     const getMaskedDate = (): string =>
@@ -82,7 +86,7 @@ const TimePicker = memo(
                 {type === 'double' && (
                   <S.ContainerElement onClick={openCalendar}>
                     <Input
-                      value={to ? formatter.format(to) : getMaskedDate()}
+                      value={to ? formatterForDouble.format(to) : getMaskedDate()}
                       label={dateToLabelText}
                       placeholder="date to"
                       readOnly
