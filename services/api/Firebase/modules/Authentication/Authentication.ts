@@ -43,6 +43,12 @@ class Authentication {
   }
 
   @boundMethod
+  public async removeUserAvatar(uid: string): Promise<void> {
+    const filePath = `users/${uid}/profilePicture/${uid}-avatar`;
+    this.storage.childRef(filePath).delete();
+  }
+
+  @boundMethod
   public signInWithGoogle(): Promise<UserCredential> {
     const provider = new firebase.auth.GoogleAuthProvider();
     return this.auth.signInWithPopup(provider);

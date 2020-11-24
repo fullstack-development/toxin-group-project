@@ -146,12 +146,23 @@ class Auth {
     let photoURL: string;
 
     try {
-      photoURL = await this.actions.setUserAvatar(uid, photo);
+      photoURL = await this.actions.setUserAvatar(uid, photo).then((url) => {
+        return url;
+      });
     } catch (err) {
       throw new AuthError();
     }
 
     return photoURL;
+  }
+
+  @boundMethod
+  public async removeUserAvatar(uid: string): Promise<void> {
+    try {
+      this.actions.removeUserAvatar(uid);
+    } catch (err) {
+      throw new AuthError();
+    }
   }
 
   @boundMethod
