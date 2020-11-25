@@ -1,12 +1,12 @@
-const getAvatarByGender = (gender: string): string | null => {
-  switch (gender) {
+type Gender = 'male' | 'female' | 'Male' | 'Female' | 'Мужчина' | 'Женщина';
+
+const getAvatarByGender = (gender: Gender): string | null => {
+  switch (gender.toLowerCase()) {
     case 'male':
-    case 'Male':
-    case 'Мужчина':
+    case 'мужчина':
       return '/img/avatar-male.jpg';
     case 'female':
-    case 'Female':
-    case 'Женщина':
+    case 'женщина':
       return '/img/avatar-female.jpg';
     default:
       return null;

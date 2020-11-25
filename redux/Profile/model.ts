@@ -34,7 +34,7 @@ type AvatarUpdate = {
 
 type AvatarRemove = {
   user: User;
-  gender: string;
+  gender: 'Male' | 'Female' | 'Мужчина' | 'Женщина';
 };
 
 type ProfileState = {

@@ -26,7 +26,7 @@ const mapDispatch = {
 
 type OwnProps = {
   user: User;
-  gender: string;
+  gender: 'Male' | 'Female' | 'Мужчина' | 'Женщина';
   onConfirm: () => void;
   onCancel: () => void;
   onSuccess: () => void;

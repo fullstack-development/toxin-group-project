@@ -13,7 +13,7 @@ import * as S from './EditAvatar.styles';
 type Props = {
   user: User;
   photoURL: string;
-  gender: string;
+  gender: 'Male' | 'Female' | 'Мужчина' | 'Женщина';
   onChange: () => void;
 };
 
