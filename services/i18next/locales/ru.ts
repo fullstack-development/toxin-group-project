@@ -189,7 +189,13 @@ export const ru = {
   translations: {
     Ago: 'Назад',
   },
-
+  ImageGallery: {
+    'Previous image': 'Предыдущее изображение',
+    'Next image': 'Следующее изображение',
+    'Zoom in': 'Увеличить',
+    'Zoom out': 'Уменьшить',
+    Close: 'Закрыть',
+  },
   AccountEntry: {
     'Sign In with account google': 'Вход через аккаунт google',
     'No Toxin account?': 'Нет аккаунта на Toxin?',
