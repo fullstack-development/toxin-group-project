@@ -294,7 +294,8 @@ export const ru = {
     'hotel, room, booking, book': 'отель, номер, бронирование, забронировать',
     'Sort by parameter': 'Сортировать по параметру',
     'The rooms we have selected for you': 'Номера, которые мы для вас подобрали',
-    'No results were found for your request =(': 'К сожалению, мы не смогли ничего подобрать =(',
+    'Unfortunately, no rooms were found for your request. Try changing your search criteria':
+      'К сожалению, по вашему запросу номеров не найдено. Попробуйте изменить критерии поиска',
     price: 'цена',
     rating: 'рейтинг',
     'number of reviews': 'количество отзывов',
@@ -307,8 +308,9 @@ export const ru = {
       'отель, номер, бронирование, забронировать, информация',
     'Loading Room Information ...': 'Загрузка информации о номере ...',
     'Impressions of the room': 'Впечатления от номера',
-    'Failed to load room information': 'Не удалось загрузить информацию о номере',
-    'Free cancellation within 48 hours. Thereafter, if canceled no later than 5 days in advance. you will receive a full refund before arrival minus the service fee.':
+    'Sorry, the room information could not be loaded':
+      'К сожалению, не удалось загрузить информацию о номере',
+    'Free cancellation within 48 hours. Thereafter, if canceled no later than 5 days in advance, you will receive a full refund before arrival minus the service fee.':
       'Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.',
   },
   SelectedRoomsPage: {
