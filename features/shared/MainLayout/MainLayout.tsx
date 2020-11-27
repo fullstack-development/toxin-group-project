@@ -1,6 +1,7 @@
 import { memo, useEffect } from 'react';
 import { connect } from 'react-redux';
 
+import { Assistant } from 'features/Assistant/Assistant';
 import { preloadAuthData } from 'redux/Auth/redux/actions';
 import { AppState } from 'redux/store.model';
 import { Footer, Header } from 'shared/view/components';
@@ -37,6 +38,7 @@ const MainLayout = memo(
       <>
         <Header displayName={displayName} wasFinishedAuthChecking={wasFinishedAuthChecking} />
         {children}
+        <Assistant />
         <Footer />
       </>
     );

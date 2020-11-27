@@ -1,5 +1,7 @@
 import { SagaIterator } from 'redux-saga';
 
+import { AssistantState, AssistantActions } from 'features/Assistant/redux/model';
+
 import { ApartmentState, ApartmentActions } from './Apartment/model';
 import { Dependencies } from './api.model';
 import { AuthState, AuthActions } from './Auth/model';
@@ -16,7 +18,8 @@ type AvailableStates =
   | ProfileState
   | RegistrationState
   | LanguageState
-  | SubscriptionState;
+  | SubscriptionState
+  | AssistantState;
 
 type AvailableActions =
   | ApartmentActions
@@ -25,7 +28,8 @@ type AvailableActions =
   | ProfileActions
   | RegistrationActions
   | LanguageActions
-  | SubscriptionActions;
+  | SubscriptionActions
+  | AssistantActions;
 
 type AppState = {
   apartment: ApartmentState;
@@ -35,6 +39,7 @@ type AppState = {
   profile: ProfileState;
   registration: RegistrationState;
   subscriptions: SubscriptionState;
+  assistant: AssistantState;
 };
 
 type AvailableReducers = (state: AvailableStates, action: AvailableActions) => AvailableStates;

@@ -2,6 +2,7 @@ import { applyMiddleware, createStore, combineReducers } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware, { SagaMiddleware } from 'redux-saga';
 
+import { reduxEntry as AssistantReduxEntry } from 'features/Assistant/redux';
 import { Api } from 'services/api/api';
 
 import { apartmentReduxEntry } from './Apartment';
@@ -29,6 +30,7 @@ const sharedReduxEntries: SharedReduxEntries = [
   RegistrationReduxEntry,
   LanguageReduxEntry,
   subscriptionsReduxEntry,
+  AssistantReduxEntry,
 ];
 
 let preparedReducers: Record<string, AvailableReducers> = {};
