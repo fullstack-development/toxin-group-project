@@ -19,20 +19,23 @@ const Container = styled.div<Message>`
 
 const Author = styled.span``;
 
-const Message = styled.p<Message>`
+const Message = styled.div<Message>`
   ${(props) => {
     const { colors } = props.theme;
     const { type } = props;
 
     return css`
       background: ${type === 'from' ? colors.secondary : colors.basicLightest};
-      padding: 0.5rem;
+      margin: 0.5rem 0;
       width: fit-content;
       border-radius: 0.5rem;
-      word-break: break-all;
       color: ${type === 'to' ? 'black' : 'white'};
     `;
   }}
 `;
 
-export { Container, Author, Message };
+const MessageElement = styled.div`
+  margin: 1rem;
+`;
+
+export { Container, Author, Message, MessageElement };

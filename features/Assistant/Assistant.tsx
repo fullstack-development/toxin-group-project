@@ -50,6 +50,7 @@ const Assistant: React.FC<Props> = memo(
                     text={message.text}
                     name={message.author}
                     type={message.type}
+                    data={message.data}
                   />
                 ))}
               </S.MessagesArea>
