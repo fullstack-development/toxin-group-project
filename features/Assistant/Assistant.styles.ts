@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 const Assistant = styled.div`
   position: fixed;
   bottom: 3rem;
-  right: 23rem;
+  right: 6rem;
   width: 25rem;
   height: 40rem;
   background: white;

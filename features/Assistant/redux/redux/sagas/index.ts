@@ -15,7 +15,7 @@ function* sendMessage({ api }: Dependencies, data) {
   const currentState: AssistantState = yield select((state) => state.assistant);
 
   const answers = {
-    findRoom: /(най(=?ти|ди)|под(=?б[еи]ри|обрать))\s?(мне)?\sномер/i,
+    findRoom: /(най(=?ти|ди)|под(=?б[еи]ри|обрать))\s?(мне)?\s(номер|комнату)/i,
     roomCost: /\d{1,}/,
   };
 
@@ -61,7 +61,7 @@ function* sendMessage({ api }: Dependencies, data) {
               type: 'rooms',
               payload: yield call(api.booking.filterRooms, {
                 ...defaultFilters,
-                price: { from: 2000, to: Number(text.match(answers.roomCost)[0]) },
+                price: { from: 0, to: Number(text.match(answers.roomCost)[0]) },
               }),
             },
           }),

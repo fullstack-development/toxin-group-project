@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid';
-import { memo } from 'react';
+import { memo, useRef } from 'react';
 import { Form } from 'react-final-form';
 import { connect } from 'react-redux';
 
@@ -28,13 +28,21 @@ const mapDispatch = {
 
 type Props = StateProps & typeof mapDispatch;
 
-const submitForm = (values) => {
-  console.log('данные из ассистента:', values);
-};
+const submitForm = (values) => values;
 
 const Assistant: React.FC<Props> = memo(
   ({ messages, userName, pushMessage }: Props): JSX.Element => {
-    const submitMessage = (text: string) => pushMessage({ author: userName || 'Аноним', text, type: 'from' });
+    const messageContainer = useRef(null);
+
+    const submitMessage = (text: string) => {
+      pushMessage({ author: userName || 'Аноним', text, type: 'from' });
+    };
+
+    setTimeout(() => {
+      if (messageContainer.current) {
+        messageContainer.current.scrollTop = messageContainer.current.scrollHeight;
+      }
+    });
 
     return (
       <Form
@@ -43,7 +51,7 @@ const Assistant: React.FC<Props> = memo(
           <form onSubmit={handleSubmit}>
             <S.Assistant>
               <Header name="Бот Евгений" photoURL="" />
-              <S.MessagesArea>
+              <S.MessagesArea ref={messageContainer}>
                 {messages.map((message) => (
                   <Message
                     key={nanoid()}

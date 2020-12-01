@@ -1,7 +1,7 @@
 import { ActionPayload } from 'redux/action.model';
 import { Filters } from 'services/api/entities/model';
 
-type MessageData = { author: string; text: string; type: 'from' | 'to'; data?: unknown };
+type MessageData = { author: string; text: string; type: string; data?: unknown };
 
 type SendMessage = ActionPayload<'SEND_MESSAGE', MessageData>;
 type PushMessage = ActionPayload<'PUSH_MESSAGE', MessageData>;
