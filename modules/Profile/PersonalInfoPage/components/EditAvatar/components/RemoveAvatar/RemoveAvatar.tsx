@@ -1,9 +1,9 @@
 import { useEffect, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
+import { AppState } from 'redux/store.model';
 
 import { avatarRemove, completeAvatarRemove } from 'redux/Profile/redux/actions';
-import { AppState } from 'redux/store.types';
 import { User } from 'services/api/Firebase/modules/Authentication/model';
 import { PopUpNotification } from 'shared/view/components';
 
